@@ -1,0 +1,103 @@
+from bs4 import BeautifulSoup
+import requests
+import re
+
+def remove_special_characters(input_string):
+    pattern = r"[^a-zA-Z0-9\s'/]"
+    cleaned_string = re.sub(pattern, ' ', input_string)
+    return cleaned_string
+
+def extract_href(tag):
+    return tag['href'] if tag else None
+
+
+print ("Working like a 🐍 charmer");
+# url = 'https://www.sanmar.com/p/9286_Black'
+url = 'https://www.sanmar.com/p/7675_DarkNavy?text=CS626'
+page = requests.get(url)
+soup = BeautifulSoup(page.text, features = 'lxml')
+
+
+#Extract product name
+name = soup.find('h1')
+product_name = remove_special_characters(name.text)
+
+#Extract product number text
+name_holder = soup.find('div', class_ = 'color-swatches')
+first_a_tag = soup.find('div', class_='color-swatches').find('a')
+data_style_number = first_a_tag['data-style-number']
+# print(data_style_number)
+product_number = soup.find('span', class_ = 'product-style-number').text
+ 
+
+#Extract text for sizes
+sizes = soup.find('div', class_ = 'sizes').text.strip()
+# print(sizes.text.strip())
+
+#Extract each color name
+colors = soup.find_all('span', class_ = 'swatch-name')
+color_names = [color.text for color in colors]
+# for color in colors:
+#     print(color.text)
+
+# Extract spec sheet href
+spec_sheet_a = soup.find('li', class_='product-specsheet-li').find('a')
+spec_sheet_href = extract_href(spec_sheet_a)
+# if spec_sheet_href:
+#     print(spec_sheet_href + '&pdf=Y')
+
+
+# Extract main image href
+main_img_a = soup.find('div', class_='main-image').find('a')
+main_img_href = extract_href(main_img_a)
+# if main_img_href:
+#     print('https:' + main_img_href)
+
+# Extract link for each color swatch
+# color_info_div = soup.find('div', class_='swatches')
+# if color_info_div:
+#     color_list = color_info_div.find_all('ul')
+#     for ul in color_list:
+#         for li in ul.find_all('li'):
+#             img_tag = li.find('img')
+#             if img_tag:
+#                 src_value = img_tag['src']
+#                 print('https:' + src_value)
+
+# Extract link for each color swatch
+color_info_div = soup.find('div', class_='swatches')
+swatch_links = []
+if color_info_div:
+    color_list = color_info_div.find_all('ul')
+    for ul in color_list:
+        for li in ul.find_all('li'):
+            img_tag = li.find('img')
+            if img_tag:
+                src_value = 'https:' + img_tag['src']
+                swatch_links.append(src_value)
+
+
+
+# Write data to a text file
+output_filename = f"{product_number}.txt"
+with open(output_filename, 'w') as file:
+    file.write(f"Product Name: {product_name}\n")
+    file.write(f"Product Number: {product_number}\n")
+    file.write(f"Sizes: {sizes}\n")
+    file.write("Colors:\n")
+    for color in color_names:
+        file.write(f"- {color}\n")
+    if spec_sheet_href:
+        file.write(f"Spec Sheet: {spec_sheet_href}&pdf=Y\n")
+    if main_img_href:
+        file.write(f"Main Image: https:{main_img_href}\n")
+    file.write("Swatch Links:\n")
+    for link in swatch_links:
+        file.write(f"- {link}\n")
+
+print(f"Data written to {output_filename}")
+
+
+
+
+

@@ -1,0 +1,104 @@
+body {
+	background-color: #fff;
+	background: url('./County-Store-Image.png') no-repeat center center fixed;
+	background-size: cover;
+	height: 100%;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+}
+.make-muted {
+	position: relative;
+	z-index: 2;
+	background-color: #ffffff10;
+	background-size: cover;
+	height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+}
+.front-image-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 120px;
+	z-index: -1;
+}
+.image-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	/* height: 120px; */
+	z-index: -1;
+}
+.spacer23 {
+	height: 150px;
+}
+.footer-holder {
+	position: absolute;
+	bottom: 0;
+	background-color: azure;
+}
+.button-holder {
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 4;
+}
+.container {
+	background-color: #00000099;
+	border-radius: 10px;
+	width: auto;
+	margin-left: 2%;
+	margin-right: 2%;
+	padding-left: 2%;
+	padding-right: 2%;
+	padding-top: 1%;
+	padding-bottom: 5%;
+}
+.logo-img-holder {
+	background-color: #00000099;
+	position: fixed;
+	right: 0;
+	display: flex;
+	border-radius: 5px;
+	margin-top: 85px;
+	/* margin-right: 85px; */
+	/* margin-right: 85px; */
+	z-index: 3;
+	width: min-content;
+	color: aliceblue;
+	text-align: center;
+}
+.logo-img-holder img {
+	/* background-color: #00000080; */
+	background-color: #ffffff70;
+}
+.logo-hide {
+	margin-right: -200px;
+	transition-timing-function: ease-out;
+	transition: 0.4s;
+}
+.logo-show {
+	margin-right: 85px;
+	transition-timing-function: ease-in;
+	transition: 0.4s;
+}
+.product-with-logo-holder {
+	position: fixed;
+	top: 24vh;
+	left: -38vw;
+	width: 100vw;
+	z-index: 35;
+}
+/* .lil-logo {
+  position: relative;
+  width: 70px;
+  z-index: 40;
+  left: -186px;
+  top: -102px;
+} */
