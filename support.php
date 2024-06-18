@@ -177,11 +177,12 @@ $cart = new Cart;
             <span class="close-text" aria-hidden=”true”>❌</span>
             <span class="sr-only close-text">Close</span>
         </button>
-        <label for="empID">Please enter your employee ID Number</label>
+        <p>This features has been temporarily disabled while we make some updates for the coming fiscal year</p>
+        <!-- <label for="empID">Please enter your employee ID Number</label>
         <input type="number" name="empID" id="empID" maxlength="5" />
         <p>If the employee number entered is valid an email with Fiscal Year details will be sent to the email address associate with the employee ID.</p>
         <p>If you do not have an email address from Berkeley County Goverment, you can still request the information using this form and then contact store@berkeleycountysc.gov for information on how to get the report.</p>
-        <button type="button" onclick=submitSpendingReq() id="submitButton" popovertarget="spendingPopover" popovertargetaction="hide" disabled>Submit</button>
+        <button type="button" onclick=submitSpendingReq() id="submitButton" popovertarget="spendingPopover" popovertargetaction="hide" disabled>Submit</button> -->
     </div>
 
     <div name="requestConfirmToast" id="requestConfirmToast" class="requestConfirmToast" popover="auto">

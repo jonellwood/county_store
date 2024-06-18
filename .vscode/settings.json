@@ -1,11 +1,12 @@
 {
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
-  "workbench.colorCustomizations": {
-    "titleBar.activeForeground": "#E2BC99",
-    "titleBar.inactiveForeground": "#000000cc",
-    "titleBar.activeBackground": "#0073cf",
-    "titleBar.inactiveBackground": "#000"
-  }
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"workbench.colorCustomizations": {
+		"titleBar.activeForeground": "#E2BC99",
+		"titleBar.inactiveForeground": "#000000cc",
+		"titleBar.activeBackground": "#0073cf",
+		"titleBar.inactiveBackground": "#000"
+	},
+	"cSpell.words": ["producttype"]
 }

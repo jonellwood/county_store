@@ -36,7 +36,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         }
 
         function loadProducts() {
-            fetch('load-all-products.php')
+            fetch('load-all-new-products.php')
                 .then((response) => response.json())
                 .then((data) => {
                     // console.log(data);
@@ -48,10 +48,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <th>DataBase ID</th>
                             <th>Product Code</th>
                             <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Vendor</th>
-                            <th>Is Active</th>
-                            <th>Is Communications</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -63,10 +59,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <td>${data[i].product_id}</td>
                             <td>${data[i].code}</td>
                             <td>${data[i].name}</td>
-                            <td>${data[i].price}</td>
-                            <td>${data[i].vendor_id}</td>
-                            <td>${data[i].isactive}</td>
-                            <td>${data[i].isComm}</td>
                             <td><button popovertarget='productEdit' onclick='editProduct(${data[i].product_id})'>Edit</button></td>
                             </tr>
                         `
@@ -83,7 +75,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
         function editProduct(id) {
             // alert('Editing product ' + id)
-            fetch('load-single-product.php?id=' + id)
+            fetch('load-new-single-product.php?id=' + id)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
@@ -96,13 +88,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <th>Code</th>
                             <th>Desc</th>
                             <th>Name</th>
-                            <th>Price</th>
-                            <th>Vendor</th>
-                            <th>Price Size Mod</th>
                             <th>Product Type</th>
-                            <th>Is Active</th>
-                            <th>Is Communications</th>
-                            <th>Is Featured</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,13 +96,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <td>${data[0].product[0].code}</td>
                             <td>${data[0].product[0].description}</td>
                             <td>${data[0].product[0].name}</td>
-                            <td>${data[0].product[0].price}</td>
-                            <td>${data[0].product[0].vendor}</td>
-                            <td>${data[0].product[0].price_size_mod}</td>
                             <td>${data[0].product[0].producttype}</td>
-                            <td data-int='${data[0].product[0].isactive}'></td>
-                            <td data-int='${data[0].product[0].isComm}'></td>
-                            <td data-int='${data[0].product[0].featured}'></td>
                         </tr>
                     </tbody>
                     </table>
@@ -126,206 +106,219 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     `
                     document.getElementById('edit-table').innerHTML = html;
 
-                    var fhtml = '';
-                    fhtml += `
-                    <form action="edit-product-db.php" method="POST">
-                    <input type="hidden" name="product_id" value=${data[0].product[0].product_id} />
-                    <input type="hidden" name="code" value=${data[0].product[0].code} />
-
-                    <div>
-                    <fieldset id='product-options'>
-                    <h2>Select new values for options you wish to update <p>If there is no change, leave the existing value in place </p></h2></br>
-                    <div class='options-holder'>
-                    <div>
-                    <label for="price">Price</label>
-                    <input type="number" name="price" id="price" value=${data[0].product[0].price} />
-                    </div>
-                    <div>
-                    <label for="producttype">Product Type</label>
-                    <select id="producttypeSelect" name="producttypeSelect">
-                        <option value="1">Pants</option>
-                        <option value="2">Shirts</option>
-                        <option value="3">Hats</option>
-                        <option value="4">Outerwear</option>
-                        <option value="5">Sweatshirts</option>
-                        <option value="7">Boots</option>
-                        <option value="8">Accessories</option>
-                    </select>
-                    </div>
-                    <div>
-                    <label for="vendor">Vendor</label>
-                    <select id="vendorSelect" name="vendorSelect">
-                        <option value="1">Low Country Native</option>
-                        <option value="2">The Bootjack</option>
-                        <option value="3">Safety Products Inc</option>
-                        <option value="4">Reids Uniforms Inc</option>
-                    </select>
-                    </div>
-                    <div>
-                    <label for "price_size_mod">Price Size Mod</label>
-                    <select id="price_size_mod" name="priceModSelect">`
-                    for (var i = 0; i < data[7].all_mods.length; i++) {
-                        fhtml += `
-                                <option value=${data[7].all_mods[i].id}>${data[7].all_mods[i].price_mod}</option>
-                            `
-                    }
-
-                    fhtml += `</select>
-                    </div>
-                    <div>
-                        <label for="isActiveSelect">Is Active</label>
-                        <select id="isActiveSelect" name="isActive">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="isCommSelect">Is Comm</label>
-                        <select id="isCommSelect" name="isComm">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="isFeaturedSelect">Is Featured</label>
-                        <select id="isFeaturedSelect" name="isFeatured">
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
-                        </select>
-                    </div>
-                    <div> 
-                        <label for="gender_filter_select">Gender Filters</label>
-                        <select id="gender_filter_select" name="gender_filter">
-                            `
-                    for (var i = 0; i < data[6].all_filters[0].gender_filters.length; i++) {
-                        var filters = data[6].all_filters[0].gender_filters
-                        fhtml += `
-                                    <option value=${filters[i].id}>${filters[i].filter}</option>
-                                `
-                    }
-                    fhtml += `
-                        <select/>
-                    </div>
-                    <div>
-                        <label for="type_filter_select">Product Sub Type Filters</label>
-                        <select id="type_filter_select" name="type_filter">
-                            `
-                    for (var i = 0; i < data[6].all_filters[1].type_filters.length; i++) {
-                        var filters = data[6].all_filters[1].type_filters
-                        fhtml += `
-                                    <option value=${filters[i].id}>${filters[i].filter}</option>
-                                `
-                    }
-
-                    fhtml += `
-                        </select>
-                    </div>
-                    <div>
-                        <label for="size_filter_select">Size Category Filters</label>
-                        <select id="size_filter_select" name="size_filter">
-                    `
-                    for (var i = 0; i < data[6].all_filters[2].size_filters.length; i++) {
-                        var filters = data[6].all_filters[2].size_filters
-                        fhtml += `
-                                    <option value=${filters[i].id}>${filters[i].filter}</option>
+                    // console.log(data[1].vendors.length);
+                    var vHtml = '<form>';
+                    vHtml += '<table><thead><th>Vendor Name</th><th>Size</th><th>Price</th></th></thead><tbody>';
+                    for (var i = 0; i < data[2].current_prices_and_sizes.length; i++) {
+                        var priceData = data[2].current_prices_and_sizes;
+                        vHtml += `
+                        <tr> 
+                        <td>${priceData[i].vendor_name}</td>
+                        <td>${priceData[i].size_name}</td>
+                        <td><input  type="text" name="price[]" value=${priceData[i].price} /></td>
+                        </tr>
+                        
                         `
                     }
+                    vHtml += '</tbody> </table>'
+                    vHtml += '</form>';
+                    document.getElementById('edit-form').innerHTML = vHtml;
+                    //     var formHtml = '';
+                    //     formHtml += `
+                    //     <form action="edit-new-product-db.php" method="POST">
+                    //     <input type="hidden" name="product_id" value=${data[0].product[0].product_id} />
+                    //     <input type="hidden" name="code" value=${data[0].product[0].code} />
 
-                    fhtml += `
+                    //     <div>
+                    //     <fieldset id='product-options'>
+                    //     <h2>Select new values for options you wish to update <p>If there is no change, leave the existing value in place </p></h2></br>
+                    //     <div class='options-holder'>
+                    //     <div>
+                    //     <label for="producttype">Product Type</label>
+                    //     <select id="producttypeSelect" name="producttypeSelect">
+                    //         <option value="1">Pants</option>
+                    //         <option value="2">Shirts</option>
+                    //         <option value="3">Hats</option>
+                    //         <option value="4">Outerwear</option>
+                    //         <option value="5">Sweatshirts</option>
+                    //         <option value="7">Boots</option>
+                    //         <option value="8">Accessories</option>
+                    //     </select>
+                    //     </div>
+                    //     <div>
+                    //     <label for="vendor">Vendor</label>
+                    //     <select id="vendorSelect" name="vendorSelect">
+                    //         <option value="1">Low Country Native</option>
+                    //         <option value="2">The Bootjack</option>
+                    //         <option value="3">Safety Products Inc</option>
+                    //         <option value="4">Reids Uniforms Inc</option>
+                    //     </select>
+                    //     </div>
+                    //     <div>
+                    //     <label for "price_size_mod">Price Size Mod</label>
+                    //     <select id="price_size_mod" name="priceModSelect">`
+                    //     for (var i = 0; i < data[7].all_mods.length; i++) {
+                    //         formHtml += `
+                    //                 <option value=${data[7].all_mods[i].id}>${data[7].all_mods[i].price_mod}</option>
+                    //             `
+                    //     }
 
-                        </select>
-                    </div>
-                    <div>
-                        <label for="sleeve_filter_select">Sleeve Filters</label>
-                        <select id="sleeve_filter_select" name="sleeve_filter">
-                           `
-                    for (var i = 0; i < data[6].all_filters[3].sleeve_filters.length; i++) {
-                        var filters = data[6].all_filters[3].sleeve_filters
-                        fhtml += `
-                                    <option value=${filters[i].id}>${filters[i].filter}</option>
-                        `
-                    }
-                    fhtml += `</select>
-                </div>
-                  </div>
-                    <br>
+                    //     formHtml += `</select>
+                    //     </div>
+                    //     <div>
+                    //         <label for="isActiveSelect">Is Active</label>
+                    //         <select id="isActiveSelect" name="isActive">
+                    //             <option value="0">No</option>
+                    //             <option value="1">Yes</option>
+                    //         </select>
+                    //     </div>
+                    //     <div>
+                    //         <label for="isCommSelect">Is Comm</label>
+                    //         <select id="isCommSelect" name="isComm">
+                    //             <option value="0">No</option>
+                    //             <option value="1">Yes</option>
+                    //         </select>
+                    //     </div>
+                    //     <div>
+                    //         <label for="isFeaturedSelect">Is Featured</label>
+                    //         <select id="isFeaturedSelect" name="isFeatured">
+                    //             <option value="0">No</option>
+                    //             <option value="1">Yes</option>
+                    //         </select>
+                    //     </div>
+                    //     <div> 
+                    //         <label for="gender_filter_select">Gender Filters</label>
+                    //         <select id="gender_filter_select" name="gender_filter">
+                    //             `
+                    //     for (var i = 0; i < data[6].all_filters[0].gender_filters.length; i++) {
+                    //         var filters = data[6].all_filters[0].gender_filters
+                    //         formHtml += `
+                    //                     <option value=${filters[i].id}>${filters[i].filter}</option>
+                    //                 `
+                    //     }
+                    //     formHtml += `
+                    //         <select/>
+                    //     </div>
+                    //     <div>
+                    //         <label for="type_filter_select">Product Sub Type Filters</label>
+                    //         <select id="type_filter_select" name="type_filter">
+                    //             `
+                    //     for (var i = 0; i < data[6].all_filters[1].type_filters.length; i++) {
+                    //         var filters = data[6].all_filters[1].type_filters
+                    //         formHtml += `
+                    //                     <option value=${filters[i].id}>${filters[i].filter}</option>
+                    //                 `
+                    //     }
 
-                    <label for="description">Description</label>
-                    <input class="description-entry" type="text" id="description" name="description" value="${data[0].product[0].description}" maxlength="255">
-                    
-                    
-                    <details>
-                    <summary>Legend</summary>
-                    <div class="legend">
-                            <p><b><i>Price: </i></b>This is the base price of the item. It does <b><mark>NOT</mark></b> include <i><u>any</u></i> taxes or fees.</p>
+                    //     formHtml += `
+                    //         </select>
+                    //     </div>
+                    //     <div>
+                    //         <label for="size_filter_select">Size Category Filters</label>
+                    //         <select id="size_filter_select" name="size_filter">
+                    //     `
+                    //     for (var i = 0; i < data[6].all_filters[2].size_filters.length; i++) {
+                    //         var filters = data[6].all_filters[2].size_filters
+                    //         formHtml += `
+                    //                     <option value=${filters[i].id}>${filters[i].filter}</option>
+                    //         `
+                    //     }
 
-                            <p><b><i>Product Type: </i></b> This is the main category for the product. There can be only one.</p> 
+                    //     formHtml += `
 
-                            <p><b><i>Vendor: </i></b> This is the vendor for the product. There can be only one.</p> 
+                    //         </select>
+                    //     </div>
+                    //     <div>
+                    //         <label for="sleeve_filter_select">Sleeve Filters</label>
+                    //         <select id="sleeve_filter_select" name="sleeve_filter">
+                    //            `
+                    //     for (var i = 0; i < data[6].all_filters[3].sleeve_filters.length; i++) {
+                    //         var filters = data[6].all_filters[3].sleeve_filters
+                    //         formHtml += `
+                    //                     <option value=${filters[i].id}>${filters[i].filter}</option>
+                    //         `
+                    //     }
+                    //     formHtml += `</select>
+                    // </div>
+                    //   </div>
+                    //     <br>
 
-                            <p><b><i>Price Size Mod: </i></b> This determines the price increases as sizes increase. If you are not sure <mark>DO NOT EDIT THIS</mark>. </p> 
+                    //     <label for="description">Description</label>
+                    //     <input class="description-entry" type="text" id="description" name="description" value="${data[0].product[0].description}" maxlength="255">
 
-                            <p><b><i>IsActive: </i>No</b> will remove it the product from queries and make unavailable for purchase. <b>Yes</b> is the opposite.</p>
 
-                            <p><b><i>IsComm: </i> Yes</b> will make this product available for the Communications Department. <b>No</b> does the opposite</p>
-                            
-                            <p><b><i>IsFeatured: </i></b> This is not currently used - but a yes would make it show up in featured products in the front page of the store. Currently it does not matter what the value is.</p>
-                        
-                            <p><b><i>Gender Filters: </i></b> Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think....<mark>Look for the N/A option if the product is not gender specific</mark> </p>
-                        
-                            <p><b><i>Product Sub Type Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
-                        
-                            <p><b><i>Size Category Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
-                        
-                            <p><b><i>Sleeve Type Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
-                            </div>
-                        </details>
-                    </div>
-                    
-                    <div id='color-pick-form'></div>
-                    <div id='size-pick-form'></div>
-                    <hr/>
-                    </fieldset>
-                    <br>`
-                    var color_fhtml = "";
-                    color_fhtml += `<fieldset id='color_options'>
-                    <span><b>Color Options</b> - Currently assigned values are already checked. Check or uncheck to assign or remove color options for this product.</span>
-                    <ul class='color-list'>`
-                    for (var j = 0; j < data[4].all_colors.length; j++) {
-                        color_fhtml += `<li style="background-image: linear-gradient(to right,${data[4].all_colors[j].p_hex},${data[4].all_colors[j].s_hex === 'NULL' ? '#FFFFFF' : data[4].all_colors[j].s_hex} )"><input type="checkbox" id=${data[4].all_colors[j].color_id} name="colorCheckbox[]" value=${data[4].all_colors[j].color_id}><label for=${data[4].all_colors[j].color_id}>${data[4].all_colors[j].color}</label> 
-                        </li>`
-                    }
-                    color_fhtml += `</ul>
-                    </fieldset>
-                    <br>`
+                    //     <details>
+                    //     <summary>Legend</summary>
+                    //     <div class="legend">
+                    //             <p><b><i>Price: </i></b>This is the base price of the item. It does <b><mark>NOT</mark></b> include <i><u>any</u></i> taxes or fees.</p>
 
-                    var size_fhtml = "";
-                    size_fhtml += `<fieldset id='size_options'>
-                    <span><b>Size Options</b> - Currently assigned values are already checked. Check or uncheck to assign or remove size options for this product</span>
-                    <ul class='size-list'>`
-                    for (var k = 0; k < data[5].all_sizes.length; k++) {
-                        size_fhtml +=
-                            `<li>
-                                        <input type="checkbox" id=${data[5].all_sizes[k].size} name="sizeCheckbox[]" value=${data[5].all_sizes[k].size_id}> 
-                                        
-                                        <label for=${data[5].all_sizes[k].size}>${data[5].all_sizes[k].size}</label></li>`
-                    }
-                    size_fhtml += `</ul>
-                    </fieldset>
-                    <button type="submit">Make it so</button>
-                    </form>
-                    `
-                    document.getElementById('edit-form').innerHTML = fhtml;
-                    document.getElementById('color-pick-form').innerHTML = color_fhtml;
-                    document.getElementById('size-pick-form').innerHTML = size_fhtml;
-                    setCurrentProducttype(`${data[0].product[0].producttype_id}`);
-                    setCurrentPrice(`${data[0].product[0].price}`);
-                    setCurrentVendor(`${data[0].product[0].vendor_id}`);
-                    setCurrentActiveState(`${data[0].product[0].isactive}`)
-                    setCurrentFilters(data[3].current_filters);
-                    setCurrentColors(data[1].current_colors);
-                    setCurrentSizes(data[2].current_sizes);
-                    setCurrentPriceMod(`${data[0].product[0].price_size_mod}`);
+                    //             <p><b><i>Product Type: </i></b> This is the main category for the product. There can be only one.</p> 
+
+                    //             <p><b><i>Vendor: </i></b> This is the vendor for the product. There can be only one.</p> 
+
+                    //             <p><b><i>Price Size Mod: </i></b> This determines the price increases as sizes increase. If you are not sure <mark>DO NOT EDIT THIS</mark>. </p> 
+
+                    //             <p><b><i>IsActive: </i>No</b> will remove it the product from queries and make unavailable for purchase. <b>Yes</b> is the opposite.</p>
+
+                    //             <p><b><i>IsComm: </i> Yes</b> will make this product available for the Communications Department. <b>No</b> does the opposite</p>
+
+                    //             <p><b><i>IsFeatured: </i></b> This is not currently used - but a yes would make it show up in featured products in the front page of the store. Currently it does not matter what the value is.</p>
+
+                    //             <p><b><i>Gender Filters: </i></b> Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think....<mark>Look for the N/A option if the product is not gender specific</mark> </p>
+
+                    //             <p><b><i>Product Sub Type Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
+
+                    //             <p><b><i>Size Category Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
+
+                    //             <p><b><i>Sleeve Type Filter: </i></b>Assign the product to a category to assist in search and filter function. Many of which are disabled at the present time but will be coming back. You can only have one category right now... but that is dumb and I am going to change that soon I think.... </p>
+                    //             </div>
+                    //         </details>
+                    //     </div>
+
+                    //     <div id='color-pick-form'></div>
+                    //     <div id='size-pick-form'></div>
+                    //     <hr/>
+                    //     </fieldset>
+                    //     <br>`
+                    // var color_formHtml = "";
+                    // color_formHtml += `<fieldset id='color_options'>
+                    // <span><b>Color Options</b> - Currently assigned values are already checked. Check or uncheck to assign or remove color options for this product.</span>
+                    // <ul class='color-list'>`
+                    // for (var j = 0; j < data[4].all_colors.length; j++) {
+                    //     color_formHtml += `<li style="background-image: linear-gradient(to right,${data[4].all_colors[j].p_hex},${data[4].all_colors[j].s_hex === 'NULL' ? '#FFFFFF' : data[4].all_colors[j].s_hex} )"><input type="checkbox" id=${data[4].all_colors[j].color_id} name="colorCheckbox[]" value=${data[4].all_colors[j].color_id}><label for=${data[4].all_colors[j].color_id}>${data[4].all_colors[j].color}</label> 
+                    //     </li>`
+                    // }
+                    // color_formHtml += `</ul>
+                    // </fieldset>
+                    // <br>`
+
+                    // var size_formHtml = "";
+                    // size_formHtml += `<fieldset id='size_options'>
+                    // <span><b>Size Options</b> - Currently assigned values are already checked. Check or uncheck to assign or remove size options for this product</span>
+                    // <ul class='size-list'>`
+                    // for (var k = 0; k < data[5].all_sizes.length; k++) {
+                    //     size_formHtml +=
+                    //         `<li>
+                    //                     <input type="checkbox" id=${data[5].all_sizes[k].size} name="sizeCheckbox[]" value=${data[5].all_sizes[k].size_id}> 
+
+                    //                     <label for=${data[5].all_sizes[k].size}>${data[5].all_sizes[k].size}</label></li>`
+                    // }
+                    // size_formHtml += `</ul>
+                    // </fieldset>
+                    // <button type="submit">Make it so</button>
+                    // </form>
+                    // `
+                    // document.getElementById('edit-form').innerHTML = formHtml;
+                    // document.getElementById('color-pick-form').innerHTML = color_formHtml;
+                    // document.getElementById('size-pick-form').innerHTML = size_formHtml;
+                    // setCurrentProducttype(`${data[0].product[0].producttype_id}`);
+                    // setCurrentPrice(`${data[0].product[0].price}`);
+                    // setCurrentVendor(`${data[0].product[0].vendor_id}`);
+                    // setCurrentActiveState(`${data[0].product[0].isactive}`)
+                    // setCurrentFilters(data[3].current_filters);
+                    // setCurrentColors(data[1].current_colors);
+                    // setCurrentSizes(data[2].current_sizes);
+                    // setCurrentPriceMod(`${data[0].product[0].price_size_mod}`);
                 })
 
         }
@@ -346,8 +339,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <span class="sr-only">Close</span>
                 </button>
                 <!-- <button onclick="setValues()">Set Vals</button> -->
+
                 <div id="edit-table"></div>
                 <div id=edit-form></div>
+
             </div>
         </div>
         <div class="div4">

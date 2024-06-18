@@ -30,11 +30,11 @@ $sql = "SELECT order_inst_order_details_id.order_inst_id,order_inst_order_detail
             order_inst on order_inst.order_inst_id = order_inst_order_details_id.order_inst_id
         WHERE
             order_inst_order_details_id.order_inst_id = '$uid'
-        GROUP BY
-            order_inst_order_details_id.order_inst_id, ord_ref.product_code, ord_ref.size_name, 
-            ord_ref.quantity, ord_ref.color_id, ord_ref.line_item_total, ord_ref.logo, 
-            ord_ref.dept_patch_place, ord_ref.logo_fee, ord_ref.pre_tax_price, ord_ref.vendor_id, 
-            order_inst.po_number, dep_ref.dep_name
+        -- GROUP BY
+        --     order_inst_order_details_id.order_inst_id, ord_ref.product_code, ord_ref.size_name, 
+        --     ord_ref.quantity, ord_ref.color_id, ord_ref.line_item_total, ord_ref.logo, 
+        --     ord_ref.dept_patch_place, ord_ref.logo_fee, ord_ref.pre_tax_price, ord_ref.vendor_id, 
+        --     order_inst.po_number, dep_ref.dep_name
         ORDER BY
             ord_ref.color_id";
 

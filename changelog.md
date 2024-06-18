@@ -1,5 +1,11 @@
 # County Store Application Changelog
 
+## Version 1.2.6 - (2024-06-18)
+
+## **Bug Squished**
+
+- Fixed an issue causing certain item with the same options to not show up on vendor order report.
+
 ## Version 1.2.5 - (2024-05-31) &#129382;
 
 ### **Bug Squished**
