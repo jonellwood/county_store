@@ -9,14 +9,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Server method is POST";
     // Update prices
     foreach ($_POST['price_ids'] as $index => $priceId) {
+        $newSize = $_POST['size_id'][$index];
+        echo $newSize;
         $newPrice = $_POST['price'][$index];
         // Update the price in the database
-        $updateSql = "UPDATE prices SET price =? WHERE price_id =?";
+        $updateSql = "UPDATE prices SET size_id = ? , price = ? WHERE price_id =?";
         $stmt = $conn->prepare($updateSql);
-        $stmt->bind_param("di", $newPrice, $priceId);
+        $stmt->bind_param("idi", $newSize, $newPrice, $priceId);
         $stmt->execute();
         $stmt->close();
-        echo 'Price updated';
+        echo 'Price & Size updated';
     }
 
     // Delete prices based on unchecked checkboxes - sure sure this is gonna work 🤞

@@ -130,7 +130,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <tr> 
                             <td>${priceData[i].vendor_name}</td>
                             <td>
-                                <select name="size_ids[]" value=${priceData[i].size_id}>
+                                <select name="size_id[]" value=${priceData[i].size_id}>
                             `;
                         for (var s = 0; s < data[5].all_sizes.length; s++) {
                             var isSelected = data[5].all_sizes[s].size_id === priceData[i].size_id ? 'selected' : '';
