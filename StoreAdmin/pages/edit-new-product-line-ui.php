@@ -45,7 +45,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     var html = ""
                     html += `
                     <table class="styled-table">
-                    <caption>This page is for editing specific line items for products. Size and Price or adding new line items. For general product changes such as color go <a href="/">HERE</a></caption>
+                    <caption>This page is for editing specific line items for products. Size and Price or adding new line items. For general product changes such as color go <a href="/edit-new-product-colors-ui.php">HERE</a></caption>
                     <thead>
                         <tr> 
                             <th>DataBase ID</th>
