@@ -14,12 +14,13 @@ $id = intval($q);
 
 $data = [];
 $product = [];
-$vendors = [];
+$current_vendors = [];
 $current_prices_and_sizes = [];
 $current_colors = [];
 $current_sizes = [];
 $current_filters = [];
 $current_prices = [];
+$all_vendors = [];
 $all_colors = [];
 $all_sizes = [];
 $all_price_mods = [];
@@ -68,18 +69,18 @@ $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_array()) {
-        array_push($vendors, [
+        array_push($current_vendors, [
             'vendor_id' => $row['vendor_id'],
             'vendor_name' => $row['vendor_name'],
             'vendor_fin_num' => $row['vfn']
         ]);
     }
     array_push($data, [
-        'vendors' => $vendors
+        'current_vendor' => $current_vendors
     ]);
 } else {
     array_push($data, [
-        'vendors' => null
+        'current_vendor' => null
     ]);
 }
 // set size id and price for all vendors
@@ -170,6 +171,21 @@ if ($result->num_rows > 0) {
 //     ]);
 // }
 
+//get all vendors and id's
+$stmt = $conn->prepare("SELECT p.vendor_id, v.name as vendor_name, v.vendor_number_finance as vfn 
+FROM uniform_orders.prices p join vendors v on v.id = p.vendor_id 
+group by p.vendor_id");
+$stmt->execute();
+$allVendors = $stmt->get_result();
+if ($allVendors->num_rows > 0) {
+    while ($row = $allVendors->fetch_assoc()) {
+        array_push($all_vendors, $row);
+    }
+    array_push($data, [
+        "all_vendors" => $all_vendors
+    ]);
+}
+
 // Get all colors and id's
 $stmt = $conn->prepare("SELECT color, color_id, p_hex, s_hex, t_hex FROM colors ORDER BY color ASC");
 $stmt->execute();
@@ -210,17 +226,20 @@ if ($allSizes->num_rows > 0) {
 // }
 
 // Get all type filters 
-// $stmt = $conn->prepare("SELECT id, filter from filters_type");
-// $stmt->execute();
-// $allTypeFilters = $stmt->get_result();
-// if ($allTypeFilters->num_rows > 0) {
-//     while ($row = $allTypeFilters->fetch_assoc()) {
-//         array_push($all_type_filters, $row);
-//     }
-//     array_push($all_filters, [
-//         "type_filters" => $all_type_filters
-//     ]);
-// }
+$stmt = $conn->prepare("SELECT id, filter from filters_type");
+$stmt->execute();
+$allTypeFilters = $stmt->get_result();
+if ($allTypeFilters->num_rows > 0) {
+    while ($row = $allTypeFilters->fetch_assoc()) {
+        array_push($all_type_filters, $row);
+    }
+    array_push($all_filters, [
+        "type_filters" => $all_type_filters
+    ]);
+    array_push($data, [
+        "all_filters" => $all_filters
+    ]);
+}
 
 // Get all size filters 
 // $stmt = $conn->prepare("SELECT id, filter from filters_size");

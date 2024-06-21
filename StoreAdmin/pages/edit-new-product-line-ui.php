@@ -29,6 +29,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <title>Edit Product</title>
 
     <script>
+        // let currentMode = 'edit';
+
         function formatColorValueForUrl(str) {
             var noSpaces = str.replace(/[\s/]/g, '');
             var lowercaseString = noSpaces.toLowerCase();
@@ -43,6 +45,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     var html = ""
                     html += `
                     <table class="styled-table">
+                    <caption>This page is for editing specific line items for products. Size and Price or adding new line items. For general product changes such as color go <a href="/">HERE</a></caption>
                     <thead>
                         <tr> 
                             <th>DataBase ID</th>
@@ -98,6 +101,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <td>${data[0].product[0].name}</td>
                             <td>${data[0].product[0].producttype}</td>
                         </tr>
+                        <tr>
+                            <td colspan='4'>
+                                <div class='buttons-holder'>
+                                    <button onclick='editProductLines()'  id='editButton'>Edit</button>
+                                    <button onclick='addToProductLines()' id='addButton'>Add</button>
+                                    <button onclick='resetOptions()' id='resetButton'>Reset</button>
+                                </div>
+                            </td>
+                            
+                        </tr>
                     </tbody>
                     </table>
                     
@@ -107,22 +120,74 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     document.getElementById('edit-table').innerHTML = html;
 
                     // console.log(data[1].vendors.length);
-                    var vHtml = '<form>';
-                    vHtml += '<table><thead><th>Vendor Name</th><th>Size</th><th>Price</th></th></thead><tbody>';
+                    // POPOVER EDIT FORM
+                    var vHtml = '<form id="edit-form-form" action="edit-new-product-lines-db.php" method="POST">';
+                    vHtml += '<fieldset id="editFieldSet" disabled>'
+                    vHtml += '<table class="styled-table"><caption>Unchecking the checkbox will remove that line item from the database</caption><thead><th>Vendor Name</th><th>Size</th><th>Price</th><th colspan="2">Is Active</th></thead><tbody>';
                     for (var i = 0; i < data[2].current_prices_and_sizes.length; i++) {
                         var priceData = data[2].current_prices_and_sizes;
                         vHtml += `
-                        <tr> 
-                        <td>${priceData[i].vendor_name}</td>
-                        <td>${priceData[i].size_name}</td>
-                        <td><input  type="text" name="price[]" value=${priceData[i].price} /></td>
-                        </tr>
-                        
-                        `
+                            <tr> 
+                            <td>${priceData[i].vendor_name}</td>
+                            <td>
+                                <select name="size_ids[]" value=${priceData[i].size_id}>
+                            `;
+                        for (var s = 0; s < data[5].all_sizes.length; s++) {
+                            var isSelected = data[5].all_sizes[s].size_id === priceData[i].size_id ? 'selected' : '';
+                            vHtml += `<option value=${data[5].all_sizes[s].size_id} ${isSelected}>${data[5].all_sizes[s].size_name}</option>`;
+                        }
+
+                        vHtml += `
+                                </select>
+                            </td>
+                            <td><input type="text" name="price[]" value=${priceData[i].price} /></td>
+                            <td><input type="checkbox" id="priceCheckbox-${priceData[i].price_id}" checked value="${priceData[i].price_id}" name="price_check_ids[]"></td>
+                            <td><input type="hidden" name="price_ids[]" value="${priceData[i].price_id}" /></td>
+                            </tr>
+                            `;
                     }
-                    vHtml += '</tbody> </table>'
+                    vHtml += '</fieldset>';
+                    vHtml += '</tbody></table>'
+                    vHtml += `<button type="submit">Update</button>`
                     vHtml += '</form>';
                     document.getElementById('edit-form').innerHTML = vHtml;
+                    // This is adding to the product- not editing existing ....
+                    var aHtml = '<form id="add-form-form" action="add-new-product-line-db.php" method="POST">';
+                    aHtml += '<fieldset id="addFieldSet" disabled>'
+                    aHtml += `<input type="hidden" value=${data[0].product[0].product_id} name="product_id"/>`
+                    aHtml += '<table class="styled-table"><thead><th>Vendor Name</th><th>Size</th><th>Price</th></thead><tbody>'
+                    aHtml += `<tr>
+                        <td colspan='4'><h2>Add Additional Size & Price</h2></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="addVendor">Vendor</label> 
+                                <select name="addVendor">
+                                    `
+                    for (var j = 0; j < data[3].all_vendors.length; j++) {
+                        aHtml += `<option value=${data[3].all_vendors[j].vendor_id}>${data[3].all_vendors[j].vendor_name}
+                                        </option> `
+                    }
+
+                    aHtml += `</select>
+                            </td>
+
+                            <td>
+                                <label for="addSize">Size</label>
+                                <select name="addSize">`
+                    for (var k = 0; k < data[5].all_sizes.length; k++) {
+                        aHtml += `<option value=${data[5].all_sizes[k].size_id}>${data[5].all_sizes[k].size_name}</option> `
+                    }
+                    aHtml += `</select>
+                            </td>
+                            <td><label for="price">Price</label><input type="text" name="price" /></td>
+                        </tr>`
+                    aHtml += '</fieldset>';
+                    aHtml += '</tbody> </table>'
+                    aHtml += '<button type="submit">Add</button>';
+                    aHtml += '</form>';
+                    document.getElementById('add-form').innerHTML = aHtml;
+
                     //     var formHtml = '';
                     //     formHtml += `
                     //     <form action="edit-new-product-db.php" method="POST">
@@ -322,6 +387,30 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 })
 
         }
+
+        function editProductLines() {
+            console.log('Edit Product Lines')
+            const addButton = document.getElementById('addButton').disabled = true;
+            const editButton = document.getElementById('editButton').disabled = true;
+            var fieldSet = document.getElementById('editFieldSet').disabled = false;
+        }
+
+        function addToProductLines() {
+            console.log('Add to Product Lines')
+            const editButton = document.getElementById('editButton').disabled = true;
+            const addButton = document.getElementById('addButton').disabled = true;
+            var fieldSet = document.getElementById('addFieldSet').disabled = false;
+        }
+
+        function resetOptions() {
+            alert('All your edits are about to get nuked');
+            const editButton = document.getElementById('editButton').disabled = false;
+            const addButton = document.getElementById('addButton').disabled = false;
+            const addFieldSet = document.getElementById('addFieldSet').disabled = true;
+            const editFieldSet = document.getElementById('editFieldSet').disabled = true;
+            const addForm = document.getElementById('add-form-form').reset()
+            const editForm = document.getElementById('edit-form-form').reset()
+        }
     </script>
 
 </head>
@@ -332,6 +421,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <?php include "hideNav.php" ?>
         </div>
         <div class="div2">
+            <!-- <h2>This page is for editing specific line items for products. Size and Price. For general product changes such as color go <a href="/">HERE</a></h2> -->
             <div id='products-table'></div>
             <div id="productEdit" popover=manual>
                 <button class="close-btn" popovertarget="productEdit" popovertargetaction="hide">
@@ -342,6 +432,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
                 <div id="edit-table"></div>
                 <div id=edit-form></div>
+                <div id=add-form></div>
 
             </div>
         </div>
@@ -492,7 +583,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         align-content: center;
     }
 
-    #edit-form {
+    #edit-form,
+    #add-form {
         border-top: 5px solid tomato;
         padding: 10px;
     }
@@ -586,6 +678,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     details:hover {
         /* cursor: ns-resize; */
         cursor: cell;
+    }
+
+    .buttons-holder {
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    caption {
+        font-size: small;
+
+        a {
+            font-size: small !important;
+            background-color: #ffffff20;
+            text-align: center;
+            display: block !important;
+        }
     }
 </style>
 
@@ -723,32 +833,54 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     };
 
-    document.getElementById('edit-form').addEventListener('submit', function(event) {
-        let checkboxes = document.querySelectorAll('input[name="colorCheckbox[]"]');
-        let sizechecks = document.querySelectorAll('input[name="sizeCheckbox[]"]');
 
-        let checked = false;
 
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                checked = true;
-            }
-        });
-        if (!checked) {
-            event.preventDefault();
-            alert("Please select at least one color.");
-        }
+    // document.getElementById('edit-form').addEventListener('submit', function(event) {
+    //     let checkboxes = document.querySelectorAll('input[name="colorCheckbox[]"]');
+    //     let sizechecks = document.querySelectorAll('input[name="sizeCheckbox[]"]');
 
-        let schecked = false;
+    //     let checked = false;
 
-        sizechecks.forEach(function(scheck) {
-            if (scheck.checked) {
-                schecked = true;
-            }
-        });
-        if (!schecked) {
-            event.preventDefault();
-            alert("Please select at least one size")
-        }
-    });
+    //     checkboxes.forEach(function(checkbox) {
+    //         if (checkbox.checked) {
+    //             checked = true;
+    //         }
+    //     });
+    //     if (!checked) {
+    //         event.preventDefault();
+    //         alert("Please select at least one color.");
+    //     }
+
+    //     let schecked = false;
+
+    //     sizechecks.forEach(function(scheck) {
+    //         if (scheck.checked) {
+    //             schecked = true;
+    //         }
+    //     });
+    //     if (!schecked) {
+    //         event.preventDefault();
+    //         alert("Please select at least one size")
+    //     }
+    // });
+
+    function makeCap(str) {
+        let result = str.charAt(0).toUpperCase() + str.slice(1)
+        return result
+    }
+
+    // const modeToggler = (function() {
+    //     let currentMode = 'edit';
+
+    //     function toggleMode() {
+    //         currentMode = (currentMode === 'edit') ? 'add' : 'edit';
+    //         console.log(currentMode);
+    //     }
+
+    //     return {
+    //         toggle: toggleMode,
+    //         getMode: () => currentMode
+    //     };
+    // })();
+    // document.getElementById("modeToggler").onclick = modeToggler.toggle
 </script>
