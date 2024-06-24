@@ -1,6 +1,6 @@
 <?php
 
-require_once 'config.php';
+// require_once 'config.php';
 // $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 //     or die('Could not connect to the database server' . mysqli_connect_error());
 
@@ -10,8 +10,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    //header("location: sign-in.php");
 
+    header("location: ../pages/sign-in.php");
     exit;
 }
 ?>

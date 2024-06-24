@@ -7,7 +7,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    //header("location: sign-in.php");
+
+    header("location: ../pages/sign-in.php");
 
     exit;
 }
@@ -27,6 +29,31 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             var lowercaseString = noSpaces.toLowerCase();
             return lowercaseString;
         }
+
+        function setCurrentColors(colors) {
+            // console.log('Setting Current colors');
+            if (!Array.isArray(colors)) {
+                console.log("Colors is not an array - deleting all data from your computer 🖥️ ");
+                return;
+            }
+            var currentColors = colors.map(color => color.color_id)
+            // console.log('current colors');
+            // console.log(currentColors);
+            var checkboxes = document.getElementsByName('colorCheckbox[]');
+            // console.log(checkboxes.length);
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                var checkbox = checkboxes[i];
+                // console.log("Checkity Checkbox val b: ", checkbox.value);
+                var checkboxParent = checkbox.parentElement
+                // console.log(checkboxParent);
+                var checkboxValue = parseInt(checkbox.value);
+                if (currentColors.includes(checkboxValue)) {
+                    checkbox.checked = true;
+                    checkboxParent.classList.add('checked-li');
+                }
+            }
+        };
 
         function loadProducts() {
             fetch('load-all-new-products.php')
@@ -67,11 +94,39 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 })
         }
 
-        function editProduct(id) {
-            fetch('load-new-single-product-colors.php?id=' + id)
+        async function editProduct(id) {
+            await fetch('load-new-single-product-colors.php?id=' + id)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
+                    var html = '';
+                    html += `<h2>Edit color details for ${data[2].current_product[0].name} - ${data[2].current_product[0].code} </h2>`
+                    html += `<form action="edit-new-product-colors-db.php" method="POST">`
+                    html += `<input type='hidden' value='${data[2].current_product[0].product_id}' name='productId' />`;
+                    html += `<fieldset id='color_options'>`;
+                    html += `<span><b>Color Options</b> - Currently assigned values are already checked. Check or uncheck to assign or remove color options for this product. <mark>ONLY ITEMS THAT ARE CHECKED WILL BE AVAILABLE TO USERS</mark></span>`
+                    html += `
+                        <ul class='color-list'>`
+                    for (var j = 0; j < data[1].all_colors.length; j++) {
+                        var colors = data[1].all_colors;
+                        var fallbackSecondColor = colors[j].s_hex !== null ? colors[j].s_hex : colors[j].p_hex;
+                        var fallbackThirdColor = colors[j].t_hex !== null ? colors[j].t_hex : (colors[j].s_hex !== null ? colors[j].s_hex : colors[j].p_hex);
+                        var gradientString = `linear-gradient(to right, ${colors[j].p_hex}, ${fallbackSecondColor}, ${fallbackThirdColor})`;
+
+                        html += `<li style="background-image:${gradientString}">
+                            <input type="checkbox" id="${colors[j].color_id}" name="colorCheckbox[]" value="${colors[j].color_id}">
+                            <label for="${colors[j].color_id}">${colors[j].color_name}</label>
+                        </li>`;
+                    }
+
+
+                    html += `</ul>
+                        </fieldset>
+                        <button type="submit">Update</button>
+                        </form>
+                        <br>`
+                    document.getElementById('edit-form').innerHTML = html;
+                    setCurrentColors(data[0].current_colors);
                 })
         }
         loadProducts();
@@ -89,6 +144,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <button class="close-btn" popovertarget="productEdit" popovertargetaction="hide">
                     <span aria-hidden=”true”>❌</span>
                     <span class="sr-only">Close</span>
+
                 </button>
 
                 <div id="edit-table"></div>
@@ -104,6 +160,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </body>
 
 </html>
+
+
+
 <style>
     body {
         position: relative;

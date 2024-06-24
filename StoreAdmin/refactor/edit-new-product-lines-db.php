@@ -6,11 +6,11 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 // echo 'Hello there';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    echo "Server method is POST";
+    // echo "Server method is POST";
     // Update prices
     foreach ($_POST['price_ids'] as $index => $priceId) {
         $newSize = $_POST['size_id'][$index];
-        echo $newSize;
+        //echo $newSize;
         $newPrice = $_POST['price'][$index];
         // Update the price in the database
         $updateSql = "UPDATE prices SET size_id = ? , price = ? WHERE price_id =?";
