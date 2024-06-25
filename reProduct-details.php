@@ -104,17 +104,21 @@ if ($smodResult->num_rows > 0) {
             `;
                     html += `
                     <div id='size-picker-holder'>
-                        <legend>See the sizes and their prices</legend>
+                        <legend>Available sizes and their prices</legend>
+                        <div class="size-price-picker-holder">
                         `;
+
                     for (var j = 0; j < data['price_data'].length; j++) {
                         html += `<label for='${data['price_data'][j].price_id}'>`
-                        html += `<input type='checkbox' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='${data['price_data'][j].price_id}' />
+                        // html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='${data['price_data'][j].price_id}' />
+                        html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='size-price' />
                                 ${data['price_data'][j].size_name}
-                                -${makeDollar(data['price_data'][j].price)}
+                                - ${makeDollar(data['price_data'][j].price)}
                                                             
-                        </label></br>`
+                        </label>`
                     }
                     `</div>
+                    </div>
                 `
                     html += `</form>`;
                     document.getElementById('new-options-form').innerHTML = html;
@@ -168,6 +172,7 @@ if ($smodResult->num_rows > 0) {
             var hexVal = el.dataset.hex;
             var rgbColor = hexToRgb(hexVal);
             //console.log(hexVal);
+            // var imageHolder = document.getElementById('product-image-holder')
             var imageHolder = document.getElementById('product-image-holder')
             imageHolder.style.boxShadow = `0px 0px 25px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
             i = document.getElementById('color_id').value;
@@ -359,7 +364,7 @@ if ($smodResult->num_rows > 0) {
                         will look like. If it looks a bit wonky it is the progammers fault, not the fault of the
                         product.</figcaption> -->
                         <!-- </figure> -->
-                        <p class="product-description-text-holder"><?php echo $row['description'] ?></p>
+                        <!-- <p class="product-description-text-holder"></?php echo $row['description'] ?></p> -->
                     </span>
 
                     <div class="details-about-details">
@@ -379,6 +384,7 @@ if ($smodResult->num_rows > 0) {
                                 <?php } ?>
                             </h6>
                         </span>
+                        <div id='new-options-form'></div>
                         <div class="options-form-holder">
                             <form name="options" method="post" id="options" action="cartAction.php" class='options-select-holder'>
                                 <div id="color-picker-holder" style="display: none" ;>
@@ -587,7 +593,7 @@ if ($smodResult->num_rows > 0) {
                         <p id="toast_message"></p>
                     </div>
                 </div>
-                <div id='new-options-form'></div>
+                <!-- <div id='new-options-form'></div> -->
                 <!-- <div class="size-chart-holder">
                     <?php include "./components/size-chart-womens.php" ?>
                 </div> -->
@@ -800,7 +806,9 @@ if ($smodResult->num_rows > 0) {
     .product-image {
         /* width: 80%; */
         height: auto !important;
+        min-height: 800px;
         border-radius: 5px;
+        padding: 15px;
         /* margin-left: 15%; */
         /* margin-right: 15%; */
         /* margin-bottom: 10px; */
@@ -882,6 +890,17 @@ if ($smodResult->num_rows > 0) {
         padding: 5px 10px;
         margin-bottom: 1em;
         color: aliceblue;
+    }
+
+    .size-price-picker-holder {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        padding: 10px;
+
+        label {
+            font-size: large;
+        }
     }
 
 
