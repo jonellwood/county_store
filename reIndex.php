@@ -35,7 +35,7 @@ $cart = new Cart;
     </div>
     <?php include "components/slider.php" ?>
     <div class="hot-sellers">
-        <?php include "stats.php" ?>
+        <?php include "reStats.php" ?>
     </div>
     <?php include "cartSlideout.php" ?>
 </body>
@@ -46,11 +46,15 @@ $cart = new Cart;
 </html>
 <style>
     .hot-sellers {
-        width: 75%;
+        width: 90%;
         position: relative;
-        margin-top: 150px;
+        /* margin-top: 150px; */
         margin-left: auto;
         margin-right: auto;
+        display: flex;
+        align-items: flex-end;
+        min-height: 95vh;
+        max-height: 100vh;
     }
 
 
