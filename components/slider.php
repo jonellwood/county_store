@@ -1,16 +1,15 @@
 <?php
-require_once 'config.php';
-$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-    or die('Could not connect to the database server' . mysqli_connect_error());
+/*
+Author: Jon Ellwood
+Organization: Berkeley County IT Department
+Last Updated: 06/25/2024
+Purpose: Nav bar for site throughout user facing portion of the site.
+Includes:   none
+*/
 
-// init shopping cart class
-include_once 'Cart.class.php';
-$cart = new Cart;
 
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" defer async>
-<!-- <div class="image-background"> -->
-<!-- <img src="./County-Store-Image.png" alt="some store" /> -->
+
 <div class="navbar sticky">
     <a class="navbar-brand" href="./index.php" title="to the home page">
         <img src="./dept_logos/bc-circ-white.png" alt="bc logo" class="logo-img">
@@ -36,19 +35,11 @@ $cart = new Cart;
                     <li><a href="./accessories-view.php">Accessories</a></li>
                 </ul>
             </li>
-            <li class="header-list-item-3">Boots
-                <ul class="hidden-list-3">
-                    <li>
-                        <a href="./product-details.php?product_id=105">Boots</a>
-                    </li>
-                </ul>
+            <li class="header-list-item-3">
+                <a href="./product-details.php?product_id=105">Boots</a>
             </li>
-            <li class="header-list-item-4">Hats
-                <ul class="hidden-list-4">
-                    <li>
-                        <a href="./hats-view.php">Hats</a>
-                    </li>
-                </ul>
+            <li class="header-list-item-4">
+                <a href="./hats-view.php">Hats</a>
             </li>
         </ul>
     </div>
@@ -108,6 +99,7 @@ $cart = new Cart;
 
     .cart-view {
         margin-left: 50px;
+
     }
 
     .header-list {
@@ -125,7 +117,7 @@ $cart = new Cart;
 
     .cart-view {
         font-family: RoboCondensed;
-        font-size: medium;
+        font-size: large;
         margin-right: 10%;
     }
 
@@ -134,7 +126,7 @@ $cart = new Cart;
     }
 
     .logo-img {
-        height: 100px;
+        height: 50px;
         margin-left: 50px;
     }
 
@@ -154,7 +146,7 @@ $cart = new Cart;
     .list-level-1 li {
         display: inline;
         padding-right: 30px;
-        cursor: pointer;
+        /* cursor: pointer; */
         position: relative;
     }
 
@@ -168,7 +160,7 @@ $cart = new Cart;
         width: 100vw;
         height: 64px;
         z-index: 4;
-        padding-top: 20px;
+        padding-top: 2px;
         margin-left: -50px;
     }
 
@@ -182,7 +174,7 @@ $cart = new Cart;
         width: 100vw;
         height: 64px;
         z-index: 4;
-        padding-top: 20px;
+        padding-top: 2px;
         margin-left: -50px;
     }
 
@@ -197,7 +189,7 @@ $cart = new Cart;
         width: 100vw;
         height: 64px;
         z-index: 4;
-        padding-top: 20px;
+        padding-top: 2px;
         margin-left: -50px;
     }
 
@@ -240,11 +232,18 @@ $cart = new Cart;
         top: 100%;
     }
 
+
+
     .header-list-item-2:hover ul {
         color: white;
         display: inline;
         position: absolute;
         top: 100%;
+    }
+
+    .header-list-item-3:hover a,
+    .header-list-item-4:hover a {
+        color: #d5ca9e;
     }
 
     .header-list-item-3:hover ul {
@@ -271,6 +270,10 @@ $cart = new Cart;
         z-index: 3;
         padding-left: 40px;
         padding-right: 40px;
+    }
+
+    .paraminput input {
+        line-height: 1 !important;
     }
 
     @media (max-width: 1475px) {
