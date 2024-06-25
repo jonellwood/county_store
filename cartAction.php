@@ -61,6 +61,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
         // insert item into cart
         $insertItem = $cart->insert($itemData);
+        //echo "<script>window.cartData = " . $cart->serializeCart() . ";</script>";
 
         // redirect to cart page
         // $redirectURL = $insertItem ? 'viewCart.php' : 'index.php';
@@ -171,7 +172,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 // $db_item_price = $item['price'];
                                 $db_logo_fee = $item['logoFee'];
                                 $db_tax = $item['tax'];
-                                $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity) ;
+                                $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity);
                                 $db_logo = $item['logo'];
                                 $db_comment = $item['comment'];
                                 $db_dept_patch_place = $item['deptPatchPlace'];

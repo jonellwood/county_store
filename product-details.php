@@ -103,7 +103,7 @@ if ($smodResult->num_rows > 0) {
 
             // var newProductImage = productCode + '_' + formatColorValueForUrl(val) + '.jpg';
             var newProductImage = formatColorValueForUrl(val) + '_' + productCode + '.jpg';
-            console.log('newProductImage is: ', newProductImage.toLowerCase());
+            // console.log('newProductImage is: ', newProductImage.toLowerCase());
             productImage.src = './product-images/' + newProductImage.toLowerCase();
         }
 
@@ -156,7 +156,7 @@ if ($smodResult->num_rows > 0) {
         function logoPriceIncrease(price) {
             // set value of productPrice to initial product value.
             var productId = <?php echo $product_id ?>;
-            console.log('productId is: ', productId);
+            // console.log('productId is: ', productId);
             if (productId == 185) {
                 newLogoCharge = parseFloat(0.00);
             } else {
@@ -199,8 +199,8 @@ if ($smodResult->num_rows > 0) {
 
         function showPopover(target) {
             const popovertarget = document.getElementById(target);
-            console.log(target)
-            console.log(popovertarget)
+            // console.log(target)
+            // console.log(popovertarget)
             popovertarget.showPopover()
         }
 
@@ -535,7 +535,7 @@ if ($smodResult->num_rows > 0) {
     }
 
     function eatToast() {
-        console.log('eating toast....')
+        // console.log('eating toast....')
         var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
     }
 
@@ -599,7 +599,7 @@ if ($smodResult->num_rows > 0) {
             stitchCharge = parseInt(0.00);
             document.getElementById('stitchCharge').value = parseFloat(stitchCharge).toFixed(2).replace(
                 /\d(?=(\d{3})+\.)/g, '$&,');
-            console.log(' reset stitch charge to : ' + stitchCharge)
+            // console.log(' reset stitch charge to : ' + stitchCharge)
         }
     }
     const logoImg = document.getElementById('logo');
@@ -628,34 +628,34 @@ if ($smodResult->num_rows > 0) {
     function handleDeptNamePatch() {
         const selectElement = document.getElementById('deptNamePatch');
         const selectedValue = selectElement.value;
-        console.log("Dept Name Selected Value is: ", selectedValue);
+        //console.log("Dept Name Selected Value is: ", selectedValue);
 
         const imageElement = document.getElementById('lil-logo');
-        console.log('ie11 ', imageElement);
+        //console.log('ie11 ', imageElement);
 
         const oldSrc = imageElement.src;
-        console.log('oldSrc is: ', oldSrc);
+        //console.log('oldSrc is: ', oldSrc);
         const fileName = oldSrc.split('/').pop();
-        console.log("File Name ", fileName);
+        //console.log("File Name ", fileName);
 
         if (imageElement.complete && imageElement.src) {
             const oldSrc = imageElement.src;
-            console.log('oldSrc is: ', oldSrc);
+            //console.log('oldSrc is: ', oldSrc);
             const fileName = oldSrc.split('/').pop();
-            console.log("File Name ", fileName);
+            //console.log("File Name ", fileName);
 
             switch (selectedValue) {
                 case 'No Dept Name':
                 case 'Back of Hat':
                 case 'Left Sleeve':
-                    console.log('left sleeve');
+                    //console.log('left sleeve');
                     const newFileName = addNoToFileName(fileName);
                     const newSrc = oldSrc.replace(fileName, newFileName);
                     imageElement.src = newSrc;
                     break;
 
                 case 'Below Logo':
-                    console.log('Below Logo')
+                    //console.log('Below Logo')
                     const fileNameWithoutNo = removeNoFromFileName(fileName);
                     const newSrcWithoutNo = oldSrc.replace(fileName, fileNameWithoutNo);
                     imageElement.src = newSrcWithoutNo;
@@ -666,7 +666,7 @@ if ($smodResult->num_rows > 0) {
                     // break;
 
                 default:
-                    console.log('Invalid selection');
+                    // console.log('Invalid selection');
                     break;
             }
         }

@@ -41,6 +41,8 @@ $cart = new Cart;
 </body>
 <?php include "footer.php" ?>
 
+
+
 </html>
 <style>
     .hot-sellers {

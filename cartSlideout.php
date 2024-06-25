@@ -8,7 +8,99 @@ include_once 'Cart.class.php';
 $cart = new Cart;
 
 ?>
+<script>
+    function setCartInLocalStorage() {
+        var cart = <?php echo $cart->serializeCart() ?>;
+        console.log('cart');
+        console.log(cart);
+        cart.timestamp = new Date().toISOString();
+        // var cartObject = JSON.parse(cartShit)
+        // console.log('cartObject');
+        // console.log(cartObject);
+        localStorage.setItem('store-cart', JSON.stringify(cart));
 
+    }
+    //setCartInLocalStorage();
+
+    function getCartFromLocalStorage() {
+        var cartData = localStorage.getItem('store-cart');
+        // if (cartData === null) {
+        //     // no cart in local storage so we make an empty one to return
+        //     cartData = <?php echo $cart->serializeCart(); ?>;
+        // }
+        return JSON.parse(cartData);
+        // return cartData;
+    }
+    getCartFromLocalStorage();
+    // helper function for comparing arrays of carts ... that I dont think I actually need now.
+    function findItemByUid(array, uid) {
+        return array.find(item => item.add_item_uid === uid);
+    }
+    // helper function to compare a timestamp in local storage against now() to see the age
+    function howOldIsLocalStorage(str) {
+        var now = new Date();
+        var older = new Date(str)
+        //console.log("Now is :", now);
+        //console.log("Older is: ", older);
+        var gap = (now - older);
+        //console.log('The gap is : ', gap);
+        return gap;
+    }
+
+    function syncCartWithServer() {
+
+        var cartData = getCartFromLocalStorage();
+        var cartDataArray = Object.entries(cartData);
+        var cartServerData = <?php echo $cart->serializeCart(); ?>;
+        var cartServerArray = Object.entries(cartServerData);
+        //console.log('Local Cart Data')
+        //console.log(cartData.timestamp);
+        // console.log('Server Cart Data')
+        // console.log(cartServerData);
+        console.log('cartDataArray')
+        console.log(cartDataArray);
+        console.log('cartServerArray');
+        console.log(cartServerArray);
+        howOldIsLocalStorage(cartData.timestamp);
+        cartServerArray.forEach(serverItem => {
+            if (!findItemByUid(cartDataArray, serverItem.add_item_uid)) {
+                cartDataArray.push(serverItem);
+            }
+        })
+        cartDataArray.forEach(dataItem => {
+            if (!findItemByUid(cartServerArray, dataItem.add_item_uid)) {
+                cartServerArray.push(dataItem)
+            }
+        })
+        // localStorage.removeItem('store-cart');
+        // localStorage.setItem('store-cart', JSON.stringify(cartDataArray));
+
+        if (cartData.total_items == 0 && cartData.cart_total == 0 && cartServerData.total_items != 0) {
+            console.log('Writing server data to local storage');
+            setCartInLocalStorage(cartServerData);
+            // console.log('Nothing to send to server');
+            return
+        } else if (cartData.total_items != 0 && cartServerData.total_items == 0 && howOldIsLocalStorage(cartData.timestamp) > 1440000) {
+            fetch('cartSync.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(cartServerArray)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error: ', error);
+                });
+        } else if (cartServerData.total_items > 0) {
+            setCartInLocalStorage(cartServerArray)
+        }
+    }
+    syncCartWithServer();
+</script>
 <div class="cart-slideout hidden" id="cart-slideout">
     <div class="cart-header-holder">
         <h1>Your Cart</h1>

@@ -123,6 +123,7 @@ class Cart
                 }
                 // save cart data
                 $this->save_cart();
+
                 return TRUE;
             }
         }
@@ -168,5 +169,10 @@ class Cart
     {
         $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
         unset($_SESSION['cart_contents']);
+    }
+
+    public function serializeCart()
+    {
+        return json_encode($this->cart_contents);
     }
 }
