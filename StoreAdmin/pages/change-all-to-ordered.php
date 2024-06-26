@@ -12,7 +12,7 @@ $po_number = $_POST['POnumber'];
 // manually setting values for testing purposes
 // $dept_id = 41515;
 
-$idsql = "SELECT ord.order_details_id from uniform_orders.ord_ref ord WHERE ord.department = $dept_id AND ord.status='Approved'";
+$idsql = "SELECT ord.order_details_id from uniform_orders.ord_ref ord WHERE ord.department = $dept_id AND ord.status='Approved' OR ord.status='Updated'";
 $idstmt = $conn->prepare($idsql);
 $getList = $idstmt->execute();
 $odres = $idstmt->get_result();

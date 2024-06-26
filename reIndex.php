@@ -31,7 +31,8 @@ $cart = new Cart;
 
 <body>
     <div class="front-image-background">
-        <img src="./County-Store-Image.png" alt="some-store" />
+        <!-- <img src="./County-Store-Image.png" alt="some-store" /> -->
+        <!-- <img src="./modern-mall.png" alt="some-store" /> -->
     </div>
     <?php include "components/slider.php" ?>
     <div class="hot-sellers">
@@ -44,7 +45,21 @@ $cart = new Cart;
 
 
 </html>
+
 <style>
+    body {
+        background-color: #fff;
+        /* background: url('./County-Store-Image.png') no-repeat center center fixed; */
+        background: url('./modern-mall.png') no-repeat center center fixed;
+        /* background: url('./modern-store-inside.jpg') no-repeat center center fixed; */
+        background-size: cover;
+        height: 100%;
+
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+    }
+
     .hot-sellers {
         width: 90%;
         position: relative;

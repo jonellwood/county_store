@@ -1,5 +1,12 @@
 # County Store Application Changelog
 
+## Version 1.2.7 - (2024-06-26)
+
+## **Bug Squished**
+
+- Fixed an issue where "Order All" function would not order items in "updated" status.
+- Added markdownlint.json to improve formatting for this file as well as linting warnings.
+
 ## Version 1.2.6 - (2024-06-18)
 
 ## **Bug Squished**

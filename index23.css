@@ -1,6 +1,8 @@
 body {
 	background-color: #fff;
-	background: url('./County-Store-Image.png') no-repeat center center fixed;
+	/* background: url('./County-Store-Image.png') no-repeat center center fixed; */
+	background: url('./modern-mall.png') no-repeat center center fixed;
+	/* background: url('./modern-store-inside.jpg') no-repeat center center fixed; */
 	background-size: cover;
 	height: 100%;
 

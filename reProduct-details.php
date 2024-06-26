@@ -5,70 +5,18 @@ Organization: Berkeley County IT Department
 Last Updated: 06/25/2024
 Purpose: View all the details about a single product to include available colors and sizes as well as prices for each. Users can select sizes, colors, quantities of this product and add to their cart as desired. 
 Includes:   config.php for database connection (moving to js fetch)
+NOTES: this file started at 1284 lines before refactor
 */
 session_start();
 if ($_SESSION['GOBACK'] == '') {
     $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
 }
-include_once "config.php";
-$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-    or die('Could not connect to the database server' . mysqli_connect_error());
 
 include_once 'Cart.class.php';
 $cart = new Cart;
 
 $product_id = $_REQUEST['product_id'];
-// $product_id = 150;
-// get product details
-$sql = "SELECT p.product_id, p.code, p.name, p.image, p.description,
-c.color_id, s.size_id
-from products_new p 
-JOIN prices pr on p.product_id = pr.product_id
-INNER JOIN (SELECT * from products_colors) c on p.product_id=c.product_id 
-INNER JOIN (SELECT * from colors) c2 on c.color_id=c2.color_id
-INNER JOIN (SELECT * from products_sizes) s on p.product_id=s.product_id
-JOIN (SELECT * from sizes) s2 on s.size_id=s2.size_id 
-WHERE p.product_id=$product_id
-GROUP BY p.product_id";
 
-$stmt = $conn->prepare($sql);
-$stmt->execute();
-$result = $stmt->get_result();
-
-// this is a hacky way of getting the price_mod rate (i.e. the price increase for each size) to apply to the specific product the user us viewing. We are basically grabbing all the values - including $0.00 - and throwing them in array to be referenced as the user changes the size of the product in the dropdown. IF NEW SIZES ARE ADDED TO THE DATABASE add them to this sketchy ass function and make sure the new sizes are reflected in the view this is referencing.
-$smod = array();
-$smodSql = "SELECT 
-        xs_inc AS '10',
-        s_inc AS '1',
-        m_inc AS '2',
-        l_inc AS '3',
-        xl_inc AS '4',
-        xxl_inc AS '5',
-        xxxl_inc AS '6',
-        xxxxl_inc AS '7',
-        xxxxxl_inc AS '8',
-        xxxxxxl_inc AS '11',
-        lt_inc AS '12',
-        xlt_inc AS '13',
-        xxlt_inc AS '14',
-        xxxlt_inc AS '15',
-        xxxxlt_inc AS '16',
-        xxxxxxxl_inc AS '18',
-        xxxxxxxxl_inc AS '19',
-        xxxxxxxxxl_inc AS '20',
-        xxxxxxxxxxl_inc AS '21',
-        na_inc AS '9' 
-        from prod_size_mod_ref WHERE product_id = $product_id";
-$smodStmt = $conn->prepare($smodSql);
-$smodStmt->execute();
-$smodResult = $smodStmt->get_result();
-if ($smodResult->num_rows > 0) {
-    while ($smodRow = $smodResult->fetch_assoc()) {
-        $smod[] = $smodRow;
-    }
-}
-
-// TODO Make the border around the product image match the color the user selected 🤯
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,17 +30,119 @@ if ($smodResult->num_rows > 0) {
             return `$${amount.toFixed(2)}`;
         }
 
+        function unDollar(str) {
+            var numStr = str.replace(/[$,]/g, '');
+            var numFloat = parseFloat(numStr);
+            return numFloat;
+        }
+
+        function getCartTotal() {
+            var storeCart = localStorage.getItem('store-cart')
+
+            return JSON.parse(storeCart);
+        }
+
+        function getCurrentProductPrice() {
+            var hiddenPriceInput = document.getElementById('productPrice')
+            var priceDisplay = document.getElementById('price-in-summary')
+            priceDisplay.textContent = makeDollar(hiddenPriceInput.value);
+        }
+
+        function updateHiddenPriceInput(radio) {
+            var hiddenInput = document.getElementById('productPrice');
+            hiddenInput.value = radio.dataset.priceval;
+            getCurrentProductPrice();
+            updateCurrentPrice();
+        }
+
+        function getCurrentQty() {
+            var currentQty = document.getElementById('itemQuantity').value;
+            return currentQty;
+        }
+
+        function updateCurrentPrice() {
+            var priceInSummary = document.getElementById('productPrice').value;
+            var priceInSummaryHolder = document.getElementById('price-in-summary');
+            priceInSummaryHolder.textContent = makeDollar((priceInSummary * getCurrentQty()))
+        }
+
+        function calculateSubTotal() {
+            var subTotalInSummary = document.getElementById('sub-in-summary')
+            var logoFeeInSummary = document.getElementById('logo-fee-in-summary').textContent
+            var priceInSummary = document.getElementById('price-in-summary').textContent;
+            var subTotal = ((unDollar(logoFeeInSummary) + (unDollar(priceInSummary))))
+            subTotalInSummary.textContent = makeDollar(subTotal);
+        }
+
+        function calculateTax() {
+            var subTotalInSummary = document.getElementById('sub-in-summary').textContent;
+            var taxInSummary = document.getElementById('tax-in-summary');
+            var taxRate = .09;
+            var tax = (unDollar(subTotalInSummary) * taxRate);
+            taxInSummary.textContent = makeDollar(tax);
+        }
+
+        function calculateSelectedTotal() {
+            var totalInSummary = document.getElementById('total-in-summary');
+            var subTotalInSummary = document.getElementById('sub-in-summary').textContent;
+            var taxInSummary = document.getElementById('tax-in-summary').textContent;
+            var selectedTotal = (unDollar(subTotalInSummary) + unDollar(taxInSummary))
+            totalInSummary.textContent = makeDollar(selectedTotal)
+        }
+
+        function calculateNewTotal() {
+            var newTotalInSummary = document.getElementById('new-total-in-summary');
+            var cartTotal = (getCartTotal().cart_total * 1.09);
+            var totalInSummary = document.getElementById('total-in-summary').textContent;
+            newTotal = (cartTotal + unDollar(totalInSummary));
+            newTotalInSummary.textContent = makeDollar(newTotal);
+        }
+        // ! PICK UP HERE GETTING THE CORRECT STRING FOR THE LOGO IMAGE 
+        function updateLogoImage() {
+            var logoImageInSummary = document.getElementById('logo-img-in-summary')
+            console.log('logo image in summarry')
+            console.log(logoImageInSummary);
+            var selectedLogo = document.getElementById('logo').dataset.url;
+            console.log('selectedLogo')
+            console.log(selectedLogo)
+            logoImageInSummary.src = selectedLogo
+        }
+
+        function updateCurrentQty() {
+            var qtyInSummary = document.getElementById('qty-in-summary')
+            var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
+            qtyInSummary.textContent = getCurrentQty();
+            logoFeeInSummary.textContent = makeDollar((getCurrentQty() * 5))
+            updateCurrentPrice();
+            calculateSubTotal();
+            calculateTax();
+            calculateSelectedTotal();
+            calculateNewTotal();
+        }
+
+
+
         function fetchProductData(id) {
             fetch('reFetchProductDetails.php?id=' + <?php echo $product_id ?>)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
+                    var nameHtml = `
+                        <h3 class="name-code-holder">
+                            <p id="product-name">${data['product_data'][0].code}</p> 
+                            <p> - </p>
+                            <p>${data['product_data'][0].name}</p>
+                        </h3>
+                    `
+                    var imageHtml = `
+                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image">
+                    `
                     var html = '';
                     html += `<form name='option' method='post' is='options' action='cartAction' class='options-select-holder'>`;
                     html += `
                 <div id='color-picker-holder'>
-                    <legend>Product Color Details</legend>
-                    <label for="color_id">Choose a color:</label>
+                    <legend>Pick a Color</legend>
+                    <label for="color_id" class="legend"></label>
                     <select title="color_id" name="color_id" id="color_id" onchange="updateProductImage(this.value)">
             `;
                     for (var i = 0; i < data['color_data'].length; i++) {
@@ -104,24 +154,112 @@ if ($smodResult->num_rows > 0) {
             `;
                     html += `
                     <div id='size-picker-holder'>
-                        <legend>Available sizes and their prices</legend>
+                        <legend>Pick a Size</legend>
                         <div class="size-price-picker-holder">
                         `;
 
                     for (var j = 0; j < data['price_data'].length; j++) {
-                        html += `<label for='${data['price_data'][j].price_id}'>`
-                        // html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='${data['price_data'][j].price_id}' />
-                        html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='size-price' />
-                                ${data['price_data'][j].size_name}
-                                - ${makeDollar(data['price_data'][j].price)}
-                                                            
-                        </label>`
+                        html += `<label for='${data['price_data'][j].price_id}'>`;
+                        html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='size-price' data-priceval=${data['price_data'][j].price} onchange='updateHiddenPriceInput(this)'`;
+                        if (j === 0) {
+                            html += `checked`;
+                        }
+                        html += ` />
+                        ${data['price_data'][j].size_name}
+                        - ${makeDollar(data['price_data'][j].price)}
+                    </label>`;
                     }
-                    `</div>
+                    html += `
+                        <input type="hidden" name="productPrice" id="productPrice" value=${data['price_data'][0].price} />
+                        </div>
                     </div>
-                `
-                    html += `</form>`;
+                    `;
+
+                    html += `
+                        <div id="logo-info-holder" class="logo-info-holder">
+                            <legend>Pick a Logo</legend>
+                            <select title="logo" name="logo" id="logo" onchange="updateLogoImage()">
+                    `
+                    for (var k = 0; k < data['logo_data'].length; k++) {
+                        html += `<option value=${data['logo_data'][k].id} data-url="${data['logo_data'][k].image}">
+                    ${data['logo_data'][k].logo_name} </option>
+                        `
+                    }
+
+                    html += `
+                        </select>
+                        </div>
+                        <div class="dept-name-patch-holder">
+                            <legend>Dept Name</legend>
+                            <label for="deptNamePatch"><label>
+                            <select title="deptNamePatch" name="deptNamePatch" id="deptNamePatch">
+                                <option value='No Dept Name'>No Dept Name</option>
+                                <option value='Below Logo' selected>Below Logo</option>
+                                <option value='Left Sleeve'>Left Sleeve</option>
+                                <option value='Back of Hat' class='hatback'>No Dept Name</option>
+                            </select>
+                        </div>
+                    `
+                    html += `
+                        <div class="quantity-select">
+                            <legend>Pick quantity</legend>
+                            <input title="itemQuantity" name="itemQuantity" id="itemQuantity" type="number" min="1" max="100" value="1" required onchange="updateCurrentQty()"/>
+                        </div>
+                    
+                    `
+                    // TODO make all selectors are hidden for boots.... actually probably just make their own page... it would be easier
+                    // TODO if product is from safety products hide county name selector and show info box that it can only be below county seal 
+                    // make department name a checkbox option in teh logo holder
+
+                    html += ` </form></div></div>`;
+                    summaryHtml = `<div id="selection-summary">
+                               <legend>Selection Summary</legend>
+                               <table>
+                               <tr> 
+                                <th>Current Cart Sub-Total: </th><td>${makeDollar(getCartTotal().cart_total)}</td>
+                               </tr>
+                               <tr class='dotted-bottom'>
+                                <th>Current Cart Tax: </th><td id='cart-total-in-summary'>${makeDollar((getCartTotal().cart_total) * .09)}</td>
+                               </tr>
+                               <tr>
+                                <th>Current Selection: </th><td id='price-in-summary'><td>
+                               </tr>
+                               <tr>
+                                <th>Logo Fee: </th><td id='logo-fee-in-summary'></td>
+                               </tr>
+                               <tr class='dotted-bottom'>
+                                <th>Quantity: </th><td id='qty-in-summary'></td>
+                               </tr>
+                               <tr>
+                                <th>Selection Sub-Total: </th> <td id='sub-in-summary'>0</td>
+                               </tr>
+                               <tr>
+                                <th>Selection Tax: </th><td id='tax-in-summary'>0</td>
+                               </tr>
+                               <tr class='dotted-bottom'>
+                                <th>Select Total: </th> <td id='total-in-summary'>0</td>
+                               </tr>
+                               <tr>
+                                <th>New Cart Total: </th> <td id='new-total-in-summary'></td>
+                               </tr>
+                               </table>
+                               <div id='selected-logo-in-summary'>
+                                <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
+
+                               </div>
+                    
+                    </div>`
                     document.getElementById('new-options-form').innerHTML = html;
+                    document.getElementById('product-image-holder').innerHTML = imageHtml;
+                    document.getElementById('product-name-holder').innerHTML = nameHtml;
+                    document.getElementById('select-summary').innerHTML = summaryHtml;
+                    getCurrentProductPrice();
+                    matchHeights();
+                    updateColorImage(data['color_data'][0].color);
+                    updateCurrentQty();
+                    calculateSubTotal();
+                    // getCurrentQty();
+
                 });
         }
         fetchProductData();
@@ -163,112 +301,27 @@ if ($smodResult->num_rows > 0) {
                 b: b
             };
         }
-        // the function updateColorImage takes the value from the above function and replaces the img src and the alt tag with its value
+        // the function updateColorImage takes the value from the above function and updates the box shadow around the product image
         function updateColorImage(val) {
-            // console.log('val from updateColorImage')
             // console.log(val)
             var el = document.getElementById(val);
-            // console.log(el);
             var hexVal = el.dataset.hex;
             var rgbColor = hexToRgb(hexVal);
-            //console.log(hexVal);
-            // var imageHolder = document.getElementById('product-image-holder')
             var imageHolder = document.getElementById('product-image-holder')
             imageHolder.style.boxShadow = `0px 0px 25px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
-            i = document.getElementById('color_id').value;
-            newi = val;
-            document.getElementById('square').src = './color-images/' + formatColorValueForUrl(val) + '.gif';
-            document.getElementById('square').alt = 'Color swatch: ' + val;
+
         }
-
-
 
         // function to update the product image based on the color selected
         function updateProductImage(val) {
             updateColorImage(val);
-            // console.log('val from updateProductImage')
-            // console.log(val);
             var productCode = document.getElementById('product-name').innerText;
             var productImage = document.querySelector('.product-image');
-
-            // var newProductImage = productCode + '_' + formatColorValueForUrl(val) + '.jpg';
             var newProductImage = formatColorValueForUrl(val) + '_' + productCode + '.jpg';
-            // console.log('newProductImage is: ', newProductImage.toLowerCase());
             productImage.src = './product-images/' + newProductImage.toLowerCase();
         }
 
-        // The updateSize() function follows the same logic as the updateColor() function, except it gets the existing size value from the size_id element and sets the new size value to the size_id element which is included in the form action.
-        function updateSize(val) {
-            s = document.getElementById('size').value;
-            // console.log('s in set function is: ' + s);
-            const myArray = s.split(",");
-            // news = val;
-            document.getElementById("size").value = myArray[1];
 
-        }
-        // this function named setVals() calls two functions, updateSize(...) and updateColor(...). These function calls will set the size to 'Small' and the color to 'Black' to provide default values for the dropdowns. The function does not return any value; it simply performs the desired actions.
-        function setVals() {
-            updateSize('Small');
-            updateColor('Black');
-        }
-
-        // the first for loop says "i < 23" which (i think) was used becuase that was the number of price mods there were. We now have like 20. Update this to something more like priceMods.length. (UPDATED VALUE TO 20 UNTIL I CAN SORT OUT BEST WAY TO DO THIS BUT NEED TO MOVE FORWARD FOR NOW)
-        function getModPrice(price, size) {
-            var priceMods = <?php echo json_encode($smod); ?>;
-            let priceMod = priceMods[0];
-            let priceArray = [];
-            priceArray.push(0.00);
-
-            for (let i = 1; i < 23; i++) {
-                let newPrice = parseFloat(priceMod[i]) + parseFloat(price);
-                priceArray.push(newPrice);
-            }
-            newPrice = priceArray[size];
-            return newPrice;
-        }
-        // This function calculates the final price of an item based on size and price modifier values. It uses a lookup table to retrieve the corresponding price change value for each combination of size and price modifier, and then adds this to the base price to get the final price. The final price is then set as innerHTML in a DOM element with an ID of "temp-price-holder". The calculated price is also logged to the console for now.
-        function setPrice(size, price, price_mod) {
-            var newPrice = getModPrice(price, size);
-
-            document.getElementById("price-text-holder").innerHTML = "Updated Price is: $";
-            document.getElementById("price-holder").innerHTML = parseFloat(newPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g,
-                    '$&,') +
-                ' USD';
-            document.getElementById("productCharge").value = parseFloat(newPrice).toFixed(2).replace(/\d(?=(\d{3})+\.)/g,
-                '$&,');
-            var updatedPrice = document.getElementById('productCharge').value;
-            var currentLogo = document.getElementById('logoCharge').value;
-            logoPriceIncrease(currentLogo, updatedPrice);
-            setProductPriceValue();
-            setStitchPrice();
-        }
-
-        function logoPriceIncrease(price) {
-            // set value of productPrice to initial product value.
-            var productId = <?php echo $product_id ?>;
-            // console.log('productId is: ', productId);
-            if (productId == 185) {
-                newLogoCharge = parseFloat(0.00);
-            } else {
-                newLogoCharge = parseFloat(5.00);
-            }
-            setProductPriceValue();
-        }
-
-        function changeSizeVal(val) {
-            setPrice(val, price, priceMod);
-            var logo = document.getElementById('logo').value;
-        }
-
-        function unhideLogo() {
-            const logoImgHolder = document.getElementById('logo-img-holder');
-            logoImgHolder.classList.add('logo-show');
-
-            setTimeout(function() {
-                logoImgHolder.classList.remove('logo-show');
-                logoImgHolder.classList.add('logo-hide');
-            }, 3000);
-        };
 
         function changeLogo(img) {
             const logoImg = document.getElementById('logo-img');
@@ -301,24 +354,6 @@ if ($smodResult->num_rows > 0) {
             showPopover('safetyProductsPopover')
         }
 
-        function onLoadLoadThis() {
-            setProductPriceValue();
-            <?php if ($product_id == 33) : ?>
-                updateProductImage('black');
-            <?php elseif ($product_id == 191) : ?>
-                updateProductImage('blackblack');
-            <?php elseif ($product_id == 211) : ?>
-                updateProductImage('biscuittrueblue');
-            <?php elseif ($product_id == 185) : ?>
-                changeLogo('dept_logos/sw-rnb.png');
-                isSafetyProducts('safetyProductsPopover');
-            <?php elseif ($product_id == 105) : ?>
-                forBootsView();
-            <?php else : ?>
-                changeLogo('dept_logos/Horiz_White_Dept.png');
-            <?php endif; ?>
-        }
-
         function disableSelectDepName() {
             var select = document.getElementById('deptNamePatch')
             select.attributes.add('disabled')
@@ -326,275 +361,48 @@ if ($smodResult->num_rows > 0) {
     </script>
 </head>
 
-<body onload="onLoadLoadThis()">
+
+<body>
     <?php include "./components/slider.php" ?>
     <div class="spacer23"> - </div>
     <div class=" container">
 
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $price_mod = $row['price_size_mod'];
-                $size = $row['size_id'];
-                $price = $row['price'];
-                $code = strtolower($row['code']);
-                $proImg = !empty($row["image"]) ? $row["image"] : "./product-images/demo-img.jpg";
-                $vendor = $row['vendor_id'];
-        ?>
+        <!-- // ? This is the div where the product name and code are rendered. Values are also used in some image update functions  -->
+        <div class="product-name-holder-stretched" id="product-name-holder"></div>
+        <div class="another-container" id="another-container">
+            <!-- // ? this is where the product image gets rendered -->
+            <span class='product-image-holder' id='product-image-holder'></span>
 
-                <div class="product-name-holder-stretched">
-                    <h3 class='name-code-holder'>
-                        <p id='product-name'> <?php echo $row['code'] ?> </p>
-                        <p> - </p>
-                        <p> <?php echo $row["name"] ?></p>
-                    </h3>
-                    <!-- <p class="spec-sheet-download-link"><a href="spec-sheets/<?php //echo $row['code'] 
-                                                                                    ?>.pdf" download="<?php //echo $row['code'] 
-                                                                                                        ?>.pdf"><b>Download Spec Sheet</b></a></p> -->
+            <div class="details-about-details">
+                <!--//? This is the div where the submit form is rendered -->
+                <div id='new-options-form'></div>
 
-                </div>
-                <div class="another-container">
-                    <!-- <img src="<?php echo $proImg; ?>" alt="<?php echo $row['name'] ?>" class="product-image"> -->
-                    <span class='product-image-holder' id='product-image-holder'>
-                        <!-- <figure> -->
-                        <img src="product-images/<?php echo $code ?>.jpg" alt="<?php echo $row['name'] ?>" class="product-image">
-                        <!-- <img src="dept_logos/bc-circ.png" alt="..." class="lil-logo" id="lil-logo" /> -->
-                        <!-- <figcaption>The product and logo are just two images on top of eachother to give you an idea of what
-                        the product
-                        will look like. If it looks a bit wonky it is the progammers fault, not the fault of the
-                        product.</figcaption> -->
-                        <!-- </figure> -->
-                        <!-- <p class="product-description-text-holder"></?php echo $row['description'] ?></p> -->
-                    </span>
+            </div>
+            <!-- // ?This is the div where the summary of the users selection is rendered -->
+            <div class="select-summary" id="select-summary"></div>
+        </div>
+        <div class=" button-holder">
+            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-secondary" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
+                    Shopping </button></a>
+            <!-- <button onclick="showCart()">My Cart</button> -->
+            <!-- <button type="button" class="btn btn-secondary" id="toggle-button" onclick="toggleSlideout()">View Cart</button> -->
+            <button type="submit" form="options" class="btn btn-primary custom-btn"><span><i class=" fa fa-cart-plus" aria-hidden="true"></i> Add to
+                    Cart</span></button>
+        </div>
 
-                    <div class="details-about-details">
-                        <span>
-                            <h6 class="card-subtitle mb-2"><span id="price-text-holder">Starting at: </span>
-                                <span id="price-holder">
-                                    <?php echo CURRENCY_SYMBOL . number_format($row["price"], 2) . ' ' . CURRENCY; ?>
-                                </span>
-                            </h6>
-                            <h6 class="card-subtitle mb-2">
-                                <?php if ($vendor == 3) { ?>
-                                    <span id="logo-price-text-holder" class="hidden">Price includes a Logo fee of: $0.00</span>
-                                    <span id="logo-price-holder" class="hidden"></span>
-                                <?php } else { ?>
-                                    <span id="logo-price-text-holder">Price includes a Logo fee of: $5.00</span>
-                                    <span id="logo-price-holder"></span>
-                                <?php } ?>
-                            </h6>
-                        </span>
-                        <div id='new-options-form'></div>
-                        <div class="options-form-holder">
-                            <form name="options" method="post" id="options" action="cartAction.php" class='options-select-holder'>
-                                <div id="color-picker-holder" style="display: none" ;>
-                                    <legend>Product Color Details</legend>
-                                    <?php
-
-                                    $sql2 = "SELECT colors.color, colors.color_id
-                                        FROM uniform_orders.products_colors
-                                        JOIN colors on colors.color_id=products_colors.color_id
-                                        JOIN products on products.product_id=products_colors.product_id
-                                        WHERE products.product_id = $product_id
-                                        ORDER BY color ASC";
-                                    $stmt2 = $conn->prepare($sql2);
-                                    $stmt2->execute();
-                                    $result2 = $stmt2->get_result();
-                                    if ($result->num_rows > 0) {
-                                        echo "<label for='color_id'>Choose a color:</label>";
-                                        echo "<select title='color_id' name='color_id' id='color_id' onchange='updateProductImage(this.value)' >";
-                                        while ($crow = $result2->fetch_assoc()) {
-                                            echo "<option value='" . $crow['color'] . "'>" . $crow['color'] . "</option>";
-                                        }
-                                        echo "</select>";
-                                    }
-                                    ?>
-                                    <!-- whole bunch of hidden inputs to submit data to the create_function -->
-
-                                    <input type="hidden" id="size" value="Small" name="size" />
-                                    <input type="hidden" id="action" value="addToCart" name="action" />
-                                    <input type="hidden" id="id" value="<?php echo $row["product_id"]; ?>" name="id" />
-                                    <input type="hidden" id="productCharge" value="<?php echo $price ?>" name="productCharge"></input>
-                                    <!-- I wonder if I could just skip all the logic for manipulating the price adn set this value to a static $8.00 and be done with it? -->
-                                    <?php if ($vendor == 3) { ?>
-                                        <input type="hidden" id="logoCharge" value="0.00" name="logoCharge" />
-                                    <?php } else { ?>
-                                        <input type="hidden" id="logoCharge" value="5.00" name="logoCharge" />
-                                    <?php } ?>
-                                    <!-- TODO: remove stitch charge from form, cart, database and all other logic..... or maybe leave alone for now at $0.00... -->
-                                    <input type="hidden" id="stitchCharge" value="0.00" name="stitchCharge" />
-                                    <input type="hidden" id="productPrice" value="0.00" name="productPrice"></input>
-                                    <img src='./color-images/black.gif' class='square' id='square' alt='Color swatch: black' />
-
-                                    <script>
-                                        // Here we want to establish the variable used to calculate the product price and assign to the value of the html form element\
-                                        // this function should ONLY update the value of the element with id 'productPrice' -> which is the value written to the cart for this item. It is the sum of the productCharge (from setPrice function) and logoCharge (from the logoPriceIncrease function)
-                                        // TODO: this function will need to be modified to include the value for the yet to be named or created deptName charge to add additional costs when stitching on the back of two hats - UPDATE: I DON'T THINK THIS COMMENT IS RELEVENT ANYMORE... BUT MAYBE.
-                                        function setProductPriceValue() {
-                                            var productCharge = document.getElementById('productCharge').value;
-                                            var logoCharge = document.getElementById('logoCharge').value;
-                                            var stitchCharge = document.getElementById('stitchCharge').value;
-                                            var productPriceHolder = document.getElementById('productPrice');
-                                            var productPriceValue = productPriceHolder.value;
-
-                                            // productPriceValue = (parseFloat(productCharge) + parseFloat(stitchCharge));
-                                            productPriceValue = (parseFloat(productCharge) + parseFloat(logoCharge) + parseFloat(
-                                                stitchCharge));
-                                            // document.getElementById('productPrice').value = parseFloat(productPriceValue).toFixed(2)
-                                            //     .replace(/\d(?=(\d{3})+\.)/g,
-                                            //         '$&,');
-                                            document.getElementById('productPrice').value = parseFloat(productPriceValue).toFixed(
-                                                2);
-                                            // var ugh = document.getElementById('price-holder').innerHTML = parseFloat(
-                                            //     productPriceValue).toFixed(2).replace(/\d(?=(\d{3})+\.)/g,
-                                            //     '$&,');
-                                            var ugh = document.getElementById('price-holder').innerHTML = parseFloat(
-                                                productPriceValue).toFixed(2);
-                                            // this is to load the correct color swatch image on page load
-                                            var firstColor = document.getElementById('color_id').value;
-                                            // console.log('first color', firstColor);
-                                            updateColorImage(firstColor);
-                                            updateProductImage(firstColor)
-
-                                        }
-                                    </script>
-                                </div>
-                                <div class="size-not-available-text">
-                                    This product is only available in one size
-                                </div>
-                                <div id="size-picker-holder" style="display: none">
-                                    <legend>Product Size Details</legend>
-                                    <?php
-                                    $sql3 = "SELECT sizes.size, sizes.size_id 
-                                        FROM uniform_orders.products_sizes
-                                        JOIN sizes on sizes.size_id=products_sizes.size_id
-                                        JOIN products on products.product_id=products_sizes.product_id
-                                        WHERE products.product_id = $product_id ORDER BY sizes.size_index";
-                                    $stmt3 = $conn->prepare($sql3);
-                                    $stmt3->execute();
-                                    $result3 = $stmt3->get_result();
-                                    if ($result3->num_rows > 0) {
-                                        echo "<label for='size_id'>Choose a size:</label>";
-                                        echo "<select title='size_id' name='size_id' id='size_id' onchange='changeSizeVal(this.value)';>";
-                                        while ($crow = $result3->fetch_assoc()) {
-                                            echo "<option value=" . $crow['size_id'] . ">" . $crow['size'] . "</option>";
-                                        }
-                                        echo "</select>";
-                                    }
-                                    ?>
-                                </div>
-                                <!-- TODO: JEEZE it's time to refactor this and abstract alot of this  into its own files..... -->
-                                <!-- <div class="logo-not-available-text">
-                                    This product can <em>not</em> be embroidered with a logo and can ONLY be ordered with the
-                                    patch shown in the image
-                                </div> -->
-                                <div class="logo-info-holder" id="logo-info-holder">
-                                    <legend>County Logo Details</legend>
-                                    <!-- <img src="dept_logos/bc-circ.png" alt="..." class="lil-logo" id="lil-logo" /> -->
-                                    <p style="text-align: left" ;><a href="https://store.berkeleycountysc.gov/logos.php" target="_blank">To see all logos
-                                            use this link</a></p>
-                                    <?php
-                                    $logosql = "SELECT logo_name, image, id, description FROM uniform_orders.logos WHERE isactive = '1' AND iscomm = '0' ORDER By id DESC";
-                                    $logostmt = $conn->prepare($logosql);
-                                    $logostmt->execute();
-                                    $logoresult = $logostmt->get_result();
-                                    if ($product_id == 105) {
-                                        echo "<input type='hidden' id='logo' name='logo' value='./dept_logos/NA.png' />";
-                                    } elseif ($product_id == 185) {
-                                        echo "<input type='hidden' id='logo' name='logo' value='./dept_logos/sw-rnb.png' />";
-                                        // } elseif ($product_id == 106) {
-                                        //     echo "<input type='hidden' id='logo' name='logo' value-'./dept_logos/hat-patch.png' />";
-                                    } else {
-                                        if ($logoresult->num_rows > 0) {
-                                            echo "<label for='logo'>Choose a Logo:</label>";
-                                            echo "<select title='logo' name='logo' id='logo' onchange='changeLogo(this.value)';>";
-                                            while ($logorow = $logoresult->fetch_assoc()) {
-                                                echo "<option value=" . $logorow['image'] . ">"    . $logorow['logo_name'] . "</option>";
-                                            }
-                                            echo "</select>";
-                                        }
-                                    }
-                                    ?>
-                                    <br />
-                                </div>
-
-                                <div class="dept-name-patch-holder">
-                                    <legend>Department Name Details</legend>
-                                    <?php if ($vendor == 3) { ?>
-                                        <input type="hidden" id="deptNamePatch" name="deptNamePatch" value="Below Logo" />
-                                        <p>Department name will be below County Seal</p>
-                                    <?php } else { ?>
-                                        <label for='deptNamePatch'>Select where to display Department Name</label>
-                                        <select title='deptNamePatch' name='deptNamePatch' id='deptNamePatch' onchange="setStitchPrice()">
-                                            <option value='No Dept Name'>Do not add Dept Name</option>
-                                            <option value='Below Logo' selected>Below Logo</option>
-                                            <option value='Left Sleeve'>Left Sleeve</option>
-                                            <option value='Back of Hat' class='hatback'>Back of Hat</option>
-
-
-
-                                        </select>
-                                        <p id="hatBackText" class="hidden">Department name will <b>not</b> be embroidered on hat.
-                                            Instead "BERKELEY" will be stitched across the back of the hat</p>
-                                        <p id="truckerHatText" class="hidden">Department name can not be added to this hat.</p>
-                                    <?php } ?>
-                                </div>
-                                <div class="quantity-select">
-                                    <legend>Select Quantity</legend>
-                                    <label for='itemQuantity'>Select how many of this item you would like</label>
-                                    <input title='itemQuantity' name='itemQuantity' id='itemQuantity' type='number' min='1' max='100' value='1' required />
-                                </div>
-                            </form>
-                        </div>
-                        <div class="logo-img-holder logo-hide" id="logo-img-holder">
-                            <figure>
-                                <img src="./dept_logos/county_Seal_White_Dept.png" alt="bc logo" id="logo-img">
-                                <p id="logo-desc"></p>
-                                <figcaption>Logo show is for display purposes only. Actual color will be either black or white -
-                                    depending on the shirt color</figcaption>
-                            </figure>
-                        </div>
-                        <!-- <div class="product-with-logo-holder" id="product-with-logo-holder">
-                    <img src="product-images/</?php echo $code ?>_prod.jpg" alt="..." />
-                    <img src="dept_logos/bc-circ.png" alt="..." class="lil-logo" id="lil-logo" />
-                </div> -->
-                    </div>
-            <?php }
-        }
-        $conn->close();
-            ?>
-                </div>
-                <div class=" button-holder">
-                    <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-secondary" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
-                            Shopping </button></a>
-                    <!-- <button onclick="showCart()">My Cart</button> -->
-                    <!-- <button type="button" class="btn btn-secondary" id="toggle-button" onclick="toggleSlideout()">View Cart</button> -->
-                    <button type="submit" form="options" class="btn btn-primary custom-btn"><span><i class=" fa fa-cart-plus" aria-hidden="true"></i> Add to
-                            Cart</span></button>
-                </div>
-                <div>
-                    <script>
-                        // I wish I had commented why this function exists ... I mean I assume it is important.... but..
-                        // In the original page there was a button below that called a "setPrice" function - but the button and logic is commented out.... maybe this isn't important.... 
-                        var sizeIDHolder = document.getElementById("size_id");
-                        var size = sizeIDHolder.value;
-                        var price = <?php echo $price ?>;
-                        var priceMod = <?php echo $price_mod ?>;
-                    </script>
-                </div>
-                <!-- This was originaly intended to be used as a notification for a product being added to the cart - but the page reloads when something as added to the cart so it is useless... I am keeping in the code because I WILL find some use for these toast messages! -->
-                <div id="myToast">
-                    <div class="toast-header">
-                        <i class="fa fa-info"></i>Price Change Alert
-                        <small>1 sec ago</small>
-                        <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="eatToast()"></button>
-                    </div>
-                    <div class="toast-body">
-                        <p id="toast_message"></p>
-                    </div>
-                </div>
-                <!-- <div id='new-options-form'></div> -->
-                <!-- <div class="size-chart-holder">
+        <!-- This was originaly intended to be used as a notification for a product being added to the cart - but the page reloads when something as added to the cart so it is useless... I am keeping in the code because I WILL find some use for these toast messages! -->
+        <div id="myToast">
+            <div class="toast-header">
+                <i class="fa fa-info"></i>Price Change Alert
+                <small>1 sec ago</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="eatToast()"></button>
+            </div>
+            <div class="toast-body">
+                <p id="toast_message"></p>
+            </div>
+        </div>
+        <!-- <div id='new-options-form'></div> -->
+        <!-- <div class="size-chart-holder">
                     <?php include "./components/size-chart-womens.php" ?>
                 </div> -->
     </div>
@@ -763,16 +571,33 @@ if ($smodResult->num_rows > 0) {
             }
         }
     }
+    // we're gonna try this and see if we can make the element heights match dynamically
+    function matchHeights() {
+        // get target height
+        var newOptionsForm = document.getElementById('new-options-form');
+        var newOptionsFormHeight = newOptionsForm.offsetHeight;
 
-    const deptNamePatchSelect = document.getElementById('deptNamePatch');
-    deptNamePatchSelect.addEventListener('change', handleDeptNamePatch);
+        // Set the height tp match target
+        var selectionSummary = document.getElementById('selection-summary');
+        selectionSummary.style.height = newOptionsFormHeight + 'px';
 
-    // Call the function initially to set the initial state
-    handleDeptNamePatch();
+        // set image holder height to the same why dont we
+        var imageHolder = document.getElementById('product-image-holder');
+        imageHolder.style.height = newOptionsFormHeight + 'px';
+    }
+
+    // Call the function initially to set the height in the render function to avoid race condition
+
+
+    // This is in case the height changes dynamically... i dont think it will other than window resize ...
+    // this doesnt seem to be firing ... stupid Google .... come back to it later 
+    new MutationObserver(matchHeights).observe(document.getElementById('another-container'), {
+        childList: true,
+        subtree: true
+    });
 </script>
 
 </html>
-<!-- SWEET BABY BUDDAH THIS CSS IS A MESS!!!! TODO: Clean this up!!!!!! -->
 <style>
     body {
         background-color: #ffffff10;
@@ -784,7 +609,7 @@ if ($smodResult->num_rows > 0) {
 
     .another-container {
         display: grid;
-        grid-template-columns: 55% auto;
+        grid-template-columns: 40% 30% 30%;
         position: relative;
 
     }
@@ -793,25 +618,18 @@ if ($smodResult->num_rows > 0) {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* height: 700px; */
         height: fit-content;
-        /* max-height: 700px; */
         max-height: 90vh;
         width: fit-content;
-        /* overflow: hidden; */
-        /* background-color: hotpink; */
         background-color: transparent;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
     }
 
     .product-image {
-        /* width: 80%; */
-        height: auto !important;
-        min-height: 800px;
         border-radius: 5px;
         padding: 15px;
-        /* margin-left: 15%; */
-        /* margin-right: 15%; */
-        /* margin-bottom: 10px; */
         clip: rect(0, auto, 700px, 0);
     }
 
@@ -831,8 +649,6 @@ if ($smodResult->num_rows > 0) {
 
     .options-select-holder {
         margin-top: 25px;
-        float: left;
-        margin-right: 20px;
     }
 
     label {
@@ -846,7 +662,6 @@ if ($smodResult->num_rows > 0) {
 
     #logo-img {
         width: 200px;
-        /* margin-top: 30px; */
     }
 
     .hidden {
@@ -867,7 +682,6 @@ if ($smodResult->num_rows > 0) {
     }
 
     #logo-price-text-holder {
-        /* visibility: hidden; */
         color: lightblue;
     }
 
@@ -875,10 +689,9 @@ if ($smodResult->num_rows > 0) {
     #size-picker-holder,
     .dept-name-patch-holder,
     .logo-info-holder,
-    .quantity-select {
-        /* background: #b9cf6a; */
+    .quantity-select,
+    #selection-summary {
         background: rgba(0, 0, 0, .5);
-        /* border-color: #e3ebc3; */
         border-color: rgba(255, 255, 255, .3);
         border-style: solid;
         border-width: 2px;
@@ -892,23 +705,59 @@ if ($smodResult->num_rows > 0) {
         color: aliceblue;
     }
 
-    .size-price-picker-holder {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 5px;
-        padding: 10px;
+    #color-picker-holder,
+    #logo-info-holder,
+    .dept-name-patch-holder,
+    .quantity-select {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%
+    }
 
-        label {
-            font-size: large;
+    #selection-summary {
+        margin-top: 5.5%;
+
+        table {
+            width: 100%;
         }
     }
 
+    #selection-summary th,
+    td {
+        color: aliceblue;
+    }
 
+    .quantity-select input {
+        line-height: normal;
+    }
+
+    #logo-picker-holder select {
+        width: 100%;
+    }
+
+
+    .size-price-picker-holder {
+        margin-top: 5px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2px;
+        padding: 10px;
+        justify-items: start;
+
+        label {
+            font-size: 1rem;
+
+        }
+
+    }
 
     legend {
         text-shadow: 0 1px 2px #195f80;
         text-align: left;
-        margin-bottom: -10px;
+        margin-bottom: 0 !important;
+        font-size: large;
     }
 
     .toast-header {
@@ -1009,7 +858,6 @@ if ($smodResult->num_rows > 0) {
         float: right;
         width: 25px;
         height: 25px;
-        /* background-color: red; */
         margin-left: 20px;
         border: .5px solid white;
     }
@@ -1051,13 +899,8 @@ if ($smodResult->num_rows > 0) {
         margin-left: 10%;
         right: 0;
         margin-right: 10%;
-        /* z-index: 2; */
-        /* background-color: #f0f0f0; */
         max-height: 800px;
         padding: 20px;
-        /* display: flex; */
-        /* flex-wrap: wrap;
-    gap: 20px; */
         justify-content: center;
         align-content: center;
         overflow: scroll;
@@ -1070,7 +913,6 @@ if ($smodResult->num_rows > 0) {
     .cart-h1 {
         display: none;
     }
-
 
     .theDevil {
         display: none;
@@ -1094,37 +936,21 @@ if ($smodResult->num_rows > 0) {
     }
 
     #lil-logo {
-        /* position: fixed; */
-        /* bottom: 0; */
-        /* margin-bottom: 100px; */
         display: flex;
         justify-content: center;
         align-items: center;
-        /* margin-top: -50px; */
-        /* margin-left: -50px; */
         padding: 10px;
         width: 150px;
-        /* background-color: #195f80; */
         background-color: #d5ca9e;
-        /* z-index: 2; */
         box-shadow: 5px 5px 7px #00000040, inset -3px -3px 5px #00000080;
         border-radius: 5px;
     }
-
-    /* .lil-logo {
-        position: relative;
-        z-index: 4;
-        margin-top: -155px;
-    } */
 
     .name-code-holder {
         display: flex;
         gap: 2px;
     }
 
-    /* .dept-name-patch-holder {
-        display: none;
-    } */
     .price-size-row {
         display: flex;
         flex-wrap: nowrap;
@@ -1132,6 +958,30 @@ if ($smodResult->num_rows > 0) {
         align-content: flex-start;
     }
 
+    label:has(> input[type="radio"]:checked) {
+        background-color: #80808080;
+        border-radius: 5px;
+    }
+
+    /* This has to be in this file because cascades are hard m'kay */
+    .cart-slideout td {
+        color: black !important;
+    }
+
+    .dotted-bottom {
+        border-bottom: 1px aliceblue dotted;
+    }
+
+    #selected-logo-in-summary {
+        background-color: #80808090;
+        display: flex;
+
+        img {
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 
     #safetyProductsWarning {
         display: flex;

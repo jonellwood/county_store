@@ -1,5 +1,5 @@
 <?php
-// session_start();
+//session_start();
 include_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
@@ -11,25 +11,17 @@ $cart = new Cart;
 <script>
     function setCartInLocalStorage() {
         var cart = <?php echo $cart->serializeCart() ?>;
-        console.log('cart');
-        console.log(cart);
+        // console.log('cart');
+        // console.log(cart);
         cart.timestamp = new Date().toISOString();
-        // var cartObject = JSON.parse(cartShit)
-        // console.log('cartObject');
-        // console.log(cartObject);
         localStorage.setItem('store-cart', JSON.stringify(cart));
 
     }
-    //setCartInLocalStorage();
+
 
     function getCartFromLocalStorage() {
         var cartData = localStorage.getItem('store-cart');
-        // if (cartData === null) {
-        //     // no cart in local storage so we make an empty one to return
-        //     cartData = <?php echo $cart->serializeCart(); ?>;
-        // }
         return JSON.parse(cartData);
-        // return cartData;
     }
     getCartFromLocalStorage();
     // helper function for comparing arrays of carts ... that I dont think I actually need now.
@@ -40,27 +32,15 @@ $cart = new Cart;
     function howOldIsLocalStorage(str) {
         var now = new Date();
         var older = new Date(str)
-        //console.log("Now is :", now);
-        //console.log("Older is: ", older);
         var gap = (now - older);
-        //console.log('The gap is : ', gap);
         return gap;
     }
 
     function syncCartWithServer() {
-
         var cartData = getCartFromLocalStorage();
         var cartDataArray = Object.entries(cartData);
         var cartServerData = <?php echo $cart->serializeCart(); ?>;
         var cartServerArray = Object.entries(cartServerData);
-        //console.log('Local Cart Data')
-        //console.log(cartData.timestamp);
-        // console.log('Server Cart Data')
-        // console.log(cartServerData);
-        console.log('cartDataArray')
-        console.log(cartDataArray);
-        console.log('cartServerArray');
-        console.log(cartServerArray);
         howOldIsLocalStorage(cartData.timestamp);
         cartServerArray.forEach(serverItem => {
             if (!findItemByUid(cartDataArray, serverItem.add_item_uid)) {
@@ -72,15 +52,13 @@ $cart = new Cart;
                 cartServerArray.push(dataItem)
             }
         })
-        // localStorage.removeItem('store-cart');
-        // localStorage.setItem('store-cart', JSON.stringify(cartDataArray));
+
 
         if (cartData.total_items == 0 && cartData.cart_total == 0 && cartServerData.total_items != 0) {
             console.log('Writing server data to local storage');
             setCartInLocalStorage(cartServerData);
-            // console.log('Nothing to send to server');
             return
-        } else if (cartData.total_items != 0 && cartServerData.total_items == 0 && howOldIsLocalStorage(cartData.timestamp) > 1440000) {
+        } else if (cartData.total_items != 0 && cartServerData.total_items == 0 && howOldIsLocalStorage(cartData, timestamp) > 1440000) {
             fetch('cartSync.php', {
                     method: 'POST',
                     headers: {
@@ -106,7 +84,6 @@ $cart = new Cart;
         <h1>Your Cart</h1>
     </div>
     <div class="cart-slide-row">
-        <!-- <div> -->
         <div class="cart-table-holder">
             <table class="cart">
                 <thead>
@@ -122,7 +99,6 @@ $cart = new Cart;
                     if ($cart->total_items() > 0) {
                         $cartItems = $cart->contents();
                         foreach ($cartItems as $item) {
-
                     ?>
                             <tr>
                                 <td><?php echo $item["name"]; ?></td>
@@ -130,8 +106,6 @@ $cart = new Cart;
                                 <td class='a-right'><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> </td>
                                 <td class='a-right'><i class="fa fa-trash" aria-hidden="true" onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;" title="Remove Item"></i></td>
                             </tr>
-
-
                         <?php }
                     } else { ?>
                         <tr>
@@ -173,12 +147,12 @@ $cart = new Cart;
                         </tr>
 
                     <?php } ?>
-                    <!-- </tr> -->
+
                 </tbody>
             </table>
         </div>
         <a href="./viewCart.php"><button class="cart-btn btn-primary">Go To Cart</button></a>
-        <!-- </div> -->
+
     </div>
 </div>
 
@@ -193,7 +167,6 @@ $cart = new Cart;
 
         // Check if the target element is inside the slideout
         var isClickInsideSlideout = cartSlideout.contains(targetElement);
-
 
         // If the click is not inside the slideout, hide the slideout
         if (!isClickInsideSlideout && targetElement.id !== "toggle-button") {
@@ -215,6 +188,7 @@ $cart = new Cart;
         height: 100vh;
         /* background-color: lightgrey; */
         background-color: #ffffff;
+
         opacity: 0.97;
         /* border-left: 2px solid darkgray; */
         box-shadow: -10px 0px 16px -4px rgba(6, 6, 6, 1);
@@ -223,6 +197,7 @@ $cart = new Cart;
         color: #282828;
         transition: right 0.3s ease-in-out;
         z-index: 5;
+        /* color: black !important; */
     }
 
     .cart-slideout.hidden {
@@ -240,6 +215,7 @@ $cart = new Cart;
     .cart-table-holder {
         display: flex;
         justify-content: center;
+
     }
 
     table {
@@ -301,6 +277,9 @@ $cart = new Cart;
         cursor: pointer;
     }
 
+    .cart table tbody tr td {
+        color: rgba(6, 6, 6, 1);
+    }
 
     /* #logo-img {
     width: 50px;
