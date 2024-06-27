@@ -26,7 +26,6 @@ $product_id = $_REQUEST['product_id'];
     <title>Product Details</title>
     <script>
         async function localStorageGetSet() {
-            console.log('getting or setting local storage')
             var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
             if (!localStorageCartData) {
                 cartData = {
@@ -51,10 +50,8 @@ $product_id = $_REQUEST['product_id'];
         }
 
         function getCartTotal() {
-            // var storeCart = localStorage.getItem('store-cart')
             var storeCart = <?php echo $cart->serializeCart(); ?>;
             if (storeCart) {
-                //return JSON.parse(storeCart);
                 return storeCart;
             }
             return;
@@ -70,6 +67,8 @@ $product_id = $_REQUEST['product_id'];
         function updateHiddenPriceInput(radio) {
             var hiddenInput = document.getElementById('productPrice');
             hiddenInput.value = radio.dataset.priceval;
+            var sizeHiddenInput = document.getElementById('size_id');
+            sizeHiddenInput.value = radio.dataset.sizeid;
             getCurrentProductPrice();
             updateCurrentPrice();
         }
@@ -119,8 +118,10 @@ $product_id = $_REQUEST['product_id'];
 
         function updateLogoImage(val) {
             var logoImageInSummary = document.getElementById('logo-img-in-summary')
+            var logoFormInput = document.getElementById('logo-url')
             var selectedLogo = document.getElementById(val).dataset.url
             logoImageInSummary.src = selectedLogo
+            logoFormInput.value = selectedLogo;
         }
 
         function updateCurrentQty() {
@@ -153,8 +154,14 @@ $product_id = $_REQUEST['product_id'];
                     <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image">
                     `
                     var html = '';
-                    html += `<form name='option' method='post' is='options' action='cartAction' class='options-select-holder'>`;
-                    html += `
+                    html += `<form name='option' method='post' id='options' action='reCartAction.php' class='options-select-holder'>`;
+                    html += `<input type="hidden" name="product_id" id="product_id" value=${data['product_data'][0].product_id} />`;
+                    html += `<input type="hidden" name="name" id="name" value="${data['product_data'][0].name}" />`
+                    html += `<input type="hidden" name="code" id="code" value=${data['product_data'][0].code} />`
+                    html += `<input type="hidden" name="action" id="action" value="addToCart" />`
+                    html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
+                    html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
+                    html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />
                 <div id='color-picker-holder'>
                     <legend>Pick a Color</legend>
                     <label for="color_id" class="legend"></label>
@@ -175,7 +182,7 @@ $product_id = $_REQUEST['product_id'];
 
                     for (var j = 0; j < data['price_data'].length; j++) {
                         html += `<label for='${data['price_data'][j].price_id}'>`;
-                        html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='size-price' data-priceval=${data['price_data'][j].price} onchange='updateHiddenPriceInput(this)'`;
+                        html += `<input type='radio' id=${data['price_data'][j].price_id} value=${data['price_data'][j].price_id} name='size-price-id' data-priceval=${data['price_data'][j].price} data-sizeid=${data['price_data'][j].size_id} onchange='updateHiddenPriceInput(this)'`;
                         if (j === 0) {
                             html += `checked`;
                         }

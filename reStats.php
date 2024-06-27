@@ -75,7 +75,7 @@ if ($idresult->num_rows > 0) {
                 // $c++;
     ?>
                 <div class="card" id="featured-card">
-                    <a href="product-details.php?product_id=<?php echo $prorow["product_id"]; ?>">
+                    <a href="reProduct-details.php?product_id=<?php echo $prorow["product_id"]; ?>">
                         <img src="<?php echo $proImage; ?>" alt="product name" class="card-img-top">
                         <div class="card-body featured">
                             <p class="card-title"><?php echo $prorow["name"]; ?></p>

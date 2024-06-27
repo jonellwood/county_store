@@ -86,7 +86,7 @@ $cart = new Cart;
 
 
         if (cartData.total_items == 0 && cartData.cart_total == 0 && cartServerData.total_items != 0) {
-            console.log('Writing server data to local storage');
+            //console.log('Writing server data to local storage');
             setCartInLocalStorage(cartServerData);
             return
         } else if (cartData.total_items != 0 && cartServerData.total_items == 0 && howOldIsLocalStorage(cartData.timestamp) > 1440000) {
