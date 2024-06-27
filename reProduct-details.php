@@ -25,6 +25,20 @@ $product_id = $_REQUEST['product_id'];
     <?php include "./components/viewHead.php" ?>
     <title>Product Details</title>
     <script>
+        async function localStorageGetSet() {
+            console.log('getting or setting local storage')
+            var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
+            if (!localStorageCartData) {
+                cartData = {
+                    total_items: 0,
+                    cart_total: 0,
+                    timestamp: Date.now()
+                };
+                await localStorage.setItem('store-cart', JSON.stringify(cartData));
+            }
+        }
+        localStorageGetSet()
+
         function makeDollar(str) {
             let amount = parseFloat(str);
             return `$${amount.toFixed(2)}`;
@@ -37,9 +51,14 @@ $product_id = $_REQUEST['product_id'];
         }
 
         function getCartTotal() {
-            var storeCart = localStorage.getItem('store-cart')
+            // var storeCart = localStorage.getItem('store-cart')
+            var storeCart = <?php echo $cart->serializeCart(); ?>;
+            if (storeCart) {
+                //return JSON.parse(storeCart);
+                return storeCart;
+            }
+            return;
 
-            return JSON.parse(storeCart);
         }
 
         function getCurrentProductPrice() {
