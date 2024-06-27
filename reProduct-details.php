@@ -97,14 +97,10 @@ $product_id = $_REQUEST['product_id'];
             newTotal = (cartTotal + unDollar(totalInSummary));
             newTotalInSummary.textContent = makeDollar(newTotal);
         }
-        // ! PICK UP HERE GETTING THE CORRECT STRING FOR THE LOGO IMAGE 
-        function updateLogoImage() {
+
+        function updateLogoImage(val) {
             var logoImageInSummary = document.getElementById('logo-img-in-summary')
-            console.log('logo image in summarry')
-            console.log(logoImageInSummary);
-            var selectedLogo = document.getElementById('logo').dataset.url;
-            console.log('selectedLogo')
-            console.log(selectedLogo)
+            var selectedLogo = document.getElementById(val).dataset.url
             logoImageInSummary.src = selectedLogo
         }
 
@@ -178,10 +174,10 @@ $product_id = $_REQUEST['product_id'];
                     html += `
                         <div id="logo-info-holder" class="logo-info-holder">
                             <legend>Pick a Logo</legend>
-                            <select title="logo" name="logo" id="logo" onchange="updateLogoImage()">
+                            <select title="logo" name="logo" id="logo" onchange="updateLogoImage(this.value)">
                     `
                     for (var k = 0; k < data['logo_data'].length; k++) {
-                        html += `<option value=${data['logo_data'][k].id} data-url="${data['logo_data'][k].image}">
+                        html += `<option id=${data['logo_data'][k].id} value=${data['logo_data'][k].id} data-url="${data['logo_data'][k].image}">
                     ${data['logo_data'][k].logo_name} </option>
                         `
                     }
@@ -718,6 +714,8 @@ $product_id = $_REQUEST['product_id'];
 
     #selection-summary {
         margin-top: 5.5%;
+        display: flex;
+        flex-direction: column;
 
         table {
             width: 100%;
@@ -975,11 +973,19 @@ $product_id = $_REQUEST['product_id'];
     #selected-logo-in-summary {
         background-color: #80808090;
         display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
 
         img {
+            width: 200px;
             height: 200px;
             margin-left: auto;
             margin-right: auto;
+            margin-bottom: 10px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            object-fit: scale-down;
         }
     }
 
