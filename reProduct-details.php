@@ -132,10 +132,10 @@ $product_id = $_REQUEST['product_id'];
             var logoFeeUpChargeHiddenInput = document.getElementById('logo_upCharge')
             if (val === 'Left Sleeve') {
                 logoFeeUpChargeHiddenInput.value = 5.00
+                showToast('This option added $5.00 per item to your cost')
             } else {
                 logoFeeUpChargeHiddenInput.value = 0.00
             }
-
             updateCurrentQty();
         }
         // updates the qty in the summary display as wel as the logo fees
@@ -143,12 +143,8 @@ $product_id = $_REQUEST['product_id'];
             var qtyInSummary = document.getElementById('qty-in-summary')
             var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
             var logoUpCharge = document.getElementById('logo_upCharge').value;
-            console.log('logoUpCharge')
-            console.log(logoUpCharge)
             qtyInSummary.textContent = getCurrentQty();
             var totalLogoFee = (5 + parseInt(logoUpCharge));
-            console.log('total logo fee')
-            console.log(typeof(totalLogoFee));
             logoFeeInSummary.textContent = makeDollar((getCurrentQty() * totalLogoFee))
             updateCurrentPrice();
             calculateSubTotal();
@@ -467,20 +463,19 @@ $product_id = $_REQUEST['product_id'];
 <script>
     // function to make & show toast messags. No real use case for them... yet....
     // I should really move this its own file....
-    // function showToast(msg) {
-    //     var toast = document.getElementById('myToast');
-    //     var msgBlock = document.getElementById('toast_message');
-    //     msgBlock.innerText = msg;
-    //     toast.className = "show";
-    //     setTimeout(function() {
-    //         toast.className = toast.className.replace("show", "hideToast");
-    //     }, 3000);
-    // }
+    function showToast(msg) {
+        var toast = document.getElementById('myToast');
+        var msgBlock = document.getElementById('toast_message');
+        msgBlock.innerText = msg;
+        toast.className = "show";
+        setTimeout(function() {
+            toast.className = toast.className.replace("show", "hideToast");
+        }, 3000);
+    }
 
-    // function eatToast() {
-    //     // console.log('eating toast....')
-    //     var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
-    // }
+    function eatToast() {
+        var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
+    }
 
     function showHatBackText() {
         var deptNamePatch = document.querySelector('select[id="deptNamePatch"]');
@@ -516,38 +511,6 @@ $product_id = $_REQUEST['product_id'];
             }
         });
     }
-    // showTruckerHatText();
-    // This function is no longer needed with the pricing structures changes but is included in lots of logic so we keep it in place for now.... but value is set to $0.00 (06-12-2023: 1210 hrs)
-    // UPDATE: The stitchCharge will now e $5.00 when the Dept Name is stitched on the left sleve. Otherwise it is $0.00. (06-12-2023: 1443 hours)
-    function setStitchPrice() {
-        // var deptNamePatch = document.querySelector('select[id="deptNamePatch"]');
-        var selectedLocation = document.getElementById('deptNamePatch').value;
-        var stitchCharge = document.getElementById('stitchCharge').value;
-        // console.log('location is: ', selectedLocation);
-        if (stitchCharge == 0 && selectedLocation == 'Left Sleeve') {
-            stitchCharge = parseInt(5.00);
-            document.getElementById('stitchCharge').value = parseFloat(stitchCharge).toFixed(2).replace(
-                /\d(?=(\d{3})+\.)/g, '$&,');
-            showToast('This option added $5.00 to your cost');
-        } else {
-            return
-        }
-    }
-
-    // same comment as above. Leaving inplace for now...the function may be called but will never execute past the third line since it should NEVER evaluate to true as of right now
-    function resetStitchPrice() {
-        var selectedLocation = document.getElementById('deptNamePatch').value;
-        var stitchCharge = document.getElementById('stitchCharge').value;
-        if (stitchCharge == 5.00 && selectedLocation != 'Left Sleeve') {
-            stitchCharge = parseInt(0.00);
-            document.getElementById('stitchCharge').value = parseFloat(stitchCharge).toFixed(2).replace(
-                /\d(?=(\d{3})+\.)/g, '$&,');
-            // console.log(' reset stitch charge to : ' + stitchCharge)
-        }
-    }
-    const logoImg = document.getElementById('logo');
-
-    // logoImg.addEventListener('change', function() {
 </script>
 <script>
     // Function to add "_NO" to the end of the filename
@@ -810,11 +773,12 @@ $product_id = $_REQUEST['product_id'];
 
     .toast-header {
         /* background-color: #f57f43; */
-        background-color: #bada55;
-        color: black;
+        background-color: #00000050;
+        color: #ffffff;
         display: flex;
         justify-content: space-between;
         padding: 10px;
+        font-size: large;
     }
 
     .toast-body {
@@ -833,10 +797,10 @@ $product_id = $_REQUEST['product_id'];
         position: fixed;
         bottom: 20px;
         right: 20px;
-        z-index: 1;
-        -webkit-box-shadow: 0px 0px 18px 10px rgba(255, 255, 255, 1), inset 0px 0px 18px 10px rgba(0, 0, 0, 1);
-        -moz-box-shadow: 0px 0px 18px 10px rgba(255, 255, 255, 1), inset 0px 0px 18px 10px rgba(0, 0, 0, 1);
-        box-shadow: 0px 0px 18px 10px rgba(255, 255, 255, 1), inset 0px 0px 18px 10px rgba(0, 0, 0, 1);
+        z-index: 5;
+        border: 2px solid #005677;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px -10px rgba(255, 255, 255, 1);
     }
 
     .show {
