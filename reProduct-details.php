@@ -71,6 +71,10 @@ $product_id = $_REQUEST['product_id'];
             sizeHiddenInput.value = radio.dataset.sizeid;
             getCurrentProductPrice();
             updateCurrentPrice();
+            calculateSubTotal();
+            calculateTax();
+            calculateSelectedTotal();
+            calculateNewTotal();
         }
 
         function getCurrentQty() {
@@ -124,11 +128,28 @@ $product_id = $_REQUEST['product_id'];
             logoFormInput.value = selectedLogo;
         }
 
+        function updateLogoFeeAddOn(val) {
+            var logoFeeUpChargeHiddenInput = document.getElementById('logo_upCharge')
+            if (val === 'Left Sleeve') {
+                logoFeeUpChargeHiddenInput.value = 5.00
+            } else {
+                logoFeeUpChargeHiddenInput.value = 0.00
+            }
+
+            updateCurrentQty();
+        }
+        // updates the qty in the summary display as wel as the logo fees
         function updateCurrentQty() {
             var qtyInSummary = document.getElementById('qty-in-summary')
             var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
+            var logoUpCharge = document.getElementById('logo_upCharge').value;
+            console.log('logoUpCharge')
+            console.log(logoUpCharge)
             qtyInSummary.textContent = getCurrentQty();
-            logoFeeInSummary.textContent = makeDollar((getCurrentQty() * 5))
+            var totalLogoFee = (5 + parseInt(logoUpCharge));
+            console.log('total logo fee')
+            console.log(typeof(totalLogoFee));
+            logoFeeInSummary.textContent = makeDollar((getCurrentQty() * totalLogoFee))
             updateCurrentPrice();
             calculateSubTotal();
             calculateTax();
@@ -161,7 +182,8 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="action" id="action" value="addToCart" />`
                     html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
                     html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
-                    html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />
+                    html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
+                    html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />
                 <div id='color-picker-holder'>
                     <legend>Pick a Color</legend>
                     <label for="color_id" class="legend"></label>
@@ -214,11 +236,10 @@ $product_id = $_REQUEST['product_id'];
                         <div class="dept-name-patch-holder">
                             <legend>Dept Name</legend>
                             <label for="deptNamePatch"><label>
-                            <select title="deptNamePatch" name="deptNamePatch" id="deptNamePatch">
-                                <option value='No Dept Name'>No Dept Name</option>
-                                <option value='Below Logo' selected>Below Logo</option>
-                                <option value='Left Sleeve'>Left Sleeve</option>
-                                <option value='Back of Hat' class='hatback'>No Dept Name</option>
+                            <select title="deptNamePatch" name="deptNamePatch" id="deptNamePatch" onchange="updateLogoFeeAddOn(this.value)">
+                                <option value='No Dept Name' id='p1'>No Dept Name</option>
+                                <option value='Below Logo' selected id='p2'>Below Logo</option>
+                                <option value='Left Sleeve' id='p3'>Left Sleeve</option>
                             </select>
                         </div>
                     `
@@ -446,20 +467,20 @@ $product_id = $_REQUEST['product_id'];
 <script>
     // function to make & show toast messags. No real use case for them... yet....
     // I should really move this its own file....
-    function showToast(msg) {
-        var toast = document.getElementById('myToast');
-        var msgBlock = document.getElementById('toast_message');
-        msgBlock.innerText = msg;
-        toast.className = "show";
-        setTimeout(function() {
-            toast.className = toast.className.replace("show", "hideToast");
-        }, 3000);
-    }
+    // function showToast(msg) {
+    //     var toast = document.getElementById('myToast');
+    //     var msgBlock = document.getElementById('toast_message');
+    //     msgBlock.innerText = msg;
+    //     toast.className = "show";
+    //     setTimeout(function() {
+    //         toast.className = toast.className.replace("show", "hideToast");
+    //     }, 3000);
+    // }
 
-    function eatToast() {
-        // console.log('eating toast....')
-        var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
-    }
+    // function eatToast() {
+    //     // console.log('eating toast....')
+    //     var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
+    // }
 
     function showHatBackText() {
         var deptNamePatch = document.querySelector('select[id="deptNamePatch"]');
@@ -659,12 +680,15 @@ $product_id = $_REQUEST['product_id'];
         text-align: right;
         margin-left: 20px;
         margin-right: 20px;
+        min-height: 500px;
     }
 
     .button-holder {
         margin-top: 5px;
         display: flex;
-        justify-content: space-between;
+        /* justify-content: flex-start; */
+        justify-content: space-around;
+        /* gap: 6em; */
         margin-left: 5em;
         margin-right: 5em;
     }
