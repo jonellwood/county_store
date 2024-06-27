@@ -133,8 +133,12 @@ $product_id = $_REQUEST['product_id'];
             if (val === 'Left Sleeve') {
                 logoFeeUpChargeHiddenInput.value = 5.00
                 showToast('This option added $5.00 per item to your cost')
+                handleDeptNamePatch()
+            } else if (val === 'No Dept Name') {
+                handleDeptNamePatch()
             } else {
                 logoFeeUpChargeHiddenInput.value = 0.00
+                handleDeptNamePatch()
             }
             updateCurrentQty();
         }
@@ -347,8 +351,9 @@ $product_id = $_REQUEST['product_id'];
             var hexVal = el.dataset.hex;
             var rgbColor = hexToRgb(hexVal);
             var imageHolder = document.getElementById('product-image-holder')
+            var toastHolder = document.getElementById('myToast')
             imageHolder.style.boxShadow = `0px 0px 25px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
-
+            toastHolder.style.boxShadow = `0px 0px 25px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
         }
 
         // function to update the product image based on the color selected
@@ -536,7 +541,8 @@ $product_id = $_REQUEST['product_id'];
         const selectedValue = selectElement.value;
         //console.log("Dept Name Selected Value is: ", selectedValue);
 
-        const imageElement = document.getElementById('lil-logo');
+        // const imageElement = document.getElementById('lil-logo');
+        const imageElement = document.getElementById('logo-img-in-summary');
         //console.log('ie11 ', imageElement);
 
         const oldSrc = imageElement.src;
@@ -800,7 +806,7 @@ $product_id = $_REQUEST['product_id'];
         z-index: 5;
         border: 2px solid #005677;
         border-radius: 10px;
-        box-shadow: 0px 0px 15px -10px rgba(255, 255, 255, 1);
+        /* box-shadow: 0px 0px 15px -10px rgba(255, 255, 255, 1); */
     }
 
     .show {
