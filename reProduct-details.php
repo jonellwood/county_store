@@ -997,8 +997,8 @@ $product_id = $_REQUEST['product_id'];
         align-items: center;
 
         img {
-            width: 200px;
-            height: 200px;
+            width: 100px;
+            height: 100px;
             margin-left: auto;
             margin-right: auto;
             margin-bottom: 10px;
