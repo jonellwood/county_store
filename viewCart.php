@@ -32,27 +32,6 @@ $cart = new Cart;
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 
     <script>
-        // This function updates an item in the shopping cart back in 1989
-        // function updateCartItem(obj, id) {
-        //     // Get the current details of the item via AJAX
-        //     $.get("cartAction.php", {
-        //             action: "updateCartItem",
-        //             id: id,
-        //             qty: obj.value
-        //         },
-        //         // Catch the response and act accordingly
-        //         function(data) {
-        //             if (data == 'ok') {
-        //                 // If data is ok, reload the page
-        //                 location.reload();
-        //             } else {
-        //                 // Else alert user that the update failed
-        //                 alert('Cart update failed, please try again.');
-        //             }
-        //         });
-        // }
-
-        // this is the same function in Vanilla JS
         function updateCartItem(obj, id) {
             // Construct the URL with parameters
             const url = new URL("cartAction.php");
@@ -82,34 +61,6 @@ $cart = new Cart;
                 });
         }
 
-
-        // This function is used to update cart item comment back when Ice T was cool and Ice Cube was a rapper
-        // id: holds the ID of the item whose comment is being updated 
-        // obj: holds the new comment for the item 
-        // function updateCartItemComment(obj, id) {
-        //     // Logging the received parameters' values in console
-        //     // console.log('id: ' + id);
-        //     // console.log('comment: ' + obj);
-
-        //     // Requesting the "cartAction.php" page via AJAX
-        //     // TODO convert this to native fetch and either use the if statement or dump it
-        //     $.get("cartAction.php", {
-        //             action: "updateCartItemComment",
-        //             id: id,
-        //             comment: obj
-        //         },
-        //         // Callback that runs if the request succeeds
-        //         function(data) {
-        //             // If the response is 'ok', indicating success
-        //             if (data == 'ok') {
-        //                 // Do something (e.g. reload)
-        //                 // location.reload(); // uncomment this line to execute this logic
-        //             } else {
-        //                 // Show alert if update failed
-        //                 alert('Comment update failed, please try again');
-        //             }
-        //         })
-        //}
         function updateCartItemComment(obj, id) {
 
             const url = new URL("cartAction.php");
@@ -137,6 +88,72 @@ $cart = new Cart;
                     alert('An error occurred, please try again later.');
                 });
         }
+
+        function convertObjectToArray(obj) {
+            let resultArray = [];
+            for (let key in obj) {
+                if (typeof obj[key] === "object") {
+                    resultArray.push([key, convertObjectToArray(obj[key])]);
+                } else {
+                    resultArray.push([key, obj[key]]);
+                }
+            }
+            return resultArray;
+        }
+
+        function makeDollar(str) {
+            let amount = parseFloat(str);
+            return `$${amount.toFixed(2)}`;
+        }
+
+        function renderCheckout(cart) {
+            // console.log(cart);
+            cartArray = convertObjectToArray(cart);
+            //console.log(cartArray)
+            // let accumulatedHtml = '';
+            // let selectQuantities = {};
+            var html = '';
+            for (var i = 2; i < cartArray.length; i++) {
+                const itemEntry = cartArray[i][1];
+                //console.log("Item Entry # ", i)
+                //console.log(itemEntry)
+                var html = '';
+                html += `
+                <div>
+                    <div class="active-items">
+                        <div class="active-item" data-cartId=${itemEntry[4][1]}>
+                            <div class="item-content">
+                                <div class="item-content-inner">
+                                    <div class="image-wrapper">
+                                        <img src="${itemEntry[5][1]}" alt="${itemEntry[1][1]}" class="product-image" />
+                                    </div>
+                                    <div class="item-content-inner-inner">
+                                        <ul class="unordered-list">
+                                            <li class="product-title">${itemEntry[6][1]} - ${itemEntry[1][1]}</li>
+                                            <div class="price-block">${makeDollar(itemEntry[2][1])}</div>
+                                            <div class="content-tail">
+                                                <li>Size: ${itemEntry[12][1]}</li>
+                                                <li>Color: ${itemEntry[10][1]}</li>
+                                                <li>Qty: ${itemEntry[3][1]}</li>
+                                                <li>Dept Name: ${itemEntry[14][1]} </li>
+                                                <li class='logo-holder'>Logo: <img src=${itemEntry[13][1]} alt="logo" class="logo-pict"></li>
+                                            </div>
+                                            <div class="item-content-footer">
+                                                <button class='remove'>Delete</button> <button class='change'>Edit</button><button class='comment'>Add Comment</button>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                `
+
+                document.getElementById('items').innerHTML += html;
+            }
+        }
     </script>
 </head>
 
@@ -144,156 +161,40 @@ $cart = new Cart;
     <?php include "./components/slider.php" ?>
     <div class="spacer23"> - </div>
     <div class="container">
-        <!-- <div class="viewcart">
-            </?php
-            echo "<pre>";
-            var_dump($cart->contents());
-            echo "<pre>";
-            ?>
-        </div> -->
-        <!-- <div class="row big-row"> -->
-        <table>
-            <thead>
-                <tr>
-                    <!-- <th width="1%"></th>
-                        <th width="30%">Product</th>
-                        <th width="9%">Logo</th>
-                        <th width="5%">Color</th>
-                        <th width="5%">Size</th>
-                        <th width="10%">Price</th>
-                        <th width="10%">Quantity</th>
-                        <th width="20%">Item Sub Total</th>
-                        <th width="1%"></th> -->
-                    <th></th>
-                    <th>Product</th>
-                    <th>Logo</th>
-                    <th>Color</th>
-                    <th>Size</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Item Sub Total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-
-                if ($cart->total_items() > 0) {
-                    // get cart items from session
-                    $cartItems = $cart->contents();
-                    // var_dump($cartItems);
-                    foreach ($cartItems as $item) {
-                        $sizeSql = "SELECT size_name from uniform_orders.sizes_new WHERE size_id = $item[size_id]";
-                        $sizeStmt = $conn->prepare($sizeSql);
-                        $sizeStmt->execute();
-                        $sizeResult = $sizeStmt->get_result();
-                        while ($sizeRow = $sizeResult->fetch_assoc()) {
-                            // var_dump($sizeRow);
-
-
-                ?>
-                            <tr>
-                                <!-- <td><img src="</?php echo $proImg; ?>" alt="..." width="100px"></td> -->
-                                <td><img src="<?php echo $item["image"]; ?>" alt="..." width="100px" class="little-prod-img"></td>
-                                <td><?php echo $item["name"]; ?>
-                                    <hr> <?php echo $item["code"]; ?>
-                                </td>
-                                <td><span><img src="<?php echo $item['logo'] ?>" alt="bc logo" id="cart-logo-img">
-                                        <p class='dept-patch-info'><b>Department Name
-                                                Placement:</b> <?php echo $item["deptPatchPlace"] ?></p>
-                                    </span></td>
-                                <td><?php echo $item["color_id"] ?> </td>
-                                <!-- <td><//?php echo $item["size_id"] ?> </td> -->
-                                <td><?php echo $item["size_name"] ?> </td>
-                            <?php } ?>
-                            <td><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?>
-                            </td>
-                            <td><input class="form-control" type="number" min="1" value="<?php echo $item["qty"]; ?>" onchange="updateCartItem(this, '<?php echo $item["rowid"]; ?>')" /></td>
-                            <td><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?>
-                            </td>
-                            <td><button class="button remove" onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;" title="Remove Item"><i class="fa fa-trash" aria-hidden="true"></i>
-                                    Remove </button> </td>
-                            </tr>
-                            <tr>
-
-                                <td colspan="2"><label for "line_item_comment" id="line_item_comment" class='tiny-text'>Comment
-                                        about <?php echo $item["name"]; ?> </label></td>
-                                <td><textarea name="line_item_comment[]" id="line_item_comment" placeholder="Please enter any comments regarding the above line item" cols="50" onchange="updateCartItemComment(this.value, '<?php echo $item["rowid"]; ?>')"></textarea>
-                                </td>
-                                <td colspan=2>You said:</td>
-                                <td colspan=4><?php echo $item["comment"] ?></td>
-
-                            </tr>
-                        <?php }
-                } else { ?>
-                        <tr>
-                            <td colspan="6">
-                                <p>Your cart is empty</p>
-                            </td>
-                        <?php } ?>
-                        <?php if ($cart->total_items() > 0) { ?>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td colspan="2"><strong>Sub-Total</strong></td>
-                            <?php $subtotal = $cart->total() ?> <td colspan="2">
-                                <?php echo CURRENCY_SYMBOL . number_format($subtotal, 2); ?>
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td colspan="2"><strong>Sales Tax:</strong>
-                                <?php $sales_tax = number_format(($cart->total() * .09), 2) ?>
-                            <td colspan="2"> <?php echo CURRENCY_SYMBOL . $sales_tax; ?>
-                            </td>
-                            <!-- <td></td> -->
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td colspan="2"><strong>Cart Total:</strong></td>
-                            <td colspan="2">
-                                <strong><?php echo CURRENCY_SYMBOL . number_format(($subtotal + $sales_tax), 2) ?>
-                                </strong>
-                            </td>
-                            <!-- <td></td> -->
-                            <td></td>
-                        </tr>
-                    <?php } ?>
-            </tbody>
-        </table>
-        <div class="col mb-2">
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <!-- <a href="index.php"><button class="btn btn-block btn-secondary" type="button"><i
-                                        class="fa fa-arrow-left" aria-hidden="true"></i> Continue
-                                    Shopping </button></a> -->
-                    <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn btn-block btn-secondary" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
-                            Shopping </button></a>
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    <?php if ($cart->total_items() > 0) { ?>
-                        <a href="checkout.php"><button class="btn btn-primary" type="button"> Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
-                    <?php } ?>
-                </div>
-            </div>
-            <!-- </ /div class="alert-warning">NOTE: Cart will empty after 24 minutes of inactivity -->
+        <div id="items" class="items"></div>
+        <div class="checkout">
+            <p>Total: <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() * 1.09), 2))  ?></p>
+            <p>Total Items: <?php echo $cart->total_items() ?></p>
+            <button>Checkout</button>
         </div>
-        <!-- </div> -->
+        <!-- <div class="viewcart">
+            </?php echo "<pre>";
+            var_dump($cart->contents());
+            echo "<pre>"; ?>
+        </div> -->
+        // TODO build popover for editing each entry and updating the cart
+        // ! check to make sure the update Cart method also updates the local storage
     </div>
     </div>
+    <!-- <div> -->
+    <div class="bottom-buttons-holder">
+        <div>
+            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="button" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
+                    Shopping </button></a>
+        </div>
+        <div>
+            <?php if ($cart->total_items() > 0) { ?>
+                <a href="checkout.php"><button class="button" type="button"> Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+            <?php } ?>
+        </div>
+    </div>
+
+    <!-- </div> -->
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
+    <script>
+        renderCheckout(<?php echo $cart->serializeCart() ?>);
+    </script>
 </body>
 
 
@@ -341,28 +242,17 @@ $cart = new Cart;
     .container {
         max-width: unset !important;
         margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
         /* width: 100%; */
         /* width: 100vw; */
+        display: grid;
+        grid-template-columns: 5fr 1fr;
     }
 
-
-    table {
-        color: aliceblue;
-        margin-bottom: 20px;
-        background-color: #00000099;
-        padding: 10px;
-
-        thead tr th {
-            font-size: larger;
-            text-align: center;
-            border-bottom: 1px dotted aliceblue;
-        }
-
-        tbody tr td {
-            padding: 5px;
-        }
+    .cart-display {
+        display: grid;
+        grid-template-columns: 5fr 1fr;
     }
 
     .little-prod-img {
@@ -379,5 +269,165 @@ $cart = new Cart;
 
     .remove {
         background-color: darkred;
+    }
+
+    .comment {
+        background-color: dodgerblue;
+    }
+
+    .change {
+        background-color: green;
+    }
+
+    .items {
+        background-color: #00000080;
+        border-radius: 5px;
+    }
+
+    .active-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 100%);
+        gap: 12px;
+        color: aliceblue;
+        font-size: larger;
+        margin-bottom: 20px;
+    }
+
+    .active-item {
+        max-width: none;
+        border-bottom: 1px dotted aliceblue;
+        padding-bottom: 12px;
+    }
+
+    .item-content {
+        position: relative;
+        margin-top: 12px;
+    }
+
+    .item-content-inner {
+        width: 100%;
+        display: flex !important;
+        flex-direction: row;
+        table-layout: fixed;
+        zoom: 1;
+        border-collapse: collapse;
+    }
+
+    .item-content-inner-inner {
+        width: 100%;
+        display: flex !important;
+        flex-direction: row;
+        table-layout: fixed;
+        zoom: 1;
+        border-collapse: collapse;
+    }
+
+    .image-wrapper {
+        margin-right: 12px;
+        margin-inline-end: 12px;
+        flex-shrink: 0;
+        margin-bottom: 4px;
+    }
+
+    .product-image {
+        vertical-align: top;
+        max-width: 100%;
+        border: 0;
+        height: 180px;
+        /* width: 180px; */
+        /* aspect-ratio: auto 180 / 180; */
+    }
+
+    .item-content {
+        min-width: 0;
+        flex: auto;
+        margin-inline-end: 0;
+        margin-right: 12px;
+    }
+
+    .item-content-footer {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 12px;
+    }
+
+
+    .unordered-list {
+        display: grid;
+        column-gap: 12px;
+        grid-template-areas: "head price" "tail price";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr minmax(13ch, 20%);
+        list-style: none;
+        word-wrap: break-word;
+        margin: 0;
+        width: 100%
+    }
+
+    .product-title {
+        grid-area: head;
+        line-height: 1.3rem;
+        max-height: 2.6em;
+        font-size: x-large;
+        word-break: normal;
+    }
+
+    .price-block {
+        grid-area: price;
+        display: flex;
+        flex-flow: column;
+        align-items: end;
+        text-align: end;
+    }
+
+    .content-tail {
+        grid-area: tail;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .logo-pict {
+        width: 100px;
+        margin-left: 50px;
+        padding-top: 12px;
+        margin-right: auto;
+
+    }
+
+    .logo-holder {
+        grid-column-start: 4;
+        grid-column-end: 5;
+        grid-row-start: 2;
+        grid-row-end: 4;
+    }
+
+    .dropdown {
+
+        /* opacity: .01; */
+        max-width: 100%;
+        left: 0;
+        transition: all .1s linear;
+        line-height: 19px;
+
+    }
+
+    .bottom-buttons-holder {
+        display: flex;
+        justify-content: space-evenly;
+        /* margin-left: 10px; */
+        /* margin-right: 10px; */
+    }
+
+    .checkout {
+        background-color: #ffffff50;
+        height: fit-content;
+        border-radius: 5px;
+        padding: 12px;
+        /* padding-bottom: 12px; */
+        color: aliceblue;
+        margin-left: 10px;
+        padding-right: 20px;
+        text-align: end;
+        font-size: larger;
     }
 </style>
