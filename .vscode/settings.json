@@ -8,5 +8,5 @@
 		"titleBar.activeBackground": "#0073cf",
 		"titleBar.inactiveBackground": "#000"
 	},
-	"cSpell.words": ["producttype"]
+	"cSpell.words": ["GOBACK", "priceval", "producttype", "sizeid"]
 }

@@ -24,6 +24,7 @@ $product_id = $_REQUEST['product_id'];
 <head>
     <?php include "./components/viewHead.php" ?>
     <title>Product Details</title>
+    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <script>
         async function localStorageGetSet() {
             var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
@@ -183,7 +184,8 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
                     html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
-                    html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />
+                    html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`
+                    html += `<input type="hidden name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" />
                 <div id='color-picker-holder'>
                     <legend>Pick a Color</legend>
                     <label for="color_id" class="legend"></label>
