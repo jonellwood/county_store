@@ -18,135 +18,66 @@ $cart = new Cart;
 <head>
     <title>View Cart</title>
     <meta charset='utf-8'>
-    <!-- <link rel="stylesheet" id='test' href="berkstrap-dark.css" async> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
-
+    <link rel="stylesheet" id='test' href="berkstrap-dark.css" async>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-    </ /script src=" https://code.jquery.com/jquery-3.6.1.js">
-    </script>
+    <script src=" https://code.jquery.com/jquery-3.6.1.js"></script>
     <script>
-        // This function updates an item in the shopping cart back in 1989
-        // function updateCartItem(obj, id) {
-        //     // Get the current details of the item via AJAX
-        //     $.get("cartAction.php", {
-        //             action: "updateCartItem",
-        //             id: id,
-        //             qty: obj.value
-        //         },
-        //         // Catch the response and act accordingly
-        //         function(data) {
-        //             if (data == 'ok') {
-        //                 // If data is ok, reload the page
-        //                 location.reload();
-        //             } else {
-        //                 // Else alert user that the update failed
-        //                 alert('Cart update failed, please try again.');
-        //             }
-        //         });
-        // }
-        // this is the same function in Vanillia JS
+        // This function updates an item in the shopping cart
         function updateCartItem(obj, id) {
-            // Construct the URL with parameters
-            const url = new URL("cartAction.php");
-            url.searchParams.append("action", "updateCartItem");
-            url.searchParams.append("id", id);
-            url.searchParams.append("qty", obj.value);
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text();
-                })
-                .then(data => {
-                    if (data === 'ok') {
+            // Get the current details of the item via AJAX
+            $.get("cartAction.php", {
+                    action: "updateCartItem",
+                    id: id,
+                    qty: obj.value
+                },
+                // Catch the response and act accordingly
+                function(data) {
+                    if (data == 'ok') {
                         // If data is ok, reload the page
                         location.reload();
                     } else {
                         // Else alert user that the update failed
                         alert('Cart update failed, please try again.');
                     }
-                })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                    alert('An error occurred, please try again later.');
                 });
         }
 
 
-        // This function is used to update cart item comment back when Ice T was cool and Ice Cube was a rapper
+        // This function is used to update cart item comment
         // id: holds the ID of the item whose comment is being updated 
         // obj: holds the new comment for the item 
-        // function updateCartItemComment(obj, id) {
-        //     // Logging the received parameters' values in console
-        //     // console.log('id: ' + id);
-        //     // console.log('comment: ' + obj);
-
-        //     // Requesting the "cartAction.php" page via AJAX
-        //     // TODO convert this to native fetch and either use the if statement or dump it
-        //     $.get("cartAction.php", {
-        //             action: "updateCartItemComment",
-        //             id: id,
-        //             comment: obj
-        //         },
-        //         // Callback that runs if the request succeeds
-        //         function(data) {
-        //             // If the response is 'ok', indicating success
-        //             if (data == 'ok') {
-        //                 // Do something (e.g. reload)
-        //                 // location.reload(); // uncomment this line to execute this logic
-        //             } else {
-        //                 // Show alert if update failed
-        //                 alert('Comment update failed, please try again');
-        //             }
-        //         })
-        //}
         function updateCartItemComment(obj, id) {
+            // Logging the received parameters' values in console
+            // console.log('id: ' + id);
+            // console.log('comment: ' + obj);
 
-            const url = new URL("cartAction.php");
-            url.searchParams.append("action", "updateCartItemComment");
-            url.searchParams.append("id", id);
-            url.searchParams.append("comment", obj.value);
-
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.text(); // Parse the response body as text
-                })
-                .then(data => {
-                    if (data === 'ok') {
-                        // If data is ok, reload the page or perform another action
-                        location.reload(); // Comment this line we decide we don't want it. I hate reloads but...
+            // Requesting the "cartAction.php" page via AJAX
+            // TODO convert this to native fetch and either use the if statement or dump it
+            $.get("cartAction.php", {
+                    action: "updateCartItemComment",
+                    id: id,
+                    comment: obj
+                },
+                // Callback that runs if the request succeeds
+                function(data) {
+                    // If the response is 'ok', indicating success
+                    if (data == 'ok') {
+                        // Do something (e.g. reload)
+                        // location.reload(); // uncomment this line to execute this logic
                     } else {
+                        // Show alert if update failed
                         alert('Comment update failed, please try again');
                     }
                 })
-                .catch(error => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                    alert('An error occurred, please try again later.');
-                });
         }
     </script>
 </head>
 
 <body>
-
-    <?php include "./components/slider.php" ?>
-    <?php include "./components/viewHead.php" ?>
-    <?php include "cartSlideout.php" ?>
     <div class="container">
-        <div class="viewcart">
-            <?php
-            echo "<pre>";
-            var_dump($cart->contents());
-            echo "<pre>";
-            ?>
-        </div>
-        <!-- <div class="spacer23"> - </div> -->
-        <!-- <h1 class="cart-h1">Shopping Cart</h1> -->
+
+        <h1 class="cart-h1">Shopping Cart</h1>
         <div class="row">
             <div class="cart">
                 <div class="col-12">
@@ -167,7 +98,9 @@ $cart = new Cart;
                             </thead>
                             <tbody>
                                 <?php
-
+                                // echo "<pre>";
+                                // var_dump($cart->contents());
+                                // echo "<pre>";
                                 function processImageUrl($imageUrl, $colorName)
                                 {
                                     // Remove spaces and slashes, and convert to lowercase
@@ -287,7 +220,6 @@ $cart = new Cart;
                             </tbody>
                         </table>
                     </div>
-
                 </div>
                 <div class="col mb-2">
                     <div class="row">
@@ -304,11 +236,10 @@ $cart = new Cart;
                             <?php } ?>
                         </div>
                     </div>
-                    <!-- </ /div class="alert-warning">NOTE: Cart will empty after 24 minutes of inactivity -->
+                    <div class="alert-warning">NOTE: Cart will empty after 24 minutes of inactivity</div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 
 </body>
@@ -352,16 +283,5 @@ $cart = new Cart;
 
     .dept-patch-info {
         margin-top: 10px;
-    }
-
-    pre {
-        background-color: white !important;
-        color: black;
-
-    }
-
-    .container {
-        margin-left: auto;
-        margin-right: auto;
     }
 </style>

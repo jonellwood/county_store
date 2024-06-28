@@ -2,85 +2,70 @@
 require_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
-// init cart class
 error_log(print_r($_REQUEST, true));
+// init cart class
 require_once 'Cart.class.php';
 $cart = new Cart;
 //session_start();
 // Function to escape a given string
-
 function html_escape($string)
 {
     // Replace special characters with HTML entities
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8', true);
 }
 // set default redirect page
-$redirectURL = 'reIndex.php';
+$redirectURL = 'index.php';
 // process request based on requested action
 
 if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
-    if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['product_id'])) {
-        $product_id = filter_var($_REQUEST['product_id'], FILTER_VALIDATE_INT);
-        if (!$product_id) {
-            error_log(print_r('product_id wrong type', true));
-            $product_id = intval($product_id);
-        }
-        $name = $_REQUEST['name'];
-        $productPrice = $_REQUEST['productPrice'];
-        $itemQuantity = $_REQUEST['itemQuantity'];
-        $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
-        $code = $_REQUEST['code'];
+    if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])) {
+        $product_id = $_REQUEST['id'];
         $color_id = $_REQUEST['color_id'];
-        $price_id = $_REQUEST['size-price-id'];
-        $logoId = $_REQUEST['logo'];
-        $selectedLogo = $_REQUEST['logo-url'];
-        $deptPatchPlace = $_REQUEST['deptNamePatch'];
-        $logoFee = $_REQUEST['logoCharge'];
         $size_id = $_REQUEST['size_id'];
-
-        // $comment = strip_tags($_REQUEST['comment']);
-        $tax = (floatval($actualPrice + $logoFee) * .09);
-
-        // $nologoFeePrice = $actualPrice;
+        $comment = strip_tags($_REQUEST['comment']);
+        $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
+        $actualPrice = $_REQUEST['productPrice'];
         // $actualPrice = $_REQUEST['price'];
+        $logoFee = $_REQUEST['logoCharge'];
+        $nologoFeePrice = (floatval($actualPrice) - $logoFee);
+        $tax = (floatval($nologoFeePrice + $logoFee) * .09);
+        $selectedLogo = $_REQUEST['logo'];
+        $deptPatchPlace = $_REQUEST['deptNamePatch'];
+        $itemQuantity = $_REQUEST['itemQuantity'];
 
         // fetch details from the database
-        // $sql = "SELECT size_id from prices WHERE price_id=?";
-        // $stmt = $conn->prepare($sql);
-        // $stmt->bind_param("i", $db_id);
-        // $db_id = $price_id;
-        // $stmt->execute();
-        // $result = $stmt->get_result();
-        // $productRow = $result->fetch_assoc();
+        $sql = "SELECT * from products WHERE product_id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $db_id);
+        $db_id = $product_id;
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $productRow = $result->fetch_assoc();
 
         $itemData = array(
-            'id' => $product_id,
-            'name' => $name,
-            'price' => $productPrice,
-            'qty' => $itemQuantity,
-            'add_item_uid' => $add_item_uid,
-            // 'image' => $productRow['image'],
-            'name' => $name,
-            'code' => $code,
-            // 'nologoPrice' => $actualPrice,
+            'id' => $productRow['product_id'],
+            'image' => $productRow['image'],
+            'name' => $productRow['name'],
+            'code' => $productRow['code'],
+            'price' => $actualPrice,
+            'nologoPrice' => $nologoFeePrice,
             'logoFee' => $logoFee,
             'tax' => $tax,
-            'price_id' => $price_id,
+            'qty' => $itemQuantity,
             'color_id' => $color_id,
             'size_id' => $size_id,
-            // 'comment' => $comment,
+            'comment' => $comment,
+            'add_item_uid' => $add_item_uid,
             'logo' => $selectedLogo,
             'deptPatchPlace' => $deptPatchPlace
         );
 
         // insert item into cart
         $insertItem = $cart->insert($itemData);
-        error_log(print_r($insertData, true));
-        if (!$insertItem) {
-            error_log('Failed to insert item into cart');
-        } else {
-            error_log('Successfully inserted item into cart with ID: ' . $insertItem);
-        }
+        //echo "<script>window.cartData = " . $cart->serializeCart() . ";</script>";
+        error_log(print_r($itemData, true));
+        // redirect to cart page
+        // $redirectURL = $insertItem ? 'viewCart.php' : 'index.php';
         $redirectURL = $insertItem ? $_SERVER['HTTP_REFERER'] : 'index.php';
     } elseif ($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])) {
         // update item data in cart

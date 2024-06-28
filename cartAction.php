@@ -2,70 +2,76 @@
 require_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
-error_log(print_r($_REQUEST, true));
 // init cart class
+error_log(print_r($_REQUEST, true));
 require_once 'Cart.class.php';
 $cart = new Cart;
 //session_start();
 // Function to escape a given string
+
 function html_escape($string)
 {
     // Replace special characters with HTML entities
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8', true);
 }
 // set default redirect page
-$redirectURL = 'index.php';
+$redirectURL = 'reIndex.php';
 // process request based on requested action
 
 if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
-    if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['id'])) {
-        $product_id = $_REQUEST['id'];
-        $color_id = $_REQUEST['color_id'];
-        $size_id = $_REQUEST['size_id'];
-        $comment = strip_tags($_REQUEST['comment']);
-        $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
-        $actualPrice = $_REQUEST['productPrice'];
-        // $actualPrice = $_REQUEST['price'];
-        $logoFee = $_REQUEST['logoCharge'];
-        $nologoFeePrice = (floatval($actualPrice) - $logoFee);
-        $tax = (floatval($nologoFeePrice + $logoFee) * .09);
-        $selectedLogo = $_REQUEST['logo'];
-        $deptPatchPlace = $_REQUEST['deptNamePatch'];
+    if ($_REQUEST['action'] == 'addToCart' && !empty($_REQUEST['product_id'])) {
+        $product_id = filter_var($_REQUEST['product_id'], FILTER_VALIDATE_INT);
+        if (!$product_id) {
+            error_log(print_r('product_id wrong type', true));
+            $product_id = intval($product_id);
+        }
+        $name = $_REQUEST['name'];
+        $productPrice = $_REQUEST['productPrice'];
         $itemQuantity = $_REQUEST['itemQuantity'];
+        $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
+        $code = $_REQUEST['code'];
+        $color_id = $_REQUEST['color_id'];
+        $price_id = $_REQUEST['size-price-id'];
+        $logoId = $_REQUEST['logo'];
+        $selectedLogo = $_REQUEST['logo-url'];
+        $deptPatchPlace = $_REQUEST['deptNamePatch'];
+        $logoFee = $_REQUEST['logoCharge'];
+        $size_id = $_REQUEST['size_id'];
+        $size_name = $_REQUEST['size_name'];
+        $image = $_REQUEST['image-url'];
+        // $comment = strip_tags($_REQUEST['comment']);
+        $tax = (floatval($actualPrice + $logoFee) * .09);
 
-        // fetch details from the database
-        $sql = "SELECT * from products WHERE product_id=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("i", $db_id);
-        $db_id = $product_id;
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $productRow = $result->fetch_assoc();
 
         $itemData = array(
-            'id' => $productRow['product_id'],
-            'image' => $productRow['image'],
-            'name' => $productRow['name'],
-            'code' => $productRow['code'],
-            'price' => $actualPrice,
-            'nologoPrice' => $nologoFeePrice,
+            'id' => $product_id,
+            'name' => $name,
+            'price' => $productPrice,
+            'qty' => $itemQuantity,
+            'add_item_uid' => $add_item_uid,
+            'image' => $image,
+            'name' => $name,
+            'code' => $code,
+            // 'nologoPrice' => $actualPrice,
             'logoFee' => $logoFee,
             'tax' => $tax,
-            'qty' => $itemQuantity,
+            'price_id' => $price_id,
             'color_id' => $color_id,
             'size_id' => $size_id,
-            'comment' => $comment,
-            'add_item_uid' => $add_item_uid,
+            'size_name' => $size_name,
+            // 'comment' => $comment,
             'logo' => $selectedLogo,
             'deptPatchPlace' => $deptPatchPlace
         );
 
         // insert item into cart
         $insertItem = $cart->insert($itemData);
-        //echo "<script>window.cartData = " . $cart->serializeCart() . ";</script>";
-        error_log(print_r($itemData, true));
-        // redirect to cart page
-        // $redirectURL = $insertItem ? 'viewCart.php' : 'index.php';
+        error_log(print_r($insertData, true));
+        if (!$insertItem) {
+            error_log('Failed to insert item into cart');
+        } else {
+            error_log('Successfully inserted item into cart with ID: ' . $insertItem);
+        }
         $redirectURL = $insertItem ? $_SERVER['HTTP_REFERER'] : 'index.php';
     } elseif ($_REQUEST['action'] == 'updateCartItem' && !empty($_REQUEST['id'])) {
         // update item data in cart

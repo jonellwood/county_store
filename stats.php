@@ -1,4 +1,11 @@
 <?php
+/*
+Author: Jon Ellwood
+Organization: Berkeley County IT Department
+Last Updated: 06/25/2024
+Purpose: Component file to load some products onto the home page for the user to see when first going to index.php. In the past it has loaded the 4 best selling items and had loaded 4 "random" items just for a change of scenery. 
+Includes:   config.php for database connection
+*/
 
 // session_start();
 
@@ -6,29 +13,29 @@ require_once 'config.php';
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 
-$idsql = "SELECT products.product_id, products.name, COUNT(order_details.product_id) AS count 
-FROM (
-    SELECT FLOOR(RAND() * 200) + 1 AS random_id 
-    FROM order_details
-    UNION
-    SELECT FLOOR(RAND() * 200) + 1 AS random_id 
-    FROM order_details
-    UNION
-    SELECT FLOOR(RAND() * 200) + 1 AS random_id 
-    FROM order_details
-    UNION
-    SELECT FLOOR(RAND() * 200) + 1 AS random_id 
-    FROM order_details
-) AS random_products
-LEFT JOIN products ON products.product_id = random_products.random_id
-LEFT JOIN order_details ON order_details.product_id = random_products.random_id
-WHERE products.isactive = 1
-GROUP BY products.product_id, products.name
-ORDER BY RAND()
-LIMIT 4";
+// $idsql = "SELECT products_new.product_id, products_new.name, COUNT(order_details.product_id) AS count 
+// FROM (
+//     SELECT FLOOR(RAND() * 200) + 1 AS random_id 
+//     FROM order_details
+//     UNION
+//     SELECT FLOOR(RAND() * 200) + 1 AS random_id 
+//     FROM order_details
+//     UNION
+//     SELECT FLOOR(RAND() * 200) + 1 AS random_id 
+//     FROM order_details
+//     UNION
+//     SELECT FLOOR(RAND() * 200) + 1 AS random_id 
+//     FROM order_details
+// ) AS random_products
+// LEFT JOIN products_new ON products_new.product_id = random_products.random_id
+// LEFT JOIN order_details ON order_details.product_id = random_products.random_id
+
+// GROUP BY products_new.product_id, products_new.name
+// ORDER BY RAND()
+// LIMIT 4";
 
 
-// $idsql = "SELECT order_details.product_id, products.name, COUNT(*) as count FROM order_details JOIN products on products.product_id=order_details.product_id WHERE isactive = 1 GROUP BY product_id ORDER BY count DESC LIMIT 4";
+$idsql = "SELECT order_details.product_id, products_new.name, COUNT(*) as count FROM order_details JOIN products_new on products_new.product_id=order_details.product_id GROUP BY product_id order by count DESC LIMIT 4";
 $idstmt = $conn->prepare($idsql);
 $idstmt->execute();
 $idresult = $idstmt->get_result();
@@ -57,7 +64,7 @@ if ($idresult->num_rows > 0) {
 
 
         $id = $product['product_id'];
-        $prosql = "SELECT * from products where product_id = $id";
+        $prosql = "SELECT * from products_new where product_id = $id";
         $prostmt = $conn->prepare($prosql);
         $prostmt->execute();
 
@@ -68,20 +75,20 @@ if ($idresult->num_rows > 0) {
                 // $c++;
     ?>
                 <div class="card" id="featured-card">
-                    <img src="<?php echo $proImage; ?>" alt="product name" class="card-img-top">
-                    <div class="card-body featured">
-                        <p class="card-title"><?php echo $prorow["name"]; ?></p>
-                        <p class="card-subtitle mb-2 ">Starting at:
-                            <?php echo CURRENCY_SYMBOL . $prorow["price"] . ' ' . CURRENCY; ?></p>
-                        <div class="button-holder">
-                            <a href="product-details.php?product_id=<?php echo $prorow["product_id"]; ?>" class="btn btn-info">Details</a>
+                    <a href="product-details.php?product_id=<?php echo $prorow["product_id"]; ?>">
+                        <img src="<?php echo $proImage; ?>" alt="product name" class="card-img-top">
+                        <div class="card-body featured">
+                            <p class="card-title"><?php echo $prorow["name"]; ?></p>
+                            <!-- <p class="card-subtitle mb-2 ">Starting at:
+                                </?php echo CURRENCY_SYMBOL . $prorow["price"] . ' ' . CURRENCY; ?></p> -->
+                            <!-- <div class="button-holder">
+                        </div> -->
                         </div>
-                    </div>
-                    <p class="hot-item"><img alt="Custom badge" src="https://img.shields.io/badge/<?php echo $felist[$c]['count'] ?>-Ordered-red?style=social&logo=internetcomputer">
-                    </p>
+                        <p class="hot-item"><img alt="Custom badge" src="https://img.shields.io/badge/<?php echo $felist[$c]['count'] ?>-Ordered-red?style=social&logo=Clubhouse">
+                        </p>
+                    </a>
                     <!-- <p class="hot-item"><?php echo $felist[$c]['count'] ?> ordered so far </p> -->
                 </div>
-
 
     <?php
             }
@@ -92,8 +99,6 @@ if ($idresult->num_rows > 0) {
     }
     ?>
 </div>
-
-
 
 <style>
     body {
@@ -180,15 +185,20 @@ if ($idresult->num_rows > 0) {
         font-weight: bolder;
         position: absolute;
         z-index: 3;
-        left: 0;
-        top: 0;
+        /* left: 0; */
+        right: 0;
+        /* top: 0; */
+        bottom: 0;
         color: #DB4437;
         /* font-size: 2em; */
-        transform: rotate(-15deg);
+        /* transform: rotate(-15deg); */
+        transform: rotate(-3deg);
         background-color: #00000030;
         margin: 0;
         padding: 0;
         /* margin-top: 25px; */
+        margin-bottom: 55px;
+
     }
 
     .hot-item img {
@@ -216,10 +226,27 @@ if ($idresult->num_rows > 0) {
     .card-title,
     .card-subtitle {
         color: white;
+        font-size: smaller;
+        /* text-transform: uppercase; */
+    }
+
+    .card-title {
+        display: flex;
+        flex-wrap: nowrap;
     }
 
     .card-body {
         display: grid;
         align-content: end;
+    }
+
+    .card {
+
+        height: fit-content;
+    }
+
+
+    .card:hover {
+        box-shadow: 1px 1px 11px 1px rgba(0, 85, 119, 1);
     }
 </style>
