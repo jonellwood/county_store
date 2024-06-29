@@ -27,7 +27,7 @@ $cart = new Cart;
         return;
     }
     getCartFromLocalStorage();
-    // helper function for comparing arrays of carts ... that I dont think I actually need now.
+    // helper function for comparing arrays of carts ... that I don't think I actually need now.
     function findItemByUid(array, uid) {
         return array.find(item => item.add_item_uid === uid);
     }
@@ -296,7 +296,10 @@ $cart = new Cart;
                 </tbody>
             </table>
         </div>
-        <a href="./viewCart.php"><button class="cart-btn btn-primary">Go To Cart</button></a>
+        <div class="slideoutButtonsHolder">
+            <a href="./viewCart.php"><button class="cart-btn btn-primary">Go To Cart</button></a>
+            <a href="./checkout.php"><button class="cart-btn btn-primary">Go to Checkout</button></a>
+        </div>
 
     </div>
 </div>
@@ -426,9 +429,10 @@ $cart = new Cart;
         color: rgba(6, 6, 6, 1);
     }
 
-    /* #logo-img {
-    width: 50px;
-
-    transition: all .2s ease-in-out;
-} */
+    .slideoutButtonsHolder {
+        display: flex;
+        justify-content: space-evenly;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 </style>

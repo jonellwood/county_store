@@ -1019,6 +1019,10 @@ $product_id = $_REQUEST['product_id'];
         backdrop-filter: blur(5px);
     }
 
+    @view-transition {
+        navigation: auto;
+    }
+
     /* @-webkit-keyframes fadein {
         from {
             bottom: 0;

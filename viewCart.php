@@ -7,14 +7,14 @@ Purpose: View the items in the users cart, add comments if needed, and make chan
 Includes:    slider.php, viewHead.php, cartSlideout.php, footer.php
 */
 
-session_start();
+// session_start();
 
-if ($_SESSION['GOBACK'] == '') {
-    $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
-}
-require_once 'config.php';
-$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-    or die('Could not connect to the database server' . mysqli_connect_error());
+// if ($_SESSION['GOBACK'] == '') {
+//     $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
+// }
+// require_once 'config.php';
+// $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
+//     or die('Could not connect to the database server' . mysqli_connect_error());
 // init cart class
 include_once 'Cart.class.php';
 $cart = new Cart;
@@ -106,6 +106,10 @@ $cart = new Cart;
             return `$${amount.toFixed(2)}`;
         }
 
+        function renderEdit(cartId) {
+            console.log("Cart Item to be edited is: ", cartId)
+        }
+
         function renderCheckout(cart) {
             // console.log(cart);
             cartArray = convertObjectToArray(cart);
@@ -139,7 +143,7 @@ $cart = new Cart;
                                                 <li class='logo-holder'>Logo: <img src=${itemEntry[13][1]} alt="logo" class="logo-pict"></li>
                                             </div>
                                             <div class="item-content-footer">
-                                                <button class='remove'>Delete</button> <button class='change'>Edit</button><button class='comment'>Add Comment</button>
+                                                <button class='remove'>Delete</button> <button class='change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button><button class='comment'>Add Comment</button>
                                             </div>
                                         </ul>
                                     </div>
@@ -163,6 +167,7 @@ $cart = new Cart;
     <div class="container">
         <div id="items" class="items"></div>
         <div class="checkout">
+            <!-- <p>Total: </?php echo CURRENCY_SYMBOL . (number_format(($cart->total() * 1.09), 2))  ?></p> -->
             <p>Total: <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() * 1.09), 2))  ?></p>
             <p>Total Items: <?php echo $cart->total_items() ?></p>
             <button>Checkout</button>
@@ -172,8 +177,8 @@ $cart = new Cart;
             var_dump($cart->contents());
             echo "<pre>"; ?>
         </div> -->
-        // TODO build popover for editing each entry and updating the cart
-        // ! check to make sure the update Cart method also updates the local storage
+        <!-- // TODO build popover for editing each entry and updating the cart
+        // ! check to make sure the update Cart method also updates the local storage -->
     </div>
     </div>
     <!-- <div> -->
@@ -188,12 +193,69 @@ $cart = new Cart;
             <?php } ?>
         </div>
     </div>
+    <div id="edit-cart-item" popover=manual>
+        <button class="close-btn" popovertarget="edit-cart-item" popovertargetaction="hide">
+            <span aria-hidden=”true”>❌</span>
+            <span class="sr-only">Close</span>
+        </button>
+        <div id="cart-item-edit-details">
+            <p>Make changes to the <mark class="remove">color</mark> , <mark class="change">size</mark>, <mark class='comment'>quantity</mark> or <mark class="gregSucks">logo</mark> for this cart item.</p>
+            <br>
+            <form>
+                <div class="editCartItemDiv">
+                    <fieldset>
+                        <label for="editQty">Qty:
+                            <input type="number" name="quantity" id="editQty" min="1" max="100" />
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="editColor">Color:
+                            <select name="color" id="editColor">
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="editSize" name="size" id="editSize">Size:
+                            <select name="size" id="editSize">
+                                <option value="Skinny">"Skinny"</option>
+                                <option value="Chubby">"Chubby"</option>
+                                <option value="Chunky">"Chunky"</option>
+                                <option value="Fatty">"Fatty"</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <label for="editLogo" name="logo" id="editLogo">Logo:
+                            <select name="logo" id="editLogo">
+                                <option value="Good Logo">Good Logo</option>
+                                <option value="Bad Logo">Bad Logo</option>
+                                <option value="Silly Logo">Silly Logo</option>
+                                <option value="Stolen Logo">Stolen Logo</option>
+                                <option value="Google Logo">Google Logo</option>
+                            </select>
+                        </label>
+                    </fieldset>
+                </div>
+            </form>
+            <button type="button" onclick="updateCart()">Update</button>
+            <!-- This is where the details for the cart item will render -->
+            <div id="edit-cart-item-popover"></div>
+        </div>
+
+    </div>
 
     <!-- </div> -->
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
     <script>
         renderCheckout(<?php echo $cart->serializeCart() ?>);
+
+        function updateCart() {
+            alert('Updating Cart');
+        }
     </script>
 </body>
 
@@ -206,6 +268,10 @@ $cart = new Cart;
 
     .tiny-text {
         font-size: small;
+    }
+
+    .fake_CSS_for_testing {
+        font-size: 1000px;
     }
 
     .alert-warning {
@@ -277,6 +343,10 @@ $cart = new Cart;
 
     .change {
         background-color: green;
+    }
+
+    .gregSucks {
+        background-color: yellow;
     }
 
     .items {
@@ -429,5 +499,36 @@ $cart = new Cart;
         padding-right: 20px;
         text-align: end;
         font-size: larger;
+    }
+
+    #edit-cart-item {
+        width: 40%;
+        height: 35%;
+        /* background-color: hsl(0, 0%, 100%); */
+        background-color: #888fa9;
+        color: hsl(224, 10%, 23%);
+        /* margin-top: 10em; */
+        padding: 50px;
+        margin-left: 40%;
+        border: 5px solid hsl(224, 10%, 23%);
+
+        mark {
+            border-radius: 5px;
+            padding: 2px;
+            font-weight: bold;
+        }
+    }
+
+    .editCartItemDiv {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    ::backdrop {
+        backdrop-filter: blur(3px);
+    }
+
+    @view-transition {
+        navigation: auto;
     }
 </style>
