@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 // init cart class
@@ -15,7 +16,7 @@ function html_escape($string)
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8', true);
 }
 // set default redirect page
-$redirectURL = 'reIndex.php';
+$redirectURL = 'index.php';
 // process request based on requested action
 
 if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
@@ -31,11 +32,14 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
         $code = $_REQUEST['code'];
         $color_id = $_REQUEST['color_id'];
+        $color_name = $_REQUEST['color_name'];
         $price_id = $_REQUEST['size-price-id'];
         $logoId = $_REQUEST['logo'];
         $selectedLogo = $_REQUEST['logo-url'];
-        $deptPatchPlace = $_REQUEST['deptNamePatch'];
+        $deptPatchPlace = $_REQUEST['deptPatchPlace'];
         $logoFee = $_REQUEST['logoCharge'];
+        $logo_upCharge = $_REQUEST['logo_upCharge'];
+        $logoFee = ($logoFee + $logo_upCharge);
         $size_id = $_REQUEST['size_id'];
         $size_name = $_REQUEST['size_name'];
         $image = $_REQUEST['image-url'];
@@ -57,6 +61,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'tax' => $tax,
             'price_id' => $price_id,
             'color_id' => $color_id,
+            'color_name' => $color_name,
             'size_id' => $size_id,
             'size_name' => $size_name,
             // 'comment' => $comment,
@@ -77,13 +82,27 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         // update item data in cart
         $itemData = array(
             'rowid' => $_REQUEST['id'],
-            'qty' => $_REQUEST['qty']
+            'color_id' => $_REQUEST['color_id'], // this value is actually the string of the name .... but here we are ..
+            'color_name' => $_REQUEST['color_name'],
+            'size_id' => $_REQUEST['size_id'],
+            'size_name' => $_REQUEST['size_name'],
+            'logo' => $_REQUEST['logo'],
+            'deptPatchPlace' => $_REQUEST['deptPatchPlace'],
+            'price_id' => $_REQUEST['price_id'],
+            'price' => $_REQUEST['price'],
+            'logoFee' => $_REQUEST['logoFee'],
+            'qty' => $_REQUEST['qty'],
+
         );
         $updateItem = $cart->update($itemData);
-
+        error_log(print_r($updateItem, true));
         // return status
-        echo $updateItem ? 'ok' : 'err';
-        die;
+        // $redirectURL = $updateItem ? $_SERVER['HTTP_REFERER'] : 'index.php';
+        $redirectURL = $updateItem ? 'viewCart.php' : 'index.php';
+        // echo $updateItem ? 'ok' : 'err';
+        header("Location: $redirectURL");
+        exit;
+
         // if it all goes to hell delete from here down to the next elseif
         // this is going to add a comment to the line item 
     } elseif ($_REQUEST['action'] == 'updateCartItemComment' && !empty($_REQUEST['id'])) {
@@ -100,8 +119,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $deleteItem = $cart->remove($_REQUEST['id']);
 
         // redirect
-        //$redirectURL = 'viewCart.php';
-        $redirectURL = $_SERVER['HTTP_REFERER'];
+        $redirectURL = 'viewCart.php';
+        //$redirectURL = $_SERVER['HTTP_REFERER'];
     } elseif ($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0) {
         // $redirectURL = 'checkout.php';
         $redirectURL = $_SERVER['HTTP_REFERER'];

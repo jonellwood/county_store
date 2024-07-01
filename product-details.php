@@ -185,6 +185,7 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="action" id="action" value="addToCart" />`
                     html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
                     html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
+                    html += `<input type="hidden" name="color_name" id="color_name" value="${data['color_data'][0].color}" />`
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
                     html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`
                     html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`
@@ -195,7 +196,7 @@ $product_id = $_REQUEST['product_id'];
                     <select title="color_id" name="color_id" id="color_id" onchange="updateProductImage(this.value)">
             `;
                     for (var i = 0; i < data['color_data'].length; i++) {
-                        html += `<option id="${data['color_data'][i].color}" value="${data['color_data'][i].color}" data-hex="${data['color_data'][i].p_hex}">${data['color_data'][i].color}</option>`;
+                        html += `<option id="${data['color_data'][i].color}" value="${data['color_data'][i].color}" data-hex="${data['color_data'][i].p_hex}" data-colorname="${data['color_data'][i].color}">${data['color_data'][i].color}  </option>`;
                     }
                     html += `
                     </select>
@@ -240,8 +241,8 @@ $product_id = $_REQUEST['product_id'];
                         </div>
                         <div class="dept-name-patch-holder">
                             <legend>Dept Name</legend>
-                            <label for="deptNamePatch"><label>
-                            <select title="deptNamePatch" name="deptNamePatch" id="deptNamePatch" onchange="updateLogoFeeAddOn(this.value)">
+                            <label for="deptPatchPlace"><label>
+                            <select title="deptPatchPlace" name="deptPatchPlace" id="deptPatchPlace" onchange="updateLogoFeeAddOn(this.value)">
                                 <option value='No Dept Name' id='p1'>No Dept Name</option>
                                 <option value='Below Logo' selected id='p2'>Below Logo</option>
                                 <option value='Left Sleeve' id='p3'>Left Sleeve</option>
@@ -351,8 +352,11 @@ $product_id = $_REQUEST['product_id'];
         }
         // the function updateColorImage takes the value from the above function and updates the box shadow around the product image
         function updateColorImage(val) {
-            // console.log(val)
+            console.log(val)
             var el = document.getElementById(val);
+            console.log(el)
+            var hiddenColorNameInput = document.getElementById('color_name');
+            hiddenColorNameInput.value = el.dataset.colorname;
             var hexVal = el.dataset.hex;
             var rgbColor = hexToRgb(hexVal);
             var imageHolder = document.getElementById('product-image-holder')
@@ -409,7 +413,7 @@ $product_id = $_REQUEST['product_id'];
         }
 
         function disableSelectDepName() {
-            var select = document.getElementById('deptNamePatch')
+            var select = document.getElementById('deptPatchPlace')
             select.attributes.add('disabled')
         }
     </script>
@@ -516,7 +520,7 @@ $product_id = $_REQUEST['product_id'];
 
 
     function handleDeptNamePatch() {
-        const selectElement = document.getElementById('deptNamePatch');
+        const selectElement = document.getElementById('deptPatchPlace');
         const selectedValue = selectElement.value;
         //console.log("Dept Name Selected Value is: ", selectedValue);
 

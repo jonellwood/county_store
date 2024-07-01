@@ -117,9 +117,34 @@ class Cart
                 if (isset($item['price'])) {
                     $item['price'] = (float) $item['price'];
                 }
+                // prep the log fee
+                if (isset($item['logoFee'])) {
+                    $item['logoFee'] = (float) $item['logoFee'];
+                }
                 // product id and name should stay the same
                 foreach (array_diff($keys, array('id', 'name')) as $key) {
                     $this->cart_contents[$item['rowid']][$key] = $item[$key];
+                }
+
+                // if (isset($item['logo'])) {
+                //     $this->cart_contents[$item['rowid']]['logo'] = $item['logo'];
+                // }
+                // if (isset($item['color_id'])) {
+                //     $this->cart_contents[$item['rowid']]['color_id'] = $item['color_id'];
+                // }
+                // if (isset($item['size_id'])) {
+                //     $this->cart_contents[$item['rowid']]['size_id'] = $item['size_id'];
+                // }
+                // if (isset($item['size_name'])) {
+                //     $this->cart_contents[$item['rowid']]['size_name'] = $item['size_name'];
+                // }
+                // if (isset($item['deptPatchPlace'])) {
+                //     $this->cart_contents[$item['rowid']]['deptPatchPlace'] = $item['deptPatchPlace'];
+                // }
+                foreach (['logo', 'color_id', 'size_id', 'size_name', 'deptPatchPlace', 'price_id', 'color_name'] as $field) {
+                    if (isset($item[$field])) {
+                        $this->cart_contents[$item['rowid']][$field] = $item[$field];
+                    }
                 }
                 // save cart data
                 $this->save_cart();

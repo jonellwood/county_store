@@ -13,6 +13,7 @@ Includes:   Cart.class.php is to initialize a Cart Object for users shopping ses
 
 */
 require_once "config.php";
+
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 

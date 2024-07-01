@@ -1,6 +1,7 @@
 <?php
 //session_start();
 include_once "config.php";
+
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 
@@ -249,7 +250,10 @@ $cart = new Cart;
                                 <td><?php echo $item["name"]; ?></td>
                                 <td><?php echo $item["qty"]; ?> </td>
                                 <td class='a-right'><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> </td>
-                                <td class='a-right'><i class="fa fa-trash" aria-hidden="true" onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;" title="Remove Item"></i></td>
+                                <!-- <td class='a-right'><i class="fa fa-trash" aria-hidden="true" onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;" title="Remove Item"></i></td> -->
+                                <td class='a-right'>
+                                    <p aria-hidden="true" onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id=<?php echo $item["rowid"]; ?>':false;" title="Remove Item">🗑️</p>
+                                </td>
                             </tr>
                         <?php }
                     } else { ?>

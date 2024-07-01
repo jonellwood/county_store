@@ -8,8 +8,10 @@ Includes:   config.php for database connection
 
 */
 require_once "config.php";
-// $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-//     or die('Could not connect to the database server' . mysqli_connect_error());
+
+
+$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
+    or die('Could not connect to the database server' . mysqli_connect_error());
 function getDatabaseConnection($host, $user, $password, $dbname)
 {
     $conn = new mysqli($host, $user, $password, $dbname);

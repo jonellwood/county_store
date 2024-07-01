@@ -7,14 +7,14 @@ Purpose: View the items in the users cart, add comments if needed, and make chan
 Includes:    slider.php, viewHead.php, cartSlideout.php, footer.php
 */
 
-// session_start();
+session_start();
 
-// if ($_SESSION['GOBACK'] == '') {
-//     $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
-// }
-// require_once 'config.php';
-// $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
-//     or die('Could not connect to the database server' . mysqli_connect_error());
+if ($_SESSION['GOBACK'] == '') {
+    $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
+}
+require_once 'config.php';
+$conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
+    or die('Could not connect to the database server' . mysqli_connect_error());
 // init cart class
 include_once 'Cart.class.php';
 $cart = new Cart;
@@ -31,13 +31,175 @@ $cart = new Cart;
 
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 
+
     <script>
+        function getCartItem(id) {
+            const cart = <?php echo $cart->serializeCart(); ?>;
+            const cartItem = cart[id];
+            if (cartItem) {
+                return cartItem;
+            } else {
+                console.error("Cart can not be retrieved")
+            }
+        }
+
+        function updateSizeAndPriceData(event) {
+            var selectElement = event.target;
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+            var hiddenPriceIdInput = document.getElementById('price_id')
+            hiddenPriceIdInput.value = selectedOption.getAttribute('data-priceid');
+
+            var hiddenPriceInput = document.getElementById('price')
+            hiddenPriceInput.value = selectedOption.getAttribute('data-price');
+
+            var hiddenSizeNameInput = document.getElementById('size_name')
+            hiddenSizeNameInput.value = selectedOption.getAttribute('data-sizename');
+
+
+        }
+
+        function updateColorData(event) {
+            var selectElement = event.target;
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+            var hiddenColorIdInput = document.getElementById('color_id')
+            hiddenColorIdInput.value = selectedOption.getAttribute('data-colorid');
+
+            var hiddenColorNameInput = document.getElementById('color_name')
+            hiddenColorNameInput.value = selectedOption.getAttribute('data-colorname');
+        }
+
+        function updateLogo(val) {
+            var hiddenLogoInput = document.getElementById('logo')
+            hiddenLogoInput.value = val;
+        }
+
+        function updateDeptPatch(val) {
+            var hiddenDeptInput = document.getElementById('deptPatchPlace')
+            var hiddenLogoFeeInput = document.getElementById('logoFee')
+            hiddenDeptInput.value = val;
+            if (val == 'Left Sleeve') {
+                hiddenLogoFeeInput.value = parseFloat(10.00)
+            } else {
+                hiddenLogoFeeInput.value = parseFloat(5.00)
+            }
+        }
+
+        function getCartItemOptions(id, cartItem) {
+            fetch(`./fetchProductDetails.php?id=${id}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error status: ${response.status}`);
+                    }
+                    return response.json();
+
+                })
+                .then((data) => {
+                    console.log('product-data-for-cart-item');
+                    console.log(data);
+                    //return data;
+                    var html = '';
+                    html += `
+                    <form action='cartAction.php' method='post' id='editCartItem'>
+                    <div class="editCartItemDiv">
+                        <input type='hidden' name='id' value='${cartItem.rowid}' />
+                        <input type='hidden' name='action' value='updateCartItem' />
+                        <input type='hidden' name='color_id' id='color_id' value='${cartItem.color_id}' />
+                        <input type='hidden' name='color_name' id='color_name' value='' />
+                        <input type='hidden' name='size_id' id='size_id' value='${cartItem.size_id}' />
+                        <input type='hidden' name='size_name' id='size_name' value='${cartItem.size_name}' />
+                        <input type='hidden' name='logo' id='logo' value='${cartItem.logo}' />
+                        <input type='hidden' name='deptPatchPlace' id='deptPatchPlace' value='${cartItem.deptPatchPlace}' />
+                        <input type='hidden' name='price_id' id='price_id' value='${cartItem.price_id}' />
+                        <input type='hidden' name='price' id='price' value='${cartItem.price}' />
+                        <input type='hidden' name='logoFee' id='logoFee' value=${cartItem.logoFee} /> 
+
+                        <fieldset>
+                        <label for='editSize'><mark class='change'>Edit Size</mark></label>
+                        <select name='size_id' id='editSize' onchange='updateSizeAndPriceData(event)'>
+                            `;
+                    for (var i = 0; i < data['price_data'].length; i++) {
+                        var isSelected = cartItem.size_id == data['price_data'][i].size_id ? 'selected' : '';
+
+                        html += `
+                                <option value="${data['price_data'][i].size_id}" ${isSelected === 'selected'? 'selected' : ''} data-priceid=${data['price_data'][i].price_id} data-sizename="${data['price_data'][i].size_name}" data-price=${data['price_data'][i].price}>
+                                    ${data['price_data'][i].size_name}
+                                </option>
+                            `;
+                    }
+                    html += `
+                        </select>
+                        </fieldset>
+                        <fieldset>
+                        <label for='editSize'><mark class='remove'>Edit color</mark></label>
+                        <select name='color_id' id='editColor' onchange='updateColorData(event)'>
+                        `;
+                    for (var j = 0; j < data['color_data'].length; j++) {
+                        var isSelected = cartItem.color_id == data['color_data'][j].color ? 'selected' : '';
+
+                        html += `
+                                <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color}">
+                                    ${data['color_data'][j].color}
+                                </option>
+                            `;
+                    }
+                    html += `
+                        </select>
+                        </fieldset>
+                        <fieldset>
+                        <label for='editLogo'><mark class='gregSucks'>Edit Logo</mark></label>
+                        <select name='logo' id='editLogo' onchange='updateLogo(this.value)'>
+                    `;
+                    for (var k = 0; k < data['logo_data'].length; k++) {
+                        var isSelected = cartItem.logo.replace(/_NO\.png$/, '.png') == data['logo_data'][k].image ? 'selected' : '';
+                        html += `
+                            <option value="${data['logo_data'][k].image}" ${isSelected === 'selected'? 'selected' : ''}>
+                                ${data['logo_data'][k].logo_name}
+                            </option>
+                            `;
+                    }
+                    html += `
+                        </select>
+                        </fieldset>
+                        <fieldset>
+                            <label for='deptPatchPlace'><mark class='sharkWreck'>Edit Dept Name</mark></label>
+                            <select name='deptPatchPlace' id='deptPatchPlace' onchange='updateDeptPatch(this.value)'>
+                                <option value='No Dept Name' id='p1' ${cartItem.deptPatchPlace === 'No Dept Name'? 'selected' : ''}>No Dept Name</option>
+                                <option value='Below Logo' id='p2' ${cartItem.deptPatchPlace === 'Below Logo'? 'selected' : ''}>Below Logo</option>
+                                <option value='Left Sleeve' id='p3' ${cartItem.deptPatchPlace === 'Left Sleeve'? 'selected' : ''}>Left Sleeve</option>
+                            </select>
+                        </fieldset>
+
+                        <fieldset>
+                        <label for='editQty'><mark class='comment'>Quantity</mark></label>
+                        <input name='qty' id='editQty' type='number' value='${cartItem.qty}' min='1' max='100'>
+                        </fieldset>
+                        </div>
+                        <div class='edit-cart-item-submit-btn-holder'>
+                        <button class='cart-item-submit-btn' type='b'>
+                        <span aria-hidden=”true”> ✅</span> 
+                        <span class="sr-only">Submit</span>
+                        </button>
+                        </div>
+                        </form>
+                        `;
+                    document.getElementById('popover-edit-form-holder').innerHTML = html;
+
+                })
+                .catch((error) => {
+                    console.error('Error fetching product details:', error);
+                });
+        }
+
+
         function updateCartItem(obj, id) {
             // Construct the URL with parameters
             const url = new URL("cartAction.php");
             url.searchParams.append("action", "updateCartItem");
             url.searchParams.append("id", id);
             url.searchParams.append("qty", obj.value);
+
 
             fetch(url)
                 .then(response => {
@@ -107,8 +269,30 @@ $cart = new Cart;
         }
 
         function renderEdit(cartId) {
-            console.log("Cart Item to be edited is: ", cartId)
+            console.log('CartId is ', cartId)
+            const cartItem = getCartItem(cartId)
+            console.log(cartItem);
+            const itemOptions = getCartItemOptions(cartItem.id, cartItem)
         }
+
+        function removeItem(cartId) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                fetch('cartAction.php?action=removeCartItem&id=' + cartId)
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            alert("Remove item failed!!!! 😲 ");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error removing item:', error);
+                        alert('An error occurred while removing the item')
+                    })
+            }
+
+        }
+
 
         function renderCheckout(cart) {
             // console.log(cart);
@@ -120,7 +304,7 @@ $cart = new Cart;
             for (var i = 2; i < cartArray.length; i++) {
                 const itemEntry = cartArray[i][1];
                 //console.log("Item Entry # ", i)
-                //console.log(itemEntry)
+                console.log(itemEntry)
                 var html = '';
                 html += `
                 <div>
@@ -136,24 +320,27 @@ $cart = new Cart;
                                             <li class="product-title">${itemEntry[6][1]} - ${itemEntry[1][1]}</li>
                                             <div class="price-block">${makeDollar(itemEntry[2][1])}</div>
                                             <div class="content-tail">
-                                                <li>Size: ${itemEntry[12][1]}</li>
-                                                <li>Color: ${itemEntry[10][1]}</li>
+                                                <li>Size: ${itemEntry[13][1]}</li>
+                                                <li>Color: ${itemEntry[11][1]}</li>
                                                 <li>Qty: ${itemEntry[3][1]}</li>
-                                                <li>Dept Name: ${itemEntry[14][1]} </li>
-                                                <li class='logo-holder'>Logo: <img src=${itemEntry[13][1]} alt="logo" class="logo-pict"></li>
+                                                <li>Dept Name: ${itemEntry[15][1]} </li>
+                                                <li class='logo-holder'>Logo: <img src=${itemEntry[14][1]} alt="logo" class="logo-pict"></li>
                                             </div>
                                             <div class="item-content-footer">
-                                                <button class='remove'>Delete</button> <button class='change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button><button class='comment'>Add Comment</button>
+                                            <button class='remove' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
+                                            <button class='change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
+                                            <button class='comment'>Add Comment</button>
                                             </div>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                `
+                                            </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            
+                                            `
+                // <button class='remove' onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id="${itemEntry[4][1]}":false;" title="Remove Item">Delete</button> 
 
                 document.getElementById('items').innerHTML += html;
             }
@@ -175,7 +362,8 @@ $cart = new Cart;
         <!-- <div class="viewcart">
             </?php echo "<pre>";
             var_dump($cart->contents());
-            echo "<pre>"; ?>
+            echo "
+            <pre>"; ?>
         </div> -->
         <!-- // TODO build popover for editing each entry and updating the cart
         // ! check to make sure the update Cart method also updates the local storage -->
@@ -194,53 +382,21 @@ $cart = new Cart;
         </div>
     </div>
     <div id="edit-cart-item" popover=manual>
-        <button class="close-btn" popovertarget="edit-cart-item" popovertargetaction="hide">
-            <span aria-hidden=”true”>❌</span>
-            <span class="sr-only">Close</span>
-        </button>
-        <div id="cart-item-edit-details">
-            <p>Make changes to the <mark class="remove">color</mark> , <mark class="change">size</mark>, <mark class='comment'>quantity</mark> or <mark class="gregSucks">logo</mark> for this cart item.</p>
-            <br>
-            <form>
-                <div class="editCartItemDiv">
-                    <fieldset>
-                        <label for="editQty">Qty:
-                            <input type="number" name="quantity" id="editQty" min="1" max="100" />
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <label for="editColor">Color:
-                            <select name="color" id="editColor">
-                                <option value="red">Red</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                            </select>
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <label for="editSize" name="size" id="editSize">Size:
-                            <select name="size" id="editSize">
-                                <option value="Skinny">"Skinny"</option>
-                                <option value="Chubby">"Chubby"</option>
-                                <option value="Chunky">"Chunky"</option>
-                                <option value="Fatty">"Fatty"</option>
-                            </select>
-                        </label>
-                    </fieldset>
-                    <fieldset>
-                        <label for="editLogo" name="logo" id="editLogo">Logo:
-                            <select name="logo" id="editLogo">
-                                <option value="Good Logo">Good Logo</option>
-                                <option value="Bad Logo">Bad Logo</option>
-                                <option value="Silly Logo">Silly Logo</option>
-                                <option value="Stolen Logo">Stolen Logo</option>
-                                <option value="Google Logo">Google Logo</option>
-                            </select>
-                        </label>
-                    </fieldset>
-                </div>
-            </form>
-            <button type="button" onclick="updateCart()">Update</button>
+        <div id="cart-item-edit-details" class="cart-item-edit-details">
+            <div class="popover-btn-holder">
+                <button class="popover-close-btn" popovertarget="edit-cart-item" popovertargetaction="hide">
+                    <span aria-hidden=”true”>❌ </span>
+                    <span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="popover-desc-text-holder">
+                <p class="popover-desc-text">Make changes to the <mark class="remove">color</mark> , <mark class="change">size</mark>, <mark class='comment'>quantity</mark>, <mark class="gregSucks">logo</mark>, or <mark class="sharkWreck">dept name</mark> for this cart item.</p>
+
+            </div>
+            <div class="popover-edit-form-holder" id="popover-edit-form-holder">
+
+            </div>
+
             <!-- This is where the details for the cart item will render -->
             <div id="edit-cart-item-popover"></div>
         </div>
@@ -252,10 +408,6 @@ $cart = new Cart;
     <?php include "footer.php" ?>
     <script>
         renderCheckout(<?php echo $cart->serializeCart() ?>);
-
-        function updateCart() {
-            alert('Updating Cart');
-        }
     </script>
 </body>
 
@@ -266,13 +418,13 @@ $cart = new Cart;
         text-decoration: none;
     }
 
-    .tiny-text {
+    /* .tiny-text {
         font-size: small;
-    }
+    } */
 
-    .fake_CSS_for_testing {
+    /* .fake_CSS_for_testing {
         font-size: 1000px;
-    }
+    } */
 
     .alert-warning {
         margin-top: 40px;
@@ -295,9 +447,9 @@ $cart = new Cart;
     }
 
 
-    .dept-patch-info {
+    /* .dept-patch-info {
         margin-top: 10px;
-    }
+    } */
 
     pre {
         background-color: dodgerblue;
@@ -316,14 +468,14 @@ $cart = new Cart;
         grid-template-columns: 5fr 1fr;
     }
 
-    .cart-display {
+    /* .cart-display {
         display: grid;
         grid-template-columns: 5fr 1fr;
-    }
+    } */
 
-    .little-prod-img {
+    /* .little-prod-img {
         padding: 5px;
-    }
+    } */
 
 
     .button {
@@ -335,18 +487,27 @@ $cart = new Cart;
 
     .remove {
         background-color: darkred;
+        color: #FFFFFF;
     }
 
     .comment {
-        background-color: dodgerblue;
+        background-color: #42A1FF;
+        color: #000000
     }
 
     .change {
-        background-color: green;
+        background-color: #005c00;
+        color: #FFFFFF;
     }
 
     .gregSucks {
-        background-color: yellow;
+        background-color: #FFFF00;
+        color: #000000;
+    }
+
+    .sharkWreck {
+        background-color: #800080;
+        color: #ffffff;
     }
 
     .items {
@@ -464,22 +625,22 @@ $cart = new Cart;
 
     }
 
-    .logo-holder {
+    /* .logo-holder {
         grid-column-start: 4;
         grid-column-end: 5;
         grid-row-start: 2;
         grid-row-end: 4;
-    }
+    } */
 
-    .dropdown {
+    /* .dropdown {
 
-        /* opacity: .01; */
+       
         max-width: 100%;
         left: 0;
         transition: all .1s linear;
         line-height: 19px;
 
-    }
+    } */
 
     .bottom-buttons-holder {
         display: flex;
@@ -502,15 +663,12 @@ $cart = new Cart;
     }
 
     #edit-cart-item {
-        width: 40%;
-        height: 35%;
+        width: 45%;
+        height: 37%;
         /* background-color: hsl(0, 0%, 100%); */
-        background-color: #888fa9;
+        background-color: #ffffff99;
         color: hsl(224, 10%, 23%);
-        /* margin-top: 10em; */
-        padding: 50px;
-        margin-left: 40%;
-        border: 5px solid hsl(224, 10%, 23%);
+        border: 7px solid #BF1722;
 
         mark {
             border-radius: 5px;
@@ -519,6 +677,33 @@ $cart = new Cart;
         }
     }
 
+    .cart-item-edit-details {
+        background-color: #ffffff50;
+        padding: 20px
+    }
+
+    .popover-btn-holder {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    .popover-close-btn {
+        background-color: #000000;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .popover-desc-text-holder {
+        margin: 5px;
+        padding: 5px;
+
+        p {
+            font-size: larger;
+        }
+    }
+
+
     .editCartItemDiv {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -526,6 +711,18 @@ $cart = new Cart;
 
     ::backdrop {
         backdrop-filter: blur(3px);
+    }
+
+    .edit-cart-item-submit-btn-holder {
+        display: flex;
+        padding: 5px;
+        justify-content: flex-end;
+    }
+
+    .cart-item-submit-btn {
+        padding: 5px;
+        background-color: limegreen;
+        color: #000
     }
 
     @view-transition {
