@@ -82,7 +82,7 @@ $cart = new Cart;
         }
 
 
-        function getFilteredProducts(typeID, genderFilter) {
+        function getFilteredProducts(typeID) {
             fetch('fetchFilteredProductsNoGender.php?type=' + typeID)
                 .then((response) => response.json())
                 .then((data) => {

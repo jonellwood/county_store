@@ -1,4 +1,11 @@
 <?php
+/*
+Author: Jon Ellwood
+Organization: Berkeley County IT Department
+Last Updated: 07/12/2024
+Purpose: Checkout page for requests from user
+Includes:    slider.php, viewHead.php, cartSlideout.php, footer.php
+*/
 session_start();
 require_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
@@ -40,7 +47,7 @@ if (!empty($sessData['status']['msg'])) {
 <head>
     <title>Checkout</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" id='test' href="berkstrap-dark.css" async>
+    <!-- <link rel="stylesheet" id='test' href="berkstrap-dark.css" async> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 
@@ -212,7 +219,7 @@ if (!empty($sessData['status']['msg'])) {
             toggle();
         }
     </script>
-
+    <?php include "./components/viewHead.php" ?>
 </head>
 
 <body>
@@ -236,7 +243,7 @@ if (!empty($sessData['status']['msg'])) {
                     <div class="col-md-4 order-md-2 mb-4">
 
                         <h4 class="d-flex justify-content-between align-items-center-md mb-3">
-                            <span class="text-muted">Your Cart</span>
+                            <span>Your Cart</span>
                             <span class="badge badge-secondary badge-pill"><?php echo $cart->total_items(); ?> item(s)
                             </span>
                         </h4>
@@ -349,6 +356,22 @@ if (!empty($sessData['status']['msg'])) {
 </script>
 
 <style>
+    body {
+        background-color: #ffffff10;
+    }
+
+    .container {
+        max-width: unset !important;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .checkout {
+        background-color: #00000090;
+        padding: 20px;
+        color: aliceblue;
+    }
+
     .captcha-holder {
         display: grid;
         grid-template-rows: 1fr 1fr;
