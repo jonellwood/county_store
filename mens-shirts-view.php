@@ -93,9 +93,9 @@ $cart = new Cart;
                         html += `
 
                         <div class="product-card-holder">
-                        <div class="card home-product-info" id="featured-card" value="${data[i].product_id}" data-gender="${data[i].gender_filter}" data-type="${data[i].type_filter}" data-size="${data[i].size_filter}" data-sleeve="${data[i].sleeve_filter}">
+                        <div class="card home-product-info" id="${data[i].product_id}" value="${data[i].product_id}" data-gender="${data[i].gender_filter}" data-type="${data[i].type_filter}" data-size="${data[i].size_filter}" data-sleeve="${data[i].sleeve_filter}" view-transition-group="image-transition">
 
-                            <img src="${data[i].image}" class="card-img-top" alt="${data[i].name}">
+                            <img src="${data[i].image}" class="card-img-top" alt="${data[i].name}" view-transition-old="image-transition">
                             <div class="card-body featured">
                                 <h6 class="card-title">${data[0].name} <br> Item #: ${data[i].code}</h6>
                             </div>
@@ -281,6 +281,31 @@ $cart = new Cart;
     </script>
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
+    <script>
+        function extractProfileIdFromUrl(url) {
+            return url.searchParams.get("product_id");
+        }
+        window.addEventListener("pageswap", async (e) => {
+            // only run if active page trans exists
+            if (e.viewTransition) {
+                const currentUrl = e.activation.from?.url ? new URL(e.activation.from.url) : null;
+                const targetUrl = new URL(e.activation.entry.url);
+
+                // going from productDetails page to shirts-view-page
+                if (isViewPage(targetUrl)) {
+                    const profile = extractProfileIdFromUrl(targetUrl);
+
+                    // set view-transition-name values on the elements to animate
+                    document.querySelector(`#${profile} img`).style.viewTransitionName = "image";
+                    // Remove view-transition-names after snapshots have been taken
+                    // Stops naming conflicts resulting from the page state persisting in BFCache
+                    await e.viewTransition.finished;
+                    document.querySelector(`#${profile} img`).style.viewTransitionName = "none";
+                }
+
+            }
+        })
+    </script>
 </body>
 
 
@@ -391,11 +416,11 @@ $cart = new Cart;
         color: aliceblue;
     }
 
-    #featured-card {
+    /* #featured-card {
         position: relative;
         z-index: 0;
         cursor: crosshair;
-    }
+    } */
 
     .featured {
         width: 100%;
@@ -488,6 +513,9 @@ $cart = new Cart;
 
     .card {
         position: relative;
+
+        z-index: 0;
+        cursor: crosshair;
     }
 
     .card>* {
@@ -546,5 +574,163 @@ $cart = new Cart;
 
     ::backdrop {
         backdrop-filter: blur(3px);
+    }
+
+
+    @keyframes grow-x {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes shrink-x {
+        from {
+            transform: scaleX(1);
+        }
+
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30 px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30 px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            bottom: 30 px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            bottom: 30 px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+
+    ::view-transition-group(card-transition) {
+        height: auto;
+        right: 0;
+        left: auto;
+        transform-origin: right center;
+    }
+
+    ::view-transition-old(image) {
+        animation: 0.25s linear both shrink-x;
+    }
+
+    ::view-transition-new(image) {
+        animation: 0.25s 0.25s linear both grow-x;
+    }
+
+    @keyframes move-out {
+        from {
+            transform: translateY(0%);
+
+        }
+
+        to {
+            transform: translateY(-100%);
+        }
+    }
+
+    @keyframes move-in {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+
+    @view-transition {
+        navigation: auto;
+    }
+
+
+    /* ::view-transition-old(root) {
+        animation: 0.75s ease-in both fadeout;
+    }
+
+    ::view-transition-new(root) {
+        animation: 0.75s ease-in both fadein;
+    } */
+
+    /* ::view-transition-old(image) {
+        animation: 0.75s ease-in both fadeout;
+    }
+
+    ::view-transition-new(image) {
+        animation: 0.75s ease-in both fadein;
+    } */
+
+    ::view-transition-group(root) {
+        animation-duration: 0.5s;
+    }
+
+    /* this is from Codium */
+    @keyframes grow-and-move {
+        from {
+            transform: scale(0) translateY(0);
+        }
+
+        to {
+            transform: scale(1) translateY(-100%);
+        }
+    }
+
+    ::view-transition-group(image-transition) {
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top left;
+    }
+
+    ::view-transition-old(image-transition) {
+        animation: 0.5s ease-in-out both grow-and-move;
+    }
+
+    ::view-transition-new(image-transition) {
+        animation: 0.5s ease-in-out both grow-and-move;
     }
 </style>

@@ -175,7 +175,7 @@ $product_id = $_REQUEST['product_id'];
                         </h3>
                     `
                     var imageHtml = `
-                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image">
+                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image" view-transition-new="image-transition">>
                     `
                     var html = '';
                     html += `<form name='option' method='post' id='options' action='cartAction.php' class='options-select-holder'>`;
@@ -429,7 +429,7 @@ $product_id = $_REQUEST['product_id'];
         <div class="product-name-holder-stretched" id="product-name-holder"></div>
         <div class="another-container" id="another-container">
             <!-- // ? this is where the product image gets rendered -->
-            <span class='product-image-holder' id='product-image-holder'></span>
+            <span class='product-image-holder card' id='product-image-holder' view-transition-group="image-transition"></span>
 
             <div class="details-about-details">
                 <!--//? This is the div where the submit form is rendered -->
@@ -1023,11 +1023,72 @@ $product_id = $_REQUEST['product_id'];
         backdrop-filter: blur(5px);
     }
 
-    @view-transition {
+    /* @view-transition {
         navigation: auto;
+    } */
+
+    /* .card {
+        view-transition-name: card-transition;
+    } */
+
+    @keyframes grow-x {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
     }
 
-    /* @-webkit-keyframes fadein {
+    @keyframes shrink-x {
+        from {
+            transform: scaleX(1);
+        }
+
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    ::view-transition-group(card-transition) {
+        height: auto;
+        right: 0;
+        left: auto;
+        transform-origin: right center;
+    }
+
+    ::view-transition-old(card-transition) {
+        animation: 0.25s linear both shrink-x;
+    }
+
+    ::view-transition-new(card-transition) {
+        animation: 0.25s 0.25s linear both grow-x;
+    }
+
+    @keyframes move-out {
+        from {
+            transform: translateY(0%);
+        }
+
+        to {
+            transform: translateY(-100%);
+        }
+    }
+
+    @keyframes move-in {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+
+
+    @-webkit-keyframes fadein {
         from {
             bottom: 0;
             opacity: 0;
@@ -1073,5 +1134,56 @@ $product_id = $_REQUEST['product_id'];
             bottom: 0;
             opacity: 0;
         }
+    }
+
+    @view-transition {
+        navigation: auto;
+    }
+
+    /* ::view-transition-old(image) {
+        animation: 0.75s ease-in both fadeout;
+    }
+
+    ::view-transition-new(image) {
+        animation: 0.75s ease-in both fadein;
     } */
+
+    /* ::view-transition-old(root) {
+        animation: 1.2s ease-in both fadeout;
+    }
+
+    ::view-transition-new(root) {
+        animation: 1.2s ease-in both fadein;
+    } */
+
+    ::view-transition-group(root) {
+        animation-duration: 0.5s;
+    }
+
+    @keyframes grow-and-move {
+        from {
+            transform: scale(0) translateY(0);
+        }
+
+        to {
+            transform: scale(1) translateY(-100%);
+        }
+    }
+
+
+    ::view-transition-group(image-transition) {
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top left;
+    }
+
+    ::view-transition-old(image-transition) {
+        animation: 0.5s ease-in-out both grow-and-move;
+    }
+
+    ::view-transition-new(image-transition) {
+        animation: 0.5s ease-in-out both grow-and-move;
+    }
 </style>
