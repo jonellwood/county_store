@@ -478,11 +478,8 @@ $cart = new Cart;
     } */
 
 
-    .button {
+    button {
         border-radius: 5px;
-        /* padding: 1px; */
-
-
     }
 
     .remove {
