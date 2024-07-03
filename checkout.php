@@ -340,7 +340,7 @@ if (!empty($sessData['status']['msg'])) {
             </div>
         </div>
     </div>
-    </?php include "viewCartDump.php" ?>"
+    <?php include "viewCartDump.php" ?>"
 </body>
 
 </html>
