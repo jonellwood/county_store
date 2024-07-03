@@ -440,12 +440,10 @@ $product_id = $_REQUEST['product_id'];
             <div class="select-summary" id="select-summary"></div>
         </div>
         <div class=" button-holder">
-            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-secondary" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
-                    Shopping </button></a>
+            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="button btn btn-secondary" type="button">← Continue Shopping </button></a>
             <!-- <button onclick="showCart()">My Cart</button> -->
             <!-- <button type="button" class="btn btn-secondary" id="toggle-button" onclick="toggleSlideout()">View Cart</button> -->
-            <button type="submit" form="options" class="btn btn-primary custom-btn"><span><i class=" fa fa-cart-plus" aria-hidden="true"></i> Add to
-                    Cart</span></button>
+            <button type="submit" form="options" class="button btn btn-primary custom-btn"><span> Add to Cart ➕</span></button>
         </div>
 
         <!-- This was originaly intended to be used as a notification for a product being added to the cart - but the page reloads when something as added to the cart so it is useless... I am keeping in the code because I WILL find some use for these toast messages! -->
@@ -607,7 +605,7 @@ $product_id = $_REQUEST['product_id'];
 
     .another-container {
         display: grid;
-        grid-template-columns: 40% 30% 30%;
+        grid-template-columns: 33% 33% 33%;
         position: relative;
 
     }
@@ -633,9 +631,10 @@ $product_id = $_REQUEST['product_id'];
 
     .details-about-details {
         text-align: right;
-        margin-left: 20px;
+        /* margin-left: 20px; */
         margin-right: 20px;
         min-height: 500px;
+        min-width: fit-content;
     }
 
     .button-holder {
@@ -1022,6 +1021,31 @@ $product_id = $_REQUEST['product_id'];
     #safetyProductsPopover::backdrop {
         backdrop-filter: blur(5px);
     }
+
+    .button {
+        margin: 5px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #000000;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #4CAF50 !important;
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
 
     /* @view-transition {
         navigation: auto;

@@ -182,6 +182,10 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
                         // get cart items
                         $cartItems = $cart->contents();
+                        // Prepare the SQL Statement
+
+
+
                         // insert order items into database
                         if (!empty($cartItems)) {
                             $sql = "INSERT INTO order_details (order_id, product_id, quantity, size_id, color_id, status, item_price, logo_fee, tax, line_item_total, logo, comment, dept_patch_place, emp_dept, bill_to_dept) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -214,8 +218,9 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
                         $cart->destroy();
                         // redirect to order status page
-                        $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
                         error_log('Redirecting to: ' . $redirectURL);
+                        error_log('orderID: ' . $orderID);
+                        $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
                     } else {
                         echo "FAILURE at inserting into order_details.";
                         $sessData['status']['type'] = 'error';
@@ -233,10 +238,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             $sessData['status']['type'] = 'error';
             $sessData['status']['msg'] = '<p>The Employee ID you entered does not match our records. Please try again.</p>' . $errorMsg;
         }
-        // store status in session
         $_SESSION['sessData'] = $sessData;
     } else {
-        //  $statusMsg .= "Inncorrect CAPTCHA</br>";
         echo "<div class='alert'>Incorrect CAPTCHA</div>";
     }
 }

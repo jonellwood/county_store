@@ -296,9 +296,9 @@ if (!empty($sessData['status']['msg'])) {
 
                         </ul>
                         <div class="button-holder">
-                            <a href="index.php#nav-container" class="btn btn-sm btn-info" id="add-items"><i class="fa fa-plus" aria-hidden="true"></i>
+                            <a href="index.php#nav-container" class="button btn btn-sm btn-info" id="add-items"><i class="fa fa-plus" aria-hidden="true"></i>
                                 Add More Items</a>
-                            <a href="viewCart.php" class="btn btn-sm btn-warning" id="edit-cart"><i class="fa fa-edit" aria-hidden="true"></i>
+                            <a href="viewCart.php" class="button btn btn-sm btn-warning" id="edit-cart"><i class="fa fa-edit" aria-hidden="true"></i>
                                 Edit Cart</a>
 
                         </div>
@@ -328,15 +328,11 @@ if (!empty($sessData['status']['msg'])) {
                                 </div>
 
                                 <div class='captcha-holder hidden' id='captcha-holder'>
-                                    <!-- <label for="captcha">Please Enter Your Employee Number</label> -->
-
                                     <br>
                                     <input type="text" id="captcha" name="captcha_challenge" pattern="[0-9]{4}">
-
                                 </div>
-
                                 <input type="hidden" name="action" value="placeOrder" />
-                                <input class="btn btn-success btn-block hidden" id="place-order-button" type="submit" name="checkoutSubmit" value="Place Order">
+                                <input class="btn btn-success btn-block hidden button" id="place-order-button" type="submit" name="checkoutSubmit" value="Place Order">
                             </fieldset>
                         </form>
                     </div>
@@ -344,15 +340,7 @@ if (!empty($sessData['status']['msg'])) {
             </div>
         </div>
     </div>
-    <!-- <div class="viewcart">
-        </?php
-        echo "<pre>";
-        var_dump($cart->contents());
-        echo "<hr>";
-        // var_dump($cart->total());
-        echo "<pre>"; ?>
-    </div> -->
-
+    </?php include "viewCartDump.php" ?>"
 </body>
 
 </html>
@@ -410,9 +398,7 @@ if (!empty($sessData['status']['msg'])) {
         width: fit-content
     }
 
-    .hidden {
-        display: none;
-    }
+
 
     .dropbtn {
         color: white;
@@ -508,5 +494,33 @@ if (!empty($sessData['status']['msg'])) {
         background-color: dodgerblue;
         color: white;
 
+    }
+
+    .button {
+        margin: 5px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #000000;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #4CAF50 !important;
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
+    .hidden {
+        display: none;
     }
 </style>

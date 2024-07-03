@@ -298,6 +298,13 @@ $cart = new Cart;
             // console.log('cart');
             // console.log(cart);
             cartArray = convertObjectToArray(cart);
+            console.log('cartArray.length')
+            console.log(cartArray.length)
+            if (cartArray.length <= 3) {
+                var html = '<img src="cart_empty.jpg" alt="Cart is empty" class="empty-cart-img" />';
+                document.getElementById('items').innerHTML += html;
+                return
+            }
             //console.log(cartArray)
             // let accumulatedHtml = '';
             // let selectQuantities = {};
@@ -384,15 +391,7 @@ $cart = new Cart;
                 </a>
             <?php } ?>
         </div>
-        <div class="viewcart">
-            <?php echo "<pre>";
-            var_dump($cart->contents());
-            echo "
-        <hr>";
-            // var_dump($cart->total());
-            echo "
-        <pre>"; ?>
-        </div>
+        </?php include "viewCartDump.php" ?>
 
 
     </div>
@@ -400,12 +399,11 @@ $cart = new Cart;
     <!-- <div> -->
     <div class="bottom-buttons-holder">
         <div>
-            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn button" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
-                    Shopping </button></a>
+            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn button" type="button">← Continue Shopping </button></a>
         </div>
         <div>
             <?php if ($cart->total_items() > 0) { ?>
-                <a href="checkout.php"><button class="btn button" type="button"> Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                <a href="checkout.php"><button class="btn button" type="button"> Proceed to Checkout →</button></a>
             <?php } ?>
         </div>
     </div>
@@ -562,6 +560,7 @@ $cart = new Cart;
     .items {
         background-color: #00000080;
         border-radius: 5px;
+        display: flex;
     }
 
     .active-items {
@@ -790,6 +789,13 @@ $cart = new Cart;
         padding: 5px;
         background-color: limegreen;
         color: #000
+    }
+
+
+    .empty-cart-img {
+        max-height: 50dvh;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @view-transition {
