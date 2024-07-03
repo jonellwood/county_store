@@ -204,7 +204,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity); // float(10,2)
                                 $db_logo = $item['logo']; // varchar(125)
                                 // $db_comment = $item['comment']; // varchar(255)
-                                $db_comment = 'If I was smart I would eat a sandwich'; // varchar(255)
+                                $db_comment = 'Comment feature coming back soon'; // varchar(255)
                                 $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
                                 $db_emp_dept = $department; // varchar(45)
                                 $db_bill_to_dept = $department; // varchar(45)

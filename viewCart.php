@@ -560,7 +560,7 @@ $cart = new Cart;
     .items {
         background-color: #00000080;
         border-radius: 5px;
-        display: flex;
+        /* display: flex; */
     }
 
     .active-items {
