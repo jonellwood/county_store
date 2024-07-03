@@ -1,11 +1,12 @@
-<?php 
+<?php
 
 include_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 
 // function to determine the current fiscal year ..... I think this should work.... 
-function fiscalYear() {
+function fiscalYear()
+{
     $currentMonth = date('m');
     $currentYear = date('Y');
     if ($currentMonth < 6) {
@@ -18,9 +19,9 @@ $fiscalYear = strval(fiscalYear());
 $empNum = $_GET['emp_num'];
 // var_dump($empNum);
 
-$sql = "SELECT SUM(line_item_total) FROM uniform_orders.ord_ref 
+$sql = "SELECT COALESCE(SUM(line_item_total), 0.00) as total_sum FROM uniform_orders.ord_ref 
 WHERE status NOT IN ('Pending', 'Denied')
-AND emp_id = $empNum AND created > '$fiscalYear-07-01'"; 
+AND emp_id = $empNum AND created > '$fiscalYear-07-01'";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();

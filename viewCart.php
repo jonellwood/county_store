@@ -106,7 +106,7 @@ $cart = new Cart;
                         <input type='hidden' name='id' value='${cartItem.rowid}' />
                         <input type='hidden' name='action' value='updateCartItem' />
                         <input type='hidden' name='color_id' id='color_id' value='${cartItem.color_id}' />
-                        <input type='hidden' name='color_name' id='color_name' value='' />
+                        <input type='hidden' name='color_name' id='color_name' value='${cartItem.color_name}' />
                         <input type='hidden' name='size_id' id='size_id' value='${cartItem.size_id}' />
                         <input type='hidden' name='size_name' id='size_name' value='${cartItem.size_name}' />
                         <input type='hidden' name='logo' id='logo' value='${cartItem.logo}' />
@@ -177,7 +177,7 @@ $cart = new Cart;
                         </fieldset>
                         </div>
                         <div class='edit-cart-item-submit-btn-holder'>
-                        <button class='cart-item-submit-btn' type='b'>
+                        <button class='btn cart-item-submit-btn' type='b'>
                         <span aria-hidden=”true”> ✅</span> 
                         <span class="sr-only">Submit</span>
                         </button>
@@ -280,6 +280,7 @@ $cart = new Cart;
                 fetch('cartAction.php?action=removeCartItem&id=' + cartId)
                     .then(response => {
                         if (response.ok) {
+                            localStorage.removeItem('store-cart');
                             window.location.reload();
                         } else {
                             alert("Remove item failed!!!! 😲 ");
@@ -290,21 +291,21 @@ $cart = new Cart;
                         alert('An error occurred while removing the item')
                     })
             }
-
         }
 
 
         function renderCheckout(cart) {
+            // console.log('cart');
             // console.log(cart);
             cartArray = convertObjectToArray(cart);
             //console.log(cartArray)
             // let accumulatedHtml = '';
             // let selectQuantities = {};
             var html = '';
-            for (var i = 2; i < cartArray.length; i++) {
+            for (var i = 3; i < cartArray.length; i++) {
                 const itemEntry = cartArray[i][1];
-                //console.log("Item Entry # ", i)
-                console.log(itemEntry)
+                // console.log("Item Entry # ", i)
+                // console.log(itemEntry)
                 var html = '';
                 html += `
                 <div>
@@ -320,16 +321,21 @@ $cart = new Cart;
                                             <li class="product-title">${itemEntry[6][1]} - ${itemEntry[1][1]}</li>
                                             <div class="price-block">${makeDollar(itemEntry[2][1])}</div>
                                             <div class="content-tail">
-                                                <li>Size: ${itemEntry[13][1]}</li>
-                                                <li>Color: ${itemEntry[11][1]}</li>
-                                                <li>Qty: ${itemEntry[3][1]}</li>
-                                                <li>Dept Name: ${itemEntry[15][1]} </li>
-                                                <li class='logo-holder'>Logo: <img src=${itemEntry[14][1]} alt="logo" class="logo-pict"></li>
+                                                <div> 
+                                                    <li>Size: ${itemEntry[13][1]}</li>
+                                                    <li>Color: ${itemEntry[11][1]}</li>
+                                                    <li>Qty: ${itemEntry[3][1]}</li>
+                                                    <li>Dept Name: ${itemEntry[15][1]} </li>
+                                                </div>
+                                                <div class="logo-holder">    
+                                                    <img src=${itemEntry[14][1]} alt="logo" class="logo-pict">
+                                                </div>
                                             </div>
+                                            
                                             <div class="item-content-footer">
-                                            <button class='remove' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
-                                            <button class='change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
-                                            <button class='comment'>Add Comment</button>
+                                            <button class='button btn remove' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
+                                            <button class='button btn change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
+                                            <button class='button btn comment'>Add Comment</button>
                                             </div>
                                             </ul>
                                             </div>
@@ -345,6 +351,13 @@ $cart = new Cart;
                 document.getElementById('items').innerHTML += html;
             }
         }
+
+        function logCart() {
+            let cartItems = JSON.parse(localStorage.getItem('store-cart')) || {};
+            console.log('cartItems');
+            console.log(cartItems);
+        }
+        logCart();
     </script>
 </head>
 
@@ -354,30 +367,45 @@ $cart = new Cart;
     <div class="container">
         <div id="items" class="items"></div>
         <div class="checkout">
-            <!-- <p>Total: </?php echo CURRENCY_SYMBOL . (number_format(($cart->total() * 1.09), 2))  ?></p> -->
-            <p>Total: <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() * 1.09), 2))  ?></p>
-            <p>Total Items: <?php echo $cart->total_items() ?></p>
-            <button>Checkout</button>
+            <p><span>Total Items:</span> <?php echo $cart->total_items() ?></p>
+            <p><span>Sub Total:</span> <?php echo CURRENCY_SYMBOL . (number_format(($cart->total()), 2))  ?></p>
+            <p><span>Logo Fees:</span> <?php echo CURRENCY_SYMBOL . (number_format(($cart->total_logo_fees()), 2))  ?></p>
+            <p><span>Taxes:</span> <?php
+                                    $totalWithFees = $cart->total() + $cart->total_logo_fees();
+                                    $taxes = $totalWithFees * 0.09;
+                                    echo CURRENCY_SYMBOL . (number_format(($taxes), 2))
+                                    ?>
+
+            </p>
+            <p><span>Total:</span> <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() + $cart->total_logo_fees() + $taxes), 2))  ?></p>
+            <?php if ($cart->total_items() > 0) { ?>
+                <a href="checkout.php" class="checkout-button button btn">
+                    Checkout
+                </a>
+            <?php } ?>
         </div>
-        <!-- <div class="viewcart">
-            </?php echo "<pre>";
+        <div class="viewcart">
+            <?php echo "<pre>";
             var_dump($cart->contents());
             echo "
-            <pre>"; ?>
-        </div> -->
-        <!-- // TODO build popover for editing each entry and updating the cart
-        // ! check to make sure the update Cart method also updates the local storage -->
+        <hr>";
+            // var_dump($cart->total());
+            echo "
+        <pre>"; ?>
+        </div>
+
+
     </div>
     </div>
     <!-- <div> -->
     <div class="bottom-buttons-holder">
         <div>
-            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="button" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
+            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn button" type="button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continue
                     Shopping </button></a>
         </div>
         <div>
             <?php if ($cart->total_items() > 0) { ?>
-                <a href="checkout.php"><button class="button" type="button"> Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                <a href="checkout.php"><button class="btn button" type="button"> Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
             <?php } ?>
         </div>
     </div>
@@ -400,7 +428,6 @@ $cart = new Cart;
             <!-- This is where the details for the cart item will render -->
             <div id="edit-cart-item-popover"></div>
         </div>
-
     </div>
 
     <!-- </div> -->
@@ -481,6 +508,31 @@ $cart = new Cart;
     button {
         border-radius: 5px;
     }
+
+    .button {
+        margin: 5px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #000000;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #4CAF50 !important;
+        color: #000000 !important;
+        font-weight: bold !important;
+    }
+
 
     .remove {
         background-color: darkred;
@@ -611,7 +663,7 @@ $cart = new Cart;
     .content-tail {
         grid-area: tail;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 3fr;
     }
 
     .logo-pict {
@@ -622,12 +674,13 @@ $cart = new Cart;
 
     }
 
-    /* .logo-holder {
-        grid-column-start: 4;
-        grid-column-end: 5;
-        grid-row-start: 2;
+    .logo-holder {
+        display: flex;
+        /* grid-column-start: 4; */
+        /* grid-column-end: 5; */
+        grid-row-start: 1;
         grid-row-end: 4;
-    } */
+    }
 
     /* .dropdown {
 
@@ -649,6 +702,7 @@ $cart = new Cart;
     .checkout {
         background-color: #ffffff50;
         height: fit-content;
+        min-width: max-content;
         border-radius: 5px;
         padding: 12px;
         /* padding-bottom: 12px; */
@@ -657,6 +711,22 @@ $cart = new Cart;
         padding-right: 20px;
         text-align: end;
         font-size: larger;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+
+    .checkout p {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        word-break: normal;
+    }
+
+    .checkout p span {
+        margin-right: 5px;
     }
 
     #edit-cart-item {

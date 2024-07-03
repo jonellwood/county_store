@@ -18,14 +18,17 @@ $cart = new Cart;
         localStorage.setItem('store-cart', JSON.stringify(cart));
 
     }
+    //setCartInLocalStorage();
 
 
     function getCartFromLocalStorage() {
         var cartData = localStorage.getItem('store-cart');
         if (cartData) {
             return JSON.parse(cartData);
+        } else {
+            setCartInLocalStorage();
         }
-        return;
+        // return;
     }
     getCartFromLocalStorage();
     // helper function for comparing arrays of carts ... that I don't think I actually need now.
@@ -109,120 +112,6 @@ $cart = new Cart;
             setCartInLocalStorage(cartServerArray)
         }
     }
-    // function syncCartWithServer() {
-    //     var serverCartData = <?php echo ($cart->serializeCart()); ?>;
-    //     console.log('Server Cart  Data')
-    //     console.log(serverCartData)
-    //     var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
-    //     if (!localStorageCartData) {
-    //         cartData = {
-    //             total_items: 0,
-    //             cart_total: 0,
-    //             timestamp: Date.now()
-    //         };
-    //         localStorage.setItem('store-cart', JSON.stringify(localStorageCartData));
-    //     }
-    //     console.log('Local Cart  Data')
-    //     console.log(localStorageCartData)
-    //     // convert to arrays - way easier to compare
-    //     var serverCartArray = Object.entries(serverCartData)
-    //     var localStorageCartArray = Object.entries(localStorageCartData)
-    //     console.log('serverCartArray')
-    //     console.log(serverCartArray)
-    //     console.log('localStorageCartArray')
-    //     console.log(localStorageCartArray)
-    //     // dif arrays
-    //     function compareArrays(arrayA, arrayB) {
-    //         const flatA = flattenEntries(arrayA);
-    //         const flatB = flattenEntries(arrayB);
-
-    //         const mapA = new Map(flatA.map(item => [item[0], item]));
-    //         const mapB = new Map(flatB.map(item => [item[0], item]));
-    //         //const mapA = new Map(arrayA.map(item => [item[0], item]));
-    //         //const mapB = new Map(arrayB.map(item => [item[0], item]));
-
-    //         const diffA = [...mapA].filter(([key]) => !mapB.has(key));
-    //         const diffB = [...mapB].filter(([key]) => !mapA.has(key));
-    //         console.log('diffA')
-    //         console.log(diffA)
-    //         console.log('diffB')
-    //         console.log(diffB)
-    //         return {
-    //             diffA,
-    //             diffB
-    //         };
-    //     }
-    //     // compare using dif
-    //     const {
-    //         diffA,
-    //         diffB
-    //     } = compareArrays(serverCartArray, localStorageCartArray);
-
-    //     // if server and local differ AND server cart is empty, send local to server
-    //     if (diffB.length > 0 && serverCartData.total_items === 0) {
-    //         fetch('cartSync.php', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify(diffB)
-    //             })
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 console.log('Success:', data);
-    //             })
-    //             .catch(error => {
-    //                 console.error('Error:', error);
-    //             });
-    //     }
-    //     // if both carts have items, merge differeces
-    //     if (diffA.length > 0 && diffB.length >= 0) {
-    //         const mergedData = [...serverCartArray, ...localStorageCartArray];
-    //         localStorage.setItem('store-cart', JSON.stringify(mergedData));
-    //     }
-    // }
-    // latest version in Github. gets server to local storage just fine, but breaks if there is nothing in local storage 
-    // function syncCartWithServer() {
-    //     var cartData = getCartFromLocalStorage();
-    //     var cartDataArray = Object.entries(cartData);
-    //     var cartServerData = <?php echo $cart->serializeCart(); ?>;
-    //     var cartServerArray = Object.entries(cartServerData);
-    //     howOldIsLocalStorage(cartData.timestamp);
-    //     cartServerArray.forEach(serverItem => {
-    //         if (!findItemByUid(cartDataArray, serverItem.add_item_uid)) {
-    //             cartDataArray.push(serverItem);
-    //         }
-    //     })
-    //     cartDataArray.forEach(dataItem => {
-    //         if (!findItemByUid(cartServerArray, dataItem.add_item_uid)) {
-    //             cartServerArray.push(dataItem)
-    //         }
-    //     })
-
-
-    //     if (cartData.total_items == 0 && cartData.cart_total == 0 && cartServerData.total_items != 0) {
-    //         console.log('Writing server data to local storage');
-    //         setCartInLocalStorage(cartServerData);
-    //         return
-    //     } else if (cartData.total_items != 0 && cartServerData.total_items == 0 && howOldIsLocalStorage(cartData, timestamp) > 1440000) {
-    //         fetch('cartSync.php', {
-    //                 method: 'POST',
-    //                 headers: {
-    //                     'Content-Type': 'application/json'
-    //                 },
-    //                 body: JSON.stringify(cartServerArray)
-    //             })
-    //             .then(response => response.json())
-    //             .then(data => {
-    //                 console.log('Success:', data);
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Error: ', error);
-    //             });
-    //     } else if (cartServerData.total_items > 0) {
-    //         setCartInLocalStorage(cartServerArray)
-    //     }
-    // }
     syncCartWithServer();
 </script>
 <div class="cart-slideout hidden" id="cart-slideout">
@@ -244,6 +133,7 @@ $cart = new Cart;
                     <?php
                     if ($cart->total_items() > 0) {
                         $cartItems = $cart->contents();
+                        unset($cartItems['total_logo_fees'], $cartItems['total_items'], $cartItems['cart_total']);
                         foreach ($cartItems as $item) {
                     ?>
                             <tr>
@@ -266,12 +156,10 @@ $cart = new Cart;
                     <?php if ($cart->total_items() > 0) { ?>
 
                         <tr class='start-totals'>
-
                             <td><strong>Sub-Total</strong></td>
                             <?php $subtotal = $cart->total() ?> <td colspan="2" class='a-right'>
                                 <?php echo CURRENCY_SYMBOL . number_format($subtotal, 2) ?>
                             </td>
-
                         </tr>
                         <tr>
                             <hr>

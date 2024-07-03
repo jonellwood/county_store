@@ -37,7 +37,7 @@ $product_id = $_REQUEST['product_id'];
                 await localStorage.setItem('store-cart', JSON.stringify(cartData));
             }
         }
-        localStorageGetSet()
+        // localStorageGetSet()
 
         function makeDollar(str) {
             let amount = parseFloat(str);

@@ -44,7 +44,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $size_name = $_REQUEST['size_name'];
         $image = $_REQUEST['image-url'];
         // $comment = strip_tags($_REQUEST['comment']);
-        $tax = (floatval($actualPrice + $logoFee) * .09);
+        $tax = (floatval($productPrice + $logoFee) * .09);
 
 
         $itemData = array(
@@ -171,7 +171,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("ids", $db_customer_id, $db_grand_total, $db_submitted_by);
                     $db_customer_id = $custID;
-                    $db_grand_total = ($cart->total() * 1.09);
+                    // this should include taxes and fees
+                    $db_grand_total = (($cart->total() + $cart->total_logo_fees()) * 1.09);
                     $db_submitted_by = $submitted_by;
 
                     $insertOrder = $stmt->execute();
@@ -192,10 +193,10 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_product_id = $item['id'];
                                 $db_quantity = $item['qty'];
                                 $db_size_id = $item['size_id'];
-                                $db_color_id = $item['color_id'];
+                                $db_color_id = $item['color_name'];
                                 $db_status = 'Pending';
-                                $db_item_price = ($item['price'] - $item['logoFee']);
-                                // $db_item_price = $item['price'];
+                                // $db_item_price = ($item['price'] - $item['logoFee']);
+                                $db_item_price = $item['price'];
                                 $db_logo_fee = $item['logoFee'];
                                 $db_tax = $item['tax'];
                                 $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity);
@@ -206,32 +207,15 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_bill_to_dept = $department;
                                 $order_details_add = $stmt->execute();
                             }
-                        } // break out of first IF statement before starting the next
-                        // if ($order_details_add) {
-                        //     $order_details_id = $stmt->insert_id;
+                        }
+                        // break out of first IF statement before starting the next
 
-                        //     // get comment(s) and add them to comments table 
-                        //     if (!empty($cartItems)) {
-                        //         $sql = "INSERT into comments(id, order_details_id, comment, submitted_by, order_id) VALUES (?,?,?,?,?)";
-
-                        //         $stmt = $conn->prepare($sql);
-                        //         foreach ($cartItems as $item) {
-                        //             $stmt->bind_param("sissi", $db_uid, $db_order_details_id, $db_comment, $db_submitted_by, $db_order_id);
-                        //             $db_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(8));
-                        //             $db_order_details_id = $order_details_id;
-
-                        //             $db_submitted_by = $submitted_by;
-                        //             $db_order_id = $orderID;
-                        //             $stmt->execute();
-                        //             $order_details_id = ($order_details_id + 1);
-                        //         }
-                        //     }
-                        // }
                         // remove all items from cart
-                        // }  I AM UNSURE OF WHERE THESE CLOSING BRACKETS GO IN RELATION TO CART->DESTROY and REDIRECT CALLS
+
                         $cart->destroy();
                         // redirect to order status page
                         $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
+                        error_log('Redirecting to: ' . $redirectURL);
                     } else {
                         echo "FAILURE at inserting into order_details.";
                         $sessData['status']['type'] = 'error';

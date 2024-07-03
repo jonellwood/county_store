@@ -69,7 +69,8 @@ if (!empty($sessData['status']['msg'])) {
                 .then((response => response.json()))
                 // .then(data => console.log(data))
                 .then((data) => {
-                    var totalThisYear = data[0]['SUM(line_item_total)']
+                    // var totalThisYear = data[0]['SUM(line_item_total)']
+                    var totalThisYear = data[0].total_sum;
                     var html = "<p>Spending this fiscal year: " + USDollar.format(totalThisYear) + "</p> ";
                     html += "<p>Including this request: " + USDollar.format(totalThisYear +
                         <?php echo ($cart->total() * 1.09) ?>) + "</p>";
@@ -252,43 +253,45 @@ if (!empty($sessData['status']['msg'])) {
                             if ($cart->total_items() > 0) {
                                 // get cart items from session
                                 $cartItems = $cart->contents();
-                                // var_dump($cartItems);
+                                // remove these item from the object so they are not displayed in cart
+                                unset($cartItems['total_logo_fees'], $cartItems['total_items'], $cartItems['cart_total']);
                                 foreach ($cartItems as $item) {
-                                    $sizeSql = "SELECT size as size_name from uniform_orders.sizes WHERE size_id = '$item[size_id]'";
-                                    $sizeStmt = $conn->prepare($sizeSql);
-                                    $sizeStmt->execute();
-                                    $sizeResult = $sizeStmt->get_result();
-                                    while ($sizeRow = $sizeResult->fetch_assoc()) {
+
                             ?>
-                                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                            <div>
-                                                <h6 class="my=0"><?php echo $item["name"]; ?></h6>
-                                                <small><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> -
-                                                    (<?php echo $item["qty"]; ?>)</small>
-                                                <small><?php echo $item['color_id']; ?> -
-                                                    <?php echo $sizeRow['size_name'] ?> -
-                                                    <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></small>
+                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                        <div>
+                                            <h6 class="my=0"><?php echo $item["name"]; ?></h6>
+                                            <small><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> -
+                                                (<?php echo $item["qty"]; ?>)</small>
+                                            <small><?php echo $item['color_name']; ?> -
+                                                <?php echo $item['size_name'] ?> -
+                                                <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></small>
 
-                                            </div>
-                                            <span class="text"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
-                                        </li>
+                                        </div>
+                                        <span class="text"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
+                                    </li>
 
-                            <?php }
+                            <?php
                                 }
-                            } ?>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Sub-Total (<?php echo CURRENCY; ?>) </span>
+                            }
+                            ?>
+                            <li class="top-line list-group-item d-flex justify-content-between">
+                                <span>Sub-Total: (<?php echo CURRENCY; ?>) </span>
                                 <strong><?php echo CURRENCY_SYMBOL . number_format($cart->total(), 2); ?></strong>
+                            </li>
+                            <li class="list-group-item list-group-item d-flex justify-content-between">
+                                <span>Logo Fees: (<?php echo CURRENCY; ?>) </span>
+                                <strong><?php echo CURRENCY_SYMBOL . number_format($cart->total_logo_fees(), 2); ?></strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Sales-Tax (<?php echo CURRENCY; ?>) </span>
-                                <?php $sales_tax = ($cart->total() * 0.09) ?>
+                                <?php $sales_tax = (($cart->total() + $cart->total_logo_fees()) * 0.09) ?>
                                 <strong><?php echo CURRENCY_SYMBOL . number_format(($sales_tax), 2) ?>
                                 </strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Cart Total (<?php echo CURRENCY; ?>)</span>
-                                <strong><?php echo CURRENCY_SYMBOL . number_format(($cart->total() + $sales_tax), 2) ?></strong>
+                                <strong><?php echo CURRENCY_SYMBOL . number_format(($cart->total() + $cart->total_logo_fees() + $sales_tax), 2) ?></strong>
                             </li>
 
                         </ul>
@@ -341,9 +344,16 @@ if (!empty($sessData['status']['msg'])) {
             </div>
         </div>
     </div>
+    <!-- <div class="viewcart">
+        </?php
+        echo "<pre>";
+        var_dump($cart->contents());
+        echo "<hr>";
+        // var_dump($cart->total());
+        echo "<pre>"; ?>
+    </div> -->
 
 </body>
-
 
 </html>
 <script>
@@ -484,9 +494,19 @@ if (!empty($sessData['status']['msg'])) {
         gap: 1em;
     }
 
+    .top-line {
+        border-top: 1px dotted aliceblue !important;
+    }
+
     @keyframes rotate {
         100% {
             transform: rotate(1turn);
         }
+    }
+
+    pre {
+        background-color: dodgerblue;
+        color: white;
+
     }
 </style>

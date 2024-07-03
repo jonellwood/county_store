@@ -9,7 +9,7 @@ $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     echo "<div class='dropdown'>";
-    echo "<button type='button' onclick='toggle()' class='btn btn-success dropbtn'>This order is for...</button>";
+    echo "<button type='button' onclick='toggle()' class='button btn btn-success dropbtn'>This order is for...</button>";
     echo "<div id='empDropdown' class='dropdown-content'>";
     // echo "<label for='emp_number'>Select Your Employee Name:</label>";
     echo "<div title='emp_number' name='emp_number' id='emp_number' class='form-control' >";
