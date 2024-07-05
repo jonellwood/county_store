@@ -36,9 +36,9 @@ Includes:   none
                 </ul>
             </li>
             <li class="header-list-item-3">
-                <a href="./product-details.php?product_id=105">Boots</a>
+                <a href="./boots-details.php">Boots</a>
             </li>
-            <li class="header-list-item-4">
+            <li class=" header-list-item-4">
                 <a href="./hats-view.php">Hats</a>
             </li>
         </ul>

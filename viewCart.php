@@ -391,7 +391,7 @@ $cart = new Cart;
                 </a>
             <?php } ?>
         </div>
-        <?php include "viewCartDump.php" ?>
+        </?php include "viewCartDump.php" ?>
 
 
     </div>

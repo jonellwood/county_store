@@ -158,3 +158,10 @@ svg {
 	justify-content: space-between;
 	padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
+.button-holder {
+	background-color: #00000090;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 6em;
+}

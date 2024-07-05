@@ -361,12 +361,12 @@ $cart = new Cart;
         border-radius: 5px;
     }
 
-    .button-holder {
+    /* .button-holder {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 6em;
-    }
+    } */
 
     .button {
         margin: 5px;
