@@ -1,15 +1,33 @@
+/* background: url('./modern-store-inside.jpg') no-repeat center center fixed; */
+/* background: url('./County-Store-Image.png') no-repeat center center fixed; */
 body {
+	margin: 0;
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+	text-align: var(--bs-body-text-align);
+	background-color: var(--bs-body-bg);
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+	font-family: bcFont !important;
+	color: #211a1a;
+	font-size: 0.9em;
 	background-color: #fff;
-	/* background: url('./County-Store-Image.png') no-repeat center center fixed; */
 	background: url('./modern-mall.png') no-repeat center center fixed;
-	/* background: url('./modern-store-inside.jpg') no-repeat center center fixed; */
 	background-size: cover;
 	height: 100%;
-
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 }
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
 .make-muted {
 	position: relative;
 	z-index: 2;
@@ -97,10 +115,46 @@ body {
 	width: 100vw;
 	z-index: 35;
 }
-/* .lil-logo {
-  position: relative;
-  width: 70px;
-  z-index: 40;
-  left: -186px;
-  top: -102px;
-} */
+
+.card-img,
+.card-img-top {
+	border-top-left-radius: var(--bs-card-inner-border-radius);
+	border-top-right-radius: var(--bs-card-inner-border-radius);
+}
+.card-img,
+.card-img-bottom,
+.card-img-top {
+	width: 100%;
+}
+img,
+svg {
+	vertical-align: middle;
+}
+.navbar {
+	--bs-navbar-padding-x: 0;
+	--bs-navbar-padding-y: 0.5rem;
+	--bs-navbar-color: rgba(0, 0, 0, 0.55);
+	--bs-navbar-hover-color: rgba(0, 0, 0, 0.7);
+	--bs-navbar-disabled-color: rgba(0, 0, 0, 0.3);
+	--bs-navbar-active-color: rgba(0, 0, 0, 0.9);
+	--bs-navbar-brand-padding-y: 0.3125rem;
+	--bs-navbar-brand-margin-end: 1rem;
+	--bs-navbar-brand-font-size: 1.25rem;
+	--bs-navbar-brand-color: rgba(0, 0, 0, 0.9);
+	--bs-navbar-brand-hover-color: rgba(0, 0, 0, 0.9);
+	--bs-navbar-nav-link-padding-x: 0.5rem;
+	--bs-navbar-toggler-padding-y: 0.25rem;
+	--bs-navbar-toggler-padding-x: 0.75rem;
+	--bs-navbar-toggler-font-size: 1.25rem;
+	--bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+	--bs-navbar-toggler-border-color: rgba(0, 0, 0, 0.1);
+	--bs-navbar-toggler-border-radius: 0.375rem;
+	--bs-navbar-toggler-focus-width: 0.25rem;
+	--bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
+}

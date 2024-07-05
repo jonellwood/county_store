@@ -13,7 +13,7 @@ require_once 'config.php';
 
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
-
+// ! This query returns 4 "random" products 
 // $idsql = "SELECT products_new.product_id, products_new.name, COUNT(order_details.product_id) AS count 
 // FROM (
 //     SELECT FLOOR(RAND() * 200) + 1 AS random_id 
@@ -35,8 +35,15 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 // ORDER BY RAND()
 // LIMIT 4";
 
-
-$idsql = "SELECT order_details.product_id, products_new.name, COUNT(*) as count FROM order_details JOIN products_new on products_new.product_id=order_details.product_id GROUP BY product_id order by count DESC LIMIT 4";
+// ! This query is top 4 products with most orders
+// $idsql = "SELECT order_details.product_id, products_new.name, COUNT(*) as count FROM order_details JOIN products_new on products_new.product_id=order_details.product_id GROUP BY product_id order by count DESC LIMIT 4";
+// ! this query is top 4 products with most orders excluding hats because they make the page look weird
+$idsql = "SELECT od.product_id, pn.name, COUNT(*) as count 
+FROM order_details od
+JOIN products_new pn on pn.product_id=od.product_id 
+JOIN products_producttype pt on pt.product_id = od.product_id
+WHERE pt.producttype_id != 3
+GROUP BY od.product_id order by count DESC LIMIT 4";
 $idstmt = $conn->prepare($idsql);
 $idstmt->execute();
 $idresult = $idstmt->get_result();
@@ -102,18 +109,6 @@ if ($idresult->num_rows > 0) {
 </div>
 
 <style>
-    body {
-        background: #fff;
-        margin: 1rem;
-        color: #111;
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        font-weight: 400;
-        line-height: 1.5rem;
-        font-size: 1rem;
-        overflow: hidden;
-    }
-
     table {
         border: 0;
         border-collapse: collapse;
@@ -198,7 +193,7 @@ if ($idresult->num_rows > 0) {
         margin: 0;
         padding: 0;
         /* margin-top: 25px; */
-        margin-bottom: 55px;
+        margin-bottom: 10px;
 
     }
 
@@ -231,15 +226,18 @@ if ($idresult->num_rows > 0) {
         /* text-transform: uppercase; */
     }
 
-    .card-title {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-
     .card-body {
         display: grid;
         align-content: end;
+
     }
+
+    .card-title {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 50px;
+    }
+
 
     .card {
 
@@ -249,5 +247,15 @@ if ($idresult->num_rows > 0) {
 
     .card:hover {
         box-shadow: 1px 1px 11px 1px rgba(0, 85, 119, 1);
+    }
+
+    @media screen and (max-width: 900px) {
+        body {
+            overflow: scroll;
+        }
+
+        .products-container {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 </style>

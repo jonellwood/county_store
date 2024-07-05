@@ -88,6 +88,13 @@ Includes:   none
     }
 
     .navbar-brand {
+        padding-top: var(--bs-navbar-brand-padding-y);
+        padding-bottom: var(--bs-navbar-brand-padding-y);
+        margin-right: var(--bs-navbar-brand-margin-end);
+        font-size: var(--bs-navbar-brand-font-size);
+        color: var(--bs-navbar-brand-color);
+        text-decoration: none;
+        white-space: nowrap;
         padding-top: 20px;
         padding-bottom: 20px;
         /* margin-right: 50px; */
@@ -96,6 +103,7 @@ Includes:   none
         text-decoration: none;
         white-space: nowrap;
     }
+
 
     .cart-view {
         margin-left: 50px;

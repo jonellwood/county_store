@@ -40,36 +40,26 @@ $cart = new Cart;
         <?php include "stats.php" ?>
     </div>
     <?php include "cartSlideout.php" ?>
+    <?php include "footer.php" ?>
 </body>
-<?php include "footer.php" ?>
 
 
 
 </html>
 
 <style>
-    body {
-        background-color: #fff;
-        background: url('./modern-mall.png') no-repeat center center fixed;
-        background-size: cover;
-        height: 100%;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-    }
-
     .hot-sellers {
         width: 90%;
         position: relative;
-        /* margin-top: 150px; */
+        z-index: 3;
+        margin-top: 80px;
         margin-left: auto;
         margin-right: auto;
         display: flex;
-        align-items: flex-end;
-        min-height: 95vh;
+        /* align-items: flex-end; */
+        min-height: 80vh;
         max-height: 100vh;
     }
-
 
     .card {
         margin-top: 20px;
