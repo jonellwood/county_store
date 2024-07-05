@@ -27,7 +27,9 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <link href="https://cdn.jsdelivr.net/npm/intro.js@7.0/minified/introjs.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/intro.js@7.0/intro.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicons/favicon.ico">
-    <link href="../assets/css/berkstrap.css" rel="stylesheet" />
+    <link href="prod-admin-style.css" rel="stylesheet" />
+    <link href="../../build/style.max.css" rel="stylesheet" />
+    <link href="../../index23.css" rel="stylesheet" />
     <script>
         let firstData = [];
         async function getRequests() {
@@ -399,7 +401,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
 </head>
 
-<body class="p-3 m-0 border-0 bd-example m-0 border-0" onload="getRequests()">
+<body onload="getRequests()">
     <div class="parent">
         <div class="div1">
             <?php include('hideNav.php'); ?>

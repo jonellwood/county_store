@@ -1,34 +1,27 @@
-<!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-    |||
-</button> -->
-
-<!-- <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel"> -->
 <div class="mini-side-nav">
     <div class="offcanvas-body" data-title="Welcome" data-intro="This is your nav. You've used a nav before right? " data-step="1">
         <div>
             <ul>
                 <li class="nav-item">
                     <a class="nav-link " href="./employeeRequests.php">
-                        <span class="nav-link-text ms-1">Home</span>
-                        <p>&#127968;</p>
+                        <span class="nav-link-text ms-1">&#127968; Home </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../inventory/index.php">
-                        <span class="nav-link-text ms-1">Inventory</span>
-                        <p>&#128104;&#8205;&#128187;</p>
+                        <span class="nav-link-text ms-1">&#128104;&#8205;&#128187; Inventory</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="../../index.php">
-                        <span class="nav-link-text ms-1">Store</span>
-                        <p>&#127980;</p>
+                        <span class="nav-link-text ms-1">&#127980; Store</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="../../support.php">
-                        <span class="nav-link-text ms-1">Help</span>
-                        <p>&#128129;</p>
+                        <span class="nav-link-text ms-1">
+                            &#128129; Help
+                        </span>
                     </a>
                 </li>
                 <?php
@@ -36,56 +29,75 @@
                     echo "
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-request-ui.php'>
-                            <span class='nav-link-text ms-1'>Edit Requests</span>
-                            <p>&#129689;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129689;
+                            Edit Requests
+                            
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='orders-by-dept-for-admin.php'>
-                            <span class='nav-link-text ms-1'>Awaiting Order</span>
-                            <p>&#8986;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#8986;
+                            Awaiting Order
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='orders-to-be-received.php'>
-                            <span class='nav-link-text ms-1'>Receiving</span>
-                            <p>&#128666;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#128666;
+                            Receiving
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-users.php'>
-                            <span class='nav-link-text ms-1'>Edit Users</span>
-                            <p>&#129318;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129318;
+                            Edit Users
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='dept-admin.php'>
-                            <span class='nav-link-text ms-1'>Edit Dept</span>
-                            <p>&#129377;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129377;
+                            Edit Dept
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='add-product-ui.php'>
-                            <span class='nav-link-text ms-1'>Add Product</span>
-                            <p> &#129518;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129518;
+                            Add Product
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-product-ui.php'>
-                            <span class='nav-link-text ms-1'>Edit Product</span>
-                            <p>&#129650;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129650;
+                            Edit Product
+                            </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='./reports.php'>
-                            <span class='nav-link-text ms-1'>Reports</span>
-                            <p>&#129531;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#129531;
+                            Reports
+                            </span>
                         </a>
                     </li>
                         <li class='nav-item'>
                         <a class='nav-link' href='overview.php'>
-                            <span class='nav-link-text ms-1'>Old Dashboard</span>
-                            <p>&#128117;&#127996;</p>
+                            <span class='nav-link-text ms-1'>
+                            &#128117;&#127996;
+                            Old Dashboard
+                            </span>
                         </a>
                     </li>
                     ";
@@ -95,8 +107,10 @@
                 ?>
                 <li class="nav-item">
                     <a class="nav-link " href="../../logout.php">
-                        <span class="nav-link-text ms-1">Logout</span>
-                        <p class="red">&#128473;</p>
+                        <span class="nav-link-text ms-1 red">
+                            &#128473;
+                            Logout
+                        </span>
                     </a>
                 </li>
                 <?php
@@ -107,14 +121,14 @@
                 ";
                 } ?>
             </ul>
+            <img src="../assets/img/bcg12.png" alt="bgc logo" />
+            <!-- <p class='cool-tip'>
+                Looking for orders already received? <br>
+                Use the <mark> <a href="https://localhost/county-store/inventory/login-ldap.php"> inventory management tool</a>
+                </mark>
+            </p> -->
         </div>
     </div>
-    <img src="../assets/img/bcg.jpg" alt="bgc logo" />
-    <p class='cool-tip'>
-        Looking for orders already received? <br>
-        Use the <mark> <a href="https://localhost/county-store/inventory/login-ldap.php"> inventory management tool</a>
-        </mark>
-    </p>
 </div>
 
 <script>
@@ -168,8 +182,18 @@ if ($_SESSION['role_name'] == 'Administrator') {
 ?> -->
 <style>
     .mini-side-nav {
-        padding: 10px;
+        /* padding: 10px; */
         box-shadow: 10px 0px 38px -17px rgba(59, 54, 59, 1);
+        background-color: #00000099;
+        color: #FFFFFF;
+        height: 99dvh;
+
+        img {
+            position: fixed;
+            bottom: 0;
+            width: 9%;
+            padding-bottom: 12px;
+        }
     }
 
     .offcanvas-body {
@@ -181,7 +205,15 @@ if ($_SESSION['role_name'] == 'Administrator') {
         padding: 10px;
     }
 
-    a {
+    .nav-item {
+        a {
+            color: #ffffff !important;
+            padding-left: 5px;
+            margin-top: 5%;
+        }
+    }
+
+    /* a {
         display: flex;
         justify-content: space-between;
         padding-bottom: 10px;
@@ -189,23 +221,23 @@ if ($_SESSION['role_name'] == 'Administrator') {
         text-decoration: none;
         color: inherit;
         cursor: pointer;
-    }
+    } */
 
 
-    .nav-link a p {
+    /* .nav-link a p {
         margin-right: 10px;
-    }
+    } */
 
     .red {
         color: red !important;
     }
 
-    img {
+    /* img {
         margin-bottom: 10%;
         width: 100px;
         margin-left: auto;
         margin-right: auto;
-    }
+    } */
 
     .cool-tip {
         font-family: monospace;

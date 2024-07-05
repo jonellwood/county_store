@@ -1,21 +1,19 @@
 <div class="mini-top-nav">
-    <!-- <div class="welcome message">
-        <p>You are beautiful person that deserves respect</p>
-    </div> -->
-
-    <form class="form" role="search" data-title="Search" data-intro="Search for orders, by name, id, or products. Coming soon." data-step="2">
+    <!-- <form class="form" role="search" data-title="Search" data-intro="Search for orders, by name, id, or products. Coming soon." data-step="2">
         <input class="form-control me-2" type="search" placeholder="To use press ctrl+F" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Search</button>
-    </form>
+        <button class="button btn-primary" type="submit">Search</button>
+    </form> -->
+    <div>
+        <div class="review-training"><button onclick="deleteCookie('introjs-dontShowAgain')" class="button">Review Training</button>
+        </div>
+    </div>
     <div class="right-content">
         <!-- <div class="review-training"><button onclick="hideDenied()">Hide Denied</button></div> -->
-        <div class="review-training"><a href="requests.php"><button>Leave Beta</button></a></div>
-        <div class="review-training"><button popovertarget="feedback-form" popovertargetaction="show">Beta
-                Feedback</button></div>
-        <div class="review-training"><button onclick="deleteCookie('introjs-dontShowAgain')">Review Training</button>
-        </div>
-        <div class="settings-cog" data-title="Account Settings" data-intro="Update and manage your user account, assign your staff to specific roles... Coming Soon." data-step="3">
-            &#9881;</div>
+
+        <!-- <div class="review-training"><button class="button" popovertarget="feedback-form" popovertargetaction="show">Beta
+                Feedback</button></div> -->
+        <!-- <div class="settings-cog" data-title="Account Settings" data-intro="Update and manage your user account, assign your staff to specific roles... Coming Soon." data-step="3">
+            &#9881;</div> -->
         <div data-title="It's your name! &#127881;" data-intro="Hey Look! Your name. If this is not your name please log in as you!" data-step="4">
             <?php echo $_SESSION['userName'] ?></div>
     </div>
@@ -69,6 +67,7 @@
         justify-content: space-between;
         padding: 10px;
         align-items: center;
+        color: #FFFFFF !important;
     }
 
     .form {
