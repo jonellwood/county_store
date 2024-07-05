@@ -183,7 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   section {
     display: grid;
     grid-template-columns: 30% 70%;
-
+    font-family: bcg;
   }
 
   .left {

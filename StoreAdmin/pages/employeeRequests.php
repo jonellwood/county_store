@@ -176,12 +176,13 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                     grogu += "</tbody>";
                     grogu += "</table>";
                     grogu += "<p class='tiny-text'>&#128161; Interact with a specific line by selecting it</p>";
-                    grogu += "<p class='tiny-text'>&#127925; Image of product does not reflect the color selected. Only the product itself.</p>";
+                    // grogu += "<p class='tiny-text'>&#127925; Image of product does not reflect the color selected. Only the product itself.</p>";
                     grogu += "<div class='total' id='orderTotal'>";
                     grogu += "</div>";
                     grogu += "<div class='itemTotal' id='itemTotal'>";
                     grogu += "</div>";
                     grogu += "</div>";
+                    grogu += "<div id='spend-summary'></div>";
 
                     var orderTotal = "<p class='receipt'>Request Total: " + money_format(totalCost) + "</p>";
                     var itemTotal = "<p class='receipt'>Item Count: " + parseInt(totalCount) + "</p>";
@@ -240,31 +241,20 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
             await fetch('getDeptTotalsFY.php?dept=' + dept)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data);
+                    console.log(data);
                     var fydata = "";
-                    fydata += "<div class='dep-info-holder'>"
-                    fydata += "<span class='table-title'>Department FY Totals</span class='table-title'>"
-                    fydata += "<table class='styled-table totals'>";
-                    fydata += "<thead>";
-                    fydata += "<tr>";
-                    fydata += "<th>Submitted</th>";
-                    fydata += "<th>Approved</th>";
-                    fydata += "<th>Ordered</th>";
-                    fydata += "<th>Completed</th>";
-                    fydata += "</tr>"
-                    fydata += "</thead>";
-                    fydata += "<tbody>";
-                    fydata += "<tr>";
-                    fydata += "<td>" + money_format(data[0].dep_submitted) + "</td>";
-                    fydata += "<td>" + money_format(data[1].dep_approved) + "</td>";
-                    fydata += "<td>" + money_format(data[2].dep_ordered) + "</td>";
-                    fydata += "<td>" + money_format(data[3].dep_completed) + "</td>";
-                    fydata += "</tr>";
-                    fydata += "</tbody>";
-                    fydata += "</table>";
-                    fydata += "<div class='div6' id='empTotals'>Emp Totals</div>";
+                    fydata += "<span class='table-title'>Department FY Totals</span>"
+                    fydata += "<div class='emp-info-holder'>"
+                    fydata += "<span> <b>Submitted</b> " + money_format(data[0].dep_submitted) + "</span>";
+                    fydata += "<span> <b>Approved</b> " + money_format(data[0].dep_submitted) + "</span>";
+                    fydata += "<span> <b>Ordered</b> " + money_format(data[0].dep_submitted) + "</span>";
+                    fydata += "<span> <b>Completed</b> " + money_format(data[0].dep_submitted) + "</span>";
                     fydata += "</div>";
+                    // fydata += "<div class='div6' id='empTotals'>Emp Totals</div>";
+                    fydata += "<div class='totals-slideout'  id='empTotals'>Emp Totals</div>";
                     document.getElementById('depTotals').innerHTML = fydata;
+
+
                     if (seeButton.classList.contains('hidden')) {
                         showTotalsButtonUnhide();
                     } else {
@@ -279,47 +269,21 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                 .then((data) => {
                     // console.log(data);
                     var mando = "";
-                    mando += "<div class='emp-info-holder'>";
                     mando += "<span class='table-title'>" + data[8].empName + " Clothing FY Totals</span>";
-                    mando += "<table class='styled-table totals'>";
-                    mando += "<thead>";
-                    mando += "<tr>";
-                    mando += "<th>Submitted</th>";
-                    mando += "<th>Approved</th>";
-                    mando += "<th>Ordered</th>";
-                    mando += "<th>Completed</th>";
-                    mando += "</tr>"
-                    mando += "</thead>";
-                    mando += "<tbody>";
-                    mando += "<tr>";
-                    mando += "<td>" + money_format(data[0].emp_submitted) + "</td>";
-                    mando += "<td>" + money_format(data[1].emp_approved) + "</td>";
-                    mando += "<td>" + money_format(data[2].emp_ordered) + "</td>";
-                    mando += "<td>" + money_format(data[3].emp_completed) + "</td>";
-                    mando += "</tr>";
-                    mando += "</tbody>";
-                    mando += "</table>";
-                    mando += "</div>"
-                    // mando += "<thead>";
                     mando += "<div class='emp-info-holder'>";
+                    mando += "<span> <b>Submitted:</b> " + money_format(data[0].emp_submitted) + "</span>";
+                    mando += "<span> <b>Approved:</b>  " + money_format(data[0].emp_submitted) + "</span>";
+                    mando += "<span> <b>Ordered:</b>   " + money_format(data[0].emp_submitted) + "</span>";
+                    mando += "<span> <b>Completed:</b> " + money_format(data[0].emp_submitted) + "</span>";
+                    mando += "</div>"
                     mando += "<span class='table-title'>" + data[8].empName + " Boots FY Totals</span>";
-                    mando += "<table class='styled-table totals'>"
-                    mando += "<thead>";
-                    mando += "<tr>";
-                    mando += "<th>Submitted</th>";
-                    mando += "<th>Approved</th>";
-                    mando += "<th>Ordered</th>";
-                    mando += "<th>Completed</th>";
-                    mando += "</tr>"
-                    mando += "</thead>";
-                    mando += "<tbody>";
-                    mando += "<tr>";
-                    mando += "<td>" + money_format(data[4].emp_boots_submitted) + "</td>";
-                    mando += "<td>" + money_format(data[5].emp_boots_approved) + "</td>";
-                    mando += "<td>" + money_format(data[6].emp_boots_ordered) + "</td>";
-                    mando += "<td>" + money_format(data[7].emp_boots_completed) + "</td>";
-                    mando += "</tbody>";
-                    mando += "</table>";
+                    mando += "<div class='emp-info-holder'>";
+
+                    mando += "<span> <b>Submitted:</b> " + money_format(data[4].emp_boots_submitted) + "</span>";
+                    mando += "<span> <b>Approved:</b>  " + money_format(data[4].emp_boots_submitted) + "</span>";
+                    mando += "<span> <b>Ordered:</b>   " + money_format(data[4].emp_boots_submitted) + "</span>";
+                    mando += "<span> <b>Completed:</b> " + money_format(data[4].emp_boots_submitted) + "</span>";
+                    mando += "</div>"
                     mando += "<p class='receipt'>FY Start: " + extractDateFromDB(data[9].fy_start) + ' ' +
                         "FY End: " + extractDateFromDB(data[10].fy_end) + "</p>";
                     mando += "</div>";
@@ -406,19 +370,19 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         <div class="div1">
             <?php include('hideNav.php'); ?>
         </div>
-        <div class="div2" id="main" data-title="Orders List" data-intro="These are all the orders submitted for your department(s). Each order most likly has several line items in each one." data-step="6">
+        <div class="div2" id="main" data-title="Orders List" data-intro="These are all the orders submitted for your department(s). Each order most likely has several line items in each one." data-step="6">
         </div>
-        <div class="div3" id="details" data-title="Detailed Order Info" data-intro="These are the specific items requested by the employee. You can approve or deny them all at once using the button to the left; or one at time by clicking a specific line item. When selecting a specific line item a popup menu will allow you to make decsions on the specific line item." data-step="7">
+        <div class="div3" id="details" data-title="Detailed Order Info" data-intro="These are the specific items requested by the employee. You can approve or deny them all at once using the button to the left; or one at time by clicking a specific line item. When selecting a specific line item a popup menu will allow you to make decisions on the specific line item." data-step="7">
         </div>
         <div class="div4">
             <?php include('hideTopNav.php'); ?>
         </div>
-        <div class="div6 total-hidden open" id="totalsOffCanvas">
+        <div class="div6 total-hidden" id="totalsOffCanvas">
             <div class="div5" id="depTotals" data-title="Department and Employee Information" data-intro="Here you can see Fiscal Year data for your Department as well as detailed information about the employee for whom this request has been submitted. Values are broken out by status as well if the request is for clothing or boots." data-step="8">
             </div>
         </div>
         <div class="div7 hidden" id="showTotalsButton" data-title="Toggle View" data-intro="Need more screen space? Toggle the view for Department and Employee Totals here" data-step="5">
-            <button class="seeTotals" id="seeTotals" onclick="showTotals()">Hide Totals</button>
+            <button class="button seeTotals" id="seeTotals" onclick="showTotals()">Show Totals</button>
         </div>
     </div>
     <button id="showButton">Show</button>
@@ -847,6 +811,11 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 </html>
 
 <style>
+    @font-face {
+        font-family: 'bcg';
+        src: url('../../fonts/Gotham-Medium.otf');
+    }
+
     *,
     *::before,
     *::after {
@@ -859,12 +828,13 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
     html {
         height: 100%;
+        font-family: bcg;
     }
 
-    body {
+    /* body {
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-    }
+    } */
 
     img,
     picture,
@@ -897,29 +867,28 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         isolation: isolate;
     }
 
-    .parent {
+    /* .parent {
         display: grid;
         grid-template-columns: 10% 25% 40% 22%;
         grid-template-rows: 75px 1fr 1fr;
         height: 100vh;
-        /* overflow: hidden; */
-    }
+    } */
 
-    .div1 {
+    /* .div1 {
         display: flex;
         grid-area: 1 / 1 / 3 / 1;
 
-    }
+    } */
 
-    .div2 {
+    /* .div2 {
         display: flex;
         grid-area: 2 / 2 / 2 / 2;
-        /* height: 100vh; */
+     
         scrollbar-gutter: stable;
         background-color: #80808030;
-    }
+    } */
 
-    .div3 {
+    /* .div3 {
         display: flex;
         grid-area: 2 / 3 / 2 / 3;
         height: 100vh;
@@ -930,40 +899,40 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         border-left: 3px solid #80808050;
         border-bottom: 3px solid #80808050;
 
-    }
+    } */
 
-    .div4 {
+    /* .div4 {
         display: flex;
         grid-area: 1 / 2 / 1 / 5;
-    }
+    } */
 
-    .div5 {
+    /* .div5 {
         display: flex;
-        /* grid-area: 2/ 4 / 2 /4; */
+     
         overflow-y: auto;
         scrollbar-gutter: stable;
-    }
+    } */
 
 
-    .div6 {
+    /* .div6 {
         display: flex;
         flex-direction: column;
-        grid-area: 2 / 4 / 3 / 4;
+        grid-area: 2 / 3 / 3 / 5;
         border-top: 3px solid #80808050;
         border-right: 3px solid #80808050;
         border-bottom: 3px solid #80808050;
-    }
-
+    } */
+    /* Keep this here for now */
     .total-hidden {
         margin-left: 550px;
     }
 
-    .div7 {
+    /* .div7 {
         display: flex;
         grid-area: 1 / 5 / 1 / 5;
         margin-left: -100px;
-        /* visibility: hidden; */
-    }
+        
+    } */
 
     .hidden {
         visibility: hidden;
@@ -977,9 +946,9 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
     .emp-info-holder,
     .main-list-holder,
-    .main-order-info-holder {
-        border-top: #1aa260 44px solid;
-        font-family: robofont;
+    .main-order-info-holder,
+    .dep-info-holder {
+        border-top: #256141 15px solid;
         margin-top: 25px;
     }
 
@@ -988,10 +957,21 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         cursor: pointer;
     }
 
+    .emp-info-holder {
+        /* position: relative; */
+        /* z-index: 2; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: end;
+        gap: 15px;
+        background-color: #d3d3d3;
+        padding-right: 35px;
+
+    }
+
     .dep-info-holder {
-        border-top: #1aa260 44px solid;
-        font-family: robofont;
-        margin-top: 25px;
+        width: 80%;
+        align-items: flex-end;
     }
 
     .details {
@@ -1001,12 +981,14 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .table-title {
         display: flex;
         justify-content: space-evenly;
-        font-family: robofont;
+        /* font-family: robofont; */
         text-wrap: balance;
-        font-size: max(1.25vw, 14px);
+        /* font-size: max(1.25vw, 14px); */
         text-align: center;
         padding-top: 20px;
         width: auto;
+        background-color: #FFFFFF90;
+
     }
 
     .totals td {
@@ -1018,7 +1000,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         margin: 25px 0;
         font-size: 0.8em;
         /* font-family: sans-serif; */
-        font-family: robofont;
+        /* family: robofont; */
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     }
@@ -1370,11 +1352,18 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
     .tiny-text {
         font-size: small;
-        color: rgba(0, 0, 0, 0.85)
+        /* color: rgba(0, 0, 0, 0.85) */
+        background-color: #00000090;
+        color: #FFFFFF;
+        padding: 5px;
+        border-radius: 5px;
+        ;
     }
 
     .active-request {
-        background-color: #00800030 !important;
+        background-color: #008000 !important;
+        color: #FFFFFF;
+        font-weight: bold;
     }
 
     #not-off-canvas {
