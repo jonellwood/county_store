@@ -55,7 +55,7 @@ if ($idresult->num_rows > 0) {
         array_push($felist, [
             'product_id' => $idrow['product_id'],
             'name' => $idrow['name'],
-            'count' => $idrow['count']
+            'count' => $idrow['count'],
         ]);
     }
 }
@@ -82,9 +82,9 @@ if ($idresult->num_rows > 0) {
                 $proImage = !empty($prorow["image"]) ? $prorow['image'] : 'demo-img.jpg';
                 // $c++;
     ?>
-                <div class="card" id="featured-card">
+                <div class="card" id="featured-card" view-transition-group="image-transition">
                     <a href="product-details.php?product_id=<?php echo $prorow["product_id"]; ?>">
-                        <img src="<?php echo $proImage; ?>" alt="product name" class="card-img-top">
+                        <img src="<?php echo $proImage; ?>" alt="product name" class="card-img-top" view-transition-old="image-transition">
                         <div class="card-body featured">
                             <p class="card-title"><?php echo $prorow["name"]; ?></p>
                             <!-- <p class="card-subtitle mb-2 ">Starting at:
@@ -258,4 +258,63 @@ if ($idresult->num_rows > 0) {
             grid-template-columns: 1fr 1fr;
         }
     }
+
+    @view-transition {
+        navigation: auto;
+    }
+
+
+    ::view-transition-old(root) {
+        animation: 3.75s ease-in both fadeout;
+    }
+
+    ::view-transition-new(root) {
+        animation: 3.75s ease-in both fadein;
+    }
+
+    /* @keyframes grow-x {
+        from {
+            transform: scaleX(0);
+        }
+
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes shrink-x {
+        from {
+            transform: scaleX(1);
+        }
+
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    @keyframes grow-and-move {
+        from {
+            transform: scale(0) translateY(0);
+        }
+
+        to {
+            transform: scale(1) translateY(-100%);
+        }
+    }
+
+    ::view-transition-group(root) {
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top left;
+    }
+
+    ::view-transition-old(root) {
+        animation: 0.5s ease-in-out both grow-and-move;
+    }
+
+    ::view-transition-new(root) {
+        animation: 0.5s ease-in-out both grow-and-move;
+    } */
 </style>

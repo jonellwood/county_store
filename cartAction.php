@@ -119,8 +119,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $deleteItem = $cart->remove($_REQUEST['id']);
 
         // redirect
-        $redirectURL = 'viewCart.php';
-        //$redirectURL = $_SERVER['HTTP_REFERER'];
+        // $redirectURL = 'viewCart.php';
+        $redirectURL = $_SERVER['HTTP_REFERER'];
     } elseif ($_REQUEST['action'] == 'placeOrder' && $cart->total_items() > 0) {
         // $redirectURL = 'checkout.php';
         $redirectURL = $_SERVER['HTTP_REFERER'];

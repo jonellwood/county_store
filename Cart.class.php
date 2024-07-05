@@ -1,4 +1,12 @@
 <?php
+/*
+Author: Jon Ellwood
+Organization: Berkeley County IT Department
+Last Updated: 07/05/2024
+Purpose: Shopping Cart Class 
+Includes:   none
+
+*/
 // start session 
 if (!session_id()) {
     session_start();

@@ -99,6 +99,8 @@ $cart = new Cart;
                     console.log('product-data-for-cart-item');
                     console.log(data);
                     //return data;
+
+
                     var html = '';
                     html += `
                     <form action='cartAction.php' method='post' id='editCartItem'>
@@ -185,6 +187,8 @@ $cart = new Cart;
                         </form>
                         `;
                     document.getElementById('popover-edit-form-holder').innerHTML = html;
+
+
 
                 })
                 .catch((error) => {

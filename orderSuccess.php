@@ -1,4 +1,14 @@
 <?php
+/*
+Author: Jon Ellwood
+Organization: Berkeley County IT Department
+Last Updated: 07/05/2024
+Purpose: Display order success notification to user with order details, trigger email to user, and wipe cart from local storage.
+Includes:   
+            viewHead.php is a common html head element with css, favicon, and metadata 
+            footer.php is the footer element.
+
+*/
 if (empty($_REQUEST['id'])) {
     header("Location: index.php");
 }
@@ -48,6 +58,7 @@ if ($result->num_rows > 0) {
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <?php include "./components/viewHead.php" ?>
     <script>
+        // ! This is called inside the sendmail function on page load.
         function wipeLocalCart() {
             localStorage.removeItem('store-cart');
         }
@@ -196,7 +207,7 @@ if ($result->num_rows > 0) {
             ?>
         </div>
     </div>
-
+    <?php include "footer.php" ?>
 </body>
 
 
@@ -204,6 +215,7 @@ if ($result->num_rows > 0) {
 <script>
     function sendmail(id, emp_id) {
         fetch('./newSendOrderEmail.php?ord_id=' + id + '&emp_id=' + emp_id);
+        wipeLocalCart();
     }
 </script>
 <style>

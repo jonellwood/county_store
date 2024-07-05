@@ -292,7 +292,9 @@ $cart = new Cart;
                 const targetUrl = new URL(e.activation.entry.url);
 
                 // going from productDetails page to shirts-view-page
-                if (isViewPage(targetUrl)) {
+                // not sure what the hell isViewPage was supposed to be....  
+                // if (isViewPage(targetUrl)) {
+                if (targetUrl(targetUrl)) {
                     const profile = extractProfileIdFromUrl(targetUrl);
 
                     // set view-transition-name values on the elements to animate

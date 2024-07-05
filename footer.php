@@ -21,7 +21,8 @@ echo "</footer>";
 
 <style>
     .footer-holder {
-        position: relative;
+        /* position: relative; */
+        position: fixed;
         margin-top: 10px;
         bottom: 0;
         display: flex;
