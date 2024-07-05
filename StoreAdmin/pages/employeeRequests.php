@@ -27,6 +27,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <link href="https://cdn.jsdelivr.net/npm/intro.js@7.0/minified/introjs.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/intro.js@7.0/intro.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicons/favicon.ico">
+    <link href="../assets/css/berkstrap.css" rel="stylesheet" />
     <script>
         let firstData = [];
         async function getRequests() {

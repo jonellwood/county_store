@@ -57,13 +57,56 @@ Includes:   none
     </div>
     <div class="help">
         <a href="support.php">
-            <i class="fa fa-question-circle"></i>
+            <button class='help help-button'> ? </button>
+            <!-- <i class="fa fa-question-circle"></i> -->
         </a>
     </div>
 </div>
+<!-- <div id="popover-getHelp" popover role="tooltip">
+    <button class="close-btn" popovertarget="popover-getHelp" popovertargetaction="hide">
+        <span aria-hidden="true">✕</span>
+    </button>
+
+    <div>
+        <p>Get Help</p>
+    </div>
+</div> -->
 <!-- </div> -->
+<div id="myToast">
+    <div class="toast-header">
+        Get Help
+        <!-- <small>Use the ? link to go to help page</small> -->
+        <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="eatToast()"></button>
+    </div>
+    <div class="toast-body">
+        <p id="toast_message"></p>
+    </div>
+</div>
+<script>
+    // function to make & show toast messags. No real use case for them... yet....
+    // I should really move this its own file....
+    function showToast(msg) {
+        var toast = document.getElementById('myToast');
+        var msgBlock = document.getElementById('toast_message');
+        msgBlock.innerText = msg;
+        toast.className = "show";
+        setTimeout(function() {
+            toast.className = toast.className.replace("show", "hideToast");
+        }, 2000);
+    }
 
+    function eatToast() {
+        var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
+    }
+    const helpButton = document.querySelector('.help');
+    helpButton.addEventListener('mouseenter', () => {
+        setTimeout(() => {
 
+            showToast('Use the ? link to go to help page');
+
+        }, 1000)
+    })
+</script>
 <style>
     @font-face {
         font-family: RoboCondensed;
@@ -282,6 +325,59 @@ Includes:   none
 
     .paraminput input {
         line-height: 1 !important;
+    }
+
+    .help-button {
+        border: none;
+        background-color: transparent;
+    }
+
+    .toast-header {
+        /* background-color: #f57f43; */
+        background-color: #00000050;
+        color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        font-size: large;
+    }
+
+    .toast-body {
+        padding-top: 5px;
+        text-align: center;
+    }
+
+    #myToast {
+        width: 25%;
+        visibility: hidden;
+        background-color: slategray;
+        color: aliceblue;
+        text-align: center;
+        border-radius: 5px;
+        padding: 16px;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 5;
+        border: 2px solid #005677;
+        border-radius: 10px;
+        /* box-shadow: 0px 0px 15px -10px rgba(255, 255, 255, 1); */
+    }
+
+    .show {
+        visibility: visible !important;
+        opacity: 1;
+        transition: opacity 2s linear;
+    }
+
+    .hideToast {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 2s, opacity 2s linear;
+    }
+
+    .eatToast {
+        visibility: hidden;
     }
 
     @media (max-width: 1475px) {
