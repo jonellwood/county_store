@@ -73,7 +73,7 @@ if (!empty($sessData['status']['msg'])) {
                     var totalThisYear = data[0].total_sum;
                     var html = "<p>Spending this fiscal year: " + USDollar.format(totalThisYear) + "</p> ";
                     html += "<p>Including this request: " + USDollar.format(totalThisYear +
-                        <?php echo ($cart->total() * 1.09) ?>) + "</p>";
+                        <?php echo (($cart->total() + $cart->total_logo_fees()) * 1.09) ?>) + "</p>";
                     document.getElementById('annualSpending').innerHTML = html;
                 })
         }
@@ -91,19 +91,16 @@ if (!empty($sessData['status']['msg'])) {
                     let lname = name[1];
                     var html = "<p>" + data[0].empName + "</p>";
                     html += "<input type='hidden' name='first_name' value=" + fname + ">";
-                    html = "<p>" + data[0].empName + "</p>";
+                    html = "<span><p>" + data[0].empName + " - " + data[0].deptName + "</p> </span>";
                     html += "<input type='hidden' name='first_name' value=" + fname + ">";
                     html += "<input type='hidden' name='last_name' value=" + lname + ">";
-                    html += "<p name='department'>" + data[0].deptName + "</p>";
+                    // html += "<p name='department'>" + data[0].deptName + "</p>";
                     html += "<input type='hidden' name='department' value=" + data[0].deptNumber + ">";
                     html += "<p name='email'>" + data[0].email + "</p>";
                     html += "<input type='hidden' name='email' value=" + data[0].email + ">";
                     html += "<input type='hidden' name='last_name' value=" + lname + ">";
                     html += "<p id='annualSpending'></p>"
-                    // html += "<p name='department'>" + data[0].deptName + "</p>";
-                    // html += "<input type='hidden' name='department' value=" + data[0].deptNumber + ">";
-                    // html += "<p name='email'>" + data[0].email + "</p>";
-                    // html += "<input type='hidden' name='email' value=" + data[0].email + ">";
+
                     html += "<input type='hidden' name='emp_number' id='emp_number' value='" + data[0].empNumber +
                         "' >"
                     console.log(data[0].empNumber)
@@ -340,7 +337,7 @@ if (!empty($sessData['status']['msg'])) {
             </div>
         </div>
     </div>
-    <?php include "viewCartDump.php" ?>"
+    </?php include "viewCartDump.php" ?>"
 </body>
 
 </html>

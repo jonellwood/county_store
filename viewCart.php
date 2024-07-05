@@ -391,7 +391,7 @@ $cart = new Cart;
                 </a>
             <?php } ?>
         </div>
-        </?php include "viewCartDump.php" ?>
+        <?php include "viewCartDump.php" ?>
 
 
     </div>
@@ -485,12 +485,12 @@ $cart = new Cart;
     .container {
         max-width: unset !important;
         margin-top: 20px;
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 5%;
+        margin-right: 5%;
         /* width: 100%; */
         /* width: 100vw; */
         display: grid;
-        grid-template-columns: 5fr 1fr;
+        grid-template-columns: 6fr 2fr;
     }
 
     /* .cart-display {

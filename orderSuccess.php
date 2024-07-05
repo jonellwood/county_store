@@ -5,6 +5,7 @@ if (empty($_REQUEST['id'])) {
 $order_id = base64_decode($_REQUEST['id']);
 $emp_id = base64_decode($_REQUEST['emp_id']);
 
+
 function html_escape($string)
 {
     return htmlspecialchars($string, ENT_QUOTES | ENT_HTML5, 'UTF-8', true);
@@ -42,14 +43,20 @@ if ($result->num_rows > 0) {
 <head>
     <title>Request Status</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" id='test' href="berkstrap-dark.css" async>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- <link rel="stylesheet" id='test' href="berkstrap-dark.css" async> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+    <?php include "./components/viewHead.php" ?>
+    <script>
+        function wipeLocalCart() {
+            localStorage.removeItem('store-cart');
+        }
+    </script>
 </head>
 
-<body onload='sendmail(<?php echo $order_id ?>, <?php echo $emp_id ?>)'>
+<!-- <body onload='sendmail(<?php echo $order_id ?>, <?php echo $emp_id ?>)'> -->
 
-    <!-- <body> -->
+<body onload='wipeLocalCart()'>
     <!-- uncomment line above, and remove this one, to reinstate email order confirmation feature after testing is completed -->
     <div class="container">
         <h1>Request Status <img src="bg-lightblue.png" alt="bc logo" style="width:500px" class='logo-image'></h1>
@@ -119,7 +126,7 @@ if ($result->num_rows > 0) {
                                         <p class='bottomb'><?php echo $item['name'] ?></p>
                                         <p class='bottomb'><img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></p>
                                         <p class='bottomb'><?php echo $item["quantity"]; ?></p>
-                                        <p class='bottomb'><?php echo CURRENCY_SYMBOL . $price; ?></p>
+                                        <p class='bottomb'><?php echo CURRENCY_SYMBOL . $price; ?> (each)</p>
                                         <p class='bottomb'><?php echo CURRENCY_SYMBOL . $sub_total; ?></p>
                                         <hr>
                                         <hr>
@@ -129,7 +136,7 @@ if ($result->num_rows > 0) {
                                         <p><b>Color: </b><?php echo $item['color_id'] ?></p>
                                         <p><b>Size: </b><?php echo $item['size_name'] ?></p>
                                         <p></p>
-                                        <p><b>Logo Fee: </b><?php echo CURRENCY_SYMBOL . $logoFee; ?></p>
+                                        <p><b>Logo Fee: </b><?php echo CURRENCY_SYMBOL . $logoFee; ?> (each)</p>
                                         <p></p>
                                         <p></p>
                                         <p></p>
@@ -169,7 +176,7 @@ if ($result->num_rows > 0) {
                 <div class="col mb-2 button-container">
                     <div class="row">
                         <div class="col-sm-12 col-md-6">
-                            <a href="index.php" class="btn btn-primary btn-block"><i class="fa fa-arrow-left"></i>
+                            <a href="index.php" class="button btn btn-primary btn-block">💰
                                 Continue
                                 Shopping</a>
                             <!-- <button class='hide-from-printer btn btn-secondary' onclick='window.print()'>Print</button> -->
@@ -192,6 +199,7 @@ if ($result->num_rows > 0) {
 
 </body>
 
+
 </html>
 <script>
     function sendmail(id, emp_id) {
@@ -199,6 +207,22 @@ if ($result->num_rows > 0) {
     }
 </script>
 <style>
+    .container {
+        max-width: unset !important;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    h1 {
+        background-color: #00000090;
+        padding: 10px;
+        /* font-size: 26px; */
+    }
+
+    .alert {
+        color: #000000;
+    }
+
     .second-container {
         display: grid;
         grid-template-columns: 1fr 5fr;
@@ -208,10 +232,13 @@ if ($result->num_rows > 0) {
     }
 
     .order-container {
+        padding: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 5px;
         align-items: center;
+        background-color: #00000090;
+        color: #ffffff;
     }
 
     .order-container p {
@@ -225,9 +252,9 @@ if ($result->num_rows > 0) {
 
     .comment-container {
         margin-bottom: 10px;
-        color: lightblue;
+        color: #FBFCFD;
         font-family: monospace;
-        background-color: blueviolet;
+        background-color: #731BC5;
         border-radius: 0.375rem;
     }
 
@@ -236,8 +263,11 @@ if ($result->num_rows > 0) {
     }
 
     .ord-addr-info {
+        padding-top: 10px;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        background-color: #00000090;
+        color: #ffffff;
     }
 
     img {
@@ -247,10 +277,39 @@ if ($result->num_rows > 0) {
 
     .logo-image {
         margin-left: 150px;
+        max-width: 20%;
     }
 
     #logo-img {
         width: 30px;
+    }
+
+    button {
+        border-radius: 5px;
+    }
+
+    .button {
+        margin: 5px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        background-color: #4CAF50;
+        color: #000000;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #4CAF50 !important;
+        color: #000000 !important;
+        font-weight: bold !important;
     }
 
     @media print {

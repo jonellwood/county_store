@@ -235,8 +235,9 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $stmt->execute();
                                 $cart->destroy();
                                 //echo "Item inserted successfully";
-                                $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
-                                header("Location: $redirectURL");
+                                // $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
+                                // header("Location: $redirectURL");
+                                header("Location: orderSuccess.php?id=" . base64_encode($orderID) . "&emp_id=" . base64_encode($emp_number));
                                 return;
                                 error_log('Redirecting to: ' . $redirectURL);
                                 error_log('orderID: ' . $orderID);
