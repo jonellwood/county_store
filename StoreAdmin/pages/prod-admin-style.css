@@ -21,18 +21,6 @@ html {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	/* background-color: #ffe53b; */
-	/* background-color: #dbdbdb; */
-	/* background-image: linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0.5) 0%,
-			rgba(0, 0, 0, 0.5) 100%
-		),
-		radial-gradient(
-			at 50% 0%,
-			rgba(255, 255, 255, 0.1) 0%,
-			rgba(0, 0, 0, 0.5) 50%
-		); */
 	background-blend-mode: soft-light, screen;
 }
 
@@ -60,7 +48,6 @@ h3 {
 	border-collapse: collapse;
 	margin: 25px 0;
 	font-size: 0.9em;
-	/* font-family: sans-serif; */
 	min-width: 400px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
@@ -109,7 +96,6 @@ a:link:hover {
 	grid-template-columns: 9% 23% 39% 5% 10%;
 	grid-template-rows: 75px 1fr 1fr;
 	height: 100vh;
-	/* overflow: hidden; */
 }
 
 .div1 {
@@ -120,7 +106,7 @@ a:link:hover {
 .div2 {
 	display: flex;
 	grid-area: 2 / 2 / 2 / 5;
-	/* height: 100vh; */
+
 	scrollbar-gutter: stable;
 	background-color: #80808030;
 }
@@ -143,8 +129,6 @@ a:link:hover {
 }
 
 .div5 {
-	/* display: flex; */
-	/* grid-area: 2/ 4 / 2 /4; */
 	overflow-y: auto;
 	scrollbar-gutter: stable;
 }
@@ -160,13 +144,10 @@ a:link:hover {
 	border-right: 3px solid #80808050;
 	border-bottom: 3px solid #80808050;
 	box-shadow: 0 0 20px 30px #00000080;
-
+}
 .div7 {
 	display: flex;
 	grid-area: 1 / 5 / 1 / 5;
 	margin-left: -100px;
 	/* visibility: hidden; */
 }
-/* .totals-slideout {
-	box-shadow: 0 0 5px 20px #800000;
-} */
