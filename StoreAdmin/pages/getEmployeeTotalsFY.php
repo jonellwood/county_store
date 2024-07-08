@@ -5,50 +5,29 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 $emp = $_GET['emp'];
 
-class MyDateTime extends DateTime
+function fiscalYear()
 {
-    /**
-     * Calculates start and end date of fiscal year
-     * @param DateTime $dateToCheck A date withn the year to check
-     * @return array('start' => timestamp of start date ,'end' => timestamp of end date) 
-     */
-    public function fiscalYear()
-    {
-        $result = array();
-        $start = new DateTime();
-        $start->setTime(0, 0, 0);
-        $end = new DateTime();
-        $end->setTime(23, 59, 59);
-        $year = $this->format('Y');
-        $start->setDate($year, 7, 1);
-        $end->setDate($year + 1, 6, 30);
-        $result['start'] = $start->getTimestamp();
-        $result['end'] = $end->getTimestamp();
-        return $result;
+    $currentMonth = date('m');
+    $currentYear = date('Y');
+    if ($currentMonth < 6) {
+        $currentYear--;
     }
+    return $currentYear;
 }
+$fiscalYear = strval(fiscalYear());
 
-$mydate = new MyDateTime(); // will use the current date time
+$fy_start = $fiscalYear . "-07-01";
+$fy_end = $fiscalYear + 1 . "-06-30";
 
-$year = $mydate->format('Y');  // to get the current year and 
-$mydate->setDate($year - 1, 6, 30); // pass into here to set the values to apply
-$result = $mydate->fiscalYear(); // the fiscalYear method too
+$query1 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_submitted from ord_submitted where emp_id = '$emp' and order_created BETWEEN '$fy_start' AND '$fy_end' AND product_id !=105;";
+$query2 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_approved from  ord_approved  where emp_id = '$emp' and order_created BETWEEN   '$fy_start' AND '$fy_end' AND product_id !=105;";
+$query3 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_ordered from   ord_ordered   where emp_id = '$emp' and order_created BETWEEN     '$fy_start' AND '$fy_end' AND product_id !=105;";
+$query4 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_completed from ord_completed where emp_id = '$emp' and order_created BETWEEN '$fy_start' AND '$fy_end' AND product_id !=105;";
 
-$fystart = $result['start'];
-$fyend = $result['end'];
-
-$db_fystart = date(DATE_RFC3339, $fystart);
-$db_fyend = date(DATE_RFC3339, $fyend);
-
-$query1 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_submitted from ord_submitted where emp_id = '$emp' and order_created BETWEEN '$db_fystart' AND '$db_fyend' AND product_id !=105;";
-$query2 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_approved from  ord_approved  where emp_id = '$emp' and order_created BETWEEN   '$db_fystart' AND '$db_fyend' AND product_id !=105;";
-$query3 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_ordered from   ord_ordered   where emp_id = '$emp' and order_created BETWEEN     '$db_fystart' AND '$db_fyend' AND product_id !=105;";
-$query4 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_completed from ord_completed where emp_id = '$emp' and order_created BETWEEN '$db_fystart' AND '$db_fyend' AND product_id !=105;";
-
-$query5 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_submitted from ord_submitted where emp_id = '$emp' and order_created BETWEEN '$db_fystart' AND '$db_fyend' AND product_id = 105;";
-$query6 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_approved from  ord_approved  where emp_id = '$emp' and order_created BETWEEN   '$db_fystart' AND '$db_fyend' AND product_id = 105;";
-$query7 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_ordered from   ord_ordered   where emp_id = '$emp' and order_created BETWEEN     '$db_fystart' AND '$db_fyend' AND product_id = 105;";
-$query8 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_completed from ord_completed where emp_id = '$emp' and order_created BETWEEN '$db_fystart' AND '$db_fyend' AND product_id = 105;";
+$query5 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_submitted from ord_submitted where emp_id = '$emp' and order_created BETWEEN '$fy_start' AND '$fy_end' AND product_id = 105;";
+$query6 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_approved from  ord_approved  where emp_id = '$emp' and order_created BETWEEN   '$fy_start' AND '$fy_end' AND product_id = 105;";
+$query7 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_ordered from   ord_ordered   where emp_id = '$emp' and order_created BETWEEN     '$fy_start' AND '$fy_end' AND product_id = 105;";
+$query8 = "SELECT ifnull(sum(line_item_total), 0.00) as emp_boots_completed from ord_completed where emp_id = '$emp' and order_created BETWEEN '$fy_start' AND '$fy_end' AND product_id = 105;";
 $query9 = "SELECT empName from emp_ref where empNumber = '$emp' ";
 
 
@@ -131,5 +110,5 @@ if ($res9->num_rows > 0) {
     }
 }
 
-array_push($results, ['fy_start' => $db_fystart], ['fy_end' => $db_fyend]);
+array_push($results, ['fy_start' => $fy_start], ['fy_end' => $fy_end]);
 echo json_encode($results);

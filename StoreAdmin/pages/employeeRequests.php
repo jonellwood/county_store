@@ -85,7 +85,13 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         // getRequests();
 
         function money_format(amount) {
-            return '$' + parseFloat(amount).toFixed(2);
+            // console.log(amount);
+            // return '$' + parseFloat(amount).toFixed(2);
+            let USDollar = new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+            });
+            return USDollar.format(amount);
         }
 
         function extractDate(inputString) {
@@ -241,14 +247,14 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
             await fetch('getDeptTotalsFY.php?dept=' + dept)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     var fydata = "";
                     fydata += "<span class='table-title'>Department FY Totals</span>"
                     fydata += "<div class='emp-info-holder'>"
                     fydata += "<span> <b>Submitted</b> " + money_format(data[0].dep_submitted) + "</span>";
-                    fydata += "<span> <b>Approved</b> " + money_format(data[0].dep_submitted) + "</span>";
-                    fydata += "<span> <b>Ordered</b> " + money_format(data[0].dep_submitted) + "</span>";
-                    fydata += "<span> <b>Completed</b> " + money_format(data[0].dep_submitted) + "</span>";
+                    fydata += "<span> <b>Approved</b> " + money_format(data[1].dep_approved) + "</span>";
+                    fydata += "<span> <b>Ordered</b> " + money_format(data[2].dep_ordered) + "</span>";
+                    fydata += "<span> <b>Completed</b> " + money_format(data[3].dep_completed) + "</span>";
                     fydata += "</div>";
                     // fydata += "<div class='div6' id='empTotals'>Emp Totals</div>";
                     fydata += "<div class='totals-slideout'  id='empTotals'>Emp Totals</div>";
@@ -272,19 +278,19 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                     mando += "<span class='table-title'>" + data[8].empName + " Clothing FY Totals</span>";
                     mando += "<div class='emp-info-holder'>";
                     mando += "<span> <b>Submitted:</b> " + money_format(data[0].emp_submitted) + "</span>";
-                    mando += "<span> <b>Approved:</b>  " + money_format(data[0].emp_submitted) + "</span>";
-                    mando += "<span> <b>Ordered:</b>   " + money_format(data[0].emp_submitted) + "</span>";
-                    mando += "<span> <b>Completed:</b> " + money_format(data[0].emp_submitted) + "</span>";
+                    mando += "<span> <b>Approved:</b>  " + money_format(data[1].emp_approved) + "</span>";
+                    mando += "<span> <b>Ordered:</b>   " + money_format(data[2].emp_ordered) + "</span>";
+                    mando += "<span> <b>Completed:</b> " + money_format(data[3].emp_completed) + "</span>";
                     mando += "</div>"
                     mando += "<span class='table-title'>" + data[8].empName + " Boots FY Totals</span>";
                     mando += "<div class='emp-info-holder'>";
 
                     mando += "<span> <b>Submitted:</b> " + money_format(data[4].emp_boots_submitted) + "</span>";
-                    mando += "<span> <b>Approved:</b>  " + money_format(data[4].emp_boots_submitted) + "</span>";
-                    mando += "<span> <b>Ordered:</b>   " + money_format(data[4].emp_boots_submitted) + "</span>";
-                    mando += "<span> <b>Completed:</b> " + money_format(data[4].emp_boots_submitted) + "</span>";
+                    mando += "<span> <b>Approved:</b>  " + money_format(data[5].emp_boots_approved) + "</span>";
+                    mando += "<span> <b>Ordered:</b>   " + money_format(data[6].emp_boots_ordered) + "</span>";
+                    mando += "<span> <b>Completed:</b> " + money_format(data[7].emp_boots_completed) + "</span>";
                     mando += "</div>"
-                    mando += "<p class='receipt'>FY Start: " + extractDateFromDB(data[9].fy_start) + ' ' +
+                    mando += "<p class='receipt'>FY Start: " + extractDateFromDB(data[9].fy_start) + '</p><p class="receipt"> ' +
                         "FY End: " + extractDateFromDB(data[10].fy_end) + "</p>";
                     mando += "</div>";
                     document.getElementById('empTotals').innerHTML = mando;
@@ -388,7 +394,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <button id="showButton">Show</button>
     <!-- CONVERTING from off-canvas to popover. This is the popover -->
     <div id="not-off-canvas" popover=manual>
-        <button class="close-btn" popovertarget="not-off-canvas" popovertargetaction="hide">
+        <button class="button close-btn" popovertarget="not-off-canvas" popovertargetaction="hide">
             <span aria-hidden=”true”>❌</span>
             <span class="sr-only">Close</span>
         </button>
@@ -404,7 +410,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     </div>
 
     <div id="whole-order-confirm" popover=manual>
-        <button class="close-btn" popovertarget="whole-order-confirm" popovertargetaction="hide">
+        <button class="button close-btn" popovertarget="whole-order-confirm" popovertargetaction="hide">
             <span aria-hidden=”true”>❌</span>
             <span class="sr-only">Close</span>
         </button>
@@ -433,7 +439,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         </span>
     </div>
     <div id="po-req" popover=manual>
-        <button class="close-btn" popovertarget="po-req" popovertargetaction="hide">
+        <button class=" button close-btn" popovertarget="po-req" popovertargetaction="hide">
             <span aria-hidden=”true”>❌</span>
             <span class="sr-only">Close</span>
         </button>
@@ -445,7 +451,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         </span>
     </div>
     <div id="receive-whole-order-confirm" popover=manual>
-        <button class="close-btn" popovertarget="receive-whole-order-confirm" popovertargetaction="hide">
+        <button class="button close-btn" popovertarget="receive-whole-order-confirm" popovertargetaction="hide">
             <span aria-hidden=”true”>❌</span>
             <span class="sr-only">Close</span>
         </button>
@@ -567,7 +573,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         commentData = getComments(id);
         var html = "";
         html +=
-            "<button class=' close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
+            "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
         html += "<span aria-hidden='true'> ❌ </span>";
         html += "<span class='sr-only'> Close </span>";
         html += "</button>";
@@ -588,7 +594,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         commentData = getComments(id);
         var html = "";
         html +=
-            "<button class=' close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
+            "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
         html += "<span aria-hidden='true'> ❌ </span>";
         html += "<span class='sr-only'> Close </span>";
         html += "</button>";
@@ -611,7 +617,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         commentData = getComments(id);
         var html = "";
         html +=
-            "<button class='close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
+            "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
         html += "<span aria-hidden='true'> ❌ </span>";
         html += "<span class='sr-only'> Close </span>";
         html += "</button>";
@@ -634,7 +640,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         commentData = getComments(id);
         var html = "";
         html +=
-            "<button class='close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
+            "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
         html += "<span aria-hidden='true'> ❌ </span>";
         html += "<span class='sr-only'> Close </span>";
         html += "</button>";
@@ -965,7 +971,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         justify-items: end;
         gap: 15px;
         background-color: #d3d3d3;
-        padding-right: 35px;
+        padding-right: 10px;
 
     }
 
@@ -981,7 +987,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .table-title {
         display: flex;
         justify-content: space-evenly;
-        /* font-family: robofont; */
+        align-content: flex-start;
         text-wrap: balance;
         /* font-size: max(1.25vw, 14px); */
         text-align: center;
@@ -989,21 +995,24 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         width: auto;
         background-color: #FFFFFF90;
 
+        .approve-order-button {
+            margin-top: -5px;
+            ;
+        }
     }
+
 
     .totals td {
         text-align: center;
     }
 
-    .styled-table {
+    /* .styled-table {
         border-collapse: collapse;
         margin: 25px 0;
         font-size: 0.8em;
-        /* font-family: sans-serif; */
-        /* family: robofont; */
         min-width: 400px;
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    }
+    } */
 
     .styled-table thead tr {
         position: sticky;
@@ -1133,6 +1142,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
     .action-buttons {
         display: flex;
+        align-items: baseline;
         gap: 20px;
         padding-top: 10px;
 
@@ -1170,6 +1180,26 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .action-buttons .comment {
         border: darkblue 1px solid;
         background-color: lightblue;
+        color: #000000;
+    }
+
+    .action-buttons .edit {
+        border: black 1px solid;
+        background-color: #525252;
+        /* color: #FFFFFF; */
+
+        a {
+            color: #FFFFFF;
+        }
+    }
+
+    .action-buttons .receive {
+        font-size: small;
+        background-color: #389CFF;
+        color: #000000;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid darkblue;
     }
 
     #receive-whole-order-confirm,
@@ -1295,7 +1325,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         position: absolute;
         right: 0.25rem;
         top: 0.5rem;
-        filter: grayscale() brightness(20);
+        /* filter: grayscale() brightness(20); */
 
     }
 
@@ -1357,8 +1387,15 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         color: #FFFFFF;
         padding: 5px;
         border-radius: 5px;
-        ;
     }
+
+    /* .receive {
+        font-size: small;
+        background-color: #6B6B6B;
+        color: #FFFFFF;
+        padding: 5px;
+        border-radius: 5px;
+    } */
 
     .active-request {
         background-color: #008000 !important;
@@ -1372,6 +1409,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         width: 40%;
         height: 20%;
         overflow: hidden;
+        color: #000000;
     }
 
     #pobutton {

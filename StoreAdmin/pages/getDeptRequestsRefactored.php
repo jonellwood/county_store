@@ -16,6 +16,7 @@ if (($_SESSION['empNumber'] == '6865') || ($_SESSION['empNumber'] == '4438')
     -- WHERE (STATUS = 'Denied' AND created >= DATE_SUB(CURDATE(), INTERVAL 45 DAY))
     -- OR (STATUS != 'Received' AND STATUS != 'Expired');
     GROUP BY order_id
+    ORDER BY order_id DESC
     ";
 } else {
     $sql = "SELECT ord_ref.*
