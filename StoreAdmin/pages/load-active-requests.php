@@ -16,14 +16,16 @@ LEFT JOIN orders o on o.order_id = od.order_id
 LEFT JOIN emp_ref er on o.submitted_by = er.empNumber
 LEFT JOIN products p on p.product_id = od.product_id
 LEFT JOIN vendors v on v.id = p.vendor_id
-WHERE od.status NOT IN ('Received', 'Denied')";
+WHERE od.status NOT IN ('Received', 'Denied', 'Expired', 'Ordered')
+order by created DESC
+";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();
 $data = array();
 if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()){
+    while ($row = $result->fetch_assoc()) {
         array_push($data, $row);
     }
 }

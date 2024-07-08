@@ -218,10 +218,14 @@ if (!empty($sessData['status']['msg'])) {
         }
     </script>
     <?php include "./components/viewHead.php" ?>
+
 </head>
 
 <body>
+    <div class="alert-banner" id="alert-banner">
 
+
+    </div>
     <div class="container">
         <h1>Checkout</h1>
         <div class="col-12">
@@ -337,8 +341,35 @@ if (!empty($sessData['status']['msg'])) {
             </div>
         </div>
     </div>
+
     </?php include "viewCartDump.php" ?>"
 </body>
+<script>
+    function fiscalYear() {
+        var currentMonth = new Date().getMonth() + 1;
+        console.log(currentMonth);
+        var currentYear = new Date().getFullYear();
+        var currentFY = 0
+        // console.log('current year: ', currentYear)
+        // console.log('current fy: ', currentFY)
+        if (currentMonth < 6) {
+            currentFYStart = (currentYear - 1);
+            currentFYEnd = currentYear
+        } else {
+            currentFYStart = currentYear
+            currentFYEnd = (currentYear + 1)
+        }
+        // console.log("Current Fiscal Year Start, year is: ", currentFYStart)
+        // console.log("Current Fiscal Year End, year is: ", currentFYEnd)
+        return [currentFYStart, currentFYEnd];
+    }
+    var fyData = fiscalYear();
+    var html = '';
+    html += `<div class="alert-text">
+        🚨 All orders must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
+        `
+    document.getElementById('alert-banner').innerHTML = html
+</script>
 
 </html>
 <script>
@@ -519,5 +550,25 @@ if (!empty($sessData['status']['msg'])) {
 
     .hidden {
         display: none;
+    }
+
+    .alert-banner {
+        background-color: #1F9CED;
+        color: #000000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-size: larger;
+        gap: 25px;
+    }
+
+    .alert-text {
+        text-align: center;
+    }
+
+    .holder {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
     }
 </style>

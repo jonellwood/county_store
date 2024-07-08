@@ -130,8 +130,8 @@ checkMonthAndRedirect();
     }
 
     .alert-banner {
-        background-color: red;
-        color: white;
+        background-color: #1F9CED;
+        color: #000000;
         justify-content: center;
         align-items: center;
         padding: 20px;

@@ -22,7 +22,7 @@ $all_size_filters = [];
 $all_sleeve_filters = [];
 $all_filters = [];
 $all_products = [];
-
+// TODO update this to new products, colors, and prices
 $sql1 = "SELECT p.code, p.description, p.featured, p.isComm, p.isactive, p.name, p.price, p.price_size_mod, p.product_id, 
 p.producttype as producttype_id, v.id as vendor_id, v.name as vendor, pt.producttype as producttype
 from vendors v
@@ -30,11 +30,11 @@ LEFT JOIN products p on p.vendor_id = v.id
 LEFT JOIN producttypes pt on pt.productType_id = p.producttype
 WHERE product_id = $id";
 
-
+// TODO see if this needs updated
 $sql2 = "SELECT c.color, c.color_id from products_colors pc
 LEFT JOIN colors c on c.color_id = pc.color_id WHERE product_id = $id ORDER BY color ASC";
 
-
+// TODO see if this is still needed
 $sql3 = "SELECT s.size, s.size_id from products_sizes ps
 LEFT JOIN sizes s on s.size_id = ps.size_id WHERE product_id = $id";
 
@@ -53,15 +53,15 @@ $sql9 = "SELECT id, filter from filters_size";
 $sql10 = "SELECT id, filter from filters_sleeve";
 
 $sql11 = "SELECT id, price_mod FROM price_mods";
-
+// TODO almost certain this is no longer needed
 $sql12 = "SELECT product_id, code, name FROM products WHERE isactive = 1";
 
 if ($conn->multi_query("$sql1; $sql2; $sql3; $sql4; $sql5; $sql6; $sql7; $sql8; $sql9; $sql10; $sql11; $sql12")) {
     $resultSetCounter = 0;
-    
+
     do {
         if ($result = $conn->store_result()) {
-            while($row = $result->fetch_assoc()){
+            while ($row = $result->fetch_assoc()) {
                 switch ($resultSetCounter) {
                     case 0:
                         $product[] = $row;
