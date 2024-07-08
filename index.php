@@ -28,6 +28,7 @@ $cart = new Cart;
 <head>
     <?php include "./components/viewHead.php" ?>
     <title>Home | Berkeley County Store</title>
+
 </head>
 
 <body>
@@ -36,14 +37,73 @@ $cart = new Cart;
         <!-- <img src="./modern-mall.png" alt="some-store" /> -->
     </div>
     <?php include "components/slider.php" ?>
+    </?php include "alert-banner.php" ?>
     <div class="hot-sellers">
         <?php include "stats.php" ?>
+        </?php include "views-grid.php" ?>
     </div>
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
+    <div class="alert-banner" id="alert-banner" popover=auto>
+        <div class="alert-text">🚨 All orders must be submitted by May 31st, Requests will not be able to be submitted between June 1st and June 30th. </div>
+        <div class="holder">
+            <p>
+
+                <label for="dontShowAgain" id="dontShowAgainLabel">Don't show again</label>
+                <input type="checkbox" id="dontShowAgain" name="dontShowAgain">
+                <button class="button" popovertarget="alert-banner" popovertargetaction="hide">OK</button>
+            </p>
+        </div>
+    </div>
+
 </body>
+<script>
+    function createCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function checkCookies() {
+        var currentMonth = new Date().getMonth() + 1;
+        // if month is not May, the check for the cookie and show if the cookie is not set
+        if (currentMonth != 5) {
+            if (document.cookie.indexOf("countyStore-doNotAlert") == -1) {
+                showPopover();
+            }
+        } else {
+            // if month is May, show the cookie no matter what
+            // we are removing the checkbox for dont show again as well to avoid confusion
+            var dontShowAgain = document.getElementById("dontShowAgain");
+            var dontShowAgainLabel = document.getElementById("dontShowAgainLabel");
+            dontShowAgain.style.display = "none";
+            dontShowAgainLabel.style.display = "none";
+            showPopover();
+        }
 
 
+    }
+    checkCookies();
+
+    function showPopover() {
+        var popover = document.getElementById('alert-banner');
+        popover.showPopover()
+    }
+    // showPopover();
+
+    var checkbox = document.getElementById("dontShowAgain");
+    checkbox.addEventListener("change", function() {
+        if (this.checked) {
+            createCookie("countyStore-doNotAlert", "true", 90); // Set the cookie to expire in 90 days
+        } else {
+            createCookie("countyStore-doNotAlert", "", -1); // Delete the cookie
+        }
+    });
+</script>
 
 </html>
 
@@ -73,5 +133,25 @@ $cart = new Cart;
     .alert {
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    .alert-banner {
+        background-color: red;
+        color: white;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        font-size: larger;
+        gap: 25px;
+    }
+
+    .holder {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    ::backdrop {
+        backdrop-filter: blur(3px);
     }
 </style>

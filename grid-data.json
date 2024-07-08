@@ -1,0 +1,64 @@
+{
+	"data": [
+		{
+			"count": 11,
+			"image": "./assets/images/mens-shirt-view-img.png",
+			"link": "mens-shirts-view.php",
+			"title": "Mens Shirts"
+		},
+		{
+			"count": 3,
+			"image": "./assets/images/mens-outerwear-view-img.png",
+			"link": "mens-outerwear-view.php",
+			"title": "Mens Outwear"
+		},
+		{
+			"count": 2,
+			"image": "./assets/images/mens-sweatshirt-view-img.png",
+			"link": "mens-sweatshirts-view.php",
+			"title": "Mens Sweatshirts"
+		},
+		{
+			"count": 36,
+			"image": "./assets/images/mens-bnt-view-img.png",
+			"link": "mens-bnt-view.php",
+			"title": "Mens Big and Tall"
+		},
+		{
+			"count": 10,
+			"image": "./assets/images/ladies-shirt-view-img.png",
+			"link": "ladies-shirts-view.php",
+			"title": "Ladies Shirts"
+		},
+		{
+			"count": 3,
+			"image": "./assets/images/ladies-outerwear-view-img.png",
+			"link": "ladies-outerwear-view.php",
+			"title": "Ladies Outerwear"
+		},
+		{
+			"count": 6,
+			"image": "./assets/images/ladies-sweatshirt-view-img.png",
+			"link": "ladies-sweatshirts-view.php",
+			"title": "Ladies Sweatshirts"
+		},
+		{
+			"count": 14,
+			"image": "./assets/images/ladies-plus-view-img.png",
+			"link": "ladies-plus-view.php",
+			"title": "Ladies Plus Size"
+		},
+		{
+			"count": 4,
+			"image": "./assets/images/hats-view-img.png",
+			"link": "hats-view.php",
+			"title": "Hats"
+		},
+		{
+			"count": 2,
+			"image": "./assets/images/accessories-view-img.png",
+			"link": "accessories-view.php",
+			"title": "Accessories"
+		}
+	]
+}

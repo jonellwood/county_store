@@ -88,7 +88,7 @@ $cart = new Cart;
                 .then((data) => {
                     // console.log(data);
                     var html = '';
-                    html += `<div class="products-container grid--big-columns" id="products-container">`
+                    html += `<div class="products-container grid--big-columns" id="products-container" view-transition-group="image-transition">`
                     for (var i = 0; i < data.length; i++) {
                         html += `
 
@@ -645,18 +645,18 @@ $cart = new Cart;
         }
     }
 
-    ::view-transition-group(card-transition) {
+    ::view-transition-group(image-transition) {
         height: auto;
         right: 0;
         left: auto;
         transform-origin: right center;
     }
 
-    ::view-transition-old(image) {
+    ::view-transition-old(image-transition) {
         animation: 0.25s linear both shrink-x;
     }
 
-    ::view-transition-new(image) {
+    ::view-transition-new(image-transition) {
         animation: 0.25s 0.25s linear both grow-x;
     }
 
@@ -708,7 +708,7 @@ $cart = new Cart;
     }
 
     /* this is from Codium */
-    @keyframes grow-and-move {
+    /* @keyframes grow-and-move {
         from {
             transform: scale(0) translateY(0);
         }
@@ -716,21 +716,21 @@ $cart = new Cart;
         to {
             transform: scale(1) translateY(-100%);
         }
-    }
-
+    } */
+    /* 
     ::view-transition-group(image-transition) {
         height: auto;
         position: absolute;
         top: 0;
         left: 0;
         transform-origin: top left;
-    }
+    } */
 
-    ::view-transition-old(image-transition) {
+    /* ::view-transition-old(image-transition) {
         animation: 0.5s ease-in-out both grow-and-move;
     }
 
     ::view-transition-new(image-transition) {
         animation: 0.5s ease-in-out both grow-and-move;
-    }
+    } */
 </style>
