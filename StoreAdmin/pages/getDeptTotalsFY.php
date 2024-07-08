@@ -58,6 +58,8 @@ $query1 = "SELECT ifnull(sum(line_item_total), 0.00) as dep_submitted from ord_s
 $query2 = "SELECT ifnull(sum(line_item_total), 0.00) as dep_approved from ord_approved where department = '$dept' and order_created BETWEEN   '$fy_start' AND '$fy_end'";
 $query3 = "SELECT ifnull(sum(line_item_total), 0.00) as dep_ordered from ord_ordered where department = '$dept' and order_created BETWEEN     '$fy_start' AND '$fy_end'";
 $query4 = "SELECT ifnull(sum(line_item_total), 0.00) as dep_completed from ord_completed where department = '$dept' and order_created BETWEEN '$fy_start' AND '$fy_end'";
+$query5 = "SELECT dep_name from departments where dep_num = '$dept'";
+
 
 $results = [];
 $stmt1 = $conn->prepare($query1);
@@ -95,5 +97,15 @@ if ($res4->num_rows > 0) {
         array_push($results, $row);
     }
 }
-array_push($results, ['fy_start' => $fy_start], ['fy_end' => $fy_end], ['my_date' => $mydate]);
+
+$stmt5 = $conn->prepare($query5);
+$stmt5->execute();
+$res5 = $stmt5->get_result();
+if ($res5->num_rows > 0) {
+    while ($row = $res5->fetch_assoc()) {
+        array_push($results, $row);
+    }
+}
+
+array_push($results, ['fy_start' => $fy_start], ['fy_end' => $fy_end]);
 echo json_encode($results);

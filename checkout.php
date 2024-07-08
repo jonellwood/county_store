@@ -366,7 +366,7 @@ if (!empty($sessData['status']['msg'])) {
     var fyData = fiscalYear();
     var html = '';
     html += `<div class="alert-text">
-        🚨 All orders must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
+        🚨 All requests must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
         `
     document.getElementById('alert-banner').innerHTML = html
 </script>

@@ -53,7 +53,7 @@ checkMonthAndRedirect();
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
     <div class="alert-banner" id="alert-banner" popover=auto>
-        <div class="alert-text">🚨 All orders must be submitted by May 31st, Requests will not be able to be submitted between June 1st and June 30th. </div>
+        <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted between June 1st and June 30th. </div>
         <div class="holder">
             <p>
 

@@ -68,7 +68,6 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
         }
 
-
         let firstData = [];
         async function getRequests() {
             // await fetch('./getAllRequests.php')
@@ -285,9 +284,9 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
             await fetch('getDeptTotalsFY.php?dept=' + dept)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data);
+                    console.log(data);
                     var fydata = "";
-                    fydata += "<span class='table-title'>Department FY Totals</span>"
+                    fydata += `<span class='table-title'>${data[4].dep_name} FY Totals</span>`
                     fydata += "<div class='emp-info-holder'>"
                     fydata += "<span> <b>Submitted</b> " + money_format(data[0].dep_submitted) + "</span>";
                     fydata += "<span> <b>Approved</b> " + money_format(data[1].dep_approved) + "</span>";
@@ -419,7 +418,8 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         <div class="div3" id="details" data-title="Detailed Order Info" data-intro="These are the specific items requested by the employee. You can approve or deny them all at once using the button to the left; or one at time by clicking a specific line item. When selecting a specific line item a popup menu will allow you to make decisions on the specific line item." data-step="7">
         </div>
         <div class="div4">
-            <?php include('hideTopNav.php'); ?>
+            <!-- // ? Alert banner renders here  -->
+            <div class="alert-banner" id="alert-banner"></div>
         </div>
         <div class="div6 total-hidden" id="totalsOffCanvas">
             <div class="div5" id="depTotals" data-title="Department and Employee Information" data-intro="Here you can see Fiscal Year data for your Department as well as detailed information about the employee for whom this request has been submitted. Values are broken out by status as well if the request is for clothing or boots." data-step="8">
@@ -850,6 +850,14 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     //         }
     //     })
     // }
+    function displayAlert() {
+        var fyData = fiscalYear();
+        var html = '';
+        html += `<div class="alert-text">
+        🚨 All requests must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>`
+        document.getElementById('alert-banner').innerHTML = html
+    }
+    displayAlert();
 </script>
 
 </html>
@@ -945,10 +953,11 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
 
     } */
 
-    /* .div4 {
-        display: flex;
-        grid-area: 1 / 2 / 1 / 5;
-    } */
+    .div4 {
+        grid-area: 1 / 2 / 1 / 6;
+        height: 45px;
+        align-items: baseline;
+    }
 
     /* .div5 {
         display: flex;
@@ -993,6 +1002,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .main-order-info-holder,
     .dep-info-holder {
         border-top: #256141 15px solid;
+        border-bottom: #256141 5px solid;
         margin-top: 25px;
     }
 
@@ -1484,6 +1494,21 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     [data-currentfy=false] td {
         color: grey;
     }
+
+    .alert-banner {
+        background-color: #1F9CED;
+        color: #000000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        gap: 25px;
+    }
+
+    .alert-text {
+        text-align: center;
+    }
+
 
     @media print {
 
