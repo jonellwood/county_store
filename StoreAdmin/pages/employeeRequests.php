@@ -31,6 +31,44 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <link href="../../build/style.max.css" rel="stylesheet" />
     <link href="../../index23.css" rel="stylesheet" />
     <script>
+        function fiscalYear() {
+            var currentMonth = new Date().getMonth() + 1;
+            console.log(currentMonth);
+            var currentYear = new Date().getFullYear();
+            var currentFY = 0
+            // console.log('current year: ', currentYear)
+            // console.log('current fy: ', currentFY)
+            if (currentMonth < 6) {
+                currentFYStart = (currentYear - 1);
+                currentFYEnd = currentYear
+            } else {
+                currentFYStart = currentYear
+                currentFYEnd = (currentYear + 1)
+            }
+            // console.log("Current Fiscal Year Start, year is: ", currentFYStart)
+            // console.log("Current Fiscal Year End, year is: ", currentFYEnd)
+            return [currentFYStart, currentFYEnd];
+        }
+
+        function isThisFiscalYear(date) {
+            // var currentDate = new Date();
+            var currentFiscalYear = fiscalYear();
+            var fyStart = currentFiscalYear[0] + "-07-01";
+            // console.log('fy start is: ', fyStart);
+            var fyEnd = (currentFiscalYear[1]) + "-06-30";
+            // console.log('fy end is: ', fyEnd);
+
+            if (date >= fyStart && date <= fyEnd) {
+                // console.log('true within FY')
+                return true;
+            } else {
+                // console.log('false not inside FY')
+                return false;
+            }
+
+        }
+
+
         let firstData = [];
         async function getRequests() {
             // await fetch('./getAllRequests.php')
@@ -40,7 +78,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                 .then((data) => {
                     firstData.push(data);
                     // console.log('First data')
-                    // console.log(data);
+                    console.log(data);
                     if (data.length == 0) {
                         alert("No Requests Found");
                     } else {
@@ -62,7 +100,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                         for (var i = 0; i < data.length; i++) {
                             html += "<tr value='" + data[i].order_id + "' onclick=getOrderDetails(" + data[i]
                                 .order_id +
-                                ")>";
+                                ") data-currentfy='" + isThisFiscalYear(extractDate(data[i].created)) + "'>";
                             html += "<td>" + data[i].order_id + "</td>";
                             html += "<td>" + money_format(data[i].grand_total) + "</td>";
                             html += "<td>" + extractDate(data[i].created) + "</td>";
@@ -182,7 +220,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                     grogu += "</tbody>";
                     grogu += "</table>";
                     grogu += "<p class='tiny-text'>&#128161; Interact with a specific line by selecting it</p>";
-                    // grogu += "<p class='tiny-text'>&#127925; Image of product does not reflect the color selected. Only the product itself.</p>";
+                    grogu += "<p class='tiny-text'>+  Indicates request was submitted in the previous fiscal year.</p>";
                     grogu += "<div class='total' id='orderTotal'>";
                     grogu += "</div>";
                     grogu += "<div class='itemTotal' id='itemTotal'>";
@@ -1436,6 +1474,15 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         padding: 10px;
         background-color: #fff;
         z-index: 999;
+    }
+
+    [data-currentfy=false] td:first-of-type::before {
+        content: '\2795';
+    }
+
+
+    [data-currentfy=false] td {
+        color: grey;
     }
 
     @media print {

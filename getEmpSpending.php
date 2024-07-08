@@ -9,7 +9,7 @@ function fiscalYear()
 {
     $currentMonth = date('m');
     $currentYear = date('Y');
-    if ($currentMonth < 6) {
+    if ($currentMonth < 7) {
         $currentYear--;
     }
     return $currentYear;
