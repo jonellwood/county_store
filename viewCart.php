@@ -873,6 +873,7 @@ $cart = new Cart;
             text-align: left;
             padding: 5px;
             border-bottom: 1px solid #808080;
+            width: 100%;
         }
 
         span:before {

@@ -146,7 +146,7 @@ $cart = new Cart;
                         <p>help@berkeleycountysc.gov</p>
                     </li> -->
                     <li>
-                        <a href="https://store.berkeleycountysc.gov/storeadmin/pages/sign-in.php" target="_blank"><i class="fas fa-lock mt-4 fa-2x"></i>
+                        <a href="https://store.berkeleycountysc.gov/admin/pages/sign-in.php" target="_blank"><i class="fas fa-lock mt-4 fa-2x"></i>
                             <p>Admin Access</p>
                         </a>
                     </li>

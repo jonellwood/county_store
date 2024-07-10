@@ -220,9 +220,11 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                     grogu += "</table>";
                     grogu += "<p class='tiny-text'>&#128161; Interact with a specific line by selecting it</p>";
                     grogu += "<p class='tiny-text'>+  Indicates request was submitted in the previous fiscal year.</p>";
+                    grogu += "<div class='orderSummary'>";
                     grogu += "<div class='total' id='orderTotal'>";
                     grogu += "</div>";
                     grogu += "<div class='itemTotal' id='itemTotal'>";
+                    grogu += "</div>";
                     grogu += "</div>";
                     grogu += "</div>";
                     grogu += "<div id='spend-summary'></div>";
@@ -999,6 +1001,12 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         text-align: center;
     }
 
+    .itemTotal,
+    .total {
+        background-color: #00000020;
+        /* color: #000000; */
+    }
+
     /* .styled-table {
         border-collapse: collapse;
         margin: 25px 0;
@@ -1114,6 +1122,15 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .receipt {
         text-align: right;
         font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .orderSummary {
+        background-color: #00000099;
+        color: #FFFFFF;
+        padding: 5px;
+        border-radius: 5px;
     }
 
 
