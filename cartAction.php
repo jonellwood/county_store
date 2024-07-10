@@ -7,6 +7,9 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 error_log(print_r($_REQUEST, true));
 require_once 'Cart.class.php';
 $cart = new Cart;
+ini_set('display_errors', 1);
+ini_set('log_errors', 1);
+error_reporting(E_ALL);
 //session_start();
 // Function to escape a given string
 
@@ -31,7 +34,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $itemQuantity = $_REQUEST['itemQuantity'];
         $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
         $code = $_REQUEST['code'];
-        $color_id = $_REQUEST['color_id'];
+        $color_id = $_REQUEST['hidden_color_id'];
         $color_name = $_REQUEST['color_name'];
         $price_id = $_REQUEST['size-price-id'];
         $logoId = $_REQUEST['logo'];
@@ -45,6 +48,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $image = $_REQUEST['image-url'];
         // $comment = strip_tags($_REQUEST['comment']);
         $tax = (floatval($productPrice + $logoFee) * .09);
+        $fy = $_REQUEST['fy'];
 
 
         $itemData = array(
@@ -66,7 +70,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'size_name' => $size_name,
             // 'comment' => $comment,
             'logo' => $selectedLogo,
-            'deptPatchPlace' => $deptPatchPlace
+            'deptPatchPlace' => $deptPatchPlace,
+            'fy' => $fy
         );
 
         // insert item into cart
@@ -183,21 +188,36 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                         // get cart items
                         $cartItems = $cart->contents();
                         // Prepare the SQL Statement
-                        $sql = "INSERT INTO order_details (order_id, product_id, price_id, quantity, size_id, color_id, status, item_price, logo_fee, tax, line_item_total, logo, comment, dept_patch_place, emp_dept, bill_to_dept) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                        $sql = "INSERT INTO order_details (
+                        order_id, 
+                        product_id, 
+                        price_id, 
+                        quantity, 
+                        size_id, 
+                        color_id, 
+                        item_price, 
+                        logo_fee, 
+                        tax, 
+                        line_item_total, 
+                        logo, 
+                        comment, 
+                        dept_patch_place, 
+                        emp_dept, 
+                        bill_to_dept, 
+                        bill_to_fy, 
+                        status_id
+                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                         $stmt = $conn->prepare($sql);
 
                         // insert order items into database
                         if (!empty($cartItems)) {
                             foreach ($cartItems as $item) {
                                 $db_order_id = $orderID; // int(11)
-
                                 $db_product_id = $item['id']; // int(11)
-
                                 $db_price_id = $item['price_id']; // int(11)
                                 $db_quantity = $item['qty']; // int(11)
                                 $db_size_id = $item['size_id']; // varchar(45)
-                                $db_color_id = $item['color_name']; // varchar(45)
-                                $db_status = 'Pending'; // varchar(45)
+                                $db_color_id = $item['color_id']; // varchar(45)
                                 $db_item_price = $item['price']; // varchar(25)
                                 $db_logo_fee = $item['logoFee']; // float(10,2)
                                 $db_tax = $item['tax']; // float(10,2)
@@ -208,16 +228,18 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
                                 $db_emp_dept = $department; // varchar(45)
                                 $db_bill_to_dept = $department; // varchar(45)
+                                $db_bill_to_fy = $item['fy']; // varchar(45)
+                                $db_status_id = 5; // int(11)
 
                                 $stmt->bind_param(
-                                    "iiiissssdddsssss",
+
+                                    "iiiisssdddssssssi",
                                     $db_order_id,
                                     $db_product_id,
                                     $db_price_id,
                                     $db_quantity,
                                     $db_size_id,
                                     $db_color_id,
-                                    $db_status,
                                     $db_item_price,
                                     $db_logo_fee,
                                     $db_tax,
@@ -226,7 +248,9 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                     $db_comment,
                                     $db_dept_patch_place,
                                     $db_emp_dept,
-                                    $db_bill_to_dept
+                                    $db_bill_to_dept,
+                                    $db_bill_to_fy,
+                                    $db_status_id
                                 );
                                 // if (!$stmt->execute()) {
                                 //     error_log('Error executing statement: ' . $stmt->error);

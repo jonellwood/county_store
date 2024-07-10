@@ -147,7 +147,7 @@ $cart = new Cart;
                         var isSelected = cartItem.color_id == data['color_data'][j].color ? 'selected' : '';
 
                         html += `
-                                <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color}">
+                                <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color} data-colorid="${data['color_data'][j].color_id}">
                                     ${data['color_data'][j].color}
                                 </option>
                             `;
@@ -308,14 +308,14 @@ $cart = new Cart;
             // console.log('cart');
             // console.log(cart);
             cartArray = convertObjectToArray(cart);
-            console.log('cartArray.length')
-            console.log(cartArray.length)
+            // console.log('cartArray.length')
+            // console.log(cartArray.length)
             if (cartArray.length <= 3) {
                 var html = '<img src="cart_empty.jpg" alt="Cart is empty" class="empty-cart-img" />';
                 document.getElementById('items').innerHTML += html;
                 return
             }
-            //console.log(cartArray)
+            // console.log(cartArray)
             // let accumulatedHtml = '';
             // let selectQuantities = {};
             var html = '';
@@ -401,7 +401,7 @@ $cart = new Cart;
                 </a>
             <?php } ?>
         </div>
-        </?php include "viewCartDump.php" ?>
+        <?php include "viewCartDump.php" ?>
 
 
     </div>

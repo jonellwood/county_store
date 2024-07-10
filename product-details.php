@@ -25,6 +25,7 @@ $product_id = $_REQUEST['product_id'];
     <?php include "./components/viewHead.php" ?>
     <title>Product Details</title>
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+    <script src="./functions/isThisFiscalYear.js"></script>
     <script>
         async function localStorageGetSet() {
             var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
@@ -38,6 +39,20 @@ $product_id = $_REQUEST['product_id'];
             }
         }
         // localStorageGetSet()
+        function removeCommasAndSpaces(str) {
+            return str.replace(/,/g, '').replace(/\s/g, '');
+        }
+        // console.log(removeCommasAndSpaces('24,25'));
+
+        function setFiscalYear() {
+            // console.log("Checking FY function")
+            newFiscalYear = fiscalYear()
+            fyStart = newFiscalYear[0];
+            fyEnd = newFiscalYear[1];
+            thisFiscalYear = (fyStart + fyEnd);
+            return thisFiscalYear;
+        }
+        // console.log(setFiscalYear());
 
         function makeDollar(str) {
             let amount = parseFloat(str);
@@ -186,17 +201,21 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
                     html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
                     html += `<input type="hidden" name="color_name" id="color_name" value="${data['color_data'][0].color}" />`
+                    html += `<input type="hidden" name="hidden_color_id" id="hidden_color_id" value="${data['color_data'][0].color_id}" />`
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
                     html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`
                     html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`
-                    html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" />
+                    html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" />`
+                    //! I really dont understand this one... why I have to call this first otherwise we get commas... time to move on
+                    let sillFYValue = setFiscalYear();
+                    html += `<input type="hidden" name="fy" id="fy" value=${sillFYValue} />
                 <div id='color-picker-holder'>
                     <legend>Pick a Color</legend>
                     <label for="color_id" class="legend"></label>
                     <select title="color_id" name="color_id" id="color_id" onchange="updateProductImage(this.value)">
             `;
                     for (var i = 0; i < data['color_data'].length; i++) {
-                        html += `<option id="${data['color_data'][i].color}" value="${data['color_data'][i].color}" data-hex="${data['color_data'][i].p_hex}" data-colorname="${data['color_data'][i].color}">${data['color_data'][i].color}  </option>`;
+                        html += `<option id="${data['color_data'][i].color}" value="${data['color_data'][i].color}" data-hex="${data['color_data'][i].p_hex}" data-colorname="${data['color_data'][i].color}" data-colorid="${data['color_data'][i].color_id}">${data['color_data'][i].color}  </option>`;
                     }
                     html += `
                     </select>
@@ -351,12 +370,15 @@ $product_id = $_REQUEST['product_id'];
             };
         }
         // the function updateColorImage takes the value from the above function and updates the box shadow around the product image
+        // also updates hidden inputs of color name and color id
         function updateColorImage(val) {
-            console.log(val)
+            // console.log(val)
             var el = document.getElementById(val);
-            console.log(el)
+            // console.log(el)
             var hiddenColorNameInput = document.getElementById('color_name');
             hiddenColorNameInput.value = el.dataset.colorname;
+            var hiddenColorIdInput = document.getElementById('hidden_color_id');
+            hiddenColorIdInput.value = el.dataset.colorid;
             var hexVal = el.dataset.hex;
             var rgbColor = hexToRgb(hexVal);
             var imageHolder = document.getElementById('product-image-holder')
@@ -367,9 +389,11 @@ $product_id = $_REQUEST['product_id'];
             container.style.boxShadow = `0px 0px 55px -25px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
         }
 
+
         // function to update the product image based on the color selected
         function updateProductImage(val) {
             updateColorImage(val);
+            updateHiddenColorInput(val);
             var productImage = document.querySelector('.product-image');
             var imageHiddenInput = document.getElementById('image-url');
             var productCode = document.getElementById('product-name').innerText;

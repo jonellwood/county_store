@@ -240,6 +240,7 @@ if ($result->num_rows > 0) {
 
     .alert {
         color: #000000;
+        background-color: #4CAF50 !important;
     }
 
     .second-container {
