@@ -137,9 +137,12 @@
         await fetch('check-for-waiting-get.php')
             .then((response) => response.json())
             .then((data) => {
+                // console.log('data from check for waiting');
                 // console.log(data);
-                if (data[0].status == null) {
 
+                if (data.length == 0) {
+                    // console.log("Move along folks, nothing to see here")
+                    return;
                 } else {
                     if (data.length > 0) {
                         var whtml = "";

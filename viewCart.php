@@ -86,6 +86,12 @@ $cart = new Cart;
             }
         }
 
+        function formatColorValueForUrl(str) {
+            var noSpaces = str.replace(/[\s/]/g, '');
+            var lowercaseString = noSpaces.toLowerCase();
+            return lowercaseString;
+        }
+
         function getCartItemOptions(id, cartItem) {
             fetch(`./fetchProductDetails.php?id=${id}`)
                 .then((response) => {

@@ -175,7 +175,7 @@ $product_id = $_REQUEST['product_id'];
                         </h3>
                     `
                     var imageHtml = `
-                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image" view-transition-new="image-transition">
+                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" alt="${data['product_data'][0].name}" class="product-image" view-transition-new="image-transition">
                     `
                     var html = '';
                     html += `<form name='option' method='post' id='options' action='cartAction.php' class='options-select-holder'>`;
@@ -189,7 +189,7 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
                     html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`
                     html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`
-                    html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" />
+                    html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" />
                 <div id='color-picker-holder'>
                     <legend>Pick a Color</legend>
                     <label for="color_id" class="legend"></label>
@@ -449,12 +449,12 @@ $product_id = $_REQUEST['product_id'];
         <!-- This was originaly intended to be used as a notification for a product being added to the cart - but the page reloads when something as added to the cart so it is useless... I am keeping in the code because I WILL find some use for these toast messages! -->
         <div id="myToast">
             <div class="toast-header">
-                <i class="fa fa-info"></i>Price Change Alert
+                ⚠️ Price Change Alert
                 <small>1 sec ago</small>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" onclick="eatToast()"></button>
             </div>
             <div class="toast-body">
-                <p id="toast_message"></p>
+                <p id="price_toast_message"></p>
             </div>
         </div>
         <!-- <div class="size-chart-holder">
@@ -477,8 +477,10 @@ $product_id = $_REQUEST['product_id'];
     // function to make & show toast messags. No real use case for them... yet....
     // I should really move this its own file....
     function showToast(msg) {
+        console.log(msg);
         var toast = document.getElementById('myToast');
-        var msgBlock = document.getElementById('toast_message');
+        var msgBlock = document.getElementById('price_toast_message');
+        console.log(msgBlock);
         msgBlock.innerText = msg;
         toast.className = "show";
         setTimeout(function() {

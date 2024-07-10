@@ -151,7 +151,7 @@ $product_id = 105
             var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
             var logoUpCharge = document.getElementById('logo_upCharge').value;
             qtyInSummary.textContent = getCurrentQty();
-            var totalLogoFee = (5 + parseInt(logoUpCharge));
+            var totalLogoFee = (0 + parseInt(logoUpCharge));
             logoFeeInSummary.textContent = makeDollar((getCurrentQty() * totalLogoFee))
             updateCurrentPrice();
             calculateSubTotal();
@@ -166,7 +166,7 @@ $product_id = 105
             fetch('fetchProductDetails.php?id=' + <?php echo $product_id ?>)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    //console.log(data);
                     var nameHtml = `
                         <h3 class="name-code-holder">
                             <p id="product-name">${data['product_data'][0].code}</p> 
@@ -184,7 +184,7 @@ $product_id = 105
                     html += `<input type="hidden" name="code" id="code" value=${data['product_data'][0].code} />`
                     html += `<input type="hidden" name="action" id="action" value="addToCart" />`
                     html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`
-                    html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`
+                    html += `<input type="hidden" name="logoCharge" id="logoCharge" value="0.00" />`
                     html += `<input type="hidden" name="color_name" id="color_name" value="${data['color_data'][0].color}" />`
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
                     html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`
@@ -292,12 +292,12 @@ $product_id = 105
                                 <th>New Cart Total: </th> <td id='new-total-in-summary'></td>
                                </tr>
                                </table>
-                               <div id='selected-logo-in-summary'>
-                                <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
+                               
+                               </div>`
+                    //    <div id='selected-logo-in-summary'>
+                    //     <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
 
-                               </div>
-                    
-                    </div>`
+                    //    </div>
                     document.getElementById('new-options-form').innerHTML = html;
                     document.getElementById('product-image-holder').innerHTML = imageHtml;
                     document.getElementById('product-name-holder').innerHTML = nameHtml;
@@ -352,9 +352,9 @@ $product_id = 105
         }
         // the function updateColorImage takes the value from the above function and updates the box shadow around the product image
         function updateColorImage(val) {
-            console.log(val)
+            //console.log(val)
             var el = document.getElementById(val);
-            console.log(el)
+            //console.log(el)
             var hiddenColorNameInput = document.getElementById('color_name');
             hiddenColorNameInput.value = el.dataset.colorname;
             var hexVal = el.dataset.hex;

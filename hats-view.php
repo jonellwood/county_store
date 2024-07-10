@@ -127,7 +127,7 @@ $cart = new Cart;
         <div class="spacer23"> - </div>
 
         <div class="btn-container" id="btn-container">
-            <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button>
+            <!-- <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button> -->
             <button class="btn js-toggle-grid-gap">toggle <code>item-spacing</code></button>
             <button class="btn js-toggle-grid-columns">toggle <code>items-per-row</code></button>
 
@@ -147,7 +147,7 @@ $cart = new Cart;
 
         <div class="button-holder">
             <a href="index.php"><button class="button" type="button">🏡 Home </button></a>
-            <button class="button" type="button">🔎 Filter </button>
+            <!-- <button class="button" type="button" popovertarget="filters-popover">🔎 Filter </button> -->
         </div>
     </div>
     <script>

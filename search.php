@@ -69,11 +69,11 @@ $param = $_POST['param'];
                             html += "<tr class='body-row'><td>" + data[i].code + "</td>";
                             html += "<td>" + data[i].name + "</td>";
                             // html += "<td>" + data[i].price + "</td>";
-                            html += "<td id='details-price' value='" + rawPrice + "'><p> $ " + parseFloat(rawPrice)
-                                .toFixed(2).replace(
-                                    /\d(?=(\d{3})+\.)/g,
-                                    '$&,') +
-                                "</p></td>";
+                            // html += "<td id='details-price' value='" + rawPrice + "'><p> $ " + parseFloat(rawPrice)
+                            //     .toFixed(2).replace(
+                            //         /\d(?=(\d{3})+\.)/g,
+                            //         '$&,') +
+                            //     "</p></td>";
                             html += "<td><img src='./" + image +
                                 "' width='50px' id='details-image'  value='" + image + "'></td>";
                             html += "<td><a href='./product-details.php?product_id=" +

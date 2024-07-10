@@ -147,7 +147,7 @@ $cart = new Cart;
 
         <div class="button-holder">
             <a href="index.php"><button class="button" type="button">🏡 Home </button></a>
-            <button class="button" type="button">🔎 Filter </button>
+            <!-- <button class="button" type="button" popovertarget="filters-popover">🔎 Filter </button> -->
         </div>
     </div>
     <script>

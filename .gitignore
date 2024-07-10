@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# stuff I actually have in this repo
+
+utils/
+.DS_Store
+utils/__pycache__
+utils/image-pairing
+utils/color_response.json
+utils/confetti.py

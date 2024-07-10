@@ -63,11 +63,18 @@ if ($result->num_rows > 0) {
             localStorage.removeItem('store-cart');
         }
     </script>
+    <script>
+        function doStuff(id) {
+            wipeLocalCart();
+            sendmail(<?php echo $order_id ?>, <?php echo $emp_id ?>)
+        }
+    </script>
+
 </head>
 
 <!-- <body onload='sendmail(<?php echo $order_id ?>, <?php echo $emp_id ?>)'> -->
 
-<body onload='wipeLocalCart()'>
+<body onload='doStuff()'>
     <!-- uncomment line above, and remove this one, to reinstate email order confirmation feature after testing is completed -->
     <div class="container">
         <h1>Request Status <img src="bg-lightblue.png" alt="bc logo" style="width:500px" class='logo-image'></h1>

@@ -44,7 +44,7 @@ Includes:   none
         </ul>
     </div>
     <div class="cart-view">
-        <p title="View Cart" id="toggle-button" onclick="toggleSlideout()" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <p title="View Cart" id="toggle-button" onclick="toggleSlideout()" role="button">🛒
             (<?php echo ($cart->total_items() > 0) ? $cart->total_items() . ' Items' : 0; ?>)
         </p>
     </div>
@@ -72,7 +72,7 @@ Includes:   none
     </div>
 </div> -->
 <!-- </div> -->
-<div id="myToast">
+<div id="helpToast">
     <div class="toast-header">
         Get Help
         <!-- <small>Use the ? link to go to help page</small> -->
@@ -85,8 +85,8 @@ Includes:   none
 <script>
     // function to make & show toast messags. No real use case for them... yet....
     // I should really move this its own file....
-    function showToast(msg) {
-        var toast = document.getElementById('myToast');
+    function showHelpToast(msg) {
+        var toast = document.getElementById('helpToast');
         var msgBlock = document.getElementById('toast_message');
         msgBlock.innerText = msg;
         toast.className = "show";
@@ -95,14 +95,14 @@ Includes:   none
         }, 2000);
     }
 
-    function eatToast() {
-        var toast = document.getElementById('myToast').classList.replace('show', 'eatToast');
+    function eatHelpToast() {
+        var toast = document.getElementById('helpToast').classList.replace('show', 'eatToast');
     }
     const helpButton = document.querySelector('.help');
     helpButton.addEventListener('mouseenter', () => {
         setTimeout(() => {
 
-            showToast('Use the ? link to go to help page');
+            showHelpToast('Use the ? link to go to help page');
 
         }, 1000)
     })
@@ -347,7 +347,7 @@ Includes:   none
         text-align: center;
     }
 
-    #myToast {
+    #helpToast {
         width: 25%;
         visibility: hidden;
         background-color: slategray;
