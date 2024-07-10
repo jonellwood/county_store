@@ -285,6 +285,25 @@ $cart = new Cart;
             const itemOptions = getCartItemOptions(cartItem.id, cartItem)
         }
 
+        function renderComment(cartId) {
+            console.log('Comment id is :', cartId)
+            var target = document.getElementById('add-comment-item-popover');
+            var html = '';
+            // <input type="hidden" name="action" value="updateCartItemComment">
+            // <label for="comment"></label>
+            html +=
+                // <form class="comment-form" onsubmit=updateCartItemComment(this, ${cartId})>
+                `
+            <form class="comment-form" action="cartAction.php" method="post">
+            <input type="hidden" name="action" value="updateCartItemComment">
+            <input type="hidden" name="id" value="${cartId}">
+            <textarea name="comment[]" id="comment" placeholder="Comment" rows="5" cols="50"></textarea>
+            <br>
+            <button class="button comment-form-btn" type="submit">Submit</button>
+            </form>`;
+            target.innerHTML = html;
+        }
+
         function removeItem(cartId) {
             if (confirm('Are you sure you want to delete this item?')) {
                 fetch('cartAction.php?action=removeCartItem&id=' + cartId)
@@ -321,8 +340,8 @@ $cart = new Cart;
             var html = '';
             for (var i = 3; i < cartArray.length; i++) {
                 const itemEntry = cartArray[i][1];
-                // console.log("Item Entry # ", i)
-                // console.log(itemEntry)
+                console.log("Item Entry # ", i)
+                console.log(itemEntry)
                 var html = '';
                 html += `
                 <div>
@@ -345,14 +364,14 @@ $cart = new Cart;
                                                     <li>Dept Name: ${itemEntry[15][1]} </li>
                                                 </div>
                                                 <div class="logo-holder">    
-                                                    <img src=${itemEntry[14][1]} alt="logo" class="logo-pict">
+                                                    <img src=${itemEntry[15][1]} alt="logo" class="logo-pict">
                                                 </div>
                                             </div>
                                             
                                             <div class="item-content-footer">
                                             <button class='button btn remove' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
                                             <button class='button btn change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
-                                            <button class='button btn comment'>Add Comment</button>
+                                            <button class='button btn comment' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
                                             </div>
                                             </ul>
                                             </div>
@@ -363,9 +382,14 @@ $cart = new Cart;
                                             </div>
                                             
                                             `
+                var chtml = `
+                    ${itemEntry[14][1] ? `<p>${itemEntry[6][1]}</p> <span> ${itemEntry[14][1]}</span>` : `<span class='no-comment'>no comment</span>`}
+                `;
+                // <button class='button btn comment' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show'>Add Comment</button>
                 // <button class='remove' onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id="${itemEntry[4][1]}":false;" title="Remove Item">Delete</button> 
 
                 document.getElementById('items').innerHTML += html;
+                document.getElementById('comments-stream').innerHTML += chtml;
             }
         }
 
@@ -374,7 +398,7 @@ $cart = new Cart;
             console.log('cartItems');
             console.log(cartItems);
         }
-        logCart();
+        // logCart();
     </script>
 </head>
 
@@ -400,8 +424,9 @@ $cart = new Cart;
                     Checkout
                 </a>
             <?php } ?>
+            <div class="comments-stream" id="comments-stream">Comment:</div>
         </div>
-        <?php include "viewCartDump.php" ?>
+        </?php include "viewCartDump.php" ?>
 
 
     </div>
@@ -437,7 +462,19 @@ $cart = new Cart;
             <div id="edit-cart-item-popover"></div>
         </div>
     </div>
-
+    <div id="add-comment" popover=manual>
+        <div class="popover-btn-holder">
+            <button class="popover-close-btn" popovertarget="add-comment" popovertargetaction="hide">
+                <span aria-hidden=”true”>❌ </span>
+                <span class="sr-only">Close</span>
+            </button>
+        </div>
+        <div class="popover-desc-text-holder">
+            <p class="popover-desc-text">Add your comment.</p>
+            <!-- This is where the form to add the comment will render -->
+            <div id="add-comment-item-popover"></div>
+        </div>
+    </div>
     <!-- </div> -->
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
@@ -711,7 +748,7 @@ $cart = new Cart;
     .checkout {
         background-color: #ffffff50;
         height: fit-content;
-        min-width: max-content;
+        /* min-width: max-content; */
         border-radius: 5px;
         padding: 12px;
         /* padding-bottom: 12px; */
@@ -738,11 +775,12 @@ $cart = new Cart;
         margin-right: 5px;
     }
 
+    #add-comment,
     #edit-cart-item {
         width: 45%;
         height: 37%;
         /* background-color: hsl(0, 0%, 100%); */
-        background-color: #ffffff99;
+        background-color: #ffffff;
         color: hsl(224, 10%, 23%);
         border: 7px solid #BF1722;
 
@@ -807,6 +845,45 @@ $cart = new Cart;
         margin-left: auto;
         margin-right: auto;
     }
+
+    .comments-stream {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #A09D9C;
+        color: #000000;
+        padding: 5px;
+
+        p {
+            text-align: left;
+            padding: 0;
+            margin: 0;
+            margin-bottom: -10px;
+            width: 100%;
+            text-transform: uppercase;
+            font-size: medium;
+        }
+
+        span {
+            display: flex;
+            justify-content: flex-start;
+            font-size: medium;
+            font-weight: bold;
+            font-family: monospace;
+            text-align: left;
+            padding: 5px;
+            border-bottom: 1px solid #808080;
+        }
+
+        span:before {
+            content: '👉🏼 '
+        }
+    }
+
+    .no-comment {
+        visibility: hidden;
+    }
+
 
     @view-transition {
         navigation: auto;

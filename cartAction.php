@@ -46,7 +46,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $size_id = $_REQUEST['size_id'];
         $size_name = $_REQUEST['size_name'];
         $image = $_REQUEST['image-url'];
-        // $comment = strip_tags($_REQUEST['comment']);
+        $comment = strip_tags($_REQUEST['comment'][0]);
+        // $comment = 'No Comment Yet';
         $tax = (floatval($productPrice + $logoFee) * .09);
         $fy = $_REQUEST['fy'];
 
@@ -68,7 +69,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'color_name' => $color_name,
             'size_id' => $size_id,
             'size_name' => $size_name,
-            // 'comment' => $comment,
+            'comment' => $comment,
             'logo' => $selectedLogo,
             'deptPatchPlace' => $deptPatchPlace,
             'fy' => $fy
@@ -111,14 +112,15 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         // if it all goes to hell delete from here down to the next elseif
         // this is going to add a comment to the line item 
     } elseif ($_REQUEST['action'] == 'updateCartItemComment' && !empty($_REQUEST['id'])) {
-        $comment = $_REQUEST['comment'];
+        $comment = $_REQUEST['comment'][0];
         $itemData = array(
             'rowid' => $_REQUEST['id'],
             'comment' => $comment
         );
         $updateItem = $cart->update($itemData);
-        echo $updateItem ? 'ok' : 'err';
-        die;
+        $redirectURL = $updateItem ? 'viewCart.php' : 'index.php';
+        header("Location: $redirectURL");
+        exit;
     } elseif ($_REQUEST['action'] === 'removeCartItem' && !empty($_REQUEST['id'])) {
         // remove item from cart
         $deleteItem = $cart->remove($_REQUEST['id']);
@@ -223,8 +225,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_tax = $item['tax']; // float(10,2)
                                 $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity); // float(10,2)
                                 $db_logo = $item['logo']; // varchar(125)
-                                // $db_comment = $item['comment']; // varchar(255)
-                                $db_comment = 'Comment feature coming back soon'; // varchar(255)
+                                $db_comment = $item['comment']; // varchar(255)
+                                // $db_comment = 'Comment feature coming back soon'; // varchar(255)
                                 $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
                                 $db_emp_dept = $department; // varchar(45)
                                 $db_bill_to_dept = $department; // varchar(45)

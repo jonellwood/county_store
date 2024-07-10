@@ -205,6 +205,7 @@ $product_id = $_REQUEST['product_id'];
                     html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`
                     html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`
                     html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`
+                    html += `<inout type="hidden" name="comment" id="comment" value="farts" />`
                     html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" />`
                     //! I really dont understand this one... why I have to call this first otherwise we get commas... time to move on
                     let sillFYValue = setFiscalYear();
