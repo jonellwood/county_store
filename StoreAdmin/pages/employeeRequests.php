@@ -27,17 +27,23 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <link href="https://cdn.jsdelivr.net/npm/intro.js@7.0/minified/introjs.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/intro.js@7.0/intro.min.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicons/favicon.ico">
-    <link href="prod-admin-style.css" rel="stylesheet" />
     <link href="../../build/style.max.css" rel="stylesheet" />
-    <link href="../../index23.css" rel="stylesheet" />
+    <!-- <link href="../../index23.css" rel="stylesheet" /> -->
+    <link href="prod-admin-style.css" rel="stylesheet" />
     <script>
+        function getLastTwoDigits(year) {
+            // console.log(year.toString())
+            var lastTwo = year.toString().slice(-2)
+            return lastTwo
+        }
+
         function fiscalYear() {
             var currentMonth = new Date().getMonth() + 1;
             console.log(currentMonth);
             var currentYear = new Date().getFullYear();
             var currentFY = 0
-            // console.log('current year: ', currentYear)
-            // console.log('current fy: ', currentFY)
+            console.log('current year: ', currentYear)
+            console.log('current fy: ', currentFY)
             if (currentMonth < 6) {
                 currentFYStart = (currentYear - 1);
                 currentFYEnd = currentYear
@@ -45,27 +51,21 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                 currentFYStart = currentYear
                 currentFYEnd = (currentYear + 1)
             }
-            // console.log("Current Fiscal Year Start, year is: ", currentFYStart)
-            // console.log("Current Fiscal Year End, year is: ", currentFYEnd)
-            return [currentFYStart, currentFYEnd];
+            console.log("Current Fiscal Year Start, year is: ", getLastTwoDigits(currentFYStart))
+            console.log("Current Fiscal Year End, year is: ", getLastTwoDigits(currentFYEnd))
+            return [getLastTwoDigits(currentFYStart), getLastTwoDigits(currentFYEnd)];
         }
 
-        function isThisFiscalYear(date) {
-            // var currentDate = new Date();
-            var currentFiscalYear = fiscalYear();
-            var fyStart = currentFiscalYear[0] + "-07-01";
-            // console.log('fy start is: ', fyStart);
-            var fyEnd = (currentFiscalYear[1]) + "-06-30";
-            // console.log('fy end is: ', fyEnd);
-
-            if (date >= fyStart && date <= fyEnd) {
-                // console.log('true within FY')
-                return true;
-            } else {
-                // console.log('false not inside FY')
-                return false;
-            }
-
+        function isThisFiscalYear(fy) {
+            var newFiscalYear = fiscalYear();
+            var fyStart = newFiscalYear[0];
+            console.log(fyStart)
+            var fyEnd = newFiscalYear[1];
+            console.log(fyEnd)
+            var currentFY = (fyStart + fyEnd);
+            console.log('current fy is: ', currentFY)
+            console.log('fy passed in is: ', fy)
+            return fy >= currentFY
         }
 
         let firstData = [];
@@ -99,7 +99,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                         for (var i = 0; i < data.length; i++) {
                             html += "<tr value='" + data[i].order_id + "' onclick=getOrderDetails(" + data[i]
                                 .order_id +
-                                ") data-currentfy='" + isThisFiscalYear(extractDate(data[i].created)) + "'>";
+                                ") data-currentfy='" + isThisFiscalYear(data[i].bill_to_fy) + "'>";
                             html += "<td>" + data[i].order_id + "</td>";
                             html += "<td>" + money_format(data[i].grand_total) + "</td>";
                             html += "<td>" + extractDate(data[i].created) + "</td>";
@@ -883,10 +883,6 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         font-family: bcg;
     }
 
-    /* body {
-        line-height: 1.5;
-        -webkit-font-smoothing: antialiased;
-    } */
 
     img,
     picture,
@@ -919,39 +915,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         isolation: isolate;
     }
 
-    /* .parent {
-        display: grid;
-        grid-template-columns: 10% 25% 40% 22%;
-        grid-template-rows: 75px 1fr 1fr;
-        height: 100vh;
-    } */
 
-    /* .div1 {
-        display: flex;
-        grid-area: 1 / 1 / 3 / 1;
-
-    } */
-
-    /* .div2 {
-        display: flex;
-        grid-area: 2 / 2 / 2 / 2;
-     
-        scrollbar-gutter: stable;
-        background-color: #80808030;
-    } */
-
-    /* .div3 {
-        display: flex;
-        grid-area: 2 / 3 / 2 / 3;
-        height: 100vh;
-        scrollbar-gutter: stable;
-        padding-left: 20px;
-        overflow-y: auto;
-        border-top: 3px solid #80808050;
-        border-left: 3px solid #80808050;
-        border-bottom: 3px solid #80808050;
-
-    } */
 
     .div4 {
         grid-area: 1 / 2 / 1 / 6;
@@ -959,33 +923,13 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
         align-items: baseline;
     }
 
-    /* .div5 {
-        display: flex;
-     
-        overflow-y: auto;
-        scrollbar-gutter: stable;
-    } */
 
-
-    /* .div6 {
-        display: flex;
-        flex-direction: column;
-        grid-area: 2 / 3 / 3 / 5;
-        border-top: 3px solid #80808050;
-        border-right: 3px solid #80808050;
-        border-bottom: 3px solid #80808050;
-    } */
     /* Keep this here for now */
     .total-hidden {
         margin-left: 550px;
     }
 
-    /* .div7 {
-        display: flex;
-        grid-area: 1 / 5 / 1 / 5;
-        margin-left: -100px;
-        
-    } */
+
 
     .hidden {
         visibility: hidden;
@@ -1001,7 +945,8 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .main-list-holder,
     .main-order-info-holder,
     .dep-info-holder {
-        border-top: #256141 15px solid;
+        /* border-top: #256141 15px solid; */
+        border-top: var(--table-row-alt-bg-color) 15px solid;
         border-bottom: #256141 5px solid;
         margin-top: 25px;
     }
@@ -1065,8 +1010,8 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     .styled-table thead tr {
         position: sticky;
         top: 0;
-        background-color: #1aa260;
-        color: #ffffff;
+        background-color: var(--table-row-alt-bg-color);
+        color: var(--table-row-alt-text-color);
         text-align: center;
     }
 
@@ -1089,12 +1034,12 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     }
 
     .styled-table tbody tr:last-of-type {
-        border-bottom: 2px solid #009879;
+        border-bottom: 2px solid var(--table-row-alt-bg-color);
     }
 
     .styled-table tbody tr.active-row {
         font-weight: bold;
-        color: #009879;
+        color: var(--table-row-alt-bg-color);
     }
 
     .order-details-row th {

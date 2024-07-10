@@ -1,3 +1,12 @@
+:root {
+	--button-bg-color: #4caf50;
+	--button-text-color: #000000;
+	--table-row-bg-color: #ffffff;
+	--table-row-alt-bg-color: #005700;
+	--table-row-text-color: #000000;
+	--table-row-alt-text-color: #ffffff;
+}
+
 *,
 *::before,
 *::after {
@@ -16,14 +25,31 @@ body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 }
-
+body {
+	margin: 0;
+	/* font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+	text-align: var(--bs-body-text-align);
+	background-color: var(--bs-body-bg); */
+	font-family: bcFont !important;
+	color: #211a1a;
+	font-size: 0.9em;
+	background-color: #fff;
+	/* background: url('./modern-mall.png') no-repeat center center fixed; */
+	background: url(../../assets/images/inside_office.jpeg);
+	background-size: cover;
+	height: 100%;
+}
 html {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	background-blend-mode: soft-light, screen;
 }
-
+/* //! This is class body not just body. Stop trying to move it up dummy! */
 .body {
 	margin: 20px;
 	display: flex;
@@ -32,11 +58,6 @@ html {
 
 h3 {
 	text-align: center;
-}
-
-.body {
-	display: flex;
-	justify-content: center;
 }
 
 .header-holder {
@@ -53,8 +74,8 @@ h3 {
 }
 
 .styled-table thead tr {
-	background-color: #1aa260;
-	color: #ffffff;
+	background-color: var(--table-row-alt-bg-color);
+	color: var(--table-row-alt-text-color);
 	text-align: center;
 }
 
@@ -151,4 +172,14 @@ a:link:hover {
 	grid-area: 1 / 5 / 1 / 5;
 	margin-left: -100px;
 	/* visibility: hidden; */
+}
+button {
+	background-color: var(--button-bg-color);
+	color: var(--button-text-color);
+	border: solid black 1px;
+	padding: 5px;
+	font-size: 15px;
+	border-radius: 5px;
+	margin: 5px;
+	cursor: pointer;
 }

@@ -3,7 +3,7 @@ include_once "../../config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 $dept = $_GET['dept'];
-
+// echo "Department: $dept";
 function fiscalYear()
 {
     $currentMonth = date('m');
@@ -30,7 +30,8 @@ $previous_fy = array();
 $sql = "SELECT od.emp_id, od.status, SUM(od.line_item_total) as total_line_item_total,
 CONCAT(od.rf_first_name, ' ', od.rf_last_name) as name
 FROM ord_ref od
-where od.created < '$fy_end_year-07-01' AND od.created > '$fy_start_year-06-30' AND
+where od.bill_to_fy = '2425' AND
+-- where od.created < '$fy_end_year-07-01' AND od.created > '$fy_start_year-06-30' AND
 od.department = '$dept'
 GROUP BY od.emp_id, od.status
 order by od.emp_id ASC
@@ -68,7 +69,8 @@ $prev_fy_end_year = $fy_end_year - 1;
 $sql = "SELECT od.emp_id, od.status, SUM(od.line_item_total) as total_line_item_total,
 CONCAT(od.rf_first_name, ' ', od.rf_last_name) as name
 FROM ord_ref od
-where od.created < '$prev_fy_end_year-07-01' AND od.created > '$prev_fy_start_year-06-30' AND
+where od.bill_to_fy = '2324' AND
+-- where od.created < '$prev_fy_end_year-07-01' AND od.created > '$prev_fy_start_year-06-30' AND
 od.department = '$dept'
 GROUP BY od.emp_id, od.status
 order by od.emp_id ASC

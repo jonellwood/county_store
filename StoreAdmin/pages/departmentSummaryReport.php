@@ -19,9 +19,10 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="prod-admin-style.css">
     <link href="../../build/style.max.css" rel="stylesheet" />
-    <!-- <link href="../../index23.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="prod-admin-style.css">
+
+
     <script>
         function currencyFormat(number) {
             const currency = number.toLocaleString('en-US', {
