@@ -70,3 +70,38 @@ JOIN emp_ref on ord_ref.emp_id = emp_ref.empNumber
         async>
     </script> -->
     
+
+SELECT
+    p.product_id as OLDid,
+    pn.product_id as NEWid,
+    p.code,
+    p.price,
+    -- p.price_size_mod,
+    (p.price + xs_inc) AS '1',
+    (p.price + s_inc) AS '2',
+    (p.price + m_inc) AS '3',
+    (p.price + l_inc) AS '4',
+    (p.price + xl_inc) AS '5',
+    (p.price + xxl_inc) AS '6',
+    (p.price + xxxl_inc) AS '7',
+    (p.price + xxxxl_inc) AS '8',
+    (p.price + xxxxxl_inc) AS '9',
+    (p.price + xxxxxxl_inc) AS '10',
+    (p.price + xxxxxxxl_inc) AS '11',
+    (p.price + xxxxxxxxl_inc) AS '12',
+    (p.price + xxxxxxxxxl_inc) AS '13',
+    (p.price + xxxxxxxxxxl_inc) AS '14',
+    (p.price + lt_inc) AS '15',
+    (p.price + xlt_inc) AS '16',
+    (p.price + xxlt_inc) AS '17',
+    (p.price + xxxlt_inc) AS '18',
+    (p.price + xxxxlt_inc) AS '19',
+    (p.price + na_inc) AS '26'
+FROM
+    products p
+JOIN
+    price_mods pm ON pm.price_mod = p.price_size_mod
+    join products_new pn on pn.product_id = p.product_id
+WHERE
+    vendor_id = 1
+    AND isactive = true

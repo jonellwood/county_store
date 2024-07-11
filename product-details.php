@@ -394,7 +394,7 @@ $product_id = $_REQUEST['product_id'];
         // function to update the product image based on the color selected
         function updateProductImage(val) {
             updateColorImage(val);
-            updateHiddenColorInput(val);
+            // updateHiddenColorInput(val);
             var productImage = document.querySelector('.product-image');
             var imageHiddenInput = document.getElementById('image-url');
             var productCode = document.getElementById('product-name').innerText;

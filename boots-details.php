@@ -175,7 +175,7 @@ $product_id = 105
                         </h3>
                     `
                     var imageHtml = `
-                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${data['product_data'][0].code}.jpg" alt="${data['product_data'][0].name}" class="product-image" view-transition-new="image-transition">>
+                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" alt="${data['product_data'][0].name}" class="product-image" view-transition-new="image-transition">>
                     `
                     var html = '';
                     html += `<form name='option' method='post' id='options' action='cartAction.php' class='options-select-holder'>`;

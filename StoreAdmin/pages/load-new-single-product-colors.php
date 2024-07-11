@@ -34,7 +34,7 @@ if ($product_details->num_rows > 0) {
 }
 
 // Fetch all colors
-$stmt = $conn->prepare("SELECT * from colors");
+$stmt = $conn->prepare("SELECT * from colors order by color ASC");
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows > 0) {

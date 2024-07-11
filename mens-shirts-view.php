@@ -32,7 +32,7 @@ $cart = new Cart;
 <head>
     <?php include "./components/viewHead.php" ?>
     <title>Products by Category</title>
-
+    <script src="functions/formatForUrl.js"></script>
     <script>
         let sizesToRemove = [];
         let typesToRemove = [];
@@ -95,7 +95,7 @@ $cart = new Cart;
                         <div class="product-card-holder">
                         <div class="card home-product-info" id="${data[i].product_id}" value="${data[i].product_id}" data-gender="${data[i].gender_filter}" data-type="${data[i].type_filter}" data-size="${data[i].size_filter}" data-sleeve="${data[i].sleeve_filter}" view-transition-group="image-transition">
 
-                            <img src="${data[i].image}" class="card-img-top" alt="${data[i].name}" view-transition-old="image-transition">
+                            <img src="${formatValueForUrl(data[i].image)}" class="card-img-top" alt="${data[i].name}" view-transition-old="image-transition">
                             <div class="card-body featured">
                                 <h6 class="card-title">${data[0].name} <br> Item #: ${data[i].code}</h6>
                             </div>
