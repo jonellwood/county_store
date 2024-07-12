@@ -86,7 +86,7 @@ $cart = new Cart;
             fetch('fetchFilteredProducts.php?type=' + typeID + '&gender=' + genderFilter)
                 .then((response) => response.json())
                 .then((data) => {
-                    // console.log(data);
+                    console.log(data);
                     var html = '';
                     html += `<div class="products-container grid--big-columns" id="products-container" view-transition-group="image-transition">`
                     for (var i = 0; i < data.length; i++) {

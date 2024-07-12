@@ -4,12 +4,18 @@
             <ul>
                 <li class="nav-item">
                     <a class="nav-link " href="./employeeRequests.php">
-                        <span class="nav-link-text ms-1">&#127968; Home </span>
+                        <span class="nav-link-text ms-1">
+                            <img class='icon' src='../../assets/icons/home.svg' width='20' height='20'>
+                            Home
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../../inventory/index.php">
-                        <span class="nav-link-text ms-1">&#128104;&#8205;&#128187; Inventory</span>
+                        <span class="nav-link-text ms-1">
+                            <img class='icon' src='../../assets/icons/inventory.svg' width='20' height='20'>
+                            Inventory
+                        </span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -20,7 +26,8 @@
                 <li class="nav-item">
                     <a class="nav-link " href="../../support.php">
                         <span class="nav-link-text ms-1">
-                            &#128129; Help
+                            <img class='icon' src='../../assets/icons/help.svg' width='20' height='20'>
+                            Help
                         </span>
                     </a>
                 </li>
@@ -30,16 +37,15 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-request-ui.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129689;
+                            <img class='icon' src='../../assets/icons/edit.svg' width='20' height='20'>
                             Edit Requests
-                            
                             </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='orders-by-dept-for-admin.php'>
                             <span class='nav-link-text ms-1'>
-                            &#8986;
+                            <img class='icon' src='../../assets/icons/awaiting.svg' width='20' height='20'>
                             Awaiting Order
                             </span>
                         </a>
@@ -47,7 +53,7 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='orders-to-be-received.php'>
                             <span class='nav-link-text ms-1'>
-                            &#128666;
+                            <img class='icon' src='../../assets/icons/delivery.svg' width='20' height='20'>
                             Receiving
                             </span>
                         </a>
@@ -55,7 +61,7 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-users.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129318;
+                            <img class='icon' src='../../assets/icons/user.svg' width='20' height='20'>
                             Edit Users
                             </span>
                         </a>
@@ -63,15 +69,23 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='dept-admin.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129377;
+                            <img class='icon' src='../../assets/icons/department.svg' width='20' height='20'>
                             Edit Dept
+                            </span>
+                        </a>
+                    </li>
+                    <li class='nav-item'>
+                        <a class='nav-link' href='editProductsFilters.php'>
+                            <span class='nav-link-text ms-1'>
+                            <img class='icon' src='../../assets/icons/filter.svg' width='20' height='20'>
+                            Edit Filters
                             </span>
                         </a>
                     </li>
                     <li class='nav-item'>
                         <a class='nav-link' href='add-product-ui.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129518;
+                            <img class='icon' src='../../assets/icons/add.svg' width='20' height='20'>
                             Add Product
                             </span>
                         </a>
@@ -79,7 +93,7 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='edit-product-ui.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129650;
+                            <img class='icon' src='../../assets/icons/editPenguin.svg' width='20' height='20'>
                             Edit Product
                             </span>
                         </a>
@@ -87,7 +101,7 @@
                     <li class='nav-item'>
                         <a class='nav-link' href='./reports.php'>
                             <span class='nav-link-text ms-1'>
-                            &#129531;
+                            <img class='icon' src='../../assets/icons/reports.svg' width='20' height='20'>
                             Reports
                             </span>
                         </a>
@@ -95,7 +109,7 @@
                         <li class='nav-item'>
                         <a class='nav-link' href='overview.php'>
                             <span class='nav-link-text ms-1'>
-                            &#128117;&#127996;
+                            <img class='icon' src='../../assets/icons/old.svg' width='20' height='20'>
                             Old Dashboard
                             </span>
                         </a>
@@ -108,8 +122,8 @@
                 <li class="nav-item">
                     <a class="nav-link " href="../../logout.php">
                         <span class="nav-link-text ms-1 red">
-                            &#128473;
-                            Logout
+                            <!-- <img class='icon' src='../../assets/icons/awaiting.svg' width='20' height='20'> -->
+                            ✌🏼 Logout
                         </span>
                     </a>
                 </li>
@@ -196,6 +210,14 @@ if ($_SESSION['role_name'] == 'Administrator') {
             bottom: 0;
             width: 9%;
             padding-bottom: 12px;
+        }
+
+        .icon {
+            position: relative;
+            bottom: unset;
+            width: unset;
+            padding-bottom: unset;
+
         }
     }
 

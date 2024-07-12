@@ -30,6 +30,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     <link href="../../build/style.max.css" rel="stylesheet" />
     <!-- <link href="../../index23.css" rel="stylesheet" /> -->
     <link href="prod-admin-style.css" rel="stylesheet" />
+    <script src="../../functions/formatForUrl.js"></script>
     <script>
         function getLastTwoDigits(year) {
             // console.log(year.toString())
@@ -201,7 +202,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                         grogu += "<td>" + data[j].quantity + "</td>";
                         grogu += "<td>" + data[j].product_code + "</td>";
                         grogu += "<td>" + data[j].size_name + "</td>";
-                        grogu += "<td>" + data[j].color_id + "</td>";
+                        grogu += "<td>" + data[j].color_name + "</td>";
                         grogu += "<td>" + money_format(data[j].line_item_total) + "</td>";
                         grogu += "<td class='img'><img src=../../" + data[j].logo + " alt='..' /></td>";
                         grogu += "<td>" + data[j].dept_patch_place + "</td>";
@@ -211,7 +212,7 @@ if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
                         } else {
                             grogu += "<td class='center-text'> ❌ </td>"
                         }
-                        grogu += "<td id='prod_img_" + [j] + "'><img class='img prod_img' src=../../" + data[j].product_image + " alt='..' width='50px'/></td>";
+                        grogu += "<td id='prod_img_" + [j] + "'><img class='img prod_img' src=../../" + formatValueForUrl(data[j].product_image) + " alt='..' width='50px'/></td>";
                         grogu += "</tr>";
                         // grogu +=
                         //     "<tr><td colspan='8'><button class='action-button'>Approve</button><button class='action-button'>Deny</button><button class='action-button'>Email Employee</button></td></tr>"

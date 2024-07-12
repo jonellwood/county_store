@@ -4,7 +4,7 @@
 </div>
 <div class="info">
     <!-- <p> "The mice are taking a break to refill the cheese supply. We'll be back before you can say 'squeak!' (Friday the 12th at the latest)"</p> -->
-    <p> "The County Store is currently closed for maintenance. We expect to reopen by Friday, July 12th at the latest"</p>
+    <p> "The County Store is currently closed for maintenance. We expect to reopen by Friday, July 12th at the latest<a href="jindex.php">"</a></p>
 </div>
 <style>
     body {
@@ -35,5 +35,11 @@
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         z-index: 5;
         background-color: #3DA1FF;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+
     }
 </style>
