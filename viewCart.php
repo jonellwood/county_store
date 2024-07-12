@@ -361,7 +361,7 @@ $cart = new Cart;
                                                     <li>Size: ${itemEntry[13][1]}</li>
                                                     <li>Color: ${itemEntry[11][1]}</li>
                                                     <li>Qty: ${itemEntry[3][1]}</li>
-                                                    <li>Dept Name: ${itemEntry[15][1]} </li>
+                                                    <li>Dept Name: ${itemEntry[16][1]} </li>
                                                 </div>
                                                 <div class="logo-holder">    
                                                     <img src=${itemEntry[15][1]} alt="logo" class="logo-pict">
