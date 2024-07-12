@@ -1,15 +1,29 @@
 # County Store Application Changelog
 
+## Version 2.0.0 - (2024-07-12)
+
+## **🎊 UI Updates 🎉**
+
+- UI has been updated to reflect changes made to the database structure.
+- Users will see the price for each size available without having to choose the size first.
+- A summary of the item to include tax and fees is presented to the user on the right and includes the total value of the current cart.
+- Items placed in the cart, but not purchased are written to local storage in the browser. Cart items should persist beyond the server session.
+  - Lots of caveats and disclaimers with this one. It's local storage in the browser, not a bank vault.
+- View Filters are back!! Users can use the filter option to remove from the current view items they want to see.
+- Top menu has been updated for ease of use. Boots and Hats no longer have a sub menu also called boots and hats.(Seems like an easy win for everyone)
+- View Cart has been redesigned to provide more clarity to the user for each item as well as the total cost.
+- Items in the cart can be edited from the view Cart page. Users can update the size, color, quantity, logo, or department name placement right in the cart.
+
 ## Version 1.2.7 - (2024-06-26)
 
-## **Bug Squished**
+### **Bug Squished**
 
 - Fixed an issue where "Order All" function would not order items in "updated" status.
 - Added markdownlint.json to improve formatting for this file as well as linting warnings.
 
 ## Version 1.2.6 - (2024-06-18)
 
-## **Bug Squished**
+### **Bug Squished**
 
 - Fixed an issue causing certain item with the same options to not show up on vendor order report.
 

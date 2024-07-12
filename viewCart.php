@@ -124,7 +124,7 @@ $cart = new Cart;
                         <input type='hidden' name='logoFee' id='logoFee' value=${cartItem.logoFee} /> 
 
                         <fieldset>
-                        <label for='editSize'><mark class='change'>Edit Size</mark></label>
+                        <label for='editSize'>Edit Size</label>
                         <select name='size_id' id='editSize' onchange='updateSizeAndPriceData(event)'>
                             `;
                     for (var i = 0; i < data['price_data'].length; i++) {
@@ -140,14 +140,14 @@ $cart = new Cart;
                         </select>
                         </fieldset>
                         <fieldset>
-                        <label for='editSize'><mark class='remove'>Edit color</mark></label>
+                        <label for='editSize'>Edit color</label>
                         <select name='color_id' id='editColor' onchange='updateColorData(event)'>
                         `;
                     for (var j = 0; j < data['color_data'].length; j++) {
                         var isSelected = cartItem.color_id == data['color_data'][j].color ? 'selected' : '';
 
                         html += `
-                                <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color} data-colorid="${data['color_data'][j].color_id}">
+                                <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color}" data-colorid="${data['color_data'][j].color_id}">
                                     ${data['color_data'][j].color}
                                 </option>
                             `;
@@ -156,7 +156,7 @@ $cart = new Cart;
                         </select>
                         </fieldset>
                         <fieldset>
-                        <label for='editLogo'><mark class='gregSucks'>Edit Logo</mark></label>
+                        <label for='editLogo'>Edit Logo</label>
                         <select name='logo' id='editLogo' onchange='updateLogo(this.value)'>
                     `;
                     for (var k = 0; k < data['logo_data'].length; k++) {
@@ -171,7 +171,7 @@ $cart = new Cart;
                         </select>
                         </fieldset>
                         <fieldset>
-                            <label for='deptPatchPlace'><mark class='sharkWreck'>Edit Dept Name</mark></label>
+                            <label for='deptPatchPlace'>Edit Dept Name</label>
                             <select name='deptPatchPlace' id='deptPatchPlace' onchange='updateDeptPatch(this.value)'>
                                 <option value='No Dept Name' id='p1' ${cartItem.deptPatchPlace === 'No Dept Name'? 'selected' : ''}>No Dept Name</option>
                                 <option value='Below Logo' id='p2' ${cartItem.deptPatchPlace === 'Below Logo'? 'selected' : ''}>Below Logo</option>
@@ -180,7 +180,7 @@ $cart = new Cart;
                         </fieldset>
 
                         <fieldset>
-                        <label for='editQty'><mark class='comment'>Quantity</mark></label>
+                        <label for='editQty'>Quantity</label>
                         <input name='qty' id='editQty' type='number' value='${cartItem.qty}' min='1' max='100'>
                         </fieldset>
                         </div>
@@ -451,7 +451,7 @@ $cart = new Cart;
                 </button>
             </div>
             <div class="popover-desc-text-holder">
-                <p class="popover-desc-text">Make changes to the <mark class="remove">color</mark> , <mark class="change">size</mark>, <mark class='comment'>quantity</mark>, <mark class="gregSucks">logo</mark>, or <mark class="sharkWreck">dept name</mark> for this cart item.</p>
+                <p class="popover-desc-text">Make changes to the color , size, quantity, logo<, or dept name for this cart item.</p>
 
             </div>
             <div class="popover-edit-form-holder" id="popover-edit-form-holder">
@@ -579,7 +579,7 @@ $cart = new Cart;
     }
 
 
-    .remove {
+    /* .remove {
         background-color: darkred;
         color: #FFFFFF;
     }
@@ -587,14 +587,14 @@ $cart = new Cart;
     .comment {
         background-color: #42A1FF;
         color: #000000
-    }
+    } */
 
-    .change {
+    /* .change {
         background-color: #005c00;
         color: #FFFFFF;
-    }
+    } */
 
-    .gregSucks {
+    /* .gregSucks {
         background-color: #FFFF00;
         color: #000000;
     }
@@ -602,7 +602,7 @@ $cart = new Cart;
     .sharkWreck {
         background-color: #800080;
         color: #ffffff;
-    }
+    } */
 
     .items {
         background-color: #00000080;
