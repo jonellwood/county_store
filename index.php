@@ -53,99 +53,101 @@ checkMonthAndRedirect();
     <?php include "cartSlideout.php" ?>
     <?php include "footer.php" ?>
     <div class="alert-banner" id="alert-banner" popover=auto>
-        <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted between June 1st and June 30th. </div>
+        <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted
+            between June 1st and June 30th. </div>
         <div class="holder">
             <p>
 
                 <!-- <label for="dontShowAgain" id="dontShowAgainLabel">Don't show again</label> -->
                 <!-- <input type="checkbox" id="dontShowAgain" name="dontShowAgain"> -->
-                <button class="button" popovertarget="alert-banner" popovertargetaction="hide" id="dontShowAgain">OK</button>
+                <button class="button" popovertarget="alert-banner" popovertargetaction="hide"
+                    id="dontShowAgain">OK</button>
             </p>
         </div>
     </div>
 
 </body>
 <script>
-    function createCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+function createCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
     }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
-    function showWarning() {
-        var currentMonth = new Date().getMonth() + 1;
-        console.log(currentMonth);
-        if (currentMonth == 3 || currentMonth == 4 || currentMonth == 5) {
-            showPopover();
-        } else {
-            return;
-        }
-    };
-
-    showWarning();
-
-    function showPopover() {
-        var popover = document.getElementById('alert-banner');
-        popover.showPopover()
+function showWarning() {
+    var currentMonth = new Date().getMonth() + 1;
+    console.log(currentMonth);
+    if (currentMonth == 3 || currentMonth == 4 || currentMonth == 5) {
+        showPopover();
+    } else {
+        return;
     }
+};
 
-    var closeButton = document.getElementById("dontShowAgain");
-    closeButton.addEventListener("click", function() {
-        createCookie("countyStore-doNotAlert", "true", 1); // Set the cookie to expire in 24 hours
-    });
+showWarning();
+
+function showPopover() {
+    var popover = document.getElementById('alert-banner');
+    popover.showPopover()
+}
+
+var closeButton = document.getElementById("dontShowAgain");
+closeButton.addEventListener("click", function() {
+    createCookie("countyStore-doNotAlert", "true", 1); // Set the cookie to expire in 24 hours
+});
 </script>
 
 </html>
 
 <style>
-    .hot-sellers {
-        width: 90%;
-        position: relative;
-        z-index: 3;
-        margin-top: 80px;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        /* align-items: flex-end; */
-        min-height: 80vh;
-        max-height: 100vh;
-    }
+.hot-sellers {
+    width: 90%;
+    position: relative;
+    z-index: 3;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    /* align-items: flex-end; */
+    min-height: 80vh;
+    max-height: 100vh;
+}
 
-    .card {
-        margin-top: 20px;
-        margin-right: 20px;
-        border-radius: 1px;
-        box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-        -webkit-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-    }
+.card {
+    margin-top: 20px;
+    margin-right: 20px;
+    border-radius: 1px;
+    box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
+}
 
-    .alert {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+.alert {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-    .alert-banner {
-        background-color: #1F9CED;
-        color: #000000;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        font-size: larger;
-        gap: 25px;
-    }
+.alert-banner {
+    background-color: #1F9CED;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: larger;
+    gap: 25px;
+}
 
-    .holder {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
+.holder {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
 
-    ::backdrop {
-        backdrop-filter: blur(3px);
-    }
+::backdrop {
+    backdrop-filter: blur(3px);
+}
 </style>

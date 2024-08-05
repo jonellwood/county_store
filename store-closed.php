@@ -1,45 +1,46 @@
 <div class="closed-img-holder">
-    <img src=" ./assets/images/store-closed-sad-mouse-2.jpeg" alt="store-closed" />
+    <!-- <img src=" ./assets/images/store-closed-sad-mouse-2.jpeg" alt="store-closed" /> -->
+    <img src=" ./assets/images/rain_duck.jpeg" alt="store-closed" />
     <!-- <img src=" ./assets/images/store-closed.jpg" alt="store-closed" /> -->
 </div>
 <div class="info">
     <!-- <p> "The mice are taking a break to refill the cheese supply. We'll be back before you can say 'squeak!' (Friday the 12th at the latest)"</p> -->
-    <p> "The County Store is currently closed for maintenance. We expect to reopen by Friday, July 12th at the latest<a href="jindex.php">"</a></p>
+    <p> We set aside a few maintenance tasks for a rainy day ... have ya looked outside? ... be back soon.</p>
 </div>
 <style>
-    body {
-        overflow: hidden;
+body {
+    overflow: hidden;
 
-    }
+}
 
-    .closed-img-holder {
-        background-color: #000000;
-        display: flex;
-    }
+.closed-img-holder {
+    background-color: #000000;
+    display: flex;
+}
 
-    img {
-        width: auto;
-        height: 100dvh;
-        margin-left: auto;
-        margin-right: auto;
-    }
+img {
+    width: auto;
+    height: 100dvh;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-    .info {
-        text-align: center;
-        font-size: 1.5rem;
-        padding: 1rem;
+.info {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem;
 
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        z-index: 5;
-        background-color: #3DA1FF;
-    }
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    z-index: 5;
+    background-color: #3DA1FF;
+}
 
-    a {
-        text-decoration: none;
-        color: inherit;
+a {
+    text-decoration: none;
+    color: inherit;
 
-    }
+}
 </style>

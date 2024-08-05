@@ -183,3 +183,61 @@ button {
 	margin: 5px;
 	cursor: pointer;
 }
+.approve {
+	background-color: #00800050;
+	color: #000000;
+	padding: 1px;
+	border: 1px solid darkgreen;
+	border-radius: 3px;
+}
+
+.deny {
+	background-color: #ff000050;
+	color: #000000;
+	padding: 1px;
+	border: 1px solid darkred;
+	border-radius: 3px;
+}
+
+.tiny-text {
+	font-size: small;
+
+	background-color: #00000090;
+	color: #ffffff;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.receive {
+	font-size: small;
+	background-color: #6b6b6b;
+	color: #ffffff;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.active-request {
+	background-color: #008000 !important;
+	color: #ffffff;
+	font-weight: bold;
+}
+::backdrop {
+	backdrop-filter: blur(3px);
+}
+
+@media print {
+	.parent,
+	button {
+		display: none;
+	}
+
+	#po-req {
+		margin: 10px;
+		border: none;
+		width: fit-content;
+	}
+
+	.hide-from-printer {
+		display: none;
+	}
+}

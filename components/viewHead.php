@@ -9,3 +9,4 @@
 <!-- <link href="build/style.min.css" rel="stylesheet" defer async> -->
 <link href="./index23.css" rel="stylesheet" defer async>
 <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+<meta name="view-transition" content="same-origin">

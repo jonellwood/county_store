@@ -4,12 +4,12 @@ require_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 // init cart class
-error_log(print_r($_REQUEST, true));
+// error_log(print_r($_REQUEST, true));
 require_once 'Cart.class.php';
 $cart = new Cart;
-ini_set('display_errors', 1);
-ini_set('log_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// ini_set('log_errors', 1);
+// error_reporting(E_ALL);
 //session_start();
 // Function to escape a given string
 
@@ -46,7 +46,11 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $size_id = $_REQUEST['size_id'];
         $size_name = $_REQUEST['size_name'];
         $image = $_REQUEST['image-url'];
-        $comment = strip_tags($_REQUEST['comment'][0]);
+        if (isset($_REQUEST['comment'][0])) {
+            $comment = strip_tags($_REQUEST['comment'][0]);
+        } else {
+            $comment = '';
+        }
         // $comment = 'No Comment Yet';
         $tax = (floatval($productPrice + $logoFee) * .09);
         $fy = $_REQUEST['fy'];
@@ -190,51 +194,32 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                         // get cart items
                         $cartItems = $cart->contents();
                         // Prepare the SQL Statement
-                        $sql = "INSERT INTO order_details (
-                        order_id, 
-                        product_id, 
-                        price_id, 
-                        quantity, 
-                        size_id, 
-                        color_id, 
-                        item_price, 
-                        logo_fee, 
-                        tax, 
-                        line_item_total, 
-                        logo, 
-                        comment, 
-                        dept_patch_place, 
-                        emp_dept, 
-                        bill_to_dept, 
-                        bill_to_fy, 
-                        status_id
-                        ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                        $stmt = $conn->prepare($sql);
-
-                        // insert order items into database
                         if (!empty($cartItems)) {
+                            $sql = "INSERT INTO order_details (
+                            order_id, 
+                            product_id, 
+                            price_id, 
+                            quantity, 
+                            size_id, 
+                            color_id, 
+                            item_price, 
+                            logo_fee, 
+                            tax, 
+                            line_item_total, 
+                            logo, 
+                            comment, 
+                            dept_patch_place, 
+                            emp_dept, 
+                            bill_to_dept, 
+                            bill_to_fy, 
+                            status_id
+                            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                            $stmt = $conn->prepare($sql);
+
+                            // insert order items into database
+
                             foreach ($cartItems as $item) {
-                                $db_order_id = $orderID; // int(11)
-                                $db_product_id = $item['id']; // int(11)
-                                $db_price_id = $item['price_id']; // int(11)
-                                $db_quantity = $item['qty']; // int(11)
-                                $db_size_id = $item['size_id']; // varchar(45)
-                                $db_color_id = $item['color_id']; // varchar(45)
-                                $db_item_price = $item['price']; // varchar(25)
-                                $db_logo_fee = $item['logoFee']; // float(10,2)
-                                $db_tax = $item['tax']; // float(10,2)
-                                $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity); // float(10,2)
-                                $db_logo = $item['logo']; // varchar(125)
-                                $db_comment = $item['comment']; // varchar(255)
-                                // $db_comment = 'Comment feature coming back soon'; // varchar(255)
-                                $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
-                                $db_emp_dept = $department; // varchar(45)
-                                $db_bill_to_dept = $department; // varchar(45)
-                                $db_bill_to_fy = $item['fy']; // varchar(45)
-                                $db_status_id = 5; // int(11)
-
                                 $stmt->bind_param(
-
                                     "iiiisssdddssssssi",
                                     $db_order_id,
                                     $db_product_id,
@@ -254,47 +239,63 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                     $db_bill_to_fy,
                                     $db_status_id
                                 );
-                                // if (!$stmt->execute()) {
-                                //     error_log('Error executing statement: ' . $stmt->error);
-                                // }
+                                $db_order_id = $orderID; // int(11)
+                                $db_product_id = $item['id']; // int(11)
+                                $db_price_id = $item['price_id']; // int(11)
+                                $db_quantity = intval($item['qty']); // int(11)
+                                $db_size_id = $item['size_id']; // varchar(45)
+                                $db_color_id = $item['color_id']; // varchar(45)
+                                $db_item_price = $item['price']; // varchar(25)
+                                $db_logo_fee = $item['logoFee']; // float(10,2)
+                                $db_tax = $item['tax']; // float(10,2)
+                                $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity); // float(10,2)
+                                $db_logo = $item['logo']; // varchar(125)
+                                $db_comment = $item['comment']; // varchar(255)
+                                $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
+                                $db_emp_dept = $department; // varchar(45)
+                                $db_bill_to_dept = $department; // varchar(45)
+                                $db_bill_to_fy = $item['fy']; // varchar(45)
+                                $db_status_id = 5; // int(11)
 
-                                $stmt->execute();
-                                $cart->destroy();
-                                //echo "Item inserted successfully";
-                                // $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
-                                // header("Location: $redirectURL");
-                                header("Location: orderSuccess.php?id=" . base64_encode($orderID) . "&emp_id=" . base64_encode($emp_number));
-                                return;
-                                error_log('Redirecting to: ' . $redirectURL);
-                                error_log('orderID: ' . $orderID);
+
+                                $order_details_id = $stmt->execute();
                             }
-                            // redirect to order status page
-                        } else {
-                            echo 'Something went wrong. Restart your computer and try again 101';
-                            // $sessData['status']['type'] = 'error';
-                            // $sesData['status']['msg'] = 'Something went wrong. Restart your computer and try again 101';
                         }
+                        $cart->destroy();
+                        $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
+                        //header("Location: $redirectURL");
+                        // header("Location: orderSuccess.php?id=" . base64_encode($orderID) . "&emp_id=" . base64_encode($emp_number));
                     } else {
-                        echo 'Something went wrong. Restart your computer and try again 102';
-                        // $sessData['status']['type'] = 'error';
-                        // $sessData['status']['msg'] = 'Something went wrong. Restart your computer and try again 102';
+                        //echo "FAILURE at inserting into order_details.";
+                        $sessData['status']['type'] = 'error';
+                        $sesData['status']['msg'] = 'Something went wrong. Restart your computer and try again 101';
+                        // return;
+                        // error_log('Redirecting to: ' . $redirectURL);
+                        // error_log('orderID: ' . $orderID);
+                        // redirect to order status page
+                        //echo 'Something went wrong. Restart your computer and try again 101';
                     }
                 } else {
-                    echo 'Something went wrong. Restart your computer and try again 103';
-                    // $sesData['status']['type'] = 'error';
-                    // $sesData['status']['msg'] = 'Something went wrong. Restart your computer and try again 103';
+                    $sessData['status']['type'] = 'error';
+                    $sessData['status']['msg'] = 'Something went wrong. Restart your computer and try again 102';
+                    // echo 'Something went wrong. Restart your computer and try again 102';
                 }
             } else {
-                echo "The Employee ID you entered does not match our records. Please try again.";
-                // $sessData['status']['type'] = 'error';
-                // $sessData['status']['msg'] = '<p>The Employee ID you entered does not match our records. Please try again.</p>' . $errorMsg;
+                $sesData['status']['type'] = 'error';
+                $sesData['status']['msg'] = 'Something went wrong. Restart your computer and try again 103';
+                // echo 'Something went wrong. Restart your computer and try again 103';
             }
-            $_SESSION['sessData'] = $sessData;
         } else {
-            echo "<div class='alert'>Incorrect CAPTCHA</div>";
+            //echo "The Employee ID you entered does not match our records. Please try again.";
+            $sessData['status']['type'] = 'error';
+            $sessData['status']['msg'] = '<p>The Employee ID you entered does not match our records. Please try again.</p>' . $errorMsg;
         }
+        // $_SESSION['sessData'] = $sessData;
+    } else {
+        echo "<div class='alert'>Incorrect CAPTCHA</div>";
     }
 }
+
 $conn->close();
 
 // redirect to specific page

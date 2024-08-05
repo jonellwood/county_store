@@ -52,170 +52,170 @@ if (!empty($sessData['status']['msg'])) {
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
 
     <script>
-        // async function to set captcha then
-        // fetch the captcha from empcaptcha.php endpoint then
-        // convert response into json
-        async function setCaptcha(empID) {
-            await fetch('./empCaptcha.php?emp_num=' + empID)
-                .then((response => response.json()))
-            // .then(data => console.log('Captcha set to: ' + empID))
-        }
-        async function getEmpSpending(empID) {
-            let USDollar = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-            });
-            await fetch('./getEmpSpending.php?emp_num=' + empID)
-                .then((response => response.json()))
-                // .then(data => console.log(data))
-                .then((data) => {
-                    // var totalThisYear = data[0]['SUM(line_item_total)']
-                    var totalThisYear = data[0].total_sum;
-                    var html = "<p>Spending this fiscal year: " + USDollar.format(totalThisYear) + "</p> ";
-                    html += "<p>Including this request: " + USDollar.format(totalThisYear +
-                        <?php echo (($cart->total() + $cart->total_logo_fees()) * 1.09) ?>) + "</p>";
-                    document.getElementById('annualSpending').innerHTML = html;
-                })
-        }
-        // fetch employee data from server using supplied employee ID then
-        // convert response into json then
-        // split the name into first and last then
-        // build HTML string then
-        // write HTML to page
-        async function getEmpData(empID) {
-            const employee = await fetch("./getEmpData.php?empNum=" + empID)
-                .then((response) => response.json())
-                .then(data => {
-                    const name = data[0].empName.split(" ");
-                    let fname = name[0];
-                    let lname = name[1];
-                    var html = "<p>" + data[0].empName + "</p>";
-                    html += "<input type='hidden' name='first_name' value=" + fname + ">";
-                    html = "<span><p>" + data[0].empName + " - " + data[0].deptName + "</p> </span>";
-                    html += "<input type='hidden' name='first_name' value=" + fname + ">";
-                    html += "<input type='hidden' name='last_name' value=" + lname + ">";
-                    // html += "<p name='department'>" + data[0].deptName + "</p>";
-                    html += "<input type='hidden' name='department' value=" + data[0].deptNumber + ">";
-                    html += "<p name='email'>" + data[0].email + "</p>";
-                    html += "<input type='hidden' name='email' value=" + data[0].email + ">";
-                    html += "<input type='hidden' name='last_name' value=" + lname + ">";
-                    html += "<p id='annualSpending'></p>"
+    // async function to set captcha then
+    // fetch the captcha from empcaptcha.php endpoint then
+    // convert response into json
+    async function setCaptcha(empID) {
+        await fetch('./empCaptcha.php?emp_num=' + empID)
+            .then((response => response.json()))
+        // .then(data => console.log('Captcha set to: ' + empID))
+    }
+    async function getEmpSpending(empID) {
+        let USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        await fetch('./getEmpSpending.php?emp_num=' + empID)
+            .then((response => response.json()))
+            // .then(data => console.log(data))
+            .then((data) => {
+                // var totalThisYear = data[0]['SUM(line_item_total)']
+                var totalThisYear = data[0].total_sum;
+                var html = "<p>Spending this fiscal year: " + USDollar.format(totalThisYear) + "</p> ";
+                html += "<p>Including this request: " + USDollar.format(totalThisYear +
+                    <?php echo (($cart->total() + $cart->total_logo_fees()) * 1.09) ?>) + "</p>";
+                document.getElementById('annualSpending').innerHTML = html;
+            })
+    }
+    // fetch employee data from server using supplied employee ID then
+    // convert response into json then
+    // split the name into first and last then
+    // build HTML string then
+    // write HTML to page
+    async function getEmpData(empID) {
+        const employee = await fetch("./getEmpData.php?empNum=" + empID)
+            .then((response) => response.json())
+            .then(data => {
+                const name = data[0].empName.split(" ");
+                let fname = name[0];
+                let lname = name[1];
+                var html = "<p>" + data[0].empName + "</p>";
+                html += "<input type='hidden' name='first_name' value=" + fname + ">";
+                html = "<span><p>" + data[0].empName + " - " + data[0].deptName + "</p> </span>";
+                html += "<input type='hidden' name='first_name' value=" + fname + ">";
+                html += "<input type='hidden' name='last_name' value=" + lname + ">";
+                // html += "<p name='department'>" + data[0].deptName + "</p>";
+                html += "<input type='hidden' name='department' value=" + data[0].deptNumber + ">";
+                html += "<p name='email'>" + data[0].email + "</p>";
+                html += "<input type='hidden' name='email' value=" + data[0].email + ">";
+                html += "<input type='hidden' name='last_name' value=" + lname + ">";
+                html += "<p id='annualSpending'></p>"
 
-                    html += "<input type='hidden' name='emp_number' id='emp_number' value='" + data[0].empNumber +
-                        "' >"
-                    console.log(data[0].empNumber)
-                    // setCaptcha(data[0].empNumber)
-                    document.getElementById('empInfo').innerHTML = html
-                    getEmpSpending(empID);
+                html += "<input type='hidden' name='emp_number' id='emp_number' value='" + data[0].empNumber +
+                    "' >"
+                console.log(data[0].empNumber)
+                // setCaptcha(data[0].empNumber)
+                document.getElementById('empInfo').innerHTML = html
+                getEmpSpending(empID);
 
-                })
+            })
 
-        }
-        // Fetch employee data with given ID Number then
-        // convert response into json then
-        // Get first and last name from `EMPName` field in fetched data then
-        // Create html markup with employee data then
-        // Add input fields with names autofilled based on employee data then
-        // Display prompt for user
-        async function getSubData(empID) {
-            const submitter = await fetch("./getEmpData.php?empNum=" + empID)
-                .then((response) => response.json())
-                .then(data => {
-                    const name = data[0].empName.split(" ");
-                    let fname = name[0];
-                    let lname = name[1];
-                    var html2 = "<p>" + data[0].empName + "</p>";
-                    // html2 += "<input type='hidden' name='sub_first_name' value=" + fname + ">";
-                    html2 += "<p>" + data[0].deptName + "</p>";
-                    html2 += "<input type='hidden' name='sub_first_name' value=" + fname + ">";
-                    html2 += "<input type='hidden' name='sub_last_name' value=" + lname + ">";
-                    html2 += "<p name='email'>" + data[0].email + "</p>";
-                    html2 += "<input type='hidden' name='sub_email' value=" + data[0].email + ">";
-                    html2 += "<input type='hidden' name='sub_number' id='sub_number' value='" + data[0].empNumber +
-                        "' >";
-                    html2 += "<br>";
-                    html2 += "<hr>";
-                    html2 += "<p>" + data[0].empName + " Please enter your employee ID Number </p>"
-                    document.getElementById('subInfo').innerHTML = html2;
-                })
-        }
+    }
+    // Fetch employee data with given ID Number then
+    // convert response into json then
+    // Get first and last name from `EMPName` field in fetched data then
+    // Create html markup with employee data then
+    // Add input fields with names autofilled based on employee data then
+    // Display prompt for user
+    async function getSubData(empID) {
+        const submitter = await fetch("./getEmpData.php?empNum=" + empID)
+            .then((response) => response.json())
+            .then(data => {
+                const name = data[0].empName.split(" ");
+                let fname = name[0];
+                let lname = name[1];
+                var html2 = "<p>" + data[0].empName + "</p>";
+                // html2 += "<input type='hidden' name='sub_first_name' value=" + fname + ">";
+                html2 += "<p>" + data[0].deptName + "</p>";
+                html2 += "<input type='hidden' name='sub_first_name' value=" + fname + ">";
+                html2 += "<input type='hidden' name='sub_last_name' value=" + lname + ">";
+                html2 += "<p name='email'>" + data[0].email + "</p>";
+                html2 += "<input type='hidden' name='sub_email' value=" + data[0].email + ">";
+                html2 += "<input type='hidden' name='sub_number' id='sub_number' value='" + data[0].empNumber +
+                    "' >";
+                html2 += "<br>";
+                html2 += "<hr>";
+                html2 += "<p>" + data[0].empName + " Please enter your employee ID Number </p>"
+                document.getElementById('subInfo').innerHTML = html2;
+            })
+    }
 
 
-        // The function toggle() is used to open and close dropdown menus
-        // Get the element with the ID "empDropdown" then 
-        // Toggle the class "show" to show / hide the dropdown
-        function toggle() {
-            document.getElementById("empDropdown").classList.toggle("show");
+    // The function toggle() is used to open and close dropdown menus
+    // Get the element with the ID "empDropdown" then 
+    // Toggle the class "show" to show / hide the dropdown
+    function toggle() {
+        document.getElementById("empDropdown").classList.toggle("show");
 
-        }
-        // Function to toggle the subDropdown and show captcha holder and place order button 
-        // Enables a dropdown menu with an ID of "subDropdown" when the function subToggle() is called.
-        // Removes the "hidden" class from an element with an ID of "captcha-holder".
-        // Removes the "hidden" class from an element with an ID of "place-order-button".
-        function subToggle() {
-            document.getElementById("subDropdown").classList.toggle("show");
-            // document.getElementById('captcha-holder').classList.remove("hidden");
-            // document.getElementById('place-order-button').classList.remove("hidden");
-        }
+    }
+    // Function to toggle the subDropdown and show captcha holder and place order button 
+    // Enables a dropdown menu with an ID of "subDropdown" when the function subToggle() is called.
+    // Removes the "hidden" class from an element with an ID of "captcha-holder".
+    // Removes the "hidden" class from an element with an ID of "place-order-button".
+    function subToggle() {
+        document.getElementById("subDropdown").classList.toggle("show");
+        // document.getElementById('captcha-holder').classList.remove("hidden");
+        // document.getElementById('place-order-button').classList.remove("hidden");
+    }
 
-        // This code  performs a filter function. It gets the user's input from an HTML element with the id "empInput". It also gets references to different elements with the tag name button which are contained within an element with the id of "empDropdown".
-        // It then looks through each of the elements that it found searching for any words that match the user's input (the input is converted to upper case for consistency). If it finds a match, it sets the style attribute of the element to make it visible; otherwise it sets it to none which hides the element. filterFunctionSub (below) does the same thing for a differnt input.
-        function filterFunction() {
-            console.log('starting filter');
-            var input, filter, ul, li, a, i;
-            input = document.getElementById("empInput");
-            filter = input.value.toUpperCase();
-            div = document.getElementById("empDropdown");
-            a = div.getElementsByTagName("button");
-            for (i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    a[i].style.display = "";
-                } else {
-                    a[i].style.display = "none";
-                }
+    // This code  performs a filter function. It gets the user's input from an HTML element with the id "empInput". It also gets references to different elements with the tag name button which are contained within an element with the id of "empDropdown".
+    // It then looks through each of the elements that it found searching for any words that match the user's input (the input is converted to upper case for consistency). If it finds a match, it sets the style attribute of the element to make it visible; otherwise it sets it to none which hides the element. filterFunctionSub (below) does the same thing for a differnt input.
+    function filterFunction() {
+        console.log('starting filter');
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("empInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("empDropdown");
+        a = div.getElementsByTagName("button");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
             }
         }
+    }
 
-        function filterFunctionSub() {
-            // console.log('starting filter');
-            var input, filter, ul, li, a, i;
-            input = document.getElementById("subInput");
-            filter = input.value.toUpperCase();
-            div = document.getElementById("subDropdown");
-            a = div.getElementsByTagName("button");
-            for (i = 0; i < a.length; i++) {
-                txtValue = a[i].textContent || a[i].innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    a[i].style.display = "";
-                } else {
-                    a[i].style.display = "none";
-                }
+    function filterFunctionSub() {
+        // console.log('starting filter');
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("subInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("subDropdown");
+        a = div.getElementsByTagName("button");
+        for (i = 0; i < a.length; i++) {
+            txtValue = a[i].textContent || a[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
             }
         }
+    }
 
-        // The setSub() function takes in a parameter called EMPID and does several things:
-        // Gets data using this EMPID using getSubData()
-        // Calls the setCaptcha() function using the same EMPID
-        // Activates or deactivates the functionality of submitting using subToggle()
-        function setSub(empID) {
-            getSubData(empID)
-            // alert('Submitter set');
-            setCaptcha(empID);
-            subToggle();
-            document.getElementById('captcha-holder').classList.remove("hidden");
-            document.getElementById('place-order-button').classList.remove("hidden");
-        }
+    // The setSub() function takes in a parameter called EMPID and does several things:
+    // Gets data using this EMPID using getSubData()
+    // Calls the setCaptcha() function using the same EMPID
+    // Activates or deactivates the functionality of submitting using subToggle()
+    function setSub(empID) {
+        getSubData(empID)
+        // alert('Submitter set');
+        setCaptcha(empID);
+        subToggle();
+        document.getElementById('captcha-holder').classList.remove("hidden");
+        document.getElementById('place-order-button').classList.remove("hidden");
+    }
 
-        // function to set employee data
-        // get employee data by empid then
-        // toggle data
-        function setData(empID) {
-            document.getElementById('sub-info-holder').classList.remove('hidden');
-            getEmpData(empID);
-            // setCaptcha(empID);
-            toggle();
-        }
+    // function to set employee data
+    // get employee data by empid then
+    // toggle data
+    function setData(empID) {
+        document.getElementById('sub-info-holder').classList.remove('hidden');
+        getEmpData(empID);
+        // setCaptcha(empID);
+        toggle();
+    }
     </script>
     <?php include "./components/viewHead.php" ?>
 
@@ -234,13 +234,13 @@ if (!empty($sessData['status']['msg'])) {
                 <div class="row">
                     <?php if (!empty($statusMsg) && ($statusMsgType == 'success')) { ?>
 
-                        <div class="col-md-12">
-                            <div class="alert alert-success"><?php echo $statusMsg; ?></div>
-                        </div>
+                    <div class="col-md-12">
+                        <div class="alert alert-success"><?php echo $statusMsg; ?></div>
+                    </div>
                     <?php } elseif (!empty($statusMsg) && ($statusMsgType == 'error')) { ?>
-                        <div class="col-md-12">
-                            <div class="alert alert-danger"><?php echo $statusMsg; ?> </div>
-                        </div>
+                    <div class="col-md-12">
+                        <div class="alert alert-danger"><?php echo $statusMsg; ?> </div>
+                    </div>
                     <?php } ?>
                     <div class="col-md-4 order-md-2 mb-4">
 
@@ -259,18 +259,19 @@ if (!empty($sessData['status']['msg'])) {
                                 foreach ($cartItems as $item) {
 
                             ?>
-                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                        <div>
-                                            <h6 class="my=0"><?php echo $item["name"]; ?></h6>
-                                            <small><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> -
-                                                (<?php echo $item["qty"]; ?>)</small>
-                                            <small><?php echo $item['color_name']; ?> -
-                                                <?php echo $item['size_name'] ?> -
-                                                <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></small>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my=0"><?php echo $item["name"]; ?></h6>
+                                    <small><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> -
+                                        (<?php echo $item["qty"]; ?>)</small>
+                                    <small><?php echo $item['color_name']; ?> -
+                                        <?php echo $item['size_name'] ?> -
+                                        <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></small>
 
-                                        </div>
-                                        <span class="text"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
-                                    </li>
+                                </div>
+                                <span
+                                    class="text"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
+                            </li>
 
                             <?php
                                 }
@@ -297,9 +298,11 @@ if (!empty($sessData['status']['msg'])) {
 
                         </ul>
                         <div class="button-holder">
-                            <a href="index.php#nav-container" class="button btn btn-sm btn-info" id="add-items"><i class="fa fa-plus" aria-hidden="true"></i>
+                            <a href="index.php#nav-container" class="button btn btn-sm btn-info" id="add-items"><i
+                                    class="fa fa-plus" aria-hidden="true"></i>
                                 Add More Items</a>
-                            <a href="viewCart.php" class="button btn btn-sm btn-warning" id="edit-cart"><i class="fa fa-edit" aria-hidden="true"></i>
+                            <a href="viewCart.php" class="button btn btn-sm btn-warning" id="edit-cart"><i
+                                    class="fa fa-edit" aria-hidden="true"></i>
                                 Edit Cart</a>
 
                         </div>
@@ -333,7 +336,8 @@ if (!empty($sessData['status']['msg'])) {
                                     <input type="text" id="captcha" name="captcha_challenge" pattern="[0-9]{4}">
                                 </div>
                                 <input type="hidden" name="action" value="placeOrder" />
-                                <input class="btn btn-success btn-block hidden button" id="place-order-button" type="submit" name="checkoutSubmit" value="Place Order">
+                                <input class="btn btn-success btn-block hidden button" id="place-order-button"
+                                    type="submit" name="checkoutSubmit" value="Place Order">
                             </fieldset>
                         </form>
                     </div>
@@ -345,30 +349,30 @@ if (!empty($sessData['status']['msg'])) {
     </?php include "viewCartDump.php" ?>"
 </body>
 <script>
-    function fiscalYear() {
-        var currentMonth = new Date().getMonth() + 1;
-        console.log(currentMonth);
-        var currentYear = new Date().getFullYear();
-        var currentFY = 0
-        // console.log('current year: ', currentYear)
-        // console.log('current fy: ', currentFY)
-        if (currentMonth < 6) {
-            currentFYStart = (currentYear - 1);
-            currentFYEnd = currentYear
-        } else {
-            currentFYStart = currentYear
-            currentFYEnd = (currentYear + 1)
-        }
-        // console.log("Current Fiscal Year Start, year is: ", currentFYStart)
-        // console.log("Current Fiscal Year End, year is: ", currentFYEnd)
-        return [currentFYStart, currentFYEnd];
+function fiscalYear() {
+    var currentMonth = new Date().getMonth() + 1;
+    console.log(currentMonth);
+    var currentYear = new Date().getFullYear();
+    var currentFY = 0
+    // console.log('current year: ', currentYear)
+    // console.log('current fy: ', currentFY)
+    if (currentMonth < 6) {
+        currentFYStart = (currentYear - 1);
+        currentFYEnd = currentYear
+    } else {
+        currentFYStart = currentYear
+        currentFYEnd = (currentYear + 1)
     }
-    var fyData = fiscalYear();
-    var html = '';
-    html += `<div class="alert-text">
+    // console.log("Current Fiscal Year Start, year is: ", currentFYStart)
+    // console.log("Current Fiscal Year End, year is: ", currentFYEnd)
+    return [currentFYStart, currentFYEnd];
+}
+var fyData = fiscalYear();
+var html = '';
+html += `<div class="alert-text">
         🚨 All requests must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
         `
-    document.getElementById('alert-banner').innerHTML = html
+document.getElementById('alert-banner').innerHTML = html
 </script>
 
 </html>
@@ -382,193 +386,193 @@ if (!empty($sessData['status']['msg'])) {
 </script>
 
 <style>
-    body {
-        background-color: #ffffff10;
+body {
+    background-color: #ffffff10;
+}
+
+.container {
+    max-width: unset !important;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.checkout {
+    background-color: #00000090;
+    padding: 20px;
+    color: aliceblue;
+}
+
+.captcha-holder {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+#place-order-button {
+    margin-top: 20px;
+}
+
+img {
+    margin-bottom: 10px;
+}
+
+.emp-row {
+    display: grid;
+    grid-template-rows: 1fr;
+}
+
+.ord-row {
+    display: grid;
+    grid-template-rows: 1fr;
+
+}
+
+input {
+    width: fit-content
+}
+
+
+
+.dropbtn {
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+#myInput {
+    box-sizing: border-box;
+    background-image: url('searchicon.png');
+    background-position: 14px 12px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 14px 20px 12px 45px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+    outline: 3px solid #ddd;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown button:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+.invisi-button {
+    background-color: transparent;
+    color: black;
+    border: none;
+}
+
+.invisi-button:hover {
+    background-color: #ddd;
+    border: none;
+    color: #000;
+}
+
+#logo-img {
+    width: 20px;
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.top-line {
+    border-top: 1px dotted aliceblue !important;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(1turn);
     }
+}
 
-    .container {
-        max-width: unset !important;
-        margin-left: 5%;
-        margin-right: 5%;
-    }
+pre {
+    background-color: dodgerblue;
+    color: white;
 
-    .checkout {
-        background-color: #00000090;
-        padding: 20px;
-        color: aliceblue;
-    }
+}
 
-    .captcha-holder {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-    }
+.button {
+    margin: 5px;
+}
 
-    #place-order-button {
-        margin-top: 20px;
-    }
+.button {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #000000;
+    transition: background-color 0.3s ease;
+}
 
-    img {
-        margin-bottom: 10px;
-    }
+.button:hover {
+    background-color: #4CAF50 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
 
-    .emp-row {
-        display: grid;
-        grid-template-rows: 1fr;
-    }
+.hidden {
+    display: none;
+}
 
-    .ord-row {
-        display: grid;
-        grid-template-rows: 1fr;
+.alert-banner {
+    background-color: #1F9CED;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: larger;
+    gap: 25px;
+}
 
-    }
+.alert-text {
+    text-align: center;
+}
 
-    input {
-        width: fit-content
-    }
-
-
-
-    .dropbtn {
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-    }
-
-    .dropbtn:hover,
-    .dropbtn:focus {
-        background-color: #3e8e41;
-    }
-
-    #myInput {
-        box-sizing: border-box;
-        background-image: url('searchicon.png');
-        background-position: 14px 12px;
-        background-repeat: no-repeat;
-        font-size: 16px;
-        padding: 14px 20px 12px 45px;
-        border: none;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #myInput:focus {
-        outline: 3px solid #ddd;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f6f6f6;
-        min-width: 230px;
-        overflow: auto;
-        border: 1px solid #ddd;
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown button:hover {
-        background-color: #ddd;
-    }
-
-    .show {
-        display: block;
-    }
-
-    .invisi-button {
-        background-color: transparent;
-        color: black;
-        border: none;
-    }
-
-    .invisi-button:hover {
-        background-color: #ddd;
-        border: none;
-        color: #000;
-    }
-
-    #logo-img {
-        width: 20px;
-    }
-
-    .button-holder {
-        display: flex;
-        justify-content: center;
-        gap: 1em;
-    }
-
-    .top-line {
-        border-top: 1px dotted aliceblue !important;
-    }
-
-    @keyframes rotate {
-        100% {
-            transform: rotate(1turn);
-        }
-    }
-
-    pre {
-        background-color: dodgerblue;
-        color: white;
-
-    }
-
-    .button {
-        margin: 5px;
-    }
-
-    .button {
-        display: inline-block;
-        padding: 5px 10px;
-        font-size: 14px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        border: 2px solid #000000;
-        border-radius: 5px;
-        background-color: #4CAF50;
-        color: #000000;
-        transition: background-color 0.3s ease;
-    }
-
-    .button:hover {
-        background-color: #4CAF50 !important;
-        color: #000000 !important;
-        font-weight: bold !important;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    .alert-banner {
-        background-color: #1F9CED;
-        color: #000000;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        font-size: larger;
-        gap: 25px;
-    }
-
-    .alert-text {
-        text-align: center;
-    }
-
-    .holder {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
+.holder {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
 </style>

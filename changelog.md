@@ -1,5 +1,11 @@
 # County Store Application Changelog
 
+## Version 2.0.1 - (2024-08-04)
+
+### **Bugs Squished**
+
+- Fixed typo in view that used the product name for the first product in each successive product.
+
 ## Version 2.0.0 - (2024-07-12)
 
 ## **🎊 UI Updates 🎉**
