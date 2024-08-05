@@ -13,6 +13,7 @@
 - Top menu has been updated for ease of use. Boots and Hats no longer have a sub menu also called boots and hats.(Seems like an easy win for everyone)
 - View Cart has been redesigned to provide more clarity to the user for each item as well as the total cost.
 - Items in the cart can be edited from the view Cart page. Users can update the size, color, quantity, logo, or department name placement right in the cart.
+- Added reset button of sorts to filters popover
 
 ## Version 1.2.7 - (2024-06-26)
 

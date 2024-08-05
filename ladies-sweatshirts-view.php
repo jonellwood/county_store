@@ -38,6 +38,10 @@ $cart = new Cart;
         let typesToRemove = [];
         let sleevesToRemove = [];
 
+        function resetFilters() {
+            location.reload();
+        }
+
         function getFilterData() {
             fetch('fetchFilters.php')
                 .then((response) => response.json())
@@ -132,7 +136,7 @@ $cart = new Cart;
             <button class="btn js-toggle-grid-columns">toggle <code>items-per-row</code></button>
 
             <div id="filters-popover" class="filters-popover" popover>
-                <button popovertarget="filters-popover" popovertargetaction="hide">
+                <button popovertarget="filters-popover" popovertargetaction="hide" class="button">
                     <span aria-hidden="true">❌</span>
                     <span class="sr-only">Close</span>
                 </button>
@@ -140,6 +144,7 @@ $cart = new Cart;
                     <span>Uncheck items you don't want to see in results</span>
                 </div>
                 <div id="filters"></div>
+                <button class="button" onclick="resetFilters()">Reset Filters</button>
             </div>
         </div>
         <!-- // ? product cards will render from function in this div. -->

@@ -127,7 +127,7 @@ $cart = new Cart;
         <div class="spacer23"> - </div>
 
         <div class="btn-container" id="btn-container">
-            <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button>
+            <!-- <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button> -->
             <button class="btn js-toggle-grid-gap">toggle <code>item-spacing</code></button>
             <button class="btn js-toggle-grid-columns">toggle <code>items-per-row</code></button>
 

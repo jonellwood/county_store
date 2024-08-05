@@ -38,11 +38,34 @@ $cart = new Cart;
         let typesToRemove = [];
         let sleevesToRemove = [];
 
+
+        function resetFilters() {
+            location.reload();
+            // console.log('before reset');
+            // console.log(sizesToRemove);
+            // console.log(typesToRemove);
+            // console.log(sleevesToRemove);
+            var filterContainer = document.getElementById('filters');
+            const checkboxes = filterContainer.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach((checkbox) => {
+                checkbox.checked = true;
+            });
+
+            sizesToRemove = [];
+            typesToRemove = [];
+            sleevesToRemove = [];
+            // console.log('after reset');
+            // console.log(sizesToRemove);
+            // console.log(typesToRemove);
+            // console.log(sleevesToRemove);
+        }
+
+
         function getFilterData() {
             fetch('fetchFilters.php')
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     // console.log(data[3].type_filters[0].filter);
                     var sizes = data[1].size_filters;
                     var types = data[3].type_filters;
@@ -86,7 +109,7 @@ $cart = new Cart;
             fetch('fetchFilteredProducts.php?type=' + typeID + '&gender=' + genderFilter)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     var html = '';
                     html += `<div class="products-container grid--big-columns" id="products-container" view-transition-group="image-transition">`
                     for (var i = 0; i < data.length; i++) {
@@ -132,7 +155,7 @@ $cart = new Cart;
             <button class="btn js-toggle-grid-columns">toggle <code>items-per-row</code></button>
 
             <div id="filters-popover" class="filters-popover" popover>
-                <button popovertarget="filters-popover" popovertargetaction="hide">
+                <button popovertarget="filters-popover" popovertargetaction="hide" class="button">
                     <span aria-hidden="true">❌</span>
                     <span class="sr-only">Close</span>
                 </button>
@@ -140,6 +163,7 @@ $cart = new Cart;
                     <span>Uncheck items you don't want to see in results</span>
                 </div>
                 <div id="filters"></div>
+                <button class="button" onclick="resetFilters()">Reset Filters</button>
             </div>
         </div>
         <!-- // ? product cards will render from function in this div. -->
@@ -207,23 +231,23 @@ $cart = new Cart;
         function sendToSizesToRemoveArray(val) {
             if (sizesToRemove.includes(val)) {
                 sizesToRemove = sizesToRemove.filter((x) => x !== val);
-                console.log(sizesToRemove);
+                // console.log(sizesToRemove);
             } else {
                 sizesToRemove.push(val);
-                console.log(sizesToRemove);
+                //console.log(sizesToRemove);
             }
             // find all elements with class of home-product-info and if they have data-sizes attribute equal to val add the class of hidden
             var elements = document.getElementsByClassName("home-product-info");
-            console.log('Elements with sizes ')
-            console.log(elements);
+            //console.log('Elements with sizes ')
+            //console.log(elements);
             // check if elements data-size attribute is in the array sizesToRemove and hide if it is. show if it isn't
             for (var i = 0; i < elements.length; i++) {
                 if (sizesToRemove.includes(elements[i].getAttribute("data-size"))) {
                     elements[i].parentElement.classList.add("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
+                    //console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
                 } else {
                     elements[i].parentElement.classList.remove("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been shown');
+                    //.log('elements parent: ' + elements[i].parentElement + 'has been shown');
                 }
             }
         }
@@ -232,24 +256,24 @@ $cart = new Cart;
         function sendToTypesToRemoveArray(val) {
             if (typesToRemove.includes(val)) {
                 typesToRemove = typesToRemove.filter((x) => x !== val);
-                console.log(typesToRemove);
+                //.log(typesToRemove);
             } else {
                 typesToRemove.push(val);
-                console.log(typesToRemove);
+                //console.log(typesToRemove);
             }
 
             // find all elements with class of home-product-info and if they have data-types attribute equal to val add the class of hidden
             var elements = document.getElementsByClassName("home-product-info");
-            console.log('Elements with types ')
-            console.log(elements);
+            //.log('Elements with types ')
+            //console.log(elements);
             // check if elements data-type attribute is in the array typesToRemove and hide if it is. show if it isn't
             for (var i = 0; i < elements.length; i++) {
                 if (typesToRemove.includes(elements[i].getAttribute("data-type"))) {
                     elements[i].parentElement.classList.add("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
+                    //console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
                 } else {
                     elements[i].parentElement.classList.remove("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been shown');
+                    //console.log('elements parent: ' + elements[i].parentElement + 'has been shown');
                 }
             }
         }
@@ -260,21 +284,21 @@ $cart = new Cart;
                 console.log(sleevesToRemove);
             } else {
                 sleevesToRemove.push(val);
-                console.log(sleevesToRemove);
+                //console.log(sleevesToRemove);
             }
 
             // find all elements with class of home-product-info and if they have data-sleeves attribute equal to val add the class of hidden
             var elements = document.getElementsByClassName("home-product-info");
-            console.log('Elements with sleeves ')
-            console.log(elements);
+            //console.log('Elements with sleeves ')
+            //console.log(elements);
             // check if elements data-sleeves attribute is in the array sleevesToRemove and hide if it is. show if it isn't
             for (var i = 0; i < elements.length; i++) {
                 if (sleevesToRemove.includes(elements[i].getAttribute("data-sleeve"))) {
                     elements[i].parentElement.classList.add("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
+                    //console.log('elements parent: ' + elements[i].parentElement + 'has been hidden');
                 } else {
                     elements[i].parentElement.classList.remove("hidden");
-                    console.log('elements parent: ' + elements[i].parentElement + 'has been shown');
+                    //console.log('elements parent: ' + elements[i].parentElement + 'has been shown');
                 }
             }
         }
