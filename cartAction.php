@@ -217,8 +217,10 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                             $stmt = $conn->prepare($sql);
 
                             // insert order items into database
+                            $itemsToInsert = count($cartItems) - 3;
+                            $truncatedCartItems = array_slice($cartItems, 0, $itemsToInsert);
 
-                            foreach ($cartItems as $item) {
+                            foreach ($truncatedCartItems as $item) {
                                 $stmt->bind_param(
                                     "iiiisssdddssssssi",
                                     $db_order_id,
@@ -260,8 +262,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
                                 $order_details_id = $stmt->execute();
                             }
+                            $cart->destroy();
                         }
-                        $cart->destroy();
                         $redirectURL = 'orderSuccess.php?id=' . base64_encode($orderID) . '&emp_id=' . base64_encode($emp_number);
                         //header("Location: $redirectURL");
                         // header("Location: orderSuccess.php?id=" . base64_encode($orderID) . "&emp_id=" . base64_encode($emp_number));

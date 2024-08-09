@@ -19,7 +19,7 @@ echo "<p> Developed by <a href='https://berkeleycountysc.gov/dept/it/' class='fo
 // echo "<p><a href='https://store.berkeleycountysc.gov/changelogView.php' target='_blank'> App Version " . $_SESSION['appVersion'] . "</a></p>";
 // echo "<p> <a href='https://store.berkeleycountysc.gov/changelogView.php' target='_blank'><i class='fa fa-code-branch'></i> Change Log</a></p>";
 echo "<p><a href='https://store.berkeleycountysc.gov/changelogView.php' target='_blank'> App Version " . ($_SESSION['appVersion'] == 'Unknown' ? 'Documentation' : $_SESSION['appVersion']) . "</a></p>";
-echo "<p><a href='products-by-communications.php'><i class='fa fa-phone'></i> 911</a></p>";
+// echo "<p><a href='products-by-communications.php'><i class='fa fa-phone'></i> 911</a></p>";
 echo "</div>";
 
 echo "</footer>";
@@ -27,29 +27,29 @@ echo "</footer>";
 ?>
 
 <style>
-    .footer-holder {
-        /* position: relative; */
-        position: fixed;
-        margin-top: 10px;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 20px;
-        padding-left: 5%;
-        padding-right: 5%;
-        background-color: #ffffff90;
-        z-index: 0;
-        width: 100vw;
-    }
+.footer-holder {
+    /* position: relative; */
+    position: fixed;
+    margin-top: 10px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #ffffff90;
+    z-index: 0;
+    width: 100vw;
+}
 
 
-    a {
-        text-decoration: none;
-        color: inherit;
-        /* font-weight: bolder; */
-    }
+a {
+    text-decoration: none;
+    color: inherit;
+    /* font-weight: bolder; */
+}
 
-    .far-right {
-        margin-left: 100px;
-    }
+.far-right {
+    margin-left: 100px;
+}
 </style>

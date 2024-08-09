@@ -30,44 +30,55 @@ function checkMonthAndRedirect()
 checkMonthAndRedirect();
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<?php include "./components/viewHead.php" ?>
 
-<head>
-    <?php include "./components/viewHead.php" ?>
-    <title>Home | Berkeley County Store</title>
+<div class="front-image-background">
+    <!-- <img src="./County-Store-Image.png" alt="some-store" /> -->
+    <!-- <img src="./modern-mall.png" alt="some-store" /> -->
+</div>
 
-</head>
 
-<body>
-    <div class="front-image-background">
-        <!-- <img src="./County-Store-Image.png" alt="some-store" /> -->
-        <!-- <img src="./modern-mall.png" alt="some-store" /> -->
+<!-- <div class="d-flex justify-content-center mx-1"> -->
+<div class="d-grid-4 gap-3" id="hot-sellers">
+    <!-- <div class="row align-items-center justify-content-start gap-3" id="hot-sellers">
+
+    </div> -->
+</div>
+</?php include "cartSlideout.php" ?>
+<?php include "footer.php" ?>
+<script src="./functions/renderProduct.js"></script>
+<div class="alert-banner" id="alert-banner" popover=auto>
+    <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted
+        between June 1st and June 30th. </div>
+    <div class="holder">
+        <p>
+
+            <!-- <label for="dontShowAgain" id="dontShowAgainLabel">Don't show again</label> -->
+            <!-- <input type="checkbox" id="dontShowAgain" name="dontShowAgain"> -->
+            <button class="button" popovertarget="alert-banner" popovertargetaction="hide"
+                id="dontShowAgain">OK</button>
+        </p>
     </div>
-    <?php include "components/slider.php" ?>
-
-    <div class="hot-sellers">
-        <?php include "stats.php" ?>
-
-    </div>
-    <?php include "cartSlideout.php" ?>
-    <?php include "footer.php" ?>
-    <div class="alert-banner" id="alert-banner" popover=auto>
-        <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted
-            between June 1st and June 30th. </div>
-        <div class="holder">
-            <p>
-
-                <!-- <label for="dontShowAgain" id="dontShowAgainLabel">Don't show again</label> -->
-                <!-- <input type="checkbox" id="dontShowAgain" name="dontShowAgain"> -->
-                <button class="button" popovertarget="alert-banner" popovertargetaction="hide"
-                    id="dontShowAgain">OK</button>
-            </p>
-        </div>
-    </div>
+</div>
 
 </body>
+<script src="functions/createIndexedDB.js"></script>
 <script>
+// copyDataToIndexedDB();
+async function fetchTopProducts() {
+    await fetch('./API/fetchTopProducts.php')
+        .then(response => response.json())
+        .then(data => {
+            var productsHtml = '';
+            for (var i = 0; i < data.length; i++) {
+                productsHtml += renderProduct(data[i]);
+            }
+            document.getElementById('hot-sellers').innerHTML = productsHtml;
+        })
+        .catch(error => console.error(error));
+}
+fetchTopProducts()
+
 function createCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -102,52 +113,8 @@ closeButton.addEventListener("click", function() {
 </script>
 
 </html>
-
 <style>
-.hot-sellers {
-    width: 90%;
-    position: relative;
-    z-index: 3;
-    margin-top: 80px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    /* align-items: flex-end; */
-    min-height: 80vh;
-    max-height: 100vh;
-}
-
-.card {
-    margin-top: 20px;
-    margin-right: 20px;
-    border-radius: 1px;
-    box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 1px 11px 1px rgba(0, 0, 0, 0.75);
-}
-
-.alert {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.alert-banner {
-    background-color: #1F9CED;
-    color: #000000;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    font-size: larger;
-    gap: 25px;
-}
-
-.holder {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-}
-
-::backdrop {
-    backdrop-filter: blur(3px);
+#hot-sellers {
+    z-index: 2;
 }
 </style>

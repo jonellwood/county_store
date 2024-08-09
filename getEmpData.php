@@ -13,8 +13,8 @@ $result = $stmt->get_result();
 
 $data = array();
 while ($row = $result->fetch_assoc()) {
-    $_SESSION['captcha_text'] = $row['empNumber'];
     array_push($data, $row);
+    $_SESSION['captcha_text'] = $row['empNumber'];
 }
 
 echo json_encode($data);

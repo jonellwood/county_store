@@ -187,7 +187,7 @@ $cart = new Cart;
                         </div>
                         <div class='edit-cart-item-submit-btn-holder'>
                         <button class='btn cart-item-submit-btn' type='b'>
-                        <span aria-hidden=”true”> ✅</span> 
+                        <span aria-hidden=”true”></span> 
                         <span class="sr-only">Submit</span>
                         </button>
                         </div>
@@ -370,9 +370,9 @@ $cart = new Cart;
                                             </div>
                                             
                                             <div class="item-content-footer">
-                                            <button class='button btn remove' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
-                                            <button class='button btn change' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
-                                            <button class='button btn comment' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
+                                            <button class='btn btn-danger' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
+                                            <button class='btn btn-info' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
+                                            <button class='btn btn-secondary' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
                                             </div>
                                             </ul>
                                             </div>
@@ -404,8 +404,7 @@ $cart = new Cart;
 </head>
 
 <body>
-    <?php include "./components/slider.php" ?>
-    <div class="spacer23"> - </div>
+
     <div class="container">
         <div id="items" class="items"></div>
         <div class="checkout">
@@ -436,24 +435,26 @@ $cart = new Cart;
     </div>
     </div>
     <!-- <div> -->
-    <div class="bottom-buttons-holder">
+    <div class="bottom-buttons-holder d-flex justify-content-between mx-5">
         <div>
-            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn button" type="button">← Continue Shopping
+            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn btn-secondary" type="button">← Continue
+                    Shopping
                 </button></a>
         </div>
         <div>
             <?php if ($cart->total_items() > 0) { ?>
-            <a href="checkout.php"><button class="btn button" type="button"> Proceed to Checkout →</button></a>
+            <a href="checkout.php"><button class="btn btn-success" type="button"> Proceed to Checkout →</button></a>
             <?php } ?>
         </div>
     </div>
     <div id="edit-cart-item" popover=manual>
         <div id="cart-item-edit-details" class="cart-item-edit-details">
             <div class="popover-btn-holder">
-                <button class="popover-close-btn" popovertarget="edit-cart-item" popovertargetaction="hide">
-                    <span aria-hidden=”true”>❌ </span>
-                    <span class="sr-only">Close</span>
+                <button popovertarget="edit-cart-item" popovertargetaction="hide" class="btn-close ms-2 mb-1"
+                    role="button">
+                    <span aria-hidden="true"></span>
                 </button>
+
             </div>
             <div class="popover-desc-text-holder">
                 <p class="popover-desc-text">Make changes to the color , size, quantity, logo<, or dept name for this
@@ -470,9 +471,9 @@ $cart = new Cart;
     </div>
     <div id="add-comment" popover=manual>
         <div class="popover-btn-holder">
-            <button class="popover-close-btn" popovertarget="add-comment" popovertargetaction="hide">
-                <span aria-hidden=”true”>❌ </span>
-                <span class="sr-only">Close</span>
+            <button class="btn-close ms-2 mb-1" popovertarget="add-comment" popovertargetaction="hide">
+                <span aria-hidden=”true”></span>
+
             </button>
         </div>
         <div class="popover-desc-text-holder">
@@ -482,7 +483,7 @@ $cart = new Cart;
         </div>
     </div>
     <!-- </div> -->
-    <?php include "cartSlideout.php" ?>
+
     <?php include "footer.php" ?>
     <script>
     renderCheckout(<?php echo $cart->serializeCart() ?>);
@@ -493,9 +494,9 @@ $cart = new Cart;
 
 </html>
 <style>
-a {
+/* a {
     text-decoration: none;
-}
+} */
 
 /* .tiny-text {
         font-size: small;
@@ -505,7 +506,7 @@ a {
         font-size: 1000px;
     } */
 
-.alert-warning {
+/* .alert-warning {
     margin-top: 40px;
     text-align: center;
     font-weight: 500;
@@ -516,12 +517,10 @@ a {
     margin-right: auto;
     border-radius: 5px;
 
-}
+} */
 
 #cart-logo-img {
     width: 50px;
-    /* margin-right: 15px; */
-    /* margin-left: 15px; */
     transition: all .2s ease-in-out;
 }
 
@@ -530,34 +529,33 @@ a {
         margin-top: 10px;
     } */
 
-pre {
+/* pre {
     background-color: dodgerblue;
     color: white;
 
-}
+} */
 
 .container {
     max-width: unset !important;
     margin-top: 20px;
-    margin-left: 5%;
-    margin-right: 5%;
-    /* width: 100%; */
-    /* width: 100vw; */
     display: grid;
     grid-template-columns: 6fr 2fr;
 }
 
-/* .cart-display {
-        display: grid;
-        grid-template-columns: 5fr 1fr;
-    } */
+
+
+
+.cart-display {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
 
 /* .little-prod-img {
         padding: 5px;
     } */
 
 
-button {
+/* button {
     border-radius: 5px;
 }
 
@@ -583,7 +581,7 @@ button {
     background-color: #4CAF50 !important;
     color: #000000 !important;
     font-weight: bold !important;
-}
+} */
 
 
 /* .remove {
@@ -612,9 +610,10 @@ button {
     } */
 
 .items {
-    background-color: #00000080;
+    background-color: #808080;
     border-radius: 5px;
-    /* display: flex; */
+    padding: 10px;
+    margin: 10px
 }
 
 .active-items {
@@ -667,8 +666,7 @@ button {
     max-width: 100%;
     border: 0;
     height: 180px;
-    /* width: 180px; */
-    /* aspect-ratio: auto 180 / 180; */
+
 }
 
 .item-content {
@@ -729,36 +727,27 @@ button {
 
 .logo-holder {
     display: flex;
-    /* grid-column-start: 4; */
-    /* grid-column-end: 5; */
+
     grid-row-start: 1;
     grid-row-end: 4;
 }
 
-/* .dropdown {
 
-       
-        max-width: 100%;
-        left: 0;
-        transition: all .1s linear;
-        line-height: 19px;
 
-    } */
-
-.bottom-buttons-holder {
-    display: flex;
+/* .bottom-buttons-holder { 
+  display: flex;
     justify-content: space-evenly;
-    /* margin-left: 10px; */
-    /* margin-right: 10px; */
-}
+ 
+ 
+} */
 
 .checkout {
     background-color: #ffffff50;
     height: fit-content;
-    /* min-width: max-content; */
+
     border-radius: 5px;
-    padding: 12px;
-    /* padding-bottom: 12px; */
+    /* padding: 12px; */
+
     color: aliceblue;
     margin-left: 10px;
     padding-right: 20px;
@@ -766,7 +755,8 @@ button {
     font-size: larger;
     display: flex;
     flex-direction: column;
-
+    padding: 10px;
+    margin: 10px
 }
 
 
@@ -786,7 +776,7 @@ button {
 #edit-cart-item {
     width: 45%;
     height: 37%;
-    /* background-color: hsl(0, 0%, 100%); */
+
     background-color: #ffffff;
     color: hsl(224, 10%, 23%);
     border: 7px solid #BF1722;
@@ -893,7 +883,7 @@ button {
 }
 
 
-@view-transition {
+/* @view-transition {
     navigation: auto;
-}
+} */
 </style>

@@ -240,7 +240,7 @@ if ($smodResult->num_rows > 0) {
 </head>
 
 <body onload="onLoadLoadThis()">
-    <?php include "./components/slider.php" ?>
+
     <div class="spacer23"> - </div>
     <div class=" container">
 
