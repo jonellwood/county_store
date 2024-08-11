@@ -16,6 +16,9 @@
 	font-family: bcFont;
 	src: url(./fonts/Gotham-Medium.otf);
 }
+/* @view-transition {
+	navigation: auto;
+} */
 :root,
 [data-bs-theme='light'] {
 	--bs-blue: #007bff;

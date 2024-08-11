@@ -24,28 +24,7 @@ function html_escape($string)
 require_once 'config.php';
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
-// fetch order details
-// $sql = "SELECT ord.order_id, ord.customer_id, ord.created, ord.grand_total, ord.product_id, ord.quantity, ord.status, ord.size_id, ord.color_id, 
-// ord.order_details_id, ord.line_item_total, ord.logo, ord.comment, ord.product_price, ord.logo_fee, ord.product_code,
-// CONCAT(c.first_name, ' ', c.last_name) as submitted_for, c.email as submitted_for_email, c.emp_id, c.department, s.empName as submitted_by,
-// d.dep_name
-// FROM ord_ref as ord
-// LEFT JOIN customers as c ON c.customer_id = ord.customer_id 
-// LEFT JOIN curr_emp_ref as s on s.empNumber = ord.submitted_by 
-// LEFT JOIN dep_ref as d on ord.department = d.dep_num
 
-// WHERE ord.order_id=?";
-// $stmt = $conn->prepare($sql);
-// $stmt->bind_param("i", $db_id);
-// $db_id = $order_id;
-// $stmt->execute();
-// $result = $stmt->get_result();
-
-// if ($result->num_rows > 0) {
-//     $orderInfo = $result->fetch_assoc();
-// } else {
-//     header("Location: index.php");
-// }
 include "./components/viewHead.php"
 ?>
 
@@ -73,9 +52,6 @@ function getOrderDetailsFromOrdRef(id) {
             document.getElementById('orderProductDetails').innerHTML = html;
         })
         .catch(error => console.error(error));
-
-
-
 }
 </script>
 
@@ -84,29 +60,22 @@ function getOrderDetailsFromOrdRef(id) {
 function doStuff() {
     wipeLocalCart();
     getOrderDetailsFromOrdRef(<?php echo $order_id ?>);
-    //sendmail(</?php echo $order_id ?>, </?php echo $emp_id ?>)
+    sendmail(<?php echo $order_id ?>, <?php echo $emp_id ?>)
 }
 </script>
 
 </head>
 
-<!-- <body onload='sendmail(</?php echo $order_id ?>, </?php echo $emp_id ?>)'> -->
-
-
 <body onload='doStuff()'>
     <!-- uncomment line above, and remove this one, to reinstate email order confirmation feature after testing is completed -->
     <div class="container bg-light w-auto">
-        <!-- <div class="container"> -->
-
         <div class="col-md-12">
             <div class="alert alert-success">Your Request has been placed successfully. You should receive an email
                 confirmation shortly.</div>
         </div>
         <!-- Order status and contact info -->
-
         <div class="d-flex" id="orderPersonDetails"></div>
         <!-- order items -->
-
         <div class="d-flex" id="orderProductDetails"></div>
         <div class="col mb-2 button-container">
             <div class="row">

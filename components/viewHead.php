@@ -18,10 +18,11 @@ $cart = new Cart;
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script>
-    <!-- <link href="./style/styles.css" rel="stylesheet" /> -->
+
     <link href="./style/storeLux.css" rel="stylesheet" />
     <link href="./style/mediaQueries.css" rel="stylesheet" />
     <link href="./style/viewTransitions.css" rel="stylesheet" />
+    <link href="./style/custom.css" rel="stylesheet" />
     <script src="functions/autoClosePopover.js"></script>
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <meta name="view-transition" content="same-origin">

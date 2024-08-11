@@ -39,182 +39,58 @@ $result = $stmt->get_result();
 //     </style>
 //     ';
 // }
-
+include "./components/viewHead.php"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<script src="functions/renderProduct.js"></script>
+<script>
+function getFilteredProducts(typeID) {
+    fetch('fetchFilteredProductsNoGender.php?type=' + typeID)
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log(data);
+            var html = '';
 
-<head>
-    <?php include "./components/viewHead.php" ?>
-    <title>Boots</title>
-</head>
-
-<body>
-    <!-- <div class="image-background">
-        <img src="./County-Store-Image.png" alt="some-store" />
-    </div> -->
-    <div class="container">
-
-        <div class="spacer23"> - </div>
-        <!-- </?php include "nav.php" ?> -->
-        <div class="container" id="btn-container">
-            <!-- <button class='btn btn-primary' id='get-data' type='button' data-bs-toggle='offcanvas'
-                data-bs-target='#offcanvasBottom' aria-controls='offcanvasBottom'> Filters</button>
-            <button id="restore" type="button" form="filter-form" class='btn btn-warning'>Reset Filters</button> -->
-            <button class="btn js-toggle-grid-gap">toggle <code>item-spacing</code></button>
-            <button class="btn js-toggle-grid-columns">toggle <code>items-per-row</code></button>
-        </div>
-
-        <div class="row col-lg-12 products-container grid--big-columns" id="products-container">
-
-            <?php
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $product_id = $row['product_id'];
-                    $filterSql = "SELECT * from prod_filter_ref WHERE product=$product_id";
-                    $filterStmt = $conn->prepare($filterSql);
-                    $filterStmt->execute();
-                    $filterResult = $filterStmt->get_result();
-                    // $filterStmt->close();
-                    $filterList = array();
-
-                    foreach ($filterResult as $filterRow) {
-                        $filterList[] = $filterRow['gender'];
-                        $filterList[] = $filterRow['type'];
-                        $filterList[] = $filterRow['size'];
-                        $filterList[] = $filterRow['sleeve'];
-                    };
-
-                    // $sugerSql = "SELECT COUNT(ord._ref.product_id) as order_count from uniform_orders.ord_ref where product_id= $product_id";
-                    $sugerStmt =
-                        $proImage = !empty($row["image"]) ? $row["image"] : "demo-img.jpg";
-
-            ?>
-            <div class=product-card-holder>
-                <div class="card home-product-info" id="featured-card" value="<?php echo $row['product_id'] ?>"
-                    data-gender="<?php echo $filterRow['gender'] ?>" data-type="<?php echo $filterRow['type'] ?>"
-                    data-size="<?php echo $filterRow['size'] ?>" data-sleeve="<?php echo $filterRow['sleeve'] ?>">
-                    <div class="card-img-holder">
-                        <img src="<?php echo $proImage; ?>" class="card-img-top" alt="...">
-                    </div>
-                    <div class="card-body featured">
-                        <h6 class="card-title"><?php echo $row["name"]; ?> <br> Item #: <?php echo $row["code"] ?></h6>
-                        <h6 class="card-subtitle mb-2">Starting at:
-                            <?php echo CURRENCY_SYMBOL . number_format($row["price"], 2) . ' ' . CURRENCY; ?>
-                        </h6>
-                    </div>
-                </div>
-                <div class="button-holder">
-                    <!-- <button href="product-details-form.php?product_id=<//?php echo $row["product_id"]; ?>" -->
-                    <button class="btn btn-info goBtn"
-                        value="product-details.php?product_id=<?php echo $row["product_id"]; ?>"
-                        onclick="gotoPage(this.value)">Details</button>
-                </div>
-            </div>
-            <?php }
-            } else {
-                include "product-type-not-found.php";
-                ?>
-            <!-- <p>Product(s) not found....</p> -->
-            <?php }
-            // $conn->close();
-            ?>
-        </div>
-        <div class="button-holder">
-            <a href="index.php"><button class="btn btn-secondary" type="button"><i class="fa fa-arrow-left"
-                        aria-hidden="true"></i> Continue
-                    Shopping </button></a>
-
-        </div>
-    </div>
-    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-        <div class="offcanvas-body" id="offcanvas-body">
-            <div class="offcanvas-title">Select what products you would like to see. Use filter button below to
-                apply
-                your selection(s)</div>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"
-                id="close-filters-box"></button>
-            <div id='left'><?php include "filter-box.php" ?></div>
-
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
-    <script>
-    window.onscroll = function() {
-        stickyButtons()
-    };
-
-    var btnHolder = document.getElementById("btn-container");
-    var sticky = navbar.offsetTop;
-
-    function stickyButtons() {
-        if (window.pageYOffset >= sticky) {
-            btnHolder.classList.add("sticky-btn")
-        } else {
-            btnHolder.classList.remove("sticky-btn");
-        }
-    }
-    </script>
-    <script>
-    const grid = document.querySelector("#products-container");
-    const card = document.querySelector(".card-body");
-    const goBtn = document.querySelector(".goBtn");
-
-    document.querySelector(".js-toggle-grid-columns").addEventListener("click", () => {
-        // console.log('toggle grid clicked');
-        if (document.startViewTransition) {
-            document.startViewTransition(_ => grid.classList.toggle("grid--big-columns"));
-        } else {
-            grid.classList.toggle("grid--big-columns");
-        }
-    });
-    document.querySelector(".js-toggle-grid-gap").addEventListener("click", () => {
-        if (document.startViewTransition) {
-            document.startViewTransition(_ => grid.classList.toggle("grid--big-gap"));
-        } else {
-            grid.classList.toggle("grid--big-gap");
-        }
-    })
-    goBtn.addEventListener("click", e => {
-        e.stopPropagation();
-        let target = e.target;
-        //console.log('e.target is: ');
-        //console.log(e.target);
-        // alert(' !!! Go Button Pressed');
-        return;
-    })
-    grid.addEventListener("click", ev => {
-        let target = ev.target;
-        let parent = ev.target.parentElement;
-        if (target.classList.contains("card")) {
-            if (document.startViewTransition) {
-                const direction = target.classList.contains('card--expanded') ? 'shrink' : 'grow';
-                const origVtName = target.style.viewTransitionName;
-                target.style.viewTransitionName = `img-${direction}`;
-                document.startViewTransition(_ => {
-                    parent.classList.toggle("card--expanded");
-                    setTimeout(_ => target.style.viewTransitionName = origVtName, 0);
-                });
-            } else {
-                parent.classList.toggle("card--expanded");
+            for (var i = 0; i < data.length; i++) {
+                html += renderProduct(data[i]);
             }
-            return;
-        }
-    });
-    </script>
-    <script>
-    function gotoPage(val) {
-        console.log('Bubbbling');;
-        // e.stopPropagation()
-        // alert('You will be directed to the details page for this product');
-        document.location.replace(val);
+
+            document.getElementById('products-target').innerHTML = html;
+            setTimeout(setGrid(), 2000);
+        })
+}
+getFilteredProducts(7)
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script>
+window.onscroll = function() {
+    stickyButtons()
+};
+
+var btnHolder = document.getElementById("btn-container");
+var sticky = navbar.offsetTop;
+
+function stickyButtons() {
+    if (window.pageYOffset >= sticky) {
+        btnHolder.classList.add("sticky-btn")
+    } else {
+        btnHolder.classList.remove("sticky-btn");
     }
-    </script>
-    <?php include "cartSlideout.php" ?>
-    <?php include "footer.php" ?>
+}
+</script>
+<div id="products-target" class="d-grid-4 gap-2"></div>
+<script>
+function gotoPage(val) {
+    console.log('Bubbbling');;
+    // e.stopPropagation()
+    // alert('You will be directed to the details page for this product');
+    document.location.replace(val);
+}
+</script>
+
+<?php include "footer.php" ?>
 </body>
 
 
