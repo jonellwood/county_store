@@ -13,101 +13,71 @@ function convertColorStr($str)
 }
 
 
-class MyDateTime extends DateTime
+// class MyDateTime extends DateTime
+// {
+//     /**
+//      * Calculates start and end date of fiscal year
+//      * @param DateTime $dateToCheck A date withn the year to check
+//      * @return array('start' => timestamp of start date ,'end' => timestamp of end date) 
+//      */
+//     public function fiscalYear()
+//     {
+//         $result = array();
+//         $start = new DateTime();
+//         $start->setTime(0, 0, 0);
+//         $end = new DateTime();
+//         $end->setTime(23, 59, 59);
+//         $year = $this->format('Y');
+//         $start->setDate($year, 7, 1);
+//         if ($start <= $this) {
+//             $end->setDate($year + 1, 3, 31);
+//         } else {
+//             $start->setDate($year - 1, 7, 1);
+//             $end->setDate($year, 6, 30);
+//         }
+//         $result['start'] = $start->getTimestamp();
+//         $result['end'] = $end->getTimestamp();
+//         return $result;
+//     }
+// }
+function fiscalYear()
 {
-    /**
-     * Calculates start and end date of fiscal year
-     * @param DateTime $dateToCheck A date withn the year to check
-     * @return array('start' => timestamp of start date ,'end' => timestamp of end date) 
-     */
-    public function fiscalYear()
-    {
-        $result = array();
-        $start = new DateTime();
-        $start->setTime(0, 0, 0);
-        $end = new DateTime();
-        $end->setTime(23, 59, 59);
-        $year = $this->format('Y');
-        $start->setDate($year, 7, 1);
-        if ($start <= $this) {
-            $end->setDate($year + 1, 3, 31);
-        } else {
-            $start->setDate($year - 1, 7, 1);
-            $end->setDate($year, 6, 30);
-        }
-        $result['start'] = $start->getTimestamp();
-        $result['end'] = $end->getTimestamp();
-        return $result;
+    $currentMonth = date('m');
+    $currentYear = date('Y');
+    if ($currentMonth < 7) {
+        $currentYear--;
     }
+    return $currentYear;
 }
+$fiscalYear = strval(fiscalYear());
 
-$mydate = new MyDateTime();    // will use the current date time
-$year = $mydate->format('Y');  // to get the current year and 
-$mydate->setDate($year, 6, 30); // pass into here to set the values to apply
-$result = $mydate->fiscalYear(); // the fiscalYear method too
+$sql = "SELECT 
+  COALESCE(SUM(line_item_total), 0.00) as total_submitted,
+  COUNT(order_details_id) as count_submitted,
+  SUM(IF(status = 'Submitted', line_item_total, 0.00)) as total_submitted,
+  SUM(IF(status = 'Approved', line_item_total, 0.00)) as total_approved,
+  SUM(IF(status = 'Denied', line_item_total, 0.00)) as total_denied,
+  SUM(IF(status = 'Received', line_item_total, 0.00)) as total_received,
+  COUNT(IF(status = 'Submitted', order_details_id, 0)) as count_submitted,
+  COUNT(IF(status = 'Approved', order_details_id, 0)) as count_approved,
+  COUNT(IF(status = 'Denied', order_details_id, 0)) as count_denied,
+  COUNT(IF(status = 'Received', order_details_id, 0)) as count_received
+FROM 
+  uniform_orders.ord_ref WHERE emp_id = $emp_id AND created > '$fiscalYear-07-01'";
 
-$fystart = $result['start'];
-$fyend = $result['end'];
-
-$db_emp_id = $emp_id;
-$db_fystart = date(DATE_RFC3339, $fystart);
-$db_fyend = date(DATE_RFC3339, $fyend);
 $data = array();
 $orders_data = array();
 $totals_data = array();
 $emp_data = array();
-// echo "<pre>";
-// echo "<p> FY Start " . var_dump($db_fystart) . "</p>";
-// echo "<p> FY End " . var_dump($db_fyend) . "</p>";
-// echo "</pre>";
-// Get submitted amount total for the employee this request is for
-$sql1 = "SELECT COALESCE(sum(line_item_total), 0) as total_submitted, COUNT(order_details_id) as count_submitted FROM uniform_orders.ord_submitted WHERE emp_id = ? and order_created BETWEEN ? AND ?";
-// echo "<pre>";
-// echo var_dump($sql1);
-// echo "</pre>";
-$stmt1 = $conn->prepare($sql1);
-$stmt1->bind_param("iss", $db_emp_id, $db_fystart, $db_fyend);
-$stmt1->execute();
-$result1 = $stmt1->get_result();
 
-while ($row1 = $result1->fetch_assoc()) {
-    array_push($totals_data, $row1);
-};
-// Get approved amount total for the employee this request is for
-$sql2 = "SELECT COALESCE(sum(line_item_total), 0) as total_approved, COUNT(order_details_id) as count_approved FROM uniform_orders.ord_approved WHERE emp_id = ? and order_created BETWEEN ? AND ?";
-$stmt2 = $conn->prepare($sql2);
-$stmt2->bind_param("iss", $db_emp_id, $db_fystart, $db_fyend);
-$stmt2->execute();
-$result2 = $stmt2->get_result();
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$result = $stmt->get_result();
 
-while ($row2 = $result2->fetch_assoc()) {
-    array_push($totals_data, $row2);
-};
-// Get ordered amount total for the employee this request is for
-$sql3 = "SELECT COALESCE(sum(line_item_total), 0) as total_ordered, COUNT(order_details_id) as count_ordered FROM uniform_orders.ord_ordered WHERE emp_id = ? and order_created BETWEEN ? AND ?";
-$stmt3 = $conn->prepare($sql3);
-$stmt3->bind_param("iss", $db_emp_id, $db_fystart, $db_fyend);
-$stmt3->execute();
-$result3 = $stmt3->get_result();
-
-while ($row3 = $result3->fetch_assoc()) {
-    array_push($totals_data, $row3);
-};
-// Get completed amount total for the employee this request is for
-$sql4 = "SELECT COALESCE(sum(line_item_total), 0) as total_completed, COUNT(order_details_id) as count_completed 
-FROM uniform_orders.ord_completed WHERE emp_id = ? and order_created BETWEEN ? AND ?";
-$stmt4 = $conn->prepare($sql4);
-$stmt4->bind_param("iss", $db_emp_id, $db_fystart, $db_fyend);
-$stmt4->execute();
-$result4 = $stmt4->get_result();
-
-while ($row4 = $result4->fetch_assoc()) {
-    array_push($totals_data, $row4);
+while ($row = $result->fetch_assoc()) {
+    array_push($totals_data, $row);
 };
 array_push($data, $totals_data);
-// echo "<pre>";
-// var_dump($totals_data);
-// echo "</pre>";
 
 $empSql = "SELECT empName, email from emp_ref where empNumber = $emp_id";
 $empStmt = $conn->prepare($empSql);
@@ -125,16 +95,16 @@ if ($empResult->num_rows > 0) {
 };
 array_push($data, $emp_data);
 
-$ordersSql = "SELECT ord_ref.product_id, ord_ref.quantity, ord_ref.status, ord_ref.color_id, ord_ref.size_name, ord_ref.order_placed, 
+$ordersSql = "SELECT ord_ref.product_id, ord_ref.quantity, ord_ref.status, ord_ref.color_name, ord_ref.size_name, ord_ref.order_placed, 
 ord_ref.line_item_total, ord_ref.tax, ord_ref.logo_fee, ord_ref.logo, ord_ref.product_price, 
 ord_ref.comment, ord_ref.dept_patch_place, ord_ref.bill_to_dept, ord_ref.product_name, ord_ref.status, 
 ord_ref.product_code, ord_ref.dep_name, emp_ref.email, emp_ref.empName, p.image
 FROM uniform_orders.ord_ref
 LEFT JOIN emp_ref on emp_ref.empNumber = ord_ref.emp_id
 LEFT JOIN products p on p.product_id = ord_ref.product_id
-WHERE ord_ref.emp_id = $emp_id AND ord_ref.created between '$db_fystart' AND '$db_fyend'
+WHERE ord_ref.emp_id = $emp_id AND ord_ref.created > '$fiscalYear-07-01'
 ";
-// var_dump($ordersSql);
+var_dump($ordersSql);
 
 $stmt = $conn->prepare($ordersSql);
 $stmt->execute();
@@ -144,12 +114,7 @@ if ($result->num_rows > 0) {
         array_push($orders_data, $row);
     }
 };
-// else {
-//     array_push($orders_data, [
-//         // 'order_details_id' => ['Nothing'],
-//         'response' => ['nothing_found'],
-//     ]);
-// };
+
 array_push($data, $orders_data);
 
 $cust_email = $emp_data[0]['email'];
@@ -227,9 +192,9 @@ try {
                             </tr>
                             <tr style='border-bottom: 2px solid black;'>
                                 <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[0]['total_submitted'], 2) . "</td>
-                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[1]['total_approved'], 2) . "</td>
-                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[2]['total_ordered'], 2) . "</td>
-                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[3]['total_completed'], 2) . "</td>
+                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[0]['total_approved'], 2) . "</td>
+                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[0]['total_ordered'], 2) . "</td>
+                                <td style='font-size:14px;margin:0 0 20px 25px;font-family:Arial,sans-serif; text-align: center; width:25%;'> $ " . number_format($totals_data[0]['total_completed'], 2) . "</td>
                             </tr>
                         </table>
                     </td>
@@ -258,7 +223,7 @@ try {
                         <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Size:</b></span>
                         <span style='font-size:14px;line-height:14px'>" . $order['size_name'] . "</span>
                         <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Color:</b></span>
-                        <span style='font-size:14px;line-height:14px'>" . $order['color_id'] . "</span>
+                        <span style='font-size:14px;line-height:14px'>" . $order['color_name'] . "</span>
                         <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Quantity:</b></span>
                         <span style='font-size:14px;line-height:14px'>" . number_format($order['quantity'], 0) . "</span>
                         <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Status:</b></span>
@@ -305,47 +270,3 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-// echo json_encode(($data));
-
-
-// <td style='width:260px;padding:0;vertical-align:top;color:#153643;'>
-// <p style='margin:0 0 25px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><img src='cid:logo_p2t" . $orderCounter . "' alt='" . $proImage . "' width='155' style='height:auto;display:block;' /></p>                
-// </td>
-
-// <tr>
-// <h2 style='font-size:20px;margin:0 0 20px 0;font-family:Arial,sans-serif;'>Current Fiscal Year Totals </h2>
-// </tr>
-
-//  <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Product Price:</b>$</span>
-// <span style='font-size:14px;line-height:14px'>" . number_format($order['product_price'], 2) . "</span><br>
-// <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Logo Fee:</b>$</span>
-// <span style='font-size:14px;line-height:14px'>" . number_format($order['logo_fee'], 2) . "</span><br>
-
-// this is the style for the first td that hold the returned fy values
-// <td style='padding:0 0 36px 0;'>
-
-// <tr>
-//                                             <td>
-//                                                 <p style='font-size:14px;margin:0 0 20px 0;font-family:Arial,sans-serif;'>Submitted: $" . number_format($totals_data[0]['total_submitted'], 2) . "<p>
-//                                             </td>
-//                                             <td>
-//                                                 <p style='font-size:14px;margin:0 0 20px 0;font-family:Arial,sans-serif;'>Approved: $" . number_format($totals_data[1]['total_approved'], 2) . "<p>
-//                                             </td>
-//                                             <td>                               
-//                                                 <p style='font-size:14px;margin:0 0 20px 0;font-family:Arial,sans-serif;'>Ordered: $" . number_format($totals_data[2]['total_ordered'], 2) . "<p>  
-//                                             </td>
-//                                             <td>
-//                                                 <p style='font-size:14px;margin:0 0 20px 0;font-family:Arial,sans-serif;'>Received:" . number_format($totals_data[3]['total_completed'], 2) . "<p>
-//                                             </td>
-//                                         </tr>
-
-// Herein lies the logo image and placement information
-// <td style='width:260px;padding-left:20px;vertical-align:top;color:#153643;'>
-//                                                 <span style='width:260px;padding:0;vertical-align:top;color:#153643;'>
-//                                                 <p style='margin:0 0 25px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><img src='cid:pro_logo" . $orderCounter . "' alt='" . $order['logo'] . "' width='50' style='height:auto;display:block;' /></p>
-//                                                 </span>
-//                                             </td>
-//                                             <td style='width:260px;padding-left:20px;vertical-align:top;color:#153643;'>
-//                                                 <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Dept Name:</b></span>
-//                                                 <span style='font-size:14px;line-height:14px'>" . $order['dept_patch_place'] . "</span><br>
-//                                             </td>

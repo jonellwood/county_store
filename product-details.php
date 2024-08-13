@@ -166,19 +166,26 @@ function updateCurrentQty() {
     });
 }
 
-
+function showMessageAndRedirect() {
+    var errorPopover = document.getElementById('errorMessage');
+    errorPopover.showPopover();
+}
 
 function fetchProductData(id) {
     fetch('fetchProductDetails.php?id=' + <?php echo $product_id ?>)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            renderProductDetails(data);
-            getCurrentProductPrice();
-            matchHeights();
-            updateColorImage(data['color_data'][0].color);
-            updateCurrentQty();
-            calculateSubTotal();
+            console.log(data['product_data'][0].product_type);
+            if (data['product_data'][0].product_type === "0") {
+                showMessageAndRedirect()
+            } else {
+                renderProductDetails(data);
+                getCurrentProductPrice();
+                matchHeights();
+                updateColorImage(data['color_data'][0].color);
+                updateCurrentQty();
+                calculateSubTotal();
+            }
             // getCurrentQty();
 
         });
@@ -295,6 +302,10 @@ function disableSelectDepName() {
     var select = document.getElementById('deptPatchPlace')
     select.attributes.add('disabled')
 }
+
+function backToIndex() {
+    window.location.replace('index.php')
+}
 </script>
 </head>
 
@@ -348,6 +359,13 @@ function disableSelectDepName() {
         <p>This has a minimum order quantity of 24. Currently the only department approved for ordering this product is
             Stormwater / Roads & Bridges. If interested in this product please contact store@berkeleycountysc.gov for
             more information.</p>
+    </div>
+    <div id="errorMessage" class="errorMessage" popover=manual>
+        <button class="btn-close ms-2 mb-1" popovertarget="errorMessage" onclick="backToIndex()">
+            <span aria-hidden=”true”></span>
+            <span class="sr-only"></span>
+        </button>
+        <p id="errorMessageText">Sorry this product is no longer available</p>
     </div>
 </body>
 

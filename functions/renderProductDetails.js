@@ -1,4 +1,8 @@
 function renderProductDetails(data) {
+	// console.log(data);
+	// if (data['product_data'][0].product_type === '0') {
+	// window.location.replace = 'index.php';
+	// } else {
 	var nameHtml = `
                         <h3 class="name-code-holder">
                             <p id="product-name">${data['product_data'][0].code}</p> 
@@ -154,3 +158,4 @@ function renderProductDetails(data) {
 	document.getElementById('product-name-holder').innerHTML = nameHtml;
 	document.getElementById('select-summary').innerHTML = summaryHtml;
 }
+// }

@@ -484,14 +484,21 @@ th {
 	border-color: inherit;
 	border-style: solid;
 	border-width: 0;
-	border-radius: 5px;
+	/* border-radius: 5px; */
 }
 .thead-dark {
 	tr th {
 		background-color: #000 !important;
 		color: #fff !important;
 	}
+	tr th:first-child {
+		border-top-left-radius: 5px !important;
+	}
+	tr th:last-child {
+		border-top-right-radius: 5px !important;
+	}
 }
+
 label {
 	display: inline-block;
 }
