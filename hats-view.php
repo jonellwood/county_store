@@ -29,7 +29,7 @@ include "./components/viewHead.php"
 
 <script src="functions/renderHat.js"></script>
 
-<div id="products-target" class="d-grid-4 gap-2"></div>
+<div id="products-target" class="d-grid-4 gap-3 m-4"></div>
 
 <?php include "footer.php" ?>
 
@@ -50,13 +50,6 @@ function getFilteredProducts(typeID) {
         })
 }
 getFilteredProducts(3)
-
-function gotoPage(val) {
-    console.log('Bubbbling');;
-    // e.stopPropagation()
-    // alert('You will be directed to the details page for this product');
-    document.location.replace(val);
-}
 </script>
 
 </body>

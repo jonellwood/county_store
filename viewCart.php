@@ -353,8 +353,9 @@ function renderCheckout(cart) {
                                                     <li>Qty: ${itemEntry[3][1]}</li>
                                                     <li>Dept Name: ${itemEntry[16][1]} </li>
                                                 </div>
-                                                <div class="logo-holder">    
-                                                    <img src=${itemEntry[15][1]} alt="logo" class="logo-pict">
+                                                <div class="logo-holder">
+                                                ${itemEntry[0][1] !== 105 ? `<img src=${itemEntry[15][1]} alt="logo" class="logo-pict">` : ''}
+                                                    
                                                 </div>
                                             </div>
                                             

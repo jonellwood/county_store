@@ -74,7 +74,8 @@ function doStuff() {
     <!-- uncomment line above, and remove this one, to reinstate email order confirmation feature after testing is completed -->
     <div class="container">
         <div class="col-md-12">
-            <div class="alert alert-success">Your Request has been placed successfully. You should receive an email
+            <div class="alert alert-success shadow">Your Request has been placed successfully. You should receive an
+                email
                 confirmation shortly.</div>
         </div>
         <!-- Order status and contact info -->

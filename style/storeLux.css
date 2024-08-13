@@ -136,9 +136,10 @@
 	--bs-border-radius-xxl: 2rem;
 	--bs-border-radius-2xl: var(--bs-border-radius-xxl);
 	--bs-border-radius-pill: 50rem;
+	--bs-custom-shadow: 0 0 25px -10px rgba(80, 80, 80, 0.5);
 	--bs-box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.35);
 	--bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.375);
-	--bs-box-shadow-md: 0 0 1.125rem 0.35rem rgba(255, 255, 255, 0.375);
+	--bs-box-shadow-md: 0 0 1.125rem 0.35rem rgba(80, 80, 80, 0.95);
 	--bs-box-shadow-lg: 0 1rem 3rem rgba(255, 255, 255, 0.375);
 	--bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
 	--bs-focus-ring-width: 0.25rem;
@@ -483,6 +484,7 @@ th {
 	border-color: inherit;
 	border-style: solid;
 	border-width: 0;
+	border-radius: 5px;
 }
 .thead-dark {
 	tr th {
@@ -4441,7 +4443,7 @@ fieldset:disabled .btn {
 
 .navbar-dark,
 .navbar[data-bs-theme='dark'] {
-	--bs-navbar-color: rgba(255, 255, 255, 0.55);
+	--bs-navbar-color: rgba(255, 255, 255, 0.95);
 	--bs-navbar-hover-color: #fff;
 	--bs-navbar-disabled-color: rgba(255, 255, 255, 0.25);
 	--bs-navbar-active-color: #fff;
@@ -4487,6 +4489,7 @@ fieldset:disabled .btn {
 	background-color: var(--bs-card-bg);
 	background-clip: border-box;
 	border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+	border-radius: var(--bs-card-border-radius) !important;
 }
 .card > hr {
 	margin-right: 0;
@@ -4849,6 +4852,9 @@ fieldset:disabled .btn {
 }
 .badge:empty {
 	display: none;
+}
+.badge-dark {
+	color: #000;
 }
 
 .btn .badge {
@@ -7646,7 +7652,8 @@ fieldset:disabled .btn {
 }
 
 .shadow-md {
-	box-shadow: var(--bs-box-shadow-md) !important;
+	/* box-shadow: var(--bs-box-shadow-md) !important; */
+	box-shadow: var(--bs-custom-shadow) !important;
 }
 
 .shadow-lg {

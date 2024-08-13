@@ -2,3 +2,4 @@ functions/renderPersonForOrder.js
 functions/renderOrderDetails.js
 functions/renderHatDetails.js
 functions/renderOrderCostSummary.js
+functions/renderProduct.js

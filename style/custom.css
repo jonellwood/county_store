@@ -56,3 +56,15 @@ body {
 	position: absolute !important;
 	bottom: 0 !important;
 }
+.filters-holder {
+	padding: 5px;
+}
+.filter-group {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+	font-size: larger;
+}
+.hidden {
+	display: none !important;
+}

@@ -63,19 +63,22 @@ function getCurrentProductPrice() {
 }
 
 function updateHiddenPriceInput(radio) {
+    const transition = document.startViewTransition(() => {
 
-    var hiddenInput = document.getElementById('productPrice');
-    hiddenInput.value = radio.dataset.priceval;
-    var sizeHiddenInput = document.getElementById('size_id');
-    sizeHiddenInput.value = radio.dataset.sizeid;
-    var sizeNameHiddenInput = document.getElementById('size_name');
-    sizeNameHiddenInput.value = radio.dataset.sizename;
-    getCurrentProductPrice();
-    updateCurrentPrice();
-    calculateSubTotal();
-    calculateTax();
-    calculateSelectedTotal();
-    calculateNewTotal();
+
+        var hiddenInput = document.getElementById('productPrice');
+        hiddenInput.value = radio.dataset.priceval;
+        var sizeHiddenInput = document.getElementById('size_id');
+        sizeHiddenInput.value = radio.dataset.sizeid;
+        var sizeNameHiddenInput = document.getElementById('size_name');
+        sizeNameHiddenInput.value = radio.dataset.sizename;
+        getCurrentProductPrice();
+        updateCurrentPrice();
+        calculateSubTotal();
+        calculateTax();
+        calculateSelectedTotal();
+        calculateNewTotal();
+    })
 }
 
 function getCurrentQty() {

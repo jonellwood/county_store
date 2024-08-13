@@ -220,7 +220,7 @@ function setData(empID) {
     <div class="alert-banner" id="alert-banner">
     </div>
     <?php include "./components/viewHead.php" ?>
-    <div class="container">
+    <div class="container m-4">
         <h1>Checkout</h1>
         <div class="col-12">
             <div class="checkout">
@@ -240,7 +240,7 @@ function setData(empID) {
 
                         <h4 class="d-flex justify-content-between align-items-center-md mb-3">
                             <span>Your Cart</span>
-                            <span class="badge badge-secondary badge-pill"><?php echo $cart->total_items(); ?> item(s)
+                            <span class="badge badge-dark badge-pill"><?php echo $cart->total_items(); ?> item(s)
                             </span>
                         </h4>
                         <ul class="list-group mb-3">
@@ -260,7 +260,11 @@ function setData(empID) {
                                         (<?php echo $item["qty"]; ?>)</small>
                                     <small><?php echo $item['color_name']; ?> -
                                         <?php echo $item['size_name'] ?> -
-                                        <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img"></small>
+                                        <?php if ($item['id'] != 105) { ?>
+                                        <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img">
+
+                                        <?php } ?>
+                                    </small>
 
                                 </div>
                                 <span
@@ -399,11 +403,12 @@ if (fyData[2] < 6) {
     background-color: #ffffff10;
 } */
 
-/* .container {
-    margin-left: 5%;
-    margin-right: 5%;
+.container {
+    /* margin-left: 5%; */
+    /* margin-right: 5%; */
     max-width: unset !important;
-} */
+    width: 97% !important;
+}
 
 .checkout {
     /* background-color: #ffffff90; */

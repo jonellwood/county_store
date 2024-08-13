@@ -38,6 +38,10 @@ class MyDateTime extends DateTime
         return $result;
     }
 }
+function convertColorStr($str)
+{
+    return strtolower(preg_replace('/\s+|\//', '', $str));
+}
 
 $mydate = new MyDateTime();    // will use the current date time
 $year = $mydate->format('Y');  // to get the current year and 
@@ -194,7 +198,11 @@ try {
     foreach ($ordArray as $order) {
         $orderCounter++;
         $proImage = $order['image'];
+        $proImage = "product-images/" . convertColorStr($order['color_name']) . '_' . strtolower($order['product_code']) . ".jpg";
+        // echo $proImage; 
         $logoImage = $order['logo'];
+
+
         // from php mail documentation proper syntax is $mail->AddEmbeddedImage(filename, cid, name);
         // therefore the $proImage variable that updates each time through the look should update the cid ??
         // the line below this work the same as the uncommented one for some reason.... 

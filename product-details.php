@@ -22,18 +22,6 @@ include "./components/viewHead.php"
 <script src="./functions/renderProductDetails.js"></script>
 <link href="./style/customProductDetails.css" rel="stylesheet" />
 <script>
-// async function localStorageGetSet() {
-//     var localStorageCartData = JSON.parse(localStorage.getItem('store-cart')) || {};
-//     if (!localStorageCartData) {
-//         cartData = {
-//             total_items: 0,
-//             cart_total: 0,
-//             timestamp: Date.now()
-//         };
-//         await localStorage.setItem('store-cart', JSON.stringify(cartData));
-//     }
-// }
-// localStorageGetSet()
 function removeCommasAndSpaces(str) {
     return str.replace(/,/g, '').replace(/\s/g, '');
 }

@@ -1,10 +1,21 @@
 # County Store Application Changelog
 
-## Version 2.0.1 - (2024-08-04)
+## Version 2.0.1 - (2024-08-13)
 
 ### **Bugs Squished**
 
 - Fixed typo in view that used the product name for the first product in each successive product.
+- Fixed bug that sometimes caused an order to be placed with only the first item being recorded.
+
+## **UI Updates**
+
+- Styling and layout tweaks have been made to further enhance your viewing enjoyment.
+- Order success page updated to show more information in a more clear layout. The image should show a more accurate representation of the product requested.
+- Size and Color values are displayed in human readable formats.
+- All monochrome logo images are displayed in black for visibility purposes. This does not necessarily reflect the color of the actual logo.
+- Every attempts has been made to ensure color contrasts meet WCAG 2.0 level AA standards. If you encounter something to the contrary please email <store@berkeleycountysc.gov>.
+- Product details pages have been reorganized for a layout that makes a but more sense from a workflow standpoint (at least to this developer) and allows for better flexibility in smaller screen and mobile views.
+- _NOTE_ Product filtering is still in beta. We are continuing to improve upon this feature, but there are still issues with one filter type cancelling out the previous, but we are working on it.
 
 ## Version 2.0.0 - (2024-07-12)
 

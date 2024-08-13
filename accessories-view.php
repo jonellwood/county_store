@@ -28,7 +28,7 @@ include "./components/viewHead.php"
 
 <script src="functions/renderProduct.js"></script>
 
-<div id="products-target" class="d-grid-2 gap-2"></div>
+<div id="products-target" class="d-grid-2 gap-3 m-4"></div>
 
 <?php include "footer.php" ?>
 
