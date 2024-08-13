@@ -16,6 +16,7 @@
 - Every attempts has been made to ensure color contrasts meet WCAG 2.0 level AA standards. If you encounter something to the contrary please email <store@berkeleycountysc.gov>.
 - Product details pages have been reorganized for a layout that makes a but more sense from a workflow standpoint (at least to this developer) and allows for better flexibility in smaller screen and mobile views.
 - _NOTE_ Product filtering is still in beta. We are continuing to improve upon this feature, but there are still issues with one filter type cancelling out the previous, but we are working on it.
+- Some product views do not have the "filter products" button displayed because there are only a couple of products and are all the same type. This on purpose. If you REALLY want to experience filtering mens sweatshirts. Go to to [Mens Sweat Shirts](https://store.berkeleycountysc.gov/mens-sweatshirts-view.php) and then turn your monitor off.
 
 ## Version 2.0.0 - (2024-07-12)
 

@@ -28,7 +28,7 @@ $cart = new Cart;
 <?php include "./components/viewHead.php" ?>
 <div class="container">
     <div class="btn-container" id="btn-container">
-        <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button>
+        <!-- <button class="btn js-toggle-filter" popovertarget="filters-popover">filter <code>products</code></button> -->
 
         <div id="filters-popover" class="filters-popover" popover>
             <button popovertarget="filters-popover" popovertargetaction="hide" class="btn-close ms-2 mb-1"
