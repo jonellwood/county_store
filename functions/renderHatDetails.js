@@ -1,4 +1,4 @@
-function renderProductDetails(data) {
+function renderHatDetails(data) {
 	var nameHtml = `
                         <h3 class="name-code-holder">
                             <p id="product-name">${data['product_data'][0].code}</p> 
@@ -7,13 +7,9 @@ function renderProductDetails(data) {
                         </h3>
                     `;
 	var imageHtml = `
-                    <img src="product-images/${formatColorValueForUrl(
-											data['color_data'][0].color
-										)}_${formatColorValueForUrl(
-		data['product_data'][0].code
-	)}.jpg" alt="${
-		data['product_data'][0].name
-	}" class="product-image" view-transition-new="image-transition">
+                    <img src="product-images/${formatColorValueForUrl(data['color_data'][0].color)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg"alt="${data['product_data'][0].name}" 
+                    class="hat-image" id="hat-image" view-transition-new="image-transition" style="width: 90%; clip-path: inset(5% 5% 58% 5%);">
+
                     `;
 	var html = '';
 	html += `<form name='option' method='post' id='options' action='cartAction.php' class='options-select-holder'>`;
@@ -90,7 +86,7 @@ function renderProductDetails(data) {
                             <select title="deptPatchPlace" name="deptPatchPlace" id="deptPatchPlace" onchange="updateLogoFeeAddOn(this.value)">
                                 <option value='No Dept Name' id='p1'>No Dept Name</option>
                                 <option value='Below Logo' selected id='p2'>Below Logo</option>
-                                <option value='Left Sleeve' id='p3'>Left Sleeve</option>
+                                
                             </select>
                         </div>
                     `;
@@ -110,7 +106,7 @@ function renderProductDetails(data) {
                                <legend>Selection Summary</legend>
                                <table class="selection-summary-table">
                                <tr> 
-                                <th>Current Cart Sub-Total: </th><td  class="amount-column">${makeDollar(
+                                <th>Current Cart Sub-Total: </th><td class="amount-column">${makeDollar(
 																	getCartTotal().cart_total
 																)}</td>
                                </tr>
@@ -141,11 +137,8 @@ function renderProductDetails(data) {
                                 <th>New Cart Total: </th> <td class="amount-column" id='new-total-in-summary'></td>
                                </tr>
                                </table>
-                               <div id='selected-logo-in-summary'>
-                                <img src=${data['logo_data'][0].image} alt="${
-		data['logo_data'][0].description
-	}" id='logo-img-in-summary'/>
-
+                               <div id='selected-logo-in-hat-summary'>
+                                <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
                                </div>
                     
                     </div>`;
@@ -154,3 +147,6 @@ function renderProductDetails(data) {
 	document.getElementById('product-name-holder').innerHTML = nameHtml;
 	document.getElementById('select-summary').innerHTML = summaryHtml;
 }
+{/* <div id='selected-logo-in-hat-summary'>
+                                <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
+                               </div> */}

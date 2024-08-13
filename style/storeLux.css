@@ -5083,7 +5083,9 @@ fieldset:disabled .btn {
 }
 .list-group-item:hover {
 	/* transform: scale(1.05); */
-	font-weight: bold;
+	/* font-weight: bold; */
+	background-color: #000;
+	color: #fff;
 }
 
 .list-group-item.disabled,
@@ -12471,11 +12473,13 @@ fieldset:disabled .btn {
 
 .nav-item {
 	margin-right: 2rem;
+	border-radius: 5px;
 }
 
 .btn {
 	font-size: 0.875rem;
 	text-transform: uppercase;
+	border-radius: 5px;
 }
 .btn-sm,
 .btn-group-sm > .btn {

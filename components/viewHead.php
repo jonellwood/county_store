@@ -26,6 +26,8 @@ $cart = new Cart;
     <script src="functions/autoClosePopover.js"></script>
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
     <meta name="view-transition" content="same-origin">
+
+    <title>BC Store</title>
 </head>
 
 <body class="body">
@@ -59,6 +61,9 @@ $cart = new Cart;
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="accessories-view.php">ACCESSORIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.php">SUPPORT</a>
                     </li>
                 </ul>
             </div>

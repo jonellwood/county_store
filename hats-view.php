@@ -27,7 +27,7 @@ $cart = new Cart;
 include "./components/viewHead.php"
 ?>
 
-<script src="functions/renderProduct.js"></script>
+<script src="functions/renderHat.js"></script>
 
 <div id="products-target" class="d-grid-4 gap-2"></div>
 
@@ -42,7 +42,7 @@ function getFilteredProducts(typeID) {
             var html = '';
 
             for (var i = 0; i < data.length; i++) {
-                html += renderProduct(data[i]);
+                html += renderHat(data[i]);
             }
 
             document.getElementById('products-target').innerHTML = html;

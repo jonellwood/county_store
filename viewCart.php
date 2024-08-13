@@ -18,97 +18,86 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 // init cart class
 include_once 'Cart.class.php';
 $cart = new Cart;
-
+include "./components/viewHead.php"
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php include "./components/viewHead.php" ?>
-    <title>View Cart</title>
-    <meta charset='utf-8'>
-
-    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-
-
-    <script>
-    function getCartItem(id) {
-        const cart = <?php echo $cart->serializeCart(); ?>;
-        const cartItem = cart[id];
-        if (cartItem) {
-            return cartItem;
-        } else {
-            console.error("Cart can not be retrieved")
-        }
+<script>
+function getCartItem(id) {
+    const cart = <?php echo $cart->serializeCart(); ?>;
+    const cartItem = cart[id];
+    if (cartItem) {
+        return cartItem;
+    } else {
+        console.error("Cart can not be retrieved")
     }
+}
 
-    function updateSizeAndPriceData(event) {
-        var selectElement = event.target;
-        var selectedOption = selectElement.options[selectElement.selectedIndex];
+function updateSizeAndPriceData(event) {
+    var selectElement = event.target;
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
 
-        var hiddenPriceIdInput = document.getElementById('price_id')
-        hiddenPriceIdInput.value = selectedOption.getAttribute('data-priceid');
+    var hiddenPriceIdInput = document.getElementById('price_id')
+    hiddenPriceIdInput.value = selectedOption.getAttribute('data-priceid');
 
-        var hiddenPriceInput = document.getElementById('price')
-        hiddenPriceInput.value = selectedOption.getAttribute('data-price');
+    var hiddenPriceInput = document.getElementById('price')
+    hiddenPriceInput.value = selectedOption.getAttribute('data-price');
 
-        var hiddenSizeNameInput = document.getElementById('size_name')
-        hiddenSizeNameInput.value = selectedOption.getAttribute('data-sizename');
+    var hiddenSizeNameInput = document.getElementById('size_name')
+    hiddenSizeNameInput.value = selectedOption.getAttribute('data-sizename');
 
 
+}
+
+function updateColorData(event) {
+    var selectElement = event.target;
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
+
+    var hiddenColorIdInput = document.getElementById('color_id')
+    hiddenColorIdInput.value = selectedOption.getAttribute('data-colorid');
+
+    var hiddenColorNameInput = document.getElementById('color_name')
+    hiddenColorNameInput.value = selectedOption.getAttribute('data-colorname');
+}
+
+function updateLogo(val) {
+    var hiddenLogoInput = document.getElementById('logo')
+    hiddenLogoInput.value = val;
+}
+
+function updateDeptPatch(val) {
+    var hiddenDeptInput = document.getElementById('deptPatchPlace')
+    var hiddenLogoFeeInput = document.getElementById('logoFee')
+    hiddenDeptInput.value = val;
+    if (val == 'Left Sleeve') {
+        hiddenLogoFeeInput.value = parseFloat(10.00)
+    } else {
+        hiddenLogoFeeInput.value = parseFloat(5.00)
     }
+}
 
-    function updateColorData(event) {
-        var selectElement = event.target;
-        var selectedOption = selectElement.options[selectElement.selectedIndex];
+function formatColorValueForUrl(str) {
+    var noSpaces = str.replace(/[\s/]/g, '');
+    var lowercaseString = noSpaces.toLowerCase();
+    return lowercaseString;
+}
 
-        var hiddenColorIdInput = document.getElementById('color_id')
-        hiddenColorIdInput.value = selectedOption.getAttribute('data-colorid');
+function getCartItemOptions(id, cartItem) {
+    fetch(`./fetchProductDetails.php?id=${id}`)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error status: ${response.status}`);
+            }
+            return response.json();
 
-        var hiddenColorNameInput = document.getElementById('color_name')
-        hiddenColorNameInput.value = selectedOption.getAttribute('data-colorname');
-    }
-
-    function updateLogo(val) {
-        var hiddenLogoInput = document.getElementById('logo')
-        hiddenLogoInput.value = val;
-    }
-
-    function updateDeptPatch(val) {
-        var hiddenDeptInput = document.getElementById('deptPatchPlace')
-        var hiddenLogoFeeInput = document.getElementById('logoFee')
-        hiddenDeptInput.value = val;
-        if (val == 'Left Sleeve') {
-            hiddenLogoFeeInput.value = parseFloat(10.00)
-        } else {
-            hiddenLogoFeeInput.value = parseFloat(5.00)
-        }
-    }
-
-    function formatColorValueForUrl(str) {
-        var noSpaces = str.replace(/[\s/]/g, '');
-        var lowercaseString = noSpaces.toLowerCase();
-        return lowercaseString;
-    }
-
-    function getCartItemOptions(id, cartItem) {
-        fetch(`./fetchProductDetails.php?id=${id}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error status: ${response.status}`);
-                }
-                return response.json();
-
-            })
-            .then((data) => {
-                console.log('product-data-for-cart-item');
-                console.log(data);
-                //return data;
+        })
+        .then((data) => {
+            console.log('product-data-for-cart-item');
+            console.log(data);
+            //return data;
 
 
-                var html = '';
-                html += `
+            var html = '';
+            html += `
                     <form action='cartAction.php' method='post' id='editCartItem'>
                     <div class="editCartItemDiv">
                         <input type='hidden' name='id' value='${cartItem.rowid}' />
@@ -127,48 +116,48 @@ $cart = new Cart;
                         <label for='editSize'>Edit Size</label>
                         <select name='size_id' id='editSize' onchange='updateSizeAndPriceData(event)'>
                             `;
-                for (var i = 0; i < data['price_data'].length; i++) {
-                    var isSelected = cartItem.size_id == data['price_data'][i].size_id ? 'selected' : '';
+            for (var i = 0; i < data['price_data'].length; i++) {
+                var isSelected = cartItem.size_id == data['price_data'][i].size_id ? 'selected' : '';
 
-                    html += `
+                html += `
                                 <option value="${data['price_data'][i].size_id}" ${isSelected === 'selected'? 'selected' : ''} data-priceid=${data['price_data'][i].price_id} data-sizename="${data['price_data'][i].size_name}" data-price=${data['price_data'][i].price}>
                                     ${data['price_data'][i].size_name}
                                 </option>
                             `;
-                }
-                html += `
+            }
+            html += `
                         </select>
                         </fieldset>
                         <fieldset>
                         <label for='editSize'>Edit color</label>
                         <select name='color_id' id='editColor' onchange='updateColorData(event)'>
                         `;
-                for (var j = 0; j < data['color_data'].length; j++) {
-                    var isSelected = cartItem.color_id == data['color_data'][j].color ? 'selected' : '';
+            for (var j = 0; j < data['color_data'].length; j++) {
+                var isSelected = cartItem.color_id == data['color_data'][j].color ? 'selected' : '';
 
-                    html += `
+                html += `
                                 <option value="${data['color_data'][j].color_id}" ${isSelected === 'selected'? 'selected' : ''} data-colorid=${data['color_data'][j].color_id} data-colorname="${data['color_data'][j].color}" data-colorid="${data['color_data'][j].color_id}">
                                     ${data['color_data'][j].color}
                                 </option>
                             `;
-                }
-                html += `
+            }
+            html += `
                         </select>
                         </fieldset>
                         <fieldset>
                         <label for='editLogo'>Edit Logo</label>
                         <select name='logo' id='editLogo' onchange='updateLogo(this.value)'>
                     `;
-                for (var k = 0; k < data['logo_data'].length; k++) {
-                    var isSelected = cartItem.logo.replace(/_NO\.png$/, '.png') == data['logo_data'][k].image ?
-                        'selected' : '';
-                    html += `
+            for (var k = 0; k < data['logo_data'].length; k++) {
+                var isSelected = cartItem.logo.replace(/_NO\.png$/, '.png') == data['logo_data'][k].image ?
+                    'selected' : '';
+                html += `
                             <option value="${data['logo_data'][k].image}" ${isSelected === 'selected'? 'selected' : ''}>
                                 ${data['logo_data'][k].logo_name}
                             </option>
                             `;
-                }
-                html += `
+            }
+            html += `
                         </select>
                         </fieldset>
                         <fieldset>
@@ -193,108 +182,108 @@ $cart = new Cart;
                         </div>
                         </form>
                         `;
-                document.getElementById('popover-edit-form-holder').innerHTML = html;
+            document.getElementById('popover-edit-form-holder').innerHTML = html;
 
 
 
-            })
-            .catch((error) => {
-                console.error('Error fetching product details:', error);
-            });
-    }
+        })
+        .catch((error) => {
+            console.error('Error fetching product details:', error);
+        });
+}
 
 
-    function updateCartItem(obj, id) {
-        // Construct the URL with parameters
-        const url = new URL("cartAction.php");
-        url.searchParams.append("action", "updateCartItem");
-        url.searchParams.append("id", id);
-        url.searchParams.append("qty", obj.value);
+function updateCartItem(obj, id) {
+    // Construct the URL with parameters
+    const url = new URL("cartAction.php");
+    url.searchParams.append("action", "updateCartItem");
+    url.searchParams.append("id", id);
+    url.searchParams.append("qty", obj.value);
 
 
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(data => {
-                if (data === 'ok') {
-                    // If data is ok, reload the page
-                    location.reload();
-                } else {
-                    // Else alert user that the update failed
-                    alert('Cart update failed, please try again.');
-                }
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                alert('An error occurred, please try again later.');
-            });
-    }
-
-    function updateCartItemComment(obj, id) {
-
-        const url = new URL("cartAction.php");
-        url.searchParams.append("action", "updateCartItemComment");
-        url.searchParams.append("id", id);
-        url.searchParams.append("comment", obj.value);
-
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text(); // Parse the response body as text
-            })
-            .then(data => {
-                if (data === 'ok') {
-                    // If data is ok, reload the page or perform another action
-                    location.reload(); // Comment this line we decide we don't want it. I hate reloads but...
-                } else {
-                    alert('Comment update failed, please try again');
-                }
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                alert('An error occurred, please try again later.');
-            });
-    }
-
-    function convertObjectToArray(obj) {
-        let resultArray = [];
-        for (let key in obj) {
-            if (typeof obj[key] === "object") {
-                resultArray.push([key, convertObjectToArray(obj[key])]);
-            } else {
-                resultArray.push([key, obj[key]]);
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
+            return response.text();
+        })
+        .then(data => {
+            if (data === 'ok') {
+                // If data is ok, reload the page
+                location.reload();
+            } else {
+                // Else alert user that the update failed
+                alert('Cart update failed, please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            alert('An error occurred, please try again later.');
+        });
+}
+
+function updateCartItemComment(obj, id) {
+
+    const url = new URL("cartAction.php");
+    url.searchParams.append("action", "updateCartItemComment");
+    url.searchParams.append("id", id);
+    url.searchParams.append("comment", obj.value);
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text(); // Parse the response body as text
+        })
+        .then(data => {
+            if (data === 'ok') {
+                // If data is ok, reload the page or perform another action
+                location.reload(); // Comment this line we decide we don't want it. I hate reloads but...
+            } else {
+                alert('Comment update failed, please try again');
+            }
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            alert('An error occurred, please try again later.');
+        });
+}
+
+function convertObjectToArray(obj) {
+    let resultArray = [];
+    for (let key in obj) {
+        if (typeof obj[key] === "object") {
+            resultArray.push([key, convertObjectToArray(obj[key])]);
+        } else {
+            resultArray.push([key, obj[key]]);
         }
-        return resultArray;
     }
+    return resultArray;
+}
 
-    function makeDollar(str) {
-        let amount = parseFloat(str);
-        return `$${amount.toFixed(2)}`;
-    }
+function makeDollar(str) {
+    let amount = parseFloat(str);
+    return `$${amount.toFixed(2)}`;
+}
 
-    function renderEdit(cartId) {
-        console.log('CartId is ', cartId)
-        const cartItem = getCartItem(cartId)
-        console.log(cartItem);
-        const itemOptions = getCartItemOptions(cartItem.id, cartItem)
-    }
+function renderEdit(cartId) {
+    console.log('CartId is ', cartId)
+    const cartItem = getCartItem(cartId)
+    console.log(cartItem);
+    const itemOptions = getCartItemOptions(cartItem.id, cartItem)
+}
 
-    function renderComment(cartId) {
-        console.log('Comment id is :', cartId)
-        var target = document.getElementById('add-comment-item-popover');
-        var html = '';
-        // <input type="hidden" name="action" value="updateCartItemComment">
-        // <label for="comment"></label>
-        html +=
-            // <form class="comment-form" onsubmit=updateCartItemComment(this, ${cartId})>
-            `
+function renderComment(cartId) {
+    console.log('Comment id is :', cartId)
+    var target = document.getElementById('add-comment-item-popover');
+    var html = '';
+    // <input type="hidden" name="action" value="updateCartItemComment">
+    // <label for="comment"></label>
+    html +=
+        // <form class="comment-form" onsubmit=updateCartItemComment(this, ${cartId})>
+        `
             <form class="comment-form" action="cartAction.php" method="post">
             <input type="hidden" name="action" value="updateCartItemComment">
             <input type="hidden" name="id" value="${cartId}">
@@ -302,49 +291,49 @@ $cart = new Cart;
             <br>
             <button class="button comment-form-btn" type="submit">Submit</button>
             </form>`;
-        target.innerHTML = html;
+    target.innerHTML = html;
+}
+
+function removeItem(cartId) {
+    if (confirm('Are you sure you want to delete this item?')) {
+        fetch('cartAction.php?action=removeCartItem&id=' + cartId)
+            .then(response => {
+                if (response.ok) {
+                    localStorage.removeItem('store-cart');
+                    window.location.reload();
+                } else {
+                    alert("Remove item failed!!!! 😲 ");
+                }
+            })
+            .catch(error => {
+                console.error('Error removing item:', error);
+                alert('An error occurred while removing the item')
+            })
     }
+}
 
-    function removeItem(cartId) {
-        if (confirm('Are you sure you want to delete this item?')) {
-            fetch('cartAction.php?action=removeCartItem&id=' + cartId)
-                .then(response => {
-                    if (response.ok) {
-                        localStorage.removeItem('store-cart');
-                        window.location.reload();
-                    } else {
-                        alert("Remove item failed!!!! 😲 ");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error removing item:', error);
-                    alert('An error occurred while removing the item')
-                })
-        }
+
+function renderCheckout(cart) {
+    // console.log('cart');
+    // console.log(cart);
+    cartArray = convertObjectToArray(cart);
+    // console.log('cartArray.length')
+    // console.log(cartArray.length)
+    if (cartArray.length <= 3) {
+        var html = '<img src="cart_empty.jpg" alt="Cart is empty" class="empty-cart-img" />';
+        document.getElementById('items').innerHTML += html;
+        return
     }
-
-
-    function renderCheckout(cart) {
-        // console.log('cart');
-        // console.log(cart);
-        cartArray = convertObjectToArray(cart);
-        // console.log('cartArray.length')
-        // console.log(cartArray.length)
-        if (cartArray.length <= 3) {
-            var html = '<img src="cart_empty.jpg" alt="Cart is empty" class="empty-cart-img" />';
-            document.getElementById('items').innerHTML += html;
-            return
-        }
-        // console.log(cartArray)
-        // let accumulatedHtml = '';
-        // let selectQuantities = {};
+    // console.log(cartArray)
+    // let accumulatedHtml = '';
+    // let selectQuantities = {};
+    var html = '';
+    for (var i = 3; i < cartArray.length; i++) {
+        const itemEntry = cartArray[i][1];
+        console.log("Item Entry # ", i)
+        console.log(itemEntry)
         var html = '';
-        for (var i = 3; i < cartArray.length; i++) {
-            const itemEntry = cartArray[i][1];
-            console.log("Item Entry # ", i)
-            console.log(itemEntry)
-            var html = '';
-            html += `
+        html += `
                 <div>
                     <div class="active-items">
                         <div class="active-item" data-cartId=${itemEntry[4][1]}>
@@ -372,7 +361,7 @@ $cart = new Cart;
                                             <div class="item-content-footer">
                                             <button class='btn btn-danger' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
                                             <button class='btn btn-info' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
-                                            <button class='btn btn-secondary' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
+                                            <button class='btn btn-warning' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
                                             </div>
                                             </ul>
                                             </div>
@@ -383,68 +372,87 @@ $cart = new Cart;
                                             </div>
                                             
                                             `
-            var chtml = `
+        var chtml = `
                     ${itemEntry[14][1] ? `<p>${itemEntry[6][1]}</p> <span> ${itemEntry[14][1]}</span>` : `<span class='no-comment'>no comment</span>`}
                 `;
-            // <button class='button btn comment' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show'>Add Comment</button>
-            // <button class='remove' onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id="${itemEntry[4][1]}":false;" title="Remove Item">Delete</button> 
+        // <button class='button btn comment' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show'>Add Comment</button>
+        // <button class='remove' onclick="return confirm('Are you sure to remove cart item?')?window.location.href='cartAction.php?action=removeCartItem&id="${itemEntry[4][1]}":false;" title="Remove Item">Delete</button> 
 
-            document.getElementById('items').innerHTML += html;
-            document.getElementById('comments-stream').innerHTML += chtml;
-        }
+        document.getElementById('items').innerHTML += html;
+        document.getElementById('comments-stream').innerHTML += chtml;
     }
+}
 
-    function logCart() {
-        let cartItems = JSON.parse(localStorage.getItem('store-cart')) || {};
-        console.log('cartItems');
-        console.log(cartItems);
-    }
-    // logCart();
-    </script>
+function logCart() {
+    let cartItems = JSON.parse(localStorage.getItem('store-cart')) || {};
+    console.log('cartItems');
+    console.log(cartItems);
+}
+// logCart();
+</script>
 </head>
 
 <body>
 
     <div class="container">
         <div id="items" class="items"></div>
-        <div class="checkout">
-            <p><span>Total Items:</span> <?php echo $cart->total_items() ?></p>
-            <p><span>Sub Total:</span> <?php echo CURRENCY_SYMBOL . (number_format(($cart->total()), 2))  ?></p>
-            <p><span>Logo Fees:</span> <?php echo CURRENCY_SYMBOL . (number_format(($cart->total_logo_fees()), 2))  ?>
-            </p>
-            <p><span>Taxes:</span> <?php
-                                    $totalWithFees = $cart->total() + $cart->total_logo_fees();
-                                    $taxes = $totalWithFees * 0.09;
-                                    echo CURRENCY_SYMBOL . (number_format(($taxes), 2))
-                                    ?>
+        <div class="items">
+            <table class="checkout-summary-table">
+                <tbody>
+                    <tr>
+                        <th>Total Items</th>
+                        <td class="amount-column"><?php echo $cart->total_items() ?></td>
+                    </tr>
+                    <tr>
+                        <th>Sub Total</th>
+                        <td class="amount-column"><?php echo CURRENCY_SYMBOL . (number_format(($cart->total()), 2))  ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Total Logo Fees</th>
+                        <td class="amount-column">
+                            <?php echo CURRENCY_SYMBOL . (number_format(($cart->total_logo_fees()), 2))  ?></td>
+                    </tr>
+                    <tr>
+                        <th>Total Tax</th>
+                        <td class="amount-column"><?php
+                                                    $totalWithFees = $cart->total() + $cart->total_logo_fees();
+                                                    $taxes = $totalWithFees * 0.09;
+                                                    echo CURRENCY_SYMBOL . (number_format(($taxes), 2))
+                                                    ?></td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td class="amount-column">
+                            <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() + $cart->total_logo_fees() + $taxes), 2))  ?>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-            </p>
-            <p><span>Total:</span>
-                <?php echo CURRENCY_SYMBOL . (number_format(($cart->total() + $cart->total_logo_fees() + $taxes), 2))  ?>
-            </p>
+
             <?php if ($cart->total_items() > 0) { ?>
-            <a href="checkout.php" class="checkout-button button btn">
-                Checkout
-            </a>
+            <div class="button-holder">
+                <a href="checkout.php" class="btn btn-success">
+                    Checkout
+                </a>
+            </div>
             <?php } ?>
             <div class="comments-stream" id="comments-stream">Comment:</div>
         </div>
         </?php include "viewCartDump.php" ?>
 
-
-    </div>
-    </div>
-    <!-- <div> -->
-    <div class="bottom-buttons-holder d-flex justify-content-between mx-5">
-        <div>
-            <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn btn-secondary" type="button">← Continue
-                    Shopping
-                </button></a>
-        </div>
-        <div>
-            <?php if ($cart->total_items() > 0) { ?>
-            <a href="checkout.php"><button class="btn btn-success" type="button"> Proceed to Checkout →</button></a>
-            <?php } ?>
+        <div class="bottom-buttons-holder d-flex justify-content-between mx-5">
+            <div>
+                <a href="<?php echo $_SESSION['GOBACK'] ?>"><button class="btn btn-primary" type="button"> Continue
+                        Shopping
+                    </button></a>
+            </div>
+            <div>
+                <?php if ($cart->total_items() > 0) { ?>
+                <a href="checkout.php"><button class="btn btn-success" type="button"> Proceed to Checkout </button></a>
+                <?php } ?>
+            </div>
         </div>
     </div>
     <div id="edit-cart-item" popover=manual>
@@ -457,8 +465,8 @@ $cart = new Cart;
 
             </div>
             <div class="popover-desc-text-holder">
-                <p class="popover-desc-text">Make changes to the color , size, quantity, logo<, or dept name for this
-                        cart item.</p>
+                <p class="popover-desc-text">Make changes to the color , size, quantity, logo, or dept name for this
+                    cart item.</p>
 
             </div>
             <div class="popover-edit-form-holder" id="popover-edit-form-holder">
@@ -537,9 +545,13 @@ $cart = new Cart;
 
 .container {
     max-width: unset !important;
-    margin-top: 20px;
+    width: auto;
     display: grid;
     grid-template-columns: 6fr 2fr;
+    box-shadow: 0 0 25px -5px #000000;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 5px;
 }
 
 
@@ -610,25 +622,30 @@ $cart = new Cart;
     } */
 
 .items {
-    background-color: #808080;
+    /* background-color: #FFF; */
     border-radius: 5px;
     padding: 10px;
-    margin: 10px
+    margin: 10px;
+    color: #000;
+
 }
 
 .active-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, 100%);
     gap: 12px;
-    color: aliceblue;
-    font-size: larger;
     margin-bottom: 20px;
 }
 
 .active-item {
     max-width: none;
-    border-bottom: 1px dotted aliceblue;
+    /* border-bottom: 1px dotted aliceblue; */
     padding-bottom: 12px;
+    background-color: #FFF;
+    box-shadow: 0 0 25px -5px #000000;
+    border-radius: 5px;
+
+
 }
 
 .item-content {
@@ -701,6 +718,7 @@ $cart = new Cart;
     max-height: 2.6em;
     font-size: x-large;
     word-break: normal;
+    padding: 3px;
 }
 
 .price-block {
@@ -709,12 +727,19 @@ $cart = new Cart;
     flex-flow: column;
     align-items: end;
     text-align: end;
+    line-height: 1.3rem;
+    max-height: 2.6em;
+    font-size: x-large;
+    word-break: normal;
+    padding: 3px;
 }
 
 .content-tail {
     grid-area: tail;
     display: grid;
     grid-template-columns: 1fr 3fr;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .logo-pict {
@@ -742,23 +767,32 @@ $cart = new Cart;
 } */
 
 .checkout {
-    background-color: #ffffff50;
+    background-color: #FFFFFF;
     height: fit-content;
 
     border-radius: 5px;
     /* padding: 12px; */
 
-    color: aliceblue;
-    margin-left: 10px;
-    padding-right: 20px;
+    color: #000;
+    /* margin-left: 10px; */
+    /* padding-right: 20px; */
     text-align: end;
-    font-size: larger;
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    margin: 10px
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 25px -5px #000000;
 }
 
+
+.amount-column {
+    min-width: 25px;
+    text-align: right;
+}
+
+.checkout-summary-table {
+    width: 100%;
+}
 
 .checkout p {
     display: flex;
@@ -844,6 +878,7 @@ $cart = new Cart;
 }
 
 .comments-stream {
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -882,8 +917,18 @@ $cart = new Cart;
     visibility: hidden;
 }
 
+.button-holder {
+    margin-top: 5px;
+    display: flex;
 
-/* @view-transition {
+    justify-content: space-around;
+
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+
+@view-transition {
     navigation: auto;
-} */
+}
 </style>

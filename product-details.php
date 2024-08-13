@@ -76,18 +76,22 @@ function getCurrentProductPrice() {
 }
 
 function updateHiddenPriceInput(radio) {
-    var hiddenInput = document.getElementById('productPrice');
-    hiddenInput.value = radio.dataset.priceval;
-    var sizeHiddenInput = document.getElementById('size_id');
-    sizeHiddenInput.value = radio.dataset.sizeid;
-    var sizeNameHiddenInput = document.getElementById('size_name');
-    sizeNameHiddenInput.value = radio.dataset.sizename;
-    getCurrentProductPrice();
-    updateCurrentPrice();
-    calculateSubTotal();
-    calculateTax();
-    calculateSelectedTotal();
-    calculateNewTotal();
+    const transition = document.startViewTransition(() => {
+
+
+        var hiddenInput = document.getElementById('productPrice');
+        hiddenInput.value = radio.dataset.priceval;
+        var sizeHiddenInput = document.getElementById('size_id');
+        sizeHiddenInput.value = radio.dataset.sizeid;
+        var sizeNameHiddenInput = document.getElementById('size_name');
+        sizeNameHiddenInput.value = radio.dataset.sizename;
+        getCurrentProductPrice();
+        updateCurrentPrice();
+        calculateSubTotal();
+        calculateTax();
+        calculateSelectedTotal();
+        calculateNewTotal();
+    })
 }
 
 function getCurrentQty() {
@@ -157,17 +161,21 @@ function updateLogoFeeAddOn(val) {
 }
 // updates the qty in the summary display as wel as the logo fees
 function updateCurrentQty() {
-    var qtyInSummary = document.getElementById('qty-in-summary')
-    var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
-    var logoUpCharge = document.getElementById('logo_upCharge').value;
-    qtyInSummary.textContent = getCurrentQty();
-    var totalLogoFee = (5 + parseInt(logoUpCharge));
-    logoFeeInSummary.textContent = makeDollar((getCurrentQty() * totalLogoFee))
-    updateCurrentPrice();
-    calculateSubTotal();
-    calculateTax();
-    calculateSelectedTotal();
-    calculateNewTotal();
+    const transition = document.startViewTransition(() => {
+
+
+        var qtyInSummary = document.getElementById('qty-in-summary')
+        var logoFeeInSummary = document.getElementById('logo-fee-in-summary')
+        var logoUpCharge = document.getElementById('logo_upCharge').value;
+        qtyInSummary.textContent = getCurrentQty();
+        var totalLogoFee = (5 + parseInt(logoUpCharge));
+        logoFeeInSummary.textContent = makeDollar((getCurrentQty() * totalLogoFee))
+        updateCurrentPrice();
+        calculateSubTotal();
+        calculateTax();
+        calculateSelectedTotal();
+        calculateNewTotal();
+    });
 }
 
 
@@ -241,9 +249,11 @@ function updateColorImage(val) {
     var imageHolder = document.getElementById('product-image-holder')
     var toastHolder = document.getElementById('myToast')
     var container = document.getElementById('container')
-    imageHolder.style.boxShadow = `0px 0px 25px -5px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
-    toastHolder.style.boxShadow = `0px 0px 25px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
-    container.style.boxShadow = `0px 0px 55px -25px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
+
+    imageHolder.style.boxShadow = `0px 0px 15px -5px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
+    toastHolder.style.boxShadow = `0px 0px 15px 1px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
+    // container.style.boxShadow = `0px 0px 55px -25px rgba(${rgbColor.r},${rgbColor.g},${rgbColor.b},0.75)`;
+
 }
 
 
@@ -301,28 +311,29 @@ function disableSelectDepName() {
 </head>
 
 
-<body>
+<body class="body">
     <div class="container" id="container">
         <!-- // ? This is the div where the product name and code are rendered. Values are also used in some image update functions  -->
         <div class="product-name-holder" id="product-name-holder"></div>
         <div class="another-container" id="another-container">
             <!-- // ? this is where the product image gets rendered -->
-            <span class='product-image-holder' id='product-image-holder'
-                view-transition-group="image-transition"></span>
+
+
 
             <div class="details-about-details">
                 <!--//? This is the div where the submit form is rendered -->
                 <div id='new-options-form'></div>
-
             </div>
+            <span class='product-image-holder' id='product-image-holder'
+                view-transition-group="image-transition"></span>
             <!-- // ?This is the div where the summary of the users selection is rendered -->
             <div class="select-summary" id="select-summary"></div>
         </div>
-        <div class=" button-holder">
-            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-secondary" type="button">← Continue
+        <div class="button-holder">
+            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-success" type="button"> Continue
                     Shopping </button></a>
             <button type="submit" form="options" class="btn btn-primary"><span> Add to Cart
-                    ➕</span></button>
+                </span></button>
         </div>
 
 

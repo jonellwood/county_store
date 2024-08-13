@@ -36,6 +36,8 @@ function wipeLocalCart() {
 </script>
 <script src="functions/renderOrderDetails.js"></script>
 <script src="functions/renderPersonForOrder.js"></script>
+<script src="functions/renderOrderCostSummary.js"></script>
+<script src="functions/formatAsCurrency.js"></script>
 <script>
 function getOrderDetailsFromOrdRef(id) {
     var phtml = '';
@@ -48,8 +50,10 @@ function getOrderDetailsFromOrdRef(id) {
             for (var i = 0; i < data.length; i++) {
                 html += renderOrderDetails(data[i]);
             }
+            sHtml = renderOrderCostSummary(data);
             document.getElementById('orderPersonDetails').innerHTML = phtml;
             document.getElementById('orderProductDetails').innerHTML = html;
+            document.getElementById('orderCostSummary').innerHTML = sHtml;
         })
         .catch(error => console.error(error));
 }
@@ -68,22 +72,23 @@ function doStuff() {
 
 <body onload='doStuff()'>
     <!-- uncomment line above, and remove this one, to reinstate email order confirmation feature after testing is completed -->
-    <div class="container bg-light w-auto">
+    <div class="container">
         <div class="col-md-12">
             <div class="alert alert-success">Your Request has been placed successfully. You should receive an email
                 confirmation shortly.</div>
         </div>
         <!-- Order status and contact info -->
-        <div class="d-flex" id="orderPersonDetails"></div>
+        <div class="d-flex shadow" id="orderPersonDetails"></div>
         <!-- order items -->
-        <div class="d-flex" id="orderProductDetails"></div>
+        <div class="d-flex flex-column gap-3 shadow" id="orderProductDetails"></div>
+        <div class="d-flex flex-column gap-3 shadow" id="orderCostSummary"></div>
         <div class="col mb-2 button-container">
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <a href="index.php" class="btn btn-primary btn-block">
                         Continue
-                        Shopping</a>
-
+                        Shopping
+                    </a>
                 </div>
             </div>
         </div>
@@ -103,8 +108,12 @@ function sendmail(id, emp_id) {
 <style>
 .container {
     max-width: unset !important;
-    margin-left: 5%;
-    margin-right: 5%;
+    background-color: transparent !important;
+    width: auto;
+    padding: 2%;
+    margin: 2%;
+    box-shadow: 0 0 25px -5px #000000;
+    border-radius: 5px;
 }
 
 h1 {
@@ -237,5 +246,17 @@ button {
         margin-top: 10px;
     }
 
+}
+
+
+#orderProductDetails {
+    border-radius: 5px;
+}
+
+.table {
+    box-shadow: 0 0 25px -5px #000;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 5px;
 }
 </style>

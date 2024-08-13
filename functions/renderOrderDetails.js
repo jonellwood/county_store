@@ -29,10 +29,10 @@ function renderOrderDetails(order) {
                 <tr>         
                     
                     <td>${order.quantity ? order.quantity : ''}</td>
-                    <td>${order.product_price ? '$' + order.product_price : ''}</td>
-                    <td>${order.logo_fee ? '$' + order.logo_fee : ''}</td>
-                    <td>${order.tax ? '$' + order.tax : ''}</td>
-                    <td>${order.line_item_total ? '$' + order.line_item_total : ''}</td>
+                    <td>${order.product_price ? formatAsCurrency(order.product_price) : ''}</td>
+                    <td>${order.logo_fee ? formatAsCurrency(order.logo_fee) : ''}</td>
+                    <td>${order.tax ? formatAsCurrency(order.tax) : ''}</td>
+                    <td>${order.line_item_total ? formatAsCurrency(order.line_item_total) : ''}</td>
                 </tr>
             </tbody>
         </table>
