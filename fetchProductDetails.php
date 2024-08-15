@@ -101,7 +101,7 @@ if (!isset($data['price_message'])) {
 }
 
 if (!isset($data['color_message'])) {
-    $sql = "SELECT id, logo_name, image, description FROM uniform_orders.logos where isactive = 1 AND iscomm = 0 ORDER BY logo_name ASC";;
+    $sql = "SELECT id, logo_name, image, description, ishat FROM uniform_orders.logos where isactive = 1 AND iscomm = 0 ORDER BY logo_name ASC";;
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
         die(json_encode(["error" => 'Your butt failed: ' . $conn->error]));

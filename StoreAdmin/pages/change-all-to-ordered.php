@@ -7,48 +7,42 @@ require_once "DBConn.php";
 $ord_emp_id = $_SESSION['empNumber'];
 $dept_id = $_POST['dept_id'];
 $po_number = $_POST['POnumber'];
+// $po_number = 00000;
 // $ord_emp_id = 4438;
 
 // manually setting values for testing purposes
 // $dept_id = 41515;
 
-$idsql = "SELECT ord.order_details_id from uniform_orders.ord_ref ord WHERE ord.department = $dept_id AND ord.status='Approved' OR ord.status='Updated'";
-$idstmt = $conn->prepare($idsql);
-$getList = $idstmt->execute();
-$odres = $idstmt->get_result();
-$data = array();
+$stmt = $conn->prepare("
+    SELECT order_details.order_details_id, prices.vendor_id
+    FROM order_details
+    JOIN prices ON prices.product_id = order_details.product_id
+    WHERE (order_details.status_id = 1 OR order_details.status_id = 7)
+      AND order_details.emp_dept = ?
+      GROUP BY order_details.order_details_id
+");
+$stmt->bind_param("i", $dept_id); // Bind the department ID parameter
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Check if odres has any rows
-if ($odres->num_rows > 0) {
-
-    // Loop through the returned results
-    foreach ($odres as $row) {
-
-        // Add each item to the data array
-        foreach ($row as $item) {
-            array_push($data, $item);
-        }
-    }
-}
-// var_dump($data);
-// We are subtracting 1 from the total count of data stored in $data since an array is 0 base
-$count = (count($data) - 1);
-
-// echo "<pre>";
-// echo "initial count" . var_dump($count);
-// echo var_dump($data);
-// echo "</pre>";
-// Loop through array of order_details_ids and update status 
-while ($count >= 0) {
-    $sql = "UPDATE uniform_orders.order_details SET status = 'Ordered', order_placed = now() WHERE order_details_id = $data[$count]";
-    // Update status on order_details table for corresponding order_details_id
-    $result = $conn->query($sql); // Execute query
-    $count--;
+// Create an array of order_details_ids
+$order_details_data = array();
+while ($row = $result->fetch_assoc()) {
+    $order_details_data[] = $row;
 }
 
+// Build an efficient update query using IN clause
+$order_details_ids = array_column($order_details_data, 'order_details_id');
+$in_clause = implode(',', $order_details_ids);
+$update_sql = "
+    UPDATE uniform_orders.order_details
+    SET status = 'Ordered', status_id = 4, order_placed = NOW()
+    WHERE order_details_id IN ($in_clause)
+";
+$result = $conn->query($update_sql);
+// echo $update_sql;
 // create a UID to be inserted into both tables for cross reference
 $ordInstId = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
-
 
 // create the order isntance in the database
 // $ordInstSql = "INSERT INTO uniform_orders.order_inst (order_inst_id, created_by_emp_num) VALUES ($ord_inst_id, $ord_emp_id);";
@@ -62,23 +56,21 @@ $db_po_number = $po_number;
 $createOrdInst = $ordInstStmt->execute();
 // once created we are using the array of order_details_id's created above and will insert each one into the database associated with the UID generated above. In theory.
 // confirmed the script work to this point - J.E. 3/17 1548 hours
-// $orderItems = array_reverse($data);
-//echo "<p> Line 61 data var </p>";
-//echo var_dump($data);
-//echo "<p> Line 63 orderItems var </p>";
-//echo var_dump($orderItems);
+// echo $data;
+// var_dump($order_details_data);
 if ($createOrdInst) {
-    // $order_instance_id = $ordInstStmt->insert_id;
-    if (!empty($data)) {
-        $InstSql = "INSERT INTO uniform_orders.order_inst_order_details_id (order_inst_id, order_details_id) VALUES (?,?)";
+    $order_instance_id = $ordInstId;
+    if (!empty($order_details_data)) {
+        $InstSql = "INSERT INTO uniform_orders.order_inst_order_details_id (order_inst_id, order_details_id, vendor_id) VALUES (?,?,?)";
         $InstStmt = $conn->prepare($InstSql);
-        foreach ($data as $item) {
+        foreach ($order_details_data as $item) {
             //echo "<p> Line 71 </p>";
             // script failing here. var_dump($item['order_details_id']) returns NULL
             //echo var_dump($item);
-            $InstStmt->bind_param("ss", $db_order_inst_id, $db_order_details_id);
-            // $db_order_inst_id = $order_instance_id;
-            $db_order_details_id = $item;
+            $InstStmt->bind_param("sss", $db_order_inst_id, $db_order_details_id, $db_vendor_id);
+            $db_order_inst_id = $order_instance_id;
+            $db_order_details_id = $item['order_details_id'];
+            $db_vendor_id = $item['vendor_id'];
             $insertOrdList = $InstStmt->execute();
         }
     }

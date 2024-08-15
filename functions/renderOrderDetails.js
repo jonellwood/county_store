@@ -3,6 +3,10 @@ function formatColorValueForUrl(str) {
     var lowercaseString = noSpaces.toLowerCase();
     return lowercaseString;
 }
+function formatValueForUrl(str) {
+	return str.toLowerCase();
+}
+
 
 function renderOrderDetails(order) {
     console.log(order);
@@ -32,7 +36,7 @@ function renderOrderDetails(order) {
                     <th>Logo Fee</th>
                     <th>Tax</th>
                     <th>Line Item Total</th>
-                    <th rowspan="2" class="align-middle"><img src="product-images/${formatColorValueForUrl(order.color_name)}_${order.product_code}.jpg" alt="${order.product_name}" class="product-image"></th>
+                    <th rowspan="2" class="align-middle"><img src="product-images/${formatColorValueForUrl(order.color_name)}_${formatValueForUrl(order.product_code)}.jpg" alt="${order.product_name}" class="product-image"></th>
                 </tr>
                 <tr>         
                     

@@ -24,7 +24,8 @@ function renderHatDetails(data) {
 	html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`;
 	html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`;
 	html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`;
-	html += `<inout type="hidden" name="comment" id="comment" value="farts" />`;
+	html += `<inout type="hidden" name="comment" id="comment" value="Generic Comment" />`;
+	html += `<inout type="hidden" name="name="deptPatchPlace" id="name="deptPatchPlace" value="No Dept Name" />`;
 	html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(
 		data['color_data'][0].color
 	)}_${formatColorValueForUrl(data['product_data'][0].code)}.jpg" />`;
@@ -71,10 +72,14 @@ function renderHatDetails(data) {
                             <legend>Pick a Logo</legend>
                             <select title="logo" name="logo" id="logo" onchange="updateLogoImage(this.value)">
                     `;
-	for (var k = 0; k < data['logo_data'].length; k++) {
-		html += `<option id=${data['logo_data'][k].id} value=${data['logo_data'][k].id} data-url="${data['logo_data'][k].image}">
-                    ${data['logo_data'][k].logo_name} </option>
-                        `;
+    for (var k = 0; k < data['logo_data'].length; k++) {
+        // console.log(data['logo_data'][k].ishat);
+        if (data['logo_data'][k].ishat !== 0) {
+            html += `<option id=${data['logo_data'][k].id} value=${data['logo_data'][k].id} data-url="${addNoToFileName(data['logo_data'][k].image)}">
+            ${data['logo_data'][k].logo_name} 
+            </option>
+            `;
+            }
 	}
 
 	html += `
@@ -83,9 +88,9 @@ function renderHatDetails(data) {
                         <div class="dept-name-patch-holder">
                             <legend>Dept Name</legend>
                             <label for="deptPatchPlace"><label>
-                            <select title="deptPatchPlace" name="deptPatchPlace" id="deptPatchPlace" onchange="updateLogoFeeAddOn(this.value)">
-                                <option value='No Dept Name' id='p1'>No Dept Name</option>
-                                <option value='Below Logo' selected id='p2'>Below Logo</option>
+                            <select title="deptPatchPlace" name="deptPatchPlace" id="deptPatchPlace" onchange="updateLogoFeeAddOn(this.value)" disabled>
+                                <option value='No Dept Name' selected id='p1'>No Dept Name</option>
+                                <option value='Below Logo' id='p2'>Below Logo</option>
                                 
                             </select>
                         </div>
@@ -138,10 +143,11 @@ function renderHatDetails(data) {
                                </tr>
                                </table>
                                <div id='selected-logo-in-hat-summary'>
-                                <img src=${data['logo_data'][0].image} alt="${data['logo_data'][0].description}" id='logo-img-in-summary'/>
+                                <img src=${addNoToFileName(data['logo_data'][4].image)} alt="${data['logo_data'][4].description}" id='logo-img-in-summary'/>
                                </div>
                     
                     </div>`;
+    // setting the value of imc src in line 146 is hacky af but it works for now.... 
 	document.getElementById('new-options-form').innerHTML = html;
 	document.getElementById('product-image-holder').innerHTML = imageHtml;
 	document.getElementById('product-name-holder').innerHTML = nameHtml;

@@ -73,7 +73,7 @@ $cart = new Cart;
                         role="button">
                         <img src="assets/icons/cart.svg" alt="cart" width="35px" class="m-0 p-0" />
                         (<?php echo ($cart->total_items() > 0) ? $cart->total_items() . ' Items' : 0; ?>)
-                        </p>
+                    </button>
                 </div>
                 <form action="search.php" method="post" class="d-flex">
                     <input class="form-control me-sm-2" type="text" name="param" placeholder="Search...">

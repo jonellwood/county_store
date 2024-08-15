@@ -175,8 +175,9 @@ function fetchProductData(id) {
     fetch('fetchProductDetails.php?id=' + <?php echo $product_id ?>)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data['product_data'][0].product_type);
-            if (data['product_data'][0].product_type === "0") {
+            console.log(data);
+            if (data['product_message']) {
+                console.log(data['product_message']);
                 showMessageAndRedirect()
             } else {
                 renderProductDetails(data);

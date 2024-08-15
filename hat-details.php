@@ -185,7 +185,7 @@ function fetchProductData(id) {
     fetch('fetchProductDetails.php?id=' + <?php echo $product_id ?>)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             renderHatDetails(data);
             getCurrentProductPrice();
             matchHeights();
@@ -371,10 +371,10 @@ function disableSelectDepName() {
 // function to make & show toast messags. No real use case for them... yet....
 // I should really move this its own file....
 function showToast(msg) {
-    console.log(msg);
+    // console.log(msg);
     var toast = document.getElementById('myToast');
     var msgBlock = document.getElementById('price_toast_message');
-    console.log(msgBlock);
+    // console.log(msgBlock);
     msgBlock.innerText = msg;
     toast.className = "show";
     setTimeout(function() {
@@ -491,7 +491,7 @@ new MutationObserver(matchHeights).observe(document.getElementById('another-cont
 function adustHatImageSize() {
     var img = document.getElementById('hat-image')
     var product_id = document.getElementById('product_id').value
-    console.log(product_id);
+    // console.log(product_id);
     if (product_id == 33) {
         img.style = "width: 75%; clip-path: inset(7% 7% 48% 7%);";
     } else if (product_id == 190) {
@@ -503,3 +503,18 @@ function adustHatImageSize() {
 </script>
 
 </html>
+<style>
+#selection-summary,
+#product-image-holder,
+#options {
+    min-height: 335px;
+}
+
+#options {
+    /* background-color: hotpink; */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+}
+</style>

@@ -1,11 +1,13 @@
 # County Store Application Changelog
 
-## Version 2.0.1 - (2024-08-13)
+## Version 2.0.1 - (2024-08-14)
 
 ### **Bugs Squished**
 
 - Fixed typo in view that used the product name for the first product in each successive product.
 - Fixed bug that sometimes caused an order to be placed with only the first item being recorded.
+- Fixed a typo in a logo name.
+- Fixed an issue that caused certain images not render in the Order Success Page.
 
 ## **UI Updates**
 
@@ -17,6 +19,9 @@
 - Product details pages have been reorganized for a layout that makes a but more sense from a workflow standpoint (at least to this developer) and allows for better flexibility in smaller screen and mobile views.
 - _NOTE_ Product filtering is still in beta. We are continuing to improve upon this feature, but there are still issues with one filter type cancelling out the previous, but we are working on it.
 - Some product views do not have the "filter products" button displayed because there are only a couple of products and are all the same type. This on purpose. If you REALLY want to experience filtering mens sweatshirts. Go to to [Mens Sweat Shirts](https://store.berkeleycountysc.gov/mens-sweatshirts-view.php) and then turn your monitor off.
+- Hat Logos are limited to two choices.
+- Selection of Department Names on hats is disabled. The selected option for hats will always be "No Dept Name"
+- Some products appear in filtered gender results with images of models not matching the filtered selection. This is on purpose. For the convenience of our users several products have a gender filter value of "N/A" and are included in results for either search. I believe it was Abraham Lincoln that said "Ladies like hoodies too".
 
 ## Version 2.0.0 - (2024-07-12)
 

@@ -1,0 +1,62 @@
+@font-face {
+	font-family: 'bcg';
+	src: url('../../../fonts/Gotham-Medium.otf') format('opentype');
+}
+@view-transition {
+	navigation: auto;
+}
+
+html {
+	height: 100%;
+	font-family: bcg;
+}
+
+.status-pills {
+	border-radius: 50%;
+	/* background-color: hotpink; */
+	height: 25px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block;
+	line-height: 25px;
+	margin: 0;
+	padding: 0;
+}
+.Pending p {
+	background-color: #b3ffb3;
+	color: #000000;
+	border: #008000 1px solid;
+}
+
+.Approved p {
+	background-color: #b3b3ff;
+	color: #000000;
+	border: #0000ff 1px solid;
+}
+
+.Denied p {
+	background-color: #ff000050;
+	color: #ffffff;
+	border: #ff0000 1px solid;
+}
+
+.Ordered p {
+	background-color: #ffb3b3;
+	color: #000000;
+	border: #ff0000 1px solid;
+}
+
+.Received p {
+	background-color: #ffedcc;
+	color: #000000;
+	border: #ffa500 1px solid;
+}
+.small-logo-img {
+	width: 50px;
+}
+.active-request td {
+	background-color: #000000 !important;
+	color: #ffffff !important;
+}

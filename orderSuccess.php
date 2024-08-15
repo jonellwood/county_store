@@ -45,7 +45,7 @@ function getOrderDetailsFromOrdRef(id) {
     fetch('API/fetchOrderFromOrdRef.php?id=' + id)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             phtml += renderPerson(data[0]);
             for (var i = 0; i < data.length; i++) {
                 html += renderOrderDetails(data[i]);
