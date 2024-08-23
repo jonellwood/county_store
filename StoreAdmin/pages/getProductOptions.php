@@ -60,7 +60,7 @@ if ($prod_size_data) {
     }
 }
 if ($prod_color_data) {
-    $logo_sql = "SELECT * from logos where isactive = 1";
+    $logo_sql = "SELECT * from logos where isactive = 1 AND iscomm = 0";
     $logo_stmt = $conn->prepare($logo_sql);
     $logo_stmt->execute();
     $prod_logo_data = $logo_stmt->get_result();

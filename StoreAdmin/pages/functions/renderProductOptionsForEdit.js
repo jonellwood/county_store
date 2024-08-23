@@ -13,23 +13,40 @@ function formatColorValueForUrl(str) {
 function formatValueForUrl(str) {
 	return str.toLowerCase();
 }
+function updateImage() {
+    var image = document.getElementById('product-image');
+    var color = document.getElementById('colorSelect').value;
+    var productCode = document.getElementById('currentProductCode').innerText;
+    // console.log('color', color);
+    // console.log(formatColorValueForUrl(color));
+    // console.log(productCode);
+    image.src = '../../../product-images/' + formatColorValueForUrl(color).toString() + '_'+ formatValueForUrl(productCode) + '.jpg'
+}
+
+function updateLogoImage(val) {
+    var logoImage = document.getElementById('logo-image');
+    var selectedLogo = document.getElementById(val).dataset.url;
+    //console.log(selectedLogo);
+    logoImage.src = '../../../' + selectedLogo
+}
 
 function renderProductOptionsForEdit(data, order_det_id) { 
     // console.log('In render function')
     // console.log(data.color[0][0].color)
     var eHtml = `
+    <p>Next up display and update current prices</p>
     <div class="form-holder">
         <form action='updateOrder.php' method='post'>    
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="999999" required>
 
             <label for="color">Color:</label>
-            <select id="colorSelect" name="color" required>
+            <select id="colorSelect" name="color" required onchange='updateImage()'>
                 `
 
                 for (var i = 0; i < data.color[0].length; i++) {
                     eHtml += `
-                        <option value=${data.color[0][i].color ? data.color[0][i].color : ''}>${data.color[0][i].color ? data.color[0][i].color : 'Error'}</option>
+                        <option value="${data.color[0][i].color ? data.color[0][i].color : ''}">${data.color[0][i].color ? data.color[0][i].color : 'Error'}</option>
                     `
                 }
 
@@ -48,11 +65,11 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 eHtml += `
                 </select>
                 <label for="logo">Logo:</label>
-                <select id="logoSelect" name="logo" required>
+                <select id="logoSelect" name="logo" required onchange="updateLogoImage(this.value)">
                 `
                 for (var k = 0; k < data.logo[0].length; k++) {
                     eHtml += `
-                        <option value=${data.logo[0][k].id ? data.logo[0][k].id : ''}>${data.logo[0][k].logo_name ? data.logo[0][k].logo_name : 'Error'}</option>
+                        <option id=${data.logo[0][k].id ? data.logo[0][k].id : ''} value=${data.logo[0][k].id ? data.logo[0][k].id : ''} data-url=${data.logo[0][k].image ? data.logo[0][k].image : ''}>${data.logo[0][k].logo_name ? data.logo[0][k].logo_name : 'Error'}</option>
                     `
                 }
     
@@ -85,12 +102,17 @@ function renderProductOptionsForEdit(data, order_det_id) {
             </div>
             </form>
              `
-             var selectedColor = document.getElementById('currentColor').innerText;
+            //  var selectedColor = document.getElementById('colorSelect').value;
+            var selectedColor = document.getElementById('currentColor').innerText;
             var selectedProduct = document.getElementById('currentProductCode').innerText;
+            var selectedLogo = document.getElementById('currentLogo').dataset.url;
             eHtml += `
-                <div>
-                 <img src="../../../product-images/${selectedColor ? formatColorValueForUrl(selectedColor) : ''}_${selectedProduct ? formatValueForUrl(selectedProduct) : ''}.jpg" alt="${data.product[0][0].name}" class="product-image">
+                <div class='image-logo-stack'>
+                 <img src="../../../product-images/${selectedColor ? formatColorValueForUrl(selectedColor) : ''}_${selectedProduct ? formatValueForUrl(selectedProduct) : ''}.jpg" alt="${data.product[0][0].name}" class="product-image" id="product-image">
+                 <img src="../../../${selectedLogo ? selectedLogo : ''}" alt='logo' class='med-logo-img' id='logo-image'/>
+                 
                </div>
+             
             
             </div>
             `
@@ -107,6 +129,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
     setDeptNamePlacementOption();
     setDefaultLogoOption();
     setDefaultBillToOption();
+    // updateImage(data.color);
     
        
 

@@ -55,200 +55,29 @@ async function getOptions(prod_id, order_det_id) {
     await fetch('./getProductOptions.php?prod_id=' + prod_id)
         .then((response) => response.json())
         .then((data) => {
-            // console.log('product options');
-            // console.log(data);
-            // console.log(data.color[0]);
-            // console.log('order_det_id is', order_det_id)
             renderProductOptionsForEdit(data, order_det_id)
-            // var formHTML = ""
-            // formHTML += "<div class='dep-info-holder'>"
-            // formHTML += "<h4 class='what-h4'> - </h4>";
-            // // formHTML += "<table class='styled-table'>";
-            // // formHTML += "<h3>Select Updated Size and Or Color</h3>"
-            // // formHTML += "<thead><tr><th colspan=2>Select Updated Size and Or Color</th></tr></thead>"
-            // formHTML += "<form action='updateOrder.php' method='post'>";
-            // // formHTML += "<tbody>";
-            // // formHTML += "<tr><td>";
-            // formHTML += "<div class='styled-table top-row'>"
-            // formHTML += "<label for='color'>Color</label>";
-            // formHTML += "<select name='color' id='colorSelect'>"
-            // for (var j = 0; j < data.color[0].length; j++) {
-            //     formHTML += "<option value='" + data.color[0][j].color_id + "'>" + data.color[0][j].color +
-            //         "</option>";
-            // }
-            // formHTML += "</select>"
-            // // formHTML += "</td></tr>"
-            // // formHTML += "<tr><td>"
-            // formHTML += "<label for='size'>Size</label>";
-            // formHTML += "<select name='size' id='sizeSelect'>"
-            // for (var j = 0; j < data.size[0].length; j++) {
-            //     formHTML += "<option value='" + data.size[0][j].size_id + "'>" + data.size[0][j].size +
-            //         "</option>";
-            // }
-            // formHTML += "</select>";
-            // // formHTML += "<tr><div>"
-            // formHTML += "</div>";
-            // formHTML += "<div class='styled-table top-row'>"
-            // formHTML += "<label for='bill_to'>Bill To Account</label>";
-            // formHTML +=
-            //     "<input type='text' name='bill_to' rows='1' maxlength='5' maxlength='5' placeholder='" +
-            //     bill_to + "'></input>";
-            // formHTML += "</div>";
-            // formHTML += "<div class='styled-table top-row'>"
-            // formHTML += "<label for='comment'>Comment</label>";
-            // formHTML += "<textarea name='comment' cols=50 rows=4 oninput='makeButtonActive()'></textarea>";
-            // formHTML += "</div>";
-            // formHTML += "<div class='styled-table top-row'>"
-            // formHTML += "<p>A comment is required when submitting a change</p>"
-            // // formHTML += "</div>";
-            // formHTML += "<input type='hidden' name='order_id' value='" + order_det_id + "'>"
-            // formHTML += "<input type='hidden' name='color_name' value='" + color_id + "'>"
-            // formHTML += "<input type='hidden' name='size_name' value='" + size_name + "'>"
-            // formHTML += "<input type='hidden' name='bill_to' value='" + bill_to + "'>"
-            // formHTML += "<input type='hidden' id='currentColor' name='currentColor' value='" +
-            //     currentColor + "'>"
-            // formHTML += "<input type='hidden' id='currentSize'  name='currentSize' value='" + currentSize +
-            //     "'>"
-            // formHTML += "</div>";
-            // formHTML += "<div class='styled-table bottom-row'>"
-            // formHTML += "<button type='submit' id='update-button' disabled>Update</button>";
-            // formHTML += "<button type='button' class='cancel-button' onclick='cancelOrder(" + order_det_id +
-            //     ")' disabled id='cancel-button'>Cancel Order</button>";
-            // formHTML += "</div>";
-            // formHTML += "</form>";
-
-            // // formHTML += "</table>";
-            // formHTML += "</div>";
-            // document.getElementById('details').innerHTML = html;
-
-            //setDefaultColorOption();
-            //setDefaultSizeOption();
         })
 
 }
 
-// function getSingleOrderDetails(id) {
-//     console.log(id);
-//     setActiveRequest(id);
-//     fetch('./getSingleOrderDetails.php?id=' + id)
-//         .then((response) => response.json())
-//         .then((order) => {
-//             // console.log('team team team team team')
-//             console.log(order);
-//             var orderHTML = "";
-//             orderHTML += "<div class='main-order-info-holder'>";
-//             orderHTML += "<table class='styled-table'>";
-//             orderHTML += "<thead>";
-//             orderHTML += "<tr>"
-//             orderHTML += "<th>Product Code</th>"
-//             orderHTML += "<th>Product Name</th>"
-//             orderHTML += "<th>Color</th>"
-//             orderHTML += "<th>Size</th>"
-//             orderHTML += "<th>Logo</th>"
-//             orderHTML += "<th>Dept Placement</th>"
-//             orderHTML += "<th>Vendor</th>"
-//             orderHTML += "</tr>"
-//             orderHTML += "</thead>";
-//             orderHTML += "<tbody>";
-//             orderHTML += "<tr>";
-//             orderHTML += "<td>" + order[0].product_code + "</td>";
-//             orderHTML += "<td>" + order[0].product_name + "</td>";
-//             orderHTML += "<td id='currentColor'>" + order[0].color_id + "</td>";
-//             orderHTML += "<td id='currentSize'>" + order[0].size_name + "</td>";
-//             orderHTML += "<td><img src='../../" + order[0].logo + "'></td>";
-//             orderHTML += "<td>" + order[0].dept_patch_place + "</td>";
-//             orderHTML += "<td>" + order[0].vendor + "</td>";
-//             orderHTML += "</tr>";
-//             orderHTML += "</tbody>";
-//             orderHTML += "</table>";
-//             orderHTML += "</div>";
-//             document.getElementById('details').innerHTML = orderHTML;
-//             // getOptions(order[0].product_id, order[0].order_details_id, order[0].color_id, order[0].size_name);
-//         })
-// }
 
 async function getOrder(id) {
-    // await fetch('./check-for-waiting-get.php')
     await fetch('./getSingleOrderDetails.php?id=' + id)
         .then((response) => response.json())
         .then((data) => {
-
-            console.log(data);
+            // console.log(data);
             renderSingleRequest('main', data)
-            // var html = '';
-            // html += "<div class='main-list-holder' id='main-list-holder'>";
-            // html += "<span class='table-title'>Edit Employee Request</span>";
-            // html += "<table class='styled-table'>";
-            // html += "<thead>";
-            // html += "<tr>";
-            // html += "<th></th>";
-            // html += "<th></th>";
-            // // html += "<th>Last Contacted</th>";
-            // // html += "<th>Created</th>";
-            // // html += "<th>Requested For</th>";
-            // html += "</tr>"
-            // html += "</thead>";
-            // html += "<tbody>";
-            // // for (var i = 0; i < data.length; i++) {
-            // //     getOrderDetails(data[i].order_id);
-            // //     html += "<tr onclick='getSingleOrderDetails(" + data[i].order_id + ")' id='" + data[i].order_id + "'></tr>"
-            // // }
-            // html += "<tr><td>Order ID:</td><td>" + data[0].order_id + "</td>"
-            // html += "<tr><td>Order for:</td><td>" + data[0].rf_first_name + " " + data[0].rf_last_name +
-            //     "</td>"
-            // html += "<tr><td>Quantity:</td><td>" + data[0].quantity + "</td>"
-            // html += "<tr><td>Product Code:</td><td>" + data[0].product_code + "</td>"
-            // html += "<tr><td>Product Name:</td><td>" + data[0].product_name + "</td>"
-            // html += "<tr><td>Product Size:</td><td>" + data[0].size_name + "</td>"
-            // html += "<tr><td>Product Color:</td><td>" + data[0].color_id + "</td>"
-            // html += "<tr><td>Dept Name:</td><td>" + data[0].dep_name + "</td>"
-            // html += "<tr><td>Dept Number:</td><td>" + data[0].department + "</td>"
-            // html += "<tr><td>Bill To Dept Number:</td><td>" + data[0].bill_to_dept + "</td>"
-            // html += "<tr><td>Logo:</td><td><img src='../../" + data[0].logo +
-            //     "' alt='dept logo' class='logo-img'></td>"
-            // html += "<tr><td>Dept Placement:</td><td>" + data[0].dept_patch_place + "</td>"
-            // html += "</tbody>";
-            // html += "</table>";
-            // html += "</div>";
-            // document.getElementById('main').innerHTML = html;
             getOptions(data[0].product_id, data[0].order_details_id, data[0].color_id, data[0].size_name,
-                data[0].bill_to_dept, data[0].color_id, data[0].size_name);
-            // setDefaultSizeOption();
-
+                data[0].bill_to_dept, data[0].color_id, data[0].size_name)
         })
 }
-getOrder(<?php echo $order_id ?>);
+getOrder(<?php echo $order_id ?>)
 </script>
 </head>
 
-<!-- <body class="p-3 m-0 border-0 bd-example m-0 border-0">
-    <div class="parent">
-        <div class="div1">
-
-        </div>
-        <div class="div2" id="main">
-            <h1>Requests waiting on customer</h1>
-        </div>
-        <div class="div3" id="details">
-            <h4 class='instructions'>&#128072; Select a request to view and edit details</h4>
-        </div>
-        <div class="div4">
-
-        </div>
-        <div class="div5">
-
-        </div>
-        <div class="div6" id="change-order-form">
-
-        </div>
-        <div class="div7">
-
-        </div>
-    </div> -->
-
 <script>
 function setActiveRequest(id) {
-    console.log('setting active on ', id);
+    // console.log('setting active on ', id);
     var activeRows = document.querySelectorAll("tr.active-request");
     activeRows.forEach(function(row) {
         row.classList.remove("active-request");
@@ -407,6 +236,17 @@ displayAlert();
     position: relative !important;
     z-index: 3 !important;
 } */
+.image-logo-stack {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-height: 60dvh;
+
+    .med-logo-img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 </style>
 
 

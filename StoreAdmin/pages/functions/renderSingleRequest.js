@@ -38,13 +38,14 @@ function renderSingleRequest(target, data) {
                             <td id='currentSize'>${data[0].size_name ? data[0].size_name : ''}</td>
                             <td id='currentColor'>${data[0].color_name ? data[0].color_name : ''}</td>
                             <td>${data[0].line_item_total ? money_format(data[0].line_item_total) : '' }</td>
-                            <td id='currentLogo' data-value=${data[0].logo_id ? data[0].logo_id : ''}><img src=../../${data[0].logo ? data[0].logo : ''} alt=${data[0].product_code ? data[0].product_code : ''} class='small-logo-img'/></td>
+                            <td id='currentLogo' data-value=${data[0].logo_id ? data[0].logo_id : ''} data-url=${data[0].logo ? data[0].logo : ''}><img src=../../${data[0].logo ? data[0].logo : ''} alt=${data[0].product_code ? data[0].product_code : ''} class='small-logo-img'/></td>
                             <td id='currentDeptPlacement'>${data[0].dept_patch_place ? data[0].dept_patch_place : 'N/A'}</td>
                             <td>${data[0].status ? data[0].status : ''}</td>
                             <td><img class='img prod_img' src=../../product-images/${data[0].color_name ? formatColorValueForUrl(data[0].color_name) : ''}_${data[0].product_code ? formatValueForUrl(data[0].product_code) : ''}.jpg alt='..' width='50px'/></td></tr>
                             </tbody>
             </table>
             <p class='hidden' id='currentBillTo' data-billto='${data[0].bill_to_dept ? data[0].bill_to_dept : ''}'></p>
+            
             </div>
     `
     document.getElementById(target).innerHTML = html;
