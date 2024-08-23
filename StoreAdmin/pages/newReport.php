@@ -5,7 +5,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -127,32 +127,32 @@ ORDER BY ord_ref.color_id";
 
 
 <style>
-    table,
-    th,
-    td {
-        border: 1px solid black;
-    }
+table,
+th,
+td {
+    border: 1px solid black;
+}
 
-    th,
-    td {
-        padding: 10px;
-    }
+th,
+td {
+    padding: 10px;
+}
 
-    th {
-        background-color: #FDDF95;
-    }
+th {
+    background-color: #FDDF95;
+}
 
-    colgroup {
+colgroup {
 
-        width: 225px;
-    }
+    width: 225px;
+}
 
-    #header {
-        text-align: center;
-    }
+#header {
+    text-align: center;
+}
 
-    img {
-        width: 75% !important;
-        height: auto;
-    }
+img {
+    width: 75% !important;
+    height: auto;
+}
 </style>

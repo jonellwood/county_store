@@ -2,14 +2,14 @@
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
-if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
-        header("Location: 401.php");
-        exit;
-    } 
+if (isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
+    header("Location: 401.php");
+    exit;
+}
 
 require_once 'config.php';
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
@@ -89,19 +89,19 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             <hr>
                             <h5>Select options for this product</h5>
                             <?php
-                    $sql = "SELECT * from producttypes";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    if ($result->num_rows > 0) {
-                        echo "<label for='productType'>Product Category</label>";
-                        echo "<select id='productType' name='productType'>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value=" . $row['productType_id'] . ">" . $row['productType'] . "</option>";
-                        }
-                    }
+                            $sql = "SELECT * from producttypes";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+                            if ($result->num_rows > 0) {
+                                echo "<label for='productType'>Product Category</label>";
+                                echo "<select id='productType' name='productType'>";
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<option value=" . $row['productType_id'] . ">" . $row['productType'] . "</option>";
+                                }
+                            }
 
-                    ?>
+                            ?>
 
                             </select>
                             <span>---></span>
@@ -122,21 +122,21 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             <span>---></span>
 
                             <?php
-                    $mod_sql = "SELECT price_mod from price_mods";
-                    $mod_stmt = $conn->prepare($mod_sql);
-                    $mod_stmt->execute();
-                    $mod_result = $mod_stmt->get_result();
+                            $mod_sql = "SELECT price_mod from price_mods";
+                            $mod_stmt = $conn->prepare($mod_sql);
+                            $mod_stmt->execute();
+                            $mod_result = $mod_stmt->get_result();
 
-                    if ($mod_result->num_rows > 0) {
-                        echo "<label for='price_size_mod'>Price Mod Group</label>";
-                        echo "<select id='price_size_mod' name='price_size_mod'>";
-                        while ($mod_row = $mod_result->fetch_array()) {
-                            echo "<option value=" . $mod_row['price_mod'] . ">Group " . $mod_row['price_mod'] . "</option>";
-                        }
-                        echo "</select>";
-                    }
+                            if ($mod_result->num_rows > 0) {
+                                echo "<label for='price_size_mod'>Price Mod Group</label>";
+                                echo "<select id='price_size_mod' name='price_size_mod'>";
+                                while ($mod_row = $mod_result->fetch_array()) {
+                                    echo "<option value=" . $mod_row['price_mod'] . ">Group " . $mod_row['price_mod'] . "</option>";
+                                }
+                                echo "</select>";
+                            }
 
-                    ?>
+                            ?>
 
                             </select>
                             <a href="find-price-mod-ui.php" target="_blank"><button type="button"
@@ -149,65 +149,65 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
                                 world
                                 will explode.</h3>
                                 <?php
-                        $g_filterSql = "SELECT id, filter FROM uniform_orders.filters_gender";
-                        $g_filterStmt = $conn->prepare($g_filterSql);
-                        $g_filterStmt->execute();
-                        $g_filterResult = $g_filterStmt->get_result();
-                        if ($g_filterResult->num_rows > 0) {
-                            echo "<label for='gender-filter'>Clothing Gender</label>";
-                            echo "<select id='g_filter' name='g_filter'>";
-                            while ($g_filterRow = $g_filterResult->fetch_assoc()) {
-                                echo "<option value='" . $g_filterRow['id'] . "'>" . $g_filterRow['filter'] . "</option>";
-                            }
-                            echo "</select>";
-                        };
+                                $g_filterSql = "SELECT id, filter FROM uniform_orders.filters_gender";
+                                $g_filterStmt = $conn->prepare($g_filterSql);
+                                $g_filterStmt->execute();
+                                $g_filterResult = $g_filterStmt->get_result();
+                                if ($g_filterResult->num_rows > 0) {
+                                    echo "<label for='gender-filter'>Clothing Gender</label>";
+                                    echo "<select id='g_filter' name='g_filter'>";
+                                    while ($g_filterRow = $g_filterResult->fetch_assoc()) {
+                                        echo "<option value='" . $g_filterRow['id'] . "'>" . $g_filterRow['filter'] . "</option>";
+                                    }
+                                    echo "</select>";
+                                };
 
-                        ?>
+                                ?>
                                 <span>---></span>
                                 <?php
-                        $t_filterSql = "SELECT id, filter FROM uniform_orders.filters_type";
-                        $t_filterStmt = $conn->prepare($t_filterSql);
-                        $t_filterStmt->execute();
-                        $t_filterResult = $t_filterStmt->get_result();
-                        if ($t_filterResult->num_rows > 0) {
-                            echo "<label for='type-filter'>Item Type</label>";
-                            echo "<select id='t_filter' name='t_filter'>";
-                            while ($t_filterRow = $t_filterResult->fetch_assoc()) {
-                                echo "<option value='" . $t_filterRow['id'] . "'>" . $t_filterRow['filter'] . "</option>";
-                            }
-                            echo "</select>";
-                        };
-                        ?>
+                                $t_filterSql = "SELECT id, filter FROM uniform_orders.filters_type";
+                                $t_filterStmt = $conn->prepare($t_filterSql);
+                                $t_filterStmt->execute();
+                                $t_filterResult = $t_filterStmt->get_result();
+                                if ($t_filterResult->num_rows > 0) {
+                                    echo "<label for='type-filter'>Item Type</label>";
+                                    echo "<select id='t_filter' name='t_filter'>";
+                                    while ($t_filterRow = $t_filterResult->fetch_assoc()) {
+                                        echo "<option value='" . $t_filterRow['id'] . "'>" . $t_filterRow['filter'] . "</option>";
+                                    }
+                                    echo "</select>";
+                                };
+                                ?>
                                 <span>---></span>
                                 <?php
-                        $s_filterSql = "SELECT id, filter FROM uniform_orders.filters_size";
-                        $s_filterStmt = $conn->prepare($s_filterSql);
-                        $s_filterStmt->execute();
-                        $s_filterResult = $s_filterStmt->get_result();
-                        if ($s_filterResult->num_rows > 0) {
-                            echo "<label for='size-filter'>Item Size Range</label>";
-                            echo "<select id='s_filter' name='s_filter'>";
-                            while ($s_filterRow = $s_filterResult->fetch_assoc()) {
-                                echo "<option value='" . $s_filterRow['id'] . "'>" . $s_filterRow['filter'] . "</option>";
-                            }
-                            echo "</select>";
-                        };
-                        ?>
+                                $s_filterSql = "SELECT id, filter FROM uniform_orders.filters_size";
+                                $s_filterStmt = $conn->prepare($s_filterSql);
+                                $s_filterStmt->execute();
+                                $s_filterResult = $s_filterStmt->get_result();
+                                if ($s_filterResult->num_rows > 0) {
+                                    echo "<label for='size-filter'>Item Size Range</label>";
+                                    echo "<select id='s_filter' name='s_filter'>";
+                                    while ($s_filterRow = $s_filterResult->fetch_assoc()) {
+                                        echo "<option value='" . $s_filterRow['id'] . "'>" . $s_filterRow['filter'] . "</option>";
+                                    }
+                                    echo "</select>";
+                                };
+                                ?>
                                 <span>---></span>
                                 <?php
-                        $a_filterSql = "SELECT id, filter FROM uniform_orders.filters_sleeve";
-                        $a_filterStmt = $conn->prepare($a_filterSql);
-                        $a_filterStmt->execute();
-                        $a_filterResult = $a_filterStmt->get_result();
-                        if ($a_filterResult->num_rows > 0) {
-                            echo "<label for='sleve-filter'>Item Sleeve Option</label>";
-                            echo "<select id='a_filter' name='a_filter'>";
-                            while ($a_filterRow = $a_filterResult->fetch_assoc()) {
-                                echo "<option value='" . $a_filterRow['id'] . "'>" . $a_filterRow['filter'] . "</option>";
-                            }
-                            echo "</select>";
-                        };
-                        ?>
+                                $a_filterSql = "SELECT id, filter FROM uniform_orders.filters_sleeve";
+                                $a_filterStmt = $conn->prepare($a_filterSql);
+                                $a_filterStmt->execute();
+                                $a_filterResult = $a_filterStmt->get_result();
+                                if ($a_filterResult->num_rows > 0) {
+                                    echo "<label for='sleve-filter'>Item Sleeve Option</label>";
+                                    echo "<select id='a_filter' name='a_filter'>";
+                                    while ($a_filterRow = $a_filterResult->fetch_assoc()) {
+                                        echo "<option value='" . $a_filterRow['id'] . "'>" . $a_filterRow['filter'] . "</option>";
+                                    }
+                                    echo "</select>";
+                                };
+                                ?>
                         </div>
 
                         <!-- </div> -->
@@ -219,19 +219,19 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             <!-- <hr> -->
                             <div class="custom-control custom-checkbox box-holder">
                                 <?php
-                        $sql = "SELECT * from sizes";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<p>";
-                                echo "<input type='checkbox' name='sizes[]' class='custom-control-input' id='" . $row['size_id'] . "' value=" . $row['size_id'] . ">";
-                                echo "<label class='custom-control-label' for='" . $row['size_id'] . "'>" . $row['size'] . "</label>";
-                                echo "</p>";
-                            }
-                        }
-                        ?>
+                                $sql = "SELECT * from sizes";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<p>";
+                                        echo "<input type='checkbox' name='sizes[]' class='custom-control-input' id='" . $row['size_id'] . "' value=" . $row['size_id'] . ">";
+                                        echo "<label class='custom-control-label' for='" . $row['size_id'] . "'>" . $row['size'] . "</label>";
+                                        echo "</p>";
+                                    }
+                                }
+                                ?>
                             </div>
                         </div>
 
@@ -248,20 +248,20 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
                             <!-- <hr> -->
                             <div class="custom-control custom-checkbox box-holder">
                                 <?php
-                        $sql = "SELECT * from colors ORDER BY color ASC";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<p class='color-holder'>";
-                                echo "<input type='checkbox'name='colors[]' class='custom-control-input' id='" . $row['color_id'] . "' value=" . $row['color_id'] . ">";
-                                echo "<label class='custom-control-label' for='" . $row['color_id'] . "'>" . $row['color'] . "</label>";
-                                // echo "<input type='checkbox' class='custom-control-input' id='" . $row['color_id'] . "value=" . $row['color_id'] . ">";
-                                echo "</p>";
-                            }
-                        }
-                        ?>
+                                $sql = "SELECT * from colors ORDER BY color ASC";
+                                $stmt = $conn->prepare($sql);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo "<p class='color-holder'>";
+                                        echo "<input type='checkbox'name='colors[]' class='custom-control-input' id='" . $row['color_id'] . "' value=" . $row['color_id'] . ">";
+                                        echo "<label class='custom-control-label' for='" . $row['color_id'] . "'>" . $row['color'] . "</label>";
+                                        // echo "<input type='checkbox' class='custom-control-input' id='" . $row['color_id'] . "value=" . $row['color_id'] . ">";
+                                        echo "</p>";
+                                    }
+                                }
+                                ?>
                             </div>
                             <button type="button" onclick="hideUnchecked()" id="verifyButton">Verify Size & Color
                                 Selections</button>

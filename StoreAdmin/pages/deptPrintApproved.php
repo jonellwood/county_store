@@ -5,7 +5,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -217,16 +217,17 @@ if (mysqli_num_rows($result) > 0) {
         </div>
 
         <script type="text/javascript">
-            //-->
+        //-->
         </script>
         <div id="footer">
             <center>
-                <button class="hide-from-printer pulse-button" onclick="printpage()" type="submit" value="Print" role="button" id="btn">Click Here to Print Report</button>
+                <button class="hide-from-printer pulse-button" onclick="printpage()" type="submit" value="Print"
+                    role="button" id="btn">Click Here to Print Report</button>
             </center>
             <script>
-                function printpage() {
-                    window.print();
-                }
+            function printpage() {
+                window.print();
+            }
             </script>
         </div>
     </div>
@@ -235,229 +236,229 @@ if (mysqli_num_rows($result) > 0) {
 </html>
 
 <style type="text/css">
-    html,
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+html,
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-    img {
-        width: 100% !important;
-        height: auto;
-    }
+img {
+    width: 100% !important;
+    height: auto;
+}
 
-    body {
-        color: #292929;
-        font: 90% Roboto, Arial, sans-serif;
-        font-weight: 300;
-    }
+body {
+    color: #292929;
+    font: 90% Roboto, Arial, sans-serif;
+    font-weight: 300;
+}
 
-    p {
-        padding: 0 10px;
-        line-height: 1.8;
-    }
+p {
+    padding: 0 10px;
+    line-height: 1.8;
+}
 
-    ul {
-        padding-inline-start: 15px;
-    }
+ul {
+    padding-inline-start: 15px;
+}
 
-    ul li {
-        padding-right: 10px;
-        line-height: 1.6;
-        padding-inline-start: -25px;
-    }
+ul li {
+    padding-right: 10px;
+    line-height: 1.6;
+    padding-inline-start: -25px;
+}
 
-    h3 {
-        padding: 5px 20px;
-        margin: 0;
-    }
+h3 {
+    padding: 5px 20px;
+    margin: 0;
+}
 
-    div#header {
-        position: relative;
-    }
+div#header {
+    position: relative;
+}
 
-    div#header h1 {
-        height: 80px;
-        line-height: 80px;
-        margin: 0;
-        padding-left: 10px;
-        background: #e0e0e0;
-        color: #292929;
-    }
+div#header h1 {
+    height: 80px;
+    line-height: 80px;
+    margin: 0;
+    padding-left: 10px;
+    background: #e0e0e0;
+    color: #292929;
+}
 
-    div#header a {
-        position: absolute;
-        right: 0;
-        top: 23px;
-        padding: 10px;
-        color: #006;
-    }
+div#header a {
+    position: absolute;
+    right: 0;
+    top: 23px;
+    padding: 10px;
+    color: #006;
+}
 
-    div#navigation {
-        background: white;
-    }
+div#navigation {
+    background: white;
+}
 
-    div#navigation li {
-        list-style: none;
-    }
+div#navigation li {
+    list-style: none;
+}
 
-    div#extra {
-        background: white;
-    }
+div#extra {
+    background: white;
+}
 
-    div#footer {
-        background: white;
-    }
+div#footer {
+    background: white;
+}
 
-    div#footer p {
-        padding: 20px 10px;
-    }
+div#footer p {
+    padding: 20px 10px;
+}
 
-    div#container {
-        width: 700px;
-        margin: 0 auto;
-    }
+div#container {
+    width: 700px;
+    margin: 0 auto;
+}
 
-    div#content {
-        float: right;
-        width: 700px;
-    }
+div#content {
+    float: right;
+    width: 700px;
+}
 
-    div#navigation {
-        float: left;
-        width: 200px;
-    }
+div#navigation {
+    float: left;
+    width: 200px;
+}
 
-    div#extra {
-        float: left;
-        clear: left;
-        width: 200px;
-    }
+div#extra {
+    float: left;
+    clear: left;
+    width: 200px;
+}
 
-    div#footer {
-        clear: both;
-        width: 100%;
-    }
+div#footer {
+    clear: both;
+    width: 100%;
+}
 
-    /* TABLE CSS */
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+/* TABLE CSS */
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
 
-    td.no-padding {
-        border: none;
-        background-color: white;
-    }
+td.no-padding {
+    border: none;
+    background-color: white;
+}
 
-    th.no-padding {
-        border: none;
-        background-color: white;
-    }
+th.no-padding {
+    border: none;
+    background-color: white;
+}
 
-    td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
-    th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
 
-    /* BUTTON CSS STARTS HERE */
+/* BUTTON CSS STARTS HERE */
 
-    .noprint {
+.noprint {
+    display: none;
+}
+
+@media print {
+
+    /* hide the print button when printing */
+    .hide-from-printer {
         display: none;
     }
+}
 
-    @media print {
+.print {
+    visibility: visible;
+}
 
-        /* hide the print button when printing */
-        .hide-from-printer {
-            display: none;
-        }
+/* Button resets and style */
+button {
+    margin: 15px auto;
+    font-family: "Montserrat";
+    font-size: 28px;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: 15px 20px;
+    border: 0px solid #000;
+}
+
+/* Initiate Auto-Pulse animations */
+button.pulse-button {
+    animation: borderPulse 1000ms infinite ease-out, colorShift 10000ms infinite ease-in;
+}
+
+/* Initiate color change for pulse-on-hover */
+button.pulse-button-hover {
+    animation: colorShift 10000ms infinite ease-in;
+}
+
+/* Continue animation and add shine on hover */
+button:hover,
+button:focus {
+    animation: borderPulse 1000ms infinite ease-out, colorShift 10000ms infinite ease-in, hoverShine 200ms;
+}
+
+/* Declate color shifting animation */
+@keyframes colorShift {
+
+    0%,
+    100% {
+        background: #0045e6;
     }
 
-    .print {
-        visibility: visible;
+    33% {
+        background: #fb3e3e;
     }
 
-    /* Button resets and style */
-    button {
-        margin: 15px auto;
-        font-family: "Montserrat";
-        font-size: 28px;
-        color: #ffffff;
-        cursor: pointer;
-        border-radius: 100px;
-        padding: 15px 20px;
-        border: 0px solid #000;
+    66% {
+        background: #0dcc00;
+    }
+}
+
+/* Declare border pulse animation */
+@keyframes borderPulse {
+    0% {
+        box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, .4), 0px 0px 0px 0px rgba(255, 255, 255, 1);
     }
 
-    /* Initiate Auto-Pulse animations */
-    button.pulse-button {
-        animation: borderPulse 1000ms infinite ease-out, colorShift 10000ms infinite ease-in;
+    100% {
+        box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255, .2), 0px 0px 0px 10px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Declare shine on hover animation */
+@keyframes hoverShine {
+    0% {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, .4) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
     }
 
-    /* Initiate color change for pulse-on-hover */
-    button.pulse-button-hover {
-        animation: colorShift 10000ms infinite ease-in;
+    50% {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, 0) 100%);
     }
 
-    /* Continue animation and add shine on hover */
-    button:hover,
-    button:focus {
-        animation: borderPulse 1000ms infinite ease-out, colorShift 10000ms infinite ease-in, hoverShine 200ms;
+    100% {
+        background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, .4) 100%);
     }
-
-    /* Declate color shifting animation */
-    @keyframes colorShift {
-
-        0%,
-        100% {
-            background: #0045e6;
-        }
-
-        33% {
-            background: #fb3e3e;
-        }
-
-        66% {
-            background: #0dcc00;
-        }
-    }
-
-    /* Declare border pulse animation */
-    @keyframes borderPulse {
-        0% {
-            box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, .4), 0px 0px 0px 0px rgba(255, 255, 255, 1);
-        }
-
-        100% {
-            box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255, .2), 0px 0px 0px 10px rgba(255, 255, 255, 0);
-        }
-    }
-
-    /* Declare shine on hover animation */
-    @keyframes hoverShine {
-        0% {
-            background-image: linear-gradient(135deg, rgba(255, 255, 255, .4) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0) 100%);
-        }
-
-        50% {
-            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, 0) 100%);
-        }
-
-        100% {
-            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, .4) 100%);
-        }
-    }
+}
 </style>

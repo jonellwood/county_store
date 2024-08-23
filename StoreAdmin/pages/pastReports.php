@@ -4,7 +4,7 @@ include('DBConn.php');
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
     exit;
 }
 ?>
@@ -65,7 +65,8 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="input-group">
                                 <input type="date" name="startdate" id="startdate" class="form-control form-control-lg">
                                 <input type="date" name="enddate" id="enddate" class="form-control form-control-lg">
-                                <input type="text" name="dept" id="dept" placeholder="Enter Department Number" class="form-control form-control-lg">
+                                <input type="text" name="dept" id="dept" placeholder="Enter Department Number"
+                                    class="form-control form-control-lg">
                             </div>
                             <center> <button type="button" onclick="dateSearch()" class="btn btn-outline-dark">Search by
                                     Date and Department</button>
@@ -74,24 +75,24 @@ if (mysqli_num_rows($result) > 0) {
                         </h6>
                     </div>
                     <script>
-                        function dateSearch() {
-                            let datestart = document.getElementById("startdate").value
-                            let dateend = document.getElementById("enddate").value
-                            let dept = document.getElementById("dept").value
-                            if (datestart == "" && dateend == "") {
-                                alert("You have not selected a start or an end date")
-                            } else if (datestart == "") {
-                                alert("You have selected a End Date, but not an Start date. Please choose " +
-                                    dateend)
-                            } else if (dateend == "") {
-                                alert("You have selected a Start Date, but not an End date. Please choose " +
-                                    datestart)
-                            } else if (dept == "") {
-                                alert("You have selected dates, but not a department. Please choose a department ")
-                            } else
-                                location.replace("deptRec.php?datestart=" + datestart + "&dateend=" + dateend +
-                                    "&dept=" + dept)
-                        }
+                    function dateSearch() {
+                        let datestart = document.getElementById("startdate").value
+                        let dateend = document.getElementById("enddate").value
+                        let dept = document.getElementById("dept").value
+                        if (datestart == "" && dateend == "") {
+                            alert("You have not selected a start or an end date")
+                        } else if (datestart == "") {
+                            alert("You have selected a End Date, but not an Start date. Please choose " +
+                                dateend)
+                        } else if (dateend == "") {
+                            alert("You have selected a Start Date, but not an End date. Please choose " +
+                                datestart)
+                        } else if (dept == "") {
+                            alert("You have selected dates, but not a department. Please choose a department ")
+                        } else
+                            location.replace("deptRec.php?datestart=" + datestart + "&dateend=" + dateend +
+                                "&dept=" + dept)
+                    }
                     </script>
 
 
@@ -102,11 +103,14 @@ if (mysqli_num_rows($result) > 0) {
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Report Number</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Department</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Date/Time Report was Generated</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -223,9 +227,10 @@ if (mysqli_num_rows($result) > 0) {
                             <div class="col-lg-6 mb-lg-0 mb-4">
                                 <div class="copyright text-center text-sm text-muted text-lg-start">
                                     © <script>
-                                        document.write(new Date().getFullYear())
+                                    document.write(new Date().getFullYear())
                                     </script>,
-                                    <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold" target="_blank">The Berkeley County IT Team</a>
+                                    <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold"
+                                        target="_blank">The Berkeley County IT Team</a>
                                 </div>
                             </div>
                         </div>
@@ -239,32 +244,32 @@ if (mysqli_num_rows($result) > 0) {
             <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
             <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
             <script>
-                var win = navigator.platform.indexOf('Win') > -1;
-                if (win && document.querySelector('#sidenav-scrollbar')) {
-                    var options = {
-                        damping: '0.5'
-                    }
-                    Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            var win = navigator.platform.indexOf('Win') > -1;
+            if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
+                    damping: '0.5'
                 }
+                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            }
             </script>
 </body>
 
 </html>
 <!-- LINE SEPERATOR BETWEEN EACH ENTRY -->
 <style>
-    .table> :not(:first-child) {
-        border-top: 1px groove whitesmoke;
-        /* border-top: thin inset currentColor; */
-    }
+.table> :not(:first-child) {
+    border-top: 1px groove whitesmoke;
+    /* border-top: thin inset currentColor; */
+}
 
-    .input-group {
-        display: flex;
-        justify-content: space-around;
-        gap: 30px;
-    }
+.input-group {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
 
-    .input-group input {
-        width: 15vw;
-        border: 1px solid black;
-    }
+.input-group input {
+    width: 15vw;
+    border: 1px solid black;
+}
 </style>

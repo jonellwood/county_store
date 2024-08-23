@@ -5,10 +5,15 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
+if (isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
+    header("Location: 401.php");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +56,8 @@ $empNumber = $_SESSION["empNumber"];
                 <div class="row">
                     <div class="col-xl-6 mb-xl-0 mb-4">
                         <div class="card bg-transparent shadow-xl">
-                            <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/jc.jpg');">
+                            <div class="overflow-hidden position-relative border-radius-xl"
+                                style="background-image: url('../assets/img/jc.jpg');">
                                 <span class="mask bg-gradient-none"></span>
                                 <div class="card-body position-relative z-index-1 p-3">
                                     <!-- -------Just to make my image larger------------- -->
@@ -75,7 +81,8 @@ $empNumber = $_SESSION["empNumber"];
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header mx-4 p-3 text-center">
-                                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                        <div
+                                            class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
                                             <i class="fas fa-check opacity-10"></i>
                                         </div>
                                     </div>
@@ -90,7 +97,8 @@ $empNumber = $_SESSION["empNumber"];
                             <div class="col-md-6 mt-md-0 mt-4">
                                 <div class="card">
                                     <div class="card-header mx-4 p-3 text-center">
-                                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                        <div
+                                            class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
                                             <i class="fas fa-thumbs-up opacity-10"></i>
                                         </div>
                                     </div>
@@ -117,14 +125,17 @@ $empNumber = $_SESSION["empNumber"];
                             <div class="card-body p-3">
                                 <div class="row">
                                     <div class="col-md-6 mb-md-0 mb-4">
-                                        <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                                        <div
+                                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                             <img class="w-10 me-3 mb-0" src="../assets/img/logos/budget.png" alt="logo">
-                                            <h6 class="mb-0"><a href="https://store.berkeleycountysc.gov/inventory/login-ldap.php">Manage
+                                            <h6 class="mb-0"><a
+                                                    href="https://store.berkeleycountysc.gov/inventory/login-ldap.php">Manage
                                                     Your Assets</a></h6>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
+                                        <div
+                                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
                                             <img class="w-10 me-3 mb-0" src="../assets/img/logos/spent.png" alt="logo">
                                             <h6 class="mb-0"><a href="https://store.berkeleycountysc.gov/">Visit the
                                                     County Store!</a></h6>
@@ -137,10 +148,13 @@ $empNumber = $_SESSION["empNumber"];
 
                                 <!-- Department Look up TOOL -->
                                 </break>
-                                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+                                <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalLong">
                                     Department Look up
                                 </button>
-                                <a href="https://store.berkeleycountysc.gov/storeadmin/pages/invoices.php" class="btn btn-outline-dark" tabindex="-1" role="button" aria-disabled="true">Invoices</a>
+                                <a href="https://store.berkeleycountysc.gov/storeadmin/pages/invoices.php"
+                                    class="btn btn-outline-dark" tabindex="-1" role="button"
+                                    aria-disabled="true">Invoices</a>
                             </center>
                         </div>
 
@@ -163,10 +177,16 @@ $empNumber = $_SESSION["empNumber"];
                     <div class="card-body p-3 pb-0">
                         <span class="text-xs">Please enter Employee ID or Department Number to search all
                             Requests</span>
-                        <input type="search" class="form-control rounded" placeholder="Enter Employee ID or Department Number" name="empid" id="empid" aria-label="Search" aria-describedby="search-addon" />
+                        <input type="search" class="form-control rounded"
+                            placeholder="Enter Employee ID or Department Number" name="empid" id="empid"
+                            aria-label="Search" aria-describedby="search-addon" />
                         <center>
-                            <button class="btn btn-outline-dark" type="button" onclick="EmpIDSearch()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Search By Employee ID</button>
-                            <button class="btn btn-outline-dark" type="button" onclick="DeptNOSearch()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Search By Department</button>
+                            <button class="btn btn-outline-dark" type="button" onclick="EmpIDSearch()"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight">Search By Employee ID</button>
+                            <button class="btn btn-outline-dark" type="button" onclick="DeptNOSearch()"
+                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                                aria-controls="offcanvasRight">Search By Department</button>
                         </center>
 
 
@@ -192,7 +212,8 @@ $empNumber = $_SESSION["empNumber"];
                             <ul class="list-group">
                                 Click Below for Reports based on Status
                                 <div class="dropdown">
-                                    <a class="btn btn-lg btn-outline-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="btn btn-lg btn-outline-dark" href="#" role="button" id="dropdownMenuLink"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         Choose Reports
                                     </a>
 
@@ -210,13 +231,15 @@ $empNumber = $_SESSION["empNumber"];
                         </center>
 
                         <!-- TRIGGER THE FORM -->
-                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLongTitle">Berkeley County
                                             Department Information</h5>
-                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <p>
@@ -581,7 +604,8 @@ $empNumber = $_SESSION["empNumber"];
                                         </p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>
@@ -596,47 +620,47 @@ $empNumber = $_SESSION["empNumber"];
                         <!-- SCRIPT FOR SEARCH BOX -->
                         <!-- SCRIPT FOR SEARCH BOX -->
                         <script>
-                            function dateSearch() {
-                                let datestart = document.getElementById("startdate").value
-                                let dateend = document.getElementById("enddate").value
-                                // let url = ("details.php?dateend=" + dateend & "datestart=" + datestart)
-                                if (datestart == "" && dateend == "") {
-                                    alert("You have not selected a start or an end date")
-                                } else if (datestart == "") {
-                                    alert("You have selected a End Date, but not an Start date. Please choose " +
-                                        dateend)
-                                } else if (dateend == "") {
-                                    alert("You have selected a Start Date, but not an End date. Please choose " +
-                                        datestart)
-                                } else
-                                    location.replace("datesearch.php?datestart=" + datestart + "&dateend=" + dateend)
-                            }
+                        function dateSearch() {
+                            let datestart = document.getElementById("startdate").value
+                            let dateend = document.getElementById("enddate").value
+                            // let url = ("details.php?dateend=" + dateend & "datestart=" + datestart)
+                            if (datestart == "" && dateend == "") {
+                                alert("You have not selected a start or an end date")
+                            } else if (datestart == "") {
+                                alert("You have selected a End Date, but not an Start date. Please choose " +
+                                    dateend)
+                            } else if (dateend == "") {
+                                alert("You have selected a Start Date, but not an End date. Please choose " +
+                                    datestart)
+                            } else
+                                location.replace("datesearch.php?datestart=" + datestart + "&dateend=" + dateend)
+                        }
                         </script>
 
                         <!-- SCRIPT FOR EMPLOYEE ID SEARCH BOX -->
                         <script>
-                            function EmpIDSearch() {
-                                let EmpID = document.getElementById("empid").value.length;
-                                let EmppID = document.getElementById("empid").value;
-                                // if (EmpID == "" || EmpID < 3 || EmpID > 7) {
-                                if (EmpID == "" || EmpID != 4) {
-                                    alert("Please Enter a 4 Digit Employee ID ")
-                                } else
-                                    location.replace("empidsearch.php?empidd=" + EmppID)
-                            }
+                        function EmpIDSearch() {
+                            let EmpID = document.getElementById("empid").value.length;
+                            let EmppID = document.getElementById("empid").value;
+                            // if (EmpID == "" || EmpID < 3 || EmpID > 7) {
+                            if (EmpID == "" || EmpID != 4) {
+                                alert("Please Enter a 4 Digit Employee ID ")
+                            } else
+                                location.replace("empidsearch.php?empidd=" + EmppID)
+                        }
                         </script>
 
                         <!-- SCRIPT FOR DEPT SEARCH BOX -->
                         <script>
-                            function DeptNOSearch() {
-                                let EmpID = document.getElementById("empid").value.length;
-                                let EmppID = document.getElementById("empid").value;
-                                // if (EmpID == "" || EmpID < 3 || EmpID > 7) {
-                                if (EmpID == "" || EmpID != 5) {
-                                    alert("Please Enter a 5 Digit Department Number ")
-                                } else
-                                    location.replace("deptsearch.php?empidd=" + EmppID)
-                            }
+                        function DeptNOSearch() {
+                            let EmpID = document.getElementById("empid").value.length;
+                            let EmppID = document.getElementById("empid").value;
+                            // if (EmpID == "" || EmpID < 3 || EmpID > 7) {
+                            if (EmpID == "" || EmpID != 5) {
+                                alert("Please Enter a 5 Digit Department Number ")
+                            } else
+                                location.replace("deptsearch.php?empidd=" + EmppID)
+                        }
                         </script>
 
 
@@ -662,7 +686,7 @@ $empNumber = $_SESSION["empNumber"];
                     <div class="col-lg-6 mb-lg-0 mb-4">
                         <div class="copyright text-center text-sm text-muted text-lg-start">
                             © <script>
-                                document.write(new Date().getFullYear())
+                            document.write(new Date().getFullYear())
                             </script>,
                             <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold" target="_blank">The
                                 Berkeley County IT Team</a>
@@ -681,20 +705,20 @@ $empNumber = $_SESSION["empNumber"];
         <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
         <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
         <script>
-            var win = navigator.platform.indexOf('Win') > -1;
-            if (win && document.querySelector('#sidenav-scrollbar')) {
-                var options = {
-                    damping: '0.5'
-                }
-                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
             }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
         </script>
 
 </body>
 
 </html>
 <style>
-    .rimage {
-        border-radius: 50%;
-    }
+.rimage {
+    border-radius: 50%;
+}
 </style>

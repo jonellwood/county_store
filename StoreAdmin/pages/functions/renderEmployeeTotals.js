@@ -4,7 +4,7 @@ function renderEmployeeTotals(data, target) {
 	var html = `
 		<span class='table-title'>${data[8].empName} Clothing FY Totals</span>
 		 <div class='emp-info-holder'>
-			<span> <b>Submitted:</b>
+			<span> <b class='heading'>Submitted:</b>
 			${money_format(data[0].emp_submitted)}
 			</span>
 		

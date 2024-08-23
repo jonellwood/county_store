@@ -11,36 +11,52 @@ function firstChar(str) {
 }
 
 function renderOrderDetails(data) {
-    console.log("Data in render order details")
-    console.log(data);
+    // console.log("Data in render order details")
+    // console.log(data);
+    const nonOrderedStatuses = data.filter(item => item.status !== 'Ordered');
+    const allOrdered = nonOrderedStatuses.length === 0;
+    const allPendingStatuses = data.filter(item => item.status !== 'Pending');
+    const allPending = allPendingStatuses.length === 0;
+    
+    // console.log('All Ordered: ', allOrdered);
+    // console.log('All Pending: ', allPending);
     var hasVendorID3 = data.some(item => item.vendor_id === 3);
 
     var department = data[0].department;
-            // console.log('department is :' + department);
+    // console.log('department is :' + department);
     var empID = data[0].emp_id;
     var totalCost = 0
     var totalCount = 0
     var html = '';
     html += `
         <div class='main-order-info-holder w-100'>
-        <span class='w-25 me-2 Pending'><p class='status-pills'>P</p> = Pending</span>
-        <span class='w-25 me-2 Approved'><p class='status-pills'>A</p> = Approved</span>
-        <span class='w-25 me-2 Denied'><p class='status-pills'>D</p> = Denied</span>
-        <span class='w-25 me-2 Ordered'><p class='status-pills'>O</p> = Ordered</span>
-        <span class='w-25 me-2 Received'><p class='status-pills'>R</p> = Received</span>
+            <div class='stats-key-holder'>   
+                <span class='w-20 me-2 Pending'><p class='status-pills'>P</p> = Pending</span>
+                <span class='w-20 me-2 Approved'><p class='status-pills'>A</p> = Approved</span>
+                <span class='w-20 me-2 Denied'><p class='status-pills'>D</p> = Denied</span>
+                <span class='w-20 me-2 Ordered'><p class='status-pills'>O</p> = Ordered</span>
+                <span class='w-20 me-2 Received'><p class='status-pills'>R</p> = Received</span>
+                <span class='w-20' id='totals-button'></span>
+            </div>
         `
 
-            if (data[0].status == 'Ordered') {
+            if (allOrdered) {
                 html +=
-                    `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}> 
-                    <button class='approve-order-button' value='${data[0].order_id} popovertarget='receive-whole-order-confirm'> Receive Whole Order </button>`
+                    `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name} 
+                    <button class='btn btn-receive' value='${data[0].order_id}' popovertarget='receive-whole-order-confirm' popoveraction='show'> Receive Whole Order </button>`
+            } else if (allPending) {
+                html +=
+                    `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}<button class='btn btn-approve' value='${data[0].order_id}' popovertarget='action-jackson' onclick="createWholeOrderActionPopover(${data[0].order_id})"> Approve or Deny Order </button>`
+                if (hasVendorID3) {
+                    html += `<button class='gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
+                }
             } else {
-                html +=
-                    `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}<button class='approve-order-button' value='${data[0].order_id} 'popovertarget='whole-order-confirm'> Approve or Deny Order </button>`
+                html += `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}`
                 if (hasVendorID3) {
                     html += `<button class='gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
                 }
             }
+    
             html += `</span>
             <table class='table table-striped'>
                 <thead>
@@ -62,7 +78,7 @@ function renderOrderDetails(data) {
                 totalCost += data[j].line_item_total;
                 totalCount += parseInt(data[j].quantity);
                 
-                html += `<tr class='${data[j].status}' onclick=setLineItemSession(${data[j].order_details_id}, ${data[j].status})'>
+                html += `<tr class='${data[j].status}' onclick="setLineItemSession(${data[j].order_details_id}, '${data[j].status}')"'>
                             <td class="${data[j].status}"> 
                                 <p class="status-pills">${firstChar(data[j].status)} </p>
                             </td>
@@ -79,7 +95,7 @@ function renderOrderDetails(data) {
                 } else {
                     html += `<td class='center-text'> No </td>`
                 }
-                html += `<td id='prod_img_${j}'><img class='img prod_img' src=../../product-images/${formatColorValueForUrl(data[j].color_name)}_${formatValueForUrl(data[j].product_code)}.jpg alt='..' width='50px'/></td></tr>`;                                                 
+                html += `<td id='prod_img_${j}'><img class='img prod_img' src=../../product-images/${ data[j].color_name ? formatColorValueForUrl(data[j].color_name) : ''}_${data[j].product_code ? formatValueForUrl(data[j].product_code) : ''}.jpg alt='..' width='50px'/></td></tr>`;                                                 
                 
             }
     html += `</tbody>
@@ -131,6 +147,7 @@ function renderOrderDetails(data) {
     document.getElementById('details').innerHTML = html;
     document.getElementById('orderTotal').innerHTML = orderTotal;
     document.getElementById('itemTotal').innerHTML = itemTotal;
+    
     }
     
 

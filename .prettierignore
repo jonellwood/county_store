@@ -5,3 +5,6 @@ functions/renderOrderCostSummary.js
 functions/renderProduct.js
 StoreAdmin/pages/functions/renderRequestList.js
 StoreAdmin/pages/functions/renderOrderDetails.js
+StoreAdmin/pages/functions/createActionPopover.js
+StoreAdmin/pages/functions/renderSingleRequest.js
+StoreAdmin/pages/functions/renderProductOptionsForEdit.js

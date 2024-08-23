@@ -147,7 +147,7 @@ include "components/viewHead.php"
 
 
                     <li>
-                        <a href="https://store.berkeleycountysc.gov/admin/pages/sign-in.php" target="_blank">
+                        <a href="https://store.berkeleycountysc.gov/admin/signin/signin.php" target="_blank">
                             <p> <img src="assets/icons/admin-access.svg" alt="admin" width="30">Admin Access</p>
                         </a>
                     </li>

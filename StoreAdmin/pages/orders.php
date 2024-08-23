@@ -5,7 +5,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -33,78 +33,78 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     <!-- SCRIPT FOR ORDERED -->
     <script>
-        function updateApproved(id) {
+    function updateApproved(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/itemordered.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/itemordered.php?id=" + id, true);
+        ajax.send();
 
-            alert("Item Marked as Ordered!!");
-            window.location.href = '../pages/orders.php';
-        }
+        alert("Item Marked as Ordered!!");
+        window.location.href = '../pages/orders.php';
+    }
     </script>
 
     <!-- SCRIPT FOR CANCELLED / DENIED -->
     <script>
-        function updateDenied(id) {
+    function updateDenied(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/denied.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/denied.php?id=" + id, true);
+        ajax.send();
 
-            ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function() {
 
-                if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) {
 
-                    alert("Request Has Been Cancelled as Item is either Out of stock or Discontinued");
-                    window.location.href = '../pages/orders.php';
+                alert("Request Has Been Cancelled as Item is either Out of stock or Discontinued");
+                window.location.href = '../pages/orders.php';
 
-                }
             }
         }
+    }
     </script>
 
     <!-- SCRIPT FOR SIZE -->
     <script>
-        function updateSize(id) {
+    function updateSize(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/add-comment-size.php?order_details_id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/add-comment-size.php?order_details_id=" + id, true);
+        ajax.send();
 
-            alert(
-                "Item is still Approved, but not available due to non-avaialble size. E-Mail has been sent to the Requestor"
-            );
-            window.location.href = '../pages/orders.php';
-        }
+        alert(
+            "Item is still Approved, but not available due to non-avaialble size. E-Mail has been sent to the Requestor"
+        );
+        window.location.href = '../pages/orders.php';
+    }
     </script>
 
     <!-- SCRIPT FOR COLOR -->
     <script>
-        function updateColor(id) {
+    function updateColor(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/add-comment-color.php?order_details_id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/add-comment-color.php?order_details_id=" + id, true);
+        ajax.send();
 
-            alert(
-                "Item is still Approved, but not available due to non-avaialble color. E-Mail has been sent to the Requestor"
-            );
-            window.location.href = '../pages/orders.php';
-        }
+        alert(
+            "Item is still Approved, but not available due to non-avaialble color. E-Mail has been sent to the Requestor"
+        );
+        window.location.href = '../pages/orders.php';
+    }
     </script>
 
     <!-- SCRIPT FOR BACKORDER -->
     <script>
-        function updateBO(id) {
+    function updateBO(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/add-comment-backordered.php?order_details_id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/add-comment-backordered.php?order_details_id=" + id, true);
+        ajax.send();
 
-            alert("Item is still Approved, but not available as it is on BackOrder. E-Mail has been sent to the Requestor");
-            window.location.href = '../pages/orders.php';
-        }
+        alert("Item is still Approved, but not available as it is on BackOrder. E-Mail has been sent to the Requestor");
+        window.location.href = '../pages/orders.php';
+    }
     </script>
 </head>
 
@@ -142,7 +142,9 @@ if (mysqli_num_rows($result) > 0) {
 
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+        id="sidenav-main">
         <?php include "./sidenav.php" ?>
         <!-- <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -260,7 +262,8 @@ if (mysqli_num_rows($result) > 0) {
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 <!-- <center>
                     <img src="./../assets/img//bcg-hz-lblue.png" class="navbar-brand-img h-75 w-75" alt="main_logo">
@@ -308,15 +311,20 @@ if (mysqli_num_rows($result) > 0) {
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Approved Request For</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Description of Item</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Number of Items in Approved Request</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Total Cost of Approved Request</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 Date Requested</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
@@ -497,9 +505,10 @@ if (mysqli_num_rows($result) > 0) {
                                 <div class="col-lg-6 mb-lg-0 mb-4">
                                     <div class="copyright text-center text-sm text-muted text-lg-start">
                                         © <script>
-                                            document.write(new Date().getFullYear())
+                                        document.write(new Date().getFullYear())
                                         </script>,
-                                        <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold" target="_blank">The Berkeley County IT Team</a>
+                                        <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold"
+                                            target="_blank">The Berkeley County IT Team</a>
                                     </div>
                                 </div>
                             </div>
@@ -513,25 +522,25 @@ if (mysqli_num_rows($result) > 0) {
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
         }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
     </script>
 </body>
 
 </html>
 <!-- LINE SEPERATOR BETWEEN EACH ENTRY -->
 <style>
-    .table> :not(:first-child) {
-        border-top: 1px groove whitesmoke;
-        /* border-top: thin inset currentColor; */
-    }
+.table> :not(:first-child) {
+    border-top: 1px groove whitesmoke;
+    /* border-top: thin inset currentColor; */
+}
 
-    td img {
-        width: 50px;
-    }
+td img {
+    width: 50px;
+}
 </style>

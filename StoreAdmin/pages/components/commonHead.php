@@ -57,6 +57,7 @@
                                 Store
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <details name="nav" class="nav-link">
                                 <summary>
@@ -147,6 +148,7 @@
                                 </span>
                             </a>
                         </li>
+
                 </div>
                 <!-- </ul> -->
                 </details>
@@ -173,76 +175,7 @@
     <div class="div7" id="div7"></div>
     </div>
 
-    <!-- <div id="mens-menu-popover" popover=manual>
-        <button popovertarget="mens-menu-popover" popovertargetaction="hide" class="btn-close ms-2 mb-1" role="button">
-            <span aria-hidden="true"></span>
-        </button>
-        <ul class="list-group">
-            <li>
-                <a href="mens-shirts-view.php"
-                    class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-                    Shirts
-                    <img src="assets/icons/polo-shirt.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-            <li>
-                <a href="mens-outerwear-view.php"
-                    class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
-                    Outerwear
-                    <img src="assets/icons/winter-jacket.svg" alt="jacket" width="25px" />
-                </a>
-            </li>
-            <li>
-                <a href="mens-sweatshirts-view.php"
-                    class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-                    Sweatshirts
-                    <img src="assets/icons/hoodie-jacket.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-            <li> <a href="mens-bnt-view.php"
-                    class="list-group-item list-group-item-info d-flex justify-content-between align-items-center">
-                    Big & Tall
-                    <img src="assets/icons/shirt.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div id="womans-menu-popover" popover=manual>
-        <button popovertarget="womans-menu-popover" popovertargetaction="hide" class="btn-close ms-2 mb-1"
-            role="button">
-            <span aria-hidden="true"></span>
-        </button>
-        <ul class="list-group">
-            <li>
-                <a href="ladies-shirts-view.php"
-                    class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-                    Shirts
-                    <img src="assets/icons/polo-shirt.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-            <li>
-                <a href="ladies-outerwear-view.php"
-                    class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-                    Outerwear
-                    <img src="assets/icons/winter-jacket.svg" alt="jacket" width="25px" />
-                </a>
-            </li>
-            <li>
-                <a href="ladies-sweatshirts-view.php"
-                    class="list-group-item list-group-item-dark d-flex justify-content-between align-items-center">
-                    Sweatshirts
-                    <img src="assets/icons/hoodie-jacket.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-            <li>
-                <a href="ladies-plus-view.php"
-                    class="list-group-item list-group-item-danger d-flex justify-content-between align-items-center">
-                    Plus Size
-                    <img src="assets/icons/shirt.svg" alt="shirt" width="25px" />
-                </a>
-            </li>
-        </ul>
-    </div> -->
+
 
 
     <script>

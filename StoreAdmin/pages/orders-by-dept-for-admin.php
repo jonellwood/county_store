@@ -3,14 +3,14 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
-if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
-        header("Location: 401.php");
-        exit;
-    } 
+if (isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
+    header("Location: 401.php");
+    exit;
+}
 
 ?>
 <!DOCTYPE html>

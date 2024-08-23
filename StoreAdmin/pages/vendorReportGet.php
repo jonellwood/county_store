@@ -4,7 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -15,28 +15,53 @@ $uid = $_GET['uid'];
 $DEPT = $_SESSION["empNumber"];
 $ROLE = $_SESSION["role_name"];
 $data = [];
-$sql = "SELECT order_inst_order_details_id.order_inst_id,order_inst_order_details_id.order_details_id, ord_ref.product_code,
-            ord_ref.size_name, ord_ref.quantity, ord_ref.color_id,
-            ord_ref.line_item_total, ord_ref.logo, ord_ref.dept_patch_place,
-            ord_ref.logo_fee, ord_ref.tax, ord_ref.pre_tax_price, ord_ref.vendor_id, ord_ref.vendor,
-            order_inst.po_number, dep_ref.dep_name, ord_ref.rf_first_name, ord_ref.rf_last_name, ord_ref.product_name, ord_ref.status, ord_ref.order_id, ord_ref.comment
-        FROM
-            uniform_orders.order_inst_order_details_id
-        RIGHT JOIN
-            ord_ref ON order_inst_order_details_id.order_details_id = ord_ref.order_details_id
-        RIGHT JOIN
-            dep_ref ON ord_ref.department = dep_ref.dep_num
-        JOIN 
-            order_inst on order_inst.order_inst_id = order_inst_order_details_id.order_inst_id
-        WHERE
-            order_inst_order_details_id.order_inst_id = '$uid'
-        -- GROUP BY
-        --     order_inst_order_details_id.order_inst_id, ord_ref.product_code, ord_ref.size_name, 
-        --     ord_ref.quantity, ord_ref.color_id, ord_ref.line_item_total, ord_ref.logo, 
-        --     ord_ref.dept_patch_place, ord_ref.logo_fee, ord_ref.pre_tax_price, ord_ref.vendor_id, 
-        --     order_inst.po_number, dep_ref.dep_name
-        ORDER BY
-            ord_ref.color_id";
+$sql = "SELECT 
+        order_inst_order_details_id.order_inst_id,
+        order_inst_order_details_id.order_details_id, 
+        order_details.product_id,
+        order_details.price_id,
+        order_details.size_id, 
+        order_details.quantity, 
+        order_details.color_id,
+        order_details.line_item_total, 
+        order_details.logo, 
+        order_details.dept_patch_place,
+        order_details.logo_fee, 
+        order_details.tax, 
+        order_details.item_price as pre_tax_price, 
+        order_inst_order_details_id.vendor_id, 
+        vendors.name,
+        order_inst.po_number, 
+        dep_ref.dep_name, 
+        orders.customer_id,
+        customers.first_name as rf_first_name,
+        customers.last_name as rf_last_name,
+        order_details.order_id, 
+        products_new.name as product_name,
+        products_new.code as product_code,
+        order_details.status_id,
+        order_details.status,
+        order_details.comment,
+        sizes_new.size_name
+    FROM
+        uniform_orders.order_inst_order_details_id
+    RIGHT JOIN
+        ord_ref ON order_inst_order_details_id.order_details_id = ord_ref.order_details_id
+    RIGHT JOIN
+        dep_ref ON ord_ref.department = dep_ref.dep_num
+    JOIN 
+        order_inst on order_inst.order_inst_id = order_inst_order_details_id.order_inst_id
+    JOIN vendors on vendors.id = order_inst_order_details_id.vendor_id
+    JOIN order_details on order_details.order_details_id = order_inst_order_details_id.order_details_id
+    JOIN orders on orders.order_id = order_details.order_id
+    JOIN customers on customers.customer_id = orders.customer_id
+    JOIN products_new on products_new.product_id = order_details.product_id
+    JOIN prices on order_details.product_id = prices.product_id and prices.size_id = order_details.size_id
+    JOIN sizes_new on order_details.size_id = sizes_new.size_id COLLATE utf8_unicode_ci
+    WHERE
+        order_inst_order_details_id.order_inst_id = '$uid'
+    ORDER BY
+        ord_ref.color_id";
 
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {

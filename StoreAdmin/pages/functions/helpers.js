@@ -42,8 +42,12 @@ function money_format(amount) {
 }
 
 function extractDate(inputString) {
-	const parts = inputString.split(' ');
-	return parts[0];
+	if (inputString == null) {
+		return 'none';
+	} else {
+		const parts = inputString.split(' ');
+		return parts[0];
+	}
 }
 
 function extractDateFromDB(inputString) {

@@ -5,7 +5,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -78,137 +78,137 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
     <script>
-        function updateApproved(id) {
+    function updateApproved(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/approved.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/approved.php?id=" + id, true);
+        ajax.send();
 
-            alert("Request Has Been Approved!!");
-            // window.location.href = '../pages/requests.php';
-            document.location.reload();
-        }
+        alert("Request Has Been Approved!!");
+        // window.location.href = '../pages/requests.php';
+        document.location.reload();
+    }
     </script>
     <script>
-        function grabTotal(ORDID, EMPID) {
-            var ajax = new XMLHttpRequest();
-            var gToats = 0;
-            ajax.open("POST", "emptotal.php?ORDID=" + ORDID + "&EMPID=" + EMPID, true);
-            ajax.send();
-            console.log('Ajax sent with ID: ' + ORDID);
-            console.log('Ajax sent with EmpID: ' + EMPID);
-            ajax.onreadystatechange = function() {
-                if (this.readyState === 4 && this.status === 200) {
-                    var response = JSON.parse(this.responseText)
-                    console.log(response);
-                    // console.log('total is ' + response[0].total);
-                    var html = "<div class='modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg'>"
-                    html += "<div class='modal-content'>"
-                    html += "<div class='modal-header'>";
-                    html += "<h5 class='modal-title' id='exampleModalLabel'>Uniform Requests for " + response[0]
-                        .empName + "</h5>";
-                    html +=
-                        "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button></div>";
-                    html += "<div class='modal-body'><div id='wrapper'><div id='content'>"
+    function grabTotal(ORDID, EMPID) {
+        var ajax = new XMLHttpRequest();
+        var gToats = 0;
+        ajax.open("POST", "emptotal.php?ORDID=" + ORDID + "&EMPID=" + EMPID, true);
+        ajax.send();
+        console.log('Ajax sent with ID: ' + ORDID);
+        console.log('Ajax sent with EmpID: ' + EMPID);
+        ajax.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                var response = JSON.parse(this.responseText)
+                console.log(response);
+                // console.log('total is ' + response[0].total);
+                var html = "<div class='modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg'>"
+                html += "<div class='modal-content'>"
+                html += "<div class='modal-header'>";
+                html += "<h5 class='modal-title' id='exampleModalLabel'>Uniform Requests for " + response[0]
+                    .empName + "</h5>";
+                html +=
+                    "<button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button></div>";
+                html += "<div class='modal-body'><div id='wrapper'><div id='content'>"
 
-                    html += "<table><tr>";
-                    html += "<th width=75%><strong>Request Details</strong></th>";
-                    html += "<th width=75%><strong>Employee Has Submitted</strong></th>";
-                    html += "</tr>";
-                    html += "<tr><td>Current Status: </td>";
-                    html += "<td>" + response[0].status + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Spent On Employee FY23: </td>";
-                    html += "<td><font color='green'><strong>$ " + response[1].gToats.toFixed(2) +
-                        "</td></tr></font></strong>"
-                    // end row
-                    html += "<tr><td>Approved So Far: </td>";
-                    html += "<td><font color='green'><strong>$ " + response[2].gToats1.toFixed(2) +
-                        "</td></tr></font></strong>"
-                    // end row
-                    html += "<tr><td>Department</td>";
-                    html += "<td>" + response[0].deptName + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Order ID</td>";
-                    html += "<td>" + response[0].order_id + "</td></tr>";
-                    // end row
+                html += "<table><tr>";
+                html += "<th width=75%><strong>Request Details</strong></th>";
+                html += "<th width=75%><strong>Employee Has Submitted</strong></th>";
+                html += "</tr>";
+                html += "<tr><td>Current Status: </td>";
+                html += "<td>" + response[0].status + "</td></tr>";
+                // end row
+                html += "<tr><td>Spent On Employee FY23: </td>";
+                html += "<td><font color='green'><strong>$ " + response[1].gToats.toFixed(2) +
+                    "</td></tr></font></strong>"
+                // end row
+                html += "<tr><td>Approved So Far: </td>";
+                html += "<td><font color='green'><strong>$ " + response[2].gToats1.toFixed(2) +
+                    "</td></tr></font></strong>"
+                // end row
+                html += "<tr><td>Department</td>";
+                html += "<td>" + response[0].deptName + "</td></tr>";
+                // end row
+                html += "<tr><td>Order ID</td>";
+                html += "<td>" + response[0].order_id + "</td></tr>";
+                // end row
 
-                    html += "<tr><td>Date of Request</td>";
-                    html += "<td>" + response[0].created + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Number of Items Employee is Requesting</td>";
-                    html += "<td>" + response[0].quantity + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Price per Item</td>";
-                    html += "<td>$ " + response[0].product_price + "</td><tr>";
-                    // end row
-                    html += "<tr><td>Total Cost of ALL Items</td>";
-                    html += "<td><strong><font color = 'red'> $ " + response[0].line_item_total +
-                        "</strong></font></td></tr>";
-                    // end row
-                    html += "<tr><td>Items Being Requested</td>";
-                    html += "<td>" + response[0].product_name + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Size Employee Has Chosen</td>";
-                    html += "<td>" + response[0].size_name + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Color Employee has Chosen</td>";
-                    html += "<td>" + response[0].color_id + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Comment from Employee</td>";
-                    html += "<td>" + response[0].comment + "</td></tr>";
-                    // end row
-                    html += "<tr><td>Logo Employee has Chosen:</td>";
-                    html += "<td> <img src='../../" + response[0].logo +
-                        "' style='background-color: #67748e !important'></td></tr>";
-                    // end row
-                    html += "<tr><td>Department Name Placement:</td>";
-                    html += "<td>" + response[0].dept_patch_place + "</td></tr>";
-                    // end row
-                    html += "</table>";
-                    // end of special options
-                    html += "</div>";
-                    html += "</div>";
+                html += "<tr><td>Date of Request</td>";
+                html += "<td>" + response[0].created + "</td></tr>";
+                // end row
+                html += "<tr><td>Number of Items Employee is Requesting</td>";
+                html += "<td>" + response[0].quantity + "</td></tr>";
+                // end row
+                html += "<tr><td>Price per Item</td>";
+                html += "<td>$ " + response[0].product_price + "</td><tr>";
+                // end row
+                html += "<tr><td>Total Cost of ALL Items</td>";
+                html += "<td><strong><font color = 'red'> $ " + response[0].line_item_total +
+                    "</strong></font></td></tr>";
+                // end row
+                html += "<tr><td>Items Being Requested</td>";
+                html += "<td>" + response[0].product_name + "</td></tr>";
+                // end row
+                html += "<tr><td>Size Employee Has Chosen</td>";
+                html += "<td>" + response[0].size_name + "</td></tr>";
+                // end row
+                html += "<tr><td>Color Employee has Chosen</td>";
+                html += "<td>" + response[0].color_id + "</td></tr>";
+                // end row
+                html += "<tr><td>Comment from Employee</td>";
+                html += "<td>" + response[0].comment + "</td></tr>";
+                // end row
+                html += "<tr><td>Logo Employee has Chosen:</td>";
+                html += "<td> <img src='../../" + response[0].logo +
+                    "' style='background-color: #67748e !important'></td></tr>";
+                // end row
+                html += "<tr><td>Department Name Placement:</td>";
+                html += "<td>" + response[0].dept_patch_place + "</td></tr>";
+                // end row
+                html += "</table>";
+                // end of special options
+                html += "</div>";
+                html += "</div>";
 
-                    html += "<div class='modal-footer'>";
-                    html +=
-                        "<button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Close</button>";
-                    html += "<button  class='btn btn-success' value='" + response[0].order_details_id +
-                        "' class='btn btn-outline-info' onclick='updateApproved(this.value)'>Approve</button>"
-                    html += "<button  class='btn btn-danger' value='" + response[0].order_details_id +
-                        "' class='btn btn-outline-info' onclick='updateDenied(this.value)'>Deny</button>";
+                html += "<div class='modal-footer'>";
+                html +=
+                    "<button type='button' class='btn btn-secondary' data-bs-toggle='modal' data-bs-target='#exampleModal'>Close</button>";
+                html += "<button  class='btn btn-success' value='" + response[0].order_details_id +
+                    "' class='btn btn-outline-info' onclick='updateApproved(this.value)'>Approve</button>"
+                html += "<button  class='btn btn-danger' value='" + response[0].order_details_id +
+                    "' class='btn btn-outline-info' onclick='updateDenied(this.value)'>Deny</button>";
 
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-
-
-                }
-                document.getElementById("exampleModal").innerHTML = html
+                html += "</div>";
+                html += "</div>";
+                html += "</div>";
 
 
             }
+            document.getElementById("exampleModal").innerHTML = html
+
+
         }
+    }
     </script>
 
     <script>
-        function updateDenied(id) {
+    function updateDenied(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/denied.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/denied.php?id=" + id, true);
+        ajax.send();
 
-            ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function() {
 
-                if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) {
 
-                    alert("Request Has Been Denied");
-                    // window.location.href = '../pages/requests.php';
-                    document.location.reload();
+                alert("Request Has Been Denied");
+                // window.location.href = '../pages/requests.php';
+                document.location.reload();
 
-                }
             }
         }
+    }
     </script>
 </head>
 
@@ -218,7 +218,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+        id="sidenav-main">
         <?php include "./sidenav.php" ?>
         <!-- <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -337,7 +339,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <!-- </aside> -->
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
-            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+                data-scroll="false">
                 <div class="container-fluid py-1 px-3">
                     <!-- <center>
                     <img src="./../assets/img//bcg-hz-lblue.png" class="navbar-brand-img h-75 w-75" alt="main_logo">
@@ -401,17 +404,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Employee Request is For</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Description of Item</th>
-                                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                     Number of Items in Request</th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Total Cost of Request</th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Date Requested</th>
-                                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Requestor</th>
                                                 <th class="text-secondary opacity-7"></th>
                                             </tr>
@@ -528,11 +537,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <div class="container-fluid">
                                                 <div class="row align-items-center justify-content-lg-between">
                                                     <div class="col-lg-6 mb-lg-0 mb-4">
-                                                        <div class="copyright text-center text-sm text-muted text-lg-start">
+                                                        <div
+                                                            class="copyright text-center text-sm text-muted text-lg-start">
                                                             © <script>
-                                                                document.write(new Date().getFullYear())
+                                                            document.write(new Date().getFullYear())
                                                             </script>,
-                                                            <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold" target="_blank">The Berkeley
+                                                            <a href="https://berkeleycountysc.gov/dept/it/"
+                                                                class="font-weight-bold" target="_blank">The Berkeley
                                                                 County
                                                                 IT Team</a>
                                                             <p id="gTotal"></p>
@@ -544,18 +555,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 </div>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 ...
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
                                                 <button type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
@@ -582,29 +596,30 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
         <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
         <script>
-            var win = navigator.platform.indexOf('Win') > -1;
-            if (win && document.querySelector('#sidenav-scrollbar')) {
-                var options = {
-                    damping: '0.5'
-                }
-                Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
             }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
         </script>
-        <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 
         <script>
-            $(document).on('change', '#logo', function() {
-                var id = $('#logo').val().split('|')[0];
-                // console.log('id is... ' + id);
-                var logo = $('#logo').val().split('|')[1];
-                // console.log('Logo is.... ' + logo);
+        $(document).on('change', '#logo', function() {
+            var id = $('#logo').val().split('|')[0];
+            // console.log('id is... ' + id);
+            var logo = $('#logo').val().split('|')[1];
+            // console.log('Logo is.... ' + logo);
 
-                $.ajax({
-                    url: '../pages/setLogo.php?id=' + id + '&logo=' + String(logo),
-                    method: 'GET',
-                    success: console.log('request sent'),
-                })
-            });
+            $.ajax({
+                url: '../pages/setLogo.php?id=' + id + '&logo=' + String(logo),
+                method: 'GET',
+                success: console.log('request sent'),
+            })
+        });
         </script>
 
 
@@ -613,28 +628,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
 <style>
-    .Approved {
-        display: none !important;
-    }
+.Approved {
+    display: none !important;
+}
 
-    .Denied {
-        display: none !important;
-    }
+.Denied {
+    display: none !important;
+}
 
-    .Ordered {
-        display: none !important;
-    }
+.Ordered {
+    display: none !important;
+}
 
-    td img {
-        width: 150px;
-    }
+td img {
+    width: 150px;
+}
 
-    .beta-offer {
-        font-family: monospace;
-        display: flex;
-        justify-content: center;
-        color: white;
-        font-size: larger;
-        color: white;
-    }
+.beta-offer {
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: larger;
+    color: white;
+}
 </style>

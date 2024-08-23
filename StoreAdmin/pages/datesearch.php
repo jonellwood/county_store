@@ -5,7 +5,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -57,46 +57,49 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     ?>
 
     <script>
-        function updateOrdered(id) {
-            console.log(id);
-            const start = <?php echo strval($datestart) ?>;
-            console.log(start);
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/itemordered.php?id=" + id, true);
-            ajax.send();
+    function updateOrdered(id) {
+        console.log(id);
+        const start = <?php echo strval($datestart) ?>;
+        console.log(start);
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/itemordered.php?id=" + id, true);
+        ajax.send();
 
-            alert("Marked as Ordered");
-            window.location.href = '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
-        }
+        alert("Marked as Ordered");
+        window.location.href =
+            '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
+    }
     </script>
     <script>
-        function updateApproved(id) {
+    function updateApproved(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/approved.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/approved.php?id=" + id, true);
+        ajax.send();
 
-            alert("Marked As Approved");
-            window.location.href = '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
-        }
+        alert("Marked As Approved");
+        window.location.href =
+            '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
+    }
     </script>
     <script>
-        function updateDenied(id) {
+    function updateDenied(id) {
 
-            var ajax = new XMLHttpRequest();
-            ajax.open("POST", "../pages/denied.php?id=" + id, true);
-            ajax.send();
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "../pages/denied.php?id=" + id, true);
+        ajax.send();
 
-            ajax.onreadystatechange = function() {
+        ajax.onreadystatechange = function() {
 
-                if (this.readyState == 4 && this.status == 200) {
+            if (this.readyState == 4 && this.status == 200) {
 
-                    alert("Changed to Denied Status");
-                    window.location.href = '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
+                alert("Changed to Denied Status");
+                window.location.href =
+                    '../pages/datesearch.php?datestart=<?php echo $datestart; ?>&dateend=<?php echo $dateend; ?>';
 
-                }
             }
         }
+    }
     </script>
 </head>
 
@@ -106,9 +109,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <body class="g-sidenav-show   bg-gray-100">
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
-    <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+        id="sidenav-main">
         <div class="sidenav-header">
-            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
             <a class="navbar-brand m-0" href="../../StoreAdmin/index.php " target="_blank">
                 <img src="../../StoreAdmin/assets/img/bcg12.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold">Berkeley County Store</span>
@@ -119,7 +125,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link " href="../index.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-laptop text-primary text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Dashboard</span>
@@ -127,7 +134,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="requests.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bulb-61 text-danger text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Employee Requests</span>
@@ -135,7 +143,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="orders.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-sound-wave text-success text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Approvals To Be Ordered</span>
@@ -143,7 +152,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="received.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-spaceship text-secondary text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Ordered Items</span>
@@ -151,7 +161,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="completed.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-satisfied text-warning text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">All Received Items</span>
@@ -159,7 +170,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="overview.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bag-17 text-info text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Requests Overview</span>
@@ -170,7 +182,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="logout.php">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-istanbul text-dark text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">Sign Out</span>
@@ -184,7 +197,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="card-body text-center p-3 w-100 pt-0">
                     <div class="docs-info">
                         <h6 class="mb-0">Need help?</h6>
-                        <p class="text-xs font-weight-bold mb-0"><a href="../assets/img/Berkeley County Employee Store.pdf" target="_blank"><u>County Store Manual</u></p></a>
+                        <p class="text-xs font-weight-bold mb-0"><a
+                                href="../assets/img/Berkeley County Employee Store.pdf" target="_blank"><u>County Store
+                                    Manual</u></p></a>
                     </div>
                 </div>
             </div>
@@ -207,7 +222,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </div>
                     <div class="modal-body">
                         <form action="email-script2.php" method="post">
-                            <textarea id="message" name="message" class="form-control" placeholder="Please Describe how we can assist in detail" required></textarea>
+                            <textarea id="message" name="message" class="form-control"
+                                placeholder="Please Describe how we can assist in detail" required></textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -222,7 +238,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </aside>
     <main class="main-content position-relative border-radius-lg ">
         <!-- Navbar -->
-        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
+            data-scroll="false">
             <div class="container-fluid py-1 px-3">
                 <center>
                     <img src="./../assets/img//bcg-hz-lblue.png" class="navbar-brand-img h-75 w-75" alt="main_logo">
@@ -257,7 +274,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            <h6>Every Employee Request Starting on <font color="green"><?php echo $datestart ?> </font>and Ending on <font color="red"> <?php echo $dateend ?></font>
+                            <h6>Every Employee Request Starting on <font color="green"><?php echo $datestart ?> </font>
+                                and Ending on <font color="red"> <?php echo $dateend ?></font>
                             </h6>
                         </div>
 
@@ -266,11 +284,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employee Making Request</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status of Request</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Number of Items in Request</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total Cost of Request</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Requested</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Employee Making Request</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Status of Request</th>
+                                            <th
+                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Number of Items in Request</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Total Cost of Request</th>
+                                            <th
+                                                class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Date Requested</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
@@ -459,9 +487,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <div class="col-lg-6 mb-lg-0 mb-4">
                                     <div class="copyright text-center text-sm text-muted text-lg-start">
                                         © <script>
-                                            document.write(new Date().getFullYear())
+                                        document.write(new Date().getFullYear())
                                         </script>,
-                                        <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold" target="_blank">The Berkeley County IT Team</a>
+                                        <a href="https://berkeleycountysc.gov/dept/it/" class="font-weight-bold"
+                                            target="_blank">The Berkeley County IT Team</a>
                                     </div>
                                 </div>
                             </div>
@@ -475,21 +504,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
         }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
     </script>
 </body>
 
 </html>
 <!-- LINE SEPERATOR BETWEEN EACH ENTRY -->
 <style>
-    .table> :not(:first-child) {
-        border-top: 1px groove whitesmoke;
-        /* border-top: thin inset currentColor; */
-    }
+.table> :not(:first-child) {
+    border-top: 1px groove whitesmoke;
+    /* border-top: thin inset currentColor; */
+}
 </style>

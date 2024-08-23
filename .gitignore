@@ -137,3 +137,6 @@ utils/__pycache__
 utils/image-pairing
 utils/color_response.json
 utils/confetti.py
+StoreAdmin/pages/data
+StoreAdmin/pages/signin/config.php
+StoreAdmin/signin/dbConfig.php

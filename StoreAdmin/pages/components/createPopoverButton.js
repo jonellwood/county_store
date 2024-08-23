@@ -1,6 +1,6 @@
 function createPopoverButton(popover, text) {
 	var button = `
-    <button class="button" popovertarget="${popover}" popovertargetaction="show">
+    <button class="btn btn-outline-dark" popovertarget="${popover}" popovertargetaction="show">
             ${text}   
     </button>`;
 	return button;

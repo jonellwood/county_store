@@ -15,11 +15,13 @@
 		"dont",
 		"empid",
 		"GOBACK",
+		"loggedin",
 		"mando",
 		"popovertarget",
 		"priceval",
 		"producttype",
 		"sess",
+		"signin",
 		"sizeid",
 		"sizename",
 		"Slideout"

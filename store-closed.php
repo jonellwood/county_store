@@ -1,11 +1,11 @@
 <div class="closed-img-holder">
     <!-- <img src=" ./assets/images/store-closed-sad-mouse-2.jpeg" alt="store-closed" /> -->
-    <img src=" ./assets/images/rain_duck.jpeg" alt="store-closed" />
+    <img src="store-maint-page-image.jpg" alt="store-closed" />
     <!-- <img src=" ./assets/images/store-closed.jpg" alt="store-closed" /> -->
 </div>
 <div class="info">
     <!-- <p> "The mice are taking a break to refill the cheese supply. We'll be back before you can say 'squeak!' (Friday the 12th at the latest)"</p> -->
-    <p> We set aside a few maintenance tasks for a rainy day ... have ya looked outside? ... be back soon.</p>
+    <p> Back after lunch </p>
 </div>
 <style>
 body {

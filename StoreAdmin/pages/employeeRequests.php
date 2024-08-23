@@ -4,7 +4,7 @@ include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
-    header("location: sign-in.php");
+    header("location: ../signin/signin.php");
 
     exit;
 }
@@ -22,6 +22,9 @@ include "components/commonHead.php";
 <script src="functions/renderDepartmentTotals.js"></script>
 <script src="functions/renderEmployeeTotals.js"></script>
 <script src="functions/helpers.js"></script>
+<script src="functions/createActionPopover.js"></script>
+<script src="functions/createWholeOrderActionPopover.js"></script>
+<script src="functions/logAction.js"></script>
 
 <script>
 let firstData = [];
@@ -33,6 +36,8 @@ async function getRequests() {
         .then((data) => {
             firstData.push(data);
             renderRequestList(data)
+            clickFirst();
+
             // getDepartmentTotals(data[0].department)
         })
 }
@@ -40,7 +45,9 @@ getRequests();
 
 function makeDeptTotalsButton() {
     var button = createPopoverButton('totals-popover', 'See Totals');
-    document.getElementById('div7').innerHTML = button;
+    const target = document.getElementById('totals-button');
+    // console.log(target);
+    target.innerHTML = button;
 }
 
 
@@ -55,7 +62,9 @@ async function getOrderDetails(order_id) {
             getDepartmentTotals(data[0].department)
             getEmpTotals(data[0].emp_id);
 
+
         })
+        .then(() => makeDeptTotalsButton())
         .catch((error) => {
             console.error("Error in getOrderDetails: ", error);
         })
@@ -69,7 +78,7 @@ async function getDepartmentTotals(dept) {
         .then((data) => {
             console.log(data);
             renderDepartmentTotals(data);
-            makeDeptTotalsButton()
+            // makeDeptTotalsButton()
 
 
         })
@@ -83,21 +92,18 @@ async function getEmpTotals(emp) {
         })
 }
 
-// function clickFirst() {
-//     var mainListHolder = document.getElementById('main-list-holder');
-//     if (mainListHolder) {
-//         var table = mainListHolder.querySelector("table");
-//         if (table) {
-//             var firstRow = table.querySelector("tbody tr:first-child");
-//             if (firstRow) {
-//                 firstRow.click();
-//                 introJs().setOption("dontShowAgain", true).start();
-//                 // introJs().addHints();
-//                 // introJs().start();
-//             }
-//         }
-//     }
-// }
+function clickFirst() {
+    var mainListHolder = document.getElementById('main-list-holder');
+    if (mainListHolder) {
+        var table = mainListHolder.querySelector("table");
+        if (table) {
+            var firstRow = table.querySelector("tbody tr:first-child");
+            if (firstRow) {
+                firstRow.click();
+            }
+        }
+    }
+}
 
 // function deleteCookie(cookieName) {
 //     if (document.cookie.includes('introjs-dontShowAgain')) {
@@ -173,12 +179,12 @@ function genPOreq(id) {
             </div>
         </div>
     </div> -->
-<button id="showButton">Show</button>
+<!-- <button id="showButton">Show</button> -->
 <!-- CONVERTING from off-canvas to popover. This is the popover -->
-<div id="not-off-canvas" popover=manual>
-    <button class="button close-btn" popovertarget="not-off-canvas" popovertargetaction="hide">
-        <span aria-hidden=”true”>❌</span>
-        <span class="sr-only">Close</span>
+<div id="not-off-canvas" popover=manual class="action-options-popover">
+    <button class="btn btn-outline-dark btn-close" popovertarget="not-off-canvas" popovertargetaction="hide">
+        <span aria-hidden=”true”></span>
+        <span class="sr-only"></span>
     </button>
     <div class="request-action-options">
         <!-- <p>Request Line Item Action Options</p> -->
@@ -232,6 +238,7 @@ function genPOreq(id) {
         <button onclick='printReq(this)' type='button'>Print</button>
     </span>
 </div>
+
 <div id="receive-whole-order-confirm" popover=manual>
     <button class="button close-btn" popovertarget="receive-whole-order-confirm" popovertargetaction="hide">
         <span aria-hidden=”true”>❌</span>
@@ -308,26 +315,29 @@ function setLineItemSession(order_details_id, status) {
             // console.log(data);
             var html = '';
             if (status == 'Ordered') {
-                html += "<button class='receive' onclick='receiveItem(" + order_details_id +
+                html += "<button class='btn btn-receive' onclick='receiveItem(" + order_details_id +
                     ")' popovertarget='action-jackson' popovertargetaction='show'> Receive </button>";
-                html += "<button class='approve' disabled>Approve</button>";
-                html += "<button class='deny' disabled>Deny</button>";
-                html += "<button class='edit' disabled>Edit</button>";
+                html += "<button class='btn btn-approve' disabled>Approve</button>";
+                html += "<button class='btn btn-deny' disabled>Deny</button>";
+                html += "<button class='btn btn-edit' disabled>Edit</button>";
                 html += "<p>Orders in this status can not be edited.</p>"
             } else if (status == 'Received') {
-                html += "<button class='approve' disabled>Approve</button>";
-                html += "<button class='deny' disabled>Deny</button>";
-                html += "<button class='edit' disabled>Edit</button>";
+                html += "<button class='btn btn-approve' disabled>Approve</button>";
+                html += "<button class='btn btn-deny' disabled>Deny</button>";
+                html += "<button class='btn btn-edit' disabled>Edit</button>";
                 html += "<p>Orders in this status can not be edited.</p>"
+            } else if (status == 'Approved') {
+                html +=
+                    `
+                    <button class='btn btn-deny' onclick='createActionPopover(${order_details_id}, "deny")' popovertarget='action-jackson' popovertargetaction='show'> Deny </button>
+                    <button class='btn btn-comment' onclick='createActionPopover(${order_details_id}, "comment")' popovertarget='action-jackson' popovertargetaction='show'> Comment </button>
+                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"'>Edit</a></button>`
             } else {
-                html += " <button class='approve' onclick='approveRequest(" + order_details_id +
-                    ")' popovertarget='action-jackson' popovertargetaction='show'> Approve </button>";
-                html += "<button class='deny' onclick='denyRequest(" + order_details_id +
-                    ")' popovertarget='action-jackson' popovertargetaction='show'> Deny </button>";
-                html += "<button class='comment' onclick='addComment(" + order_details_id +
-                    ")' popovertarget='action-jackson' popovertargetaction='show'> Comment </button>";
-                html += "<button class='edit'><a href='./edit-request.php?order_id=" + order_details_id +
-                    "'>Edit</a></button>";
+                html +=
+                    `<button class='btn btn-approve' onclick='createActionPopover(${order_details_id}, "approve")' popovertarget='action-jackson' popovertargetaction='show'> Approve </button>
+                    <button class='btn btn-deny' onclick='createActionPopover(${order_details_id}, "deny")' popovertarget='action-jackson' popovertargetaction='show'> Deny </button>
+                    <button class='btn btn-comment' onclick='createActionPopover(${order_details_id}, "comment")' popovertarget='action-jackson' popovertargetaction='show'> Comment </button>
+                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"'>Edit</a></button>`
             };
             document.getElementById('action-buttons').innerHTML = html;
             // showOffCanvas();
@@ -339,107 +349,23 @@ async function getComments(id) {
         .then((res) => res.json())
         .then((data) => {
             // console.log(data);
-            comments =
-                "<table> <tr><th width='50%'>Comment</th><th width='20%'>By</th><th width='20%'>On</th></tr>"
-            for (var c = 0; c < data.length; c++) {
-                comments += "<tr><td>" + data[c].comment + "</td><td>" + data[c].empName + " </td><td>" + data[
-                    c].submitted + "</td></tr>";
+            if (data.length > 0) {
+                comments =
+                    `<table> <tr><th width='50%'>Comment</th><th width='20%'>By</th><th width='20%'>On</th></tr>`
+                for (var c = 0; c < data.length; c++) {
+                    comments +=
+                        `<tr><td> ${data[c].comment ? data[c].comment : ''} </td><td> ${data[c].empName ? data[c].empName : ''}</td><td>${data[c].submitted ? data[c].submitted : ''}</td></tr>`;
+                }
+                comments += "</table>"
+                document.getElementById('display-comments').innerHTML = comments;
+            } else {
+                document.getElementById('display-comments').innerHTML =
+                    "<p class='no-comment'>No comments yet</p>";
             }
-            comments += "</table>"
-            document.getElementById('display-comments').innerHTML = comments;
         })
 }
 
-function receiveItem(id) {
-    // console.log('Receiving ' + id);
-    commentData = getComments(id);
-    var html = "";
-    html +=
-        "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
-    html += "<span aria-hidden='true'> X </span>";
-    html += "<span class='sr-only'> Close </span>";
-    html += "</button>";
-    html += "<h3>Receiving item for order # " + id +
-        ". Enter any comments below - comments are optional for receiving items</h3>";
 
-    html += "<form action='set-request-status.php' method='post'>";
-    html += "<input type='hidden' name='id' value='" + id + "' />";
-    html += "<input type='hidden' name='status' value='Received' />";
-    html += "<textarea name='comment' id='comment' cols='60' rows='5'></textarea>";
-    html += "<br />";
-    html += "<button class='submit-approve' type='submit'>Submit</button>";
-    html += "</form>";
-    html += "<p id='display-comments'></p>";
-    document.getElementById('action-jackson').innerHTML = html;
-}
-
-function approveRequest(id) { // alert('Approving ' + id);
-    commentData = getComments(id);
-    var html = "";
-    html +=
-        "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
-    html += "<span aria-hidden='true'> X </span>";
-    html += "<span class='sr-only'> Close </span>";
-    html += "</button>";
-    html += "<h3>Approving request # " + id + ". Enter any comments below - comments are optional for approvals</h3>";
-
-    // html += "<p></p>"
-    html += "<form action='set-request-status.php' method='post'>";
-    html += "<input type='hidden' name='id' value='" + id + "' />";
-    html += "<input type='hidden' name='status' value='Approved' />";
-    html += "<textarea name='comment' id='comment' cols='60' rows='5'></textarea>";
-    html += "<br />";
-    html += "<button class='submit-approve' type='submit'>Submit</button>";
-    html += "</form>";
-    html += "<p id='display-comments'></p>";
-    document.getElementById('action-jackson').innerHTML = html;
-}
-
-function denyRequest(id) {
-    // alert('DENIED SUCKA ' + id);
-    commentData = getComments(id);
-    var html = "";
-    html +=
-        "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
-    html += "<span aria-hidden='true'> X </span>";
-    html += "<span class='sr-only'> Close </span>";
-    html += "</button>";
-    html += "<h3>Denying request # " + id +
-        ". Enter any comments below - comments are required for denied requests</h3>";
-    // html += "<p></p>"
-    html += "<form action='set-request-status.php' method='post'>";
-    html += "<input type='hidden' name='id' value='" + id + "' />";
-    html += "<input type='hidden' name='status' value='Denied' />";
-    html += "<textarea name='comment' id='comment' cols='60' rows='5' oninput='enableButton()'></textarea>";
-    html += "<br />";
-    html += "<button class='submit-approve' type='submit' disabled id='denySubmit'>Submit</button>";
-    html += "</form>";
-    html += "<p id='display-comments'></p>";
-    document.getElementById('action-jackson').innerHTML = html;
-}
-
-function addComment(id) {
-    // alert('Commenting on ' + id);
-    commentData = getComments(id);
-    var html = "";
-    html +=
-        "<button class='button close-btn' popovertarget='action-jackson' popovertargetaction='hide' onclick='hideOffCanvas()'>";
-    html += "<span aria-hidden='true'> X </span>";
-    html += "<span class='sr-only'> Close </span>";
-    html += "</button>";
-    html += "<h3>Commenting on request # " + id +
-        ". </h3>";
-    // html += "<p></p>"
-    html += "<form action='add-comment-noaction.php' method='post'>";
-    html += "<input type='hidden' name='id' value='" + id + "' />";
-    // html += "<input type='hidden' name='status' value='Denied' />";
-    html += "<textarea name='comment' id='comment' cols='60' rows='5'></textarea>";
-    html += "<br />";
-    html += "<button class='submit-approve' type='submit'>Submit</button>";
-    html += "</form>";
-    html += "<p id='display-comments'></p>";
-    document.getElementById('action-jackson').innerHTML = html;
-}
 
 function unsetLineItemSession() {
     fetch('unsetLineItemSession.php')
@@ -599,7 +525,7 @@ function displayAlert() {
     var fyData = fiscalYear();
     var html = '';
     html +=
-        `<div class="alert-info">
+        `<div class="info-banner">
         🚨 All requests must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>`
     document.getElementById('alert-banner').innerHTML = html
 }
@@ -636,6 +562,7 @@ displayAlert();
     inset-inline-end: 0;
     box-shadow: 0 0 25px -5px #808080;
 
+
     &:popover-open {
         animation: slide 0.5s ease-in-out forwards;
         translate: 0;
@@ -643,28 +570,78 @@ displayAlert();
     }
 }
 
+#not-off-canvas[popover],
+#action-jackson[popover] {
+    transition: display 0.3s allow-discrete, opacity 0.3s, translate 0.3s;
+    transition-timing-function: ease-in;
+    opacity: 0;
+    translate: 0 50%;
+}
 
-
+#not-off-canvas[popover]:popover-open,
+#action-jackson[popover]:popover-open {
+    opacity: 1;
+    translate: 0 0;
+    transition-timing-function: ease-out;
+}
 
 @starting-style {
-    &: popover-open {
-        translate: 100%
+    #action-jackson[popover]:popover-open {
+        opacity: 0;
+        translate: 0 50%;
+    }
+
+    #not-off-canvas[popover]:popover-open {
+        opacity: 0;
+        translate: 0 50%;
     }
 }
 
 /* // !Specific to this page - this alters the commonHead template */
 .div3 {
     grid-area: 2/3/2/5 !important;
+    position: relative;
+    z-index: 1;
 }
 
-/* * {
-    margin: 0;
-} */
+.div6 {
+    align-items: flex-start;
+    position: relative;
+    z-index: 0;
+}
 
-/* html {
-    height: 100%;
-    font-family: bcg;
-} */
+.action-options-popover {
+    width: 30%;
+    min-height: 15%;
+    box-shadow: 0 0 25px -5px #000000;
+}
+
+.action-options-popover[popover] {
+    &:popover-open {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.btn-close {
+    width: fit-content;
+    margin: 10px;
+}
+
+.btn-holder-in-popover {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+}
+
+
 
 
 /* img,
@@ -725,11 +702,22 @@ h6 {
 /* .emp-info-holder, */
 /* .main-list-holder, */
 .main-order-info-holder {
-    /* .dep-info-holder { */
-
     border-top: var(--table-row-alt-bg-color) 15px solid;
     border-bottom: #256141 5px solid;
     margin-top: 25px;
+}
+
+.stats-key-holder {
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-key-holder span:first-child {
+    margin-left: 0;
+}
+
+.stats-key-holder span:last-child {
+    margin-right: 0 !important;
 }
 
 /* .main-list-holder table td,
@@ -740,11 +728,13 @@ h6 {
 .emp-info-holder {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    justify-items: end;
     gap: 15px;
     background-color: #d3d3d3;
-    padding-right: 10px;
+    padding: 10px;
 
+    span {
+        margin-left: 10px;
+    }
 }
 
 /* .dep-info-holder {
@@ -761,11 +751,14 @@ h6 {
     justify-content: space-evenly;
     align-content: flex-start;
     text-wrap: balance;
-
+    font-size: max(1.25vw, 14px);
+    margin-top: 10px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: auto;
-    background-color: #FFFFFF90;
+    background-color: #00000099;
+    color: #FFF;
 
     .approve-order-button {
         margin-top: -5px;
@@ -905,7 +898,7 @@ h6 {
 }
 
 
-/* .request-action-options {
+.request-action-options {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -914,15 +907,15 @@ h6 {
     height: 100%;
     background-color: #f1f1f1;
     padding: 5px;
-} */
+}
 
-/* .action-buttons {
+.action-buttons {
     display: flex;
     align-items: baseline;
     gap: 20px;
     padding-top: 10px;
 
-} */
+}
 
 /* .action-buttons button {
     border-radius: 5px;
@@ -1010,27 +1003,26 @@ h6 {
     box-shadow: 0px 0px 10px 4px rgba(41, 40, 41, 1), inset 0px 0px 10px 0px rgba(135, 55, 5, 1);
 } */
 
-/* #action-jackson {
+#action-jackson {
     width: 50%;
     height: 50%;
     background-color: hsl(0, 0%, 100%);
     color: hsl(224, 10%, 23%);
-    margin-top: 10em;
-    padding: 50px;
-    margin-left: 25em;
-    border: 5px solid hsl(224, 10%, 23%);
+    padding: 20px;
+    border: 3px solid hsl(224, 10%, 23%);
     box-shadow: 0px 0px 80px 20px rgba(41, 40, 41, 1);
-} */
+}
 
-/* #action-jackson h3 {
-    background-color: hsl(224, 20%, 94%);
+#action-jackson h3 {
+    /* background-color: hsl(224, 20%, 94%); */
     padding: 15px;
+    width: 100%;
     color: hsl(224, 10%, 10%);
     font-weight: 900;
     border: 1px solid hsl(224, 6%, 77%);
     border-radius: 7px;
     margin-bottom: 10px;
-} */
+}
 
 
 
@@ -1212,16 +1204,16 @@ h6 {
     z-index: 999;
 } */
 
-/* [data-currentfy=false] td:first-of-type::before {
+[data-currentfy=false] td:first-of-type::before {
     content: '\2795';
-} */
+}
 
 
-/* [data-currentfy=false] td {
-    color: grey;
-} */
+[data-currentfy=false] td {
+    color: grey !important;
+}
 
-/* .alert-banner {
+.alert-banner {
     background-color: #1F9CED;
     color: #000000;
     justify-content: center;
@@ -1229,7 +1221,7 @@ h6 {
     padding: 20px;
     width: 100%;
     gap: 25px;
-} */
+}
 
 /* .alert-text {
     text-align: center;

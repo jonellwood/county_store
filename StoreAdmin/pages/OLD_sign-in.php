@@ -23,28 +23,29 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 // ldap auth function delcaration
 function bcgov_ldap_authen($ldapUser, $password)
 {
-  $ldapDomain = "berkeleycountysc.gov";
+  $ldapDomain = "@berkeleycountysc.gov";
   $ldapHost = $GLOBALS['ldap_server'];
 
   $ldapConn = ldap_connect($ldapHost) or die("Could not connect to LDAP");
-  if (@ldap_bind($ldapConn, $ldapUser . $ldapDomain, $password)) {
-
+  if (@ldap_bind($ldapConn, $ldapUser, $password)) {
+    header("location: employeeRequests.php");
     return true;
   } else {
+    header("location: topNav.php");
     return false;
   }
 }
 
 // get user information and set session variables upon auth function declartation
-function user_auth($ldapUser)
+function user_auth($username)
 {
   require_once "DBConn.php";
-
-  $sql = "SELECT ur.emp_num, ur.role_id, ur.email, er.deptNumber, ur.role_name, ur.empName
-        FROM user_ref ur
-        JOIN emp_ref er on er.empNumber = ur.emp_num
-        -- JOIN user_isadmin ia on er.empNumber = ia.emp_id
-        WHERE ur.email = '$ldapUser'
+  // echo $ldapUser;
+  $sql = "SELECT u.emp_num, u.role_id, u.user_name, er.deptNumber, er.email, er.empName, r.role_name
+        FROM users u
+        JOIN emp_ref er on er.empNumber = u.emp_num
+        JOIN roles r on r.role_id = u.role_id
+        WHERE u.user_name = '$username'
         ";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) {
@@ -68,17 +69,18 @@ function user_auth($ldapUser)
 
 // declare variables with empty values
 
-$ldapUser = $password = "";
-$ldapUser_err = $password_err = "";
+$username = $password = "";
+$username_err = $password_err = "";
 
 // process form data when submitted 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // check for empty username and password fields
   if (empty(trim($_POST["ldapUser"]))) {
-    $ldapUser_err = "Please enter your username.";
+    $username_err = "Please enter your username.";
   } else {
-    $ldapUser = trim($_POST['ldapUser']);
+    $ldapDomain = "@berkeleycountysc.gov";
+    $username = trim($_POST['username']);
   }
 
   if (empty(trim($_POST["password"]))) {
@@ -87,15 +89,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = trim($_POST['password']);
   }
   // validate credentials
-  if (empty($ldapUser_err) && empty($password_err)) {
-    if (bcgov_ldap_authen($ldapUser, $password)) {
-      user_auth($ldapUser);
+  if (empty($username_err) && empty($password_err)) {
+    if (bcgov_ldap_authen($username . $ldapDomain, $password)) {
+      // user_auth($username);
+      // echo "success with ldap";
       header("location: employeeRequests.php");
     } else {
-      $login_err = "Information does not match information on file.";
+      $login_err = $username . "Information does not match information on file.";
     }
   } else {
-    $login_err = "Information does not match information on file.";
+    $login_err = $password .  "Information does not match information on file.";
   }
 };
 ?>
@@ -166,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
     <div class="right">
         <div class="right-content">
-            <h4 class="">Covering those who cover us.</h4>
+            <h4 class="">Behind Every Great Team, is a Great Store.</h4>
             <p class="">Welcome to the Berkeley County Store -- Backend</p>
         </div>
     </div>
