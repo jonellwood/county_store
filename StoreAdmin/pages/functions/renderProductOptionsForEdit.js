@@ -40,12 +40,25 @@ function updateTotal() {
     var currentTax = document.getElementById('currentTax').dataset.tax;
     var calcTotalDisplay = document.getElementById('n-total');
     var hiddenNewTotal = document.getElementById('newLineItemTotal');
+    var hiddenPriceIdHolder = document.getElementById('hidden_price_id');
+    var selectedPriceIdOption = document.getElementById('sizeSelect').options[document.getElementById('sizeSelect').selectedIndex];
+    var selectedPriceId = selectedPriceIdOption.getAttribute('data-priceid');
+    // console.log("selectedPricePID", selectedPriceId);
+    var hiddenColorIdHolder = document.getElementById('hidden_color_id');
+    var selectedColorIdOption = document.getElementById('colorSelect').options[document.getElementById('colorSelect').selectedIndex];
+    var selectedColorId = selectedColorIdOption.getAttribute('data-colorid');
+    // console.log("selectedColorId", selectedColorId)
+    var hiddenDeptPlaceIdHolder = document.getElementById('hidden_dept_place_id');
+    var selectedDeptPlaceId = document.getElementById('deptPlacementSelect').options[document.getElementById('deptPlacementSelect').selectedIndex];
+    var hiddenPriceHolderId = selectedDeptPlaceId.getAttribute('data-pid');
+    // console.log("hiddenPriceHolderId", hiddenPriceHolderId)
     var itemPrice = document.getElementById('currentItemPrice').dataset.itemprice;
     var nLogoFee = document.getElementById('n-logo-fee');
     var nTax = document.getElementById('n-tax');
     var nPrice = document.getElementById('n-item-price');
     var selectedPrice = document.getElementById('sizeSelect').value;
-    console.log(selectedPrice)
+    
+    // console.log(selectedPrice)
     // var selectedPriceId = document.getElementById('sizeSelect').dataset.id;
 
     if (selectedDeptPlacement == "Below Logo") {
@@ -54,7 +67,7 @@ function updateTotal() {
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
         var newPrice = parseFloat(selectedPrice)
-        console.log('NEW PRICE: ', newPrice);
+        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice); 
     } else if (selectedDeptPlacement == "Left Sleeve") {
         currentLogoFee = 10;
@@ -62,7 +75,7 @@ function updateTotal() {
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
         var newPrice = parseFloat(selectedPrice)
-        console.log('NEW PRICE: ', newPrice);
+        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice);
     } else if (selectedDeptPlacement == "No Dept Name") {
         currentLogoFee = 5;
@@ -70,15 +83,17 @@ function updateTotal() {
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
         var newPrice = parseFloat(selectedPrice)
-        console.log('NEW PRICE: ', newPrice);
+        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice);
     }
     var lineItemTotal = parseFloat(selectedQuantity) * (parseFloat(currentLogoFee) + parseFloat(newTax) + parseFloat(newPrice));
     calcTotalDisplay.innerText = money_format(lineItemTotal);
     hiddenNewTotal.value = lineItemTotal;
     // var updatedTax = money_format(((parseFloat(nLogoFee) + parseInt(currentItemPrice)) * .09));
+    hiddenPriceIdHolder.value = selectedPriceId;
+    hiddenColorIdHolder.value = selectedColorId;
+    hiddenDeptPlaceIdHolder.value = hiddenPriceHolderId;
 
-    
 }
 function displayCurrentTotal() { 
     var currentTotal = document.getElementById('currentTotal').innerText;
@@ -90,7 +105,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
     
     var eHtml = `
     <div class="form-holder">
-        <form action='updateOrder.php' method='post'>    
+        <form action='./API/managerEditOrderUpdateDB.php' method='post'>    
             <label for="quantity">Quantity:</label>
             <input type="number" id="quantity" name="quantity" min="1" max="999999" required onchange='updateTotal()'>
 
@@ -100,7 +115,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
 
                 for (var i = 0; i < data.color[0].length; i++) {
                     eHtml += `
-                        <option value="${data.color[0][i].color ? data.color[0][i].color : ''}">${data.color[0][i].color ? data.color[0][i].color : 'Error'}</option>
+                        <option value="${data.color[0][i].color ? data.color[0][i].color : ''}" data-colorid="${data.color[0][i].color_id ? data.color[0][i].color_id : ''}">${data.color[0][i].color ? data.color[0][i].color : 'Error'}</option>
                     `
                 }
 
@@ -114,9 +129,10 @@ function renderProductOptionsForEdit(data, order_det_id) {
         console.log(data);
                     eHtml += `
                         <option
-                            value="${data.size[0][j].price ? data.size[0][j].price : ''}"
+                            value='${data.size[0][j].price ? data.size[0][j].price : ''}'
                             data-price='${data.size[0][j].price ? data.size[0][j].price : ''}'
                             data-priceid='${data.size[0][j].price_id ? data.size[0][j].price_id : ''}'
+                            data-sizeid='${data.size[0][j].size_id ? data.size[0][j].size_id : ''}'
                         >${data.size[0][j].size_name ? data.size[0][j].size_name : 'Error'}</option>
                     `
                 }
@@ -132,14 +148,13 @@ function renderProductOptionsForEdit(data, order_det_id) {
                     `
                 }
     
-    
                 eHtml += `
                 </select>
                 <label for="deptPlacement">Dept Name Placement:</label>
                 <select id="deptPlacementSelect" name="deptPlacement" required" onchange="updateTotal()">
-                    <option value='No Dept Name' id='p1'>No Dept Name </option>
-                    <option value='Below Logo' id='p2'>Below Logo</option>
-                    <option value='Left Sleeve' id='p3'>Left Sleeve</option>
+                    <option value='No Dept Name' id='p1' data-pid='p1'>No Dept Name </option>
+                    <option value='Below Logo' id='p2' data-pid='p2'>Below Logo</option>
+                    <option value='Left Sleeve' id='p3' data-pid='p3'>Left Sleeve</option>
                 </select>
 
 
@@ -156,7 +171,10 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 <p>A comment is required when submitting a change</p>
             </select>
                 <input type='hidden' name="newLineItemTotal" id="newLineItemTotal" value=''>
-            
+                <input type='hidden' name='hidden_price_id' id='hidden_price_id' value=''>
+                <input type='hidden' name='hidden_color_id' id='hidden_color_id' value=''>
+                <input type='hidden' name='hidden_dept_place_id' id='hidden_dept_place_id' value=''>
+                <input type='hidden' name='order_details_id' id='order_details_id' value=${order_det_id}>
             <div class='styled-table bottom-row'>
             <button type='submit' id='update-button' disabled class='btn btn-approve'>Update</button>
             <button type='button' class='btn btn-deny' onclick='createCancelOrderPopover(${order_det_id})' id='cancel-button' popovertarget='cancel-confirm' popovertargetaction='show'>Cancel Order</button>

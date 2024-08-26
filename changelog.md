@@ -1,13 +1,13 @@
 # County Store Application Changelog
 
-## Version 2.0.2 - (2024-08-23)
+## Version 2.0.2 - (2024-08-26)
 
 ## **Noted Changes**
 
 - Admin Section log in moved to its own folder for simplicity sake.
 - Log in method is now first.last and does not accept an email address.
 - Permissions updated on certain admin pages to restrict access based on role.
-- Edit request feature has been updated to allow changing the quantity in addition to the color and Bill To Account.
+- Edit request feature has been redesigned and updated to allow changing the quantity in addition to the color and Bill To Account.
 
 ## Version 2.0.1 - (2024-08-14)
 

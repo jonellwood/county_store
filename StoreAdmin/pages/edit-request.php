@@ -182,6 +182,7 @@ displayAlert();
 </script>
 
 <?php include "../../footer.php" ?>
+
 </body>
 <div id="cancel-confirm" name="cancel-confirm" popover popover="manual" class="p-2">
 </div>
