@@ -11,7 +11,7 @@ function firstChar(str) {
 }
 
 function renderSingleRequest(target, data) { 
-
+    console.log(data);
     var html = `
      <div class='main-order-info-holder w-100'>
         <table class='table table-striped'>
@@ -37,7 +37,7 @@ function renderSingleRequest(target, data) {
                             <td id='currentProductCode' colspan=3>${data[0].product_code ? data[0].product_code : ''}</td>
                             <td id='currentSize'>${data[0].size_name ? data[0].size_name : ''}</td>
                             <td id='currentColor'>${data[0].color_name ? data[0].color_name : ''}</td>
-                            <td>${data[0].line_item_total ? money_format(data[0].line_item_total) : '' }</td>
+                            <td id='currentTotal'>${data[0].line_item_total ? money_format(data[0].line_item_total) : '' }</td>
                             <td id='currentLogo' data-value=${data[0].logo_id ? data[0].logo_id : ''} data-url=${data[0].logo ? data[0].logo : ''}><img src=../../${data[0].logo ? data[0].logo : ''} alt=${data[0].product_code ? data[0].product_code : ''} class='small-logo-img'/></td>
                             <td id='currentDeptPlacement'>${data[0].dept_patch_place ? data[0].dept_patch_place : 'N/A'}</td>
                             <td>${data[0].status ? data[0].status : ''}</td>
@@ -45,7 +45,9 @@ function renderSingleRequest(target, data) {
                             </tbody>
             </table>
             <p class='hidden' id='currentBillTo' data-billto='${data[0].bill_to_dept ? data[0].bill_to_dept : ''}'></p>
-            
+            <p class='hidden' id='currentLogoFee' data-logofee='${data[0].logo_fee ? data[0].logo_fee : ''}'></p>
+            <p class='hidden' id='currentTax' data-tax='${data[0].tax ? data[0].tax : ''}'></p>
+            <p class='hidden' id='currentItemPrice' data-itemprice='${data[0].item_price ? data[0].item_price : ''}'></p>
             </div>
     `
     document.getElementById(target).innerHTML = html;

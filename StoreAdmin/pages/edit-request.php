@@ -151,8 +151,8 @@ function setDefaultLogoOption() {
     var select = document.getElementById("logoSelect");
     var options = select.options;
     var currentLogo = document.getElementById('currentLogo').dataset.value;
-
-    console.log(currentLogo);
+    // console.log('Setting Current Logo to: ' + currentLogo);
+    // console.log(currentLogo);
     for (var i = 0; i < options.length; i++) {
         if (options[i].value === currentLogo) {
             options[i].setAttribute("selected", "selected");
@@ -179,12 +179,11 @@ function displayAlert() {
     document.getElementById('alert-banner').innerHTML = html
 }
 displayAlert();
-</script>;
+</script>
 
-<?php include "./components/viewFoot.php" ?>
+<?php include "../../footer.php" ?>
 </body>
 <div id="cancel-confirm" name="cancel-confirm" popover popover="manual" class="p-2">
-
 </div>
 
 </html>
@@ -218,7 +217,7 @@ displayAlert();
 
     .form-holder {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         justify-items: center;
     }
 }
@@ -246,6 +245,51 @@ displayAlert();
         margin-left: auto;
         margin-right: auto;
     }
+}
+
+.order-total-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    span {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
+    }
+}
+
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-group(root) {
+    animation-duration: 0.5s;
+}
+
+@keyframes move-in {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+#n-total {
+    view-transition-name: total-transition;
+}
+
+::view-transition-new(total-transition) {
+    animation: 200ms linear move-in;
 }
 </style>
 

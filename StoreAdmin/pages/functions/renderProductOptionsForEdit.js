@@ -30,18 +30,72 @@ function updateLogoImage(val) {
     logoImage.src = '../../../' + selectedLogo
 }
 
+function updateTotal() { 
+    var currentTotal = document.getElementById('currentTotal').innerText;
+    var currentQuantity = document.getElementById('currentQuantity').value;
+    var selectedQuantity = document.getElementById('quantity').value;
+    var currentDeptPlacement = document.getElementById('currentDeptPlacement').innerText;
+    var selectedDeptPlacement = document.getElementById('deptPlacementSelect').value;
+    var currentLogoFee = document.getElementById('currentLogoFee').dataset.logofee;
+    var currentTax = document.getElementById('currentTax').dataset.tax;
+    var calcTotalDisplay = document.getElementById('n-total');
+    var hiddenNewTotal = document.getElementById('newLineItemTotal');
+    var itemPrice = document.getElementById('currentItemPrice').dataset.itemprice;
+    var nLogoFee = document.getElementById('n-logo-fee');
+    var nTax = document.getElementById('n-tax');
+    var nPrice = document.getElementById('n-item-price');
+    var selectedPrice = document.getElementById('sizeSelect').value;
+    console.log(selectedPrice)
+    // var selectedPriceId = document.getElementById('sizeSelect').dataset.id;
+
+    if (selectedDeptPlacement == "Below Logo") {
+        currentLogoFee = 5;
+        nLogoFee.innerText = money_format(currentLogoFee);
+        var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
+        nTax.innerText = money_format(newTax);
+        var newPrice = parseFloat(selectedPrice)
+        console.log('NEW PRICE: ', newPrice);
+        nPrice.innerText = money_format(newPrice); 
+    } else if (selectedDeptPlacement == "Left Sleeve") {
+        currentLogoFee = 10;
+        nLogoFee.innerText = money_format(currentLogoFee);
+        var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
+        nTax.innerText = money_format(newTax);
+        var newPrice = parseFloat(selectedPrice)
+        console.log('NEW PRICE: ', newPrice);
+        nPrice.innerText = money_format(newPrice);
+    } else if (selectedDeptPlacement == "No Dept Name") {
+        currentLogoFee = 5;
+        nLogoFee.innerText = money_format(currentLogoFee);
+        var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
+        nTax.innerText = money_format(newTax);
+        var newPrice = parseFloat(selectedPrice)
+        console.log('NEW PRICE: ', newPrice);
+        nPrice.innerText = money_format(newPrice);
+    }
+    var lineItemTotal = parseFloat(selectedQuantity) * (parseFloat(currentLogoFee) + parseFloat(newTax) + parseFloat(newPrice));
+    calcTotalDisplay.innerText = money_format(lineItemTotal);
+    hiddenNewTotal.value = lineItemTotal;
+    // var updatedTax = money_format(((parseFloat(nLogoFee) + parseInt(currentItemPrice)) * .09));
+
+    
+}
+function displayCurrentTotal() { 
+    var currentTotal = document.getElementById('currentTotal').innerText;
+    return currentTotal
+}
+
+
 function renderProductOptionsForEdit(data, order_det_id) { 
-    // console.log('In render function')
-    // console.log(data.color[0][0].color)
+    
     var eHtml = `
-    <p>Next up display and update current prices</p>
     <div class="form-holder">
         <form action='updateOrder.php' method='post'>    
             <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="1" max="999999" required>
+            <input type="number" id="quantity" name="quantity" min="1" max="999999" required onchange='updateTotal()'>
 
             <label for="color">Color:</label>
-            <select id="colorSelect" name="color" required onchange='updateImage()'>
+            <select id="colorSelect" name="color" required>
                 `
 
                 for (var i = 0; i < data.color[0].length; i++) {
@@ -53,12 +107,17 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 eHtml += `
                 </select>
                 <label for="size">Size:</label>
-                <select id="sizeSelect" name="size" required>
+                <select id="sizeSelect" name="size" required onchange='updateTotal()'>
                 `
 
-                for (var j = 0; j < data.size[0].length; j++) {
+    for (var j = 0; j < data.size[0].length; j++) {
+        console.log(data);
                     eHtml += `
-                        <option value=${data.size[0][j].id ? data.size[0][j].id : ''}>${data.size[0][j].size_name ? data.size[0][j].size_name : 'Error'}</option>
+                        <option
+                            value="${data.size[0][j].price ? data.size[0][j].price : ''}"
+                            data-price='${data.size[0][j].price ? data.size[0][j].price : ''}'
+                            data-priceid='${data.size[0][j].price_id ? data.size[0][j].price_id : ''}'
+                        >${data.size[0][j].size_name ? data.size[0][j].size_name : 'Error'}</option>
                     `
                 }
 
@@ -77,10 +136,10 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 eHtml += `
                 </select>
                 <label for="deptPlacement">Dept Name Placement:</label>
-                <select id="deptPlacementSelect" name="deptPlacement" required>
-                    <option value='N/A'>No Dept Name </option>
-                    <option value='Top'>Below Logo</option>
-                    <option value='Bottom'>Left Sleeve</option>
+                <select id="deptPlacementSelect" name="deptPlacement" required" onchange="updateTotal()">
+                    <option value='No Dept Name' id='p1'>No Dept Name </option>
+                    <option value='Below Logo' id='p2'>Below Logo</option>
+                    <option value='Left Sleeve' id='p3'>Left Sleeve</option>
                 </select>
 
 
@@ -96,6 +155,8 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 <textarea name='comment' cols=50 rows=4 oninput='makeButtonActive()'></textarea>
                 <p>A comment is required when submitting a change</p>
             </select>
+                <input type='hidden' name="newLineItemTotal" id="newLineItemTotal" value=''>
+            
             <div class='styled-table bottom-row'>
             <button type='submit' id='update-button' disabled class='btn btn-approve'>Update</button>
             <button type='button' class='btn btn-deny' onclick='createCancelOrderPopover(${order_det_id})' id='cancel-button' popovertarget='cancel-confirm' popovertargetaction='show'>Cancel Order</button>
@@ -106,11 +167,51 @@ function renderProductOptionsForEdit(data, order_det_id) {
             var selectedColor = document.getElementById('currentColor').innerText;
             var selectedProduct = document.getElementById('currentProductCode').innerText;
             var selectedLogo = document.getElementById('currentLogo').dataset.url;
+            var currentItemPrice = document.getElementById('currentItemPrice').dataset.itemprice;
+            var currentLogoFee = document.getElementById('currentLogoFee').dataset.logofee;
+            var currentTax = document.getElementById('currentTax').dataset.tax;
+            // var updatedTax = money_format((( parseFloat(currentLogoFee) + parseInt(currentItemPrice)) * .09))
             eHtml += `
                 <div class='image-logo-stack'>
                  <img src="../../../product-images/${selectedColor ? formatColorValueForUrl(selectedColor) : ''}_${selectedProduct ? formatValueForUrl(selectedProduct) : ''}.jpg" alt="${data.product[0][0].name}" class="product-image" id="product-image">
                  <img src="../../../${selectedLogo ? selectedLogo : ''}" alt='logo' class='med-logo-img' id='logo-image'/>
                  
+               </div>
+               <div class='order-total-display'>
+                    <span>
+                        <p><b>Original Item Price: </b></p>
+                        <p id='-o-item-price' name='o-item-price'>${money_format(currentItemPrice)}</p>
+                    </span>
+                    <span>
+                        <p><b>Original Logo Fee: </b></p>
+                        <p id='o-logo-fee' name='o-logo-fee'>${money_format(currentLogoFee)}</p>
+                    </span>
+                    <span>
+                        <p><b>Original Tax: </b></p>
+                        <p id='o-tax' name='o-tax'>${money_format(currentTax)}</p>
+                    </span>
+                    <span>  
+                        <p><b>Original Item Total: </b></p>
+                        <p id='o-total' name='o-total'>${displayCurrentTotal()}</p>
+                    </span>
+                    <hr/>
+                    <span>
+                        <p><b>Updated Item Price: </b></p>
+                        <p id='n-item-price' name='n-item-price'></p>
+                    </span>
+                    <span>
+                        <p><b>Updated Logo Fee: </b></p>
+                        <p id='n-logo-fee' name='n-logo-fee'>${money_format(currentLogoFee)}</p>
+                    </span>
+                    <span>
+                        <p><b>Updated Tax: </b></p>
+                        <p id='n-tax' name='n-tax'>0.00</p>        
+                    </span>
+                    <span>      
+                        <p><b>Updated Item Total: </b></p>
+                        <p id='n-total' name='n-total'>${setTimeout(() => {updateTotal()}, 150)}</p>
+                    </span>
+                    
                </div>
              
             
@@ -129,8 +230,8 @@ function renderProductOptionsForEdit(data, order_det_id) {
     setDeptNamePlacementOption();
     setDefaultLogoOption();
     setDefaultBillToOption();
+    // setTimeout(() => {updateTotal()}, 50); 
     // updateImage(data.color);
-    
        
 
 }
