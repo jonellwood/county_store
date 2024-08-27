@@ -16,7 +16,7 @@ $data = [];
 $sql = "SELECT pf.id, pf.product as product_id, pf.gender_filter, pf.type_filter, pf.size_filter, pf.sleeve_filter, pn.name, pn.code, pn.image  
 FROM uniform_orders.products_filters pf
 JOIN products_new pn on pn.product_id = pf.product
-WHERE pn.product_type = $producttype";
+WHERE pn.product_type = $producttype AND pn.keep = 1";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();

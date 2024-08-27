@@ -18,7 +18,7 @@ FROM uniform_orders.products_filters pf
 JOIN products_new pn on pn.product_id = pf.product
 JOIN prices pr on pn.product_id = pr.product_id
 WHERE (pf.gender_filter = $genderFilter OR pf.gender_filter = 3)
-AND pr.size_id BETWEEN 8 AND 25
+AND pr.size_id BETWEEN 8 AND 25 AND pn.keep = 1
 GROUP BY product_id
 ";
 

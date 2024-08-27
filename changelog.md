@@ -8,6 +8,7 @@
 - Log in method is now first.last and does not accept an email address.
 - Permissions updated on certain admin pages to restrict access based on role.
 - Edit request feature has been redesigned and updated to allow changing the quantity in addition to the color and Bill To Account.
+- Product detail page, button colors were swapped because green for "go back" and black for "go forward" was confusing as heck.
 
 ## Version 2.0.1 - (2024-08-14)
 

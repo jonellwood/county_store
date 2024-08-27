@@ -31,7 +31,7 @@ $data = [];
 
 
 $sql = "SELECT p.product_id, p.code, p.name, p.image, p.description, p.product_type
-from products_new p WHERE p.product_id=?";
+from products_new p WHERE p.product_id=? AND keep = 1;";
 
 $conn = getDatabaseConnection($host, $user, $password, $dbname);
 $stmt = $conn->prepare($sql);

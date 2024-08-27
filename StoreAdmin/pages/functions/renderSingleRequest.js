@@ -48,6 +48,7 @@ function renderSingleRequest(target, data) {
             <p class='hidden' id='currentLogoFee' data-logofee='${data[0].logo_fee ? data[0].logo_fee : ''}'></p>
             <p class='hidden' id='currentTax' data-tax='${data[0].tax ? data[0].tax : ''}'></p>
             <p class='hidden' id='currentItemPrice' data-itemprice='${data[0].item_price ? data[0].item_price : ''}'></p>
+            <p class='hidden' id='productType' data-type='${data[0].product_type ? data[0].product_type : ''}'></p>
             </div>
     `
     document.getElementById(target).innerHTML = html;

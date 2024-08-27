@@ -1,5 +1,5 @@
 function renderProductDetails(data) {
-	// console.log(data);
+	console.log(data);
 	// if (data['product_data'][0].product_type === '0') {
 	// window.location.replace = 'index.php';
 	// } else {
@@ -21,16 +21,35 @@ function renderProductDetails(data) {
                     `;
 	var html = '';
 	html += `<form name='option' method='post' id='options' action='cartAction.php' class='options-select-holder'>`;
-	html += `<input type="hidden" name="product_id" id="product_id" value=${data['product_data'][0].product_id} />`;
-	html += `<input type="hidden" name="name" id="name" value="${data['product_data'][0].name}" />`;
-	html += `<input type="hidden" name="code" id="code" value=${data['product_data'][0].code} />`;
+	html += `<input type="hidden" name="product_id" id="product_id" value=${
+		data['product_data'][0].product_id ? data['product_data'][0].product_id : ''
+	} />`;
+	html += `<input type="hidden" name="name" id="name" value="${
+		data['product_data'][0].name ? data['product_data'][0].name : ''
+	}" />`;
+	html += `<input type="hidden" name="code" id="code" value=${
+		data['product_data'][0].code ? data['product_data'][0].code : ''
+	} />`;
 	html += `<input type="hidden" name="action" id="action" value="addToCart" />`;
-	html += `<input type="hidden" name="logo-url" id="logo-url" value=${data['logo_data'][0].image} />`;
+	html += `<input type="hidden" name="logo-url" id="logo-url" value=${
+		data['logo_data'][0].image ? data['logo_data'][0].image : ''
+	} />`;
+	html += `<input type="hidden" name="logo_id" id="logo_id" value=${
+		data['logo_data'][0].id ? data['logo_data'][0].id : 0
+	} />`;
 	html += `<input type="hidden" name="logoCharge" id="logoCharge" value="5.00" />`;
-	html += `<input type="hidden" name="color_name" id="color_name" value="${data['color_data'][0].color}" />`;
-	html += `<input type="hidden" name="hidden_color_id" id="hidden_color_id" value="${data['color_data'][0].color_id}" />`;
-	html += `<input type="hidden" name="size_id" id="size_id" value=${data['price_data'][0].size_id} />`;
-	html += `<input type="hidden" name="size_name" id="size_name" value="${data['price_data'][0].size_name}" />`;
+	html += `<input type="hidden" name="color_name" id="color_name" value="${
+		data['color_data'][0].color ? data['color_data'][0].color : ''
+	} " />`;
+	html += `<input type="hidden" name="hidden_color_id" id="hidden_color_id" value="${
+		data['color_data'][0].color_id ? data['color_data'][0].color_id : ''
+	}" />`;
+	html += `<input type="hidden" name="size_id" id="size_id" value=${
+		data['price_data'][0].size_id ? data['price_data'][0].size_id : ''
+	} />`;
+	html += `<input type="hidden" name="size_name" id="size_name" value="${
+		data['price_data'][0].size_name ? data['price_data'][0].size_name : ''
+	}" />`;
 	html += `<input type="hidden" name="logo_upCharge" id="logo_upCharge" value=0 />`;
 	html += `<inout type="hidden" name="comment" id="comment" value="farts" />`;
 	html += `<input type="hidden" name="image-url" id="image-url" value="product-images/${formatColorValueForUrl(

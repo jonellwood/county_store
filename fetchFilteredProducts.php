@@ -19,7 +19,9 @@ $sql = "SELECT pf.id, pf.product as product_id, pf.gender_filter, pf.type_filter
 FROM uniform_orders.products_filters pf
 JOIN products_new pn on pn.product_id = pf.product
 WHERE (pf.gender_filter = $genderFilter OR pf.gender_filter = 3)
-AND pn.product_type = $producttype";
+AND pn.product_type = $producttype
+AND pn.keep = 1
+";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();

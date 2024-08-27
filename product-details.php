@@ -129,8 +129,10 @@ function updateLogoImage(val) {
     var logoImageInSummary = document.getElementById('logo-img-in-summary')
     var logoFormInput = document.getElementById('logo-url')
     var selectedLogo = document.getElementById(val).dataset.url
+    var hiddenLogoIdInput = document.getElementById('logo_id')
     logoImageInSummary.src = selectedLogo
     logoFormInput.value = selectedLogo;
+    hiddenLogoIdInput.value = val;
 }
 
 function updateLogoFeeAddOn(val) {
@@ -311,6 +313,7 @@ function backToIndex() {
 </head>
 
 
+
 <body class="body">
     <div class="container" id="container">
         <!-- // ? This is the div where the product name and code are rendered. Values are also used in some image update functions  -->
@@ -330,9 +333,9 @@ function backToIndex() {
             <div class="select-summary" id="select-summary"></div>
         </div>
         <div class="button-holder">
-            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-success" type="button"> Continue
+            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-primary" type="button"> Continue
                     Shopping </button></a>
-            <button type="submit" form="options" class="btn btn-primary"><span> Add to Cart
+            <button type="submit" form="options" class="btn btn-success"><span> Add to Cart
                 </span></button>
         </div>
 
@@ -368,6 +371,7 @@ function backToIndex() {
         </button>
         <p id="errorMessageText">Sorry this product is no longer available</p>
     </div>
+
 </body>
 
 <?php include "footer.php" ?>

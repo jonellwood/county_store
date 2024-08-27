@@ -21,13 +21,17 @@ function updateImage() {
     // console.log(formatColorValueForUrl(color));
     // console.log(productCode);
     image.src = '../../../product-images/' + formatColorValueForUrl(color).toString() + '_'+ formatValueForUrl(productCode) + '.jpg'
+    updateTotal();
 }
 
 function updateLogoImage(val) {
     var logoImage = document.getElementById('logo-image');
     var selectedLogo = document.getElementById(val).dataset.url;
+    //var hidden_logo_url = document.getElementById('hidden_logo_url');
     //console.log(selectedLogo);
     logoImage.src = '../../../' + selectedLogo
+    // hidden_logo_url.value = selectedLogo
+    updateTotal();
 }
 
 function updateTotal() { 
@@ -41,64 +45,97 @@ function updateTotal() {
     var calcTotalDisplay = document.getElementById('n-total');
     var hiddenNewTotal = document.getElementById('newLineItemTotal');
     var hiddenPriceIdHolder = document.getElementById('hidden_price_id');
+    var hiddenSizeIdHolder = document.getElementById('hidden_size_id');
     var selectedPriceIdOption = document.getElementById('sizeSelect').options[document.getElementById('sizeSelect').selectedIndex];
     var selectedPriceId = selectedPriceIdOption.getAttribute('data-priceid');
-    // console.log("selectedPricePID", selectedPriceId);
+    var selectedPrice = selectedPriceIdOption.getAttribute('data-price')
+    var selectedSizeId = selectedPriceIdOption.getAttribute('data-sizeid');
     var hiddenColorIdHolder = document.getElementById('hidden_color_id');
     var selectedColorIdOption = document.getElementById('colorSelect').options[document.getElementById('colorSelect').selectedIndex];
     var selectedColorId = selectedColorIdOption.getAttribute('data-colorid');
-    // console.log("selectedColorId", selectedColorId)
     var hiddenDeptPlaceIdHolder = document.getElementById('hidden_dept_place_id');
     var selectedDeptPlaceId = document.getElementById('deptPlacementSelect').options[document.getElementById('deptPlacementSelect').selectedIndex];
-    var hiddenPriceHolderId = selectedDeptPlaceId.getAttribute('data-pid');
-    // console.log("hiddenPriceHolderId", hiddenPriceHolderId)
+    var hiddenPlaceHolderId = selectedDeptPlaceId.getAttribute('data-pid');
     var itemPrice = document.getElementById('currentItemPrice').dataset.itemprice;
     var nLogoFee = document.getElementById('n-logo-fee');
     var nTax = document.getElementById('n-tax');
     var nPrice = document.getElementById('n-item-price');
-    var selectedPrice = document.getElementById('sizeSelect').value;
-    
-    // console.log(selectedPrice)
-    // var selectedPriceId = document.getElementById('sizeSelect').dataset.id;
-
+    var nTotal = document.getElementById('n-item-total');
+    var hiddenProductPriceInput = document.getElementById('hidden_product_price');
+    var hidden_logo_fee = document.getElementById('hidden_logo_fee');
+    var hidden_tax = document.getElementById('hidden_tax');
+    var selectedLogoOption = document.getElementById('logoSelect').options[document.getElementById('logoSelect').selectedIndex];
+    var selectedLogoURL = selectedLogoOption.getAttribute('data-url');
+    console.log('ANCENT CHINESE SECRET')
+    console.log(selectedLogoURL);
+    var hiddenLogoUrlHolder = document.getElementById('hidden_logo_url');
     if (selectedDeptPlacement == "Below Logo") {
-        currentLogoFee = 5;
+        currentLogoFee = (5  * selectedQuantity);
         nLogoFee.innerText = money_format(currentLogoFee);
+        hidden_logo_fee.value = currentLogoFee;
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
+        hidden_tax.value = newTax;
         var newPrice = parseFloat(selectedPrice)
-        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice); 
+        nTotal.innerText = money_format(parseFloat(newPrice) * parseFloat(selectedQuantity))
     } else if (selectedDeptPlacement == "Left Sleeve") {
-        currentLogoFee = 10;
+        currentLogoFee = (10 * selectedQuantity);
         nLogoFee.innerText = money_format(currentLogoFee);
+        hidden_logo_fee.value = currentLogoFee;
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
+        hidden_tax.value = newTax;
         var newPrice = parseFloat(selectedPrice)
-        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice);
+        nTotal.innerText = money_format(parseFloat(newPrice) * parseFloat(selectedQuantity))
     } else if (selectedDeptPlacement == "No Dept Name") {
-        currentLogoFee = 5;
+        currentLogoFee = (5 * selectedQuantity);
         nLogoFee.innerText = money_format(currentLogoFee);
+        hidden_logo_fee.value = currentLogoFee;
         var newTax = ((parseFloat(currentLogoFee) + parseFloat(itemPrice)) * .09);
         nTax.innerText = money_format(newTax);
+        hidden_tax.value = newTax;
         var newPrice = parseFloat(selectedPrice)
-        // console.log('NEW PRICE: ', newPrice);
         nPrice.innerText = money_format(newPrice);
+        // var newTotal = (newPrice * selectedQuantity)
+        nTotal.innerText = money_format(parseFloat(newPrice) * parseFloat(selectedQuantity))
     }
-    var lineItemTotal = parseFloat(selectedQuantity) * (parseFloat(currentLogoFee) + parseFloat(newTax) + parseFloat(newPrice));
+   
+    var lineItemTotal = (parseFloat(selectedQuantity) * parseFloat(newPrice)) + (parseFloat(newTax) + parseFloat(currentLogoFee));
     calcTotalDisplay.innerText = money_format(lineItemTotal);
     hiddenNewTotal.value = lineItemTotal;
     // var updatedTax = money_format(((parseFloat(nLogoFee) + parseInt(currentItemPrice)) * .09));
     hiddenPriceIdHolder.value = selectedPriceId;
     hiddenColorIdHolder.value = selectedColorId;
-    hiddenDeptPlaceIdHolder.value = hiddenPriceHolderId;
+    hiddenSizeIdHolder.value = selectedSizeId;
+    hiddenDeptPlaceIdHolder.value = hiddenPlaceHolderId;
+    hiddenProductPriceInput.value = newPrice;
+    hiddenLogoUrlHolder.value = selectedLogoURL;
+
 
 }
 function displayCurrentTotal() { 
     var currentTotal = document.getElementById('currentTotal').innerText;
     return currentTotal
 }
+function hideIfHat() {
+    var type = document.getElementById('productType').dataset.type;
+    var logoSelect = document.getElementById('logoSelect');
+    var logoLabel = logoSelect.previousElementSibling;
+    var deptPatchPlace = document.getElementById('deptPlacementSelect');
+    var deptPatchLabel = deptPatchPlace.previousElementSibling;
+    console.log(type);
+    console.log(logoSelect);
+    console.log(logoLabel);
+    if (type == '3' || type == '7') {
+        logoSelect.classList.add('hidden');
+        logoLabel.classList.add('hidden');
+        deptPatchPlace.classList.add('hidden');
+        deptPatchLabel.classList.add('hidden');
+    }
+}
+
 
 
 function renderProductOptionsForEdit(data, order_det_id) { 
@@ -110,7 +147,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
             <input type="number" id="quantity" name="quantity" min="1" max="999999" required onchange='updateTotal()'>
 
             <label for="color">Color:</label>
-            <select id="colorSelect" name="color" required>
+            <select id="colorSelect" name="color" required onchange='updateImage()'>
                 `
 
                 for (var i = 0; i < data.color[0].length; i++) {
@@ -173,8 +210,13 @@ function renderProductOptionsForEdit(data, order_det_id) {
                 <input type='hidden' name="newLineItemTotal" id="newLineItemTotal" value=''>
                 <input type='hidden' name='hidden_price_id' id='hidden_price_id' value=''>
                 <input type='hidden' name='hidden_color_id' id='hidden_color_id' value=''>
+                <input type='hidden' name='hidden_size_id' id='hidden_size_id' value=''>
                 <input type='hidden' name='hidden_dept_place_id' id='hidden_dept_place_id' value=''>
+                <input type='hidden' name='hidden_product_price' id='hidden_product_price' value=''>
                 <input type='hidden' name='order_details_id' id='order_details_id' value=${order_det_id}>
+                <input type='hidden' name='hidden_logo_fee' id='hidden_logo_fee' value=''>
+                <input type='hidden' name='hidden_logo_url' id='hidden_logo_url' value=''>
+                <input type='hidden' name='hidden_tax' id='hidden_tax' value=''>
             <div class='styled-table bottom-row'>
             <button type='submit' id='update-button' disabled class='btn btn-approve'>Update</button>
             <button type='button' class='btn btn-deny' onclick='createCancelOrderPopover(${order_det_id})' id='cancel-button' popovertarget='cancel-confirm' popovertargetaction='show'>Cancel Order</button>
@@ -183,6 +225,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
              `
             //  var selectedColor = document.getElementById('colorSelect').value;
             var selectedColor = document.getElementById('currentColor').innerText;
+    
             var selectedProduct = document.getElementById('currentProductCode').innerText;
             var selectedLogo = document.getElementById('currentLogo').dataset.url;
             var currentItemPrice = document.getElementById('currentItemPrice').dataset.itemprice;
@@ -218,6 +261,10 @@ function renderProductOptionsForEdit(data, order_det_id) {
                         <p id='n-item-price' name='n-item-price'></p>
                     </span>
                     <span>
+                        <p><b>Updated Item Total: </b></p>
+                        <p id='n-item-total' name='n-item-total'></p>
+                    </span>
+                    <span>
                         <p><b>Updated Logo Fee: </b></p>
                         <p id='n-logo-fee' name='n-logo-fee'>${money_format(currentLogoFee)}</p>
                     </span>
@@ -250,6 +297,7 @@ function renderProductOptionsForEdit(data, order_det_id) {
     setDefaultBillToOption();
     // setTimeout(() => {updateTotal()}, 50); 
     // updateImage(data.color);
+    hideIfHat();
        
 
 }

@@ -38,6 +38,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $color_name = $_REQUEST['color_name'];
         $price_id = $_REQUEST['size-price-id'];
         $logoId = $_REQUEST['logo'];
+        // this is confusing because it is poorly named. Above is possibly not used anymore - below is logo id -it is what it is
+        $logo_id = $_REQUEST['logo_id'];
         $selectedLogo = $_REQUEST['logo-url'];
         $deptPatchPlace = $_REQUEST['deptPatchPlace'];
         $logoFee = $_REQUEST['logoCharge'];
@@ -75,6 +77,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'size_name' => $size_name,
             'comment' => $comment,
             'logo' => $selectedLogo,
+            'logo_id' => $logo_id,
             'deptPatchPlace' => $deptPatchPlace,
             'fy' => $fy
         );
@@ -97,6 +100,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'size_id' => $_REQUEST['size_id'],
             'size_name' => $_REQUEST['size_name'],
             'logo' => $_REQUEST['logo'],
+            'logo_id' => $_REQUEST['logo_id'],
             'deptPatchPlace' => $_REQUEST['deptPatchPlace'],
             'price_id' => $_REQUEST['price_id'],
             'price' => $_REQUEST['price'],
@@ -206,14 +210,15 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                             logo_fee, 
                             tax, 
                             line_item_total, 
-                            logo, 
+                            logo,
+                            logo_id, 
                             comment, 
                             dept_patch_place, 
                             emp_dept, 
                             bill_to_dept, 
                             bill_to_fy, 
                             status_id
-                            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                             $stmt = $conn->prepare($sql);
 
                             // insert order items into database
@@ -222,7 +227,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
                             foreach ($truncatedCartItems as $item) {
                                 $stmt->bind_param(
-                                    "iiiisssdddssssssi",
+                                    "iiiisssdddsisssssi",
                                     $db_order_id,
                                     $db_product_id,
                                     $db_price_id,
@@ -234,6 +239,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                     $db_tax,
                                     $db_line_item_total,
                                     $db_logo,
+                                    $db_logo_id,
                                     $db_comment,
                                     $db_dept_patch_place,
                                     $db_emp_dept,
@@ -252,6 +258,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_tax = $item['tax']; // float(10,2)
                                 $db_line_item_total = (($db_item_price + $db_logo_fee + $db_tax) * $db_quantity); // float(10,2)
                                 $db_logo = $item['logo']; // varchar(125)
+                                $db_logo_id = intval($item['logo_id']); // into(11)
                                 $db_comment = $item['comment']; // varchar(255)
                                 $db_dept_patch_place = $item['deptPatchPlace']; // varchar(150)
                                 $db_emp_dept = $department; // varchar(45)

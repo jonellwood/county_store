@@ -332,9 +332,9 @@ function disableSelectDepName() {
             <div class="select-summary" id="select-summary"></div>
         </div>
         <div class=" button-holder">
-            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-success" type="button"> Continue
+            <a href=<?php echo $_SESSION['GOBACK'] ?>><button class="btn btn-primary" type="button"> Continue
                     Shopping </button></a>
-            <button type="submit" form="options" class="btn btn-primary"><span> Add to Cart
+            <button type="submit" form="options" class="btn btn-success"><span> Add to Cart
                 </span></button>
         </div>
 
