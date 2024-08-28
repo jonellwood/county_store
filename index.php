@@ -29,11 +29,12 @@ function checkMonthAndRedirect()
 }
 checkMonthAndRedirect();
 ?>
-
+<div class="alert-banner" id="alert-banner">
+</div>
 <?php include "./components/viewHead.php" ?>
 
 <div class="front-image-background">
-    <!-- <img src="./County-Store-Image.png" alt="some-store" /> -->
+    <img src="./County-Store-Image.png" alt="some-store" />
     <!-- <img src="./modern-mall.png" alt="some-store" /> -->
 </div>
 
@@ -47,23 +48,30 @@ checkMonthAndRedirect();
 </?php include "cartSlideout.php" ?>
 <?php include "footer.php" ?>
 <script src="./functions/renderProduct.js"></script>
-<div class="alert-banner" id="alert-banner" popover=auto>
-    <div class="alert-text">🚨 All requests must be submitted by May 31st, Requests will not be able to be submitted
-        between June 1st and June 30th. </div>
+<!-- <div class="alert-banner" id="alert-banner" popover=auto>
+    <div class="alert-text">All requests must be submitted by May 14th, Requests will not be able to be submitted
+        between May 15th and June 30th. </div>
     <div class="holder">
         <p>
 
-            <!-- <label for="dontShowAgain" id="dontShowAgainLabel">Don't show again</label> -->
-            <!-- <input type="checkbox" id="dontShowAgain" name="dontShowAgain"> -->
+          
             <button class="button" popovertarget="alert-banner" popovertargetaction="hide"
                 id="dontShowAgain">OK</button>
         </p>
     </div>
-</div>
+</div> -->
 
 </body>
 <script src="functions/createIndexedDB.js"></script>
+<script src="functions/renderFiscalYearAlertBanner.js"></script>
 <script>
+renderBanner();
+// function renderAlert() {
+//     var html =
+//         '<div class="alert-banner"> <div class="alert-text">All requests must be submitted by May 14th. Requests will not be able to be submitted between May 15th and June 30th. </div></div>';
+//     document.getElementById('alert-banner').innerHTML = html
+// }
+//renderAlert();
 // copyDataToIndexedDB();
 async function fetchTopProducts() {
     await fetch('./API/fetchTopProducts.php')
@@ -99,22 +107,51 @@ function showWarning() {
     }
 };
 
-showWarning();
+//showWarning();
 
 function showPopover() {
     var popover = document.getElementById('alert-banner');
     popover.showPopover()
 }
 
-var closeButton = document.getElementById("dontShowAgain");
-closeButton.addEventListener("click", function() {
-    createCookie("countyStore-doNotAlert", "true", 1); // Set the cookie to expire in 24 hours
-});
+// var closeButton = document.getElementById("dontShowAgain");
+// closeButton.addEventListener("click", function() {
+//     createCookie("countyStore-doNotAlert", "true", 1); // Set the cookie to expire in 24 hours
+// });
 </script>
 
 </html>
 <style>
 #hot-sellers {
-    z-index: 2;
+    position: absolute;
+    top: 99dvh;
+    /* z-index: 2; */
+    padding-bottom: 75px;
+    margin-bottom: 75px;
+}
+
+/* .alert-banner {
+    background-color: #e31c3d;
+    
+    color: #ffffff;
+    
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-size: larger;
+    gap: 25px;
+}
+
+.alert-text {
+    text-align: center;
+} */
+
+.front-image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 </style>

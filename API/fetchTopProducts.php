@@ -8,7 +8,7 @@ $sql = "SELECT pn.product_id, pn.name, COUNT(*) as count, pn.image
 FROM order_details od
 JOIN products_new pn on pn.product_id=od.product_id
 JOIN products_producttype pt on pt.product_id = od.product_id
-WHERE pt.producttype_id NOT IN (3,8)
+WHERE pt.producttype_id NOT IN (3,8) AND pn.keep = 1
 GROUP BY od.product_id, pn.product_id, pn.name, pn.image
 order by count DESC LIMIT 4";
 $stmt = $conn->prepare($sql);

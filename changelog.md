@@ -1,8 +1,15 @@
 # County Store Application Changelog
 
+## Version 2.0.3 - (2024-08-28)
+
+### **Throwback Thursday**
+
+- You asked and we listened! The front page has gone retro and brought back the nostalgic feel of the days long gone by.
+- An information banner regarding planned store closures has been placed front and center on the home page.
+
 ## Version 2.0.2 - (2024-08-26)
 
-## **Noted Changes**
+### **Noted Changes**
 
 - Admin Section log in moved to its own folder for simplicity sake.
 - Log in method is now first.last and does not accept an email address.
@@ -19,7 +26,7 @@
 - Fixed a typo in a logo name.
 - Fixed an issue that caused certain images not render in the Order Success Page.
 
-## **UI Updates**
+### **UI Updates**
 
 - Styling and layout tweaks have been made to further enhance your viewing enjoyment.
 - Order success page updated to show more information in a more clear layout. The image should show a more accurate representation of the product requested.
@@ -35,7 +42,7 @@
 
 ## Version 2.0.0 - (2024-07-12)
 
-## **🎊 UI Updates 🎉**
+### **🎊 UI Updates 🎉**
 
 - UI has been updated to reflect changes made to the database structure.
 - Users will see the price for each size available without having to choose the size first.

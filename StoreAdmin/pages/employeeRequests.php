@@ -302,7 +302,7 @@ function showActionButtons() {
     buttonDiv.showPopover();
 }
 
-function setLineItemSession(order_details_id, status) {
+function setLineItemSession(order_details_id, status, department) {
     // console.log('order_details_id: ', order_details_id);
     console.log('status: ', status);
 
@@ -331,13 +331,13 @@ function setLineItemSession(order_details_id, status) {
                     `
                     <button class='btn btn-deny' onclick='createActionPopover(${order_details_id}, "deny")' popovertarget='action-jackson' popovertargetaction='show'> Deny </button>
                     <button class='btn btn-comment' onclick='createActionPopover(${order_details_id}, "comment")' popovertarget='action-jackson' popovertargetaction='show'> Comment </button>
-                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"'>Edit</a></button>`
+                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"&department=${department}'>Edit</a></button>`
             } else {
                 html +=
                     `<button class='btn btn-approve' onclick='createActionPopover(${order_details_id}, "approve")' popovertarget='action-jackson' popovertargetaction='show'> Approve </button>
                     <button class='btn btn-deny' onclick='createActionPopover(${order_details_id}, "deny")' popovertarget='action-jackson' popovertargetaction='show'> Deny </button>
                     <button class='btn btn-comment' onclick='createActionPopover(${order_details_id}, "comment")' popovertarget='action-jackson' popovertargetaction='show'> Comment </button>
-                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"'>Edit</a></button>`
+                    <button class='btn btn-edit'><a href='./edit-request.php?order_id="${order_details_id}"&department=${department}'>Edit</a></button>`
             };
             document.getElementById('action-buttons').innerHTML = html;
             // showOffCanvas();

@@ -34,6 +34,9 @@ body {
 .nav-item:hover {
 	border: 1px solid white;
 }
+.nav-link {
+	color: white;
+}
 #hot-sellers {
 	margin: 20px;
 }
@@ -67,4 +70,19 @@ body {
 }
 .hidden {
 	display: none !important;
+}
+.alert-banner {
+	background-color: #e31c3d;
+	/* background-color: #000000; */
+	color: #ffffff;
+	/* color: #F08E9F; */
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	font-size: larger;
+	gap: 25px;
+}
+
+.alert-text {
+	text-align: center;
 }

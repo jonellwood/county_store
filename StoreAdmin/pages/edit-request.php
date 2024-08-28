@@ -12,6 +12,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 include('DBConn.php');
 $order_id = $_GET['order_id'];
+$department = $_GET['department'];
 include "components/commonHead.php";
 ?>
 
@@ -21,6 +22,7 @@ include "components/commonHead.php";
 <script src="functions/renderSingleRequest.js"></script>
 <script src="functions/renderProductOptionsForEdit.js"></script>
 <script src="components/createCancelOrderPopover.js"></script>
+<script src="components/createAlertPopover.js"></script>
 <script>
 function cancelOrder(id) {
     fetch('./cancelOrder.php?id=' + id)
@@ -61,17 +63,26 @@ async function getOptions(prod_id, order_det_id) {
 }
 
 
-async function getOrder(id) {
-    await fetch('./getSingleOrderDetails.php?id=' + id)
+async function getOrder(id, dep) {
+    var popover = document.getElementById("alert-popover");
+    await fetch('./API/getSingleOrderDetails.php?id=' + id + '&dep=' + dep)
         .then((response) => response.json())
         .then((data) => {
-            // console.log(data);
-            renderSingleRequest('main', data)
-            getOptions(data[0].product_id, data[0].order_details_id, data[0].color_id, data[0].size_name,
-                data[0].bill_to_dept, data[0].color_id, data[0].size_name)
+            console.log(data);
+            if (data[0].message) {
+                // createAlertPopover(data[0].message, 'employeeRequests.php');
+                // popover.showPopover();
+                alert(data[0].message);
+                window.location.replace('employeeRequests.php');
+            } else {
+
+                renderSingleRequest('main', data)
+                getOptions(data[0].product_id, data[0].order_details_id, data[0].color_id, data[0].size_name,
+                    data[0].bill_to_dept, data[0].color_id, data[0].size_name)
+            }
         })
 }
-getOrder(<?php echo $order_id ?>)
+getOrder(<?php echo $order_id ?>, <?php echo $department ?>)
 </script>
 </head>
 
@@ -185,6 +196,8 @@ displayAlert();
 
 </body>
 <div id="cancel-confirm" name="cancel-confirm" popover popover="manual" class="p-2">
+</div>
+<div id="alert-popover" name="alert-popover" popover popover="manual" class="p-2">
 </div>
 
 </html>

@@ -48,12 +48,12 @@ function renderOrderDetails(data) {
                 html +=
                     `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}<button class='btn btn-approve' value='${data[0].order_id}' popovertarget='action-jackson' onclick="createWholeOrderActionPopover(${data[0].order_id})"> Approve or Deny Order </button>`
                 if (hasVendorID3) {
-                    html += `<button class='gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
+                    html += `<button class='btn btn-secondary gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
                 }
             } else {
                 html += `<span class='table-title'>Order Details for ${data[0].rf_first_name} ${data[0].rf_last_name}`
                 if (hasVendorID3) {
-                    html += `<button class='gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
+                    html += `<button class='btn btn-secondary gen-po-button' onclick='genPOreq(${data[0].order_id})'>Gen PO Request</button>`
                 }
             }
     
@@ -78,7 +78,7 @@ function renderOrderDetails(data) {
                 totalCost += data[j].line_item_total;
                 totalCount += parseInt(data[j].quantity);
                 
-                html += `<tr class='${data[j].status}' onclick="setLineItemSession(${data[j].order_details_id}, '${data[j].status}')"'>
+                html += `<tr class='${data[j].status}' onclick="setLineItemSession(${data[j].order_details_id}, '${data[j].status}', ${data[j].department})"'>
                             <td class="${data[j].status}"> 
                                 <p class="status-pills">${firstChar(data[j].status)} </p>
                             </td>

@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 include_once "../../../config.php";
+$user_emp_number = $_SESSION['empNumber'];
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
     or die('Could not connect to the database server' . mysqli_connect_error());
 // foreach ($_POST as $key => $value) {
@@ -112,7 +115,7 @@ $sql = "UPDATE order_details
         price_id = $price_id, 
         quantity = $quantity,
         size_id = $size_id, 
-        color_id = $color_id, 
+        color_id = $color_id,
         item_price = $item_price,
         logo_fee = $logo_fee,
         tax = $tax,
@@ -125,13 +128,17 @@ $sql = "UPDATE order_details
         last_updated = NOW()
         WHERE order_details_id = $order_details_id";
 
-echo "<pre>";
-print_r($sql);
-echo "</p></pre";
+// echo "<pre>";
+// print_r($sql);
+// echo "</p></pre";
 $stmt = $conn->prepare($sql);
 // $stmt->bind_param("iiiiisdi", $quantity, $color_id, $price_id, $logo_id, $dept_place_id, $bill_to, $comment, $newLineItemTotal, $order_details_id);
 
 // echo $sql;
 $stmt->execute();
+
+// $commentSql = "INSERT into comments (order_details_id, comment, submitted_by) values ($order_details_id,  $comment, $user_emp_number)";
+// $commentStmt = $conn->prepare($commentSql);
+// $commentStmt->execute();
 header('Location: ../employeeRequests.php');
 // echo json_encode(["success" => true]);

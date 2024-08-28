@@ -377,12 +377,12 @@ var fyData = fiscalYear();
 var html = '';
 if (fyData[2] < 6) {
     html += `<div class="alert-text">
-        🚨 All requests must be submitted by May 31st, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
+        All requests must be submitted by May 15th, ${fyData[0]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
         `
     document.getElementById('alert-banner').innerHTML = html
 } else {
     html += `<div class="alert-text">
-            🚨 All requests must be submitted by May 31st, ${fyData[1]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
+            All requests must be submitted by May 15th, ${fyData[1]}. Requests will not be able to be submitted between June 1st and June 30th, ${fyData[1]}</div>
             `
     document.getElementById('alert-banner').innerHTML = html
 }
