@@ -68,7 +68,7 @@
 
 
                         <li class='nav-item'>
-                            <a class='nav-link' href='edit-request-ui.php'>
+                            <a class='nav-link' href='edit-request-ui.php' target="_blank">
                                 <span class='nav-link-text ms-1'>
                                     <img class='icon' src='../../assets/icons/edit.svg' width='20' height='20'>
                                     Edit Requests
@@ -76,10 +76,18 @@
                             </a>
                         </li>
                         <li class='nav-item'>
-                            <a class='nav-link' href='orders-by-dept-for-admin.php'>
+                            <a class='nav-link' href='orders-by-dept-for-admin.php' target="_blank">
                                 <span class='nav-link-text text-small ms-1'>
                                     <img class='icon' src='../../assets/icons/awaiting.svg' width='20' height='20'>
                                     Awaiting Order
+                                </span>
+                            </a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href='./reports.php'>
+                                <span class='nav-link-text ms-1'>
+                                    <img class='icon' src='../../assets/icons/reports.svg' width='20' height='20'>
+                                    Reports
                                 </span>
                             </a>
                         </li>
@@ -132,14 +140,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class='nav-item'>
-                            <a class='nav-link' href='./reports.php'>
-                                <span class='nav-link-text ms-1'>
-                                    <img class='icon' src='../../assets/icons/reports.svg' width='20' height='20'>
-                                    Reports
-                                </span>
-                            </a>
-                        </li>
+
                         <li class='nav-item'>
                             <a class='nav-link' href='overview.php'>
                                 <span class='nav-link-text ms-1'>
@@ -179,128 +180,128 @@
 
 
     <script>
-    // addPopoverAutoClose('#womans-menu-popover');
-    // addPopoverAutoClose('#mens-menu-popover');
+        // addPopoverAutoClose('#womans-menu-popover');
+        // addPopoverAutoClose('#mens-menu-popover');
     </script>
 
     <style>
-    ::marker {
-        display: none;
-    }
+        ::marker {
+            display: none;
+        }
 
-    summary {
-        list-style: none
-    }
+        summary {
+            list-style: none
+        }
 
-    summary::-webkit-details-marker {
-        display: none
-    }
+        summary::-webkit-details-marker {
+            display: none
+        }
 
-    .parent {
-        display: grid;
-        grid-template-columns: 10% 25% 40% 22%;
-        grid-template-rows: 75px 1fr 1fr;
-        height: 100vh;
-        /* overflow: hidden; */
-    }
+        .parent {
+            display: grid;
+            grid-template-columns: 10% 25% 40% 22%;
+            grid-template-rows: 75px 1fr 1fr;
+            height: 100vh;
+            /* overflow: hidden; */
+        }
 
-    .div1 {
-        display: flex;
-        grid-area: 1 / 1 / 3 / 1;
-        background-color: #80808030;
-    }
+        .div1 {
+            display: flex;
+            grid-area: 1 / 1 / 3 / 1;
+            background-color: #80808030;
+        }
 
-    .div2 {
-        display: flex;
-        grid-area: 2 / 2 / 2 / 2;
-        /* height: 100vh; */
-        scrollbar-gutter: stable;
-        background-color: #80808030;
-    }
+        .div2 {
+            display: flex;
+            grid-area: 2 / 2 / 2 / 2;
+            /* height: 100vh; */
+            scrollbar-gutter: stable;
+            background-color: #80808030;
+        }
 
-    .div3 {
-        display: flex;
-        grid-area: 2 / 3 / 2 / 3;
-        height: 100vh;
-        scrollbar-gutter: stable;
-        padding-left: 20px;
-        overflow-y: auto;
-        border-top: 3px solid #80808050;
-        border-left: 3px solid #80808050;
-        border-bottom: 3px solid #80808050;
+        .div3 {
+            display: flex;
+            grid-area: 2 / 3 / 2 / 3;
+            height: 100vh;
+            scrollbar-gutter: stable;
+            padding-left: 20px;
+            overflow-y: auto;
+            border-top: 3px solid #80808050;
+            border-left: 3px solid #80808050;
+            border-bottom: 3px solid #80808050;
 
-    }
+        }
 
-    .div4 {
-        display: flex;
-        grid-area: 1 / 2 / 1 / 5;
-    }
+        .div4 {
+            display: flex;
+            grid-area: 1 / 2 / 1 / 5;
+        }
 
-    .div5 {
-        display: flex;
-        /* grid-area: 2/ 4 / 2 /4; */
-        overflow-y: auto;
-        scrollbar-gutter: stable;
-    }
-
-
-    .div6 {
-        display: flex;
-        flex-direction: column;
-        grid-area: 2 / 4 / 3 / 4;
-        border-top: 3px solid #80808050;
-        border-right: 3px solid #80808050;
-        border-bottom: 3px solid #80808050;
-    }
-
-    .total-hidden {
-        margin-left: 550px;
-    }
-
-    .div7 {
-        display: flex;
-        grid-area: 1 / 5 / 1 / 5;
-        margin-left: -100px;
-        /* visibility: hidden; */
-    }
-
-    .hidden {
-        visibility: hidden;
-    }
-
-    #main {
-        overflow-y: auto;
+        .div5 {
+            display: flex;
+            /* grid-area: 2/ 4 / 2 /4; */
+            overflow-y: auto;
+            scrollbar-gutter: stable;
+        }
 
 
-    }
+        .div6 {
+            display: flex;
+            flex-direction: column;
+            grid-area: 2 / 4 / 3 / 4;
+            border-top: 3px solid #80808050;
+            border-right: 3px solid #80808050;
+            border-bottom: 3px solid #80808050;
+        }
 
-    details>summary {
-        /* padding: 4px; */
-        width: 150px;
-        /* background-color: #fff; */
-        border: none;
-        /* box-shadow: 1px 1px 2px #bbbbbb; */
-        cursor: pointer;
-    }
+        .total-hidden {
+            margin-left: 550px;
+        }
 
-    details>div {
-        background-color: #fff0ff;
-        box-shadow: 1px 1px 2px #bbbbbb;
-        margin-left: -40px;
-    }
+        .div7 {
+            display: flex;
+            grid-area: 1 / 5 / 1 / 5;
+            margin-left: -100px;
+            /* visibility: hidden; */
+        }
 
-    details>li {
-        padding: 2px;
-        margin: 0;
-    }
+        .hidden {
+            visibility: hidden;
+        }
 
-    .nav-logo {
-        margin-left: 18%;
-        margin-right: auto;
-        filter: drop-shadow(2px 3px 5px #808080)
-    }
+        #main {
+            overflow-y: auto;
 
-    /* #mens-menu-anchor {
+
+        }
+
+        details>summary {
+            /* padding: 4px; */
+            width: 150px;
+            /* background-color: #fff; */
+            border: none;
+            /* box-shadow: 1px 1px 2px #bbbbbb; */
+            cursor: pointer;
+        }
+
+        details>div {
+            background-color: #fff0ff;
+            box-shadow: 1px 1px 2px #bbbbbb;
+            margin-left: -40px;
+        }
+
+        details>li {
+            padding: 2px;
+            margin: 0;
+        }
+
+        .nav-logo {
+            margin-left: 18%;
+            margin-right: auto;
+            filter: drop-shadow(2px 3px 5px #808080)
+        }
+
+        /* #mens-menu-anchor {
         anchor-name: --mens-menu-popover;
     }
 

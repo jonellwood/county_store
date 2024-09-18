@@ -36,12 +36,31 @@ $ordList = [];
 foreach ($deptList as $department) {
     $departmentId = $department['order_details_id'];
     // $departmentId has been replaced by the order_details_id but I dont want to rewrite the whole thing
-    $ordSql = "SELECT ord_ref.order_id, ord_ref.quantity, ord_ref.product_name, ord_ref.product_code, ord_ref.color_id, 
-    ord_ref.size_name, ord_ref.line_item_total, ord_ref.rf_first_name, ord_ref.rf_last_name, ord_ref.department, departments.dep_name, v.id as vendor_id, v.vendor_number_finance
-    FROM ord_ref 
-    JOIN departments on ord_ref.department = departments.dep_num
-    JOIN vendors v on ord_ref.vendor = v.name
-    WHERE order_details_id = $departmentId";
+    // $ordSql = "SELECT ord_ref.order_id, ord_ref.quantity, ord_ref.product_name, ord_ref.product_code, ord_ref.color_id, 
+    // ord_ref.size_name, ord_ref.line_item_total, ord_ref.rf_first_name, ord_ref.rf_last_name, ord_ref.department, departments.dep_name, v.id as vendor_id, v.vendor_number_finance
+    // FROM ord_ref 
+    // JOIN departments on ord_ref.department = departments.dep_num
+    // JOIN vendors v on ord_ref.vendor = v.name
+    // WHERE order_details_id = $departmentId";
+    $ordSql = "SELECT order_details.order_id, order_details.product_id, order_details.line_item_total,
+                order_details.quantity,
+                products_new.name as product_name, products_new.code as product_code,
+                colors.color as color_name, sizes_new.size_name,
+                departments.dep_name, departments.dep_num as department,
+                prices.vendor_id, vendors.vendor_number_finance,
+                CONCAT(customers.first_name, ' ', customers.last_name) as req_for
+                FROM order_details
+                JOIN products_new on products_new.product_id = order_details.product_id
+                JOIN prices on prices.product_id = order_details.product_id
+                JOIN colors on colors.color_id = order_details.color_id
+                JOIN sizes_new on sizes_new.size_id = order_details.size_id
+                JOIN departments on departments.dep_num = order_details.emp_dept
+                JOIN orders on orders.order_id = order_details.order_id
+                JOIN customers on customers.customer_id = orders.customer_id
+                JOIN vendors on vendors.id = prices.vendor_id
+                WHERE order_details_id = $departmentId
+                GROUP BY order_details.order_details_id
+    ";
     $ordStmt = $conn->prepare($ordSql);
     $ordStmt->execute();
 
