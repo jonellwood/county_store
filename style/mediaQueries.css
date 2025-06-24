@@ -1,0 +1,49 @@
+@media screen and (max-width: 576px) {
+	#products-target {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	#hot-sellers {
+		grid-template-columns: repeat(1, minmax(0, 1fr));
+	}
+	.card-title {
+		font-size: 0.65rem !important;
+	}
+}
+
+@media screen and (min-width: 576px) {
+	#products-target {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	#hot-sellers {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.card-title {
+		font-size: 0.75rem !important;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	#products-target {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+	#hot-sellers {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.card-title {
+		font-size: 0.85rem !important;
+	}
+}
+@media screen and (min-width: 1080px) {
+	#products-target {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+
+	#hot-sellers {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+	.card-title {
+		font-size: 0.9rem !important;
+	}
+}

@@ -1,0 +1,2092 @@
+Starting the shiz
+Renamed file: + Blue/ White to Blue / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue / White' added successfully.
+Renamed file: + Grey/ Blue to Grey / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / Blue' added successfully.
+Renamed file: + Grey/ White to Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / White' added successfully.
+Renamed file: + Light Blue/ Navy to Light Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue / Navy' added successfully.
+Renamed file: + Petrol Blue/ Navy to Petrol Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Petrol Blue / Navy' added successfully.
+Renamed file: + White/ Blue to White / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Blue' added successfully.
+Renamed file: + Amethyst Purple to Amethyst Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Amethyst Purple' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Light Royal to Light Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Royal' added successfully.
+Renamed file: + Pearl Grey to Pearl Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pearl Grey' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Bright Kelly Green to Bright Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Kelly Green' added successfully.
+Renamed file: + Burgundy to Burgundy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Burgundy' added successfully.
+Renamed file: + Carolina Blue to Carolina Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Carolina Blue' added successfully.
+Renamed file: + Coastal Blue to Coastal Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coastal Blue' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Deep Forest Green to Deep Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Forest Green' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Gusty Grey to Gusty Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Pink Azalea to Pink Azalea
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Azalea' added successfully.
+Renamed file: + Wheat to Wheat
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Wheat' added successfully.
+Renamed file: + Safety Orange to Safety Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange' added successfully.
+Renamed file: + Safety Yellow to Safety Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow' added successfully.
+Renamed file: + Deep Black/ Graphite to Deep Black / Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black / Graphite' added successfully.
+Renamed file: + Rich Red/ Deep Black to Rich Red / Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red / Deep Black' added successfully.
+Renamed file: + River Blue Navy/ White to River Blue Navy / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy / White' added successfully.
+Renamed file: + Graphite/ White to Graphite / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / White' added successfully.
+Renamed file: + White/ Deep Black to White / Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Deep Black' added successfully.
+Renamed file: + Asphalt to Asphalt
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Asphalt' added successfully.
+Renamed file: + Dark Khaki to Dark Khaki
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Khaki' added successfully.
+Renamed file: + Admiral Blue/ Black/ Magnet to Admiral Blue / Black / Magnet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Admiral Blue / Black / Magnet' added successfully.
+Renamed file: + Black/ Black/ Magnet to Black / Black / Magnet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Black / Magnet' added successfully.
+Renamed file: + Black/ Magnet/ Signal Red to Black / Magnet / Signal Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Magnet / Signal Red' added successfully.
+Renamed file: + Safety Orange to Safety Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange' added successfully.
+Renamed file: + Safety Orange/ Black to Safety Orange / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange / Black' added successfully.
+Renamed file: + Safety Yellow to Safety Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow' added successfully.
+Renamed file: + Safety Yellow/ Black to Safety Yellow / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow / Black' added successfully.
+Renamed file: + Atomic Blue to Atomic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Atomic Blue' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Grey Concrete to Grey Concrete
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Concrete' added successfully.
+Renamed file: + Iron Grey to Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Iron Grey' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Red to True Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Lime Shock to Lime Shock
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime Shock' added successfully.
+Renamed file: + Pink Raspberry to Pink Raspberry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Raspberry' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Bluestone to Bluestone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bluestone' added successfully.
+Renamed file: + Desert to Desert
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Desert' added successfully.
+Renamed file: + Heather Grey to Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heather Grey' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Dark Brown to Dark Brown
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Brown' added successfully.
+Renamed file: + Hunter Green to Hunter Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Hunter Green' added successfully.
+Renamed file: + Aquatic Blue to Aquatic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Aquatic Blue' added successfully.
+Renamed file: + Athletic Heather to Athletic Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Heather' added successfully.
+Renamed file: + Athletic Maroon to Athletic Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Maroon' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Deep Navy to Deep Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Navy' added successfully.
+Renamed file: + Jet Black to Jet Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jet Black' added successfully.
+Renamed file: + Kelly to Kelly
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly' added successfully.
+Renamed file: + Light Blue to Light Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Orange to Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Safety Green to Safety Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Green' added successfully.
+Renamed file: + Safety Orange to Safety Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange' added successfully.
+Renamed file: + Sand to Sand
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sand' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Ash to Ash
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ash' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Light Grey to Light Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Grey' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Tan to Tan
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tan' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Light Grey to Light Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Grey' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Gusty Grey to Gusty Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey' added successfully.
+Renamed file: + Night Sky Blue to Night Sky Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Night Sky Blue' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Graphite/ White to Graphite / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / White' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + True Blue/ White to True Blue / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Blue / White' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Black/ Battleship Grey to Black / Battleship Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Battleship Grey' added successfully.
+Renamed file: + Dress Blue Navy/ Battleship Grey to Dress Blue Navy / Battleship Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dress Blue Navy / Battleship Grey' added successfully.
+Renamed file: + Night Sky Blue/ Dress Blue Navy to Night Sky Blue / Dress Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Night Sky Blue / Dress Blue Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Iron Grey to Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Iron Grey' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Red to True Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Blueberry to Blueberry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blueberry' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Steel to Steel
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel' added successfully.
+Renamed file: + Birch to Birch
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Birch' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Gusty Grey Heather to Gusty Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey Heather' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Blacktop to Blacktop
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blacktop' added successfully.
+Renamed file: + Propel Navy to Propel Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Propel Navy' added successfully.
+Renamed file: + Grey/ Blue to Grey / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / Blue' added successfully.
+Renamed file: + Grey/ White to Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / White' added successfully.
+Renamed file: + Petrol Blue/ Navy to Petrol Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Petrol Blue / Navy' added successfully.
+Renamed file: + White/ Blue to White / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Blue' added successfully.
+Renamed file: + Blue/ White to Blue / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue / White' added successfully.
+Renamed file: + Light Blue/ Navy to Light Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue / Navy' added successfully.
+Renamed file: + Athletic Heather to Athletic Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Heather' added successfully.
+Renamed file: + Bright Red to Bright Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Red' added successfully.
+Renamed file: + Dark Heather Grey to Dark Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Heather Grey' added successfully.
+Renamed file: + Forest Green to Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green' added successfully.
+Renamed file: + Jet Black to Jet Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jet Black' added successfully.
+Renamed file: + New Pink to New Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'New Pink' added successfully.
+Renamed file: + Team Cardinal to Team Cardinal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Team Cardinal' added successfully.
+Renamed file: + Team Navy to Team Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Team Navy' added successfully.
+Renamed file: + Team Purple to Team Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Team Purple' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Orange to Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange' added successfully.
+Renamed file: + Safety Orange to Safety Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange' added successfully.
+Renamed file: + Safety Yellow to Safety Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dark Grey Heather to Dark Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Grey Heather' added successfully.
+Renamed file: + Deep Red to Deep Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red' added successfully.
+Renamed file: + Direct Blue to Direct Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Direct Blue' added successfully.
+Renamed file: + Engine Red to Engine Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Engine Red' added successfully.
+Renamed file: + Magnet to Magnet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Magnet' added successfully.
+Renamed file: + Slicker Yellow to Slicker Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Slicker Yellow' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Vine Green to Vine Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vine Green' added successfully.
+Renamed file: + Dark Fuchsia to Dark Fuchsia
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Fuchsia' added successfully.
+Renamed file: + Athletic Heather to Athletic Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Heather' added successfully.
+Renamed file: + Athletic Maroon to Athletic Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Maroon' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Deep Navy to Deep Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Navy' added successfully.
+Renamed file: + Jet Black to Jet Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jet Black' added successfully.
+Renamed file: + Light Blue to Light Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black/ Black to Black / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Black' added successfully.
+Renamed file: + Black/ White to Black / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / White' added successfully.
+Renamed file: + Brown/ Khaki to Brown / Khaki
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Brown / Khaki' added successfully.
+Renamed file: + Forest Green/ White to Forest Green / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green / White' added successfully.
+Renamed file: + Graphite/ Black to Graphite / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / Black' added successfully.
+Renamed file: + Graphite/ Graphite to Graphite / Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / Graphite' added successfully.
+Renamed file: + Graphite/ White to Graphite / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / White' added successfully.
+Renamed file: + Heather Grey/ Black to Heather Grey / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heather Grey / Black' added successfully.
+Renamed file: + Heather Grey/ White to Heather Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heather Grey / White' added successfully.
+Renamed file: + Silver/ Black to Silver / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Silver / Black' added successfully.
+Renamed file: + True Navy/ True Navy to True Navy / True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy / True Navy' added successfully.
+Renamed file: + True Navy/ White to True Navy / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy / White' added successfully.
+Renamed file: + True Red/ White to True Red / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red / White' added successfully.
+Renamed file: + True Royal/ White to True Royal / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal / White' added successfully.
+Renamed file: + White/ White to White / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / White' added successfully.
+Renamed file: + Black Heather to Black Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Heather' added successfully.
+Renamed file: + Dark Silver Heather to Dark Silver Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Silver Heather' added successfully.
+Renamed file: + Deep Red Heather to Deep Red Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red Heather' added successfully.
+Renamed file: + True Navy Heather to True Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy Heather' added successfully.
+Renamed file: + True Royal Heather to True Royal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal Heather' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Light Grey to Light Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Grey' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Tactical Green to Tactical Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tactical Green' added successfully.
+Renamed file: + Tan to Tan
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tan' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Yellow to Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Yellow' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Iron Grey to Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Iron Grey' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Red to True Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Coastal Blue to Coastal Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coastal Blue' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Carbon Heather to Carbon Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Carbon Heather' added successfully.
+Renamed file: + New Navy to New Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'New Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dress Blue Navy to Dress Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dress Blue Navy' added successfully.
+Renamed file: + Grey Steel to Grey Steel
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Steel' added successfully.
+Renamed file: + Pink Azalea to Pink Azalea
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Azalea' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + Stratus Grey to Stratus Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stratus Grey' added successfully.
+Renamed file: + Black/ White to Black / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / White' added successfully.
+Renamed file: + Gusty Grey/ White to Gusty Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey / White' added successfully.
+Renamed file: + True Navy/ White to True Navy / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy / White' added successfully.
+Renamed file: + True Royal/ White to True Royal / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal / White' added successfully.
+Renamed file: + Rich Red/ White to Rich Red / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red / White' added successfully.
+Renamed file: + Black/ Thunder Grey to Black / Thunder Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Thunder Grey' added successfully.
+Renamed file: + Graphite/ White to Graphite / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite / White' added successfully.
+Renamed file: + Regatta Blue/ Gusty Grey to Regatta Blue / Gusty Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Regatta Blue / Gusty Grey' added successfully.
+Renamed file: + Violet Purple/ Black to Violet Purple / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Violet Purple / Black' added successfully.
+Renamed file: + Safety Yellow/ Black to Safety Yellow / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow / Black' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Blueberry to Blueberry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blueberry' added successfully.
+Renamed file: + Kelly Green to Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly Green' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Steel to Steel
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Bright Orange to Bright Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Orange' added successfully.
+Renamed file: + Battleship Grey to Battleship Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Battleship Grey' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Black Charcoal Heather to Black Charcoal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Charcoal Heather' added successfully.
+Renamed file: + Deep Smoke to Deep Smoke
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Smoke' added successfully.
+Renamed file: + Dress Blue Navy to Dress Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dress Blue Navy' added successfully.
+Renamed file: + Forest Green to Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Navy Heather to Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy Heather' added successfully.
+Renamed file: + Pearl Grey Heather to Pearl Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pearl Grey Heather' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Tan to Tan
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tan' added successfully.
+Renamed file: + Yellow to Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Yellow' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Aquatic Blue to Aquatic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Aquatic Blue' added successfully.
+Renamed file: + Athletic Heather to Athletic Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Heather' added successfully.
+Renamed file: + Athletic Maroon to Athletic Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Maroon' added successfully.
+Renamed file: + Candy Pink to Candy Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Candy Pink' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Heather Grey to Dark Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Heather Grey' added successfully.
+Renamed file: + Jet Black to Jet Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jet Black' added successfully.
+Renamed file: + Kelly to Kelly
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Sangria to Sangria
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sangria' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Heather Navy to Heather Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heather Navy' added successfully.
+Renamed file: + Light Blue to Light Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Neon Pink to Neon Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Neon Pink' added successfully.
+Renamed file: + Yellow to Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Yellow' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Black Frost to Black Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Frost' added successfully.
+Renamed file: + Blush Frost to Blush Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blush Frost' added successfully.
+Renamed file: + Flint Blue Heather to Flint Blue Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Flint Blue Heather' added successfully.
+Renamed file: + Fuchsia Frost to Fuchsia Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Fuchsia Frost' added successfully.
+Renamed file: + Green Frost to Green Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Green Frost' added successfully.
+Renamed file: + Grey Frost to Grey Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Frost' added successfully.
+Renamed file: + Heathered Charcoal to Heathered Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Charcoal' added successfully.
+Renamed file: + Heathered Dusty Peach to Heathered Dusty Peach
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Dusty Peach' added successfully.
+Renamed file: + Heathered Dusty Sage to Heathered Dusty Sage
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Dusty Sage' added successfully.
+Renamed file: + Heathered Lavender to Heathered Lavender
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Lavender' added successfully.
+Renamed file: + Heathered Teal to Heathered Teal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Teal' added successfully.
+Renamed file: + Maritime Frost to Maritime Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maritime Frost' added successfully.
+Renamed file: + Maroon Frost to Maroon Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon Frost' added successfully.
+Renamed file: + Military Green Frost to Military Green Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Military Green Frost' added successfully.
+Renamed file: + Navy Frost to Navy Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy Frost' added successfully.
+Renamed file: + New Navy to New Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'New Navy' added successfully.
+Renamed file: + Purple Frost to Purple Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple Frost' added successfully.
+Renamed file: + Red Frost to Red Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red Frost' added successfully.
+Renamed file: + Royal Frost to Royal Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal Frost' added successfully.
+Renamed file: + Turquoise Frost to Turquoise Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Turquoise Frost' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Wisteria Heather to Wisteria Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Wisteria Heather' added successfully.
+Renamed file: + Banana to Banana
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Banana' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Bright Lavender to Bright Lavender
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Lavender' added successfully.
+Renamed file: + Burgundy to Burgundy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Burgundy' added successfully.
+Renamed file: + Charcoal Heather Grey to Charcoal Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal Heather Grey' added successfully.
+Renamed file: + Clover Green to Clover Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Clover Green' added successfully.
+Renamed file: + Coffee Bean to Coffee Bean
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coffee Bean' added successfully.
+Renamed file: + Cool Grey to Cool Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Cool Grey' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Deep Berry to Deep Berry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Berry' added successfully.
+Renamed file: + Gold to Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gold' added successfully.
+Renamed file: + Hibiscus to Hibiscus
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Hibiscus' added successfully.
+Renamed file: + Kelly Green to Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly Green' added successfully.
+Renamed file: + Light Blue to Light Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue' added successfully.
+Renamed file: + Light Pink to Light Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Pink' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Maui Blue to Maui Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maui Blue' added successfully.
+Renamed file: + Mediterranean Blue to Mediterranean Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Mediterranean Blue' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Orange to Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Steel Grey to Steel Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel Grey' added successfully.
+Renamed file: + Stone to Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stone' added successfully.
+Renamed file: + Strong Blue to Strong Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Strong Blue' added successfully.
+Renamed file: + Sunflower Yellow to Sunflower Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sunflower Yellow' added successfully.
+Renamed file: + Teal Green to Teal Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Teal Green' added successfully.
+Renamed file: + Texas Orange to Texas Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Texas Orange' added successfully.
+Renamed file: + Tropical Pink to Tropical Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tropical Pink' added successfully.
+Renamed file: + Turquoise to Turquoise
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Turquoise' added successfully.
+Renamed file: + Ultramarine Blue to Ultramarine Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ultramarine Blue' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Bark to Bark
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bark' added successfully.
+Renamed file: + Court Green to Court Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Court Green' added successfully.
+Renamed file: + Eggplant to Eggplant
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Eggplant' added successfully.
+Renamed file: + Light Stone to Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Stone' added successfully.
+Renamed file: + Mint Green to Mint Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Mint Green' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Grey Smoke to Grey Smoke
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Smoke' added successfully.
+Renamed file: + Apple Red to Apple Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Apple Red' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal Heather to Charcoal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal Heather' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Oxford Heather to Oxford Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Oxford Heather' added successfully.
+Renamed file: + Sterling Grey to Sterling Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sterling Grey' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Azure Blue to Azure Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Azure Blue' added successfully.
+Renamed file: + Blue Heather to Blue Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue Heather' added successfully.
+Renamed file: + Green Glen to Green Glen
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Green Glen' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Vine Green to Vine Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vine Green' added successfully.
+Renamed file: + Blue Wake Heather to Blue Wake Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue Wake Heather' added successfully.
+Renamed file: + Cobalt Heather to Cobalt Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Cobalt Heather' added successfully.
+Renamed file: + Deep Orange Heather to Deep Orange Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Orange Heather' added successfully.
+Renamed file: + Forest Green Heather to Forest Green Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green Heather' added successfully.
+Renamed file: + Graphite Heather to Graphite Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite Heather' added successfully.
+Renamed file: + Pink Raspberry Heather to Pink Raspberry Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Raspberry Heather' added successfully.
+Renamed file: + Scarlet Heather to Scarlet Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Scarlet Heather' added successfully.
+Renamed file: + True Navy Heather to True Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy Heather' added successfully.
+Renamed file: + Turf Green Heather to Turf Green Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Turf Green Heather' added successfully.
+Renamed file: + Varsity Purple Heather to Varsity Purple Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Varsity Purple Heather' added successfully.
+Renamed file: + Vintage Heather to Vintage Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vintage Heather' added successfully.
+Renamed file: + Safety Orange/ Black to Safety Orange / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange / Black' added successfully.
+Renamed file: + Safety Yellow/ Black to Safety Yellow / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow / Black' added successfully.
+Renamed file: + Grey/ Blue to Grey / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / Blue' added successfully.
+Renamed file: + Grey/ White to Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / White' added successfully.
+Renamed file: + Petrol Blue/ Navy to Petrol Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Petrol Blue / Navy' added successfully.
+Renamed file: + White/ Blue to White / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Blue' added successfully.
+Renamed file: + Blue/ White to Blue / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue / White' added successfully.
+Renamed file: + Light Blue/ Navy to Light Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue / Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Grey Heather to Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Heather' added successfully.
+Renamed file: + Marshmallow to Marshmallow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Marshmallow' added successfully.
+Renamed file: + Navy Heather to Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy Heather' added successfully.
+Renamed file: + Oatmeal Heather to Oatmeal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Oatmeal Heather' added successfully.
+Renamed file: + Pop Raspberry Heather to Pop Raspberry Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pop Raspberry Heather' added successfully.
+Renamed file: + Blue/ White to Blue / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue / White' added successfully.
+Renamed file: + Grey/ Blue to Grey / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / Blue' added successfully.
+Renamed file: + Grey/ White to Grey / White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey / White' added successfully.
+Renamed file: + Light Blue/ Navy to Light Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue / Navy' added successfully.
+Renamed file: + Petrol Blue/ Navy to Petrol Blue / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Petrol Blue / Navy' added successfully.
+Renamed file: + White/ Blue to White / Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Blue' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dusty Blue to Dusty Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dusty Blue' added successfully.
+Renamed file: + Grey Smoke to Grey Smoke
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Smoke' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Heathered Charcoal to Heathered Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Charcoal' added successfully.
+Renamed file: + Heathered Deep Royal to Heathered Deep Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Deep Royal' added successfully.
+Renamed file: + Heathered Neptune Blue to Heathered Neptune Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Neptune Blue' added successfully.
+Renamed file: + Heathered Red to Heathered Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Heathered Red' added successfully.
+Renamed file: + Lilac to Lilac
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lilac' added successfully.
+Renamed file: + Silver Mist to Silver Mist
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Silver Mist' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dress Blue Navy to Dress Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dress Blue Navy' added successfully.
+Renamed file: + Grey Smoke to Grey Smoke
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Smoke' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + Black Frost to Black Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Frost' added successfully.
+Renamed file: + Grey Frost to Grey Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Frost' added successfully.
+Renamed file: + Autumn Orange to Autumn Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Autumn Orange' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Green Glen to Green Glen
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Green Glen' added successfully.
+Renamed file: + Grey Smoke to Grey Smoke
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Smoke' added successfully.
+Renamed file: + Hyper Blue to Hyper Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Hyper Blue' added successfully.
+Renamed file: + Ocean Blue to Ocean Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ocean Blue' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + Vine Green to Vine Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vine Green' added successfully.
+Renamed file: + Violet Purple to Violet Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Violet Purple' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Deep Olive to Deep Olive
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Olive' added successfully.
+Renamed file: + Ivory Chiffon to Ivory Chiffon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ivory Chiffon' added successfully.
+Renamed file: + Misty Sage to Misty Sage
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Misty Sage' added successfully.
+Renamed file: + Rose Quartz to Rose Quartz
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rose Quartz' added successfully.
+Renamed file: + Sterling Grey to Sterling Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sterling Grey' added successfully.
+Renamed file: + True Blue to True Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Blue' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + Biscuit to Biscuit
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Biscuit' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Medium Heather Grey to Medium Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Medium Heather Grey' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Blue Lake to Blue Lake
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue Lake' added successfully.
+Renamed file: + Deep Orange to Deep Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Orange' added successfully.
+Renamed file: + Deep Red to Deep Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red' added successfully.
+Renamed file: + Forest Green to Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green' added successfully.
+Renamed file: + Gold to Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gold' added successfully.
+Renamed file: + Grey Concrete to Grey Concrete
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Concrete' added successfully.
+Renamed file: + Iron Grey to Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Iron Grey' added successfully.
+Renamed file: + Kelly Green to Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly Green' added successfully.
+Renamed file: + Lime Shock to Lime Shock
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime Shock' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Texas Orange to Texas Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Texas Orange' added successfully.
+Renamed file: + Tropic Blue to Tropic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tropic Blue' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Red to True Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Vegas Gold to Vegas Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vegas Gold' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black/ Charcoal to Black / Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Charcoal' added successfully.
+Renamed file: + Green/ Aqua to Green / Aqua
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Green / Aqua' added successfully.
+Renamed file: + Tangerine/ Pink to Tangerine / Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tangerine / Pink' added successfully.
+Renamed file: + Blacktop to Blacktop
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blacktop' added successfully.
+Renamed file: + Blue Mist to Blue Mist
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue Mist' added successfully.
+Renamed file: + Bright White to Bright White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright White' added successfully.
+Renamed file: + Diesel Grey to Diesel Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Diesel Grey' added successfully.
+Renamed file: + Electric Blue to Electric Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Electric Blue' added successfully.
+Renamed file: + Gridiron Green to Gridiron Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gridiron Green' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Pink Crush to Pink Crush
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Crush' added successfully.
+Renamed file: + Rogue Grey to Rogue Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rogue Grey' added successfully.
+Renamed file: + Signal Red to Signal Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Signal Red' added successfully.
+Renamed file: + Spar Blue to Spar Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Spar Blue' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Burgundy to Burgundy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Burgundy' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black Triad Solid to Black Triad Solid
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Triad Solid' added successfully.
+Renamed file: + Dark Grey Heather to Dark Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Grey Heather' added successfully.
+Renamed file: + Light Grey Heather to Light Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Grey Heather' added successfully.
+Renamed file: + True Navy Heather to True Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy Heather' added successfully.
+Renamed file: + True Royal Heather to True Royal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal Heather' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal Heather to Charcoal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal Heather' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Bright Purple to Bright Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Purple' added successfully.
+Renamed file: + Brilliant Blue to Brilliant Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Brilliant Blue' added successfully.
+Renamed file: + Carolina Blue to Carolina Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Carolina Blue' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Gusty Grey to Gusty Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Neon Orange to Neon Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Neon Orange' added successfully.
+Renamed file: + Neon Yellow to Neon Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Neon Yellow' added successfully.
+Renamed file: + Parcel Blue to Parcel Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Parcel Blue' added successfully.
+Renamed file: + Pink Raspberry to Pink Raspberry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Raspberry' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Steel Grey to Steel Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel Grey' added successfully.
+Renamed file: + Teal Green to Teal Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Teal Green' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Blacktop to Blacktop
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blacktop' added successfully.
+Renamed file: + Blueprint to Blueprint
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blueprint' added successfully.
+Renamed file: + Signal Red to Signal Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Signal Red' added successfully.
+Renamed file: + Voltage Blue to Voltage Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Voltage Blue' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Red Pepper to Red Pepper
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red Pepper' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + Dark Charcoal Heather to Dark Charcoal Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Charcoal Heather' added successfully.
+Renamed file: + Dark Navy Heather to Dark Navy Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy Heather' added successfully.
+Renamed file: + Black Frost to Black Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black Frost' added successfully.
+Renamed file: + Blush Frost to Blush Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blush Frost' added successfully.
+Renamed file: + Grey Frost to Grey Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Frost' added successfully.
+Renamed file: + Navy Frost to Navy Frost
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy Frost' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Blue Lake to Blue Lake
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Blue Lake' added successfully.
+Renamed file: + Deep Orange to Deep Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Orange' added successfully.
+Renamed file: + Deep Red to Deep Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red' added successfully.
+Renamed file: + Forest Green to Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green' added successfully.
+Renamed file: + Gold to Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gold' added successfully.
+Renamed file: + Grey Concrete to Grey Concrete
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Grey Concrete' added successfully.
+Renamed file: + Iron Grey to Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Iron Grey' added successfully.
+Renamed file: + Kelly Green to Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly Green' added successfully.
+Renamed file: + Light Pink to Light Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Pink' added successfully.
+Renamed file: + Lime Shock to Lime Shock
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime Shock' added successfully.
+Renamed file: + Maroon to Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maroon' added successfully.
+Renamed file: + Pink Raspberry to Pink Raspberry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pink Raspberry' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Tropic Blue to Tropic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tropic Blue' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Red to True Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Red' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Battleship Grey to Battleship Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Battleship Grey' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Deep Navy to Deep Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Navy' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Cloud Blue to Cloud Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Cloud Blue' added successfully.
+Renamed file: + Monument Grey to Monument Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Monument Grey' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + Sterling Grey to Sterling Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sterling Grey' added successfully.
+Renamed file: + True Blue to True Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Blue' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + Ultramarine Blue to Ultramarine Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ultramarine Blue' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black/ Light Stone to Black / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Light Stone' added successfully.
+Renamed file: + Burgundy/ Light Stone to Burgundy / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Burgundy / Light Stone' added successfully.
+Renamed file: + Classic Navy/ Light Stone to Classic Navy / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Classic Navy / Light Stone' added successfully.
+Renamed file: + Clover Green to Clover Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Clover Green' added successfully.
+Renamed file: + Dark Green/ Navy to Dark Green / Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green / Navy' added successfully.
+Renamed file: + Deep Berry to Deep Berry
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Berry' added successfully.
+Renamed file: + Hibiscus to Hibiscus
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Hibiscus' added successfully.
+Renamed file: + Light Blue/ Light Stone to Light Blue / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue / Light Stone' added successfully.
+Renamed file: + Light Pink to Light Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Pink' added successfully.
+Renamed file: + Light Stone/ Classic Navy to Light Stone / Classic Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Stone / Classic Navy' added successfully.
+Renamed file: + Maui Blue to Maui Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Maui Blue' added successfully.
+Renamed file: + Mediterranean Blue to Mediterranean Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Mediterranean Blue' added successfully.
+Renamed file: + Navy/ Light Stone to Navy / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy / Light Stone' added successfully.
+Renamed file: + Purple/ Light Stone to Purple / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple / Light Stone' added successfully.
+Renamed file: + Red/ Light Stone to Red / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red / Light Stone' added successfully.
+Renamed file: + Royal/ Classic Navy to Royal / Classic Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal / Classic Navy' added successfully.
+Renamed file: + Steel Grey/ Light Stone to Steel Grey / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel Grey / Light Stone' added successfully.
+Renamed file: + Stone to Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stone' added successfully.
+Renamed file: + Strong Blue to Strong Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Strong Blue' added successfully.
+Renamed file: + Teal Green to Teal Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Teal Green' added successfully.
+Renamed file: + Texas Orange/ Light Stone to Texas Orange / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Texas Orange / Light Stone' added successfully.
+Renamed file: + Tropical Pink to Tropical Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tropical Pink' added successfully.
+Renamed file: + Ultramarine Blue to Ultramarine Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ultramarine Blue' added successfully.
+Renamed file: + White/ Light Stone to White / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Light Stone' added successfully.
+Renamed file: + Athletic Gold/ Light Stone to Athletic Gold / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Gold / Light Stone' added successfully.
+Renamed file: + Bark to Bark
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bark' added successfully.
+Renamed file: + Bright Lavender to Bright Lavender
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Lavender' added successfully.
+Renamed file: + Coffee Bean/ Light Stone to Coffee Bean / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coffee Bean / Light Stone' added successfully.
+Renamed file: + Court Green to Court Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Court Green' added successfully.
+Renamed file: + Eggplant/ Light Stone to Eggplant / Light Stone
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Eggplant / Light Stone' added successfully.
+Renamed file: + Gold to Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gold' added successfully.
+Renamed file: + Yellow to Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Yellow' added successfully.
+Renamed file: + Aquamarine to Aquamarine
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Aquamarine' added successfully.
+Renamed file: + Bright Kelly Green to Bright Kelly Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Bright Kelly Green' added successfully.
+Renamed file: + Burgundy to Burgundy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Burgundy' added successfully.
+Renamed file: + Carolina Blue to Carolina Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Carolina Blue' added successfully.
+Renamed file: + Coastal Blue to Coastal Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coastal Blue' added successfully.
+Renamed file: + Coral Splash to Coral Splash
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Coral Splash' added successfully.
+Renamed file: + Deep Black to Deep Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Black' added successfully.
+Renamed file: + Deep Forest Green to Deep Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Forest Green' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Gusty Grey to Gusty Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gusty Grey' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + River Blue Navy to River Blue Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'River Blue Navy' added successfully.
+Renamed file: + Safety Yellow to Safety Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow' added successfully.
+Renamed file: + Sunburst Yellow to Sunburst Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sunburst Yellow' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Pearl Grey to Pearl Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pearl Grey' added successfully.
+Renamed file: + Light Royal to Light Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Royal' added successfully.
+Renamed file: + Safety Orange to Safety Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Orange' added successfully.
+Renamed file: + Safety Yellow to Safety Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Safety Yellow' added successfully.
+Renamed file: + Black/ Iron Grey to Black / Iron Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black / Iron Grey' added successfully.
+Renamed file: + Engine Red/ Black to Engine Red / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Engine Red / Black' added successfully.
+Renamed file: + Navy/ Blue Lake to Navy / Blue Lake
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy / Blue Lake' added successfully.
+Renamed file: + Royal/ Black to Royal / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal / Black' added successfully.
+Renamed file: + Stone/ Black to Stone / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stone / Black' added successfully.
+Renamed file: + White/ Black to White / Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White / Black' added successfully.
+Renamed file: + Aquatic Blue to Aquatic Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Aquatic Blue' added successfully.
+Renamed file: + Ash to Ash
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ash' added successfully.
+Renamed file: + Athletic Heather to Athletic Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Heather' added successfully.
+Renamed file: + Athletic Maroon to Athletic Maroon
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Athletic Maroon' added successfully.
+Renamed file: + Brown to Brown
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Brown' added successfully.
+Renamed file: + Candy Pink to Candy Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Candy Pink' added successfully.
+Renamed file: + Cardinal to Cardinal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Cardinal' added successfully.
+Renamed file: + Carolina Blue to Carolina Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Carolina Blue' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Colonial Blue to Colonial Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Colonial Blue' added successfully.
+Renamed file: + Daffodil Yellow to Daffodil Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Daffodil Yellow' added successfully.
+Renamed file: + Dark Chocolate Brown to Dark Chocolate Brown
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Chocolate Brown' added successfully.
+Renamed file: + Dark Green to Dark Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Green' added successfully.
+Renamed file: + Dark Heather Grey to Dark Heather Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Heather Grey' added successfully.
+Renamed file: + Deep Marine to Deep Marine
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Marine' added successfully.
+Renamed file: + Deep Navy to Deep Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Navy' added successfully.
+Renamed file: + Dill Green to Dill Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dill Green' added successfully.
+Renamed file: + Dusty Brown to Dusty Brown
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dusty Brown' added successfully.
+Renamed file: + Eggplant to Eggplant
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Eggplant' added successfully.
+Renamed file: + Fiery Red to Fiery Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Fiery Red' added successfully.
+Renamed file: + Forest Green to Forest Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Forest Green' added successfully.
+Renamed file: + Gold to Gold
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Gold' added successfully.
+Renamed file: + Jade Green to Jade Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jade Green' added successfully.
+Renamed file: + Jet Black to Jet Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Jet Black' added successfully.
+Renamed file: + Kelly to Kelly
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Kelly' added successfully.
+Renamed file: + Lavender to Lavender
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lavender' added successfully.
+Renamed file: + Lemon Yellow to Lemon Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lemon Yellow' added successfully.
+Renamed file: + Light Blue to Light Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Blue' added successfully.
+Renamed file: + Light Sand to Light Sand
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Sand' added successfully.
+Renamed file: + Lime to Lime
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Lime' added successfully.
+Renamed file: + Medium Grey to Medium Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Medium Grey' added successfully.
+Renamed file: + Natural to Natural
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Natural' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Olive to Olive
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Olive' added successfully.
+Renamed file: + Orange to Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange' added successfully.
+Renamed file: + Orange Sherbet to Orange Sherbet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange Sherbet' added successfully.
+Renamed file: + Pale Pink to Pale Pink
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pale Pink' added successfully.
+Renamed file: + Pistachio to Pistachio
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Pistachio' added successfully.
+Renamed file: + Purple to Purple
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Purple' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Rich Red to Rich Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Rich Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + SGreen to SGreen
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'SGreen' added successfully.
+Renamed file: + SOrange to SOrange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'SOrange' added successfully.
+Renamed file: + Sand to Sand
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sand' added successfully.
+Renamed file: + Sangria to Sangria
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sangria' added successfully.
+Renamed file: + Sapphire to Sapphire
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Sapphire' added successfully.
+Renamed file: + Steel Blue to Steel Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Steel Blue' added successfully.
+Renamed file: + Stonewashed Blue to Stonewashed Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stonewashed Blue' added successfully.
+Renamed file: + Stonewashed Green to Stonewashed Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Stonewashed Green' added successfully.
+Renamed file: + Teal to Teal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Teal' added successfully.
+Renamed file: + Texas Orange to Texas Orange
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Texas Orange' added successfully.
+Renamed file: + Turquoise to Turquoise
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Turquoise' added successfully.
+Renamed file: + Ultramarine Blue to Ultramarine Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Ultramarine Blue' added successfully.
+Renamed file: + Violet to Violet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Violet' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Yellow to Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Yellow' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Deep Royal to Deep Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Royal' added successfully.
+Renamed file: + Light Grey to Light Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Light Grey' added successfully.
+Renamed file: + New Navy to New Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'New Navy' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Cloud Blue to Cloud Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Cloud Blue' added successfully.
+Renamed file: + Graphite to Graphite
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Graphite' added successfully.
+Renamed file: + Silver to Silver
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Silver' added successfully.
+Renamed file: + True Blue to True Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Blue' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Charcoal to Charcoal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Charcoal' added successfully.
+Renamed file: + Dark Navy to Dark Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Navy' added successfully.
+Renamed file: + Red to Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Red' added successfully.
+Renamed file: + Royal to Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Royal' added successfully.
+Renamed file: + Tan to Tan
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Tan' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Navy to Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Navy' added successfully.
+Renamed file: + Oxford Blue to Oxford Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Oxford Blue' added successfully.
+Renamed file: + White to White
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'White' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dark Smoke Grey to Dark Smoke Grey
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Smoke Grey' added successfully.
+Renamed file: + Deep Red to Deep Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Black to Black
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Black' added successfully.
+Renamed file: + Dark Grey Heather to Dark Grey Heather
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Dark Grey Heather' added successfully.
+Renamed file: + Deep Red to Deep Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Deep Red' added successfully.
+Renamed file: + Direct Blue to Direct Blue
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Direct Blue' added successfully.
+Renamed file: + Engine Red to Engine Red
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Engine Red' added successfully.
+Renamed file: + Magnet to Magnet
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Magnet' added successfully.
+Renamed file: + Orange Crush to Orange Crush
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Orange Crush' added successfully.
+Renamed file: + Slicker Yellow to Slicker Yellow
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Slicker Yellow' added successfully.
+Renamed file: + True Navy to True Navy
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Navy' added successfully.
+Renamed file: + True Royal to True Royal
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'True Royal' added successfully.
+Renamed file: + Vine Green to Vine Green
+Checking Database  🤖 🤖 🤖 🤖 ✔
+Color 'Vine Green' added successfully.

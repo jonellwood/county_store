@@ -1,0 +1,49 @@
+CREATE TABLE `products_new` (
+  `product_id` int(8) NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `keep` tinyint(4) DEFAULT '1',
+  `product_type` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`product_id`),
+  UNIQUE KEY `id_UNIQUE` (`product_id`),
+  KEY `product_code` (`code`),
+  KEY `product_id` (`product_id`),
+  FULLTEXT KEY `Full Text` (`code`,`name`,`description`)
+) ENGINE=InnoDB AUTO_INCREMENT=459 DEFAULT CHARSET=utf8 COMMENT='Table to house products available from vendor  '
+
+
+CREATE TABLE `products_sizes_new` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) DEFAULT NULL,
+  `size_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2911 DEFAULT CHARSET=utf8
+
+CREATE TABLE `products_colors` (
+  `id` int(8) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `color_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fkProduct_idx` (`product_id`),
+  KEY `fkColors_idx` (`color_id`),
+  CONSTRAINT `fkColors` FOREIGN KEY (`color_id`) REFERENCES `colors` (`color_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2390 DEFAULT CHARSET=utf8 COMMENT='products to colors relationship'
+
+
+CREATE TABLE `sizes_new` (
+  `size_id` int(11) NOT NULL AUTO_INCREMENT,
+  `size_name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`size_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8
+
+CREATE TABLE `colors` (
+  `color_id` int(11) NOT NULL AUTO_INCREMENT,
+  `color` varchar(45) DEFAULT NULL,
+  `p_hex` varchar(10) DEFAULT NULL,
+  `s_hex` varchar(10) DEFAULT NULL,
+  `t_hex` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`color_id`),
+  UNIQUE KEY `id_UNIQUE` (`color_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1433 DEFAULT CHARSET=utf8

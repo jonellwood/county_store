@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarm Reporting System</title>
+    <link href="alarm.css" type="stylesheet">
+
+<script type="text/javascript">
+    (function (w, d, x, id) {
+        s = d.createElement('script');
+        s.src = 'https://dtn7rvxwwlhud.cloudfront.net/amazon-connect-chat-interface-client.js';
+        s.async = 1;
+        s.id = id;
+        d.getElementsByTagName('head')[0].appendChild(s);
+        w[x] = w[x] || function () { (w[x].ac = w[x].ac || []).push(arguments) };
+    })(window, document, 'amazon_connect', 'a323f08e-23f9-429f-ab95-75c3fdeaae11');
+    amazon_connect('styles', { openChat: { color: '#ffffff', backgroundColor: '#f57f43' }, closeChat: { color: '#ffffff', backgroundColor: '#f57f43' } });
+    amazon_connect('snippetId', 'QVFJREFIakZhMVo2ZGZmSXpGSnpJS2lYakthYVBxMmJIU0ZPbnhET3AyalJDV1F3UWdGKzc4ZzU0Qmh6TEJMajNxTGVERFNVQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNR3hhdHRKcUFKQTZNS2ZsakFnRVFnQ3VvRVowc2IzTkYzKzJjZStpbFNTbjh5bFdUVnpad3pmaUZzMlE1b0hRbjZnNjk5UWtvMzVQc1lmaFk6Ok5icEVHQmpaVzladVBkdDZaazhXOVZWUXBZL0lqM2UwRTZLTXU0dXg3aXRObW9XV3JJckNkUDJiaFRoS0pzSEJnelAzSW5wcFpRNFBEa0RHcDNmN2FLaUdzNnplekJqNU5QdDZjRUtrS1IrZ1ZpUC9HVnNLVERDbHZhTmtLRkJGaEdPQ3BJRVF2SmJkT1BRK1hNN2dhUHYxekxnbWNLND0=');
+    amazon_connect('supportedMessagingContentTypes', ['text/plain', 'text/markdown']);
+</script>
+
+</head>
+<body>
+    <span class="header-holder">  
+        <h1>Welcome back
+        <h1 class="company-name">American District Telegraph Company (ADT)</h1></h1>
+    </span>
+    <p></p>
+    <p class="name-tag">Berkeley County Non-Emergency Alarm Reporting Portal</p>
+    <div class="main-holder">
+        
+        <table>
+            <caption>Monthly Call Information</caption>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th colspan="3">Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Residential Alarms</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>Commercial Alarm</td>
+                    <td>123</td>
+                </tr>
+            </tbody>
+        </table>
+        <form>
+            <h4>Need to Update your company information?</h4>
+            <label>New Company Name</label>
+            <input type="text">
+            <br>
+            <label>New Contant Name</label>
+            <input type="text">
+            <br>
+            <button type="button" onclick="clicked()">Submit</button>
+        </form>
+    </div>
+    <footer>    
+        <p>Berkeley County Rocks</p>
+        <p>Start Here -></p>
+    </footer>
+    <script>
+        function clicked(){
+            alert("This is just a demo... it's not gonna work yet");
+        }
+    </script>
+</body>
+</html>
+<style>
+    html{
+        margin: 0;
+        padding: 0;
+        background-color: rgb(15, 15, 20);
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    h1,p{
+        color: #e5e7eb;
+    }
+    .header-holder{
+        /* display: flex; */
+        justify-content: center;
+        /* flex-direction: column; */
+        text-align: center;
+        
+    }
+    .company-name{
+        font-family: monospace;
+        /* margin-left: 10px; */
+        margin-top: 25px;
+    }
+    .name-tag{
+        text-align: center;
+        
+    }
+    .main-holder{
+        border-top: 1px solid #2d2464;
+    }
+    .show{
+        width: 500px !important;
+        height: 500px !important;
+        max-height: 99vh !important;
+        max-width: 99vw !important;
+        box-shadow: 0px 0px 14px 3px rgb(45, 36, 100);
+    }
+    table, form{
+        margin-top: 30px;
+        color: white;
+        padding: 15px;
+        width: 600px;
+    }
+    form input{
+        padding: 10px;
+        margin: 10px;
+    }
+    
+    table tr td{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-top: 1px solid hotpink;
+    }
+    footer{
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 0;
+        width: 65%;
+        height: 2.5rem;  
+        }
+   
+    footer p{
+        color: #BC13FE;
+    }
+</style>

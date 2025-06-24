@@ -1,0 +1,8 @@
+[2025-04-10 12:53:53] Unknown Russian Hackers attempted access while not logged in!{"GOBACK":"https:\/\/store.berkeleycountysc.gov\/viewCart.php","appVersion":"Unknown"} ###END###
+[2025-04-10 13:09:59] Unknown Russian Hackers attempted access while not logged in!{"GOBACK":"https:\/\/store.berkeleycountysc.gov\/mens-shirts-view.php","appVersion":"Unknown"} ###END###
+[2025-04-10 13:10:54] Unknown Russian Hackers attempted access while not logged in!{"GOBACK":"https:\/\/store.berkeleycountysc.gov\/mens-shirts-view.php","appVersion":"Unknown"} ###END###
+[2025-04-10 13:11:05] Unknown Russian Hackers attempted access while not logged in!{"GOBACK":"https:\/\/store.berkeleycountysc.gov\/mens-shirts-view.php","appVersion":"Unknown"} ###END###
+[2025-04-10 14:57:05] Unknown Russian Hackers attempted access while not logged in![] ###END###
+[2025-04-10 14:58:12] Unknown Russian Hackers attempted access while not logged in![] ###END###
+[2025-04-10 16:16:59] Unknown Russian Hackers attempted access while not logged in![] ###END###
+[2025-04-11 13:24:27] Unknown Russian Hackers attempted access while not logged in![] ###END###

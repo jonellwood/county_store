@@ -1,0 +1,176 @@
+{
+	"Bonneau": {
+		"Councilmember": [
+			{
+				"name": "Joseph R. Brunson II",
+				"url": "http://www.townofbonneau.com/"
+			},
+			{
+				"name": "Allen E. June",
+				"url": "http://www.townofbonneau.com/"
+			},
+			{
+				"name": "Deborah Thomas",
+				"url": "http://www.townofbonneau.com/"
+			},
+			{
+				"name": "James M. Ward",
+				"url": "http://www.townofbonneau.com/"
+			}
+		],
+		"Mayor": {
+			"name": "Rembert Wrenn",
+			"url": "http://www.townofbonneau.com/"
+		}
+	},
+	"Charleston": {
+		"Councilmember": [
+			{
+				"name": "Boyd Gregg",
+				"url": "https://charleston-sc.gov/481/District-One-Councilmember"
+			},
+			{
+				"name": "Kevin Shealy",
+				"url": "https://charleston-sc.gov/481/District-Two-Councilmember"
+			},
+			{
+				"name": "Jim McBride",
+				"url": "https://charleston-sc.gov/481/District-Three-Councilmember"
+			},
+			{
+				"name": "Robert M. Mitchell",
+				"url": "https://charleston-sc.gov/481/District-Four-Councilmember"
+			},
+			{
+				"name": "Karl L. Brady, Jr.",
+				"url": "https://charleston-sc.gov/481/District-Five-Councilmember"
+			},
+			{
+				"name": "William Dudley Gregorie",
+				"url": "https://charleston-sc.gov/481/District-Six-Councilmember"
+			},
+			{
+				"name": "Perry K. Waring",
+				"url": "https://charleston-sc.gov/481/District-Seven-Councilmember"
+			},
+			{
+				"name": "Michael S. Seekings",
+				"url": "https://charleston-sc.gov/481/District-Eight-Councilmember"
+			},
+			{
+				"name": "William Tinkler",
+				"url": "https://charleston-sc.gov/481/District-Nine-Councilmember"
+			},
+			{
+				"name": "Stephen Bowden",
+				"url": "https://charleston-sc.gov/481/District-Ten-Councilmember"
+			},
+			{
+				"name": "Ross A.Appel",
+				"url": "https://charleston-sc.gov/481/District-Eleven-Councilmember"
+			},
+			{
+				"name": "Caroline Parker",
+				"url": "https://charleston-sc.gov/481/District-Twelve-Councilmember"
+			}
+		],
+		"Mayor": {
+			"name": "William Scott Cogswell Jr.",
+			"url": "https://charleston-sc.gov/400/Mayor"
+		}
+	},
+	"Goose Creek": {
+		"Councilmember": [
+			"Hannah Cox",
+			"Melissa Enos",
+			"Debra Green-Fletcher",
+			"Christopher Lynn Harmon",
+			"Gayla McSwain",
+			"Jerry Tekac"
+		],
+		"Mayor": "Greg S. Habib"
+	},
+	"Hanahan": {
+		"Councilmember": [
+			{
+				"name": "Ken Boggs",
+				"url": "https://www.cityofhanahan.com/directory-listing/ken-boggs"
+			},
+			{
+				"name": "Jeff C Chandler",
+				"url": "https://www.cityofhanahan.com/directory-listing/jeff-chandler"
+			},
+			{
+				"name": "Mike Dyson",
+				"url": "https://www.cityofhanahan.com/directory-listing/mike-dyson"
+			},
+			{
+				"name": "Keven Hedgpeth",
+				"url": "https://www.cityofhanahan.com/directory-listing/kevin-hedgpeth"
+			},
+			{
+				"name": "Michael Sally",
+				"url": "https://www.cityofhanahan.com/directory-listing/michael-sally"
+			},
+			{
+				"name": "Adam Spurlock",
+				"url": "https://www.cityofhanahan.com/directory-listing/adam-spurlock"
+			}
+		],
+		"Mayor": {
+			"name": "Christie Rainwater",
+			"url": "https://www.cityofhanahan.com/directory-listing/christie-rainwater"
+		}
+	},
+	"Jamestown": {
+		"Councilmember": ["Jimmie Callum", "John Madray", "Patsy Litchfield"],
+		"Mayor": "Roy P. Pipkin"
+	},
+	"Moncks Corner": {
+		"Councilmember": [
+			"David A. Dennis Jr.",
+			"DeWayne G. Kitts",
+			"James N. Law Jr.",
+			"Latorie S. Lloyd",
+			"Chadwick D. Sweatman",
+			"James Bryan Ware III"
+		],
+		"Mayor": "Thomas Hamilton Jr."
+	},
+	"North Charleston": {
+		"Councilmember": [
+			"Nefertiti Brown",
+			"Michael Antonio Brown",
+			"Michael Brown",
+			"Brandon Hudson",
+			"Jerome Heyward",
+			"Sandino S. Moses",
+			"Rhonda Jerome",
+			"Charmaine Palmer-Roberts",
+			"Kenneth L. Skipper"
+		],
+		"Mayor": "Reggie Burgess"
+	},
+	"St Stephen": {
+		"Councilmember": [
+			"Robbie Ballentine",
+			"Louis Brown",
+			"Byron Norris McKelvey",
+			"Roderick Sumpter",
+			"Stanley Tucker",
+			"Winston D. Williams"
+		],
+		"Mayor": "John W. Rivers"
+	},
+	"Summerville": {
+		"Councilmember": [
+			"Aaron A. Brown",
+			"Kima Garten-Schmidt",
+			"Robert J. Jackson",
+			"Terry Jenkins",
+			"Tiffany Johnson-Wilson",
+			"Richard George Waring IV"
+		],
+		"Mayor": "Russ Touchberry"
+	}
+}

@@ -1,0 +1,17 @@
+Making all names lowercase
+Attempting to remove all product numbers from color names
+Removing the following ['l543', 'lsw285', 'bb18203', 'dt665']
+Removing ~swatch~ from color names
+Removing ~port~ from color names
+Removing ~PA- ~ from color names
+Removing ~Hanes- ~ from color names
+Removing ~MM & MercerMettle- ~ from color names
+Removing ~Ogio- ~ from color names
+Removing ~Cornerstone- ~ from color names
+Removing ~SportTek- ~ from color names
+Removing ~PortCo- ~ from color names
+Removing ~PortAuthority- ~ from color names
+Removing ~ST- ~ from color names
+Removing ~Anything starting with PC*- ~ from color names
+Removing ~Anything starting with BG*- ~ from color names
+Cleaning up anything with a hyphen

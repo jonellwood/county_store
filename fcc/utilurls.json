@@ -1,0 +1,19 @@
+{
+  "water": {
+    "Berkeley County Water & Sanitation": "https://www.bcwsa.com/",
+    "Berkeley County Water & Sanitation, CWS Franchise Area Agreement": "https://www.bcwsa.com/",
+    "Charleston Water System": "http://www.charlestonwater.com/",
+    "Goose Creek Public Works": "https://www.cityofgoosecreek.com/government/departments/public-works/water",
+    "Moncks Corner Water Works": "https://monckscornerwaterworks.com/",
+    "Jamestown": "",
+    "Summerville CPW": "https://www.summervillecpw.com/"
+  },
+  "sewer": {
+    "SUMMERVILLE CPW": "https://www.summervillecpw.com/",
+    "NAVAL WEAPONS STATION": "https://www.military.com/base-guide/naval-weapons-station-charleston",
+    "MONCKS CORNER": "https://monckscornersc.gov/government/sanitation",
+    "CHARLESTON CPW": "https://www.charlestonwater.com/",
+    "BCWSA": "https://www.bcwsa.com/"
+  }
+}
+

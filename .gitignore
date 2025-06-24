@@ -1,0 +1,10 @@
+/scratch.sql
+/config.php
+/dbcontroller.php
+spec-sheets/
+/login-ldap.php
+storeadmin/
+scripting_tools/store_fy_request.rtf
+add-product-to-db SAVE JUST IN CASE.php
+.markdownlint.json
+.DS_Store

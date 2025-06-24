@@ -1,0 +1,120 @@
+@font-face {
+	font-family: 'bcg';
+	src: url('../../../fonts/Gotham-Medium.otf') format('opentype');
+}
+@view-transition {
+	navigation: auto;
+}
+
+html {
+	height: 100%;
+	font-family: bcg;
+}
+
+.status-pills {
+	border-radius: 50%;
+	/* background-color: hotpink; */
+	height: 25px;
+	width: 25px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block;
+	line-height: 25px;
+	margin: 0;
+	padding: 0;
+}
+.Pending p {
+	background-color: #b3ffb3;
+	color: #000000;
+	border: #008000 1px solid;
+}
+.btn-approve,
+.Approved p {
+	background-color: #b3b3ff;
+	color: #000000;
+	border: #0000ff 1px solid;
+}
+.btn-deny,
+.Denied p {
+	background-color: #ff000050;
+	color: #ffffff;
+	border: #ff0000 1px solid;
+}
+
+.Ordered p {
+	background-color: #ffb3b3;
+	color: #000000;
+	border: #ff0000 1px solid;
+}
+.btn-receive,
+.Received p {
+	background-color: #ffedcc;
+	color: #000000;
+	border: #ffa500 1px solid;
+}
+.small-logo-img {
+	width: 50px;
+}
+.med-logo-img {
+	width: 150px;
+}
+.active-request td {
+	background-color: #000000 !important;
+	color: #ffffff !important;
+}
+.btn-approve,
+.btn-deny,
+.btn-receive {
+	cursor: pointer !important;
+}
+.btn-approve:hover,
+.btn-deny:hover,
+.btn-receive:hover,
+.btn-comment:hover,
+.btn-edit:hover {
+	background-color: #000000;
+	color: #ffffff;
+}
+::backdrop {
+	background-color: #00000025;
+	backdrop-filter: blur(5px);
+}
+
+.btn-edit {
+	background-color: #52525250;
+	color: #ffffff;
+	border: #000000 1px solid;
+	a {
+		color: #ffffff;
+		text-decoration: none;
+	}
+}
+.btn-comment {
+	background-color: #389cff50;
+	color: #000000;
+	border: darkblue 1px solid;
+	a {
+		color: #000000;
+		text-decoration: none;
+	}
+}
+.no-comment {
+	margin: 5px;
+	padding: 5px;
+	font-weight: bold;
+}
+.cap {
+	text-transform: capitalize !important;
+}
+.info-banner {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: dodgerblue;
+	color: #fff;
+}
+.nav hr {
+	width: 85% !important;
+}

@@ -1,0 +1,54 @@
+Error: Data too long for column 'description' at row 1
+Code: SM-K540
+Name: Port Authority  Silk Touch  Performance Polo
+Colors: ["6","1003","1002","148","18","944","879","12","13","896","897","1004","953","1","1005","930","747","7"]
+Sizes: ["12","13","14","15"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-K8000
+Name: Port Authority  EZCotton  Polo
+Colors: ["920","6","921","13","922","919","899","7"]
+Sizes: ["10","1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-L500
+Name: Port Authority  Ladies Silk Touch  Polo
+Colors: ["1012","6","100","9","1375","914","1013","188","18","924","288","346","925","394","420","433","879","12","926","927","13","5","4","1","1005","930","916","931","928","747","843","929","768","782","7"]
+Sizes: ["10","1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-L508
+Name: Port Authority  Ladies Short Sleeve Easy Care  Shirt
+Colors: ["988","989","990","914","991","924","925","1001","433","993","926","927","994","995","996","997","998","916","931","747","999","929","782","1000"]
+Sizes: ["10","1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-ST650
+Name: Sport Tek  Micropique Sport Wick  Polo
+Colors: ["6","948","949","1101","325","346","950","946","394","951","12","4","843","952","947","844","899","796","7"]
+Sizes: ["10","1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-PC54
+Name: Port   Company   Core Cotton Tee
+Colors: ["849","850","828","851","829","886","137","140","148","17","914","887","853","18","863","346","873","888","889","890","891","892","893","894","961","1063","1341","406","854","420","879","867","864","13","895","518","896","837","897","838","530","5","4","1","1005","690","695","697","10","728","858","745","898","1067","947","899","7","900","14"]
+Sizes: ["1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-PC55
+Name: Port   Company   Core Blend Tee
+Colors: ["849","850","828","851","829","110","137","140","148","17","18","863","278","346","873","890","893","1389","1063","1341","420","879","867","13","838","5","4","1","1005","841","16","695","697","7","14"]
+Sizes: ["1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_sizes`, CONSTRAINT `fkSizes` FOREIGN KEY (`size_id`) REFERENCES `sizes` (`size_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-PC61
+Name: Port   Company   Essential Tee
+Colors: ["849","850","828","851","110","137","140","148","17","1387","1388","853","18","863","862","861","866","868","288","865","325","346","1389","1063","1341","406","854","420","855","879","867","864","13","530","5","1390","1391","1392","4","1","857","1005","690","695","697","728","858","859","745","843","768","782","801","7","14"]
+Sizes: ["1","2","3","4","5","6","7","8","30"]
+Res Data: null
+Error: Cannot add or update a child row: a foreign key constraint fails (`uniform_orders`.`products_colors`, CONSTRAINT `fkColors` FOREIGN KEY (`color_id`) REFERENCES `colors` (`color_id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
+Code: SM-TST655
+Name: Sport Tek  Tall Side Blocked Micropique Sport Wick  Polo
+Colors: [""]
+Sizes: ["12","13","14","15","16"]
+Res Data: null
