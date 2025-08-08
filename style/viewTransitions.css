@@ -12,6 +12,7 @@
 		translate: 60vi;
 		opacity: 0;
 	}
+
 	to {
 		translate: 0;
 		opacity: 1;
@@ -20,16 +21,20 @@
 
 #cart-slideout {
 	margin: 20px;
-	block-size: 100vb;
-	inline-size: 60vi;
+	block-size: fit-content;
+	max-block-size: calc(100vh - 40px);
+	/* inline-size: min(60vi, 480px); */
 	inset-inline-start: unset;
 	inset-inline-end: 0;
 	animation: slide 0.5s ease-in-out;
+	max-width: 90vw;
+	overflow-y: auto;
 }
 
 #cart-slideout[open] {
 	animation: slide 0.5s ease-in-out reverse;
 }
+
 /* Transition for the popover itself */
 
 [popover]:popover-open {
@@ -39,7 +44,11 @@
 
 [popover] {
 	font-size: 1.2rem;
-	padding: 10px;
+	/* padding: 10px; */
+	border: 2px solid #314085;
+	border-radius: 15px;
+	/* box-shadow: 0 0 5px -10px #314085; */
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
 	/* Final state of the exit animation */
 	opacity: 0;
@@ -122,3 +131,24 @@ SEE DEMO AT https://codepen.io/jonellwood/pen/bGPryYP
 ::view-transition-old(cart) {
 	animation: 300ms ease move-out;
 } */
+
+/* Responsive improvements for cart slideout */
+@media (max-width: 1024px) {
+	#cart-slideout {
+		inline-size: min(70vi, 520px);
+	}
+}
+
+@media (max-width: 768px) {
+	#cart-slideout {
+		inline-size: min(85vw, 480px);
+		margin: 10px;
+	}
+}
+
+@media (max-width: 480px) {
+	#cart-slideout {
+		inline-size: 95vw;
+		margin: 5px;
+	}
+}

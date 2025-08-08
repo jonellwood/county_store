@@ -1,7 +1,7 @@
 <?php
 /*
 Created: 2024/08/28 14:24:34
-Last modified: 2025/05/13 09:17:54
+Last modified: 2025/08/08 10:00:43
 Organization: Berkeley County IT Department
 Purpose: Common header for all pages in public site. Brings in the needed CSS and includes the navigation element.
 Includes:   Cart.class.php is to initialize a Cart Object for users shopping session. 
@@ -209,9 +209,6 @@ $cart = new Cart;
     </div>
 
     <div id="cart-slideout" popover=manual>
-        <button popovertarget="cart-slideout" popovertargetaction="hide" class="btn-close ms-2 mb-1">
-            <span aria-hidden="true"></span>
-        </button>
         <div id="cart-slideout-container">
             <?php include "cartSlideout.php"; ?>
         </div>

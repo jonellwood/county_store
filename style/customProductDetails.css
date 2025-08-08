@@ -32,12 +32,14 @@
 	border-radius: 5px;
 	background-color: #fff;
 }
+
 .hat-image-holder {
 	background-color: #fff;
 	margin-top: 25px;
 	margin-right: 20px;
 	border-radius: 5px;
 }
+
 .hat-image {
 	border-radius: 5px;
 	background-color: transparent;
@@ -148,10 +150,12 @@ dialog {
 	display: flex;
 	flex-direction: column;
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
 	table {
 		width: 100%;
 	}
 }
+
 .amount-column {
 	min-width: 25px;
 	text-align: right;
@@ -166,6 +170,7 @@ td {
 #size-picker-holder {
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+
 .quantity-select input {
 	line-height: normal;
 }
@@ -194,6 +199,7 @@ legend {
 	font-size: large;
 	font-weight: bold;
 }
+
 */ .toast-header {
 	background-color: #00000050;
 	color: #ffffff;
@@ -393,9 +399,7 @@ label:has(> input[type='radio']:checked) {
 	border-radius: 5px;
 }
 
-.cart-slideout td {
-	color: black !important;
-}
+/* Removed cart-slideout td styling - now handled in cartSlideout.php */
 
 .dotted-bottom {
 	border-bottom: 1px #808080 dotted;
@@ -419,6 +423,7 @@ label:has(> input[type='radio']:checked) {
 		object-fit: scale-down;
 	}
 }
+
 #selected-logo-in-hat-summary {
 	/* background-color: #80808090; */
 	background-color: transparent;
@@ -644,9 +649,11 @@ label:has(> input[type='radio']:checked) {
 		transform: translateY(0%);
 		opacity: 1;
 	}
+
 	25% {
 		opacity: 0;
 	}
+
 	100% {
 		transform: translateY(-50%);
 		opacity: 0;
@@ -658,6 +665,7 @@ label:has(> input[type='radio']:checked) {
 		transform: translateY(50%);
 		opacity: 0;
 	}
+
 	75% {
 		opacity: 1;
 	}
@@ -667,6 +675,7 @@ label:has(> input[type='radio']:checked) {
 		opacity: 1;
 	}
 }
+
 #price-in-summary {
 	view-transition-name: summary-price-transition;
 }
@@ -682,45 +691,56 @@ label:has(> input[type='radio']:checked) {
 #qty-in-summary {
 	view-transition-name: summary-qty-transition;
 }
+
 #sub-in-summary {
 	view-transition-name: summary-sub-total-transition;
 }
+
 #new-total-in-summary {
 	view-transition-name: summary-new-total-transition;
 }
+
 #total-in-summary {
 	view-transition-name: summary-old-total-transition;
 }
+
 ::view-transition-new(summary-price-transition) {
 	animation: 200ms linear move-in;
 }
+
 ::view-transition-new(summary-old-total-transition) {
 	animation: 200ms linear move-in;
 }
+
 /* ::view-transition-old(summary-old-total-transition) {
 	animation: 100ms linear move-out;
 } */
 ::view-transition-new(summary-new-total-transition) {
 	animation: 200ms linear move-in;
 }
+
 /* ::view-transition-old(summary-new-total-transition) {
 	animation: 200ms linear move-out;
 } */
 ::view-transition-new(summary-qty-transition) {
 	animation: 200ms linear move-in;
 }
+
 /* ::view-transition-old(summary-qty-transition) {
 	animation: 100ms linear move-out;
 } */
 ::view-transition-new(summary-sub-total-transition) {
 	animation: 200ms linear move-in;
 }
+
 ::view-transition-new(summary-tax-transition) {
 	animation: 200ms linear move-in;
 }
+
 ::view-transition-new(summary-logo-fee-transition) {
 	animation: 200ms linear move-in;
 }
+
 @view-transition {
 	navigation: auto;
 }
