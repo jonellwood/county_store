@@ -259,19 +259,30 @@ function saveProduct(id) {
 	console.log('Sizes:', sizes);
 	console.log('Product ID:', id);
 
-	// fetch('saveProductData.php', {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json',
-	// 	},
-	// 	body: JSON.stringify({ colors, sizes }),
-	// })
-	// 	.then((response) => response.json())
-	// 	.then((data) => {
-	// 		alert('Product updated successfully!');
-	// 		closePopover();
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error('Error saving product:', error);
-	// 	});
+	fetch('saveProductData.php', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			product_id: id,
+			colors: colors,
+			sizes: sizes,
+		}),
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			if (data.success) {
+				alert('Product updated successfully!');
+				// closePopover(); // Uncomment if you have this function
+				// Refresh the page or update the display
+				location.reload();
+			} else {
+				alert('Error: ' + data.message);
+			}
+		})
+		.catch((error) => {
+			console.error('Error saving product:', error);
+			alert('Error saving product data');
+		});
 }

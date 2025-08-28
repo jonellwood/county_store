@@ -1,6 +1,6 @@
 <?php
 // Created: 2025/04/09 11:24:51
-// Last modified: 2025/04/10 13:41:31
+// Last modified: 2025/08/28 15:30:53
 
 include_once 'Logger.php';
 
@@ -62,6 +62,26 @@ class Product
             $sql = "SELECT * FROM products_new WHERE product_id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $productID);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $resultArray = $result->fetch_assoc();
+            return $resultArray;
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function getProductByCode($productCode)
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT * FROM products_new WHERE code = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $productCode);
             $stmt->execute();
             $result = $stmt->get_result();
             $resultArray = $result->fetch_assoc();
@@ -203,6 +223,238 @@ class Product
             return $resultArray;
         } catch (mysqli_sql_exception $e) {
             Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function addProduct($productData, $colors, $sizes)
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $conn->autocommit(FALSE); // Start transaction
+
+            // Insert product
+            $sql = "INSERT INTO products_new (code, name, image, description, keep, product_type) VALUES (?, ?, ?, ?, 1, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param(
+                "ssssi",
+                $productData['code'],
+                $productData['name'],
+                $productData['image'],
+                $productData['description'],
+                $productData['productType']
+            );
+            $stmt->execute();
+
+            $productId = $conn->insert_id;
+            Logger::logError("Added product with ID: " . $productId);
+
+            // Insert product colors
+            if (!empty($colors)) {
+                $colorSql = "INSERT INTO products_colors (product_id, color_id) VALUES (?, ?)";
+                $colorStmt = $conn->prepare($colorSql);
+
+                foreach ($colors as $colorId) {
+                    $colorStmt->bind_param("ii", $productId, $colorId);
+                    $colorStmt->execute();
+                }
+                Logger::logError("Added " . count($colors) . " colors for product ID: " . $productId);
+            }
+
+            // Insert product sizes
+            if (!empty($sizes)) {
+                $sizeSql = "INSERT INTO products_sizes_new (product_id, size_id) VALUES (?, ?)";
+                $sizeStmt = $conn->prepare($sizeSql);
+
+                foreach ($sizes as $size) {
+                    $sizeStmt->bind_param("ii", $productId, $size['sizeId']);
+                    $sizeStmt->execute();
+                }
+                Logger::logError("Added " . count($sizes) . " sizes for product ID: " . $productId);
+            }
+
+            // Insert prices
+            if (!empty($sizes)) {
+                $priceSql = "INSERT INTO prices (product_id, vendor_id, size_id, price, isActive) VALUES (?, ?, ?, ?, 1)";
+                $priceStmt = $conn->prepare($priceSql);
+
+                foreach ($sizes as $size) {
+                    $priceStmt->bind_param("iiid", $productId, $productData['vendorId'], $size['sizeId'], $size['price']);
+                    $priceStmt->execute();
+                }
+                Logger::logError("Added " . count($sizes) . " prices for product ID: " . $productId);
+            }
+
+            $conn->commit(); // Commit transaction
+            $conn->autocommit(TRUE);
+
+            return [
+                'success' => true,
+                'productId' => $productId,
+                'message' => 'Product added successfully'
+            ];
+        } catch (mysqli_sql_exception $e) {
+            if (isset($conn)) {
+                $conn->rollback(); // Rollback transaction on error
+                $conn->autocommit(TRUE);
+            }
+            Logger::logError("Error adding product: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    public function updateProduct($productId, $colors, $sizes)
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $conn->autocommit(FALSE); // Start transaction
+
+            Logger::logError("Starting product update for ID: " . $productId);
+
+            // Update colors - remove existing and add new ones
+            if (!empty($colors)) {
+                // Remove existing color associations
+                $deleteColorSql = "DELETE FROM products_colors WHERE product_id = ?";
+                $deleteColorStmt = $conn->prepare($deleteColorSql);
+                $deleteColorStmt->bind_param("i", $productId);
+                $deleteColorStmt->execute();
+
+                // Add new color associations
+                $colorSql = "INSERT INTO products_colors (product_id, color_id) VALUES (?, ?)";
+                $colorStmt = $conn->prepare($colorSql);
+
+                foreach ($colors as $color) {
+                    $colorStmt->bind_param("ii", $productId, $color['color_id']);
+                    $colorStmt->execute();
+                }
+                Logger::logError("Updated " . count($colors) . " colors for product ID: " . $productId);
+            }
+
+            // Update sizes and prices
+            if (!empty($sizes)) {
+                // First, collect all existing price_ids for this product
+                $existingPricesQuery = "SELECT price_id FROM prices WHERE product_id = ? AND isActive = 1";
+                $existingPricesStmt = $conn->prepare($existingPricesQuery);
+                $existingPricesStmt->bind_param("i", $productId);
+                $existingPricesStmt->execute();
+                $existingResult = $existingPricesStmt->get_result();
+                $existingPriceIds = [];
+                while ($row = $existingResult->fetch_assoc()) {
+                    $existingPriceIds[] = $row['price_id'];
+                }
+
+                // Collect price_ids that are being kept/updated
+                $keptPriceIds = [];
+
+                foreach ($sizes as $size) {
+                    if (isset($size['price_id'])) {
+                        // Update existing price
+                        $keptPriceIds[] = $size['price_id'];
+                        $updatePriceSql = "UPDATE prices SET price = ? WHERE price_id = ? AND product_id = ?";
+                        $updatePriceStmt = $conn->prepare($updatePriceSql);
+                        $updatePriceStmt->bind_param("dii", $size['price'], $size['price_id'], $productId);
+                        $updatePriceStmt->execute();
+                        Logger::logError("Updated price_id: " . $size['price_id'] . " to price: " . $size['price']);
+                    } else if (isset($size['size_id'])) {
+                        // Add new size/price combination
+                        // First add to products_sizes_new if not exists
+                        $sizeSql = "INSERT IGNORE INTO products_sizes_new (product_id, size_id) VALUES (?, ?)";
+                        $sizeStmt = $conn->prepare($sizeSql);
+                        $sizeStmt->bind_param("ii", $productId, $size['size_id']);
+                        $sizeStmt->execute();
+
+                        // Then add price record
+                        $priceSql = "INSERT INTO prices (product_id, size_id, price, vendor_id, isActive) VALUES (?, ?, ?, 1, 1)";
+                        $priceStmt = $conn->prepare($priceSql);
+                        $priceStmt->bind_param("iid", $productId, $size['size_id'], $size['price']);
+                        $priceStmt->execute();
+                        Logger::logError("Added new size_id: " . $size['size_id'] . " with price: " . $size['price']);
+                    }
+                }
+
+                // Delete prices that were removed (exist in DB but not in kept list)
+                $pricesToDelete = array_diff($existingPriceIds, $keptPriceIds);
+                if (!empty($pricesToDelete)) {
+                    // First get the size_ids for the prices we're about to delete
+                    $getSizeIdsQuery = "SELECT DISTINCT size_id FROM prices WHERE price_id IN (" . str_repeat('?,', count($pricesToDelete) - 1) . "?) AND product_id = ?";
+                    $getSizeIdsStmt = $conn->prepare($getSizeIdsQuery);
+                    $params = array_merge($pricesToDelete, [$productId]);
+                    $types = str_repeat('i', count($params));
+                    $getSizeIdsStmt->bind_param($types, ...$params);
+                    $getSizeIdsStmt->execute();
+                    $sizeIdsResult = $getSizeIdsStmt->get_result();
+                    $sizeIdsToRemove = [];
+                    while ($row = $sizeIdsResult->fetch_assoc()) {
+                        $sizeIdsToRemove[] = $row['size_id'];
+                    }
+
+                    // Deactivate the prices (soft delete)
+                    $deletePriceSql = "UPDATE prices SET isActive = 0 WHERE price_id = ? AND product_id = ?";
+                    $deletePriceStmt = $conn->prepare($deletePriceSql);
+
+                    foreach ($pricesToDelete as $priceIdToDelete) {
+                        $deletePriceStmt->bind_param("ii", $priceIdToDelete, $productId);
+                        $deletePriceStmt->execute();
+                        Logger::logError("Deactivated (soft delete) price_id: " . $priceIdToDelete);
+                    }
+
+                    // Remove size associations from products_sizes_new for sizes that no longer have active prices
+                    if (!empty($sizeIdsToRemove)) {
+                        foreach ($sizeIdsToRemove as $sizeIdToRemove) {
+                            // Check if this size still has any active prices for this product
+                            $checkActivePricesQuery = "SELECT COUNT(*) as count FROM prices WHERE product_id = ? AND size_id = ? AND isActive = 1";
+                            $checkActivePricesStmt = $conn->prepare($checkActivePricesQuery);
+                            $checkActivePricesStmt->bind_param("ii", $productId, $sizeIdToRemove);
+                            $checkActivePricesStmt->execute();
+                            $activePricesResult = $checkActivePricesStmt->get_result();
+                            $activePricesCount = $activePricesResult->fetch_assoc()['count'];
+
+                            // If no active prices remain for this size, remove it from products_sizes_new
+                            if ($activePricesCount == 0) {
+                                $deleteSizeSql = "DELETE FROM products_sizes_new WHERE product_id = ? AND size_id = ?";
+                                $deleteSizeStmt = $conn->prepare($deleteSizeSql);
+                                $deleteSizeStmt->bind_param("ii", $productId, $sizeIdToRemove);
+                                $deleteSizeStmt->execute();
+                                Logger::logError("Removed size_id: " . $sizeIdToRemove . " from products_sizes_new for product_id: " . $productId);
+                            }
+                        }
+                    }
+                }
+                Logger::logError("Updated " . count($sizes) . " sizes/prices for product ID: " . $productId);
+            }
+
+            $conn->commit(); // Commit transaction
+            $conn->autocommit(TRUE);
+
+            Logger::logError("Product update completed successfully for ID: " . $productId);
+
+            return [
+                'success' => true,
+                'productId' => $productId,
+                'message' => 'Product updated successfully'
+            ];
+        } catch (mysqli_sql_exception $e) {
+            if (isset($conn)) {
+                $conn->rollback(); // Rollback transaction on error
+                $conn->autocommit(TRUE);
+            }
+            Logger::logError("Error updating product: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
         }
     }
 }

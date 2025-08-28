@@ -12,9 +12,11 @@ session_start();
 //     header("Location: 401.php");
 //     exit;
 // }
-include "components/commonHead.php";
+
+// Include our modern header instead of commonHead
+include "../../components/header.php";
 ?>
-<!-- <link href="prod-admin-style.css" rel="stylesheet" /> -->
+<link href="employeeRequests.css" rel="stylesheet" />
 <script src="../../functions/formatForUrl.js"></script>
 <script src="components/createPopoverButton.js"></script>
 <script src="functions/renderRequestList.js"></script>
@@ -23,6 +25,25 @@ include "components/commonHead.php";
 <script src="functions/renderEmployeeTotals.js"></script>
 <script src="functions/helpers.js"></script>
 <script src="functions/createActionPopover.js"></script>
+
+<!-- Modern Layout Container -->
+<div class="admin-dashboard-container">
+    <!-- Alert Banner -->
+    <div class="alert-banner" id="alert-banner">
+        Alert message goes here
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="main-content" id="main">
+        <!-- Content will be populated by JavaScript -->
+    </div>
+
+    <!-- Details Panel -->
+    <div class="details-panel" id="details">
+        <!-- Details will be populated by JavaScript -->
+    </div>
+</div>
+
 <script src="functions/createWholeOrderActionPopover.js"></script>
 <script src="functions/createWholeOrderReceivePopover.js"></script>
 <script src="functions/logAction.js"></script>

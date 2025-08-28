@@ -1,14 +1,19 @@
 <?php
 // Created: 2025/04/09 11:34:08
-// Last modified: 2025/04/10 13:45:19
+// Last modified: 2025/08/28 13:55:21
 
+echo "<div class='page-header-section'>";
 echo "<h1>Product Edit</h1>";
+echo "<a href='../add-product/' class='add-new-product-btn'>";
+echo "<i class='fas fa-plus'></i> Add New Product";
+echo "</a>";
+echo "</div>";
 
-echo "<table class='table align-middle mb-0 bg-white'>";
-echo "<thead class='bg-light'>";
+echo "<table class='table'>";
+echo "<thead>";
 echo "<tr>
-        <th></th>
-        <th>Product</th>
+        <th><i class='fas fa-image'></i></th>
+        <th>Product Information</th>
         <th>Description</th>
         <th>Actions</th>
     </tr>";

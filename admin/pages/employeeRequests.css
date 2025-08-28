@@ -1,0 +1,739 @@
+/* Modern Professional UI for Berkeley County Store - Employee Requests Dashboard */
+/* Designed to match the add-product and edit-products dark theme design system */
+
+:root {
+    /* Professional Dark Color Palette */
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --primary-light: #60a5fa;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+
+    /* Dark Theme Colors */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --bg-card: #1e293b;
+    --bg-input: #334155;
+    --bg-hover: #475569;
+
+    /* Text Colors */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-inverse: #1e293b;
+
+    /* Border Colors */
+    --border-primary: #475569;
+    --border-secondary: #64748b;
+    --border-accent: #3b82f6;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.25);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.25), 0 4px 6px -4px rgb(0 0 0 / 0.25);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.4), 0 10px 10px -5px rgb(0 0 0 / 0.2);
+
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Override body background */
+body {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-sans) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+
+/* Modern Dashboard Layout */
+.admin-dashboard-container {
+    /* max-width: 1400px; */
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    min-height: calc(100vh - 80px);
+    /* Account for fixed navbar */
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--spacing-lg);
+    grid-template-areas:
+        "alert alert"
+        "main details";
+}
+
+/* Alert Banner */
+.alert-banner {
+    grid-area: alert;
+    background: linear-gradient(135deg, var(--warning) 0%, #f97316 100%) !important;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    color: var(--text-inverse) !important;
+    font-weight: 600;
+    text-align: center;
+    padding: var(--spacing-md);
+    border: none;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    display: flex;
+}
+
+/* Main Content Area */
+.main-content {
+    grid-area: main;
+    background: var(--bg-card) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-primary);
+    backdrop-filter: blur(20px);
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Details Panel */
+.details-panel {
+    grid-area: details;
+    background: var(--bg-card) !important;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-primary);
+    backdrop-filter: blur(20px);
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Legacy support for existing JavaScript that expects these IDs */
+/* #main and #details are already styled above via .main-content and .details-panel */
+
+/* Remove old grid layout styles that came from commonHead.php */
+/* Reset any inherited styles from commonHead.php */
+
+/* Main Grid Layout Enhancements - keeping for backward compatibility */
+.parent {
+    background: transparent !important;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+}
+
+/* Left Sidebar (div1) - hide since we're using header dropdown now */
+.div1 {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .admin-dashboard-container {
+        grid-template-columns: 1fr 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "alert"
+            "main"
+            "details";
+        gap: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .main-content,
+    .details-panel {
+        max-height: none;
+    }
+}
+
+/* Table Styling */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin: var(--spacing-md) 0;
+}
+
+.styled-table thead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--text-primary);
+}
+
+.styled-table thead th {
+    padding: var(--spacing-lg);
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.025em;
+    border: none;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid var(--border-primary);
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:hover {
+    background: var(--bg-hover);
+}
+
+.styled-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.styled-table tbody td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--text-secondary);
+    border: none;
+}
+
+.styled-table tbody tr.selected,
+.styled-table tbody tr.active {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-left: 4px solid var(--primary);
+}
+
+/* Button Styling */
+.btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    text-decoration: none;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Primary Button */
+.btn-approve {
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-approve:hover:not(:disabled) {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Deny Button */
+.btn-deny {
+    background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-deny:hover:not(:disabled) {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Edit Button */
+.btn-edit {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-edit:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #1d4ed8 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Receive Button */
+.btn-receive {
+    background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-receive:hover:not(:disabled) {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Outline Button */
+.btn-outline-dark {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-primary);
+}
+
+.btn-outline-dark:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--border-accent);
+}
+
+/* Close Button */
+.btn-close,
+.close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.btn-close:hover,
+.close-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* Popover Styling */
+[popover] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--shadow-xl) !important;
+    color: var(--text-primary) !important;
+    padding: var(--spacing-lg) !important;
+    backdrop-filter: blur(20px);
+    max-width: 500px;
+    min-height: 200px;
+}
+
+.action-options-popover {
+    min-width: 450px;
+    max-width: 500px;
+    padding: var(--spacing-lg);
+}
+
+/* Action Buttons - Horizontal Layout */
+.action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--spacing-md);
+}
+
+.action-buttons .btn {
+    flex: 1;
+    min-width: 100px;
+    max-width: 140px;
+    justify-content: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Request Action Options Container */
+.request-action-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    position: relative;
+}
+
+/* Close Button Positioning */
+.btn-close,
+.close-btn {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close:hover,
+.close-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+/* Comment Section */
+.comment-section {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-primary);
+}
+
+.comment-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    resize: vertical;
+    min-height: 80px;
+}
+
+.comment-input:focus {
+    outline: none;
+    border-color: var(--border-accent);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.comment-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+.btn-comment {
+    background: linear-gradient(135deg, var(--secondary) 0%, #7c3aed 100%);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.btn-comment:hover:not(:disabled) {
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Mark Elements */
+mark.approve {
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    border: none;
+}
+
+mark.deny {
+    background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--spacing-sm);
+    font-weight: 600;
+    border: none;
+}
+
+/* Typography Enhancements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+b,
+strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-primary);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-secondary);
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .parent {
+        grid-template-columns: 15% 35% 35% 15%;
+    }
+}
+
+@media (max-width: 768px) {
+    .parent {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .div1,
+    #main,
+    #details {
+        grid-column: 1;
+    }
+}
+
+/* Glass morphism enhancement */
+@supports (backdrop-filter: blur(20px)) {
+
+    .div1,
+    #main,
+    #details {
+        background: rgba(30, 41, 59, 0.8) !important;
+        backdrop-filter: blur(20px);
+    }
+
+    [popover] {
+        background: rgba(30, 41, 59, 0.95) !important;
+        backdrop-filter: blur(20px);
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+
+    .styled-table,
+    .div1,
+    #main,
+    #details,
+    [popover] {
+        border: 2px solid var(--text-primary);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Additional styles for specific employeeRequests elements */
+
+/* Table Title */
+.table-title {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--border-primary);
+}
+
+/* Order Summary */
+.orderSummary {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Employee Info Holder */
+.emp-info-holder {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.emp-info-holder span {
+    color: var(--text-secondary);
+}
+
+/* Main Order Info Holder */
+.main-order-info-holder {
+    border-top: var(--primary) 15px solid !important;
+    border-bottom: var(--success) 5px solid !important;
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+/* Stats Key Holder */
+.stats-key-holder span {
+    color: var(--text-secondary);
+}
+
+/* Action Jackson Popover */
+#action-jackson {
+    background: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 3px solid var(--border-accent) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+#action-jackson h3 {
+    background: var(--bg-tertiary) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-primary) !important;
+}
+
+/* Totals Popover */
+#totals-popover[popover] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: var(--shadow-xl) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Fiscal Year Rows */
+[data-currentfy=false] td {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* Approve Order Button */
+.approve-order-button {
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    color: var(--text-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.approve-order-button:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Button Holder in Popover */
+.btn-holder-in-popover {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md) !important;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: var(--spacing-md);
+}
+
+.btn-holder-in-popover .btn {
+    flex: 1;
+    min-width: 100px;
+    max-width: 140px;
+    justify-content: center;
+}
+
+/* Override any existing styles for consistency */
+.request-action-options {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .action-options-popover {
+        min-width: 320px;
+        max-width: 95vw;
+    }
+
+    .action-buttons,
+    .btn-holder-in-popover {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .action-buttons .btn,
+    .btn-holder-in-popover .btn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.small-logo-img {
+    width: 50px;
+}
