@@ -345,8 +345,9 @@
         <!-- Container wrapper -->
         <div class="container-fluid">
             <!-- Navbar brand -->
-            <a class="navbar-brand" href="/store/admin/pages/employeeRequests.php">
-                <img src="/store/assets/images/the-logo.png" height="32" alt="Berkeley County Store" loading="lazy">
+            <a class="navbar-brand" href="/admin/pages/employeeRequests.php">
+
+                <img src="/assets/images/the-logo.png" height="32" alt="Berkeley County Store" loading="lazy">
             </a>
 
             <!-- Toggle button -->
@@ -360,7 +361,7 @@
                 <!-- Center links -->
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/store/admin/pages/employeeRequests.php">
+                        <a class="nav-link" href="/admin/pages/employeeRequests.php">
                             <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                         </a>
                     </li>
@@ -379,62 +380,67 @@
                             <i class="fas fa-store me-2"></i>Store
                         </a>
                     </li>
-                    <!-- Admin Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-cog me-2"></i>Admin
-                        </a>
-                        <ul class="dropdown-menu admin-dropdown" aria-labelledby="adminDropdown">
-                            <li><a class="dropdown-item" href="/store/admin/pages/edit-request-ui.php">
-                                    <i class="fas fa-edit me-2"></i>Edit Requests
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/orders-by-dept-for-admin.php">
-                                    <i class="fas fa-clock me-2"></i>Awaiting Order
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/invoicestopay.php">
-                                    <i class="fas fa-receipt me-2"></i>Invoices To Pay
-                                </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/reports.php">
-                                    <i class="fas fa-chart-bar me-2"></i>Reports
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/departmentSummaryReport.php">
-                                    <i class="fas fa-building me-2"></i>Dept Summary
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/orders-to-be-received.php">
-                                    <i class="fas fa-truck me-2"></i>Receiving
-                                </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/edit-users.php">
-                                    <i class="fas fa-users me-2"></i>Edit Users
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/dept-admin.php">
-                                    <i class="fas fa-sitemap me-2"></i>Edit Dept
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/editProductsFilters.php">
-                                    <i class="fas fa-filter me-2"></i>Edit Filters
-                                </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/add-product-ui.php">
-                                    <i class="fas fa-plus me-2"></i>Add Product
-                                </a></li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/edit-products/">
-                                    <i class="fas fa-pen me-2"></i>Edit Product
-                                </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/store/admin/pages/overview.php">
-                                    <i class="fas fa-th-large me-2"></i>Old Dashboard
-                                </a></li>
-                        </ul>
-                    </li>
+                    <?php
+                    // Only show Admin dropdown for users with role_id = 1
+                    if (isset($_SESSION['role_id']) && (int)$_SESSION['role_id'] === 1):
+                    ?>
+                        <!-- Admin Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog me-2"></i>Admin
+                            </a>
+                            <ul class="dropdown-menu admin-dropdown" aria-labelledby="adminDropdown">
+                                <!-- <li><a class="dropdown-item" href="/store/admin/pages/edit-request-ui.php">
+                                        <i class="fas fa-edit me-2"></i>Edit Requests
+                                    </a></li> -->
+                                <li><a class="dropdown-item" href="/admin/pages/orders/">
+                                        <i class="fas fa-shopping-cart me-2"></i>Department Orders
+                                    </a></li>
+                                <li><a class="dropdown-item" href="invoicestopay.php">
+                                        <i class="fas fa-receipt me-2"></i>Invoices To Pay
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/pages/reports/">
+                                        <i class="fas fa-chart-bar me-2"></i>Reports
+                                    </a></li>
+                                <li><a class="dropdown-item" href="/admin/pages/departmentSummaryReport.php">
+                                        <i class="fas fa-building me-2"></i>Dept Summary
+                                    </a></li>
+                                <li><a class="dropdown-item" href="orders-to-be-received.php">
+                                        <i class="fas fa-truck me-2"></i>Receiving
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/pages/edit-users.php">
+                                        <i class="fas fa-users me-2"></i>Edit Users
+                                    </a></li>
+                                <li><a class="dropdown-item" href="dept-admin.php">
+                                        <i class="fas fa-sitemap me-2"></i>Edit Dept
+                                    </a></li>
+                                <li><a class="dropdown-item" href="editProductsFilters.php">
+                                        <i class="fas fa-filter me-2"></i>Edit Filters
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/pages/add-product/">
+                                        <i class="fas fa-plus me-2"></i>Add Product
+                                    </a></li>
+                                <li><a class="dropdown-item" href="/admin/pages/edit-products/">
+                                        <i class="fas fa-pen me-2"></i>Edit Product
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/overview.php">
+                                        <i class="fas fa-th-large me-2"></i>Old Dashboard
+                                    </a></li>
+                            </ul>
+                        </li>
+                    <?php endif; ?>
                 </ul>
 
                 <!-- Right logout link -->

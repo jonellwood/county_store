@@ -23,15 +23,16 @@ function createActionPopover(id, action) {
         <div class="action-popover" id="action-popover">
             <button class="btn btn-close" popovertarget="action-jackson" popovertargetaction="hide">
                 <span aria-hidden="true"></span>
-                <span class="sr-only"></span>  
+                <span class="sr-only"></span>
+                ❌
             </button>
             <h3 class='cap'> Adding ${action} to request # ${id} </h3>
             <form action="${formAction}" method="POST">
                 <input type="hidden" name="id" value="${id}">`;
-                if (action !== 'comment') {
-                    html += `<input type="hidden" name="status" value="${status}">`;
-                }
-	        html +=`
+	if (action !== 'comment') {
+		html += `<input type="hidden" name="status" value="${status}">`;
+	}
+	html += `
                 <label for="comment">Comment</label><br />
                 <textarea class="comment" id="comment" name="comment" cols="102" rows="3"></textarea>
                 <br/>

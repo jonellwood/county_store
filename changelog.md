@@ -1,5 +1,41 @@
 # County Store Application Changelog
 
+## Version 2.0.9 - (2025-08-28)
+
+- 🎨 Complete modern dark theme implementation
+  - Professional navbar with embedded CSS design system
+  - Beautiful gradient backgrounds and glass morphism effects
+  - Consistent color palette across all admin routes
+
+- 🔧 Enhanced admin functionality
+  - Added Admin dropdown with all sub-routes (Edit Requests, Reports, etc.)
+  - Replaced legacy sidebar navigation with modern header
+  - Improved layout with responsive grid system
+
+- 📱 Employee Requests dashboard overhaul
+  - Modern card-based layout replacing old commonHead.php
+  - Horizontal button layout in popovers (Approve/Deny/Edit)
+  - Better space utilization and mobile responsiveness
+  - Enhanced popover styling with proper close buttons
+
+- 🛠️ Add Product & Edit Products routes
+  - Complete Vue 3 integration for add-product
+  - Full CRUD functionality for edit-products
+  - Smart delete logic with soft deletes and foreign key handling
+  - Professional form styling and validation
+
+- 🗄️ Database improvements
+  - Enhanced Product class with updateProduct() method
+  - Transaction safety and constraint handling
+  - New API endpoints for product management
+
+- 🎯 Technical enhancements
+  - Bootstrap 5.3.0 integration
+  - Font Awesome 6.4.0 icons
+  - CSS custom properties for theming
+  - Responsive design patterns
+  - Accessibility improvements (contrast, reduced motion)
+
 ## Version 2.0.8 - (2025-03-18)
 
 ### **Other Changes &#129489;&#8205;&#128187;**

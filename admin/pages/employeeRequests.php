@@ -2,6 +2,9 @@
 include('DBConn.php');
 
 session_start();
+// echo '<pre>';
+// echo json_encode($_SESSION);
+// echo '</pre>';
 // if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 //     header("location: ../signin/signin.php");
@@ -181,7 +184,7 @@ include "../../components/header.php";
 
 <!-- CONVERTING from off-canvas to popover. This is the popover -->
 <div id="not-off-canvas" popover=manual class="action-options-popover">
-    <button class="btn btn-outline-dark btn-close" popovertarget="not-off-canvas" popovertargetaction="hide">
+    <button class="btn btn-outline-dark btn-close" popovertarget="not-off-canvas" popovertargetaction="hide">X
         <span aria-hidden=”true”></span>
         <span class="sr-only"></span>
     </button>
@@ -530,6 +533,7 @@ include "../../components/header.php";
     displayAlert();
 </script>
 
+
 </html>
 
 <style>
@@ -604,7 +608,8 @@ include "../../components/header.php";
     }
 
     .action-options-popover {
-        width: 30%;
+        width: fit-content !important;
+        max-width: unset !important;
         min-height: 15%;
         box-shadow: 0 0 25px -5px #000000;
     }
@@ -642,7 +647,10 @@ include "../../components/header.php";
 
     .stats-key-holder {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 1em;
     }
 
     .stats-key-holder span:first-child {

@@ -266,6 +266,11 @@ body {
     background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
     color: var(--text-primary);
     box-shadow: var(--shadow-sm);
+
+    a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
 }
 
 .btn-edit:hover:not(:disabled) {
@@ -639,7 +644,21 @@ strong {
 
 /* Stats Key Holder */
 .stats-key-holder span {
+    p {
+        margin: 0 !important;
+    }
+}
+
+.stat-item {
     color: var(--text-secondary);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0.4rem;
+    font-size: 0.9rem;
 }
 
 /* Action Jackson Popover */
@@ -736,4 +755,56 @@ strong {
 
 .small-logo-img {
     width: 50px;
+}
+
+.Pending {
+    background-color: #b3ffb3 !important;
+    color: #000 !important;
+    border-bottom: #008000 2px solid !important;
+}
+
+.Approved {
+    background-color: #b3b3ff !important;
+    color: #000 !important;
+    border-bottom: #0000ff 2px solid !important;
+}
+
+.Denied {
+    background-color: #ff000050 !important;
+    color: #000 !important;
+    border-bottom: #ff0000 2px solid !important;
+}
+
+.Ordered {
+    background-color: #ffb3b3 !important;
+    color: #000 !important;
+    border-bottom: #ff0000 2px solid !important;
+}
+
+.Received {
+    background-color: #ffedcc;
+    color: #000 !important;
+    border-bottom: #ffa500 2px solid !important;
+}
+
+.status-pills {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #fff;
+    margin: 0;
+}
+
+.btn-close {
+    margin: 10px;
+    background: var(--bs-red) !important;
+    width: 30px !important;
+    height: 30px !important;
+    color: var(--bs-white) !important;
+    content: 'X';
 }
