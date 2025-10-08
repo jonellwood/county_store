@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:14+00:00",
+    "input_code": "K831",
+    "normalized_code": "K831",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "K831",
+            "normalized_code": "K831",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K831&parentId=115&prodimage=K831.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K831&parentId=115&prodimage=K831.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:14+00:00",
+            "product_name": "Print Charleston, Port Authority\u00ae Fine Pique Blend Blocked Polo K831",
+            "page_code": "K831",
+            "price_reference_color": "Aegean Blue/ Aegean Blue Heather",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 28.88,
+                    "raw": "$28.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 32.88,
+                    "raw": "$32.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 34.88,
+                    "raw": "$34.88",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aegean Blue/ Aegean Blue Heather",
+                "Deep Black/ Charcoal Heather",
+                "River Blue Navy/ River Blue Navy Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:13",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K831&parentId=115&prodimage=K831.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "K831",
+                        "normalized_code": "K831"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45785,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K831&parentId=115&prodimage=K831.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K831"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aegean Blue/ Aegean Blue Heather",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

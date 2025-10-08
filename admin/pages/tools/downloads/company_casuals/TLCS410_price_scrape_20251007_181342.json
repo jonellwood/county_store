@@ -1,0 +1,121 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:42+00:00",
+    "input_code": "SM-TLCS410",
+    "normalized_code": "TLCS410",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLCS410",
+            "normalized_code": "TLCS410",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLCS410&parentId=115&prodimage=TLCS410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLCS410&parentId=115&prodimage=TLCS410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:42+00:00",
+            "product_name": "CornerStone\u00ae Tall Select Snag-Proof Tactical Polo",
+            "page_code": "TLCS410",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 37.24,
+                    "raw": "$37.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 39.24,
+                    "raw": "$39.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 41.24,
+                    "raw": "$41.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 43.24,
+                    "raw": "$43.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 45.24,
+                    "raw": "$45.24",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal",
+                "Dark Navy",
+                "Light Grey",
+                "Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLCS410&parentId=115&prodimage=TLCS410.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLCS410",
+                        "normalized_code": "TLCS410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 49079,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLCS410&parentId=115&prodimage=TLCS410.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae Tall Select Snag-Proof Tactical Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLCS410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

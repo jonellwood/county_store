@@ -1,0 +1,145 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:55+00:00",
+    "input_code": "SM-K8000LS",
+    "normalized_code": "K8000LS",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K8000LS",
+            "normalized_code": "K8000LS",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000LS&parentId=115&prodimage=K8000LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000LS&parentId=115&prodimage=K8000LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:55+00:00",
+            "product_name": "Port Authority\u00ae EZCotton\u00ae Long Sleeve Polo",
+            "page_code": "K8000LS",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 29.58,
+                    "raw": "$29.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 29.58,
+                    "raw": "$29.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 29.58,
+                    "raw": "$29.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 29.58,
+                    "raw": "$29.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 29.58,
+                    "raw": "$29.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 31.58,
+                    "raw": "$31.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 35.58,
+                    "raw": "$35.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 37.58,
+                    "raw": "$37.58",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Navy",
+                "Oxford Heather",
+                "Sterling Grey",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000LS&parentId=115&prodimage=K8000LS.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K8000LS",
+                        "normalized_code": "K8000LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51029,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000LS&parentId=115&prodimage=K8000LS.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae EZCotton\u00ae Long Sleeve Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K8000LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

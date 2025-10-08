@@ -1,0 +1,122 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:42+00:00",
+    "input_code": "SM-TK469",
+    "normalized_code": "TK469",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TK469",
+            "normalized_code": "TK469",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TK469&parentId=115&prodimage=TK469.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TK469&parentId=115&prodimage=TK469.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:42+00:00",
+            "product_name": "Sport-Tek\u00ae Tall Dri-Mesh\u00ae Polo",
+            "page_code": "TK469",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 27.86,
+                    "raw": "$27.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 29.86,
+                    "raw": "$29.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 31.86,
+                    "raw": "$31.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 33.86,
+                    "raw": "$33.86",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Blueberry",
+                "Navy",
+                "Red",
+                "Royal",
+                "Steel"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TK469&parentId=115&prodimage=TK469.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TK469",
+                        "normalized_code": "TK469"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51617,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TK469&parentId=115&prodimage=TK469.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Tall Dri-Mesh\u00ae Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TK469"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:42",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

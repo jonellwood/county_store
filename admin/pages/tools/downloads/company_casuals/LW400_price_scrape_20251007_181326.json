@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:26+00:00",
+    "input_code": "SM-LW400",
+    "normalized_code": "LW400",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LW400",
+            "normalized_code": "LW400",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW400&parentId=115&prodimage=LW400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW400&parentId=115&prodimage=LW400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:26+00:00",
+            "product_name": "Print Charleston, Port Authority\u00ae Women's Short Sleeve Performance Staff Shirt LW400",
+            "page_code": "LW400",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 32.48,
+                    "raw": "$32.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 32.48,
+                    "raw": "$32.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 32.48,
+                    "raw": "$32.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 32.48,
+                    "raw": "$32.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 32.48,
+                    "raw": "$32.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 34.48,
+                    "raw": "$34.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 38.48,
+                    "raw": "$38.48",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 40.48,
+                    "raw": "$40.48",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Graphite",
+                "True Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW400&parentId=115&prodimage=LW400.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LW400",
+                        "normalized_code": "LW400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45702,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW400&parentId=115&prodimage=LW400.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LW400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:26",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

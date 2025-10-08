@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:10+00:00",
+    "input_code": "SM-L900",
+    "normalized_code": "L900",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L900",
+            "normalized_code": "L900",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L900&parentId=115&prodimage=L900.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L900&parentId=115&prodimage=L900.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:10+00:00",
+            "product_name": "Port Authority \u00ae Women's Collective Outer Shell Jacket",
+            "page_code": "L900",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 78.56,
+                    "raw": "$78.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 82.56,
+                    "raw": "$82.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 84.56,
+                    "raw": "$84.56",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Graphite",
+                "River Blue Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:09",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L900&parentId=115&prodimage=L900.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L900",
+                        "normalized_code": "L900"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 46169,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L900&parentId=115&prodimage=L900.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority \u00ae Women's Collective Outer Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L900"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

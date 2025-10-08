@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:18+00:00",
+    "input_code": "SM-LOG105",
+    "normalized_code": "LOG105",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LOG105",
+            "normalized_code": "LOG105",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG105&parentId=115&prodimage=LOG105.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG105&parentId=115&prodimage=LOG105.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:18+00:00",
+            "product_name": "OGIO\u00ae - Glam Polo",
+            "page_code": "LOG105",
+            "price_reference_color": "Blacktop",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 46.58,
+                    "raw": "$46.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 46.58,
+                    "raw": "$46.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 46.58,
+                    "raw": "$46.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 46.58,
+                    "raw": "$46.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 46.58,
+                    "raw": "$46.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 48.58,
+                    "raw": "$48.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 52.58,
+                    "raw": "$52.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 54.58,
+                    "raw": "$54.58",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Blacktop",
+                "Blueprint",
+                "Voltage Blue"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG105&parentId=115&prodimage=LOG105.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LOG105",
+                        "normalized_code": "LOG105"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45521,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG105&parentId=115&prodimage=LOG105.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "OGIO\u00ae - Glam Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LOG105"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Blacktop",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:18",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

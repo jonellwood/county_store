@@ -1,0 +1,132 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:11:58+00:00",
+    "input_code": "12000",
+    "normalized_code": "12000",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "12000",
+            "normalized_code": "12000",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=12000&parentId=115&prodimage=12000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=12000&parentId=115&prodimage=12000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:11:58+00:00",
+            "product_name": "Gildan\u00ae - DryBlend\u00ae Crewneck Sweatshirt",
+            "page_code": "12000",
+            "price_reference_color": "Ash",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 22.2,
+                    "raw": "$22.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 22.2,
+                    "raw": "$22.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 22.2,
+                    "raw": "$22.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 22.2,
+                    "raw": "$22.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 29,
+                    "raw": "$29.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 32.8,
+                    "raw": "$32.80",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Ash",
+                "Black",
+                "Charcoal",
+                "Forest",
+                "Navy",
+                "Royal",
+                "Sport Grey",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:11:57",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=12000&parentId=115&prodimage=12000.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "12000",
+                        "normalized_code": "12000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 57280,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=12000&parentId=115&prodimage=12000.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Gildan\u00ae - DryBlend\u00ae Crewneck Sweatshirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "12000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Ash",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL"
+                        ],
+                        "price_count": 6
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 8
+                    }
+                }
+            ]
+        }
+    }
+}

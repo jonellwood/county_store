@@ -1,0 +1,140 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:31+00:00",
+    "input_code": "SM-MM7101",
+    "normalized_code": "MM7101",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-MM7101",
+            "normalized_code": "MM7101",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM7101&parentId=115&prodimage=MM7101.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM7101&parentId=115&prodimage=MM7101.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:31+00:00",
+            "product_name": "Print Charleston, Mercer+Mettle\u00ae Women's Faille Soft Shell MM7101",
+            "page_code": "MM7101",
+            "price_reference_color": "Anchor Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 76.56,
+                    "raw": "$76.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 78.56,
+                    "raw": "$78.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 82.56,
+                    "raw": "$82.56",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 84.56,
+                    "raw": "$84.56",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Anchor Grey",
+                "Deep Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM7101&parentId=115&prodimage=MM7101.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-MM7101",
+                        "normalized_code": "MM7101"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 43078,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM7101&parentId=115&prodimage=MM7101.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "MM7101"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Anchor Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

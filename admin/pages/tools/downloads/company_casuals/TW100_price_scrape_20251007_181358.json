@@ -1,0 +1,119 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:58+00:00",
+    "input_code": "SM-TW100",
+    "normalized_code": "TW100",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TW100",
+            "normalized_code": "TW100",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TW100&parentId=115&prodimage=TW100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TW100&parentId=115&prodimage=TW100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:58+00:00",
+            "product_name": "Port Authority\u00ae Tall Long Sleeve Carefree Poplin Shirt",
+            "page_code": "TW100",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 29.92,
+                    "raw": "$29.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 31.92,
+                    "raw": "$31.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 33.92,
+                    "raw": "$33.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 35.92,
+                    "raw": "$35.92",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TW100&parentId=115&prodimage=TW100.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TW100",
+                        "normalized_code": "TW100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44236,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TW100&parentId=115&prodimage=TW100.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Long Sleeve Carefree Poplin Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TW100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:58",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

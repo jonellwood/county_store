@@ -1,0 +1,147 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:00+00:00",
+    "input_code": "266998",
+    "normalized_code": "266998",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "266998",
+            "normalized_code": "266998",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=266998&parentId=115&prodimage=266998.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=266998&parentId=115&prodimage=266998.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:00+00:00",
+            "product_name": "Nike Tech Sport Dri-FIT Polo",
+            "page_code": "266998",
+            "price_reference_color": "Anthracite",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 49.68,
+                    "raw": "$49.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 49.68,
+                    "raw": "$49.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 49.68,
+                    "raw": "$49.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 49.68,
+                    "raw": "$49.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 49.68,
+                    "raw": "$49.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 51.68,
+                    "raw": "$51.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 55.68,
+                    "raw": "$55.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 57.68,
+                    "raw": "$57.68",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Anthracite",
+                "Black",
+                "Navy",
+                "Pacific Blue",
+                "Solar Orange",
+                "Team Red",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=266998&parentId=115&prodimage=266998.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "266998",
+                        "normalized_code": "266998"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 57126,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=266998&parentId=115&prodimage=266998.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Nike Tech Sport Dri-FIT Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "266998"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Anthracite",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 7
+                    }
+                }
+            ]
+        }
+    }
+}

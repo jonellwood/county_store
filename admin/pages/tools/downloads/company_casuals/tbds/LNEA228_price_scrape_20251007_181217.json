@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:17+00:00",
+    "input_code": "LNEA228",
+    "normalized_code": "LNEA228",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "LNEA228",
+            "normalized_code": "LNEA228",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LNEA228&parentId=115&prodimage=LNEA228.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LNEA228&parentId=115&prodimage=LNEA228.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:17+00:00",
+            "product_name": "Print Charleston, New Era\u00ae Women's Power 1/2-Zip LNEA228",
+            "page_code": "LNEA228",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Shadow Grey Heather",
+                "True Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LNEA228&parentId=115&prodimage=LNEA228.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "LNEA228",
+                        "normalized_code": "LNEA228"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44935,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LNEA228&parentId=115&prodimage=LNEA228.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LNEA228"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

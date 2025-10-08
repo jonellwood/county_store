@@ -1,0 +1,120 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:46+00:00",
+    "input_code": "SM-TLK100",
+    "normalized_code": "TLK100",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLK100",
+            "normalized_code": "TLK100",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK100&parentId=115&prodimage=TLK100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK100&parentId=115&prodimage=TLK100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:46+00:00",
+            "product_name": "Port Authority\u00ae Tall Core Classic Pique Polo",
+            "page_code": "TLK100",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 18.54,
+                    "raw": "$18.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 20.54,
+                    "raw": "$20.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 22.54,
+                    "raw": "$22.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 24.54,
+                    "raw": "$24.54",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Graphite",
+                "River Blue Navy",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK100&parentId=115&prodimage=TLK100.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLK100",
+                        "normalized_code": "TLK100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:46",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 46227,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK100&parentId=115&prodimage=TLK100.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:46",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Core Classic Pique Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:46",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLK100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:46",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:46",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

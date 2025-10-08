@@ -1,0 +1,156 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:07+00:00",
+    "input_code": "BC6400",
+    "normalized_code": "BC6400",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BC6400",
+            "normalized_code": "BC6400",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BC6400&parentId=115&prodimage=BC6400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BC6400&parentId=115&prodimage=BC6400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:07+00:00",
+            "product_name": "BELLA+CANVAS \u00ae Women's Relaxed Jersey Short Sleeve Tee",
+            "page_code": "BC6400",
+            "price_reference_color": "Asphalt",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Asphalt",
+                "Black",
+                "Blue Storm",
+                "Carolina Blue",
+                "Charity Pink",
+                "Dark Grey",
+                "Dark Lavender",
+                "Dusty Blue",
+                "Forest",
+                "Leaf",
+                "Light Violet",
+                "Maroon",
+                "Mauve",
+                "Military Green",
+                "Natural",
+                "Navy",
+                "Orchid",
+                "Pink",
+                "Pink Gravel",
+                "Purple Storm",
+                "Red",
+                "Sage",
+                "Solid Athletic Grey",
+                "Team Purple",
+                "Thyme",
+                "True Royal",
+                "Vintage Black",
+                "Vintage Brown",
+                "Vintage Denim",
+                "Vintage Navy",
+                "Vintage White",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BC6400&parentId=115&prodimage=BC6400.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BC6400",
+                        "normalized_code": "BC6400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 119407,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BC6400&parentId=115&prodimage=BC6400.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "BELLA+CANVAS \u00ae Women's Relaxed Jersey Short Sleeve Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BC6400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Asphalt",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL"
+                        ],
+                        "price_count": 6
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 32
+                    }
+                }
+            ]
+        }
+    }
+}

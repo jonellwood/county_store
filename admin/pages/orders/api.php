@@ -24,9 +24,11 @@ try {
         $input = json_decode(file_get_contents('php://input'), true);
 
         if (isset($input['action']) && $input['action'] === 'placeOrder') {
-            // Handle place order action
+            // Handle place order action with complete order instance creation
             $departmentId = $input['departmentId'] ?? null;
             $poNumber = $input['poNumber'] ?? null;
+            $dryRun = $input['dryRun'] ?? false;
+            $ordEmpId = $_SESSION['empNumber'] ?? null;
 
             if (!$departmentId) {
                 http_response_code(400);
@@ -34,64 +36,249 @@ try {
                 exit;
             }
 
-            // Start transaction for data consistency
-            $conn->begin_transaction();
+            if (!$ordEmpId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'User session required']);
+                exit;
+            }
+
+            // Function to log events to file
+            function logOrderEvent($message)
+            {
+                $logFile = '/tmp/orders.log';
+                $timestamp = date('Y-m-d H:i:s');
+                $logEntry = "[$timestamp] $message" . PHP_EOL;
+                file_put_contents($logFile, $logEntry, FILE_APPEND | LOCK_EX);
+            }
+
+            logOrderEvent("=== STARTING ORDER PLACEMENT PROCESS ===");
+            logOrderEvent("Department: $departmentId, PO: " . ($poNumber ?: 'None') . ", User: $ordEmpId" . ($dryRun ? " [DRY RUN]" : ""));
+
+            // Start transaction for data consistency (only if not dry run)
+            if (!$dryRun) {
+                $conn->begin_transaction();
+            }
 
             try {
-                // Get all order_details_ids for this department that are approved
-                $idsql = "SELECT ord.order_details_id 
-                         FROM uniform_orders.ord_ref ord 
-                         WHERE ord.department = ? AND ord.status = 'Approved'";
-                $idstmt = $conn->prepare($idsql);
-                $idstmt->bind_param("i", $departmentId);
-                $idstmt->execute();
-                $odres = $idstmt->get_result();
+                // Get all order_details with vendor info for this department that are approved
+                // This JOIN is CRITICAL - it ensures we have vendor relationships
+                $stmt = $conn->prepare("
+                    SELECT od.order_details_id, pr.vendor_id, v.name as vendor_name
+                    FROM uniform_orders.order_details od
+                    JOIN uniform_orders.prices pr ON pr.product_id = od.product_id AND pr.size_id = od.size_id
+                    JOIN uniform_orders.vendors v ON v.id = pr.vendor_id
+                    WHERE (od.status_id = 1 OR od.status_id = 7 OR od.status = 'Approved')
+                      AND od.emp_dept = ?
+                    GROUP BY od.order_details_id
+                ");
+                $stmt->bind_param("i", $departmentId);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-                $orderDetailIds = [];
-                while ($row = $odres->fetch_assoc()) {
-                    $orderDetailIds[] = $row['order_details_id'];
+                $orderDetailsData = [];
+                while ($row = $result->fetch_assoc()) {
+                    $orderDetailsData[] = $row;
                 }
 
-                if (empty($orderDetailIds)) {
+                if (empty($orderDetailsData)) {
                     throw new Exception('No approved orders found for this department');
                 }
 
-                // Update all order_details to 'Ordered' status
-                $updateCount = 0;
-                foreach ($orderDetailIds as $orderDetailId) {
-                    $updateSql = "UPDATE uniform_orders.order_details 
-                                 SET status = 'Ordered'" .
-                        ($poNumber ? ", po_number = ?" : "") .
-                        " WHERE order_details_id = ?";
+                logOrderEvent("Found " . count($orderDetailsData) . " approved order details to process");
 
-                    $updateStmt = $conn->prepare($updateSql);
-
-                    if ($poNumber) {
-                        $updateStmt->bind_param("si", $poNumber, $orderDetailId);
-                    } else {
-                        $updateStmt->bind_param("i", $orderDetailId);
-                    }
-
-                    if ($updateStmt->execute()) {
-                        $updateCount++;
+                // Validate all vendors exist
+                $vendorIssues = [];
+                foreach ($orderDetailsData as $item) {
+                    if (!$item['vendor_id']) {
+                        $vendorIssues[] = "Order detail ID {$item['order_details_id']} has no vendor relationship";
                     }
                 }
 
+                if (!empty($vendorIssues)) {
+                    throw new Exception('Vendor validation failed: ' . implode(', ', $vendorIssues));
+                }
+
+                // If this is a dry run, return what would happen without making changes
+                if ($dryRun) {
+                    logOrderEvent("DRY RUN: Would process " . count($orderDetailsData) . " order details");
+
+                    $dryRunSummary = [
+                        'orderDetails' => [],
+                        'vendors' => [],
+                        'summary' => []
+                    ];
+
+                    foreach ($orderDetailsData as $item) {
+                        $dryRunSummary['orderDetails'][] = [
+                            'order_details_id' => $item['order_details_id'],
+                            'vendor_id' => $item['vendor_id'],
+                            'vendor_name' => $item['vendor_name']
+                        ];
+                    }
+
+                    $uniqueVendors = array_unique(array_column($orderDetailsData, 'vendor_id'));
+                    foreach ($uniqueVendors as $vendorId) {
+                        $vendorName = '';
+                        foreach ($orderDetailsData as $item) {
+                            if ($item['vendor_id'] == $vendorId) {
+                                $vendorName = $item['vendor_name'];
+                                break;
+                            }
+                        }
+                        $dryRunSummary['vendors'][] = [
+                            'vendor_id' => $vendorId,
+                            'vendor_name' => $vendorName,
+                            'order_count' => count(array_filter($orderDetailsData, function ($item) use ($vendorId) {
+                                return $item['vendor_id'] == $vendorId;
+                            }))
+                        ];
+                    }
+
+                    $dryRunSummary['summary'] = [
+                        'total_order_details' => count($orderDetailsData),
+                        'unique_vendors' => count($uniqueVendors),
+                        'department_id' => $departmentId,
+                        'po_number' => $poNumber ?: 'None',
+                        'would_create_order_instance' => true
+                    ];
+
+                    logOrderEvent("DRY RUN COMPLETED: " . json_encode($dryRunSummary));
+
+                    echo json_encode([
+                        'success' => true,
+                        'dryRun' => true,
+                        'message' => 'Dry run completed - no changes made',
+                        'preview' => $dryRunSummary
+                    ]);
+                    exit;
+                }
+
+                // Proceed with actual order placement
+                logOrderEvent("PROCEEDING WITH ACTUAL ORDER PLACEMENT");
+
+                // Update all order_details to 'Ordered' status
+                $orderDetailIds = array_column($orderDetailsData, 'order_details_id');
+                $inClause = implode(',', $orderDetailIds);
+                $updateSql = "
+                    UPDATE uniform_orders.order_details
+                    SET status = 'Ordered', status_id = 4, order_placed = NOW()" .
+                    ($poNumber ? ", po_number = ?" : "") .
+                    " WHERE order_details_id IN ($inClause)
+                ";
+
+                if ($poNumber) {
+                    $updateStmt = $conn->prepare($updateSql);
+                    $updateStmt->bind_param("s", $poNumber);
+                    $updateResult = $updateStmt->execute();
+                } else {
+                    $updateResult = $conn->query($updateSql);
+                }
+
+                if (!$updateResult) {
+                    throw new Exception('Failed to update order details status');
+                }
+
+                logOrderEvent("Updated " . count($orderDetailIds) . " order details to 'Ordered' status");
+
+                // Create order instance UID
+                $ordInstId = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
+                logOrderEvent("Generated order instance ID: $ordInstId");
+
+                // Create the order instance in the database
+                $ordInstSql = "INSERT INTO uniform_orders.order_inst (order_inst_id, created_by_emp_num, order_for_dept, po_number, order_inst_created) VALUES (?,?,?,?,NOW())";
+                $ordInstStmt = $conn->prepare($ordInstSql);
+                $ordInstStmt->bind_param("ssss", $ordInstId, $ordEmpId, $departmentId, $poNumber);
+                $createOrdInst = $ordInstStmt->execute();
+
+                if (!$createOrdInst) {
+                    throw new Exception('Failed to create order instance');
+                }
+
+                logOrderEvent("Created order instance: $ordInstId for department $departmentId by employee $ordEmpId");
+
+                // Map each order detail to the order instance with vendor info
+                if (!empty($orderDetailsData)) {
+                    $instSql = "INSERT INTO uniform_orders.order_inst_order_details_id (order_inst_id, order_details_id, vendor_id) VALUES (?,?,?)";
+                    $instStmt = $conn->prepare($instSql);
+
+                    $mappingCount = 0;
+                    foreach ($orderDetailsData as $item) {
+                        $instStmt->bind_param("sss", $ordInstId, $item['order_details_id'], $item['vendor_id']);
+                        $insertOrdList = $instStmt->execute();
+
+                        if ($insertOrdList) {
+                            $mappingCount++;
+                            logOrderEvent("Mapped order_details_id {$item['order_details_id']} to order_inst_id $ordInstId with vendor_id {$item['vendor_id']} ({$item['vendor_name']})");
+                        } else {
+                            throw new Exception("Failed to map order detail {$item['order_details_id']} to order instance");
+                        }
+                    }
+
+                    logOrderEvent("Successfully mapped $mappingCount order details to order instance");
+                }
+
                 // Commit the transaction
-                $conn->commit();
+                if (!$dryRun) {
+                    $conn->commit();
+                }
+
+                logOrderEvent("=== ORDER PLACEMENT COMPLETED SUCCESSFULLY ===");
+                logOrderEvent("Order Instance: $ordInstId, Details Processed: " . count($orderDetailsData) . ", PO: " . ($poNumber ?: 'None'));
 
                 echo json_encode([
                     'success' => true,
-                    'message' => "Successfully updated $updateCount orders to 'Ordered' status",
-                    'ordersUpdated' => $updateCount,
-                    'poNumber' => $poNumber
+                    'message' => "Successfully placed order for department $departmentId",
+                    'orderInstanceId' => $ordInstId,
+                    'ordersUpdated' => count($orderDetailIds),
+                    'orderDetailsMapped' => $mappingCount ?? 0,
+                    'poNumber' => $poNumber,
+                    'vendorCount' => count(array_unique(array_column($orderDetailsData, 'vendor_id')))
                 ]);
                 exit;
             } catch (Exception $e) {
-                // Rollback on error
-                $conn->rollback();
+                // Rollback on error (only if not dry run)
+                if (!$dryRun) {
+                    $conn->rollback();
+                }
+                logOrderEvent("ERROR: Order placement failed - " . $e->getMessage());
+                logOrderEvent("=== ORDER PLACEMENT FAILED" . ($dryRun ? "" : " - TRANSACTION ROLLED BACK") . " ===");
                 throw $e;
             }
+        }
+
+        if (isset($input['action']) && $input['action'] === 'logExport') {
+            // Handle HTML export logging
+            $orderInstanceId = $input['orderInstanceId'] ?? null;
+            $exportType = $input['exportType'] ?? 'HTML';
+            $recordCount = $input['recordCount'] ?? 0;
+            $userEmpId = $_SESSION['empNumber'] ?? 'Unknown';
+
+            if (!$orderInstanceId) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Order instance ID is required']);
+                exit;
+            }
+
+            // Function to log events to file (reusing the same function from placeOrder)
+            function logExportEvent($message)
+            {
+                $logFile = '/tmp/orders.log';
+                $timestamp = date('Y-m-d H:i:s');
+                $logEntry = "[$timestamp] $message" . PHP_EOL;
+                file_put_contents($logFile, $logEntry, FILE_APPEND | LOCK_EX);
+            }
+
+            // Log the export event
+            logExportEvent("=== VENDOR REPORT EXPORT ===");
+            logExportEvent("Generated $exportType export for order instance: $orderInstanceId");
+            logExportEvent("Export contains $recordCount records, created by employee: $userEmpId");
+            logExportEvent("Export file: vendor-report-$orderInstanceId.html");
+
+            echo json_encode([
+                'success' => true,
+                'message' => 'Export event logged successfully'
+            ]);
+            exit;
         }
 
         if (isset($input['action']) && $input['action'] === 'updateStatus') {

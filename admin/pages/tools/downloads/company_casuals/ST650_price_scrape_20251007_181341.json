@@ -1,0 +1,175 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:41+00:00",
+    "input_code": "SM-ST650",
+    "normalized_code": "ST650",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-ST650",
+            "normalized_code": "ST650",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST650&parentId=115&prodimage=ST650.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST650&parentId=115&prodimage=ST650.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:41+00:00",
+            "product_name": "Sport-Tek\u00ae Micropique Sport-Wick\u00ae Polo",
+            "page_code": "ST650",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 25.78,
+                    "raw": "$25.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 29.78,
+                    "raw": "$29.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 31.78,
+                    "raw": "$31.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 35.78,
+                    "raw": "$35.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Blue Lake",
+                "Deep Orange",
+                "Deep Red",
+                "Forest Green",
+                "Gold",
+                "Grey Concrete",
+                "Iron Grey",
+                "Kelly Green",
+                "Lime Shock",
+                "Maroon",
+                "Purple",
+                "Texas Orange",
+                "Tropic Blue",
+                "True Navy",
+                "True Red",
+                "True Royal",
+                "Vegas Gold",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST650&parentId=115&prodimage=ST650.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-ST650",
+                        "normalized_code": "ST650"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 98524,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST650&parentId=115&prodimage=ST650.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Micropique Sport-Wick\u00ae Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "ST650"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:41",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 19
+                    }
+                }
+            ]
+        }
+    }
+}

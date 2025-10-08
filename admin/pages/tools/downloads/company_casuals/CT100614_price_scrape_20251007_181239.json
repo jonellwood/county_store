@@ -1,0 +1,135 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:39+00:00",
+    "input_code": "SM-CT100614",
+    "normalized_code": "CT100614",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CT100614",
+            "normalized_code": "CT100614",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT100614&parentId=115&prodimage=CT100614.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT100614&parentId=115&prodimage=CT100614.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:39+00:00",
+            "product_name": "Carhartt \u00ae Rain Defender \u00ae Paxton Heavyweight Hooded Zip-Front Sweatshirt",
+            "page_code": "CT100614",
+            "price_reference_color": "Black",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 67.28,
+                    "raw": "$67.28",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 67.28,
+                    "raw": "$67.28",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 67.28,
+                    "raw": "$67.28",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 67.28,
+                    "raw": "$67.28",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 67.28,
+                    "raw": "$67.28",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 72.46,
+                    "raw": "$72.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 72.46,
+                    "raw": "$72.46",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Carbon Heather",
+                "New Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT100614&parentId=115&prodimage=CT100614.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CT100614",
+                        "normalized_code": "CT100614"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:39",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45666,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT100614&parentId=115&prodimage=CT100614.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:39",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Carhartt \u00ae Rain Defender \u00ae Paxton Heavyweight Hooded Zip-Front Sweatshirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:39",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CT100614"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:39",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 7
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:39",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

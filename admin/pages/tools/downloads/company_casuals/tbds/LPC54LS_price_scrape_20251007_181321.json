@@ -1,0 +1,154 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:21+00:00",
+    "input_code": "SM-LPC54LS",
+    "normalized_code": "LPC54LS",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LPC54LS",
+            "normalized_code": "LPC54LS",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC54LS&parentId=115&prodimage=LPC54LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC54LS&parentId=115&prodimage=LPC54LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:21+00:00",
+            "product_name": "Port & Co\u0099 Women's Long Sleeve Core Cotton Tee",
+            "page_code": "LPC54LS",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Candy Pink",
+                "Charcoal",
+                "Dark Heather Grey",
+                "Jet Black",
+                "Kelly",
+                "Navy",
+                "Purple",
+                "Red",
+                "Royal",
+                "Sangria",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:20",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC54LS&parentId=115&prodimage=LPC54LS.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LPC54LS",
+                        "normalized_code": "LPC54LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:21",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 76388,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC54LS&parentId=115&prodimage=LPC54LS.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:21",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Women's Long Sleeve Core Cotton Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:21",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LPC54LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:21",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:21",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 14
+                    }
+                }
+            ]
+        }
+    }
+}

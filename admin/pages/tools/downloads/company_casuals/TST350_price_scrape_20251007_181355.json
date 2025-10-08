@@ -1,0 +1,138 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:55+00:00",
+    "input_code": "SM-TST350",
+    "normalized_code": "TST350",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TST350",
+            "normalized_code": "TST350",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST350&parentId=115&prodimage=TST350.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST350&parentId=115&prodimage=TST350.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:55+00:00",
+            "product_name": "Sport-Tek\u00ae Tall PosiCharge\u00ae Competitor\u0099  Tee",
+            "page_code": "TST350",
+            "price_reference_color": "Atomic Blue",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 12.32,
+                    "raw": "$12.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 14.32,
+                    "raw": "$14.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 16.32,
+                    "raw": "$16.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 18.32,
+                    "raw": "$18.32",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Atomic Blue",
+                "Black",
+                "Cardinal",
+                "Carolina Blue",
+                "Deep Orange",
+                "Deep Red",
+                "Forest Green",
+                "Grey Concrete",
+                "Grey Concrete Heather",
+                "Iron Grey",
+                "Kelly Green",
+                "Lime Shock",
+                "Maroon",
+                "Neon Orange",
+                "Neon Yellow",
+                "Sand",
+                "Silver",
+                "Tropic Blue",
+                "True Navy",
+                "True Red",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:54",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST350&parentId=115&prodimage=TST350.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TST350",
+                        "normalized_code": "TST350"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:55",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 89620,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST350&parentId=115&prodimage=TST350.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:55",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Tall PosiCharge\u00ae Competitor\u0099  Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:55",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TST350"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:55",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Atomic Blue",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:55",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 22
+                    }
+                }
+            ]
+        }
+    }
+}

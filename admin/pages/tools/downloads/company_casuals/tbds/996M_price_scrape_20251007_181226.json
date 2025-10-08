@@ -1,0 +1,191 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:26+00:00",
+    "input_code": "SM-996M",
+    "normalized_code": "996M",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-996M",
+            "normalized_code": "996M",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=996M&parentId=115&prodimage=996M.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=996M&parentId=115&prodimage=996M.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:26+00:00",
+            "product_name": "Jerzees\u00ae NuBlend\u00ae Pullover Hooded Sweatshirt",
+            "page_code": "996M",
+            "price_reference_color": "Ash",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": null,
+                    "raw": "",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Ash",
+                "Athletic Heather",
+                "Black",
+                "Black Heather",
+                "Blush Pink",
+                "Burnt Orange",
+                "California Blue",
+                "Cardinal",
+                "Charcoal Grey",
+                "Chocolate",
+                "Classic Pink",
+                "Columbia Blue",
+                "Cool Mint",
+                "Cyber Pink",
+                "Deep Purple",
+                "Denim",
+                "Forest Green",
+                "Gold",
+                "Golden Pecan",
+                "J. Navy",
+                "Kelly",
+                "Khaki",
+                "Kiwi",
+                "Light Blue",
+                "Maroon",
+                "Military Green",
+                "Military Green Heather",
+                "Mustard Heather",
+                "Neon Green",
+                "Neon Pink",
+                "Oatmeal Heather",
+                "Oxford",
+                "Periwinkle Blue",
+                "Retro Heather Coral",
+                "Rock",
+                "Royal",
+                "Safari",
+                "Safety Green",
+                "Safety Orange",
+                "Sage",
+                "Sandstone",
+                "Scuba Blue",
+                "Sunset Coral",
+                "Sweet Cream Heather",
+                "T Orange",
+                "True Red",
+                "Vintage Heather Blue",
+                "Vintage Heather Maroon",
+                "Vintage Heather Navy",
+                "Vintage Heather Red",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=996M&parentId=115&prodimage=996M.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-996M",
+                        "normalized_code": "996M"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:26",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 183351,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=996M&parentId=115&prodimage=996M.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:26",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Jerzees\u00ae NuBlend\u00ae Pullover Hooded Sweatshirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:26",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "996M"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:26",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Ash",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:26",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 51
+                    }
+                }
+            ]
+        }
+    }
+}

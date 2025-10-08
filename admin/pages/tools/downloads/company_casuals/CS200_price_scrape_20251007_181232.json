@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:32+00:00",
+    "input_code": "SM-CS200",
+    "normalized_code": "CS200",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS200",
+            "normalized_code": "CS200",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS200&parentId=115&prodimage=CS200.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS200&parentId=115&prodimage=CS200.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:32+00:00",
+            "product_name": "CornerStone \u00ae ANSI 107 Class 2 Mesh Tee",
+            "page_code": "CS200",
+            "price_reference_color": "Safety Orange",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 21.64,
+                    "raw": "$21.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 25.64,
+                    "raw": "$25.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 27.64,
+                    "raw": "$27.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 31.64,
+                    "raw": "$31.64",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Safety Orange",
+                "Safety Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS200&parentId=115&prodimage=CS200.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS200",
+                        "normalized_code": "CS200"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:32",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42909,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS200&parentId=115&prodimage=CS200.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:32",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone \u00ae ANSI 107 Class 2 Mesh Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:32",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS200"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:32",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Safety Orange",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:32",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,146 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:59+00:00",
+    "input_code": "SM-L223",
+    "normalized_code": "L223",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L223",
+            "normalized_code": "L223",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L223&parentId=115&prodimage=L223.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L223&parentId=115&prodimage=L223.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:59+00:00",
+            "product_name": "Port Authority\u00ae Women's Microfleece Jacket",
+            "page_code": "L223",
+            "price_reference_color": "Amethyst Purple",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 27.92,
+                    "raw": "$27.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 29.92,
+                    "raw": "$29.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 33.92,
+                    "raw": "$33.92",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 35.92,
+                    "raw": "$35.92",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Amethyst Purple",
+                "Black",
+                "Light Royal",
+                "Pearl Grey",
+                "True Navy",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L223&parentId=115&prodimage=L223.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L223",
+                        "normalized_code": "L223"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:59",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 54543,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L223&parentId=115&prodimage=L223.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:59",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Microfleece Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:59",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L223"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:59",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Amethyst Purple",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:59",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,138 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:28+00:00",
+    "input_code": "SM-C112",
+    "normalized_code": "C112",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-C112",
+            "normalized_code": "C112",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C112&parentId=115&prodimage=C112.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C112&parentId=115&prodimage=C112.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:28+00:00",
+            "product_name": "Port Authority\u00ae Snapback Trucker Cap",
+            "page_code": "C112",
+            "price_reference_color": "Black",
+            "sizes": [
+                "OSFA"
+            ],
+            "prices": [
+                {
+                    "size": "OSFA",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Black/ Gold",
+                "Black/ Grey Steel",
+                "Black/ Tan",
+                "Black/ White",
+                "Carolina Blue/ White",
+                "Coyote Brown",
+                "Dark Green/ White",
+                "Duck Brown/ Black",
+                "Flame Red",
+                "Flame Red/ Black",
+                "Flame Red/ White",
+                "Forest Green/ White",
+                "Grey Steel",
+                "Grey Steel/ Black",
+                "Grey Steel/ Neon Blue",
+                "Grey Steel/ Neon Orange",
+                "Grey Steel/ Neon Pink",
+                "Grey Steel/ Neon Yellow",
+                "Grey Steel/ Purple",
+                "Grey Steel/ True Navy",
+                "Grey Steel/ White",
+                "Gusty Grey",
+                "Gusty Grey/ Black/ Grey Steel",
+                "Heather Grey/ Black",
+                "Heather Grey/ Patriot Blue",
+                "Heather Grey/ Rich Navy",
+                "Heather Grey/ White",
+                "Light Khaki/ White",
+                "Maroon/ White",
+                "Olive Drab Green",
+                "Olive Drab Green/ Black",
+                "Orange/ White",
+                "Parcel Blue/ White",
+                "Patriot Blue",
+                "Patriot Blue/ Flame Red/ White",
+                "Patriot Blue/ White",
+                "Purple/ White",
+                "Rich Navy",
+                "Rich Navy/ Heather Grey/ White",
+                "Rich Navy/ True Khaki",
+                "Rich Navy/ White",
+                "Texas Orange/ White",
+                "True Khaki/ Coffee",
+                "True Navy",
+                "True Navy/ White",
+                "True Pink/ White",
+                "True Red",
+                "True Royal/ Black",
+                "True Royal/ White",
+                "White",
+                "White/ Black/ Gusty Grey",
+                "Woodland Brown",
+                "Woodland Camo/ Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:27",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C112&parentId=115&prodimage=C112.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-C112",
+                        "normalized_code": "C112"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:28",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 128820,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C112&parentId=115&prodimage=C112.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:28",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Snapback Trucker Cap"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:28",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "C112"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:28",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "OSFA"
+                        ],
+                        "price_count": 1
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:28",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 54
+                    }
+                }
+            ]
+        }
+    }
+}

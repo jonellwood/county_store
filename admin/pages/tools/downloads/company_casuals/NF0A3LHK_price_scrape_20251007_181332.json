@@ -1,0 +1,119 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:32+00:00",
+    "input_code": "SM-NF0A3LHK",
+    "normalized_code": "NF0A3LHK",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-NF0A3LHK",
+            "normalized_code": "NF0A3LHK",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A3LHK&parentId=115&prodimage=NF0A3LHK.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A3LHK&parentId=115&prodimage=NF0A3LHK.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:32+00:00",
+            "product_name": "The North Face \u00ae Women's ThermoBall \u0099 Trekker Jacket",
+            "page_code": "NF0A3LHK",
+            "price_reference_color": "Mid Grey",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 243.24,
+                    "raw": "$243.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 243.24,
+                    "raw": "$243.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 243.24,
+                    "raw": "$243.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 243.24,
+                    "raw": "$243.24",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 244.9,
+                    "raw": "$244.90",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Mid Grey",
+                "TNF Black",
+                "TNF Matte Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:31",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A3LHK&parentId=115&prodimage=NF0A3LHK.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-NF0A3LHK",
+                        "normalized_code": "NF0A3LHK"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44664,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A3LHK&parentId=115&prodimage=NF0A3LHK.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "The North Face \u00ae Women's ThermoBall \u0099 Trekker Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "NF0A3LHK"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Mid Grey",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

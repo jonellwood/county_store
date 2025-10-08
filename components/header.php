@@ -27,7 +27,8 @@
             --success: #10b981;
             --warning: #f59e0b;
             --error: #ef4444;
-            --bg-primary: #0f172a;
+            --bg-primary: #0F1740;
+            ;
             --bg-secondary: #1e293b;
             --bg-tertiary: #334155;
             --bg-card: #1e293b;
@@ -414,7 +415,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/admin/pages/edit-users.php">
+                                <li><a class="dropdown-item" href="/admin/pages/edit-users/">
                                         <i class="fas fa-users me-2"></i>Edit Users
                                     </a></li>
                                 <li><a class="dropdown-item" href="dept-admin.php">
@@ -429,9 +430,21 @@
                                 <li><a class="dropdown-item" href="/admin/pages/add-product/">
                                         <i class="fas fa-plus me-2"></i>Add Product
                                     </a></li>
-                                <li><a class="dropdown-item" href="/admin/pages/edit-products/">
+                                <li>
+                                    <a class="dropdown-item" href="/admin/pages/edit-products/">
                                         <i class="fas fa-pen me-2"></i>Edit Product
-                                    </a></li>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/admin/pages/tools/company-casuals-scraper.php">
+                                        <i class="fas fa-spider me-2"></i>Scrape Products
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/admin/pages/tools/product-scraper.php">
+                                        <i class="fas fa-images me-2"></i>Scrape Images
+                                    </a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

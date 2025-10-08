@@ -1,0 +1,146 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:34+00:00",
+    "input_code": "SM-CS410LS",
+    "normalized_code": "CS410LS",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS410LS",
+            "normalized_code": "CS410LS",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410LS&parentId=115&prodimage=CS410LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410LS&parentId=115&prodimage=CS410LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:34+00:00",
+            "product_name": "CornerStone\u00ae - Select Long Sleeve Snag-Proof Tactical Polo",
+            "page_code": "CS410LS",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 43.38,
+                    "raw": "$43.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 47.38,
+                    "raw": "$47.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 49.38,
+                    "raw": "$49.38",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal",
+                "Dark Navy",
+                "Red",
+                "Royal",
+                "Tan"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410LS&parentId=115&prodimage=CS410LS.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS410LS",
+                        "normalized_code": "CS410LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 54914,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410LS&parentId=115&prodimage=CS410LS.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae - Select Long Sleeve Snag-Proof Tactical Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS410LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

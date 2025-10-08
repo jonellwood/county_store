@@ -13,7 +13,8 @@
     --info: #06b6d4;
 
     /* Dark Theme Colors */
-    --bg-primary: #0f172a;
+    --bg-primary: #0F1740;
+    ;
     --bg-secondary: #1e293b;
     --bg-tertiary: #334155;
     --bg-card: #1e293b;
@@ -67,7 +68,7 @@ body {
 
 /* Modern Container */
 .modern-admin-container {
-    max-width: 1400px;
+    max-width: 2400px;
     margin: 0 auto;
     padding: var(--spacing-lg);
     min-height: calc(100vh - 80px);

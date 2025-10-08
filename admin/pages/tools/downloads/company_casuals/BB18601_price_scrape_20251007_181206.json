@@ -1,0 +1,140 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:06+00:00",
+    "input_code": "BB18601",
+    "normalized_code": "BB18601",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BB18601",
+            "normalized_code": "BB18601",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18601&parentId=115&prodimage=BB18601.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18601&parentId=115&prodimage=BB18601.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:06+00:00",
+            "product_name": "Print Charleston, Brooks Brothers\u00ae Women's Quilted Jacket BB18601",
+            "page_code": "BB18601",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 124.2,
+                    "raw": "$124.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 124.2,
+                    "raw": "$124.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 124.2,
+                    "raw": "$124.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 124.2,
+                    "raw": "$124.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 124.2,
+                    "raw": "$124.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 125.87,
+                    "raw": "$125.87",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 129.2,
+                    "raw": "$129.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 130.87,
+                    "raw": "$130.87",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Night Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18601&parentId=115&prodimage=BB18601.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BB18601",
+                        "normalized_code": "BB18601"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 43006,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18601&parentId=115&prodimage=BB18601.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BB18601"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:06",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

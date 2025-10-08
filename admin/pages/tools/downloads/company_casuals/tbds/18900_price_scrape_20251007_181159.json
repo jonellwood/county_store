@@ -1,0 +1,89 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:11:59+00:00",
+    "input_code": "18900",
+    "normalized_code": "18900",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "18900",
+            "normalized_code": "18900",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18900&parentId=115&prodimage=18900.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18900&parentId=115&prodimage=18900.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:11:59+00:00",
+            "product_name": "Print Charleston, Gildan\u00ae Heavy Blend\u0099 Fleece Stadium Blanket 18900",
+            "page_code": "18900",
+            "price_reference_color": "Black",
+            "sizes": [
+                "OSFA"
+            ],
+            "prices": [
+                {
+                    "size": "OSFA",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal",
+                "Navy",
+                "Red",
+                "Royal",
+                "Sand",
+                "Sport Grey"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18900&parentId=115&prodimage=18900.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "18900",
+                        "normalized_code": "18900"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 47953,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18900&parentId=115&prodimage=18900.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "18900"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "OSFA"
+                        ],
+                        "price_count": 1
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 7
+                    }
+                }
+            ]
+        }
+    }
+}

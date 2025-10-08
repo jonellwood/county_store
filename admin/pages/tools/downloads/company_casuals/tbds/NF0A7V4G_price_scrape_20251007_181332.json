@@ -1,0 +1,117 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:32+00:00",
+    "input_code": "SM-NF0A7V4G",
+    "normalized_code": "NF0A7V4G",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-NF0A7V4G",
+            "normalized_code": "NF0A7V4G",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A7V4G&parentId=115&prodimage=NF0A7V4G.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A7V4G&parentId=115&prodimage=NF0A7V4G.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:32+00:00",
+            "product_name": "Print Charleston, The North Face\u00ae Women's Down Hybrid Jacket NF0A7V4G",
+            "page_code": "NF0A7V4G",
+            "price_reference_color": "TNF Black",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "TNF Black",
+                "TNF Medium Grey Heather",
+                "Vintage White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A7V4G&parentId=115&prodimage=NF0A7V4G.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-NF0A7V4G",
+                        "normalized_code": "NF0A7V4G"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44088,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A7V4G&parentId=115&prodimage=NF0A7V4G.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "NF0A7V4G"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "TNF Black",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:32",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

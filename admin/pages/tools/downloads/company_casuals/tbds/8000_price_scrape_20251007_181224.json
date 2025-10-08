@@ -1,0 +1,181 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:24+00:00",
+    "input_code": "SM-8000",
+    "normalized_code": "8000",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-8000",
+            "normalized_code": "8000",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8000&parentId=115&prodimage=8000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8000&parentId=115&prodimage=8000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:24+00:00",
+            "product_name": "Gildan\u00ae DryBlend\u00ae 50 Cotton/50 Poly T-Shirt",
+            "page_code": "8000",
+            "price_reference_color": "Ash",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Ash",
+                "Azalea",
+                "Black",
+                "Carolina Blue",
+                "Daisy",
+                "Dark Green",
+                "Dark Heather",
+                "Dark Maroon",
+                "Dark Navy",
+                "Deep Royal",
+                "Electric Green",
+                "Forest Green",
+                "Gold",
+                "Graphite Heather",
+                "Gravel",
+                "Heather Dark Navy",
+                "Heather Deep Royal",
+                "Heather Scarlet Red",
+                "Heliconia",
+                "Irish Green",
+                "Jade Dome",
+                "Kelly Green",
+                "Light Blue",
+                "Light Pink",
+                "Lime",
+                "Maroon",
+                "Navy",
+                "Orange",
+                "Orchid",
+                "Purple",
+                "Red",
+                "Royal",
+                "S. Orange",
+                "Safety Green",
+                "Sand",
+                "Sapphire",
+                "Scarlet Red",
+                "Sport Grey",
+                "Tennessee Orange",
+                "Texas Orange",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8000&parentId=115&prodimage=8000.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-8000",
+                        "normalized_code": "8000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:24",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 154230,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8000&parentId=115&prodimage=8000.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:24",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Gildan\u00ae DryBlend\u00ae 50 Cotton/50 Poly T-Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:24",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "8000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:24",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Ash",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:24",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 41
+                    }
+                }
+            ]
+        }
+    }
+}

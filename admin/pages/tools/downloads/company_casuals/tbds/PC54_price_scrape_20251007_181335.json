@@ -1,0 +1,223 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:35+00:00",
+    "input_code": "SM-PC54",
+    "normalized_code": "PC54",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-PC54",
+            "normalized_code": "PC54",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC54&parentId=115&prodimage=PC54.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC54&parentId=115&prodimage=PC54.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:35+00:00",
+            "product_name": "Port & Co\u0099 Core Cotton Tee",
+            "page_code": "PC54",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Ash",
+                "Athletic Heather",
+                "Athletic Kelly",
+                "Athletic Maroon",
+                "Black Heather",
+                "Bright Aqua",
+                "Candy Pink",
+                "Cardinal",
+                "Carolina Blue",
+                "Charcoal",
+                "Clover Green",
+                "Coal Grey",
+                "Coral",
+                "Coyote Brown",
+                "Creme",
+                "Dark Chocolate Brown",
+                "Dark Green",
+                "Dark Heather Grey",
+                "Flush Pink",
+                "Gold",
+                "Graphite Heather",
+                "Heather Athletic Maroon",
+                "Heather Dark Chocolate Brown",
+                "Heather Navy",
+                "Heather Purple",
+                "Heather Red",
+                "Heather Royal",
+                "Heather Sangria",
+                "Heathered Dusty Peach",
+                "Jadeite",
+                "Jet Black",
+                "Kelly",
+                "Laurel Green",
+                "Lavender",
+                "Lemon Yellow",
+                "Light Blue",
+                "Lime",
+                "Medium Grey",
+                "Natural",
+                "Navy",
+                "Neon Blue",
+                "Neon Green",
+                "Neon Orange",
+                "Neon Pink",
+                "Neon Yellow",
+                "Neptune Blue",
+                "Oatmeal Heather",
+                "Olive",
+                "Olive Drab Green",
+                "Olive Drab Green Heather",
+                "Orange",
+                "Pale Blush",
+                "Purple",
+                "Red",
+                "Royal",
+                "S. Green",
+                "S. Orange",
+                "Sand",
+                "Sangria",
+                "Sapphire",
+                "Silver",
+                "Steel Blue",
+                "Stonewashed Blue",
+                "Teal",
+                "Team Purple",
+                "Tennessee Orange",
+                "True Celadon",
+                "True Navy",
+                "True Royal",
+                "Tundra Blue",
+                "White",
+                "Woodland Brown",
+                "Yellow",
+                "Zinnia"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:34",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC54&parentId=115&prodimage=PC54.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-PC54",
+                        "normalized_code": "PC54"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 263081,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC54&parentId=115&prodimage=PC54.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Core Cotton Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "PC54"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 9
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 75
+                    }
+                }
+            ]
+        }
+    }
+}

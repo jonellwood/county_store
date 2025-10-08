@@ -1,0 +1,120 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:14:02+00:00",
+    "input_code": "TLJ754",
+    "normalized_code": "TLJ754",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "TLJ754",
+            "normalized_code": "TLJ754",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ754&parentId=115&prodimage=TLJ754.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ754&parentId=115&prodimage=TLJ754.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:14:02+00:00",
+            "product_name": "Port Authority\u00ae Tall Challenger\u0099 Jacket",
+            "page_code": "TLJ754",
+            "price_reference_color": "True Black/ Grey",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 64.14,
+                    "raw": "$64.14",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 68.14,
+                    "raw": "$68.14",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 72.14,
+                    "raw": "$72.14",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 76.14,
+                    "raw": "$76.14",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 80.14,
+                    "raw": "$80.14",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "True Black/ Grey",
+                "True Black/ True Black",
+                "True Navy/ Grey Heather",
+                "True Navy/ True Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:14:01",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ754&parentId=115&prodimage=TLJ754.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "TLJ754",
+                        "normalized_code": "TLJ754"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:02",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 46631,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ754&parentId=115&prodimage=TLJ754.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:02",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Challenger\u0099 Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:02",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLJ754"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:02",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "True Black/ Grey",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:02",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

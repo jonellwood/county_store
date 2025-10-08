@@ -1,0 +1,134 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:37+00:00",
+    "input_code": "SM-CSJ24",
+    "normalized_code": "CSJ24",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CSJ24",
+            "normalized_code": "CSJ24",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ24&parentId=115&prodimage=CSJ24.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ24&parentId=115&prodimage=CSJ24.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:37+00:00",
+            "product_name": "CornerStone\u00ae - ANSI 107 Class 3 Waterproof Parka",
+            "page_code": "CSJ24",
+            "price_reference_color": "Safety Orange/ Black",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 86.54,
+                    "raw": "$86.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 86.54,
+                    "raw": "$86.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 86.54,
+                    "raw": "$86.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 86.54,
+                    "raw": "$86.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 88.54,
+                    "raw": "$88.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 92.54,
+                    "raw": "$92.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 94.54,
+                    "raw": "$94.54",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Safety Orange/ Black",
+                "Safety Yellow/ Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ24&parentId=115&prodimage=CSJ24.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CSJ24",
+                        "normalized_code": "CSJ24"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42776,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ24&parentId=115&prodimage=CSJ24.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae - ANSI 107 Class 3 Waterproof Parka"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CSJ24"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Safety Orange/ Black",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 7
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

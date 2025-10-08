@@ -47,6 +47,10 @@ include "../../components/header.php";
     </div>
 </div>
 
+<!-- Hidden containers for totals rendering -->
+<div id="div6" style="display: none;"></div>
+<div id="employeeTotals" style="display: none;"></div>
+
 <script src="functions/createWholeOrderActionPopover.js"></script>
 <script src="functions/createWholeOrderReceivePopover.js"></script>
 <script src="functions/logAction.js"></script>
@@ -60,8 +64,8 @@ include "../../components/header.php";
             .then((response) => response.json())
             .then((data) => {
                 firstData.push(data);
-                renderRequestList(data)
-                clickFirst();
+                renderRequestList(data);
+                // clickFirst(); // Removed from here since it's handled in renderRequestList now
 
                 // getDepartmentTotals(data[0].department)
             })
@@ -79,20 +83,35 @@ include "../../components/header.php";
     async function getOrderDetails(order_id) {
         // console.log('order_id', order_id);
         setActiveRequest(order_id);
-        await fetch('getOrderDetails.php?id=' + order_id)
-            .then((response) => response.json())
-            .then((data) => {
-                // console.log(data)
-                renderOrderDetails(data);
-                getDepartmentTotals(data[0].department)
-                getEmpTotals(data[0].emp_id);
 
+        // Show loading state
+        const detailsPanel = document.getElementById('details');
+        detailsPanel.classList.add('loading');
+        detailsPanel.innerHTML = '<div class="loading-message">Loading order details...</div>';
 
-            })
-            .then(() => makeDeptTotalsButton())
-            .catch((error) => {
-                console.error("Error in getOrderDetails: ", error);
-            })
+        try {
+            await fetch('getOrderDetails.php?id=' + order_id)
+                .then((response) => response.json())
+                .then((data) => {
+                    // console.log(data)
+                    renderOrderDetails(data);
+                    getDepartmentTotals(data[0].department)
+                    getEmpTotals(data[0].emp_id);
+                })
+                .then(() => makeDeptTotalsButton())
+                .catch((error) => {
+                    console.error("Error in getOrderDetails: ", error);
+                    detailsPanel.innerHTML = '<div class="error-message">Error loading order details. Please try again.</div>';
+                })
+                .finally(() => {
+                    // Remove loading state
+                    detailsPanel.classList.remove('loading');
+                });
+        } catch (error) {
+            console.error("Error in getOrderDetails: ", error);
+            detailsPanel.classList.remove('loading');
+            detailsPanel.innerHTML = '<div class="error-message">Error loading order details. Please try again.</div>';
+        }
     }
     async function getDepartmentTotals(dept) {
         // console.log("fetching department totals for ", dept);

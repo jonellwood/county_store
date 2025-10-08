@@ -1,0 +1,151 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:19+00:00",
+    "input_code": "SM-LPC450VLS",
+    "normalized_code": "LPC450VLS",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LPC450VLS",
+            "normalized_code": "LPC450VLS",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC450VLS&parentId=115&prodimage=LPC450VLS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC450VLS&parentId=115&prodimage=LPC450VLS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:19+00:00",
+            "product_name": "Port & Co\u0099 Women's Long Sleeve Fan Favorite V-Neck Tee",
+            "page_code": "LPC450VLS",
+            "price_reference_color": "Athletic Heather",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 10.54,
+                    "raw": "$10.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 10.54,
+                    "raw": "$10.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 10.54,
+                    "raw": "$10.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 10.54,
+                    "raw": "$10.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 10.54,
+                    "raw": "$10.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 12.64,
+                    "raw": "$12.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 13.76,
+                    "raw": "$13.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 13.76,
+                    "raw": "$13.76",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Athletic Heather",
+                "Bright Red",
+                "Dark Heather Grey",
+                "Forest Green",
+                "Jet Black",
+                "New Pink",
+                "Team Cardinal",
+                "Team Navy",
+                "Team Purple",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC450VLS&parentId=115&prodimage=LPC450VLS.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LPC450VLS",
+                        "normalized_code": "LPC450VLS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 68974,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC450VLS&parentId=115&prodimage=LPC450VLS.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Women's Long Sleeve Fan Favorite V-Neck Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LPC450VLS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Athletic Heather",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:19",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

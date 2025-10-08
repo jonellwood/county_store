@@ -1,0 +1,133 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:56+00:00",
+    "input_code": "SM-KP55T",
+    "normalized_code": "KP55T",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-KP55T",
+            "normalized_code": "KP55T",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55T&parentId=115&prodimage=KP55T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55T&parentId=115&prodimage=KP55T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:56+00:00",
+            "product_name": "Port & Co\u0099 Tall Core Blend Jersey Knit Polo",
+            "page_code": "KP55T",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 12.74,
+                    "raw": "$12.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 12.74,
+                    "raw": "$12.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 15.36,
+                    "raw": "$15.36",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 19.58,
+                    "raw": "$19.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 19.58,
+                    "raw": "$19.58",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Charcoal",
+                "Dark Green",
+                "Deep Navy",
+                "Jet Black",
+                "Kelly",
+                "Light Blue",
+                "Lime",
+                "Orange",
+                "Purple",
+                "Red",
+                "Royal",
+                "Safety Green",
+                "Sand",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:55",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55T&parentId=115&prodimage=KP55T.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-KP55T",
+                        "normalized_code": "KP55T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 77459,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55T&parentId=115&prodimage=KP55T.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Tall Core Blend Jersey Knit Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "KP55T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 17
+                    }
+                }
+            ]
+        }
+    }
+}

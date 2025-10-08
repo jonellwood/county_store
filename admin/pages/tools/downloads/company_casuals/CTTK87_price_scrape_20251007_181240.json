@@ -1,0 +1,113 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:40+00:00",
+    "input_code": "SM-CTTK87",
+    "normalized_code": "CTTK87",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CTTK87",
+            "normalized_code": "CTTK87",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CTTK87&parentId=115&prodimage=CTTK87.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CTTK87&parentId=115&prodimage=CTTK87.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:40+00:00",
+            "product_name": "Carhartt \u00ae Tall Workwear Pocket Short Sleeve T-Shirt",
+            "page_code": "CTTK87",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 25.88,
+                    "raw": "$25.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 25.88,
+                    "raw": "$25.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 25.88,
+                    "raw": "$25.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 25.88,
+                    "raw": "$25.88",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Bluestone",
+                "Desert",
+                "Heather Grey",
+                "Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CTTK87&parentId=115&prodimage=CTTK87.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CTTK87",
+                        "normalized_code": "CTTK87"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 47531,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CTTK87&parentId=115&prodimage=CTTK87.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Carhartt \u00ae Tall Workwear Pocket Short Sleeve T-Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CTTK87"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT"
+                        ],
+                        "price_count": 4
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:40",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

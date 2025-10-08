@@ -1,0 +1,93 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:07+00:00",
+    "input_code": "BG410",
+    "normalized_code": "BG410",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BG410",
+            "normalized_code": "BG410",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BG410&parentId=115&prodimage=BG410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BG410&parentId=115&prodimage=BG410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:07+00:00",
+            "product_name": "Port Authority\u00ae Essential Zip Tote",
+            "page_code": "BG410",
+            "price_reference_color": "Black",
+            "sizes": [
+                "OSFA"
+            ],
+            "prices": [
+                {
+                    "size": "OSFA",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Chili Red",
+                "Dark Charcoal",
+                "Heather Grey",
+                "Navy",
+                "Pink Azalea",
+                "Stone",
+                "True Royal",
+                "Turquoise"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BG410&parentId=115&prodimage=BG410.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BG410",
+                        "normalized_code": "BG410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51477,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BG410&parentId=115&prodimage=BG410.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Essential Zip Tote"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BG410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "OSFA"
+                        ],
+                        "price_count": 1
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:07",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 9
+                    }
+                }
+            ]
+        }
+    }
+}

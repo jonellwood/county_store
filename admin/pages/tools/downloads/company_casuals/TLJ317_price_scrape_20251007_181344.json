@@ -1,0 +1,119 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:44+00:00",
+    "input_code": "SM-TLJ317",
+    "normalized_code": "TLJ317",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLJ317",
+            "normalized_code": "TLJ317",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ317&parentId=115&prodimage=TLJ317.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ317&parentId=115&prodimage=TLJ317.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:44+00:00",
+            "product_name": "Port Authority\u00ae Tall Core Soft Shell Jacket",
+            "page_code": "TLJ317",
+            "price_reference_color": "Battleship Grey",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 49.52,
+                    "raw": "$49.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 53.52,
+                    "raw": "$53.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 57.52,
+                    "raw": "$57.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 61.52,
+                    "raw": "$61.52",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Battleship Grey",
+                "Black",
+                "Dress Blue Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:43",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ317&parentId=115&prodimage=TLJ317.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLJ317",
+                        "normalized_code": "TLJ317"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:44",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44232,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ317&parentId=115&prodimage=TLJ317.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:44",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Core Soft Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:44",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLJ317"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:44",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Battleship Grey",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:44",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

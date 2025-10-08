@@ -58,10 +58,6 @@ class OrdersManager {
 		});
 
 		// Modal events
-		document.getElementById('markOrderedBtn')?.addEventListener('click', () => {
-			this.markDepartmentAsOrdered();
-		});
-
 		document
 			.getElementById('generateReportBtn')
 			?.addEventListener('click', () => {
@@ -500,6 +496,12 @@ class OrdersManager {
 								<i class="fas fa-times me-1"></i>
 								Cancel
 							</button>
+							<button type="button" class="btn btn-info" id="previewOrderBtn" onclick="ordersManager.previewPlaceOrder('${
+								department.department
+							}')">
+								<i class="fas fa-eye me-1"></i>
+								Preview Changes
+							</button>
 							<button type="button" class="btn btn-success" id="confirmOrderBtn" onclick="ordersManager.confirmPlaceOrder('${
 								department.department
 							}')">
@@ -586,12 +588,18 @@ class OrdersManager {
 				);
 				modal.hide();
 
-				// Show success message
-				this.showSuccessMessage(
-					`Successfully placed order for department ${departmentId}${
-						poNumber ? ` with PO# ${poNumber}` : ''
-					}`
-				);
+				// Show enhanced success message with order instance details
+				const successDetails = `
+					Successfully placed order for department ${departmentId}
+					${poNumber ? ` with PO# ${poNumber}` : ''}
+					<br><small>
+					Order Instance: ${result.orderInstanceId || 'Generated'} | 
+					Orders Updated: ${result.ordersUpdated || 0} | 
+					Vendors: ${result.vendorCount || 0}
+					</small>
+				`;
+
+				this.showSuccessMessage(successDetails);
 
 				// Refresh the data
 				this.loadOrders();
@@ -609,6 +617,168 @@ class OrdersManager {
 			confirmBtn.disabled = false;
 			confirmBtn.innerHTML = '<i class="fas fa-check me-1"></i>Place Order';
 		}
+	}
+
+	async previewPlaceOrder(departmentId) {
+		const poNumber = document.getElementById('poNumber').value.trim();
+		const previewBtn = document.getElementById('previewOrderBtn');
+		const errorDiv = document.getElementById('poModalError');
+
+		// Hide any previous errors
+		errorDiv.classList.add('d-none');
+
+		// Show loading state
+		previewBtn.disabled = true;
+		previewBtn.innerHTML =
+			'<i class="fas fa-spinner fa-spin me-1"></i>Loading Preview...';
+
+		try {
+			const response = await fetch('./api.php', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					action: 'placeOrder',
+					departmentId: departmentId,
+					poNumber: poNumber || null,
+					dryRun: true,
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			const result = await response.json();
+
+			if (result.success && result.dryRun) {
+				// Show preview modal
+				this.showPreviewModal(result.preview, departmentId);
+			} else {
+				throw new Error(result.error || 'Failed to generate preview');
+			}
+		} catch (error) {
+			console.error('Error generating preview:', error);
+
+			// Show error in modal
+			errorDiv.textContent = `Error generating preview: ${error.message}`;
+			errorDiv.classList.remove('d-none');
+		} finally {
+			// Reset button
+			previewBtn.disabled = false;
+			previewBtn.innerHTML = '<i class="fas fa-eye me-1"></i>Preview Changes';
+		}
+	}
+
+	showPreviewModal(preview, departmentId) {
+		const modalHtml = `
+			<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="previewModalLabel">
+								<i class="fas fa-eye me-2"></i>
+								Order Preview - Department ${departmentId}
+							</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-info">
+								<i class="fas fa-info-circle me-2"></i>
+								This is a preview of changes that will be made. No data has been modified yet.
+							</div>
+							
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<strong>Total Order Details:</strong> ${preview.summary.total_order_details}
+								</div>
+								<div class="col-md-6">
+									<strong>Unique Vendors:</strong> ${preview.summary.unique_vendors}
+								</div>
+							</div>
+							
+							<div class="row mb-3">
+								<div class="col-md-6">
+									<strong>Department:</strong> ${preview.summary.department_id}
+								</div>
+								<div class="col-md-6">
+									<strong>PO Number:</strong> ${preview.summary.po_number}
+								</div>
+							</div>
+
+							<h6>Vendors Involved:</h6>
+							<div class="table-responsive mb-3">
+								<table class="table table-sm">
+									<thead>
+										<tr>
+											<th>Vendor ID</th>
+											<th>Vendor Name</th>
+											<th>Order Count</th>
+										</tr>
+									</thead>
+									<tbody>
+										${preview.vendors
+											.map(
+												(vendor) => `
+											<tr>
+												<td>${vendor.vendor_id}</td>
+												<td>${vendor.vendor_name}</td>
+												<td>${vendor.order_count}</td>
+											</tr>
+										`
+											)
+											.join('')}
+									</tbody>
+								</table>
+							</div>
+
+							<h6>Changes That Will Be Made:</h6>
+							<ul>
+								<li>✅ Update ${
+									preview.summary.total_order_details
+								} order details to "Ordered" status</li>
+								<li>✅ Create new order instance with unique ID</li>
+								<li>✅ Map all order details to order instance with vendor relationships</li>
+								<li>✅ Set order placement timestamp</li>
+								${
+									preview.summary.po_number !== 'None'
+										? `<li>✅ Assign PO number: ${preview.summary.po_number}</li>`
+										: ''
+								}
+								<li>✅ Log all actions to system log file</li>
+							</ul>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+								<i class="fas fa-times me-1"></i>
+								Close Preview
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		`;
+
+		// Remove existing preview modal if present
+		const existingModal = document.getElementById('previewModal');
+		if (existingModal) {
+			existingModal.remove();
+		}
+
+		// Add modal to body
+		document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+		// Show the modal
+		const modal = new bootstrap.Modal(document.getElementById('previewModal'));
+		modal.show();
+
+		// Clean up modal when closed
+		document
+			.getElementById('previewModal')
+			.addEventListener('hidden.bs.modal', () => {
+				document.getElementById('previewModal').remove();
+			});
 	}
 
 	showSuccessMessage(message) {

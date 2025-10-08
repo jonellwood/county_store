@@ -1,0 +1,150 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:38+00:00",
+    "input_code": "SM-PC61T",
+    "normalized_code": "PC61T",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-PC61T",
+            "normalized_code": "PC61T",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61T&parentId=115&prodimage=PC61T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61T&parentId=115&prodimage=PC61T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:38+00:00",
+            "product_name": "Port & Co\u0099 Tall Essential Tee",
+            "page_code": "PC61T",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Ash",
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Cardinal",
+                "Carolina Blue",
+                "Charcoal",
+                "Colonial Blue",
+                "Dark Green",
+                "Dark Heather Grey",
+                "Deep Marine",
+                "Deep Navy",
+                "Fiery Red",
+                "Forest Green",
+                "Jet Black",
+                "Kelly",
+                "Light Blue",
+                "Light Sand",
+                "Lime",
+                "Medium Grey",
+                "Navy",
+                "Olive",
+                "Orange",
+                "Purple",
+                "Red",
+                "Royal",
+                "Sand",
+                "Sapphire",
+                "Steel Blue",
+                "Stonewashed Blue",
+                "Texas Orange",
+                "Ultramarine Blue",
+                "White",
+                "Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61T&parentId=115&prodimage=PC61T.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-PC61T",
+                        "normalized_code": "PC61T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 116229,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61T&parentId=115&prodimage=PC61T.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Tall Essential Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "PC61T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 34
+                    }
+                }
+            ]
+        }
+    }
+}

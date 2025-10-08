@@ -1,0 +1,152 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:31+00:00",
+    "input_code": "SM-CS20",
+    "normalized_code": "CS20",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS20",
+            "normalized_code": "CS20",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS20&parentId=115&prodimage=CS20.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS20&parentId=115&prodimage=CS20.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:31+00:00",
+            "product_name": "Red Kap\u00ae Short Sleeve Striped Industrial Work Shirt",
+            "page_code": "CS20",
+            "price_reference_color": "Grey/ Blue",
+            "sizes": [
+                "SR",
+                "MR",
+                "LR",
+                "XLR",
+                "2XLR",
+                "3XLR",
+                "4XLR",
+                "5XLR",
+                "6XLR"
+            ],
+            "prices": [
+                {
+                    "size": "SR",
+                    "price": 26.26,
+                    "raw": "$26.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "MR",
+                    "price": 26.26,
+                    "raw": "$26.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "LR",
+                    "price": 26.26,
+                    "raw": "$26.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLR",
+                    "price": 26.26,
+                    "raw": "$26.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLR",
+                    "price": 30.26,
+                    "raw": "$30.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLR",
+                    "price": 30.26,
+                    "raw": "$30.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLR",
+                    "price": 30.26,
+                    "raw": "$30.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XLR",
+                    "price": 30.26,
+                    "raw": "$30.26",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XLR",
+                    "price": 30.26,
+                    "raw": "$30.26",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Grey/ Blue",
+                "Grey/ White",
+                "Petrol Blue/ Navy",
+                "White/ Blue"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS20&parentId=115&prodimage=CS20.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS20",
+                        "normalized_code": "CS20"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 49318,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS20&parentId=115&prodimage=CS20.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Red Kap\u00ae Short Sleeve Striped Industrial Work Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS20"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Grey/ Blue",
+                        "sizes": [
+                            "SR",
+                            "MR",
+                            "LR",
+                            "XLR",
+                            "2XLR",
+                            "3XLR",
+                            "4XLR",
+                            "5XLR",
+                            "6XLR"
+                        ],
+                        "price_count": 9
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:31",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

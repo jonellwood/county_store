@@ -1,0 +1,140 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:03+00:00",
+    "input_code": "BB18008",
+    "normalized_code": "BB18008",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BB18008",
+            "normalized_code": "BB18008",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18008&parentId=115&prodimage=BB18008.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18008&parentId=115&prodimage=BB18008.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:03+00:00",
+            "product_name": "Print Charleston, Brooks Brothers\u00ae Wrinkle-Free Stretch Patterned Shirt BB18008",
+            "page_code": "BB18008",
+            "price_reference_color": "Newport Blue",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 71.42,
+                    "raw": "$71.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 71.42,
+                    "raw": "$71.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 71.42,
+                    "raw": "$71.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 71.42,
+                    "raw": "$71.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 71.42,
+                    "raw": "$71.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 73.09,
+                    "raw": "$73.09",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 76.42,
+                    "raw": "$76.42",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 78.09,
+                    "raw": "$78.09",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Newport Blue",
+                "Shadow Grey"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18008&parentId=115&prodimage=BB18008.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BB18008",
+                        "normalized_code": "BB18008"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42762,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18008&parentId=115&prodimage=BB18008.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BB18008"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Newport Blue",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:18+00:00",
+    "input_code": "LOG130",
+    "normalized_code": "LOG130",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "LOG130",
+            "normalized_code": "LOG130",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG130&parentId=115&prodimage=LOG130.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG130&parentId=115&prodimage=LOG130.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:18+00:00",
+            "product_name": "OGIO\u00ae Women's Metro Polo",
+            "page_code": "LOG130",
+            "price_reference_color": "Blacktop",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 37.78,
+                    "raw": "$37.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 39.78,
+                    "raw": "$39.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 43.78,
+                    "raw": "$43.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 45.78,
+                    "raw": "$45.78",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Blacktop",
+                "Diesel Grey",
+                "Enzyme Blue",
+                "Ripped Red"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:17",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG130&parentId=115&prodimage=LOG130.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "LOG130",
+                        "normalized_code": "LOG130"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48383,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG130&parentId=115&prodimage=LOG130.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "OGIO\u00ae Women's Metro Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LOG130"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Blacktop",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

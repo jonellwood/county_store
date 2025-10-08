@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:40+00:00",
+    "input_code": "SM-ST264",
+    "normalized_code": "ST264",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-ST264",
+            "normalized_code": "ST264",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST264&parentId=115&prodimage=ST264.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST264&parentId=115&prodimage=ST264.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:40+00:00",
+            "product_name": "Sport-Tek \u00ae PosiCharge \u00ae Sport-Wick \u00ae Heather Fleece Hooded Pullover",
+            "page_code": "ST264",
+            "price_reference_color": "Black Heather",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 39.3,
+                    "raw": "$39.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 39.3,
+                    "raw": "$39.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 39.3,
+                    "raw": "$39.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 39.3,
+                    "raw": "$39.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 39.3,
+                    "raw": "$39.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 41.3,
+                    "raw": "$41.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 45.3,
+                    "raw": "$45.30",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 47.3,
+                    "raw": "$47.30",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black Heather",
+                "Dark Silver Heather",
+                "True Navy Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST264&parentId=115&prodimage=ST264.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-ST264",
+                        "normalized_code": "ST264"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45709,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST264&parentId=115&prodimage=ST264.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek \u00ae PosiCharge \u00ae Sport-Wick \u00ae Heather Fleece Hooded Pullover"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "ST264"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black Heather",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:40",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

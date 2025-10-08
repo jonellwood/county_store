@@ -1,0 +1,121 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:22+00:00",
+    "input_code": "S608ES",
+    "normalized_code": "S608ES",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "S608ES",
+            "normalized_code": "S608ES",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S608ES&parentId=115&prodimage=S608ES.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S608ES&parentId=115&prodimage=S608ES.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:22+00:00",
+            "product_name": "Print Charleston, Port Authority\u00ae Extended Size Long Sleeve Easy Care Shirt S608ES",
+            "page_code": "S608ES",
+            "price_reference_color": "Black/ Light Stone",
+            "sizes": [
+                "7XL",
+                "8XL",
+                "9XL",
+                "10XL"
+            ],
+            "prices": [
+                {
+                    "size": "7XL",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "8XL",
+                    "price": 45.44,
+                    "raw": "$45.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "9XL",
+                    "price": 49.44,
+                    "raw": "$49.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "10XL",
+                    "price": 51.44,
+                    "raw": "$51.44",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Light Stone",
+                "Burgundy/ Light Stone",
+                "Dark Green/ Navy",
+                "Light Blue/ Light Stone",
+                "Light Pink",
+                "Navy/ Light Stone",
+                "Purple/ Light Stone",
+                "Red/ Light Stone",
+                "Royal/ Classic Navy",
+                "Steel Grey/ Light Stone",
+                "Stone",
+                "Strong Blue",
+                "Teal Green",
+                "Ultramarine Blue",
+                "White/ Light Stone"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S608ES&parentId=115&prodimage=S608ES.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "S608ES",
+                        "normalized_code": "S608ES"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 70063,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S608ES&parentId=115&prodimage=S608ES.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "S608ES"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Light Stone",
+                        "sizes": [
+                            "7XL",
+                            "8XL",
+                            "9XL",
+                            "10XL"
+                        ],
+                        "price_count": 4
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 15
+                    }
+                }
+            ]
+        }
+    }
+}

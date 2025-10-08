@@ -1,0 +1,210 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:38+00:00",
+    "input_code": "SM-PC61",
+    "normalized_code": "PC61",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-PC61",
+            "normalized_code": "PC61",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61&parentId=115&prodimage=PC61.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61&parentId=115&prodimage=PC61.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:38+00:00",
+            "product_name": "Port & Co\u0099 Essential Tee",
+            "page_code": "PC61",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Ash",
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Brown",
+                "Candy Pink",
+                "Cardinal",
+                "Carolina Blue",
+                "Charcoal",
+                "Colonial Blue",
+                "Coyote Brown",
+                "Daffodil Yellow",
+                "Dark Chocolate Brown",
+                "Dark Green",
+                "Dark Heather Grey",
+                "Deep Marine",
+                "Deep Navy",
+                "Dill Green",
+                "Dusty Brown",
+                "Eggplant",
+                "Fiery Red",
+                "Flush Pink",
+                "Forest Green",
+                "Gold",
+                "Jade Green",
+                "Jet Black",
+                "Kelly",
+                "Lavender",
+                "Lemon Yellow",
+                "Light Blue",
+                "Light Sand",
+                "Lime",
+                "Medium Grey",
+                "Natural",
+                "Navy",
+                "Olive",
+                "Orange",
+                "Orange Sherbet",
+                "Pale Pink",
+                "Pistachio",
+                "Purple",
+                "Red",
+                "Rich Red",
+                "Royal",
+                "S. Green",
+                "S. Orange",
+                "Sand",
+                "Sangria",
+                "Sapphire",
+                "Silver",
+                "Steel Blue",
+                "Stonewashed Blue",
+                "Stonewashed Green",
+                "Teal",
+                "Texas Orange",
+                "True Celadon",
+                "Tundra Blue",
+                "Turquoise",
+                "Ultramarine Blue",
+                "Violet",
+                "White",
+                "Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61&parentId=115&prodimage=PC61.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-PC61",
+                        "normalized_code": "PC61"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 223744,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61&parentId=115&prodimage=PC61.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Essential Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "PC61"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 9
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:38",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 62
+                    }
+                }
+            ]
+        }
+    }
+}

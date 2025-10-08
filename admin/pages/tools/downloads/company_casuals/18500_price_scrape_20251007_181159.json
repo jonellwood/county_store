@@ -1,0 +1,190 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:11:59+00:00",
+    "input_code": "18500",
+    "normalized_code": "18500",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "18500",
+            "normalized_code": "18500",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18500&parentId=115&prodimage=18500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18500&parentId=115&prodimage=18500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:11:59+00:00",
+            "product_name": "Gildan\u00ae - Heavy Blend\u0099 Hooded Sweatshirt",
+            "page_code": "18500",
+            "price_reference_color": "Antique Cherry Red",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 24.64,
+                    "raw": "$24.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 24.64,
+                    "raw": "$24.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 24.64,
+                    "raw": "$24.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 24.64,
+                    "raw": "$24.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 31.46,
+                    "raw": "$31.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 35.62,
+                    "raw": "$35.62",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 35.62,
+                    "raw": "$35.62",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 35.62,
+                    "raw": "$35.62",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Antique Cherry Red",
+                "Antique Sapphire",
+                "Ash",
+                "Azalea",
+                "Black",
+                "Cardinal Red",
+                "Carolina Blue",
+                "Charcoal",
+                "Cherry Red",
+                "Dark Chocolate",
+                "Dark Heather",
+                "Forest Green",
+                "Garnet",
+                "Gold",
+                "Graphite Heather",
+                "Heather Dark Green",
+                "Heather Dark Maroon",
+                "Heather Dark Navy",
+                "Heather Deep Royal",
+                "Heliconia",
+                "Indigo Blue",
+                "Irish Green",
+                "Light Blue",
+                "Light Pink",
+                "Maroon",
+                "Military Green",
+                "Mint Green",
+                "Navy",
+                "Old Gold",
+                "Orange",
+                "Orchid",
+                "Purple",
+                "Red",
+                "Royal",
+                "S. Orange",
+                "Safety Green",
+                "Safety Pink",
+                "Sand",
+                "Sapphire",
+                "Sport Grey",
+                "Violet",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:11:58",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18500&parentId=115&prodimage=18500.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "18500",
+                        "normalized_code": "18500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 165951,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=18500&parentId=115&prodimage=18500.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Gildan\u00ae - Heavy Blend\u0099 Hooded Sweatshirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "18500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Antique Cherry Red",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL"
+                        ],
+                        "price_count": 9
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:11:59",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 42
+                    }
+                }
+            ]
+        }
+    }
+}

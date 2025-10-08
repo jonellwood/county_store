@@ -1,0 +1,133 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:37+00:00",
+    "input_code": "SM-CSJ25",
+    "normalized_code": "CSJ25",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CSJ25",
+            "normalized_code": "CSJ25",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ25&parentId=115&prodimage=CSJ25.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ25&parentId=115&prodimage=CSJ25.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:37+00:00",
+            "product_name": "CornerStone\u00ae - ANSI 107 Class 3 Safety Windbreaker",
+            "page_code": "CSJ25",
+            "price_reference_color": "Safety Yellow/ Black",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 64.08,
+                    "raw": "$64.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 68.08,
+                    "raw": "$68.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 70.08,
+                    "raw": "$70.08",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Safety Yellow/ Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ25&parentId=115&prodimage=CSJ25.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CSJ25",
+                        "normalized_code": "CSJ25"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 40248,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ25&parentId=115&prodimage=CSJ25.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae - ANSI 107 Class 3 Safety Windbreaker"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CSJ25"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Safety Yellow/ Black",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 7
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:37",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 1
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:11+00:00",
+    "input_code": "EB205",
+    "normalized_code": "EB205",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "EB205",
+            "normalized_code": "EB205",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=EB205&parentId=115&prodimage=EB205.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=EB205&parentId=115&prodimage=EB205.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:11+00:00",
+            "product_name": "Eddie Bauer\u00ae - Women's Fleece Vest",
+            "page_code": "EB205",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 51.76,
+                    "raw": "$51.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 51.76,
+                    "raw": "$51.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 51.76,
+                    "raw": "$51.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 51.76,
+                    "raw": "$51.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 51.76,
+                    "raw": "$51.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 53.76,
+                    "raw": "$53.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 57.76,
+                    "raw": "$57.76",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 59.76,
+                    "raw": "$59.76",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Grey Steel"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=EB205&parentId=115&prodimage=EB205.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "EB205",
+                        "normalized_code": "EB205"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42891,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=EB205&parentId=115&prodimage=EB205.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Eddie Bauer\u00ae - Women's Fleece Vest"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "EB205"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:11",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

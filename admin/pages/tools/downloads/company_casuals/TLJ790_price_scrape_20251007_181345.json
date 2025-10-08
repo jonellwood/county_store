@@ -1,0 +1,118 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:45+00:00",
+    "input_code": "SM-TLJ790",
+    "normalized_code": "TLJ790",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLJ790",
+            "normalized_code": "TLJ790",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ790&parentId=115&prodimage=TLJ790.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ790&parentId=115&prodimage=TLJ790.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:45+00:00",
+            "product_name": "Port Authority\u00ae Tall Glacier\u00ae Soft Shell Jacket",
+            "page_code": "TLJ790",
+            "price_reference_color": "Black/ Chrome",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 67.54,
+                    "raw": "$67.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 71.54,
+                    "raw": "$71.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 75.54,
+                    "raw": "$75.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 79.54,
+                    "raw": "$79.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 83.54,
+                    "raw": "$83.54",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Chrome",
+                "Smoke Grey/ Chrome"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ790&parentId=115&prodimage=TLJ790.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLJ790",
+                        "normalized_code": "TLJ790"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42098,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLJ790&parentId=115&prodimage=TLJ790.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Glacier\u00ae Soft Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLJ790"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Chrome",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:45",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

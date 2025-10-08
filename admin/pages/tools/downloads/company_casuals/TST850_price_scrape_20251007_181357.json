@@ -1,0 +1,122 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:57+00:00",
+    "input_code": "SM-TST850",
+    "normalized_code": "TST850",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TST850",
+            "normalized_code": "TST850",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST850&parentId=115&prodimage=TST850.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST850&parentId=115&prodimage=TST850.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:57+00:00",
+            "product_name": "Sport-Tek\u00ae Tall Sport-Wick\u00ae Stretch 1/4-Zip Pullover",
+            "page_code": "TST850",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 43.38,
+                    "raw": "$43.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 45.38,
+                    "raw": "$45.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 47.38,
+                    "raw": "$47.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 49.38,
+                    "raw": "$49.38",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal Grey",
+                "Charcoal Grey Heather",
+                "True Navy",
+                "True Red",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST850&parentId=115&prodimage=TST850.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TST850",
+                        "normalized_code": "TST850"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51541,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST850&parentId=115&prodimage=TST850.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Tall Sport-Wick\u00ae Stretch 1/4-Zip Pullover"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TST850"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

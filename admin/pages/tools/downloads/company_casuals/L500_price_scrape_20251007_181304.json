@@ -1,0 +1,190 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:04+00:00",
+    "input_code": "SM-L500",
+    "normalized_code": "L500",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L500",
+            "normalized_code": "L500",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L500&parentId=115&prodimage=L500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L500&parentId=115&prodimage=L500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:04+00:00",
+            "product_name": "Port Authority\u00ae Women's Silk Touch\u0099 Polo",
+            "page_code": "L500",
+            "price_reference_color": "Banana",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 18.6,
+                    "raw": "$18.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 18.6,
+                    "raw": "$18.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 18.6,
+                    "raw": "$18.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 18.6,
+                    "raw": "$18.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 18.6,
+                    "raw": "$18.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 20.6,
+                    "raw": "$20.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 24.6,
+                    "raw": "$24.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 26.6,
+                    "raw": "$26.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 30.6,
+                    "raw": "$30.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 32.6,
+                    "raw": "$32.60",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Banana",
+                "Black",
+                "Bright Lavender",
+                "Burgundy",
+                "Charcoal Heather Grey",
+                "Clover Green",
+                "Coffee Bean",
+                "Cool Grey",
+                "Dark Green",
+                "Deep Berry",
+                "Gold",
+                "Hibiscus",
+                "Kelly Green",
+                "Light Blue",
+                "Light Pink",
+                "Lime",
+                "Maroon",
+                "Maui Blue",
+                "Mediterranean Blue",
+                "Navy",
+                "Orange",
+                "Purple",
+                "Red",
+                "Royal",
+                "Steel Grey",
+                "Stone",
+                "Strong Blue",
+                "Sunflower Yellow",
+                "Teal Green",
+                "Texas Orange",
+                "Tropical Pink",
+                "Turquoise",
+                "Ultramarine Blue",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:03",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L500&parentId=115&prodimage=L500.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L500",
+                        "normalized_code": "L500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:04",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 148378,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L500&parentId=115&prodimage=L500.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:04",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Silk Touch\u0099 Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:04",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:04",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Banana",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:04",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 34
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,150 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:02+00:00",
+    "input_code": "SM-L333",
+    "normalized_code": "L333",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L333",
+            "normalized_code": "L333",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L333&parentId=115&prodimage=L333.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L333&parentId=115&prodimage=L333.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:02+00:00",
+            "product_name": "Port Authority\u00ae Women's Torrent Waterproof Jacket",
+            "page_code": "L333",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 64.08,
+                    "raw": "$64.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 68.08,
+                    "raw": "$68.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 70.08,
+                    "raw": "$70.08",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Dark Grey Heather",
+                "Deep Red",
+                "Direct Blue",
+                "Engine Red",
+                "Magnet",
+                "Slicker Yellow",
+                "True Navy",
+                "True Royal",
+                "Vine Green"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:01",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L333&parentId=115&prodimage=L333.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L333",
+                        "normalized_code": "L333"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:02",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 66082,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L333&parentId=115&prodimage=L333.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:02",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Torrent Waterproof Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:02",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L333"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:02",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:02",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 10
+                    }
+                }
+            ]
+        }
+    }
+}

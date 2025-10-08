@@ -1,0 +1,156 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:11+00:00",
+    "input_code": "SM-LK110",
+    "normalized_code": "LK110",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LK110",
+            "normalized_code": "LK110",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK110&parentId=115&prodimage=LK110.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK110&parentId=115&prodimage=LK110.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:11+00:00",
+            "product_name": "Port Authority\u00ae Women's Dry Zone\u00ae UV Micro-Mesh Polo",
+            "page_code": "LK110",
+            "price_reference_color": "Aquamarine",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 19.58,
+                    "raw": "$19.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 23.58,
+                    "raw": "$23.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 25.58,
+                    "raw": "$25.58",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquamarine",
+                "Bright Kelly Green",
+                "Burgundy",
+                "Carolina Blue",
+                "Coastal Blue",
+                "Coral Splash",
+                "Deep Black",
+                "Deep Forest Green",
+                "Graphite",
+                "Gusty Grey",
+                "Rich Red",
+                "River Blue Navy",
+                "Safety Yellow",
+                "Sunburst Yellow",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK110&parentId=115&prodimage=LK110.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LK110",
+                        "normalized_code": "LK110"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 84055,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK110&parentId=115&prodimage=LK110.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Dry Zone\u00ae UV Micro-Mesh Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LK110"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquamarine",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 16
+                    }
+                }
+            ]
+        }
+    }
+}

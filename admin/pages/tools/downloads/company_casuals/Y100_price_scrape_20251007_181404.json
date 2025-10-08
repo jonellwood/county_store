@@ -1,0 +1,124 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:14:04+00:00",
+    "input_code": "Y100",
+    "normalized_code": "Y100",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "Y100",
+            "normalized_code": "Y100",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=Y100&parentId=115&prodimage=Y100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=Y100&parentId=115&prodimage=Y100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:14:04+00:00",
+            "product_name": "Port Authority\u00ae Youth Core Classic Pique Polo",
+            "page_code": "Y100",
+            "price_reference_color": "Burgundy",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Burgundy",
+                "Deep Black",
+                "Deep Forest Green",
+                "Gusty Grey",
+                "Rich Red",
+                "River Blue Navy",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=Y100&parentId=115&prodimage=Y100.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "Y100",
+                        "normalized_code": "Y100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 56041,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=Y100&parentId=115&prodimage=Y100.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Youth Core Classic Pique Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "Y100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Burgundy",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:04",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 8
+                    }
+                }
+            ]
+        }
+    }
+}

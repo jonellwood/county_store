@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:57+00:00",
+    "input_code": "SM-L130",
+    "normalized_code": "L130",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L130",
+            "normalized_code": "L130",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L130&parentId=115&prodimage=L130.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L130&parentId=115&prodimage=L130.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:57+00:00",
+            "product_name": "Print Charleston, Port Authority\u00ae Women's Cozy 1/4-Zip Fleece L130",
+            "page_code": "L130",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 45.44,
+                    "raw": "$45.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 49.44,
+                    "raw": "$49.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 51.44,
+                    "raw": "$51.44",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Grey Heather",
+                "Navy Heather",
+                "Oatmeal Heather",
+                "Pop Raspberry Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L130&parentId=115&prodimage=L130.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L130",
+                        "normalized_code": "L130"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51244,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L130&parentId=115&prodimage=L130.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L130"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

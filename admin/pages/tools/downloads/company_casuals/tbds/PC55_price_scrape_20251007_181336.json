@@ -1,0 +1,198 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:36+00:00",
+    "input_code": "SM-PC55",
+    "normalized_code": "PC55",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-PC55",
+            "normalized_code": "PC55",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC55&parentId=115&prodimage=PC55.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC55&parentId=115&prodimage=PC55.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:36+00:00",
+            "product_name": "Port & Co\u0099 Core Blend Tee",
+            "page_code": "PC55",
+            "price_reference_color": "Aquatic Blue",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Aquatic Blue",
+                "Ash",
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Black Heather",
+                "Brown",
+                "Candy Pink",
+                "Cardinal",
+                "Carolina Blue",
+                "Charcoal",
+                "Coyote Brown",
+                "Dark Green",
+                "Dark Heather Grey",
+                "Desert Sand",
+                "Gold",
+                "Graphite Heather",
+                "Heather Navy",
+                "Heather Purple",
+                "Heather Red",
+                "Heather Royal",
+                "Jade Green",
+                "Jet Black",
+                "Kelly",
+                "Light Blue",
+                "Lime",
+                "Medium Grey",
+                "Navy",
+                "Neon Blue",
+                "Neon Pink",
+                "Oatmeal Heather",
+                "Olive Drab Green",
+                "Orange",
+                "Purple",
+                "Red",
+                "Royal",
+                "Safety Green",
+                "Safety Orange",
+                "Sangria",
+                "Sapphire",
+                "Silver",
+                "Steel Blue",
+                "True Navy",
+                "True Royal",
+                "Vintage Jade Green",
+                "Vintage Kelly",
+                "Vintage Red",
+                "Vintage Royal",
+                "White",
+                "Woodland Brown",
+                "Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:35",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC55&parentId=115&prodimage=PC55.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-PC55",
+                        "normalized_code": "PC55"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 187187,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=PC55&parentId=115&prodimage=PC55.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Core Blend Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "PC55"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Aquatic Blue",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 9
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:36",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 50
+                    }
+                }
+            ]
+        }
+    }
+}

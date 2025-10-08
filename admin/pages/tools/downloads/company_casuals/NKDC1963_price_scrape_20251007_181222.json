@@ -1,0 +1,198 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:22+00:00",
+    "input_code": "NKDC1963",
+    "normalized_code": "NKDC1963",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "NKDC1963",
+            "normalized_code": "NKDC1963",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NKDC1963&parentId=115&prodimage=NKDC1963.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NKDC1963&parentId=115&prodimage=NKDC1963.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:22+00:00",
+            "product_name": "Print Charleston, Nike Dri-FIT Micro Pique 2.0 Polo NKDC1963",
+            "page_code": "NKDC1963",
+            "price_reference_color": "Anthracite",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "LT",
+                "XL",
+                "XLT",
+                "2XL",
+                "2XLT",
+                "3XL",
+                "3XLT",
+                "4XL",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "LT",
+                    "price": 53.8,
+                    "raw": "$53.80",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 45.52,
+                    "raw": "$45.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 53.8,
+                    "raw": "$53.80",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 47.52,
+                    "raw": "$47.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 55.8,
+                    "raw": "$55.80",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 51.52,
+                    "raw": "$51.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 57.8,
+                    "raw": "$57.80",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 53.52,
+                    "raw": "$53.52",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 59.8,
+                    "raw": "$59.80",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Anthracite",
+                "Black",
+                "Blue Tint",
+                "Brilliant Orange",
+                "Cool Grey",
+                "Court Purple",
+                "Game Royal",
+                "Gorge Green",
+                "Gym Blue",
+                "Lucid Green",
+                "Mint",
+                "Navy",
+                "Team Red",
+                "Tidal Blue",
+                "University Red",
+                "Urban Lilac",
+                "Valor Blue",
+                "Varsity Maize",
+                "Vivid Pink",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:21",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NKDC1963&parentId=115&prodimage=NKDC1963.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "NKDC1963",
+                        "normalized_code": "NKDC1963"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 111910,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=NKDC1963&parentId=115&prodimage=NKDC1963.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "NKDC1963"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Anthracite",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "LT",
+                            "XL",
+                            "XLT",
+                            "2XL",
+                            "2XLT",
+                            "3XL",
+                            "3XLT",
+                            "4XL",
+                            "4XLT"
+                        ],
+                        "price_count": 13
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:22",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 20
+                    }
+                }
+            ]
+        }
+    }
+}

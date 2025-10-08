@@ -1,0 +1,164 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:54+00:00",
+    "input_code": "SM-K8000",
+    "normalized_code": "K8000",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K8000",
+            "normalized_code": "K8000",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000&parentId=115&prodimage=K8000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000&parentId=115&prodimage=K8000.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:54+00:00",
+            "product_name": "Port Authority\u00ae EZCotton\u00ae Polo",
+            "page_code": "K8000",
+            "price_reference_color": "Apple Red",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 26.82,
+                    "raw": "$26.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 30.82,
+                    "raw": "$30.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 32.82,
+                    "raw": "$32.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 36.82,
+                    "raw": "$36.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 38.82,
+                    "raw": "$38.82",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Apple Red",
+                "Black",
+                "Charcoal Heather",
+                "Navy",
+                "Oxford Heather",
+                "Sterling Grey",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000&parentId=115&prodimage=K8000.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K8000",
+                        "normalized_code": "K8000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 62931,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K8000&parentId=115&prodimage=K8000.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae EZCotton\u00ae Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K8000"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Apple Red",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 8
+                    }
+                }
+            ]
+        }
+    }
+}

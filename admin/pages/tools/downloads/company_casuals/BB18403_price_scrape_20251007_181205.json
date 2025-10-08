@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:05+00:00",
+    "input_code": "BB18403",
+    "normalized_code": "BB18403",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BB18403",
+            "normalized_code": "BB18403",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18403&parentId=115&prodimage=BB18403.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18403&parentId=115&prodimage=BB18403.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:05+00:00",
+            "product_name": "Print Charleston, Brooks Brothers\u00ae Women's Cotton Stretch Long Cardigan Sweater BB18403",
+            "page_code": "BB18403",
+            "price_reference_color": "Charter Blue Heather",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 69.35,
+                    "raw": "$69.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 69.35,
+                    "raw": "$69.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 69.35,
+                    "raw": "$69.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 69.35,
+                    "raw": "$69.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 69.35,
+                    "raw": "$69.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 71.02,
+                    "raw": "$71.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 74.35,
+                    "raw": "$74.35",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 76.02,
+                    "raw": "$76.02",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Charter Blue Heather",
+                "Deep Black",
+                "Light Shadow Grey Heather",
+                "Navy Blazer"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:04",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18403&parentId=115&prodimage=BB18403.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BB18403",
+                        "normalized_code": "BB18403"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48376,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18403&parentId=115&prodimage=BB18403.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BB18403"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Charter Blue Heather",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:05",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

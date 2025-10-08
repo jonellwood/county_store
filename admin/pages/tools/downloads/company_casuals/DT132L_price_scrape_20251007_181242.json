@@ -1,0 +1,145 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:42+00:00",
+    "input_code": "SM-DT132L",
+    "normalized_code": "DT132L",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-DT132L",
+            "normalized_code": "DT132L",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT132L&parentId=115&prodimage=DT132L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT132L&parentId=115&prodimage=DT132L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:42+00:00",
+            "product_name": "District \u00ae Women's Perfect Tri \u00ae Long Sleeve Tunic Tee",
+            "page_code": "DT132L",
+            "price_reference_color": "Black Frost",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 14.4,
+                    "raw": "$14.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 18.4,
+                    "raw": "$18.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 20.4,
+                    "raw": "$20.40",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black Frost",
+                "Blush Frost",
+                "Grey Frost",
+                "Navy Frost",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT132L&parentId=115&prodimage=DT132L.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-DT132L",
+                        "normalized_code": "DT132L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51470,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT132L&parentId=115&prodimage=DT132L.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "District \u00ae Women's Perfect Tri \u00ae Long Sleeve Tunic Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "DT132L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black Frost",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

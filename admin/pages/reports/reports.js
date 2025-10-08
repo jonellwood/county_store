@@ -241,7 +241,7 @@ class ReportsManager {
                             <i class="fas fa-dollar-sign me-2"></i>Amount
                         </th>
                         <th width="2em">
-                            <i class="fas fa-external-link-alt"></i>
+                            <p><i class="fas fa-external-link-alt" title="View detailed report"></i></p>
                         </th>
                     </tr>
                 </thead>
@@ -263,7 +263,7 @@ class ReportsManager {
 												)}</span>
                     </td>
                     <td class="text-center">
-                        <a href="../vendorReport.php?uid=${
+                        <a href="vendorreports/vendor-report.php?uid=${
 													report.order_inst_id
 												}" 
                            target="_blank" 

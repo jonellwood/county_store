@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:28+00:00",
+    "input_code": "SM-LW680",
+    "normalized_code": "LW680",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LW680",
+            "normalized_code": "LW680",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW680&parentId=115&prodimage=LW680.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW680&parentId=115&prodimage=LW680.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:28+00:00",
+            "product_name": "Print Charleston, Port Authority \u00ae Ladies City Stretch Tunic LW680",
+            "page_code": "LW680",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 43.44,
+                    "raw": "$43.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 45.44,
+                    "raw": "$45.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 49.44,
+                    "raw": "$49.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 51.44,
+                    "raw": "$51.44",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Graphite/ White",
+                "River Blue Navy",
+                "True Blue/ White",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:27",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW680&parentId=115&prodimage=LW680.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LW680",
+                        "normalized_code": "LW680"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:28",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51196,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LW680&parentId=115&prodimage=LW680.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:28",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:28",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LW680"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:28",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:28",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:36+00:00",
+    "input_code": "SM-CS626",
+    "normalized_code": "CS626",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS626",
+            "normalized_code": "CS626",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS626&parentId=115&prodimage=CS626.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS626&parentId=115&prodimage=CS626.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:36+00:00",
+            "product_name": "CornerStone\u00ae 1/2-Zip Job Shirt",
+            "page_code": "CS626",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 57.94,
+                    "raw": "$57.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 57.94,
+                    "raw": "$57.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 57.94,
+                    "raw": "$57.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 57.94,
+                    "raw": "$57.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 57.94,
+                    "raw": "$57.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 59.94,
+                    "raw": "$59.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 63.94,
+                    "raw": "$63.94",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 65.94,
+                    "raw": "$65.94",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Dark Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS626&parentId=115&prodimage=CS626.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS626",
+                        "normalized_code": "CS626"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42916,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS626&parentId=115&prodimage=CS626.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae 1/2-Zip Job Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS626"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:36",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

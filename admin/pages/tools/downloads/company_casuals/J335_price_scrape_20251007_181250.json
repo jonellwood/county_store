@@ -1,0 +1,144 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:50+00:00",
+    "input_code": "SM-J335",
+    "normalized_code": "J335",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-J335",
+            "normalized_code": "J335",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J335&parentId=115&prodimage=J335.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J335&parentId=115&prodimage=J335.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:50+00:00",
+            "product_name": "Port Authority\u00ae Hooded Core Soft Shell Jacket",
+            "page_code": "J335",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 58.04,
+                    "raw": "$58.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 58.04,
+                    "raw": "$58.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 58.04,
+                    "raw": "$58.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 58.04,
+                    "raw": "$58.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 58.04,
+                    "raw": "$58.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 60.04,
+                    "raw": "$60.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 64.04,
+                    "raw": "$64.04",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 66.04,
+                    "raw": "$66.04",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Black/ Battleship Grey",
+                "Dress Blue Navy/ Battleship Grey",
+                "Night Sky Blue/ Dress Blue Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J335&parentId=115&prodimage=J335.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-J335",
+                        "normalized_code": "J335"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48695,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J335&parentId=115&prodimage=J335.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Hooded Core Soft Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "J335"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

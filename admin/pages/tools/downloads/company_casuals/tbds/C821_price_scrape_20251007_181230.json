@@ -1,0 +1,88 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:30+00:00",
+    "input_code": "SM-C821",
+    "normalized_code": "C821",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-C821",
+            "normalized_code": "C821",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C821&parentId=115&prodimage=C821.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C821&parentId=115&prodimage=C821.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:30+00:00",
+            "product_name": "Port Authority\u00ae Perforated Cap",
+            "page_code": "C821",
+            "price_reference_color": "Black",
+            "sizes": [
+                "OSFA"
+            ],
+            "prices": [
+                {
+                    "size": "OSFA",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Navy",
+                "Stone",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C821&parentId=115&prodimage=C821.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-C821",
+                        "normalized_code": "C821"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:30",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42803,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C821&parentId=115&prodimage=C821.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:30",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Perforated Cap"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:30",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "C821"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:30",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "OSFA"
+                        ],
+                        "price_count": 1
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:30",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

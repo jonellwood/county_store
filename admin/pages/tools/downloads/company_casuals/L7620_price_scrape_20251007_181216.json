@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:16+00:00",
+    "input_code": "L7620",
+    "normalized_code": "L7620",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "L7620",
+            "normalized_code": "L7620",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L7620&parentId=115&prodimage=L7620.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L7620&parentId=115&prodimage=L7620.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:16+00:00",
+            "product_name": "Port Authority\u00ae Women's Denim Jacket",
+            "page_code": "L7620",
+            "price_reference_color": "Denim Blue",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 56.98,
+                    "raw": "$56.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 56.98,
+                    "raw": "$56.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 56.98,
+                    "raw": "$56.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 56.98,
+                    "raw": "$56.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 56.98,
+                    "raw": "$56.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 58.98,
+                    "raw": "$58.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 62.98,
+                    "raw": "$62.98",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 64.98,
+                    "raw": "$64.98",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Denim Blue"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L7620&parentId=115&prodimage=L7620.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "L7620",
+                        "normalized_code": "L7620"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 40136,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L7620&parentId=115&prodimage=L7620.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Denim Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L7620"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Denim Blue",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 1
+                    }
+                }
+            ]
+        }
+    }
+}

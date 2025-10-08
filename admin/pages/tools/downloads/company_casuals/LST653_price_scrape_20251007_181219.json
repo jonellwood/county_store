@@ -1,0 +1,145 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:19+00:00",
+    "input_code": "LST653",
+    "normalized_code": "LST653",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "LST653",
+            "normalized_code": "LST653",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LST653&parentId=115&prodimage=LST653.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LST653&parentId=115&prodimage=LST653.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:19+00:00",
+            "product_name": "Sport-Tek\u00ae Women's Micropique Sport-Wick\u00ae Piped Polo",
+            "page_code": "LST653",
+            "price_reference_color": "Black/ Iron Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 25.86,
+                    "raw": "$25.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 27.86,
+                    "raw": "$27.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 31.86,
+                    "raw": "$31.86",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 33.86,
+                    "raw": "$33.86",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Iron Grey",
+                "Black/ True Red",
+                "Black/ True Royal",
+                "Iron Grey/ White",
+                "True Navy/ White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LST653&parentId=115&prodimage=LST653.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "LST653",
+                        "normalized_code": "LST653"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51739,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LST653&parentId=115&prodimage=LST653.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Women's Micropique Sport-Wick\u00ae Piped Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LST653"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Iron Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:19",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

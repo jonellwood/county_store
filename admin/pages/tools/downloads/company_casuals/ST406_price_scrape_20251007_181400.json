@@ -1,0 +1,143 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:14:00+00:00",
+    "input_code": "ST406",
+    "normalized_code": "ST406",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "ST406",
+            "normalized_code": "ST406",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST406&parentId=115&prodimage=ST406.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST406&parentId=115&prodimage=ST406.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:14:00+00:00",
+            "product_name": "Print Charleston, Sport-Tek \u00ae PosiCharge \u00ae Tri-Blend Wicking Long Sleeve Hoodie ST406",
+            "page_code": "ST406",
+            "price_reference_color": "Black Triad Solid",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 24.82,
+                    "raw": "$24.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 26.82,
+                    "raw": "$26.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 30.82,
+                    "raw": "$30.82",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 32.82,
+                    "raw": "$32.82",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black Triad Solid",
+                "Dark Grey Heather",
+                "Light Grey Heather",
+                "True Navy Heather",
+                "True Royal Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:59",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST406&parentId=115&prodimage=ST406.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "ST406",
+                        "normalized_code": "ST406"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51319,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST406&parentId=115&prodimage=ST406.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "ST406"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black Triad Solid",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

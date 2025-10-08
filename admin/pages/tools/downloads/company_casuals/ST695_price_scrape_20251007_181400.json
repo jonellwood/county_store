@@ -1,0 +1,144 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:14:00+00:00",
+    "input_code": "ST695",
+    "normalized_code": "ST695",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "ST695",
+            "normalized_code": "ST695",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST695&parentId=115&prodimage=ST695.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST695&parentId=115&prodimage=ST695.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:14:00+00:00",
+            "product_name": "Sport-Tek\u00ae PosiCharge\u00ae Active Textured Colorblock Polo",
+            "page_code": "ST695",
+            "price_reference_color": "Black/ Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 21.64,
+                    "raw": "$21.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 25.64,
+                    "raw": "$25.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 27.64,
+                    "raw": "$27.64",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Grey",
+                "Black/ True Red",
+                "True Red/ Grey",
+                "True Royal/ Grey"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST695&parentId=115&prodimage=ST695.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "ST695",
+                        "normalized_code": "ST695"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48615,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=ST695&parentId=115&prodimage=ST695.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae PosiCharge\u00ae Active Textured Colorblock Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "ST695"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:00",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

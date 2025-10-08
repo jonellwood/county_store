@@ -1,0 +1,126 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:57+00:00",
+    "input_code": "SM-KP55Y",
+    "normalized_code": "KP55Y",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-KP55Y",
+            "normalized_code": "KP55Y",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55Y&parentId=115&prodimage=KP55Y.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55Y&parentId=115&prodimage=KP55Y.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:57+00:00",
+            "product_name": "Port & Co\u0099 Youth Core Blend Jersey Knit Polo",
+            "page_code": "KP55Y",
+            "price_reference_color": "Athletic Heather",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Athletic Heather",
+                "Athletic Maroon",
+                "Charcoal",
+                "Dark Green",
+                "Deep Navy",
+                "Jet Black",
+                "Light Blue",
+                "Red",
+                "Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:56",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55Y&parentId=115&prodimage=KP55Y.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-KP55Y",
+                        "normalized_code": "KP55Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 59738,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55Y&parentId=115&prodimage=KP55Y.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Youth Core Blend Jersey Knit Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "KP55Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Athletic Heather",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:57",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 10
+                    }
+                }
+            ]
+        }
+    }
+}

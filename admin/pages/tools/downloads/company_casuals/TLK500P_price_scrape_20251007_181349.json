@@ -1,0 +1,122 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:49+00:00",
+    "input_code": "SM-TLK500P",
+    "normalized_code": "TLK500P",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLK500P",
+            "normalized_code": "TLK500P",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500P&parentId=115&prodimage=TLK500P.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500P&parentId=115&prodimage=TLK500P.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:49+00:00",
+            "product_name": "Port Authority\u00ae Tall Silk Touch\u0099 Polo with Pocket",
+            "page_code": "TLK500P",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 23.78,
+                    "raw": "$23.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 25.78,
+                    "raw": "$25.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 27.78,
+                    "raw": "$27.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 29.78,
+                    "raw": "$29.78",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 31.78,
+                    "raw": "$31.78",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Cool Grey",
+                "Dark Green",
+                "Navy",
+                "Red",
+                "Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500P&parentId=115&prodimage=TLK500P.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLK500P",
+                        "normalized_code": "TLK500P"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51246,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500P&parentId=115&prodimage=TLK500P.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Silk Touch\u0099 Polo with Pocket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLK500P"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:49",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

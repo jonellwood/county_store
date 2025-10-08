@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+	<html lang="en" class="new-design-system">
+	<head>
+		<title>Port Authority Tall Short Sleeve Easy Care Shirt | Product | SanMar</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no"> 
+		<meta http-equiv="Pragma" content="no-cache, max-age=0, no-store">
+		<meta http-equiv="Cache-Control" content="no-cache, max-age=0, no-store">
+		<meta http-equiv="Expires" content="Mon, 26 Jul 1997 05:00:00 GMT">
+	
+		<meta property="og:url" content="https://www.sanmar.com:443/p/5682_DkGreenNv" />
+				<meta property="og:type" content="product" />
+				<meta property="og:title" content="Port&#x20;Authority&#x20;Tall&#x20;Short&#x20;Sleeve&#x20;Easy&#x20;Care&#x20;Shirt&#x20;&#x7c;&#x20;Product&#x20;&#x7c;&#x20;SanMar" />
+				<meta property="og:description" content="&lt;p&gt;This comfortable wash-and-wear shirt is indispensable for the workday. Wrinkle resistance makes this shirt a cut above the competition so you and your staff can be, too.&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;4.5-ounce, 55/45 cotton/poly&lt;/li&gt;
+	&lt;li&gt;Button-down collar&lt;/li&gt;
+	&lt;li&gt;Dyed-to-match buttons&lt;/li&gt;
+	&lt;li&gt;Left chest pocket&lt;/li&gt;
+	&lt;li&gt;Back box pleat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;" />
+				<meta property="og:image" content="https://www.sanmar.com:443//cdnp.sanmar.com/medias/sys_master/images/h7e/h6f/26800031072286/1200W_5682_DkGreenNv-0-TLS508DkGreenNvModelFront2/1200W-5682-DkGreenNv-0-TLS508DkGreenNvModelFront2.jpg" />
+			<meta name="robots" content="no-index,follow" />
+			<link rel="shortcut icon" type="image/x-icon" media="all" href="//cdnp.sanmar.com/_ui/v/-233166388/responsive/theme-blue/images/favicon.ico" />
+			<script src="https://cdn.jsdelivr.net/npm/axios@1.6.8/dist/axios.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/dayjs@1.8.21/dayjs.min.js"></script>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.prod.js"></script>
+			<script src="//cdnp.sanmar.com/_ui/v/-233166388/responsive/common/js/mitt.umd.js"></script>
+		<script>const vueEmitter = mitt();</script>
+		
+		<script src="https://cdn.noibu.com/collect.js"></script>
+		<script type="text/javascript">
+				;window.NREUM||(NREUM={});NREUM.init={distributed_tracing:{enabled:true},privacy:{cookies_enabled:true}};
+
+				;NREUM.loader_config={accountID:"1004108",trustKey:"1004108",agentID:"1120241023",licenseKey:"3adac0cdc8",applicationID:"1012264286"};
+				;NREUM.info={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",licenseKey:"3adac0cdc8",applicationID:"1012264286",sa:1};
+			</script>
+			<script src="//cdnp.sanmar.com/_ui/v/-233166388/responsive/common/js/nr-loader-spa-current.min.js"></script>
+		<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/assistedservicecustomerinterestsaddon/responsive/common/css/assistedservicecustomerinterestsaddon.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/assistedservicepromotionaddon/responsive/common/css/assistedservicepromotionaddon.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/assistedservicestorefront/../../addons-extensions/asm/responsive/common/css/asmstorefront.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/assistedservicestorefront/responsive/common/css/storeFinder.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/assistedservicestorefront/responsive/common/css/customer360.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/_ui/addons/smarteditaddon/responsive/common/css/smarteditaddon.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//cdnp.sanmar.com/_ui/v/-233166388/responsive/theme-blue/css/main.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//cdnp.sanmar.com/_ui/v/-233166388/responsive/theme-blue/css/pdp-print-style.css" /><script type="text/javascript" src="/_ui/v/-233166388/shared/js/analyticsmediator.js"></script>
+<script type="text/javascript">
+			var isLoggedIn = false;
+			if (!isLoggedIn) {
+				localStorage.setItem('isHeaderCollapsed', false);
+			}
+		</script>
+
+		<script src="//cdnp.sanmar.com/_ui/v/-233166388/responsive/common/js/purify.min.js" async></script>
+
+		<script src="//cdnp.sanmar.com/_ui/v/-233166388/responsive/common/js/picturefill.min.js" async></script>
+
+		<script src="//cdnp.sanmar.com/_ui/v/-233166388/responsive/common/js/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
+
+		<script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" integrity="sha256-UnTxHm+zKuDPLfufgEMnKGXDl6fEIjtM+n1Q6lL73ok=" crossorigin="anonymous"></script>
+
+		<script type="text/javascript" src="//cdnp.sanmar.com/_ui/

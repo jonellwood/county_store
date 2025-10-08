@@ -35,6 +35,10 @@ include "../../../components/header.php";
                 <p class="page-subtitle">Manage approved orders by department</p>
             </div>
             <div class="header-actions">
+                <button class="btn btn-info" onclick="window.open('view-logs.php', '_blank')">
+                    <i class="fas fa-file-alt"></i>
+                    View Logs
+                </button>
                 <button class="btn btn-primary" id="refreshBtn">
                     <i class="fas fa-sync-alt"></i>
                     Refresh
@@ -192,10 +196,6 @@ include "../../../components/header.php";
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="markOrderedBtn">
-                    <i class="fas fa-check"></i>
-                    Mark as Ordered
-                </button>
             </div>
         </div>
     </div>

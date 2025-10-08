@@ -1,0 +1,145 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:58+00:00",
+    "input_code": "SM-L219",
+    "normalized_code": "L219",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L219",
+            "normalized_code": "L219",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L219&parentId=115&prodimage=L219.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L219&parentId=115&prodimage=L219.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:58+00:00",
+            "product_name": "Port Authority\u00ae Women's Value Fleece Vest",
+            "page_code": "L219",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 28.96,
+                    "raw": "$28.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 28.96,
+                    "raw": "$28.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 28.96,
+                    "raw": "$28.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 28.96,
+                    "raw": "$28.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 28.96,
+                    "raw": "$28.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 30.96,
+                    "raw": "$30.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 34.96,
+                    "raw": "$34.96",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 36.96,
+                    "raw": "$36.96",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Iron Grey",
+                "True Navy",
+                "True Red",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L219&parentId=115&prodimage=L219.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L219",
+                        "normalized_code": "L219"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 50930,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L219&parentId=115&prodimage=L219.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Value Fleece Vest"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L219"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:58",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

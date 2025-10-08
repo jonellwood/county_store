@@ -1,0 +1,145 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:51+00:00",
+    "input_code": "SM-K100LS",
+    "normalized_code": "K100LS",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K100LS",
+            "normalized_code": "K100LS",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100LS&parentId=115&prodimage=K100LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100LS&parentId=115&prodimage=K100LS.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:51+00:00",
+            "product_name": "Port Authority\u00ae Long Sleeve Core Classic Pique Polo",
+            "page_code": "K100LS",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 19.64,
+                    "raw": "$19.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 21.64,
+                    "raw": "$21.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 25.64,
+                    "raw": "$25.64",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 27.64,
+                    "raw": "$27.64",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Graphite",
+                "Rich Red",
+                "River Blue Navy",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100LS&parentId=115&prodimage=K100LS.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K100LS",
+                        "normalized_code": "K100LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:51",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 51020,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100LS&parentId=115&prodimage=K100LS.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:51",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Long Sleeve Core Classic Pique Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:51",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K100LS"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:51",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:51",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 5
+                    }
+                }
+            ]
+        }
+    }
+}

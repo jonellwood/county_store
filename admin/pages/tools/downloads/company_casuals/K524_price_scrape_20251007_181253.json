@@ -1,0 +1,160 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:53+00:00",
+    "input_code": "SM-K524",
+    "normalized_code": "K524",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K524",
+            "normalized_code": "K524",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K524&parentId=115&prodimage=K524.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K524&parentId=115&prodimage=K524.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:53+00:00",
+            "product_name": "Port Authority\u00ae Dry Zone\u00ae Colorblock Ottoman Polo",
+            "page_code": "K524",
+            "price_reference_color": "Black/ Iron Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 30,
+                    "raw": "$30.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 30,
+                    "raw": "$30.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 30,
+                    "raw": "$30.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 30,
+                    "raw": "$30.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 30,
+                    "raw": "$30.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 32,
+                    "raw": "$32.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 36,
+                    "raw": "$36.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 38,
+                    "raw": "$38.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 42,
+                    "raw": "$42.00",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 44,
+                    "raw": "$44.00",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Iron Grey",
+                "Engine Red/ Black",
+                "Navy/ Blue Lake",
+                "Royal/ Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:52",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K524&parentId=115&prodimage=K524.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K524",
+                        "normalized_code": "K524"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 50238,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K524&parentId=115&prodimage=K524.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Dry Zone\u00ae Colorblock Ottoman Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K524"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Iron Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

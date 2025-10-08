@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:03+00:00",
+    "input_code": "BB18007",
+    "normalized_code": "BB18007",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "BB18007",
+            "normalized_code": "BB18007",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18007&parentId=115&prodimage=BB18007.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18007&parentId=115&prodimage=BB18007.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:03+00:00",
+            "product_name": "Print Charleston, Brooks Brothers\u00ae Women's Full-Button Satin Blouse BB18007",
+            "page_code": "BB18007",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 43.47,
+                    "raw": "$43.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 43.47,
+                    "raw": "$43.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 43.47,
+                    "raw": "$43.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 43.47,
+                    "raw": "$43.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 43.47,
+                    "raw": "$43.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 45.14,
+                    "raw": "$45.14",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 48.47,
+                    "raw": "$48.47",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 50.14,
+                    "raw": "$50.14",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Heritage Blue",
+                "Off White",
+                "Shadow Grey"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:02",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18007&parentId=115&prodimage=BB18007.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "BB18007",
+                        "normalized_code": "BB18007"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48416,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=BB18007&parentId=115&prodimage=BB18007.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "BB18007"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:03",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

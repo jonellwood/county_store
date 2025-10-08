@@ -1,0 +1,148 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:18+00:00",
+    "input_code": "LPC380",
+    "normalized_code": "LPC380",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "LPC380",
+            "normalized_code": "LPC380",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC380&parentId=115&prodimage=LPC380.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC380&parentId=115&prodimage=LPC380.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:18+00:00",
+            "product_name": "Port & Co\u0099 Women's Performance Tee",
+            "page_code": "LPC380",
+            "price_reference_color": "Charcoal",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Charcoal",
+                "Deep Navy",
+                "Jet Black",
+                "Neon Pink",
+                "Red",
+                "Royal",
+                "Silver",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC380&parentId=115&prodimage=LPC380.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "LPC380",
+                        "normalized_code": "LPC380"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 59591,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC380&parentId=115&prodimage=LPC380.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port & Co\u0099 Women's Performance Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LPC380"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Charcoal",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:18",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 8
+                    }
+                }
+            ]
+        }
+    }
+}

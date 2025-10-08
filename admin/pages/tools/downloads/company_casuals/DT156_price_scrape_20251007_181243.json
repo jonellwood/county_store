@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:43+00:00",
+    "input_code": "SM-DT156",
+    "normalized_code": "DT156",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-DT156",
+            "normalized_code": "DT156",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT156&parentId=115&prodimage=DT156.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT156&parentId=115&prodimage=DT156.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:43+00:00",
+            "product_name": "District \u00ae Women's Perfect Tri \u00ae Hooded Cardigan",
+            "page_code": "DT156",
+            "price_reference_color": "Black Frost",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 22.68,
+                    "raw": "$22.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 26.68,
+                    "raw": "$26.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 28.68,
+                    "raw": "$28.68",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black Frost",
+                "Grey Frost"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:42",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT156&parentId=115&prodimage=DT156.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-DT156",
+                        "normalized_code": "DT156"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:43",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42808,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DT156&parentId=115&prodimage=DT156.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:43",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "District \u00ae Women's Perfect Tri \u00ae Hooded Cardigan"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:43",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "DT156"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:43",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black Frost",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:43",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

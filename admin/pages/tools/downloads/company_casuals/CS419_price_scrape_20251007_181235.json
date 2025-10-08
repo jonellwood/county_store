@@ -1,0 +1,149 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:35+00:00",
+    "input_code": "SM-CS419",
+    "normalized_code": "CS419",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS419",
+            "normalized_code": "CS419",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS419&parentId=115&prodimage=CS419.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS419&parentId=115&prodimage=CS419.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:35+00:00",
+            "product_name": "CornerStone\u00ae Women's Select Lightweight Snag-Proof Polo",
+            "page_code": "CS419",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 22.74,
+                    "raw": "$22.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 22.74,
+                    "raw": "$22.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 22.74,
+                    "raw": "$22.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 22.74,
+                    "raw": "$22.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 22.74,
+                    "raw": "$22.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 24.74,
+                    "raw": "$24.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 28.74,
+                    "raw": "$28.74",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 30.74,
+                    "raw": "$30.74",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal",
+                "Dark Green",
+                "Dark Navy",
+                "Light Grey",
+                "Maroon",
+                "Red",
+                "Royal",
+                "Tan"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS419&parentId=115&prodimage=CS419.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS419",
+                        "normalized_code": "CS419"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 63122,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS419&parentId=115&prodimage=CS419.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae Women's Select Lightweight Snag-Proof Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS419"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:35",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 9
+                    }
+                }
+            ]
+        }
+    }
+}

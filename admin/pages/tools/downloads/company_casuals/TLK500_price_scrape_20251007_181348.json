@@ -1,0 +1,128 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:48+00:00",
+    "input_code": "SM-TLK500",
+    "normalized_code": "TLK500",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLK500",
+            "normalized_code": "TLK500",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500&parentId=115&prodimage=TLK500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500&parentId=115&prodimage=TLK500.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:48+00:00",
+            "product_name": "Port Authority\u00ae Tall Silk Touch\u0099 Polo",
+            "page_code": "TLK500",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 20.68,
+                    "raw": "$20.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 22.68,
+                    "raw": "$22.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 24.68,
+                    "raw": "$24.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 26.68,
+                    "raw": "$26.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 28.68,
+                    "raw": "$28.68",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Burgundy",
+                "Cool Grey",
+                "Dark Green",
+                "Light Blue",
+                "Navy",
+                "Red",
+                "Royal",
+                "Steel Grey",
+                "Stone",
+                "Strong Blue",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:47",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500&parentId=115&prodimage=TLK500.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLK500",
+                        "normalized_code": "TLK500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:48",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 65456,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK500&parentId=115&prodimage=TLK500.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:48",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Silk Touch\u0099 Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:48",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLK500"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:48",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:48",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 12
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,173 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:54+00:00",
+    "input_code": "SM-K540",
+    "normalized_code": "K540",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K540",
+            "normalized_code": "K540",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K540&parentId=115&prodimage=K540.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K540&parentId=115&prodimage=K540.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:54+00:00",
+            "product_name": "Port Authority\u00ae Silk Touch\u0099 Performance Polo",
+            "page_code": "K540",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 16.54,
+                    "raw": "$16.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 18.54,
+                    "raw": "$18.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 22.54,
+                    "raw": "$22.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 24.54,
+                    "raw": "$24.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 28.54,
+                    "raw": "$28.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 30.54,
+                    "raw": "$30.54",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Bright Purple",
+                "Brilliant Blue",
+                "Carolina Blue",
+                "Dark Green",
+                "Gusty Grey",
+                "Lime",
+                "Maroon",
+                "Navy",
+                "Neon Orange",
+                "Neon Yellow",
+                "Pink Raspberry",
+                "Red",
+                "Royal",
+                "Steel Grey",
+                "Teal Green",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:53",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K540&parentId=115&prodimage=K540.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K540",
+                        "normalized_code": "K540"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 92738,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K540&parentId=115&prodimage=K540.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Silk Touch\u0099 Performance Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K540"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:54",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 17
+                    }
+                }
+            ]
+        }
+    }
+}

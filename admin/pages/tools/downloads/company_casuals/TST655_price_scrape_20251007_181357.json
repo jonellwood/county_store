@@ -1,0 +1,127 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:57+00:00",
+    "input_code": "SM-TST655",
+    "normalized_code": "TST655",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TST655",
+            "normalized_code": "TST655",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST655&parentId=115&prodimage=TST655.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST655&parentId=115&prodimage=TST655.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:57+00:00",
+            "product_name": "Sport-Tek\u00ae Tall Side Blocked Micropique Sport-Wick\u00ae Polo",
+            "page_code": "TST655",
+            "price_reference_color": "Black/ Deep Orange",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 26.88,
+                    "raw": "$26.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 28.88,
+                    "raw": "$28.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 30.88,
+                    "raw": "$30.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 32.88,
+                    "raw": "$32.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 34.88,
+                    "raw": "$34.88",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Deep Orange",
+                "Black/ Gold",
+                "Black/ Iron Grey",
+                "Black/ True Red",
+                "Black/ True Royal",
+                "Black/ White",
+                "Forest Green/ White",
+                "True Navy/ Gold",
+                "True Navy/ White",
+                "True Red/ White",
+                "True Royal/ White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:56",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST655&parentId=115&prodimage=TST655.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TST655",
+                        "normalized_code": "TST655"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 63979,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TST655&parentId=115&prodimage=TST655.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Sport-Tek\u00ae Tall Side Blocked Micropique Sport-Wick\u00ae Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TST655"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Deep Orange",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:57",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

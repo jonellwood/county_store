@@ -1,6 +1,6 @@
 <?php
 // Created: 2024/08/28 14:29:00
-// Last Modified: 2024/09/26 10:15:27
+// Last Modified: 2025/09/30 09:17:10
 include('DBConn.php');
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -49,7 +49,7 @@ include "components/commonHead.php";
                                             <td>${formatDate(data[i].order_placed)}</td> 
                                             <td>${data[i].dep_name}</td>
                                             <td>${money_format(data[i].total)}</td>
-                                            <td class="shift-right"><a href='vendorReport.php?uid=${data[i].order_inst_id}' target='_blank'>&#129531;</a></td>
+                                            <td class="shift-right"><a href='vendor-report.php?uid=${data[i].order_inst_id}' target='_blank'>&#129531;</a></td>
                                         </tr>
                                     `;
                 }

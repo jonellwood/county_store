@@ -1,0 +1,167 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:34+00:00",
+    "input_code": "SM-CS410",
+    "normalized_code": "CS410",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CS410",
+            "normalized_code": "CS410",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410&parentId=115&prodimage=CS410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410&parentId=115&prodimage=CS410.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:34+00:00",
+            "product_name": "CornerStone\u00ae - Select Snag-Proof Tactical Polo",
+            "page_code": "CS410",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 37.16,
+                    "raw": "$37.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 41.16,
+                    "raw": "$41.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 43.16,
+                    "raw": "$43.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 47.16,
+                    "raw": "$47.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 49.16,
+                    "raw": "$49.16",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Charcoal",
+                "Dark Green",
+                "Dark Navy",
+                "Light Grey",
+                "Red",
+                "Royal",
+                "Tactical Green",
+                "Tan",
+                "White",
+                "Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:33",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410&parentId=115&prodimage=CS410.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CS410",
+                        "normalized_code": "CS410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 73248,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CS410&parentId=115&prodimage=CS410.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "CornerStone\u00ae - Select Snag-Proof Tactical Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CS410"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:34",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

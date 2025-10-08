@@ -1,0 +1,151 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:17+00:00",
+    "input_code": "SM-LOG101",
+    "normalized_code": "LOG101",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LOG101",
+            "normalized_code": "LOG101",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG101&parentId=115&prodimage=LOG101.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG101&parentId=115&prodimage=LOG101.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:17+00:00",
+            "product_name": "OGIO\u00ae - Jewel Polo",
+            "page_code": "LOG101",
+            "price_reference_color": "Blacktop",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 34.68,
+                    "raw": "$34.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 34.68,
+                    "raw": "$34.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 34.68,
+                    "raw": "$34.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 34.68,
+                    "raw": "$34.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 34.68,
+                    "raw": "$34.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 36.68,
+                    "raw": "$36.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 40.68,
+                    "raw": "$40.68",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 42.68,
+                    "raw": "$42.68",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Blacktop",
+                "Blue Mist",
+                "Bright White",
+                "Diesel Grey",
+                "Electric Blue",
+                "Gridiron Green",
+                "Navy",
+                "Pink Crush",
+                "Rogue Grey",
+                "Signal Red",
+                "Spar Blue"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG101&parentId=115&prodimage=LOG101.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LOG101",
+                        "normalized_code": "LOG101"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 68995,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LOG101&parentId=115&prodimage=LOG101.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "OGIO\u00ae - Jewel Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LOG101"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Blacktop",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:17",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

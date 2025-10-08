@@ -1,0 +1,119 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:50+00:00",
+    "input_code": "SM-TLK527",
+    "normalized_code": "TLK527",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-TLK527",
+            "normalized_code": "TLK527",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK527&parentId=115&prodimage=TLK527.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK527&parentId=115&prodimage=TLK527.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:50+00:00",
+            "product_name": "Port Authority\u00ae Tall Tech Pique Polo",
+            "page_code": "TLK527",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 31.6,
+                    "raw": "$31.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 33.6,
+                    "raw": "$33.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 35.6,
+                    "raw": "$35.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 37.6,
+                    "raw": "$37.60",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 39.6,
+                    "raw": "$39.60",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Dark Navy",
+                "Grey Smoke"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK527&parentId=115&prodimage=TLK527.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-TLK527",
+                        "normalized_code": "TLK527"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44190,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLK527&parentId=115&prodimage=TLK527.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Tech Pique Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLK527"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:50",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

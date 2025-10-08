@@ -1,0 +1,142 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:13+00:00",
+    "input_code": "SM-LK583",
+    "normalized_code": "LK583",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-LK583",
+            "normalized_code": "LK583",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK583&parentId=115&prodimage=LK583.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK583&parentId=115&prodimage=LK583.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:13+00:00",
+            "product_name": "Print Charleston, Port Authority \u00ae Women's Stretch Heather Open Neck Top  LK583",
+            "page_code": "LK583",
+            "price_reference_color": "Black/ Thunder Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 25.2,
+                    "raw": "$25.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 29.2,
+                    "raw": "$29.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 31.2,
+                    "raw": "$31.20",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Thunder Grey",
+                "Graphite/ White",
+                "Regatta Blue/ Gusty Grey",
+                "Violet Purple/ Black"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK583&parentId=115&prodimage=LK583.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-LK583",
+                        "normalized_code": "LK583"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48823,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LK583&parentId=115&prodimage=LK583.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "LK583"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Thunder Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:13",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

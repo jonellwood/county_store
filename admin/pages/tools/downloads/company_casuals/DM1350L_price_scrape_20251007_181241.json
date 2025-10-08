@@ -1,0 +1,163 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:41+00:00",
+    "input_code": "SM-DM1350L",
+    "normalized_code": "DM1350L",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-DM1350L",
+            "normalized_code": "DM1350L",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DM1350L&parentId=115&prodimage=DM1350L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DM1350L&parentId=115&prodimage=DM1350L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:41+00:00",
+            "product_name": "District\u00ae Women's Perfect Tri\u00ae V-Neck Tee",
+            "page_code": "DM1350L",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 10.32,
+                    "raw": "$10.32",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 12.4,
+                    "raw": "$12.40",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 13.44,
+                    "raw": "$13.44",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Black Frost",
+                "Blush Frost",
+                "Flint Blue Heather",
+                "Fuchsia Frost",
+                "Green Frost",
+                "Grey Frost",
+                "Heathered Charcoal",
+                "Heathered Dusty Peach",
+                "Heathered Dusty Sage",
+                "Heathered Lavender",
+                "Heathered Teal",
+                "Maritime Frost",
+                "Maroon Frost",
+                "Military Green Frost",
+                "Navy Frost",
+                "New Navy",
+                "Purple Frost",
+                "Red Frost",
+                "Royal Frost",
+                "Turquoise Frost",
+                "White",
+                "Wisteria Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DM1350L&parentId=115&prodimage=DM1350L.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-DM1350L",
+                        "normalized_code": "DM1350L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 104105,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=DM1350L&parentId=115&prodimage=DM1350L.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "District\u00ae Women's Perfect Tri\u00ae V-Neck Tee"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "DM1350L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:41",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 23
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,167 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:45+00:00",
+    "input_code": "SM-J317",
+    "normalized_code": "J317",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-J317",
+            "normalized_code": "J317",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J317&parentId=115&prodimage=J317.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J317&parentId=115&prodimage=J317.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:45+00:00",
+            "product_name": "Port Authority\u00ae Core Soft Shell Jacket",
+            "page_code": "J317",
+            "price_reference_color": "Battleship Grey",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 43.38,
+                    "raw": "$43.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 47.38,
+                    "raw": "$47.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 49.38,
+                    "raw": "$49.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 53.38,
+                    "raw": "$53.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 55.38,
+                    "raw": "$55.38",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Battleship Grey",
+                "Black",
+                "Black Charcoal Heather",
+                "Deep Smoke",
+                "Dress Blue Navy",
+                "Forest Green",
+                "Maroon",
+                "Navy Heather",
+                "Pearl Grey Heather",
+                "Rich Red",
+                "True Royal"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J317&parentId=115&prodimage=J317.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-J317",
+                        "normalized_code": "J317"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 73197,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J317&parentId=115&prodimage=J317.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Core Soft Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "J317"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Battleship Grey",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:45",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,139 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:25+00:00",
+    "input_code": "SM-8400",
+    "normalized_code": "8400",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-8400",
+            "normalized_code": "8400",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8400&parentId=115&prodimage=8400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8400&parentId=115&prodimage=8400.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:25+00:00",
+            "product_name": "Gildan\u00ae - DryBlend\u00ae 50 Cotton/50 Poly Long Sleeve T-Shirt",
+            "page_code": "8400",
+            "price_reference_color": "Ash Grey",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": 12.54,
+                    "raw": "$12.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 12.54,
+                    "raw": "$12.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 12.54,
+                    "raw": "$12.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 12.54,
+                    "raw": "$12.54",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 14.88,
+                    "raw": "$14.88",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 19.36,
+                    "raw": "$19.36",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Ash Grey",
+                "Black",
+                "Carolina Blue",
+                "Dark Heather",
+                "Forest Green",
+                "Graphite Heather",
+                "Maroon",
+                "Navy",
+                "Orange",
+                "Red",
+                "Royal",
+                "S. Orange",
+                "Safety Green",
+                "Sport Grey",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8400&parentId=115&prodimage=8400.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-8400",
+                        "normalized_code": "8400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 74784,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=8400&parentId=115&prodimage=8400.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Gildan\u00ae - DryBlend\u00ae 50 Cotton/50 Poly Long Sleeve T-Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "8400"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Ash Grey",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL"
+                        ],
+                        "price_count": 6
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:25",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 15
+                    }
+                }
+            ]
+        }
+    }
+}

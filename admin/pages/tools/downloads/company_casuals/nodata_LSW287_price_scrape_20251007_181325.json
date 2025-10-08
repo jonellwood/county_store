@@ -1,0 +1,74 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:25+00:00",
+    "input_code": "SM-LSW287",
+    "normalized_code": "LSW287",
+    "result": {
+        "success": false,
+        "error": "Pricing table not found on page",
+        "data": {
+            "original_code": null,
+            "normalized_code": "LSW287",
+            "source_url": null,
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LSW287&parentId=115&prodimage=LSW287.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:25+00:00",
+            "error": "Pricing table not found on page",
+            "notes": [
+                "Scrape did not return pricing data"
+            ]
+        },
+        "log": [
+            {
+                "timestamp": "2025-10-07 18:13:24",
+                "message": "Fetching product page",
+                "context": {
+                    "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LSW287&parentId=115&prodimage=LSW287.jpg&cart=Y&swatch=&httpsecure=Y",
+                    "raw_code": "SM-LSW287",
+                    "normalized_code": "LSW287"
+                }
+            },
+            {
+                "timestamp": "2025-10-07 18:13:25",
+                "message": "Fetched HTML",
+                "context": {
+                    "bytes": 5191,
+                    "http_code": 200,
+                    "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LSW287&parentId=115&prodimage=LSW287.jpg&cart=Y&swatch=&httpsecure=Y"
+                }
+            },
+            {
+                "timestamp": "2025-10-07 18:13:25",
+                "message": "Using raw title as product name fallback",
+                "context": []
+            },
+            {
+                "timestamp": "2025-10-07 18:13:25",
+                "message": "Price table not found",
+                "context": []
+            },
+            {
+                "timestamp": "2025-10-07 18:13:25",
+                "message": "Extracted colors",
+                "context": {
+                    "count": 0
+                }
+            },
+            {
+                "timestamp": "2025-10-07 18:13:25",
+                "message": "Error",
+                "context": {
+                    "message": "Pricing table not found on page",
+                    "original_code": "SM-LSW287",
+                    "normalized_code": "LSW287",
+                    "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LSW287&parentId=115&prodimage=LSW287.jpg&cart=Y&swatch=&httpsecure=Y",
+                    "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=LSW287&parentId=115&prodimage=LSW287.jpg&cart=Y&swatch=&httpsecure=Y",
+                    "scraped_at": "2025-10-07T18:13:25+00:00",
+                    "product_name": "Print Charleston",
+                    "page_code": null,
+                    "colors": [],
+                    "html_sample": "\n\n\n\n\nPrint Charleston\n\n\n\n\n\n\n\n \tif(!(window.Prototype && window.Prototype.Version)) {\n\t\tdocument.write(\"\\\\\");\n\t} \n\tif(typeof jQuery == 'undefined') {\n\t\tdocument.write(\"\\\\\");\n\t\tdocument.write(\"\\\\\");\n\t}\n\n\n\tvar url = window.location.pathname;\n\tvar pageName = url.substring(url.lastIndexOf('/') + 1);\n\tpageName = pageName.substring(0, pageName.lastIndexOf(\".\"));\n\tpageName = pageName.toLowerCase();\n\tpageName = \".\"+pageName;\n\tif(pageName==\".\"){\n        if(url.substring(0,url.lastIndexOf('/')).length1){\n\t        /* if(jQuery(pageName)!= 'undefined' && jQuery(pageName)!=null){\n\t                jQuery(pageName).addClass(\"selected\");\n\t        } */\n\t    }\n\t});\n\n \n\n\n\n\n\n\nfunction quickSearchHandler(){ return true;}\n\nfunction submitInvCheckFormG() {\n\tif ((document.ItemInventoryCheckFormG.productid.value.length == 0) || (document.ItemInventoryCheckFormG.productid.value == \"enter style #\")) {\n\t    alert(\"style number is required\");\n\t    return false;\n\t}\n}\n\nfunction validateSearchForm(){\n var searchString=document.forms[\"quicksrch\"][\"searchString\"].value;\n searchString=jQuery.trim(searchString);\n if(searchString==\"\"){\n    alert(\"Empty string is not allowed\");\n    return false;\n }\t\n if(searchString.length>100){\n        alert(\"Search string length exceeds maximum limit(100).\\n Please enter a valid string.\");\n        return false;\n }\n if(containsSpecialChar(searchString)==true)\n   return false; \n}\n\nfunction containsSpecialChar(searchString){\n\tvar illegalChars=\"!@$^*()+=[]\\\\{}|\\:?\";\n\tfor(var i=0;i-1){\n\t\t  alert(\"Your search has one of the following special characters:\\n\"+illegalChars+\"\\nThese are not allowed.\\nPlease remove them and try again.\");\n\t\t  return true;\n\t  }\n\t}\n\treturn false;\n} \t  \n\nfunction trim(s){\nvar l=0; var r=s.length -1;\nwhile(l < s.length && s[l] == ' ')\n{     l++; }\nwhile(r > l && s[r] == ' ')\n{     r-=1;     }\nreturn s.substring(l, r+1);\n} \n\nfunction showLoginModal(){\ndocument.getElementById(\"dialog1\").style.display=\"block\";\n}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ufffd\n\n"
+                }
+            }
+        ]
+    }
+}

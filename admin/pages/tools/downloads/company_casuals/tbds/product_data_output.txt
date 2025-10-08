@@ -1,0 +1,105 @@
+Product Codes and URLs
+================================================================================
+
+Code: C821
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=C821&parentId=115&prodimage=C821.jpg&cart=Y&swatch=&httpsecure=Y
+File: C821_price_scrape_20251007_181230.json
+--------------------------------------------------------------------------------
+
+Code: PC61T
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61T&parentId=115&prodimage=PC61T.jpg&cart=Y&swatch=&httpsecure=Y
+File: PC61T_price_scrape_20251007_181338.json
+--------------------------------------------------------------------------------
+
+Code: C112
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=C112&parentId=115&prodimage=C112.jpg&cart=Y&swatch=&httpsecure=Y
+File: C112_price_scrape_20251007_181228.json
+--------------------------------------------------------------------------------
+
+Code: PC54
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=PC54&parentId=115&prodimage=PC54.jpg&cart=Y&swatch=&httpsecure=Y
+File: PC54_price_scrape_20251007_181335.json
+--------------------------------------------------------------------------------
+
+Code: KP55Y
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=KP55Y&parentId=115&prodimage=KP55Y.jpg&cart=Y&swatch=&httpsecure=Y
+File: KP55Y_price_scrape_20251007_181257.json
+--------------------------------------------------------------------------------
+
+Code: PC61
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=PC61&parentId=115&prodimage=PC61.jpg&cart=Y&swatch=&httpsecure=Y
+File: PC61_price_scrape_20251007_181338.json
+--------------------------------------------------------------------------------
+
+Code: 18900
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=18900&parentId=115&prodimage=18900.jpg&cart=Y&swatch=&httpsecure=Y
+File: 18900_price_scrape_20251007_181159.json
+--------------------------------------------------------------------------------
+
+Code: BG410
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=BG410&parentId=115&prodimage=BG410.jpg&cart=Y&swatch=&httpsecure=Y
+File: BG410_price_scrape_20251007_181207.json
+--------------------------------------------------------------------------------
+
+Code: 996M
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=996M&parentId=115&prodimage=996M.jpg&cart=Y&swatch=&httpsecure=Y
+File: 996M_price_scrape_20251007_181226.json
+--------------------------------------------------------------------------------
+
+Code: CSJ70
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ70&parentId=115&prodimage=CSJ70.jpg&cart=Y&swatch=&httpsecure=Y
+File: CSJ70_price_scrape_20251007_181238.json
+--------------------------------------------------------------------------------
+
+Code: PC55
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=PC55&parentId=115&prodimage=PC55.jpg&cart=Y&swatch=&httpsecure=Y
+File: PC55_price_scrape_20251007_181336.json
+--------------------------------------------------------------------------------
+
+Code: EB511
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=EB511&parentId=115&prodimage=EB511.jpg&cart=Y&swatch=&httpsecure=Y
+File: EB511_price_scrape_20251007_181213.json
+--------------------------------------------------------------------------------
+
+Code: 8000
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=8000&parentId=115&prodimage=8000.jpg&cart=Y&swatch=&httpsecure=Y
+File: 8000_price_scrape_20251007_181224.json
+--------------------------------------------------------------------------------
+
+Code: LPC380
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC380&parentId=115&prodimage=LPC380.jpg&cart=Y&swatch=&httpsecure=Y
+File: LPC380_price_scrape_20251007_181218.json
+--------------------------------------------------------------------------------
+
+Code: LNEA228
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=LNEA228&parentId=115&prodimage=LNEA228.jpg&cart=Y&swatch=&httpsecure=Y
+File: LNEA228_price_scrape_20251007_181217.json
+--------------------------------------------------------------------------------
+
+Code: BC6400
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=BC6400&parentId=115&prodimage=BC6400.jpg&cart=Y&swatch=&httpsecure=Y
+File: BC6400_price_scrape_20251007_181207.json
+--------------------------------------------------------------------------------
+
+Code: 64000L
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=64000L&parentId=115&prodimage=64000L.jpg&cart=Y&swatch=&httpsecure=Y
+File: 64000L_price_scrape_20251007_181223.json
+--------------------------------------------------------------------------------
+
+Code: LPC54LS
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=LPC54LS&parentId=115&prodimage=LPC54LS.jpg&cart=Y&swatch=&httpsecure=Y
+File: LPC54LS_price_scrape_20251007_181321.json
+--------------------------------------------------------------------------------
+
+Code: C806
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=C806&parentId=115&prodimage=C806.jpg&cart=Y&swatch=&httpsecure=Y
+File: C806_price_scrape_20251007_181228.json
+--------------------------------------------------------------------------------
+
+Code: NF0A7V4G
+URL:  https://www.companycasuals.com/printcharleston/b.jsp?productId=NF0A7V4G&parentId=115&prodimage=NF0A7V4G.jpg&cart=Y&swatch=&httpsecure=Y
+File: NF0A7V4G_price_scrape_20251007_181332.json
+--------------------------------------------------------------------------------
+
+
+Total: 20 products processed

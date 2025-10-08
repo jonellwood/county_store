@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:38+00:00",
+    "input_code": "SM-CSJ70",
+    "normalized_code": "CSJ70",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-CSJ70",
+            "normalized_code": "CSJ70",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ70&parentId=115&prodimage=CSJ70.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ70&parentId=115&prodimage=CSJ70.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:38+00:00",
+            "product_name": "Print Charleston, CornerStone\u00ae Workwear Soft Shell CSJ70",
+            "page_code": "CSJ70",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Iron Grey",
+                "Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ70&parentId=115&prodimage=CSJ70.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-CSJ70",
+                        "normalized_code": "CSJ70"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45150,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CSJ70&parentId=115&prodimage=CSJ70.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CSJ70"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:38",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,167 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:47+00:00",
+    "input_code": "SM-J333",
+    "normalized_code": "J333",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-J333",
+            "normalized_code": "J333",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J333&parentId=115&prodimage=J333.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J333&parentId=115&prodimage=J333.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:47+00:00",
+            "product_name": "Port Authority\u00ae Torrent Waterproof Jacket",
+            "page_code": "J333",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 62.08,
+                    "raw": "$62.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 64.08,
+                    "raw": "$64.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 68.08,
+                    "raw": "$68.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 70.08,
+                    "raw": "$70.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 74.08,
+                    "raw": "$74.08",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 76.08,
+                    "raw": "$76.08",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Dark Grey Heather",
+                "Deep Red",
+                "Direct Blue",
+                "Engine Red",
+                "Magnet",
+                "Orange Crush",
+                "Slicker Yellow",
+                "True Navy",
+                "True Royal",
+                "Vine Green"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:46",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J333&parentId=115&prodimage=J333.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-J333",
+                        "normalized_code": "J333"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 73419,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=J333&parentId=115&prodimage=J333.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Torrent Waterproof Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "J333"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:47",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

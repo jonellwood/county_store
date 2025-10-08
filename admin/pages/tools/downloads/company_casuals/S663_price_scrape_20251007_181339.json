@@ -1,0 +1,148 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:39+00:00",
+    "input_code": "SM-S663",
+    "normalized_code": "S663",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-S663",
+            "normalized_code": "S663",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S663&parentId=115&prodimage=S663.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S663&parentId=115&prodimage=S663.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:39+00:00",
+            "product_name": "Port Authority\u00ae SuperPro\u0099 Twill Shirt",
+            "page_code": "S663",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 33.02,
+                    "raw": "$33.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 37.02,
+                    "raw": "$37.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 39.02,
+                    "raw": "$39.02",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Monument Grey",
+                "Rich Red",
+                "Sterling Grey",
+                "True Blue",
+                "True Navy",
+                "Ultramarine Blue",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S663&parentId=115&prodimage=S663.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-S663",
+                        "normalized_code": "S663"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 60018,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=S663&parentId=115&prodimage=S663.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae SuperPro\u0099 Twill Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "S663"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:39",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 8
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:11+00:00",
+    "input_code": "SM-L901",
+    "normalized_code": "L901",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L901",
+            "normalized_code": "L901",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L901&parentId=115&prodimage=L901.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L901&parentId=115&prodimage=L901.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:11+00:00",
+            "product_name": "Port Authority \u00ae Women's Collective Soft Shell Jacket",
+            "page_code": "L901",
+            "price_reference_color": "Deep Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 41.38,
+                    "raw": "$41.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 43.38,
+                    "raw": "$43.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 47.38,
+                    "raw": "$47.38",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 49.38,
+                    "raw": "$49.38",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Deep Black",
+                "Graphite",
+                "Gusty Grey",
+                "River Blue Navy"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:10",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L901&parentId=115&prodimage=L901.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L901",
+                        "normalized_code": "L901"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 48631,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L901&parentId=115&prodimage=L901.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority \u00ae Women's Collective Soft Shell Jacket"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L901"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Deep Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:11",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

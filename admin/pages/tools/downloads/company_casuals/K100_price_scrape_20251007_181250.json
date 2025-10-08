@@ -1,0 +1,168 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:50+00:00",
+    "input_code": "SM-K100",
+    "normalized_code": "K100",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-K100",
+            "normalized_code": "K100",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100&parentId=115&prodimage=K100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100&parentId=115&prodimage=K100.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:50+00:00",
+            "product_name": "Port Authority\u00ae Core Classic Pique Polo",
+            "page_code": "K100",
+            "price_reference_color": "Bright Kelly Green",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL",
+                "5XL",
+                "6XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 14.46,
+                    "raw": "$14.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 16.46,
+                    "raw": "$16.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 20.46,
+                    "raw": "$20.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 22.46,
+                    "raw": "$22.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "5XL",
+                    "price": 26.46,
+                    "raw": "$26.46",
+                    "currency": "USD"
+                },
+                {
+                    "size": "6XL",
+                    "price": 28.46,
+                    "raw": "$28.46",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Bright Kelly Green",
+                "Burgundy",
+                "Carolina Blue",
+                "Coastal Blue",
+                "Deep Black",
+                "Deep Forest Green",
+                "Graphite",
+                "Gusty Grey",
+                "Rich Red",
+                "River Blue Navy",
+                "True Royal",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100&parentId=115&prodimage=K100.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-K100",
+                        "normalized_code": "K100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 76229,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=K100&parentId=115&prodimage=K100.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Core Classic Pique Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "K100"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Bright Kelly Green",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL",
+                            "5XL",
+                            "6XL"
+                        ],
+                        "price_count": 10
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:50",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 12
+                    }
+                }
+            ]
+        }
+    }
+}

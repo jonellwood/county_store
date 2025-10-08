@@ -1,0 +1,151 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:16+00:00",
+    "input_code": "L572",
+    "normalized_code": "L572",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "L572",
+            "normalized_code": "L572",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L572&parentId=115&prodimage=L572.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L572&parentId=115&prodimage=L572.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:16+00:00",
+            "product_name": "Port Authority\u00ae Women's Dry Zone\u00ae Grid Polo",
+            "page_code": "L572",
+            "price_reference_color": "Autumn Orange",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 17.58,
+                    "raw": "$17.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 19.58,
+                    "raw": "$19.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 23.58,
+                    "raw": "$23.58",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 25.58,
+                    "raw": "$25.58",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Autumn Orange",
+                "Battleship Grey",
+                "Black",
+                "Celadon Blue",
+                "Engine Red",
+                "Jewel Green",
+                "Magenta",
+                "True Navy",
+                "True Royal",
+                "White",
+                "Yellow"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:15",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L572&parentId=115&prodimage=L572.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "L572",
+                        "normalized_code": "L572"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 69035,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L572&parentId=115&prodimage=L572.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Dry Zone\u00ae Grid Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L572"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Autumn Orange",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:16",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

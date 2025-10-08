@@ -1,0 +1,124 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:10+00:00",
+    "input_code": "CT104314",
+    "normalized_code": "CT104314",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "CT104314",
+            "normalized_code": "CT104314",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT104314&parentId=115&prodimage=CT104314.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT104314&parentId=115&prodimage=CT104314.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:10+00:00",
+            "product_name": "Print Charleston, Carhartt\u00ae Women's Gilliam Jacket CT104314",
+            "page_code": "CT104314",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 103.5,
+                    "raw": "$103.50",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Shadow Grey"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:09",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT104314&parentId=115&prodimage=CT104314.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "CT104314",
+                        "normalized_code": "CT104314"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:10",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 42681,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=CT104314&parentId=115&prodimage=CT104314.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:10",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:10",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "CT104314"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:10",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL"
+                        ],
+                        "price_count": 6
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:10",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 2
+                    }
+                }
+            ]
+        }
+    }
+}

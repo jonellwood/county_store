@@ -1,0 +1,144 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:14+00:00",
+    "input_code": "L151",
+    "normalized_code": "L151",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "L151",
+            "normalized_code": "L151",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L151&parentId=115&prodimage=L151.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L151&parentId=115&prodimage=L151.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:14+00:00",
+            "product_name": "Print Charleston, Port Authority\u00ae Women's Accord Microfleece Jacket L151",
+            "page_code": "L151",
+            "price_reference_color": "Black",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 31.02,
+                    "raw": "$31.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 33.02,
+                    "raw": "$33.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 37.02,
+                    "raw": "$37.02",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 39.02,
+                    "raw": "$39.02",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Ceil Blue",
+                "Navy",
+                "Pewter",
+                "Royal",
+                "Teal Blue"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L151&parentId=115&prodimage=L151.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "L151",
+                        "normalized_code": "L151"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 54464,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L151&parentId=115&prodimage=L151.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L151"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:14",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 6
+                    }
+                }
+            ]
+        }
+    }
+}

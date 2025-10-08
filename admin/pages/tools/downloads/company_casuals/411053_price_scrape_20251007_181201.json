@@ -1,0 +1,88 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:01+00:00",
+    "input_code": "411053",
+    "normalized_code": "411053",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "411053",
+            "normalized_code": "411053",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=411053&parentId=115&prodimage=411053.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=411053&parentId=115&prodimage=411053.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:01+00:00",
+            "product_name": "OGIO\u00ae - Marshall Pack",
+            "page_code": "411053",
+            "price_reference_color": "Black",
+            "sizes": [
+                "OSFA"
+            ],
+            "prices": [
+                {
+                    "size": "OSFA",
+                    "price": 46.59,
+                    "raw": "$46.59",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Fracture",
+                "Navy",
+                "Red"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:00",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=411053&parentId=115&prodimage=411053.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "411053",
+                        "normalized_code": "411053"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:01",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 43406,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=411053&parentId=115&prodimage=411053.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:01",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "OGIO\u00ae - Marshall Pack"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:01",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "411053"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:01",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "OSFA"
+                        ],
+                        "price_count": 1
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:01",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 4
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:30+00:00",
+    "input_code": "SM-MM3023",
+    "normalized_code": "MM3023",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-MM3023",
+            "normalized_code": "MM3023",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM3023&parentId=115&prodimage=MM3023.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM3023&parentId=115&prodimage=MM3023.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:30+00:00",
+            "product_name": "Print Charleston, Mercer+Mettle\u00ae Women's Open-Front Cardigan Sweater MM3023",
+            "page_code": "MM3023",
+            "price_reference_color": "Birch",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 51.72,
+                    "raw": "$51.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 51.72,
+                    "raw": "$51.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 51.72,
+                    "raw": "$51.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 51.72,
+                    "raw": "$51.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 51.72,
+                    "raw": "$51.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": 53.72,
+                    "raw": "$53.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 57.72,
+                    "raw": "$57.72",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 59.72,
+                    "raw": "$59.72",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Birch",
+                "Deep Black",
+                "Gusty Grey Heather"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:29",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM3023&parentId=115&prodimage=MM3023.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-MM3023",
+                        "normalized_code": "MM3023"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 45825,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=MM3023&parentId=115&prodimage=MM3023.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Using raw title as product name fallback",
+                    "context": []
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "MM3023"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Birch",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:30",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}

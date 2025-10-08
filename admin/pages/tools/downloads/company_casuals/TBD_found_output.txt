@@ -1,0 +1,22 @@
+Files containing 'TBD':
+==================================================
+C821_price_scrape_20251007_181230.json
+PC61T_price_scrape_20251007_181338.json
+C112_price_scrape_20251007_181228.json
+PC54_price_scrape_20251007_181335.json
+KP55Y_price_scrape_20251007_181257.json
+PC61_price_scrape_20251007_181338.json
+18900_price_scrape_20251007_181159.json
+BG410_price_scrape_20251007_181207.json
+996M_price_scrape_20251007_181226.json
+CSJ70_price_scrape_20251007_181238.json
+PC55_price_scrape_20251007_181336.json
+EB511_price_scrape_20251007_181213.json
+8000_price_scrape_20251007_181224.json
+LPC380_price_scrape_20251007_181218.json
+LNEA228_price_scrape_20251007_181217.json
+BC6400_price_scrape_20251007_181207.json
+64000L_price_scrape_20251007_181223.json
+LPC54LS_price_scrape_20251007_181321.json
+C806_price_scrape_20251007_181228.json
+NF0A7V4G_price_scrape_20251007_181332.json

@@ -1,0 +1,141 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:23+00:00",
+    "input_code": "SM-64000L",
+    "normalized_code": "64000L",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-64000L",
+            "normalized_code": "64000L",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=64000L&parentId=115&prodimage=64000L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=64000L&parentId=115&prodimage=64000L.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:23+00:00",
+            "product_name": "Gildan Softstyle\u00ae Women's T-Shirt",
+            "page_code": "64000L",
+            "price_reference_color": "Antique Sapphire",
+            "sizes": [
+                "S",
+                "M",
+                "L",
+                "XL",
+                "2XL",
+                "3XL"
+            ],
+            "prices": [
+                {
+                    "size": "S",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XL",
+                    "price": null,
+                    "raw": "TBD",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": null,
+                    "raw": "",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Antique Sapphire",
+                "Azalea",
+                "Black",
+                "Dark Heather",
+                "Graphite Heather",
+                "Heather Purple",
+                "Irish Green",
+                "Light Blue",
+                "Navy",
+                "Paragon",
+                "Pistachio",
+                "Red",
+                "Royal",
+                "Sand",
+                "Sky",
+                "Sport Grey",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=64000L&parentId=115&prodimage=64000L.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-64000L",
+                        "normalized_code": "64000L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 80061,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=64000L&parentId=115&prodimage=64000L.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Gildan Softstyle\u00ae Women's T-Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "64000L"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Antique Sapphire",
+                        "sizes": [
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "2XL",
+                            "3XL"
+                        ],
+                        "price_count": 6
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:23",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 17
+                    }
+                }
+            ]
+        }
+    }
+}

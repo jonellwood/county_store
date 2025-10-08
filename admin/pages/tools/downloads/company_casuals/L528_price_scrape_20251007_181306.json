@@ -1,0 +1,151 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:13:06+00:00",
+    "input_code": "SM-L528",
+    "normalized_code": "L528",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-L528",
+            "normalized_code": "L528",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L528&parentId=115&prodimage=L528.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L528&parentId=115&prodimage=L528.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:13:06+00:00",
+            "product_name": "Port Authority\u00ae Women's Performance Fine Jacquard Polo",
+            "page_code": "L528",
+            "price_reference_color": "Autumn Orange",
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "XXL",
+                "3XL",
+                "4XL"
+            ],
+            "prices": [
+                {
+                    "size": "XS",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "S",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "M",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XL",
+                    "price": 23.2,
+                    "raw": "$23.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XXL",
+                    "price": 25.2,
+                    "raw": "$25.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XL",
+                    "price": 29.2,
+                    "raw": "$29.20",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XL",
+                    "price": 31.2,
+                    "raw": "$31.20",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Autumn Orange",
+                "Black",
+                "Green Glen",
+                "Grey Smoke",
+                "Hyper Blue",
+                "Ocean Blue",
+                "Rich Red",
+                "True Navy",
+                "Vine Green",
+                "Violet Purple",
+                "White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L528&parentId=115&prodimage=L528.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-L528",
+                        "normalized_code": "L528"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 69129,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=L528&parentId=115&prodimage=L528.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Women's Performance Fine Jacquard Polo"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "L528"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Autumn Orange",
+                        "sizes": [
+                            "XS",
+                            "S",
+                            "M",
+                            "L",
+                            "XL",
+                            "XXL",
+                            "3XL",
+                            "4XL"
+                        ],
+                        "price_count": 8
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:13:06",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 11
+                    }
+                }
+            ]
+        }
+    }
+}

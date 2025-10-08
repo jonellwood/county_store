@@ -1,0 +1,107 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:12:29+00:00",
+    "input_code": "SM-C812",
+    "normalized_code": "C812",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "SM-C812",
+            "normalized_code": "C812",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C812&parentId=115&prodimage=C812.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C812&parentId=115&prodimage=C812.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:12:29+00:00",
+            "product_name": "Port Authority\u00ae Flexfit\u00ae Mesh Back Cap",
+            "page_code": "C812",
+            "price_reference_color": "Black/ Black",
+            "sizes": [
+                "S/M",
+                "L/XL"
+            ],
+            "prices": [
+                {
+                    "size": "S/M",
+                    "price": 11.36,
+                    "raw": "$11.36",
+                    "currency": "USD"
+                },
+                {
+                    "size": "L/XL",
+                    "price": 11.36,
+                    "raw": "$11.36",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black/ Black",
+                "Black/ White",
+                "Brown/ Khaki",
+                "Forest Green/ White",
+                "Graphite/ Black",
+                "Graphite/ Graphite",
+                "Graphite/ White",
+                "Heather Grey/ Black",
+                "Heather Grey/ White",
+                "Silver/ Black",
+                "True Navy/ True Navy",
+                "True Navy/ White",
+                "True Red/ White",
+                "True Royal/ White",
+                "White/ White"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C812&parentId=115&prodimage=C812.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "SM-C812",
+                        "normalized_code": "C812"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 64789,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=C812&parentId=115&prodimage=C812.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Flexfit\u00ae Mesh Back Cap"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "C812"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black/ Black",
+                        "sizes": [
+                            "S/M",
+                            "L/XL"
+                        ],
+                        "price_count": 2
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:12:29",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 15
+                    }
+                }
+            ]
+        }
+    }
+}

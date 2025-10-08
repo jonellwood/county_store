@@ -1,5 +1,44 @@
 # County Store Application Changelog
 
+## Version 2.1.0 - (2025-08-29)
+
+✨ New Features:
+
+- Modern dark-themed user management dashboard with glass morphism effects
+- Dual role system: System permissions + Department leadership assignments
+- Enhanced role hierarchy with conflict detection framework
+- Read-only security fields for critical user data
+- Real-time filtering by role and department
+- Backward-compatible role system with migration tools
+
+🔧 Technical Implementation:
+
+- RESTful API architecture with proper error handling
+- Database schema enhancements for roles table
+- Advanced SQL queries with CAST operations for type compatibility
+- Role conflict detection system (ready for user_roles table)
+- Modern JavaScript with ES6+ patterns and async/await
+- Responsive CSS with CSS Grid and custom properties
+
+📚 Documentation:
+
+- Comprehensive system documentation explaining dual role architecture
+- Migration scripts for database upgrades
+- Manual SQL scripts for Azure Data Studio compatibility
+
+🛡️ Security:
+
+- Role-based access control (Admin only)
+- Read-only critical fields (Name, Employee Number, Email, etc.)
+- Session validation and proper authentication checks
+
+🎯 User Experience:
+
+- Intuitive interface with clear visual hierarchy
+- Loading states and error handling
+- Toast notifications for user feedback
+- Modal-based editing workflow"
+
 ## Version 2.0.9 - (2025-08-28)
 
 - 🎨 Complete modern dark theme implementation

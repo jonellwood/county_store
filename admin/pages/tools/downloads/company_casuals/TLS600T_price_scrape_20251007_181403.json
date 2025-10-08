@@ -1,0 +1,119 @@
+{
+    "scraper": "company_casuals",
+    "generated_at": "2025-10-07T18:14:03+00:00",
+    "input_code": "TLS600T",
+    "normalized_code": "TLS600T",
+    "result": {
+        "success": true,
+        "data": {
+            "original_code": "TLS600T",
+            "normalized_code": "TLS600T",
+            "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLS600T&parentId=115&prodimage=TLS600T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLS600T&parentId=115&prodimage=TLS600T.jpg&cart=Y&swatch=&httpsecure=Y",
+            "scraped_at": "2025-10-07T18:14:03+00:00",
+            "product_name": "Port Authority\u00ae Tall Long Sleeve Twill Shirt",
+            "page_code": "TLS600T",
+            "price_reference_color": "Black",
+            "sizes": [
+                "LT",
+                "XLT",
+                "2XLT",
+                "3XLT",
+                "4XLT"
+            ],
+            "prices": [
+                {
+                    "size": "LT",
+                    "price": 35.16,
+                    "raw": "$35.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "XLT",
+                    "price": 37.16,
+                    "raw": "$37.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "2XLT",
+                    "price": 39.16,
+                    "raw": "$39.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "3XLT",
+                    "price": 41.16,
+                    "raw": "$41.16",
+                    "currency": "USD"
+                },
+                {
+                    "size": "4XLT",
+                    "price": 43.16,
+                    "raw": "$43.16",
+                    "currency": "USD"
+                }
+            ],
+            "colors": [
+                "Black",
+                "Classic Navy",
+                "Khaki"
+            ],
+            "log": [
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Fetching product page",
+                    "context": {
+                        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLS600T&parentId=115&prodimage=TLS600T.jpg&cart=Y&swatch=&httpsecure=Y",
+                        "raw_code": "TLS600T",
+                        "normalized_code": "TLS600T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Fetched HTML",
+                    "context": {
+                        "bytes": 44020,
+                        "http_code": 200,
+                        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=TLS600T&parentId=115&prodimage=TLS600T.jpg&cart=Y&swatch=&httpsecure=Y"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Extracted product name from title",
+                    "context": {
+                        "name": "Port Authority\u00ae Tall Long Sleeve Twill Shirt"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Extracted product code from hidden input",
+                    "context": {
+                        "code": "TLS600T"
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Parsed pricing row",
+                    "context": {
+                        "reference_color": "Black",
+                        "sizes": [
+                            "LT",
+                            "XLT",
+                            "2XLT",
+                            "3XLT",
+                            "4XLT"
+                        ],
+                        "price_count": 5
+                    }
+                },
+                {
+                    "timestamp": "2025-10-07 18:14:03",
+                    "message": "Extracted colors",
+                    "context": {
+                        "count": 3
+                    }
+                }
+            ]
+        }
+    }
+}
