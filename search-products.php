@@ -13,7 +13,7 @@ $search_param = $_GET['param'];
 
 // $sql = "SELECT * FROM products WHERE products.isactive = '1' AND products.name LIKE '%$search_param%' OR products.code LIKE '%$search_param%'";
 $sql = "SELECT * FROM uniform_orders.products_new where products_new.name LIKE '%$search_param%'
-or products_new.code like '%$search_param%' AND product_type != 0";
+or products_new.code like '%$search_param%' AND product_type != 0 AND keep = 1";
 $result = $conn->query($sql);
 
 $data = array();

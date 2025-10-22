@@ -500,7 +500,6 @@ include "../../../../components/header.php";
         <td class="employee-cell">
             <div class="employee-info">
                 <span class="employee-name"></span>
-                <div class="employee-comment"></div>
                 <div class="comments-list"></div>
             </div>
         </td>
@@ -510,7 +509,7 @@ include "../../../../components/header.php";
     </tr>
 </template>
 
-<script src="vendor-report.js"></script>
+<script src="vendor-report.js?v=<?php echo time(); ?>"></script>
 
 <!-- Note: Bootstrap JS is already loaded in header.php, no need to load again -->
 <!-- Ensure Bootstrap dropdowns are properly initialized -->

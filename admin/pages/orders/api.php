@@ -330,10 +330,11 @@ try {
             departments.dep_num as department,
             prices.vendor_id, 
             vendors.vendor_number_finance,
+            vendors.name as vendor_name,
             CONCAT(customers.first_name, ' ', customers.last_name) as req_for
         FROM order_details
         JOIN products_new on products_new.product_id = order_details.product_id
-        JOIN prices on prices.product_id = order_details.product_id
+        JOIN prices on prices.price_id = order_details.price_id
         JOIN colors on colors.color_id = order_details.color_id
         JOIN sizes_new on sizes_new.size_id = order_details.size_id
         JOIN departments on departments.dep_num = order_details.emp_dept

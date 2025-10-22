@@ -835,6 +835,18 @@ body {
     font-size: 0.75rem;
 }
 
+.comment-item.employee-note {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+    border-left: 3px solid var(--warning);
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+}
+
+.comment-item.employee-note strong {
+    color: var(--warning);
+    margin-right: var(--spacing-xs);
+}
+
 /* Dropdown Menu Styling */
 .dropdown-menu {
     background: var(--bg-card);

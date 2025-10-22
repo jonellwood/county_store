@@ -588,17 +588,22 @@ class VendorReportManager {
 		rowElement.querySelector(
 			'.employee-name'
 		).textContent = `${item.rf_first_name} ${item.rf_last_name}`;
-		rowElement.querySelector('.employee-comment').textContent =
-			item.comment || '';
 
-		// Comments
+		// Comments - combine order_details.comment with aggregated comments
+		const commentsList = rowElement.querySelector('.comments-list');
+		let commentsHtml = '';
+
+		// Add order_details.comment if it exists (employee-specific note)
+		if (item.comment && item.comment.trim()) {
+			commentsHtml += `<div class="comment-item employee-note"><strong>Note:</strong> ${item.comment}</div>`;
+		}
+
+		// Add aggregated comments (status history)
 		if (item.comments) {
-			const commentsList = rowElement.querySelector('.comments-list');
 			const comments = item.comments.split(' || ');
 			const submitters = (item.comment_sub_name || '').split(' || ');
 			const dates = (item.comment_submitted || '').split(' || ');
 
-			let commentsHtml = '';
 			comments.forEach((comment, index) => {
 				if (comment.trim()) {
 					const submitter = submitters[index] || 'Unknown';
@@ -606,8 +611,9 @@ class VendorReportManager {
 					commentsHtml += `<div class="comment-item">${comment} - ${submitter} (${date})</div>`;
 				}
 			});
-			commentsList.innerHTML = commentsHtml;
 		}
+
+		commentsList.innerHTML = commentsHtml;
 
 		// Status
 		const statusBadge = rowElement.querySelector('.status-badge');
@@ -1125,12 +1131,48 @@ class VendorReportManager {
             font-style: italic;
         }
         
-        /* 📘 Vendor Guide Styling */
+        /* � Comment Row Styling */
+        .comment-row {
+            background: #fff3cd !important;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .comment-row:hover {
+            background: #fff3cd !important;
+        }
+        
+        .comment-cell {
+            padding: 12px 16px !important;
+        }
+        
+        .inline-comment {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+        }
+        
+        .comment-icon {
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+        
+        .comment-label {
+            font-weight: 600;
+            color: #856404;
+        }
+        
+        .comment-text {
+            color: #333;
+            font-style: italic;
+        }
+        
+        /* �📘 Vendor Guide Styling */
         .vendor-guide {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             border: 1px solid #dee2e6;
             border-radius: 8px;
-            margin: 20px 0;
+            margin: 20px 30px 20px 50px;
             padding: 0;
             overflow: hidden;
         }
@@ -1333,12 +1375,16 @@ class VendorReportManager {
         
         noResults.style.display = 'none';
         
-        tbody.innerHTML = filteredData.map(item => \`
+        tbody.innerHTML = filteredData.map(item => {
+            // Build employee name
+            const employeeName = \`\${item.rf_first_name || ''} \${item.rf_last_name || ''}\`.trim() || 'N/A';
+            
+            let html = \`
             <tr>
                 <td><span class="vendor-badge">\${escapeHtml(item.vendor_name || 'Unknown')}</span></td>
                 <td><strong>\${escapeHtml(item.product_name || 'N/A')}</strong><br>
                     <small style="color: #6c757d;">\${escapeHtml(item.product_code || '')}</small></td>
-                <td>\${escapeHtml(item.requested_for || 'N/A')}</td>
+                <td>\${escapeHtml(employeeName)}</td>
                 <td><span class="dept-badge">\${escapeHtml(item.dep_name || 'N/A')}</span></td>
                 <td><span class="quantity-badge">\${item.quantity || 0}</span></td>
                 <td>\${escapeHtml(item.size_name || 'N/A')}</td>
@@ -1346,8 +1392,24 @@ class VendorReportManager {
                 <td><span class="logo-info">\${formatLogoInfo(item.logo_name)}</span></td>
                 <td><span class="placement-info">\${formatPlacementInfo(item.dept_patch_place)}</span></td>
                 <td class="price-cell">\${formatCurrency(item.line_item_total)}</td>
-            </tr>
-        \`).join('');
+            </tr>\`;
+            
+            // Add comment row if order_details.comment exists
+            if (item.comment && item.comment.trim()) {
+                html += \`
+            <tr class="comment-row">
+                <td colspan="10" class="comment-cell">
+                    <div class="inline-comment">
+                        <i class="comment-icon">💬</i>
+                        <span class="comment-label">Note:</span>
+                        <span class="comment-text">\${escapeHtml(item.comment)}</span>
+                    </div>
+                </td>
+            </tr>\`;
+            }
+            
+            return html;
+        }).join('');
         
         updateMetadata();
     }

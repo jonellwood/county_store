@@ -350,6 +350,8 @@ class OrdersManager {
 	}
 
 	createOrderRow(order) {
+		// console.log('Order Info 🦜🦜🦜🦜🦜');
+		console.log(order);
 		const status = this.getOrderStatus(order);
 		const statusClass = `status-${status}`;
 
@@ -373,7 +375,7 @@ class OrdersManager {
 									'en-US',
 									{ minimumFractionDigits: 2 }
 								)}</td>
-                <td>Vendor ${order.vendor_number_finance || 'N/A'}</td>
+                <td> ${order.vendor_name || 'N/A'}</td>
                 <td><span class="status-badge ${statusClass}">${status}</span></td>
             </tr>
         `;

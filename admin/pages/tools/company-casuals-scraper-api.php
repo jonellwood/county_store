@@ -3,6 +3,10 @@
 session_start();
 header('Content-Type: application/json');
 
+// Increase timeout for large operations
+set_time_limit(120);
+ini_set('max_execution_time', '120');
+
 if (!defined('COMPANY_CASUALS_REQUIRE_AUTH')) {
     define('COMPANY_CASUALS_REQUIRE_AUTH', false);
 }
@@ -154,6 +158,9 @@ function handleImport(): void
 
     $mysqli->set_charset('utf8mb4');
 
+    // CRITICAL: Ensure autocommit is enabled to prevent lock buildup
+    $mysqli->autocommit(true);
+
     $transactionStarted = false;
     $insertStmt = null;
     $updateStmt = null;
@@ -193,8 +200,9 @@ function handleImport(): void
             throw new RuntimeException('Failed to prepare insert/update statements: ' . $mysqli->error);
         }
 
-        $mysqli->begin_transaction();
-        $transactionStarted = true;
+        // No transaction needed - MySQL will auto-commit each statement
+        // This prevents lock timeouts when multiple scrapers run simultaneously
+        $transactionStarted = false;
 
         $summary = [
             'inserted' => 0,
@@ -258,15 +266,31 @@ function handleImport(): void
                 $summary['updated']++;
             } else {
                 $insertStmt->bind_param('iiid', $productIdInt, $vendorIdInt, $sizeIdInt, $priceFloat);
+
+                // Log before insert attempt
+                error_log("Attempting insert: product_id=$productIdInt, vendor_id=$vendorIdInt, size_id=$sizeIdInt, price=$priceFloat");
+
                 if (!$insertStmt->execute()) {
-                    throw new RuntimeException('Failed to insert price for size ' . $sizeLabel . ': ' . $insertStmt->error);
+                    $error = $insertStmt->error;
+                    $errno = $insertStmt->errno;
+                    error_log("Insert failed: errno=$errno, error=$error");
+
+                    // If duplicate entry, skip instead of failing
+                    if ($errno === 1062) { // Duplicate entry
+                        $summary['skipped']++;
+                        $warnings[] = ['reason' => 'Duplicate entry (already exists)', 'size' => $sizeLabel];
+                        continue;
+                    }
+
+                    throw new RuntimeException('Failed to insert price for size ' . $sizeLabel . ': ' . $error);
                 }
+
+                error_log("Insert successful for size $sizeLabel");
                 $summary['inserted']++;
             }
         }
 
-        $mysqli->commit();
-        $transactionStarted = false;
+        // No commit needed - auto-commit mode is active
 
         http_response_code(200);
         echo json_encode([
@@ -282,9 +306,7 @@ function handleImport(): void
             'payload_hint' => $extracted['hint']
         ]);
     } catch (Throwable $e) {
-        if ($transactionStarted) {
-            $mysqli->rollback();
-        }
+        // No rollback needed - using auto-commit mode
 
         http_response_code(500);
         echo json_encode([
