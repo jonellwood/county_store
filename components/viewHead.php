@@ -1,7 +1,7 @@
 <?php
 /*
 Created: 2024/08/28 14:24:34
-Last modified: 2025/08/08 10:00:43
+Last modified: 2025/10/31 15:05:57
 Organization: Berkeley County IT Department
 Purpose: Common header for all pages in public site. Brings in the needed CSS and includes the navigation element.
 Includes:   Cart.class.php is to initialize a Cart Object for users shopping session. 
@@ -31,6 +31,8 @@ $cart = new Cart;
     <link href="./style/mediaQueries.css" rel="stylesheet" />
     <link href="./style/viewTransitions.css" rel="stylesheet" />
     <link href="./style/custom.css" rel="stylesheet" />
+    <link href="./style/global-variables.css" rel="stylesheet" />
+    <script src="./js/theme-toggle.js"></script>
     <script src="functions/autoClosePopover.js"></script>
     <link rel="icon" type="image/x-icon" href="./favicons/favicon.ico">
     <meta name="view-transition" content="same-origin">
@@ -47,7 +49,7 @@ $cart = new Cart;
 
 <body class="body">
     <header>
-        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid align-items-baseline">
                 <a class="navbar-brand" href="index.php">
                     <img src="assets/images/bc-seal.png" class="m-2" alt="logo" width="75px" />
@@ -91,7 +93,10 @@ $cart = new Cart;
                             role="button">
                             <img src="assets/icons/cart.svg" alt="cart" width="35px" class="m-0 p-0" />
                             (<?php echo ($cart->total_items() > 0) ? $cart->total_items() . ' Items' : 0; ?>)
-                            </p>
+                        </button>
+                        <button class="theme-toggle-btn ms-3" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <span class="theme-icon">🌙</span>
+                        </button>
                     </div>
                     <form action="search.php" method="post" class="d-flex">
                         <input class="form-control me-sm-2" type="text" name="param" placeholder="Search...">
@@ -433,6 +438,199 @@ $cart = new Cart;
 
         ::backdrop {
             backdrop-filter: blur(5px);
+        }
+
+        /* ===================================
+           FILTERS POPOVER - MODERN STYLING
+           ================================== */
+
+        #filters-popover {
+            background: var(--bg-elevated);
+            border: 2px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow-xl);
+            min-width: 400px;
+            max-width: 600px;
+        }
+
+        #filters-popover::backdrop {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+        }
+
+        .popover-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-5);
+            padding: var(--spacing-3);
+            background: var(--bg-surface);
+            border-left: 3px solid var(--color-primary);
+            border-radius: var(--radius-md);
+        }
+
+        .popover-description span {
+            font-weight: 500;
+        }
+
+        .filters-holder {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-5);
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: var(--spacing-2);
+        }
+
+        /* Custom scrollbar for filters */
+        .filters-holder::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .filters-holder::-webkit-scrollbar-track {
+            background: var(--bg-surface);
+            border-radius: var(--radius-md);
+        }
+
+        .filters-holder::-webkit-scrollbar-thumb {
+            background: var(--border-medium);
+            border-radius: var(--radius-md);
+        }
+
+        .filters-holder::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary);
+        }
+
+        .filter-group {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-4);
+        }
+
+        .filter-group>span {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-3);
+            padding-bottom: var(--spacing-2);
+            border-bottom: 2px solid var(--border-medium);
+        }
+
+        .filter-group label {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-2) var(--spacing-3);
+            margin: var(--spacing-1) 0;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .filter-group label:hover {
+            background: var(--bg-elevated);
+        }
+
+        .filter-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--color-primary);
+            flex-shrink: 0;
+            margin: 0;
+        }
+
+        #filters-popover .button,
+        #filters-popover button[onclick="resetFilters()"] {
+            width: 100%;
+            padding: var(--spacing-3) var(--spacing-4);
+            background: var(--color-danger);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #filters-popover .button:hover,
+        #filters-popover button[onclick="resetFilters()"]:hover {
+            background: var(--color-danger-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn.js-toggle-filter {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: var(--spacing-3) var(--spacing-5);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+
+        .btn.js-toggle-filter:hover {
+            background: var(--color-primary-dark);
+            transform: scale(1.05);
+        }
+
+        .btn.js-toggle-filter code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9em;
+        }
+
+        #filters-popover .btn-close {
+            position: absolute;
+            top: var(--spacing-3);
+            right: var(--spacing-3);
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        #filters-popover .btn-close:hover {
+            background: var(--color-danger);
+            color: white;
+            border-color: var(--color-danger);
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #filters-popover {
+                min-width: auto;
+                max-width: 90vw;
+                padding: var(--spacing-4);
+            }
+
+            .filter-group label {
+                font-size: 0.9rem;
+                padding: var(--spacing-2);
+            }
         }
 
         /* body {

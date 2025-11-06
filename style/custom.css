@@ -2,22 +2,56 @@ body {
   min-height: 100vh;
   margin: 0;
   background-attachment: fixed;
-  background-color: #fff;
+  background-color: var(--bg-body);
   background-size: 100vw 100vh;
-  background-image: radial-gradient(
-      50% 50% at 50% 50%,
+  background-image: radial-gradient(50% 50% at 50% 50%,
       rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    linear-gradient(
-      180deg,
+      rgba(255, 255, 255, 0) 100%),
+    linear-gradient(180deg,
       rgb(202, 216, 228) 0%,
       hsl(209, 36%, 86%) 15%,
-      hsl(224, 44%, 95%) 50%
-    );
+      hsl(224, 44%, 95%) 50%);
+  transition: background-color var(--transition-base);
 }
+
+[data-theme="dark"] body {
+  background-image: radial-gradient(50% 50% at 50% 50%,
+      rgba(13, 17, 23, 0.75) 0%,
+      rgba(13, 17, 23, 0) 100%),
+    linear-gradient(180deg,
+      rgb(13, 17, 23) 0%,
+      hsl(215, 28%, 17%) 15%,
+      hsl(215, 20%, 25%) 50%);
+}
+
+/* ============================================
+   STICKY HEADER ANIMATION - SITE WIDE
+   ============================================ */
 .navbar {
-  background: linear-gradient(to right, #000000, #434343);
+  animation: nav-slide-up linear forwards;
+  animation-timeline: scroll();
+  animation-range: 0vh 40vh;
+}
+
+@keyframes nav-slide-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transform: translateY(0);
+    background-color: var(--nav-fixed-bg) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.navbar {
+  background: linear-gradient(to right, var(--nav-gradient-start), var(--nav-gradient-end));
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -28,29 +62,37 @@ body {
   padding: 5px;
   box-shadow: 0 0 5px rgba(0, 86, 119, 1);
 }
+
 .nav-item {
   border: 1px solid transparent;
 }
+
 .nav-item:hover {
   border: 1px solid white;
 }
+
 .nav-link {
   color: white;
 }
+
 #hot-sellers {
   margin: 20px;
 }
+
 #hot-sellers .card {
   border: 1px solid #808080;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.55) !important;
 }
+
 #hot-sellers .card a {
   position: relative;
 }
+
 #hot-sellers .card:hover {
   border: 1px solid #000000;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.75) !important;
 }
+
 .card-subtitle {
   text-transform: uppercase;
   font-size: smaller !important;
@@ -59,28 +101,77 @@ body {
   position: absolute !important;
   bottom: 0 !important;
 }
+
 .filters-holder {
   padding: 5px;
 }
+
 .filter-group {
   display: flex;
   flex-direction: row;
   gap: 10px;
   font-size: larger;
 }
+
 .hidden {
   display: none !important;
 }
+
 .alert-banner {
   background-color: #e31c3d;
   /* background-color: #000000; */
   color: #ffffff;
-  /* color: #F08E9F; */
-  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+.theme-toggle-btn {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-2) var(--spacing-3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
   align-items: center;
-  padding: 20px;
-  font-size: larger;
-  gap: 25px;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  display: block;
+}
+
+/* ============================================
+   DARK MODE - LOGO HANDLING
+   ============================================ */
+[data-theme="dark"] .navbar-brand img {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .logo-img,
+[data-theme="dark"] img[alt="bc logo"] {
+  background-color: white;
+  padding: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .alert-text {

@@ -1,0 +1,451 @@
+/* ========================================
+   CHECKOUT - PROFESSIONAL LAYOUT
+   Emox-inspired: Products left, Summary right
+   Uses CSS variables for light/dark theme support
+   ======================================== */
+
+body {
+    background-color: var(--bg-body);
+    font-family: var(--font-family-base);
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container>h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.checkout {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   LEFT COLUMN: CART ITEMS
+   ======================================== */
+
+.col-md-8.order-md-1 {
+    background: var(--bg-surface);
+    padding: var(--spacing-6);
+    transition: background-color var(--transition-base);
+}
+
+.cart-items-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-6) 0;
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.items-count {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    color: var(--text-secondary);
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-8);
+}
+
+.cart-item-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-5);
+    transition: box-shadow var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.cart-item-card:hover {
+    box-shadow: var(--shadow-md);
+    background: var(--bg-hover);
+    border-color: var(--border-medium);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-3);
+}
+
+.item-name {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.item-subtotal {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: var(--bc-dark-green);
+}
+
+.item-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.spec {
+    display: inline-block;
+}
+
+.item-logo {
+    margin-top: var(--spacing-2);
+}
+
+.logo-img {
+    max-width: 60px;
+    height: auto;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 4px;
+}
+
+.continue-shopping {
+    margin-top: var(--spacing-4);
+}
+
+.continue-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+}
+
+.continue-link:hover {
+    color: var(--color-primary-hover);
+    text-decoration: none;
+    background-color: var(--bg-hover);
+    border-color: var(--color-primary);
+}
+
+/* ========================================
+   RIGHT COLUMN: ORDER SUMMARY
+   ======================================== */
+
+.order-summary-card {
+    background: var(--bg-surface);
+    border: none;
+    border-radius: 0;
+    padding: var(--spacing-6);
+    position: sticky;
+    top: var(--spacing-8);
+    transition: background-color var(--transition-base);
+}
+
+.summary-title {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--text-primary);
+    margin: 0 0 var(--spacing-6) 0;
+    padding-bottom: var(--spacing-4);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.summary-lines {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-6);
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.summary-line.total-line {
+    margin-top: var(--spacing-3);
+    padding-top: var(--spacing-3);
+    border-top: 1px solid var(--border-light);
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+}
+
+/* ========================================
+   EMPLOYEE SELECTORS
+   ======================================== */
+
+.employee-selectors {
+    margin-bottom: var(--spacing-6);
+}
+
+.selector-group {
+    margin-bottom: var(--spacing-4);
+}
+
+.selector-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-2);
+}
+
+.selector-info {
+    font-size: var(--font-size-sm);
+    color: var(--bc-dark-green);
+    margin: var(--spacing-2) 0 0 0;
+}
+
+/* Dropdown styling */
+#empInput,
+#subInput {
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+#empInput:focus,
+#subInput:focus {
+    outline: none;
+    border-color: var(--border-focus);
+}
+
+#empDropdown,
+#subDropdown {
+    position: relative;
+    width: 100%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-elevated);
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--border-medium);
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-md);
+    z-index: var(--z-dropdown);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a,
+.dropdown-content button,
+.invisi-button {
+    color: var(--text-primary);
+    padding: var(--spacing-2) var(--spacing-3);
+    text-decoration: none;
+    display: block;
+    font-size: var(--font-size-sm);
+    transition: background-color var(--transition-fast);
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover,
+.invisi-button:hover {
+    background-color: var(--bg-hover);
+}
+
+/* Dropdown toggle buttons */
+.dropdown .btn {
+    width: 100%;
+    text-align: left;
+    background-color: var(--bc-dark-green);
+    border: none;
+    color: white;
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.dropdown .btn:hover {
+    background-color: var(--bc-green);
+}
+
+.dropdown .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Captcha */
+.captcha-holder {
+    margin-bottom: var(--spacing-4);
+}
+
+.captcha-input {
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    transition: border-color var(--transition-fast);
+}
+
+.captcha-input:focus {
+    outline: none;
+    border-color: var(--border-focus);
+}
+
+/* ========================================
+   CHECKOUT BUTTON
+   ======================================== */
+
+.checkout-btn {
+    width: 100%;
+    background-color: var(--bc-dark-green);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    margin-bottom: var(--spacing-4);
+}
+
+.checkout-btn:hover {
+    background-color: var(--bc-green);
+}
+
+.checkout-btn:active {
+    transform: translateY(1px);
+}
+
+.checkout-btn.hidden {
+    display: none;
+}
+
+/* ========================================
+   EDIT CART LINK
+   ======================================== */
+
+.edit-cart-link {
+    text-align: center;
+    padding-top: var(--spacing-4);
+    border-top: 1px solid var(--border-light);
+}
+
+.edit-cart-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+}
+
+.edit-cart-link a:hover {
+    color: var(--bc-dark-green);
+    text-decoration: none;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.hidden {
+    display: none;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .order-summary-card {
+        position: relative;
+        top: 0;
+        margin-bottom: var(--spacing-8);
+    }
+
+    .cart-items-title {
+        font-size: var(--font-size-xl);
+    }
+
+    .summary-title {
+        font-size: var(--font-size-lg);
+    }
+}
+
+/* ========================================
+   ALERT STYLING
+   ======================================== */
+
+.alert {
+    border-radius: var(--radius-md);
+    padding: var(--spacing-4) var(--spacing-5);
+    margin-bottom: var(--spacing-6);
+}
+
+.alert-success {
+    background-color: var(--color-success-light);
+    border-color: var(--border-success);
+    color: var(--color-success);
+}
+
+.alert-danger {
+    background-color: var(--color-danger-light);
+    border-color: var(--border-error);
+    color: var(--color-danger);
+}
+
+/* ========================================
+   FISCAL YEAR BANNER
+   ======================================== */
+
+.alert-banner {
+    background-color: var(--color-warning-light);
+    border: 1px solid var(--color-warning);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-3) var(--spacing-5);
+    margin-bottom: var(--spacing-6);
+    text-align: center;
+}
+
+.alert-text {
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    margin: 0;
+}

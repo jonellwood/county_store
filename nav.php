@@ -44,6 +44,10 @@ if ($navResult->num_rows > 0) {
 
     </div>
 
+    <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-icon">🌙</span>
+    </button>
+
     <a class="navbar-brand far-right" id='navbar-text' href="support.php">Help <i class="fa fa-question-circle" aria-hidden="true"></i></a>
     </nav>
     <script>
@@ -69,7 +73,7 @@ if ($navResult->num_rows > 0) {
         #nav-container {
             display: flex;
             justify-content: center;
-
+            align-items: center;
         }
 
         .navbar-brand:hover {
@@ -88,6 +92,49 @@ if ($navResult->num_rows > 0) {
 
         .Communications {
             display: none;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle-btn {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.5rem 0.75rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .theme-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .theme-toggle-btn:active {
+            transform: scale(0.95);
+        }
+
+        .theme-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+            display: block;
+        }
+
+        .theme-text {
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .theme-text {
+                display: block;
+            }
         }
 
         .sticky {

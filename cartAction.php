@@ -32,7 +32,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
         $name = $_REQUEST['name'];
         $productPrice = $_REQUEST['productPrice'];
         $itemQuantity = $_REQUEST['itemQuantity'];
-        $add_item_uid = dechex(microtime(true) * 1000) . bin2hex(random_bytes(16));
+        $add_item_uid = bin2hex(random_bytes(16)) . dechex((int)(microtime(true) * 1000));
         $code = $_REQUEST['code'];
         $color_id = $_REQUEST['hidden_color_id'];
         $color_name = $_REQUEST['color_name'];
@@ -84,7 +84,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
 
         // insert item into cart
         $insertItem = $cart->insert($itemData);
-        error_log(print_r($insertData, true));
+        error_log(print_r($itemData, true));
         if (!$insertItem) {
             error_log('Failed to insert item into cart');
         } else {
@@ -108,6 +108,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
             'qty' => $_REQUEST['qty'],
 
         );
+        error_log("UPDATE CART - logo_id from POST: " . var_export($_REQUEST['logo_id'], true));
         $updateItem = $cart->update($itemData);
         error_log(print_r($updateItem, true));
         // return status
@@ -266,7 +267,7 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                                 $db_bill_to_fy = $item['fy']; // varchar(45)
                                 $db_status_id = 5; // int(11)
 
-
+                                error_log("DEBUG logo_id - Raw: " . var_export($item['logo_id'], true) . " | After intval: " . var_export($db_logo_id, true));
                                 $order_details_id = $stmt->execute();
                             }
                             $cart->destroy();

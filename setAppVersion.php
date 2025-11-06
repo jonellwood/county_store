@@ -12,7 +12,7 @@ function updateAppVersion($changelogPath)
     return $appVersion;
 }
 // This is the path to the changelog file in my app. I am lazy and it is in the folder as my changelog.md file. Adjsut as needed for your app.
-$changelogPath = '../changelog.md';
+$changelogPath = './changelog.md';
 
 // this calls the function to extract the version number and set the value into a variable.
 $appVersion = updateAppVersion($changelogPath);

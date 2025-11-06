@@ -27,32 +27,32 @@ include "components/viewHead.php"
 
     <title>Contact Support</title>
     <script>
-    function seeSpending() {
-        // alert("Hey stop that tickles!! Dont click that.")
-        const spendingPopover = document.getElementById('spendingPopover')
-        spendingPopover.showPopover();
-        // console.log(spendingPopover);
-    }
+        function seeSpending() {
+            // alert("Hey stop that tickles!! Dont click that.")
+            const spendingPopover = document.getElementById('spendingPopover')
+            spendingPopover.showPopover();
+            // console.log(spendingPopover);
+        }
 
-    function submitSpendingReq() {
-        var empID = document.getElementById("empID").value;
-        // console.log(empID)
-        fetch('my-spending-sendmail.php?emp_id=' + empID)
-        // .then(console.log('Request submitted for ' + empID))
-        showSpendingToast()
-    }
+        function submitSpendingReq() {
+            var empID = document.getElementById("empID").value;
+            // console.log(empID)
+            fetch('my-spending-sendmail.php?emp_id=' + empID)
+            // .then(console.log('Request submitted for ' + empID))
+            showSpendingToast()
+        }
 
-    function showSpendingToast() {
-        const spendingToast = document.getElementById('requestConfirmToast')
-        spendingToast.showPopover();
-        setTimeout(hideSpendingToast, 3000);
-    }
+        function showSpendingToast() {
+            const spendingToast = document.getElementById('requestConfirmToast')
+            spendingToast.showPopover();
+            setTimeout(hideSpendingToast, 3000);
+        }
 
-    function hideSpendingToast() {
-        const spendingToast = document.getElementById('requestConfirmToast')
-        spendingToast.classList.add('slide-down-toast');
-        spendingToast.hidePopover();
-    }
+        function hideSpendingToast() {
+            const spendingToast = document.getElementById('requestConfirmToast')
+            spendingToast.classList.add('slide-down-toast');
+            spendingToast.hidePopover();
+        }
     </script>
 
 </head>
@@ -167,10 +167,10 @@ include "components/viewHead.php"
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.companycasuals.com/LOWCOUNTRYNATIVE//start.jsp" target="_blank">
+                        <a href="https://www.companycasuals.com/printcharleston/start.jsp" target="_blank">
 
                             <p><img src="assets/icons/lcn.svg" alt="lcn" width="30">
-                                LowCounty Native </p>
+                                Print Charleston </p>
                         </a>
                     </li>
                 </ul>
@@ -202,27 +202,27 @@ include "components/viewHead.php"
     </div>
 
     <script>
-    const empIDInput = document.getElementById('empID');
-    const submitButton = document.getElementById('submitButton');
-    empIDInput.addEventListener('input', (event) => {
-        // Allow only numbers and backspace key
-        const validChars = /^\d|\b$/;
-        const userInput = event.target.value;
+        const empIDInput = document.getElementById('empID');
+        const submitButton = document.getElementById('submitButton');
+        empIDInput.addEventListener('input', (event) => {
+            // Allow only numbers and backspace key
+            const validChars = /^\d|\b$/;
+            const userInput = event.target.value;
 
-        if (!validChars.test(userInput)) {
-            event.target.value = userInput.slice(0, -1);
-            return;
-        }
+            if (!validChars.test(userInput)) {
+                event.target.value = userInput.slice(0, -1);
+                return;
+            }
 
-        if (userInput.length >= 4) {
-            submitButton.removeAttribute('disabled')
-        }
+            if (userInput.length >= 4) {
+                submitButton.removeAttribute('disabled')
+            }
 
-        // Enforce maximum of 5 digits
-        if (userInput.length > 5) {
-            event.target.value = userInput.slice(0, 5);
-        }
-    });
+            // Enforce maximum of 5 digits
+            if (userInput.length > 5) {
+                event.target.value = userInput.slice(0, 5);
+            }
+        });
     </script>
 </body>
 <footer>
@@ -231,108 +231,108 @@ include "components/viewHead.php"
 
 </html>
 <style>
-.mb-4 {
-    margin: 20px;
-}
-
-.form-control {
-    color: black !important;
-}
-
-.navbar {
-    display: flex;
-    justify-content: center;
-}
-
-.clickable {
-    cursor: pointer;
-}
-
-.spendingPopover {
-    padding: 20px;
-    background-color: white;
-    color: black;
-    border: 4px solid whitesmoke;
-    border-radius: 10px;
-}
-
-::backdrop {
-    backdrop-filter: blur(5px);
-}
-
-.close-btn {
-    border: none;
-    background: none;
-    color: tomato;
-    position: absolute;
-    right: 0.25rem;
-    top: 0.5rem;
-    /* filter: grayscale() brightness(20); */
-    cursor: pointer;
-}
-
-.close-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-    text-shadow: 0 1px 0 #fff;
-    opacity: 0.5;
-    transition: opacity 0.25s ease-in-out;
-}
-
-.requestConfirmToast {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    background-color: #789b48;
-    color: #cbc8c7;
-    padding: 40px;
-    animation-name: slideUp;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in;
-    border-radius: 10px;
-    box-shadow: 0px 0px 44px -4px rgba(163, 160, 163, 1);
-}
-
-@keyframes slideUp {
-
-    0%,
-    50% {
-        transform: translateY(100%);
-        opacity: 0;
+    .mb-4 {
+        margin: 20px;
     }
 
-    60%,
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-
-    }
-}
-
-.slide-down-toast {
-    animation-name: slideDown;
-    animation-duration: 1.5s;
-    animation-fill-mode: forwards;
-    /* background-color: tomato; */
-    /* Keep final state after animation */
-}
-
-@keyframes slideDown {
-
-    100%,
-    60% {
-        transform: translateY(100%);
-        opacity: 0;
+    .form-control {
+        color: black !important;
     }
 
-    50%,
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-
+    .navbar {
+        display: flex;
+        justify-content: center;
     }
-}
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .spendingPopover {
+        padding: 20px;
+        background-color: white;
+        color: black;
+        border: 4px solid whitesmoke;
+        border-radius: 10px;
+    }
+
+    ::backdrop {
+        backdrop-filter: blur(5px);
+    }
+
+    .close-btn {
+        border: none;
+        background: none;
+        color: tomato;
+        position: absolute;
+        right: 0.25rem;
+        top: 0.5rem;
+        /* filter: grayscale() brightness(20); */
+        cursor: pointer;
+    }
+
+    .close-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        text-shadow: 0 1px 0 #fff;
+        opacity: 0.5;
+        transition: opacity 0.25s ease-in-out;
+    }
+
+    .requestConfirmToast {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        background-color: #789b48;
+        color: #cbc8c7;
+        padding: 40px;
+        animation-name: slideUp;
+        animation-duration: 1.5s;
+        animation-timing-function: ease-in;
+        border-radius: 10px;
+        box-shadow: 0px 0px 44px -4px rgba(163, 160, 163, 1);
+    }
+
+    @keyframes slideUp {
+
+        0%,
+        50% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        60%,
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+
+        }
+    }
+
+    .slide-down-toast {
+        animation-name: slideDown;
+        animation-duration: 1.5s;
+        animation-fill-mode: forwards;
+        /* background-color: tomato; */
+        /* Keep final state after animation */
+    }
+
+    @keyframes slideDown {
+
+        100%,
+        60% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        50%,
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+
+        }
+    }
 </style>

@@ -734,11 +734,20 @@ class VendorReportManager {
 		this.showAlert('PDF export functionality coming soon!', 'info');
 	}
 
-	exportToHTML() {
+	async exportToHTML() {
 		console.log('🌐 Exporting to static HTML...');
+
+		// Show loading alert
+		this.showAlert(
+			'Preparing export with logo images... This may take a moment.',
+			'info'
+		);
 
 		// 📝 LOG THE EXPORT EVENT (just like order placements!)
 		this.logExportEvent();
+
+		// 🖼️ Convert logo images to Base64 before generating HTML
+		await this.embedLogoImages();
 
 		const reportHtml = this.generateStaticHTML();
 		const blob = new Blob([reportHtml], { type: 'text/html' });
@@ -752,7 +761,84 @@ class VendorReportManager {
 		document.body.removeChild(a);
 		URL.revokeObjectURL(url);
 
-		this.showAlert('Static HTML report downloaded!', 'success');
+		this.showAlert(
+			'Static HTML report with embedded logos downloaded!',
+			'success'
+		);
+	}
+
+	// 🖼️ Convert logo images to Base64 for embedding
+	async embedLogoImages() {
+		console.log('🖼️ Converting logos to Base64...');
+
+		// Get unique logo URLs from the data
+		const logoUrls = new Set();
+		this.filteredData.forEach((item) => {
+			if (item.logo) {
+				// Replace Black with White for better visibility
+				let logoSrc = item.logo;
+				if (logoSrc.includes('_Black_')) {
+					logoSrc = logoSrc.replace('_Black_', '_White_');
+				}
+				logoUrls.add(logoSrc);
+			}
+		});
+
+		console.log(`Found ${logoUrls.size} unique logos to convert`);
+
+		// Convert each logo to Base64
+		const logoBase64Map = {};
+		for (const logoUrl of logoUrls) {
+			try {
+				const fullUrl = `/../../../${logoUrl}`;
+				const base64 = await this.imageToBase64(fullUrl);
+				logoBase64Map[logoUrl] = base64;
+				console.log(`✅ Converted: ${logoUrl}`);
+			} catch (error) {
+				console.warn(`⚠️ Could not convert ${logoUrl}:`, error);
+				logoBase64Map[logoUrl] = null;
+			}
+		}
+
+		// Add Base64 data to each item
+		this.filteredData = this.filteredData.map((item) => ({
+			...item,
+			logoBase64: item.logo
+				? logoBase64Map[item.logo.replace('_Black_', '_White_')]
+				: null,
+		}));
+
+		console.log('✅ Logo conversion complete!');
+	}
+
+	// 🎨 Convert image URL to Base64
+	async imageToBase64(url) {
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			img.crossOrigin = 'Anonymous';
+
+			img.onload = () => {
+				const canvas = document.createElement('canvas');
+				canvas.width = img.width;
+				canvas.height = img.height;
+
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(img, 0, 0);
+
+				try {
+					const dataURL = canvas.toDataURL('image/png');
+					resolve(dataURL);
+				} catch (error) {
+					reject(error);
+				}
+			};
+
+			img.onerror = () => {
+				reject(new Error(`Failed to load image: ${url}`));
+			};
+
+			img.src = url;
+		});
 	}
 
 	// 📝 LOG EXPORT EVENTS TO THE SAME LOG FILE AS ORDER PLACEMENTS
@@ -1041,6 +1127,79 @@ class VendorReportManager {
         font-family: 'Courier New', monospace;
     }
 
+    /* 💰 PRICING BREAKDOWN STYLES */
+    .pricing-info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.85em;
+        min-width: 140px;
+    }
+
+    .price-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .price-label {
+        color: #6c757d;
+        font-weight: 500;
+    }
+
+    .unit-price,
+    .logo-fee,
+    .tax-amount {
+        font-family: 'Courier New', monospace;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .total-line {
+        margin-top: 4px;
+        padding-top: 6px;
+        border-top: 2px solid #e9ecef;
+    }
+
+    .total-line .price-label {
+        font-weight: 700;
+        color: #212529;
+    }
+
+    .total-amount {
+        font-family: 'Courier New', monospace;
+        font-weight: 700;
+        color: #28a745;
+        font-size: 1.05em;
+    }
+
+    /* 🖼️ LOGO IMAGE STYLES */
+    .logo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        min-width: 120px;
+    }
+
+    .logo-image {
+        max-width: 80px;
+        max-height: 80px;
+        object-fit: contain;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 8px;
+		background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+    }
+
+    .logo-placement {
+        font-size: 0.8em;
+        color: #6c757d;
+        font-style: italic;
+        text-align: center;
+    }
+
     .quantity-badge {
         background: #6f42c1;
         color: white;
@@ -1079,6 +1238,7 @@ class VendorReportManager {
         body { background: white; padding: 0; }
         .report-container { box-shadow: none; }
         .controls-section { display: none; }
+        .logo-image { max-width: 60px; max-height: 60px; }
     }
 
     @media (max-width: 768px) {
@@ -1090,11 +1250,18 @@ class VendorReportManager {
             grid-template-columns: 1fr; 
         }
         .data-table {
-            font-size: 0.8em;
+            font-size: 0.75em;
         }
         .data-table th,
         .data-table td {
-            padding: 8px 6px;
+            padding: 6px 4px;
+        }
+        .logo-image {
+            max-width: 50px;
+            max-height: 50px;
+        }
+        .pricing-info {
+            font-size: 0.75em;
         }
         
         /* 🎯 Vendor-specific styling */
@@ -1292,9 +1459,9 @@ class VendorReportManager {
                         <th class="sortable" data-field="quantity">Qty</th>
                         <th class="sortable" data-field="size_name">Size</th>
                         <th class="sortable" data-field="color_name">Color</th>
+                        <th class="sortable" data-field="line_item_total">Pricing</th>
                         <th class="sortable" data-field="logo">Logo</th>
                         <th class="sortable" data-field="dept_patch_place">Dept Name Placement</th>
-                        <th class="sortable" data-field="line_item_total">Total</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -1310,6 +1477,10 @@ class VendorReportManager {
         <div class="footer">
             <p><strong>Berkeley County Store</strong> | Generated: ${currentDateTime}</p>
             <p>This is an interactive offline report. Filter and sort data using the controls above.</p>
+            <p style="font-size: 0.85em; margin-top: 8px; color: #28a745;">
+                ✅ <strong>Self-Contained Report:</strong> All logo images and data are embedded. 
+                This file works completely offline and can be shared via email.
+            </p>
         </div>
     </div>
 
@@ -1379,6 +1550,33 @@ class VendorReportManager {
             // Build employee name
             const employeeName = \`\${item.rf_first_name || ''} \${item.rf_last_name || ''}\`.trim() || 'N/A';
             
+            // Build pricing breakdown - use pre_tax_price for unit price to match live version
+            const unitPrice = parseFloat(item.pre_tax_price) || 0;
+            const logoFee = parseFloat(item.logo_fee) || 0;
+            const tax = parseFloat(item.tax) || 0;
+            const total = parseFloat(item.line_item_total) || 0;
+            
+            // Build logo display
+            let logoHtml = '';
+            if (item.logoBase64) {
+                const placement = item.dept_patch_place || 'No placement specified';
+                logoHtml = \`
+                    <div class="logo-container">
+                        <img class="logo-image" src="\${item.logoBase64}" alt="Logo">
+                        <div class="logo-placement">\${escapeHtml(placement)}</div>
+                    </div>
+                \`;
+            } else if (item.logo_name) {
+                logoHtml = \`
+                    <div class="logo-container">
+                        <span class="logo-info">\${formatLogoInfo(item.logo_name)}</span>
+                        <div class="logo-placement">\${escapeHtml(item.dept_patch_place || 'No placement specified')}</div>
+                    </div>
+                \`;
+            } else {
+                logoHtml = \`<span class="text-muted">No Logo</span>\`;
+            }
+            
             let html = \`
             <tr>
                 <td><span class="vendor-badge">\${escapeHtml(item.vendor_name || 'Unknown')}</span></td>
@@ -1389,9 +1587,28 @@ class VendorReportManager {
                 <td><span class="quantity-badge">\${item.quantity || 0}</span></td>
                 <td>\${escapeHtml(item.size_name || 'N/A')}</td>
                 <td>\${escapeHtml(item.color_name || 'N/A')}</td>
-                <td><span class="logo-info">\${formatLogoInfo(item.logo_name)}</span></td>
+                <td>
+                    <div class="pricing-info">
+                        <div class="price-line">
+                            <span class="price-label">Unit:</span>
+                            <span class="unit-price">\${formatCurrency(unitPrice)}</span>
+                        </div>
+                        <div class="price-line">
+                            <span class="price-label">Logo:</span>
+                            <span class="logo-fee">\${formatCurrency(logoFee)}</span>
+                        </div>
+                        <div class="price-line">
+                            <span class="price-label">Tax:</span>
+                            <span class="tax-amount">\${formatCurrency(tax)}</span>
+                        </div>
+                        <div class="price-line total-line">
+                            <span class="price-label">Total:</span>
+                            <span class="total-amount">\${formatCurrency(total)}</span>
+                        </div>
+                    </div>
+                </td>
+                <td>\${logoHtml}</td>
                 <td><span class="placement-info">\${formatPlacementInfo(item.dept_patch_place)}</span></td>
-                <td class="price-cell">\${formatCurrency(item.line_item_total)}</td>
             </tr>\`;
             
             // Add comment row if order_details.comment exists

@@ -1,4 +1,218 @@
 <h1>County Store Application Changelog</h1>
+<h2>Version 2.3.0 - (2025-11-06)</h2>
+<p>✨ New Features:</p>
+<ul>
+<li><strong>Searchable Color Autocomplete for Product Management</strong>
+<ul>
+<li>Replaced unwieldy 614-item dropdown with intelligent searchable autocomplete</li>
+<li>Real-time filtering as you type with alphabetically sorted results</li>
+<li>Visual color swatches and hex codes displayed inline</li>
+<li>Keyboard navigation support (arrow keys, Enter, Escape)</li>
+<li>Performance optimized to display first 30 matches</li>
+<li>Seamless integration with existing color preview system</li>
+<li>Enhanced UX for admin product editing workflow</li>
+</ul>
+</li>
+</ul>
+<p>🐛 Bug Fixes:</p>
+<ul>
+<li><strong>Add Product Form - Vue.js Build Update</strong>
+<ul>
+<li>Replaced development Vue.js build with production build</li>
+<li>Eliminated console warnings in production environment</li>
+<li>Improved performance and reduced bundle size</li>
+<li>Better compatibility with browser extensions</li>
+</ul>
+</li>
+</ul>
+<p>🔧 Technical Implementation:</p>
+<ul>
+<li>Custom autocomplete component without external dependencies</li>
+<li>Case-insensitive search with <code>localeCompare</code> sorting</li>
+<li>Click-outside-to-close and focus-to-show behavior</li>
+<li>Dynamic dropdown positioning and custom scrollbar styling</li>
+<li>Backward compatibility with existing color selector for saved colors</li>
+</ul>
+<h2>Version 2.2.0 - (2025-11-04)</h2>
+<p>✨ New Features:</p>
+<ul>
+<li>
+<p><strong>Enhanced Vendor Reporting with Embedded Assets</strong></p>
+<ul>
+<li>Static HTML exports now include embedded logo images (Base64 encoded)</li>
+<li>Pricing breakdown displays Unit Price, Logo Fee, Tax, and Total separately</li>
+<li>Logo images and placement text visible in exported reports</li>
+<li>Completely self-contained offline reports (email-friendly, no external dependencies)</li>
+<li>Enhanced vendor report UI with improved layout and responsive design</li>
+<li>Export event logging for audit trail</li>
+</ul>
+</li>
+<li>
+<p><strong>Automated Pending Requests Reminder System</strong></p>
+<ul>
+<li>Weekly email reminders for department approvers with pending requests</li>
+<li>Cron job configured to run Friday mornings</li>
+<li>Comprehensive department-specific summaries with item counts and totals</li>
+<li>Exception handling and error reporting for failed email deliveries</li>
+</ul>
+</li>
+<li>
+<p><strong>Product Management Tools</strong></p>
+<ul>
+<li>Company Casuals price scraper with batch processing capabilities</li>
+<li>Automated product data extraction and pricing updates</li>
+<li>Size mapping validation tools</li>
+<li>Batch update pricing interface for admin users</li>
+<li>Product image downloader with automated organization</li>
+</ul>
+</li>
+<li>
+<p><strong>Enhanced Search and Product Views</strong></p>
+<ul>
+<li>Search functionality excludes inactive products</li>
+<li>Improved inactive product alert styling</li>
+<li>Better error handling for unavailable products</li>
+<li>Modern UI enhancements for product details pages</li>
+</ul>
+</li>
+</ul>
+<p>🔧 Technical Implementation:</p>
+<ul>
+<li>Base64 image encoding for embedded logo assets in HTML exports</li>
+<li>Asynchronous image processing with Promise-based architecture</li>
+<li>Enhanced API endpoints for vendor reporting and order management</li>
+<li>Comprehensive exception handling and logging system</li>
+<li>Cron job infrastructure with detailed documentation</li>
+<li>Product scraper service with SanMar integration</li>
+<li>Enhanced CSS with modern responsive design patterns</li>
+</ul>
+<p>📚 Documentation:</p>
+<ul>
+<li>CRON_IMPLEMENTATION_SUMMARY.md - Complete cron job setup guide</li>
+<li>CRON_SETUP_PENDING_REQUESTS.md - Pending requests reminder configuration</li>
+<li>EXCEPTION_HANDLING_SUMMARY.md - Error handling architecture</li>
+<li>EXCEPTION_REPORTING_IMPLEMENTATION.md - Exception logging details</li>
+<li>QUICK_REFERENCE_CRON.md - Cron job quick reference guide</li>
+<li>README_CRON_PENDING_REQUESTS.md - Pending requests system overview</li>
+<li>TECHNICAL_DOCUMENTATION.md - Comprehensive technical reference</li>
+</ul>
+<p>🛡️ Security &amp; Performance:</p>
+<ul>
+<li>Enhanced error handling for image loading failures</li>
+<li>Graceful degradation for unsupported features</li>
+<li>Optimized database queries for order instance management</li>
+<li>Improved session validation and authentication checks</li>
+<li>Safe handling of file uploads and downloads</li>
+</ul>
+<p>🎯 User Experience:</p>
+<ul>
+<li>Loading indicators during export preparation</li>
+<li>Enhanced visual feedback for long-running operations</li>
+<li>Improved table layouts with better data organization</li>
+<li>Mobile-responsive design for all new features</li>
+<li>Better accessibility with semantic HTML structure</li>
+</ul>
+<p>🐛 Bug Fixes:</p>
+<ul>
+<li>Fixed vendor report UI rendering issues</li>
+<li>Resolved product code case sensitivity in image URLs</li>
+<li>Improved logo selector functionality</li>
+<li>Enhanced font consistency across all pages</li>
+<li>Fixed duplicate cart slideout elements</li>
+</ul>
+<h2>Version 2.1.0 - (2025-08-29)</h2>
+<p>✨ New Features:</p>
+<ul>
+<li>Modern dark-themed user management dashboard with glass morphism effects</li>
+<li>Dual role system: System permissions + Department leadership assignments</li>
+<li>Enhanced role hierarchy with conflict detection framework</li>
+<li>Read-only security fields for critical user data</li>
+<li>Real-time filtering by role and department</li>
+<li>Backward-compatible role system with migration tools</li>
+</ul>
+<p>🔧 Technical Implementation:</p>
+<ul>
+<li>RESTful API architecture with proper error handling</li>
+<li>Database schema enhancements for roles table</li>
+<li>Advanced SQL queries with CAST operations for type compatibility</li>
+<li>Role conflict detection system (ready for user_roles table)</li>
+<li>Modern JavaScript with ES6+ patterns and async/await</li>
+<li>Responsive CSS with CSS Grid and custom properties</li>
+</ul>
+<p>📚 Documentation:</p>
+<ul>
+<li>Comprehensive system documentation explaining dual role architecture</li>
+<li>Migration scripts for database upgrades</li>
+<li>Manual SQL scripts for Azure Data Studio compatibility</li>
+</ul>
+<p>🛡️ Security:</p>
+<ul>
+<li>Role-based access control (Admin only)</li>
+<li>Read-only critical fields (Name, Employee Number, Email, etc.)</li>
+<li>Session validation and proper authentication checks</li>
+</ul>
+<p>🎯 User Experience:</p>
+<ul>
+<li>Intuitive interface with clear visual hierarchy</li>
+<li>Loading states and error handling</li>
+<li>Toast notifications for user feedback</li>
+<li>Modal-based editing workflow&quot;</li>
+</ul>
+<h2>Version 2.0.9 - (2025-08-28)</h2>
+<ul>
+<li>
+<p>🎨 Complete modern dark theme implementation</p>
+<ul>
+<li>Professional navbar with embedded CSS design system</li>
+<li>Beautiful gradient backgrounds and glass morphism effects</li>
+<li>Consistent color palette across all admin routes</li>
+</ul>
+</li>
+<li>
+<p>🔧 Enhanced admin functionality</p>
+<ul>
+<li>Added Admin dropdown with all sub-routes (Edit Requests, Reports, etc.)</li>
+<li>Replaced legacy sidebar navigation with modern header</li>
+<li>Improved layout with responsive grid system</li>
+</ul>
+</li>
+<li>
+<p>📱 Employee Requests dashboard overhaul</p>
+<ul>
+<li>Modern card-based layout replacing old commonHead.php</li>
+<li>Horizontal button layout in popovers (Approve/Deny/Edit)</li>
+<li>Better space utilization and mobile responsiveness</li>
+<li>Enhanced popover styling with proper close buttons</li>
+</ul>
+</li>
+<li>
+<p>🛠️ Add Product &amp; Edit Products routes</p>
+<ul>
+<li>Complete Vue 3 integration for add-product</li>
+<li>Full CRUD functionality for edit-products</li>
+<li>Smart delete logic with soft deletes and foreign key handling</li>
+<li>Professional form styling and validation</li>
+</ul>
+</li>
+<li>
+<p>🗄️ Database improvements</p>
+<ul>
+<li>Enhanced Product class with updateProduct() method</li>
+<li>Transaction safety and constraint handling</li>
+<li>New API endpoints for product management</li>
+</ul>
+</li>
+<li>
+<p>🎯 Technical enhancements</p>
+<ul>
+<li>Bootstrap 5.3.0 integration</li>
+<li>Font Awesome 6.4.0 icons</li>
+<li>CSS custom properties for theming</li>
+<li>Responsive design patterns</li>
+<li>Accessibility improvements (contrast, reduced motion)</li>
+</ul>
+</li>
+</ul>
 <h2>Version 2.0.8 - (2025-03-18)</h2>
 <h3><strong>Other Changes 🧑‍💻</strong></h3>
 <ul>

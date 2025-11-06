@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html,
+    body {
+        margin: 0;
+        background: #f5f7fb;
+        font-family: system-ui, sans-serif;
+        min-height: 100vh;
+    }
+
+    .cart-container {
+        position: relative;
+        padding-top: 2rem;
+        /* 	overflow-y: auto; */
+        scroll-snap-type: y proximity;
+    }
+
+    .cart-container::after {
+        /* spacer to prevent scroll lock when all items collapse */
+        content: "";
+        display: block;
+        height: 50vh;
+    }
+
+    .cart {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 850px;
+        max-width: 100%;
+        margin: auto;
+        background: #f5f7fb;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, .1);
+        overflow: hidden;
+        padding: 16px 20px;
+        height: 180px;
+        transition:
+            height .35s ease,
+            box-shadow .3s,
+            filter .3s,
+            transform .3s;
+        scroll-snap-align: start;
+    }
+
+    .card h2 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: .5rem;
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: justify-content .3s ease;
+    }
+
+    .price {
+        font-weight: 700;
+        color: #28a745;
+        transform: translateY(1.2em);
+        transition: transform .35s ease;
+    }
+
+    .details {
+        opacity: 1;
+        transition: opacity .3s ease;
+    }
+
+    /* smooshed (collapsed) state */
+    .card.smooshed {
+        height: 25px;
+        background: #eef1f6;
+    }
+
+    .card.smooshed h2 {
+        justify-content: space-between;
+    }
+
+    .card.smooshed .price {
+        transform: translateY(0);
+    }
+
+    .card.smooshed .details {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <div class="cart-container">
+        <div class="cart">
+            <div class="card">
+                <h2>Gildan Hoodie <span class="price">$24.64</span></h2>
+                <div class="details">
+                    <p>Size M – Red</p>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Gildan Hoodie <span class="price">$31.46</span></h2>
+                <div class="details">
+                    <p>Size XL – Gray</p>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Gildan Hoodie <span class="price">$35.62</span></h2>
+                <div class="details">
+                    <p>Size 2XL – Navy</p>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Gildan Hoodie <span class="price">$29.99</span></h2>
+                <div class="details">
+                    <p>Size L – Black</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    const cards = [...document.querySelectorAll('.card')];
+    const collapsedHeight = 25;
+    const gap = 8;
+
+    // record absolute scrollY trigger points for each card
+    const triggers = cards.map((c, i) => {
+        const rect = c.getBoundingClientRect();
+        return rect.top + window.scrollY - (i * (collapsedHeight + gap));
+    });
+
+    function onScroll() {
+        const scrollY = window.scrollY;
+
+        cards.forEach((card, i) => {
+            const triggerY = triggers[i];
+            if (scrollY > triggerY) {
+                card.classList.add('smooshed');
+            } else {
+                card.classList.remove('smooshed');
+            }
+
+        });
+    }
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', () => location.reload()); // recompute triggers on resize
+    onScroll();
+</script>

@@ -8,8 +8,8 @@ Purpose: View the items with type mens-outwear.
 Includes:    slider.php, viewHead.php, cartSlideout.php, footer.php
 */
 session_start();
-if ($_SESSION['GOBACK'] == '') {
-    $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'];
+if (!isset($_SESSION['GOBACK']) || $_SESSION['GOBACK'] == '') {
+    $_SESSION['GOBACK'] = $_SERVER['HTTP_REFERER'] ?? 'index.php';
 }
 include_once "config.php";
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
@@ -46,59 +46,59 @@ $cart = new Cart;
 </div>
 
 <script>
-let sizesToRemove = [];
-let typesToRemove = [];
-let sleevesToRemove = [];
+    let sizesToRemove = [];
+    let typesToRemove = [];
+    let sleevesToRemove = [];
 
-function resetFilters() {
-    location.reload();
-}
+    function resetFilters() {
+        location.reload();
+    }
 
-function getFilterData() {
-    fetch('fetchFilters.php')
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            // console.log(data[3].type_filters[0].filter);
-            var sizes = data[1].size_filters;
-            var types = data[3].type_filters;
-            var sleeves = data[2].sleeve_filters;
-            var html = '';
-            html += `<div class='filters-holder'>`
-            html += `<div class="filter-group" id="size-filter-group">`
-            html += `<span>Size Filters:</span>`
-            for (var i = 0; i < sizes.length; i++) {
-                var prefix = 's'
-                html += `<label for="${prefix + sizes[i].id}">${sizes[i].filter}`
-                html +=
-                    `<input type="checkbox" name="${sizes[i].filter}" value="${sizes[i].id}" id="${prefix + sizes[i].id}" checked onchange="sendToSizesToRemoveArray(this.value)"/>`
-                html += `</label>`
-            }
-            html += `</div>`
-            html += `<div class="filter-group" id="type-filter-group">`
-            html += `<span>Type Filters:</span>`
-            for (var j = 0; j < types.length; j++) {
-                var prefix = 't'
-                html += `<label for="${prefix + types[j].id}">${types[j].filter}`
-                html +=
-                    `<input type="checkbox" name="${types[j].filter}" value="${types[j].id}" id="${prefix + types[j].id}" checked onchange="sendToTypesToRemoveArray(this.value)"/>`
-                html += `</label>`
-            }
-            html += `</div>`
-            html += `<div class="filter-group" id="sleeve-filter-group">`
-            html += `<span>Sleeve Filters:</span>`
-            for (var k = 0; k < sleeves.length; k++) {
-                var prefix = 'sl'
-                html += `<label for="${prefix + sleeves[k].id}">${sleeves[k].filter}`
-                html +=
-                    `<input type="checkbox" name="${sleeves[k].filter}" value="${sleeves[k].id}" id="${prefix + sleeves[k].id}" checked onchange="sendToSleevesToRemoveArray(this.value)"/>`
-                html += `</label>`
-            }
-            html += `</div>`
-            html += `</div>`
-            document.getElementById('filters').innerHTML = html;
-        })
-}
+    function getFilterData() {
+        fetch('fetchFilters.php')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                // console.log(data[3].type_filters[0].filter);
+                var sizes = data[1].size_filters;
+                var types = data[3].type_filters;
+                var sleeves = data[2].sleeve_filters;
+                var html = '';
+                html += `<div class='filters-holder'>`
+                html += `<div class="filter-group" id="size-filter-group">`
+                html += `<span>Size Filters:</span>`
+                for (var i = 0; i < sizes.length; i++) {
+                    var prefix = 's'
+                    html += `<label for="${prefix + sizes[i].id}">${sizes[i].filter}`
+                    html +=
+                        `<input type="checkbox" name="${sizes[i].filter}" value="${sizes[i].id}" id="${prefix + sizes[i].id}" checked onchange="sendToSizesToRemoveArray(this.value)"/>`
+                    html += `</label>`
+                }
+                html += `</div>`
+                html += `<div class="filter-group" id="type-filter-group">`
+                html += `<span>Type Filters:</span>`
+                for (var j = 0; j < types.length; j++) {
+                    var prefix = 't'
+                    html += `<label for="${prefix + types[j].id}">${types[j].filter}`
+                    html +=
+                        `<input type="checkbox" name="${types[j].filter}" value="${types[j].id}" id="${prefix + types[j].id}" checked onchange="sendToTypesToRemoveArray(this.value)"/>`
+                    html += `</label>`
+                }
+                html += `</div>`
+                html += `<div class="filter-group" id="sleeve-filter-group">`
+                html += `<span>Sleeve Filters:</span>`
+                for (var k = 0; k < sleeves.length; k++) {
+                    var prefix = 'sl'
+                    html += `<label for="${prefix + sleeves[k].id}">${sleeves[k].filter}`
+                    html +=
+                        `<input type="checkbox" name="${sleeves[k].filter}" value="${sleeves[k].id}" id="${prefix + sleeves[k].id}" checked onchange="sendToSleevesToRemoveArray(this.value)"/>`
+                    html += `</label>`
+                }
+                html += `</div>`
+                html += `</div>`
+                document.getElementById('filters').innerHTML = html;
+            })
+    }
 </script>
 <script src="functions/formatForUrl.js"></script>
 <script src="functions/getFilteredProducts.js"></script>
@@ -108,8 +108,8 @@ function getFilterData() {
 <script src="functions/sendToTypesToRemoveArray.js"></script>
 <script src="functions/sendToSleevesToRemoveArray.js"></script>
 <script>
-getFilteredProducts(4, 1);
-// renderFiltersBtnAndPopover();
+    getFilteredProducts(4, 1);
+    // renderFiltersBtnAndPopover();
 </script>
 <div id="products-target" class="d-grid-4 gap-3 m-4"></div>
 <?php include "footer.php" ?>

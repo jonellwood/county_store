@@ -1,0 +1,933 @@
+/**
+ * checkout-modern.css
+ * Fresh, bold checkout design
+ * Author: Berkeley County IT Department
+ * Last Updated: October 29, 2025
+ */
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family-base);
+    padding: 2rem 0;
+}
+
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 1.5rem !important;
+}
+
+.container>h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.checkout {
+    background: transparent;
+    padding: 0;
+}
+
+.checkout .row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* ============================================
+   CONTACT FORM - LEFT SIDE
+   ============================================ */
+
+.order-md-1 {
+    background: white;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+#contact-header {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+}
+
+.emp-row,
+.ord-row {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    border: none;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.emp-row .col-md-6,
+.ord-row .col-md-6 {
+    padding: 0;
+}
+
+#empInput,
+#subInput {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background: white;
+}
+
+#empInput:focus,
+#subInput:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.dropdown-content {
+    background: white;
+    border: 2px solid #667eea;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.invisi-button {
+    background: transparent;
+    border: none;
+    padding: 1rem 1.25rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+}
+
+.invisi-button:hover {
+    background: #f5f3ff;
+}
+
+#empInfo,
+#subInfo {
+    color: #1a1a1a !important;
+    font-weight: 500;
+}
+
+#empInfo p,
+#subInfo p {
+    margin: 0.5rem 0;
+    color: #4a5568;
+}
+
+.captcha-holder {
+    background: linear-gradient(135deg, #fbbf2415 0%, #f59e0b15 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+#captcha {
+    width: 100%;
+    max-width: 250px;
+    padding: 1rem;
+    border: 3px solid #fbbf24;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.5em;
+    background: white;
+}
+
+#captcha:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.2);
+}
+
+#place-order-button {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#place-order-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+}
+
+#place-order-button:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   CART SUMMARY - RIGHT SIDE
+   ============================================ */
+
+.order-md-2 {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.order-md-2 h4 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.badge-dark {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.list-group {
+    border-radius: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 1.5rem 2rem;
+    background: white;
+}
+
+.list-group-item h6 {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.list-group-item small {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.list-group-item .text {
+    font-weight: 700;
+    color: #667eea;
+    font-size: 1rem;
+}
+
+.top-line,
+.list-group-item:nth-last-child(2),
+.list-group-item:nth-last-child(3),
+.list-group-item:nth-last-child(4) {
+    background: #fafafa !important;
+    font-weight: 600;
+}
+
+.list-group-item:last-child {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 1.25rem;
+    padding: 2rem;
+    border-radius: 0 0 20px 20px;
+}
+
+.list-group-item:last-child span,
+.list-group-item:last-child strong {
+    color: white;
+}
+
+.button-holder {
+    padding: 1.5rem 2rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    gap: 1rem;
+}
+
+.button-holder .btn {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: 2px solid;
+    transition: all 0.3s;
+}
+
+.button-holder .btn-info {
+    background: white;
+    color: #667eea;
+    border-color: #667eea;
+}
+
+.button-holder .btn-info:hover {
+    background: #667eea;
+    color: white;
+}
+
+.button-holder .btn-warning {
+    background: white;
+    color: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.button-holder .btn-warning:hover {
+    background: #f59e0b;
+    color: white;
+}
+
+#logo-img {
+    width: 40px;
+    height: auto;
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    border: none;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+    .checkout .row {
+        grid-template-columns: 1fr;
+    }
+
+    .order-md-2 {
+        order: -1;
+        position: static;
+        margin-bottom: 2rem;
+    }
+
+    .order-md-1 {
+        order: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0;
+    }
+
+    .container>h1 {
+        font-size: 2rem;
+    }
+
+    .order-md-1,
+    .order-md-2 {
+        padding: 2rem;
+    }
+
+    .emp-row,
+    .ord-row {
+        padding: 1.5rem;
+    }
+
+    .button-holder {
+        flex-direction: column;
+    }
+}
+
+/* ============================================
+   PAGE & BODY
+   ============================================ */
+
+body {
+    background: #f8f9fb;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   ALERT BANNER
+   ============================================ */
+
+.alert-banner {
+    background: linear-gradient(135deg, #1F9CED 0%, #1a85c9 100%);
+    color: #ffffff;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(31, 156, 237, 0.2);
+}
+
+.alert-text {
+    margin: 0;
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.container {
+    max-width: 1280px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 3rem 2rem;
+}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+
+.container>h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 3rem;
+    padding-bottom: 0;
+    border-bottom: none;
+    letter-spacing: -0.03em;
+}
+
+/* ============================================
+   CHECKOUT LAYOUT
+   ============================================ */
+
+.checkout {
+    background: transparent;
+    padding: 0;
+}
+
+.checkout .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.checkout .row .order-md-1 {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.checkout .row .order-md-2 {
+    flex: 0 0 420px;
+}
+
+/* ============================================
+   CART SUMMARY SIDEBAR (Right Column)
+   ============================================ */
+
+.order-md-2 {
+    background: white;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+}
+
+.order-md-2 h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 1.5rem 1.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    letter-spacing: -0.01em;
+}
+
+.badge-dark {
+    background: #286142;
+    color: white;
+    padding: 0.25rem 0.65rem;
+    border-radius: 12px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   CART ITEMS LIST
+   ============================================ */
+
+.list-group {
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #f3f4f6;
+    padding: 1.25rem 1.75rem;
+    background: white;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item h6 {
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 0.375rem;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+}
+
+.list-group-item small {
+    color: #6b7280;
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+.list-group-item .text {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 0.9375rem;
+}
+
+/* Summary totals styling */
+.top-line {
+    border-top: 1px solid #e5e7eb !important;
+    background: #fafafa !important;
+    font-weight: 500;
+}
+
+.list-group-item:nth-last-child(1),
+.list-group-item:nth-last-child(2),
+.list-group-item:nth-last-child(3),
+.list-group-item:nth-last-child(4) {
+    background: #fafafa;
+    font-size: 0.875rem;
+}
+
+.list-group-item:last-child {
+    background: #286142;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1.5rem 1.75rem;
+}
+
+.list-group-item:last-child span,
+.list-group-item:last-child strong {
+    color: white;
+}
+
+#logo-img {
+    width: 36px;
+    height: auto;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    margin-left: 0.5rem;
+}
+
+/* ============================================
+   BUTTON HOLDER IN SIDEBAR
+   ============================================ */
+
+.button-holder {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1.5rem 1.75rem;
+    border-top: 1px solid #e5e7eb;
+    flex-wrap: wrap;
+}
+
+.button-holder .btn {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.15s ease;
+    border: 1px solid;
+    min-height: 44px;
+}
+
+.button-holder .btn-info {
+    background: white;
+    color: #2563eb;
+    border-color: #e5e7eb;
+}
+
+.button-holder .btn-info:hover {
+    background: #f8f9fb;
+    border-color: #2563eb;
+}
+
+.button-holder .btn-warning {
+    background: white;
+    color: #d97706;
+    border-color: #e5e7eb;
+}
+
+.button-holder .btn-warning:hover {
+    background: #fffbeb;
+    border-color: #d97706;
+}
+
+/* ============================================
+   CONTACT DETAILS FORM (Left Column)
+   ============================================ */
+
+.order-md-1 {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+#contact-header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    padding-bottom: 0;
+    border-bottom: none;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   FORM SECTIONS
+   ============================================ */
+
+.emp-row,
+.ord-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.75rem;
+    background: #f9fafb;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.emp-row .col-md-6,
+.ord-row .col-md-6 {
+    padding: 0;
+}
+
+#empInfo,
+#subInfo {
+    margin: 0;
+    color: #286142 !important;
+}
+
+#empInfo p,
+#subInfo p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #374151;
+}
+
+/* ============================================
+   DROPDOWN SEARCH
+   ============================================ */
+
+.dropdown {
+    position: relative;
+    width: 100%;
+}
+
+#empInput,
+#subInput {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    transition: all 0.15s ease;
+    background: white;
+}
+
+#empInput:focus,
+#subInput:focus {
+    outline: none;
+    border-color: #286142;
+    box-shadow: 0 0 0 3px rgba(40, 97, 66, 0.08);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    width: 100%;
+    max-height: 280px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+    z-index: 1000;
+    margin-top: -1px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.invisi-button {
+    background: transparent;
+    border: none;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.1s ease;
+    font-size: 0.875rem;
+    font-family: inherit;
+    line-height: 1.5;
+    color: #374151;
+}
+
+.invisi-button:hover {
+    background: #f9fafb;
+}
+
+.invisi-button:nth-child(even) {
+    background: transparent;
+}
+
+.invisi-button:nth-child(even):hover {
+    background: #f9fafb;
+}
+
+/* ============================================
+   CAPTCHA SECTION
+   ============================================ */
+
+.captcha-holder {
+    display: grid;
+    gap: 1rem;
+    padding: 1.75rem;
+    background: #fffbeb;
+    border-radius: 10px;
+    border: 1px solid #fde68a;
+    margin-bottom: 1.5rem;
+}
+
+#captcha {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.875rem 1rem;
+    border: 1px solid #fbbf24;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5em;
+    background: white;
+}
+
+#captcha:focus {
+    outline: none;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.15);
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
+#place-order-button {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-top: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    min-height: 52px;
+}
+
+#place-order-button:hover {
+    background: #15803d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#place-order-button:active {
+    transform: translateY(1px);
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+
+.alert {
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid;
+    font-weight: 500;
+    font-size: 0.9375rem;
+}
+
+.alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border-color: #bbf7d0;
+}
+
+.alert-danger {
+    background: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .checkout .row .order-md-2 {
+        flex: 0 0 350px;
+    }
+}
+
+@media (max-width: 992px) {
+    .checkout .row {
+        flex-direction: column;
+    }
+
+    .checkout .row .order-md-1 {
+        order: 1;
+        flex: 1 1 auto;
+    }
+
+    .checkout .row .order-md-2 {
+        position: static;
+        order: -1;
+        /* Move summary to top on mobile */
+        margin-bottom: 2rem;
+        flex: 1 1 auto;
+    }
+
+    .emp-row,
+    .ord-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100% !important;
+        padding: 0 0.5rem;
+    }
+
+    .order-md-1,
+    .order-md-2 {
+        padding: 1.5rem;
+    }
+
+    .button-holder {
+        flex-direction: column;
+    }
+
+    .button-holder .btn {
+        width: 100%;
+    }
+
+    .container>h1 {
+        font-size: 1.5rem;
+    }
+}

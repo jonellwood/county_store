@@ -1,0 +1,11 @@
+-- CREATE TABLE app_page_views (
+--     id INT AUTO_INCREMENT PRIMARY KEY,
+--     page VARCHAR(255) NOT NULL,
+--     user_id INT NULL,
+--     ip_address VARCHAR(45) NOT NULL,
+--     user_agent VARCHAR(512) NULL,
+--     referrer VARCHAR(512) NULL,
+--     viewed_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+-- ) ENGINE=InnoDB;
+
+-- CREATE INDEX idx_page_views_page_date ON app_page_views (page, viewed_at);

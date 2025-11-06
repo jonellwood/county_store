@@ -9,5 +9,12 @@
       <working-dir>$ProjectFileDir$</working-dir>
       <time-zone>EST5EDT</time-zone>
     </data-source>
+    <data-source source="LOCAL" name="My Berkeley" uuid="b35b14bb-aec2-49f1-8d9f-babbb1f91b50">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://10.50.10.94\FORMS;database=bcg_intranet</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

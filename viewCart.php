@@ -20,6 +20,8 @@ include_once 'Cart.class.php';
 $cart = new Cart;
 include "./components/viewHead.php"
 ?>
+<link rel="stylesheet" href="./style/global-variables.css">
+<link rel="stylesheet" href="./style/viewCart-modern.css">
 
 <script>
     function getCartItem(id) {
@@ -107,6 +109,7 @@ include "./components/viewHead.php"
                         <input type='hidden' name='size_id' id='size_id' value='${cartItem.size_id}' />
                         <input type='hidden' name='size_name' id='size_name' value='${cartItem.size_name}' />
                         <input type='hidden' name='logo' id='logo' value='${cartItem.logo}' />
+                        <input type='hidden' name='logo_id' id='logo_id' value='${cartItem.logo_id}' />
                         <input type='hidden' name='deptPatchPlace' id='deptPatchPlace' value='${cartItem.deptPatchPlace}' />
                         <input type='hidden' name='price_id' id='price_id' value='${cartItem.price_id}' />
                         <input type='hidden' name='price' id='price' value='${cartItem.price}' />
@@ -303,7 +306,8 @@ include "./components/viewHead.php"
                 .then(response => {
                     if (response.ok) {
                         localStorage.removeItem('store-cart');
-                        window.location.reload();
+                        // Force hard reload to prevent rendering issues
+                        window.location.reload(true);
                     } else {
                         alert("Remove item failed!!!! 😲 ");
                     }
@@ -317,71 +321,71 @@ include "./components/viewHead.php"
 
 
     function renderCheckout(cart) {
-        // console.log('cart');
-        // console.log(cart);
-        cartArray = convertObjectToArray(cart);
-        // console.log('cartArray.length')
-        // console.log(cartArray.length)
-        if (cartArray.length <= 3) {
+        console.log('cart', cart);
+
+        // Check if cart has items
+        if (!cart || Object.keys(cart).length <= 3) {
             var html = '<img src="cart_empty.jpg" alt="Cart is empty" class="empty-cart-img" />';
             document.getElementById('items').innerHTML += html;
-            return
+            return;
         }
-        // console.log(cartArray)
-        // let accumulatedHtml = '';
-        // let selectQuantities = {};
-        var html = '';
-        for (var i = 3; i < cartArray.length; i++) {
-            const itemEntry = cartArray[i][1];
-            console.log("Item Entry # ", i)
-            console.log(itemEntry)
+
+        // Iterate through cart items (skip cart metadata)
+        for (let cartId in cart) {
+            // Skip metadata properties
+            if (cartId === 'cart_total' || cartId === 'total_items' || cartId === 'total_logo_fees') {
+                continue;
+            }
+
+            const item = cart[cartId];
+            console.log("Cart Item:", item);
+
             var html = '';
             html += `
                 <div>
                     <div class="active-items">
-                        <div class="active-item" data-cartId=${itemEntry[4][1]}>
-                            <div class="item-content">
-                                <div class="item-content-inner">
-                                    <div class="image-wrapper">
-                                        <img src="${itemEntry[5][1]}" alt="${itemEntry[1][1]}" class="product-image" />
-                                    </div>
-                                    <div class="item-content-inner-inner">
-                                        <ul class="unordered-list">
-                                            <li class="product-title">${itemEntry[6][1]} - ${itemEntry[1][1]}</li>
-                                            <div class="price-block">${makeDollar(itemEntry[2][1])}</div>
+                        <div class="active-item" data-cartId="${item.rowid}">
+                            <h2 class="product-title">${item.code} - ${item.name} <span class="price-block">${makeDollar(item.price)}</span></h2>
+                            <div class="details">
+                                <div class="item-content">
+                                    <div class="item-content-inner">
+                                        <div class="image-wrapper">
+                                            <img src="${item.image}" alt="${item.name}" class="product-image" />
+                                        </div>
+                                        <div class="item-content-inner-inner">
                                             <div class="content-tail">
                                                 <div> 
-                                                    <li>Size: ${itemEntry[13][1]}</li>
-                                                    <li>Color: ${itemEntry[11][1]}</li>
-                                                    <li>Qty: ${itemEntry[3][1]}</li>
-                                                    <li>Dept Name: ${itemEntry[16][1]} </li>
+                                                    <p>Size: ${item.size_name}</p>
+                                                    <p>Color: ${item.color_name}</p>
+                                                    <p>Qty: ${item.qty}</p>
+                                                    <p>Dept Name: ${item.deptPatchPlace || 'N/A'}</p>
                                                 </div>
                                                 <div class="logo-holder">
-                                                ${itemEntry[0][1] !== 105 ? `<img src=${itemEntry[15][1]} alt="logo" class="logo-pict">` : ''}
-                                                    
+                                                    ${item.id !== 105 ? `<img src="${item.logo}" alt="logo" class="logo-pict">` : ''}
                                                 </div>
                                             </div>
                                             
                                             <div class="item-content-footer">
-                                            <button class='btn btn-danger' value="${itemEntry[4][1]}" onclick="removeItem(this.value)">Delete</button>
-                                            <button class='btn btn-info' value="${itemEntry[4][1]}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
-                                            <button class='btn btn-warning' value="${itemEntry[4][1]}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
+                                                <button class='btn btn-danger' value="${item.rowid}" onclick="removeItem(this.value)">Delete</button>
+                                                <button class='btn btn-info' value="${item.rowid}" onclick="renderEdit(this.value)" popovertarget="edit-cart-item" popovertargetaction="show">Edit</button>
+                                                <button class='btn btn-warning' value="${item.rowid}" onclick="renderComment(this.value)" popovertarget="add-comment" popovertargetaction="show">Comment</button>
                                             </div>
-                                            </ul>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            
-                                            `
-            var chtml = `
-                    ${itemEntry[14][1] ? `<p>${itemEntry[6][1]}</p> <span> ${itemEntry[14][1]}</span>` : `<span class='no-comment'>no comment</span>`}
-                `;
+                                            ${item.comment ? `
+                                                <div class="item-comment">
+                                                    <span class="item-comment-label">Note:</span>
+                                                    <p class="item-comment-text">${item.comment}</p>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
 
             document.getElementById('items').innerHTML += html;
-            document.getElementById('comments-stream').innerHTML += chtml;
         }
     }
 
@@ -503,324 +507,3 @@ include "./components/viewHead.php"
 
 
 </html>
-<style>
-    #cart-logo-img {
-        width: 50px;
-        transition: all .2s ease-in-out;
-    }
-
-    .container {
-        max-width: unset !important;
-        width: auto;
-        display: grid;
-        grid-template-columns: 6fr 2fr;
-        box-shadow: 0 0 25px -5px #000000;
-        margin: 2%;
-        padding: 2%;
-        border-radius: 5px;
-    }
-
-    .cart-display {
-        display: grid;
-        grid-template-columns: 5fr 1fr;
-    }
-
-    .items {
-
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-        color: #000;
-    }
-
-    .active-items {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 100%);
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .active-item {
-        max-width: none;
-        padding-bottom: 12px;
-        background-color: #FFF;
-        box-shadow: 0 0 25px -5px #000000;
-        border-radius: 5px;
-    }
-
-    .item-content {
-        position: relative;
-        margin-top: 12px;
-    }
-
-    .item-content-inner {
-        width: 100%;
-        display: flex !important;
-        flex-direction: row;
-        table-layout: fixed;
-        zoom: 1;
-        border-collapse: collapse;
-    }
-
-    .item-content-inner-inner {
-        width: 100%;
-        display: flex !important;
-        flex-direction: row;
-        table-layout: fixed;
-        zoom: 1;
-        border-collapse: collapse;
-    }
-
-    .image-wrapper {
-        margin-right: 12px;
-        margin-inline-end: 12px;
-        flex-shrink: 0;
-        margin-bottom: 4px;
-    }
-
-    .product-image {
-        vertical-align: top;
-        max-width: 100%;
-        border: 0;
-        height: 180px;
-
-    }
-
-    .item-content {
-        min-width: 0;
-        flex: auto;
-        margin-inline-end: 0;
-        margin-right: 12px;
-    }
-
-    .item-content-footer {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 12px;
-    }
-
-
-    .unordered-list {
-        display: grid;
-        column-gap: 12px;
-        grid-template-areas: "head price" "tail price";
-        grid-template-rows: auto 1fr;
-        grid-template-columns: 1fr minmax(13ch, 20%);
-        list-style: none;
-        word-wrap: break-word;
-        margin: 0;
-        width: 100%
-    }
-
-    .product-title {
-        grid-area: head;
-        line-height: 1.3rem;
-        max-height: 2.6em;
-        font-size: x-large;
-        word-break: normal;
-        padding: 3px;
-    }
-
-    .price-block {
-        grid-area: price;
-        display: flex;
-        flex-flow: column;
-        align-items: end;
-        text-align: end;
-        line-height: 1.3rem;
-        max-height: 2.6em;
-        font-size: x-large;
-        word-break: normal;
-        padding: 3px;
-    }
-
-    .content-tail {
-        grid-area: tail;
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-
-    .logo-pict {
-        height: 100px;
-        margin-left: 50px;
-        padding-top: 12px;
-        margin-right: auto;
-
-    }
-
-    .logo-holder {
-        display: flex;
-
-        grid-row-start: 1;
-        grid-row-end: 4;
-    }
-
-
-    .checkout {
-        background-color: #FFFFFF;
-        height: fit-content;
-
-        border-radius: 5px;
-        /* padding: 12px; */
-
-        color: #000;
-        /* margin-left: 10px; */
-        /* padding-right: 20px; */
-        text-align: end;
-        display: flex;
-        flex-direction: column;
-        padding: 2%;
-        margin: 2%;
-        box-shadow: 0 0 25px -5px #000000;
-    }
-
-
-    .amount-column {
-        min-width: 25px;
-        text-align: right;
-    }
-
-    .checkout-summary-table {
-        width: 100%;
-    }
-
-    .checkout p {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 5px;
-        word-break: normal;
-    }
-
-    .checkout p span {
-        margin-right: 5px;
-    }
-
-    #add-comment,
-    #edit-cart-item {
-        width: 45%;
-        height: 37%;
-
-        background-color: #ffffff;
-        color: hsl(224, 10%, 23%);
-        border: 7px solid #BF1722;
-
-        mark {
-            border-radius: 5px;
-            padding: 2px;
-            font-weight: bold;
-        }
-    }
-
-    .cart-item-edit-details {
-        background-color: #ffffff50;
-        padding: 20px
-    }
-
-    .popover-btn-holder {
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-    }
-
-    .popover-close-btn {
-        background-color: #000000;
-        padding: 5px;
-        margin-bottom: 5px;
-    }
-
-    .popover-desc-text-holder {
-        margin: 5px;
-        padding: 5px;
-
-        p {
-            font-size: larger;
-        }
-    }
-
-
-    .editCartItemDiv {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    ::backdrop {
-        backdrop-filter: blur(3px);
-    }
-
-    .edit-cart-item-submit-btn-holder {
-        display: flex;
-        padding: 5px;
-        justify-content: flex-end;
-    }
-
-    .cart-item-submit-btn {
-        padding: 5px;
-        background-color: limegreen;
-        color: #000
-    }
-
-
-    .empty-cart-img {
-        max-height: 50dvh;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .comments-stream {
-        margin-top: 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background-color: #A09D9C;
-        color: #000000;
-        padding: 5px;
-
-        p {
-            text-align: left;
-            padding: 0;
-            margin: 0;
-            margin-bottom: -10px;
-            width: 100%;
-            text-transform: uppercase;
-            font-size: medium;
-        }
-
-        span {
-            display: flex;
-            justify-content: flex-start;
-            font-size: medium;
-            font-weight: bold;
-            font-family: monospace;
-            text-align: left;
-            padding: 5px;
-            border-bottom: 1px solid #808080;
-            width: 100%;
-        }
-
-        span:before {
-            content: '👉🏼 '
-        }
-    }
-
-    .no-comment {
-        visibility: hidden;
-    }
-
-    .button-holder {
-        margin-top: 5px;
-        display: flex;
-
-        justify-content: space-around;
-
-        margin-left: 5em;
-        margin-right: 5em;
-    }
-
-
-    @view-transition {
-        navigation: auto;
-    }
-</style>

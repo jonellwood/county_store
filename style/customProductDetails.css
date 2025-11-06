@@ -1,6 +1,10 @@
-/* body {
-	background-color: #ffffff10;
-} */
+/**
+ * customProductDetails.css
+ * Product Details Page Styling
+ * Berkeley County IT Department
+ * Last Updated: October 30, 2025
+ * Updated: Dark mode support with CSS variables
+ */
 
 .container {
 	max-width: unset !important;
@@ -8,7 +12,7 @@
 	width: auto;
 	padding: 2%;
 	margin: 2%;
-	box-shadow: 0 0 25px -5px #000000;
+	box-shadow: var(--shadow-xl);
 	border-radius: 5px;
 }
 
@@ -30,11 +34,11 @@
 	margin-right: auto;
 	margin-top: 20px;
 	border-radius: 5px;
-	background-color: #fff;
+	background-color: var(--bg-elevated);
 }
 
 .hat-image-holder {
-	background-color: #fff;
+	background-color: var(--bg-elevated);
 	margin-top: 25px;
 	margin-right: 20px;
 	border-radius: 5px;
@@ -51,6 +55,12 @@
 	margin-right: auto;
 	margin-top: 5%;
 	/* clip-path: inset(6% 7% 44% 7%); */
+}
+
+/* White background for product images in dark mode */
+[data-theme="dark"] .product-image-holder,
+[data-theme="dark"] .hat-image-holder {
+	background-color: var(--color-white);
 }
 
 .details-about-details {
@@ -97,8 +107,10 @@ a {
 }
 
 dialog {
-	background-color: lightgrey;
-	color: black;
+	background-color: var(--bg-elevated);
+	color: var(--text-primary);
+	border: 1px solid var(--border-light);
+	border-radius: 8px;
 }
 
 .logo-not-available-text {
@@ -106,7 +118,7 @@ dialog {
 }
 
 #logo-price-text-holder {
-	color: lightblue;
+	color: var(--color-info);
 }
 
 #color-picker-holder,
@@ -115,11 +127,9 @@ dialog {
 .logo-info-holder,
 .quantity-select,
 #selection-summary {
-	background: rgba(0, 0, 0, 0.5);
-	background: #fff;
-	color: #000;
-	/* border-color: rgba(255, 255, 255, 0.3); */
-	border-color: rgba(0, 0, 0, 0.3);
+	background: var(--bg-elevated);
+	color: var(--text-primary);
+	border-color: var(--border-medium);
 	border-style: solid;
 	border-width: 2px;
 	-moz-border-radius: 5px;
@@ -129,7 +139,6 @@ dialog {
 	list-style: none;
 	padding: 5px 10px;
 	margin-bottom: 1em;
-	/* color: aliceblue; */
 }
 
 #color-picker-holder,
@@ -163,8 +172,7 @@ dialog {
 
 #selection-summary th,
 td {
-	/* color: aliceblue; */
-	color: #000;
+	color: var(--text-primary);
 }
 
 #size-picker-holder {
@@ -201,8 +209,9 @@ legend {
 }
 
 */ .toast-header {
-	background-color: #00000050;
-	color: #ffffff;
+	background-color: var(--bg-surface);
+	color: var(--text-primary);
+	border-bottom: 1px solid var(--border-light);
 	display: flex;
 	justify-content: space-between;
 	padding: 10px;
@@ -217,17 +226,17 @@ legend {
 #myToast {
 	width: 25%;
 	visibility: hidden;
-	background-color: slategray;
-	color: aliceblue;
+	background-color: var(--bg-elevated);
+	color: var(--text-primary);
+	border: 2px solid var(--bc-dark-blue);
+	box-shadow: var(--shadow-lg);
 	text-align: center;
-	border-radius: 5px;
+	border-radius: 10px;
 	padding: 16px;
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
 	z-index: 5;
-	border: 2px solid #005677;
-	border-radius: 10px;
 }
 
 .show {
@@ -251,8 +260,8 @@ legend {
 }
 
 .btn-close {
-	color: black;
-	border: 1px solid black;
+	color: var(--text-primary);
+	border: 1px solid var(--border-medium);
 }
 
 figcaption {
@@ -260,9 +269,11 @@ figcaption {
 }
 
 #hatBackText {
-	background-color: rebeccapurple;
+	background-color: var(--bc-dark-green);
 	text-align: center;
-	color: wheat;
+	color: var(--color-white);
+	padding: var(--spacing-3);
+	border-radius: var(--radius-md);
 }
 
 .product-name-holder-stretched {
@@ -279,13 +290,13 @@ figcaption {
 
 .spec-sheet-download-link {
 	padding-top: 1.5em;
-	color: aliceblue;
+	color: var(--color-info);
 }
 
 .product-description-text-holder {
-	background-color: #00000095;
-	color: white;
-
+	background-color: var(--bg-elevated);
+	color: var(--text-primary);
+	border: 1px solid var(--border-light);
 	bottom: -7;
 	width: 80%;
 	text-align: center;
@@ -298,13 +309,14 @@ figcaption {
 	width: 25px;
 	height: 25px;
 	margin-left: 20px;
-	border: 0.5px solid white;
+	border: 0.5px solid var(--border-medium);
 }
 
 #colorImageSrc {
 	visibility: hidden;
 }
 
+/* Keep actual color swatches as-is - these need to show the real colors */
 .red {
 	background-color: red;
 }
@@ -322,8 +334,8 @@ figcaption {
 }
 
 .cart-viewer {
-	background-color: #000;
-	border: 5px solid #fff;
+	background-color: var(--bg-elevated);
+	border: 5px solid var(--border-medium);
 	position: absolute;
 	z-index: 5;
 	top: 0;
@@ -364,7 +376,7 @@ figcaption {
 	position: relative;
 	display: table-caption;
 	caption-side: bottom;
-	color: aliceblue;
+	color: var(--text-secondary);
 }
 
 #square {
@@ -377,9 +389,14 @@ figcaption {
 	align-items: center;
 	padding: 10px;
 	width: 150px;
-	background-color: #d5ca9e;
-	box-shadow: 5px 5px 7px #00000040, inset -3px -3px 5px #00000080;
+	background-color: var(--bc-tan);
+	box-shadow: var(--shadow-md);
 	border-radius: 5px;
+}
+
+/* White background for logo in dark mode */
+[data-theme="dark"] #lil-logo {
+	background-color: var(--color-white);
 }
 
 .name-code-holder {
@@ -395,7 +412,8 @@ figcaption {
 }
 
 label:has(> input[type='radio']:checked) {
-	background-color: #80808080;
+	background-color: var(--bg-hover);
+	border-color: var(--bc-dark-green);
 	border-radius: 5px;
 }
 
@@ -447,8 +465,11 @@ label:has(> input[type='radio']:checked) {
 	display: flex;
 	justify-content: center;
 	align-content: center;
-	background-color: #e95420;
-	color: white;
+	background-color: var(--color-warning);
+	color: var(--color-white);
+	padding: var(--spacing-3);
+	border-radius: var(--radius-md);
+	border: 2px solid var(--color-warning);
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
@@ -482,16 +503,17 @@ label:has(> input[type='radio']:checked) {
 	font-weight: bold;
 	text-align: center;
 	text-decoration: none;
-	border: 2px solid #000000;
+	border: 2px solid var(--border-dark);
 	border-radius: 5px;
-	background-color: #4caf50;
-	color: #000000;
+	background-color: var(--color-success);
+	color: var(--text-primary);
 	transition: background-color 0.3s ease;
 }
 
 .button:hover {
-	background-color: #4caf50 !important;
-	color: #000000 !important;
+	background-color: var(--color-success);
+	filter: brightness(0.9);
+	color: var(--text-primary);
 	font-weight: bold !important;
 }
 
@@ -750,29 +772,25 @@ label:has(> input[type='radio']:checked) {
 	position: fixed !important;
 	top: 25% !important;
 	left: 25% !important;
-	/* transform: translate(-50%, -50%) !important; */
-	background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
-	border: none !important;
+	background: var(--bg-elevated) !important;
+	border: 1px solid var(--border-light) !important;
 	border-radius: 12px !important;
 	padding: 0 !important;
-	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.05) !important;
-	/* max-width: 450px !important; */
-	/* width: 90% !important; */
+	box-shadow: var(--shadow-xl) !important;
 	z-index: 10000 !important;
 	animation: errorSlideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 	overflow: hidden !important;
 	margin: 0 !important;
-	/* inset: unset !important; */
 }
 
 .errorMessage::backdrop {
-	background: rgba(0, 0, 0, 0.5) !important;
+	background: var(--bg-overlay) !important;
 	backdrop-filter: blur(4px) !important;
 	animation: fadeIn 0.3s ease !important;
 }
 
 .errorMessage-header {
-	background: linear-gradient(135deg, #dc3545 0%, #c82333 100%) !important;
+	background: linear-gradient(135deg, var(--color-danger) 0%, #c82333 100%) !important;
 	padding: 20px 24px !important;
 	display: flex !important;
 	align-items: center !important;
@@ -789,7 +807,7 @@ label:has(> input[type='radio']:checked) {
 }
 
 .errorMessage-title {
-	color: white !important;
+	color: var(--color-white) !important;
 	font-size: 20px !important;
 	font-weight: 600 !important;
 	margin: 0 !important;
@@ -808,7 +826,7 @@ label:has(> input[type='radio']:checked) {
 	justify-content: center !important;
 	cursor: pointer !important;
 	transition: all 0.2s ease !important;
-	color: white !important;
+	color: var(--color-white) !important;
 	font-size: 20px !important;
 	padding: 0 !important;
 	margin-left: auto !important;
@@ -821,11 +839,11 @@ label:has(> input[type='radio']:checked) {
 
 .errorMessage-body {
 	padding: 24px !important;
-	background: white !important;
+	background: var(--bg-elevated) !important;
 }
 
 .errorMessage-text {
-	color: #2c3e50 !important;
+	color: var(--text-primary) !important;
 	font-size: 16px !important;
 	line-height: 1.6 !important;
 	margin: 0 0 0 0 !important;
@@ -836,12 +854,12 @@ label:has(> input[type='radio']:checked) {
 	display: flex !important;
 	justify-content: flex-end !important;
 	gap: 12px !important;
-	background: white !important;
+	background: var(--bg-elevated) !important;
 }
 
 .errorMessage-button {
-	background: linear-gradient(135deg, #198754 0%, #157347 100%) !important;
-	color: white !important;
+	background: linear-gradient(135deg, var(--color-success) 0%, #157347 100%) !important;
+	color: var(--color-white) !important;
 	border: none !important;
 	border-radius: 8px !important;
 	padding: 12px 24px !important;

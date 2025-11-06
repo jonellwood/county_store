@@ -125,16 +125,22 @@ $cart = new Cart;
             var salesTax = (subtotal + logoFees) * taxRate;
             var cartTotal = subtotal + logoFees + salesTax;
 
-            // Update the display elements
-            document.getElementById('logo-fees-display').textContent = logoFees.toFixed(2);
-            document.getElementById('sales-tax-display').textContent = salesTax.toFixed(2);
-            document.getElementById('cart-total-display').textContent = cartTotal.toFixed(2);
+            // Update the display elements with null checks
+            const logoFeesEl = document.getElementById('logo-fees-display');
+            const salesTaxEl = document.getElementById('sales-tax-display');
+            const cartTotalEl = document.getElementById('cart-total-display');
+            const logoFeesRow = document.querySelector('.logo-fees-row');
+
+            if (logoFeesEl) logoFeesEl.textContent = logoFees.toFixed(2);
+            if (salesTaxEl) salesTaxEl.textContent = salesTax.toFixed(2);
+            if (cartTotalEl) cartTotalEl.textContent = cartTotal.toFixed(2);
 
             // Show the logo fees row
-            document.querySelector('.logo-fees-row').style.display = logoFees > 0 ? 'table-row' : 'none';
+            if (logoFeesRow) logoFeesRow.style.display = logoFees > 0 ? 'table-row' : 'none';
         } else {
             // Hide logo fees row if no logo fees
-            document.querySelector('.logo-fees-row').style.display = 'none';
+            const logoFeesRow = document.querySelector('.logo-fees-row');
+            if (logoFeesRow) logoFeesRow.style.display = 'none';
         }
     }
 
@@ -154,12 +160,12 @@ $cart = new Cart;
 <style>
     /* Modern Cart Slideout Styling */
     .cart-slideout {
-        background: #ffffff;
+        background: var(--bg-elevated);
         border-radius: 16px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.06);
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: var(--shadow-xl);
+        border: 1px solid var(--border-light);
         overflow: hidden;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        font-family: var(--font-family-base);
     }
 
     .cart-header-holder {
@@ -173,7 +179,7 @@ $cart = new Cart;
     }
 
     .cart-header-holder h1 {
-        color: #ffffff;
+        color: var(--color-white);
         margin: 0;
         font-size: 1.5rem;
         font-weight: 600;
@@ -191,7 +197,7 @@ $cart = new Cart;
         justify-content: center;
         cursor: pointer;
         transition: all 0.2s ease;
-        color: #ffffff;
+        color: var(--color-white);
         font-size: 18px;
         font-weight: bold;
     }
@@ -217,13 +223,13 @@ $cart = new Cart;
     }
 
     .cart-slideout .thead-dark {
-        background: #f8f9fa;
-        border-bottom: 2px solid #e9ecef;
+        background: var(--bg-surface);
+        border-bottom: 2px solid var(--border-light);
     }
 
     .cart-slideout .thead-dark th {
-        background: #f8f9fa;
-        color: #495057;
+        background: var(--bg-surface);
+        color: var(--text-primary);
         font-weight: 600;
         font-size: 0.875rem;
         padding: 16px 20px;
@@ -234,12 +240,12 @@ $cart = new Cart;
     }
 
     .cart-slideout tbody tr {
-        border-bottom: 1px solid #f1f3f4;
+        border-bottom: 1px solid var(--border-light);
         transition: background-color 0.2s ease;
     }
 
     .cart-slideout tbody tr:hover {
-        background-color: #f8f9fb;
+        background-color: var(--bg-hover);
     }
 
     .cart-slideout tbody tr:last-child {
@@ -247,7 +253,7 @@ $cart = new Cart;
     }
 
     .cart-slideout td {
-        color: #2c3e50 !important;
+        color: var(--text-primary) !important;
         padding: 16px 20px;
         border: none;
         font-size: 0.95rem;
@@ -256,8 +262,8 @@ $cart = new Cart;
 
     .cart-slideout .start-totals td,
     .cart-slideout .logo-fees-row td {
-        background: #f8f9fa;
-        border-top: 2px solid #e9ecef;
+        background: var(--bg-surface);
+        border-top: 2px solid var(--border-light);
         font-weight: normal;
         font-style: italic;
         font-size: 1rem;
@@ -265,20 +271,20 @@ $cart = new Cart;
 
     /* Sales Tax row styling to match other summary rows */
     .cart-slideout tbody tr:nth-last-child(2) td {
-        background: #f8f9fa;
-        border-top: 2px solid #e9ecef;
+        background: var(--bg-surface);
+        border-top: 2px solid var(--border-light);
         font-weight: normal;
         font-style: italic;
         font-size: 1rem;
     }
 
     .cart-slideout .cart-total-row td {
-        background: #2c3e50;
-        color: #ffffff !important;
+        background: var(--bc-dark-green);
+        color: var(--color-white) !important;
         font-size: 1.1rem;
         font-weight: bold;
         font-style: normal;
-        border-top: 3px solid #667eea;
+        border-top: 3px solid var(--bc-dark-green);
         border-radius: 0 !important;
     }
 
@@ -298,7 +304,7 @@ $cart = new Cart;
 
     /* Delete Button Styling */
     .btn-delete {
-        background: #ff4757;
+        background: var(--color-danger);
         border: none;
         border-radius: 8px;
         padding: 8px 10px;
@@ -309,7 +315,7 @@ $cart = new Cart;
     }
 
     .btn-delete:hover {
-        background: #ff3742;
+        filter: brightness(0.9);
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(255, 71, 87, 0.3);
     }
@@ -326,8 +332,8 @@ $cart = new Cart;
         display: flex;
         justify-content: space-between;
         gap: 16px;
-        background: #f8f9fa;
-        border-top: 1px solid #e9ecef;
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-light);
         width: 100%;
     }
 
@@ -346,28 +352,27 @@ $cart = new Cart;
     }
 
     .slideoutButtonsHolder .btn-outline-secondary {
-        background: #ffffff;
-        border-color: #6c757d;
-        color: #6c757d;
+        background: var(--bg-elevated);
+        border-color: var(--border-dark);
+        color: var(--text-secondary);
     }
 
     .slideoutButtonsHolder .btn-outline-secondary:hover {
-        background: #6c757d;
-        color: #ffffff;
+        background: var(--text-secondary);
+        color: var(--color-white);
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(108, 117, 125, 0.2);
     }
 
     .slideoutButtonsHolder .btn-success {
-        background: #28a745;
-        border-color: #28a745;
-        color: #ffffff;
+        background: var(--color-success);
+        border-color: var(--color-success);
+        color: var(--color-white);
         box-shadow: 0 2px 4px rgba(40, 167, 69, 0.2);
     }
 
     .slideoutButtonsHolder .btn-success:hover {
-        background: #218838;
-        border-color: #218838;
+        filter: brightness(0.9);
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
     }
@@ -379,7 +384,7 @@ $cart = new Cart;
     /* Empty Cart Styling */
     .cart-slideout tbody tr td p {
         text-align: center;
-        color: #6c757d;
+        color: var(--text-secondary);
         font-style: italic;
         margin: 20px 0;
         font-size: 1rem;

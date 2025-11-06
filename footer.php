@@ -34,11 +34,12 @@ echo "</footer>";
         bottom: 0;
         display: flex;
         justify-content: space-between;
-        padding-top: 20px;
+        padding-top: 10px;
         padding-left: 5%;
         padding-right: 5%;
-        background-color: #ffffff;
-        color: #000000;
+        background-color: var(--bg-elevated);
+        color: var(--text-primary);
+        border-top: 1px solid var(--border-light);
         z-index: 0;
         width: 100vw;
     }
@@ -46,8 +47,13 @@ echo "</footer>";
 
     a {
         text-decoration: none;
-        color: inherit;
+        color: var(--text-primary);
         /* font-weight: bolder; */
+        transition: color 0.2s ease;
+    }
+
+    a:hover {
+        color: var(--color-primary);
     }
 
     .far-right {

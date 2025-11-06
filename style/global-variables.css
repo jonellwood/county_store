@@ -1,0 +1,388 @@
+/**
+ * Berkeley County Store - Global Design System
+ * Created: October 2025
+ * Purpose: Site-wide CSS variables for consistent theming
+ * 
+ * Usage: Import this file first in all pages
+ * Future: Will support light/dark mode toggle
+ */
+
+:root {
+    /* ===================================
+       BERKELEY COUNTY BRAND COLORS
+       =================================== */
+    --bc-dark-green: #286142;
+    --bc-tan: #d5ca9e;
+    --bc-green: #789b48;
+    --bc-orange: #f57f43;
+    --bc-dark-blue: #005677;
+    --bc-blue: #58c9e8;
+    --bc-black: #1e242b;
+    --bc-grey: #cbc8c7;
+
+    /* ===================================
+       LIGHT MODE PALETTE
+       =================================== */
+    --color-primary: var(--bc-dark-blue);
+    --color-primary-hover: #004562;
+    --color-primary-light: #e6f4f9;
+
+    --color-secondary: var(--bc-green);
+    --color-secondary-hover: #6a8840;
+    --color-secondary-light: #f0f5e8;
+
+    --color-accent: var(--bc-orange);
+    --color-accent-hover: #e06d32;
+    --color-accent-light: #fef3ed;
+
+    --color-success: var(--bc-green);
+    --color-success-light: #f0f5e8;
+
+    --color-info: var(--bc-blue);
+    --color-info-light: #e8f8fd;
+
+    --color-warning: var(--bc-orange);
+    --color-warning-light: #fef3ed;
+
+    --color-danger: #dc3545;
+    --color-danger-light: #fde8ea;
+
+    /* ===================================
+       NEUTRAL COLORS
+       =================================== */
+    --color-white: #ffffff;
+    --color-off-white: #fafbfc;
+    --color-light-gray: #f5f6f7;
+    --color-gray-100: #e9ecef;
+    --color-gray-200: #dee2e6;
+    --color-gray-300: #ced4da;
+    --color-gray-400: #adb5bd;
+    --color-gray-500: #6c757d;
+    --color-gray-600: #495057;
+    --color-gray-700: #343a40;
+    --color-gray-800: #212529;
+    --color-black: var(--bc-black);
+
+    /* ===================================
+       BACKGROUND COLORS
+       =================================== */
+    --bg-body: var(--color-off-white);
+    --bg-surface: var(--color-white);
+    --bg-elevated: var(--color-white);
+    --bg-overlay: rgba(0, 0, 0, 0.5);
+    --bg-hover: var(--color-light-gray);
+    --bg-selected: var(--color-primary-light);
+    --bg-disabled: var(--color-gray-100);
+
+    /* Navigation backgrounds */
+    --nav-gradient-start: #2c3e50;
+    --nav-gradient-end: #546e7a;
+    --nav-fixed-bg: rgba(44, 62, 80, 0.95);
+
+    /* ===================================
+       TEXT COLORS
+       =================================== */
+    --text-primary: var(--color-gray-800);
+    --text-secondary: var(--color-gray-600);
+    --text-muted: var(--color-gray-500);
+    --text-disabled: var(--color-gray-400);
+    --text-inverse: var(--color-white);
+    --text-link: var(--color-primary);
+    --text-link-hover: var(--color-primary-hover);
+
+    /* ===================================
+       BORDER COLORS
+       =================================== */
+    --border-light: var(--color-gray-200);
+    --border-medium: var(--color-gray-300);
+    --border-dark: var(--color-gray-400);
+    --border-focus: var(--color-primary);
+    --border-error: var(--color-danger);
+    --border-success: var(--color-success);
+
+    /* ===================================
+       TYPOGRAPHY
+       =================================== */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol';
+    --font-family-headings: var(--font-family-base);
+    --font-family-monospace: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono',
+        Consolas, 'Courier New', monospace;
+
+    --font-size-xs: 0.75rem;
+    /* 12px */
+    --font-size-sm: 0.875rem;
+    /* 14px */
+    --font-size-base: 1rem;
+    /* 16px */
+    --font-size-lg: 1.125rem;
+    /* 18px */
+    --font-size-xl: 1.25rem;
+    /* 20px */
+    --font-size-2xl: 1.5rem;
+    /* 24px */
+    --font-size-3xl: 1.875rem;
+    /* 30px */
+    --font-size-4xl: 2.25rem;
+    /* 36px */
+
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+
+    /* ===================================
+       SPACING SYSTEM (8px base)
+       =================================== */
+    --spacing-0: 0;
+    --spacing-1: 0.25rem;
+    /* 4px */
+    --spacing-2: 0.5rem;
+    /* 8px */
+    --spacing-3: 0.75rem;
+    /* 12px */
+    --spacing-4: 1rem;
+    /* 16px */
+    --spacing-5: 1.25rem;
+    /* 20px */
+    --spacing-6: 1.5rem;
+    /* 24px */
+    --spacing-7: 1.75rem;
+    /* 28px */
+    --spacing-8: 2rem;
+    /* 32px */
+    --spacing-10: 2.5rem;
+    /* 40px */
+    --spacing-12: 3rem;
+    /* 48px */
+    --spacing-16: 4rem;
+    /* 64px */
+    --spacing-20: 5rem;
+    /* 80px */
+    --spacing-24: 6rem;
+    /* 96px */
+
+    /* ===================================
+       BORDER RADIUS
+       =================================== */
+    --radius-none: 0;
+    --radius-sm: 0.25rem;
+    /* 4px */
+    --radius-md: 0.5rem;
+    /* 8px */
+    --radius-lg: 0.75rem;
+    /* 12px */
+    --radius-xl: 1rem;
+    /* 16px */
+    --radius-2xl: 1.5rem;
+    /* 24px */
+    --radius-full: 9999px;
+    --radius-pill: 50rem;
+
+    /* ===================================
+       SHADOWS
+       =================================== */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+
+    /* ===================================
+       TRANSITIONS
+       =================================== */
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ===================================
+       Z-INDEX LAYERS
+       =================================== */
+    --z-base: 0;
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-notification: 1080;
+
+    /* ===================================
+       CONTAINER WIDTHS
+       =================================== */
+    --container-sm: 640px;
+    --container-md: 768px;
+    --container-lg: 1024px;
+    --container-xl: 1280px;
+    --container-2xl: 1536px;
+
+    /* ===================================
+       BREAKPOINTS (for reference in media queries)
+       =================================== */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+}
+
+/* ===================================
+   DARK MODE SUPPORT
+   Activated via [data-theme="dark"] on <html> element
+   =================================== */
+[data-theme="dark"] {
+    /* ===================================
+       DARK MODE PALETTE
+       =================================== */
+    --color-primary: #5aa6c8;
+    --color-primary-hover: #4895b8;
+    --color-primary-light: #1a3a48;
+
+    --color-secondary: #8fb865;
+    --color-secondary-hover: #7fa855;
+    --color-secondary-light: #2a3820;
+
+    --color-accent: #ff9566;
+    --color-accent-hover: #ff8452;
+    --color-accent-light: #3d2518;
+
+    --color-success: #8fb865;
+    --color-success-light: #2a3820;
+
+    --color-info: #58c9e8;
+    --color-info-light: #1a3d48;
+
+    --color-warning: #ff9566;
+    --color-warning-light: #3d2518;
+
+    --color-danger: #f87171;
+    --color-danger-light: #3d1a1a;
+
+    /* ===================================
+       DARK MODE NEUTRAL COLORS
+       =================================== */
+    --color-white: #ffffff;
+    --color-off-white: #f5f6f7;
+    --color-light-gray: #e9ecef;
+    --color-gray-100: #d3d6d9;
+    --color-gray-200: #b8bec4;
+    --color-gray-300: #9da5ae;
+    --color-gray-400: #7c8691;
+    --color-gray-500: #5d6773;
+    --color-gray-600: #484f59;
+    --color-gray-700: #353b43;
+    --color-gray-800: #23282f;
+    --color-black: #0d1117;
+
+    /* ===================================
+       DARK MODE BACKGROUNDS
+       =================================== */
+    --bg-body: #0d1117;
+    --bg-surface: #161b22;
+    --bg-elevated: #1f2530;
+    --bg-overlay: rgba(0, 0, 0, 0.7);
+    --bg-hover: #21262d;
+    --bg-selected: #1a3a48;
+    --bg-disabled: #21262d;
+
+    /* Navigation backgrounds - cohesive with body */
+    --nav-gradient-start: #0d1117;
+    --nav-gradient-end: #1f2530;
+    --nav-fixed-bg: rgba(13, 17, 23, 0.95);
+
+    /* ===================================
+       DARK MODE TEXT
+       =================================== */
+    --text-primary: #e6edf3;
+    --text-secondary: #adbac7;
+    --text-muted: #768390;
+    --text-disabled: #545d68;
+    --text-inverse: #0d1117;
+    --text-link: #5aa6c8;
+    --text-link-hover: #4895b8;
+
+    /* ===================================
+       DARK MODE BORDERS
+       =================================== */
+    --border-light: #30363d;
+    --border-medium: #444c56;
+    --border-dark: #545d68;
+    --border-focus: #5aa6c8;
+    --border-error: #f87171;
+    --border-success: #8fb865;
+
+    /* ===================================
+       DARK MODE SHADOWS (softer)
+       =================================== */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4),
+        0 1px 2px -1px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4),
+        0 2px 4px -2px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5),
+        0 4px 6px -4px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+   UTILITY: Smooth Scrolling
+   =================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================
+   UTILITY: Focus Visible (Accessibility)
+   =================================== */
+:focus-visible {
+    outline: 2px solid var(--border-focus);
+    outline-offset: 2px;
+}
+
+/* ===================================
+   UTILITY: Selection Colors
+   =================================== */
+::selection {
+    background-color: var(--color-primary-light);
+    color: var(--text-primary);
+}
+
+/* ===================================
+   UTILITY: Prefers Reduced Motion (Accessibility)
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===================================
+   UTILITY: Theme Transition
+   =================================== */
+body {
+    transition: background-color var(--transition-base),
+        color var(--transition-base);
+}

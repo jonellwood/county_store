@@ -7,7 +7,7 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 include_once 'Cart.class.php';
 $cart = new Cart;
 
-$param = $_POST['param'];
+$param = isset($_POST['param']) ? $_POST['param'] : '';
 // var_dump($param);
 include './components/viewHead.php';
 ?>
@@ -137,7 +137,7 @@ include './components/viewHead.php';
 
 <style>
     body {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        background: var(--bg-body);
         min-height: 100vh;
         padding-bottom: 40px;
     }
@@ -146,10 +146,11 @@ include './components/viewHead.php';
         max-width: 1200px;
         margin: 40px auto;
         padding: 30px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--bg-elevated);
         backdrop-filter: blur(10px);
         border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        box-shadow: var(--shadow-xl);
+        border: 1px solid var(--border-light);
     }
 
     .search-header {
@@ -162,28 +163,28 @@ include './components/viewHead.php';
     #search_param {
         flex: 1;
         padding: 15px 20px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid var(--border-light);
         border-radius: 10px;
-        background: rgba(255, 255, 255, 0.05);
-        color: white;
+        background: var(--bg-surface);
+        color: var(--text-primary);
         font-size: 16px;
         transition: all 0.3s ease;
     }
 
     #search_param:focus {
         outline: none;
-        border-color: #198754;
-        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--color-success);
+        background: var(--bg-elevated);
         box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.1);
     }
 
     #search_param::placeholder {
-        color: rgba(255, 255, 255, 0.4);
+        color: var(--text-secondary);
     }
 
     #search-button {
         padding: 15px 35px;
-        background: linear-gradient(135deg, #198754 0%, #157347 100%);
+        background: var(--color-success);
         border: none;
         border-radius: 10px;
         color: white;
@@ -195,6 +196,7 @@ include './components/viewHead.php';
     }
 
     #search-button:hover {
+        background: var(--color-success-dark);
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(25, 135, 84, 0.4);
     }
@@ -204,14 +206,14 @@ include './components/viewHead.php';
     }
 
     .why-so-serious {
-        color: rgba(255, 255, 255, 0.5);
+        color: var(--text-secondary);
         font-size: 14px;
         margin: 10px 0 20px 0;
         font-style: italic;
     }
 
     .search-results {
-        color: white;
+        color: var(--text-primary);
     }
 
     /* Modern Card-based Results */
@@ -223,8 +225,8 @@ include './components/viewHead.php';
     }
 
     .product-card {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-light);
         border-radius: 12px;
         padding: 20px;
         transition: all 0.3s ease;
@@ -236,9 +238,9 @@ include './components/viewHead.php';
 
     .product-card:hover {
         transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        background: var(--bg-elevated);
+        border-color: var(--border-medium);
+        box-shadow: var(--shadow-xl);
     }
 
     .product-card img {
@@ -259,7 +261,7 @@ include './components/viewHead.php';
 
     .product-code {
         font-size: 12px;
-        color: rgba(255, 255, 255, 0.6);
+        color: var(--text-secondary);
         font-weight: 500;
         margin-bottom: 8px;
         text-transform: uppercase;
@@ -268,7 +270,7 @@ include './components/viewHead.php';
 
     .product-name {
         font-size: 16px;
-        color: white;
+        color: var(--text-primary);
         font-weight: 600;
         margin-bottom: 15px;
         line-height: 1.4;
@@ -278,7 +280,7 @@ include './components/viewHead.php';
     .details-button {
         width: 100%;
         padding: 12px 24px;
-        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+        background: var(--color-primary);
         border: none;
         border-radius: 8px;
         color: white;
@@ -291,22 +293,22 @@ include './components/viewHead.php';
     }
 
     .details-button:hover {
+        background: var(--color-primary-dark);
         transform: translateY(-2px);
         box-shadow: 0 6px 16px rgba(13, 110, 253, 0.4);
-        background: linear-gradient(135deg, #0b5ed7 0%, #084298 100%);
     }
 
     /* No Results Styling */
     .no-results {
         text-align: center;
         padding: 60px 20px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--bg-surface);
         border-radius: 12px;
-        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border: 2px dashed var(--border-light);
     }
 
     .no-results h4 {
-        color: white;
+        color: var(--text-primary);
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 30px;
@@ -321,20 +323,20 @@ include './components/viewHead.php';
     }
 
     .search-query {
-        color: #198754;
+        color: var(--color-success);
         font-weight: 700;
         font-style: italic;
     }
 
     .results-count {
-        color: rgba(255, 255, 255, 0.7);
+        color: var(--text-secondary);
         font-size: 16px;
         margin-bottom: 20px;
         font-weight: 500;
     }
 
     .results-count strong {
-        color: white;
+        color: var(--text-primary);
         font-weight: 700;
     }
 
@@ -342,7 +344,7 @@ include './components/viewHead.php';
     .table {
         width: 100%;
         margin-top: 20px;
-        background: rgba(255, 255, 255, 0.05);
+        background: var(--bg-surface);
         border-radius: 12px;
         overflow: hidden;
     }

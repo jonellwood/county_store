@@ -182,6 +182,11 @@ try {
         <![endif]-->
         <style>
             table, td, div, h1, p {font-family: Arial, sans-serif;}
+            @media (prefers-color-scheme: dark) {
+                .logo-image {
+                    filter: invert(1) hue-rotate(180deg);
+                }
+            }
         </style>
         </head>
         <body style='margin:0;padding:0;'>
@@ -245,7 +250,7 @@ try {
                                 <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Sub Total:</b></span>
                                     <span style='font-size:14px;line-height:14px'>" . number_format((($order['product_price'] + $order['logo_fee']) * $order['quantity']), 2) . "</span><br>
                                 <span style='width:260px;padding:0;vertical-align:top;color:#153643;'>
-                                <p style='margin:0 0 25px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><img src='cid:pro_logo" . $orderCounter . "' alt='" . $order['logo'] . "' width='50' style='height:auto;display:block;' /></p>
+                                <p style='margin:0 0 25px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><img src='cid:pro_logo" . $orderCounter . "' alt='" . $order['logo'] . "' width='50' class='logo-image'  style='height:auto;display:block;' /></p>
                                 </span><br>
                                 <span style='margin:0 0 12px 0;font-size:14px;line-height:14px;font-family:Arial,sans-serif;'><b>Dept Name:</b></span>
                                     <span style='font-size:14px;line-height:14px'>" . $order['dept_patch_place'] . "</span><br>

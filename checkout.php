@@ -45,7 +45,8 @@ if (!empty($sessData['status']['msg'])) {
 <!-- <link rel="stylesheet" id='test' href="berkstrap-dark.css" async> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
 <!-- <link rel="icon" type="image/x-icon" href="favicons/favicon.ico"> -->
-<link rel="stylesheet" href="./style/customProductDetails.css">
+<link rel="stylesheet" href="./style/global-variables.css">
+<link rel="stylesheet" href="checkout-modern.css">
 <script>
     // async function to set captcha then
     // fetch the captcha from empcaptcha.php endpoint then
@@ -236,14 +237,15 @@ if (!empty($sessData['status']['msg'])) {
                             <div class="alert alert-danger"><?php echo $statusMsg; ?> </div>
                         </div>
                     <?php } ?>
-                    <div class="col-md-4 order-md-2 mb-4">
 
-                        <h4 class="d-flex justify-content-between align-items-center-md mb-3">
-                            <span>Your Cart</span>
-                            <span class="badge badge-dark badge-pill"><?php echo $cart->total_items(); ?> item(s)
-                            </span>
+                    <!-- LEFT COLUMN: Cart Items (Detailed Product List) -->
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="cart-items-title">
+                            Your Cart
+                            <span class="items-count">(<?php echo $cart->total_items(); ?> item<?php echo $cart->total_items() != 1 ? 's' : ''; ?>)</span>
                         </h4>
-                        <ul class="list-group mb-3">
+
+                        <div class="cart-items-list">
                             <?php
                             if ($cart->total_items() > 0) {
                                 // get cart items from session
@@ -251,99 +253,100 @@ if (!empty($sessData['status']['msg'])) {
                                 // remove these item from the object so they are not displayed in cart
                                 unset($cartItems['total_logo_fees'], $cartItems['total_items'], $cartItems['cart_total']);
                                 foreach ($cartItems as $item) {
-
                             ?>
-                                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                                        <div>
-                                            <h6 class="my-0"><?php echo $item["name"]; ?></h6>
-                                            <small><?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?> -
-                                                (<?php echo $item["qty"]; ?>)</small>
-                                            <small><?php echo $item['color_name']; ?> -
-                                                <?php echo $item['size_name'] ?> -
-                                                <?php if ($item['id'] != 105) { ?>
-                                                    <img src="<?php echo $item['logo'] ?>" alt="bc logo" id="logo-img">
-
-                                                <?php } ?>
-                                            </small>
-
+                                    <div class="cart-item-card">
+                                        <div class="item-details">
+                                            <div class="item-header">
+                                                <h6 class="item-name"><?php echo $item["name"]; ?></h6>
+                                                <span class="item-subtotal"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
+                                            </div>
+                                            <div class="item-specs">
+                                                <span class="spec">Color: <?php echo $item['color_name']; ?></span>
+                                                <span class="spec">Size: <?php echo $item['size_name']; ?></span>
+                                                <span class="spec">Qty: <?php echo $item["qty"]; ?></span>
+                                                <span class="spec">Price: <?php echo CURRENCY_SYMBOL . number_format($item["price"], 2); ?></span>
+                                            </div>
+                                            <?php if ($item['id'] != 105) { ?>
+                                                <div class="item-logo">
+                                                    <img src="<?php echo $item['logo'] ?>" alt="bc logo" class="logo-img">
+                                                </div>
+                                            <?php } ?>
                                         </div>
-                                        <span
-                                            class="text"><?php echo CURRENCY_SYMBOL . number_format($item["subtotal"], 2); ?></span>
-                                    </li>
-
+                                    </div>
                             <?php
                                 }
                             }
                             ?>
-                            <li class="top-line list-group-item d-flex justify-content-between">
-                                <span>Sub-Total: (<?php echo CURRENCY; ?>) </span>
-                                <strong><?php echo CURRENCY_SYMBOL . number_format($cart->total(), 2); ?></strong>
-                            </li>
-                            <li class="list-group-item list-group-item d-flex justify-content-between">
-                                <span>Logo Fees: (<?php echo CURRENCY; ?>) </span>
-                                <strong><?php echo CURRENCY_SYMBOL . number_format($cart->total_logo_fees(), 2); ?></strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Sales-Tax (<?php echo CURRENCY; ?>) </span>
-                                <?php $sales_tax = (($cart->total() + $cart->total_logo_fees()) * 0.09) ?>
-                                <strong><?php echo CURRENCY_SYMBOL . number_format(($sales_tax), 2) ?>
-                                </strong>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between">
-                                <span>Cart Total (<?php echo CURRENCY; ?>)</span>
-                                <strong><?php echo CURRENCY_SYMBOL . number_format(($cart->total() + $cart->total_logo_fees() + $sales_tax), 2) ?></strong>
-                            </li>
+                        </div>
 
-                        </ul>
-                        <div class="button-holder d-flex justify-content-between align-items-center gap-2">
-                            </?php echo $_SESSION['captcha_text'] ?>
-                            <span class="d-flex justify-content-between align-items-center">
-                                <a href="index.php#nav-container" class="btn btn-info f-flex align-items-baseline"
-                                    id="add-items">
-                                    <img src="assets/icons/add.svg" alt="add" width="20" height="20">
-                                    Add More Items </a>
-                            </span>
-                            <span class="d-flex justify-content-between align-items-center">
-                                <a href="viewCart.php" class="btn btn-warning" id="edit-cart">
-                                    Edit Cart
-                                    <img src="assets/icons/edit.svg" alt="add" width="20" height="20">
-                                </a>
-                            </span>
+                        <div class="continue-shopping">
+                            <a href="index.php#nav-container" class="continue-link">
+                                <img src="assets/icons/add.svg" alt="add" width="18" height="18">
+                                Continue Shopping
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-8 order-md-1">
-                        <h4 class="mb-3" id="contact-header">Contact Details</h4>
-                        <form method="post" action="cartAction.php" id='order-form'>
-                            <fieldset id='fieldset'>
-                                <div class="emp-row">
-                                    <div class="col-md-6 mb-3">
-                                        <?php include "getEmpNumSearch.php" ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <p id="empInfo" class="text-primary"></p>
 
-                                    </div>
+                    <!-- RIGHT COLUMN: Order Summary & Checkout -->
+                    <div class="col-md-4 order-md-2">
+                        <div class="order-summary-card">
+                            <h4 class="summary-title">Order Summary</h4>
 
+                            <div class="summary-lines">
+                                <div class="summary-line">
+                                    <span>Items (<?php echo $cart->total_items(); ?>)</span>
+                                    <span><?php echo CURRENCY_SYMBOL . number_format($cart->total(), 2); ?></span>
                                 </div>
-
-                                <div class="ord-row hidden" id="sub-info-holder">
-                                    <div class="col-md-6 mb-3">
-                                        <?php include "getSubNumSearch.php" ?>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <p id="subInfo" class="text-primary"></p>
-                                    </div>
+                                <div class="summary-line">
+                                    <span>Logo Fees</span>
+                                    <span><?php echo CURRENCY_SYMBOL . number_format($cart->total_logo_fees(), 2); ?></span>
                                 </div>
-
-                                <div class='captcha-holder hidden text-primary"' id='captcha-holder'>
-                                    <br>
-                                    <input type="text" id="captcha" name="captcha_challenge" pattern="[0-9]{4}">
+                                <div class="summary-line">
+                                    <span>Sales Tax (9%)</span>
+                                    <?php $sales_tax = (($cart->total() + $cart->total_logo_fees()) * 0.09) ?>
+                                    <span><?php echo CURRENCY_SYMBOL . number_format(($sales_tax), 2) ?></span>
                                 </div>
-                                <input type="hidden" name="action" value="placeOrder" />
-                                <input class="btn btn-success btn-block hidden" id="place-order-button" type="submit"
-                                    name="checkoutSubmit" value="Place Order">
-                            </fieldset>
-                        </form>
+                                <div class="summary-line total-line">
+                                    <span>Total</span>
+                                    <strong><?php echo CURRENCY_SYMBOL . number_format(($cart->total() + $cart->total_logo_fees() + $sales_tax), 2) ?></strong>
+                                </div>
+                            </div>
+
+                            <form method="post" action="cartAction.php" id='order-form'>
+                                <fieldset id='fieldset'>
+                                    <div class="employee-selectors">
+                                        <div class="selector-group">
+                                            <label class="selector-label">Employee</label>
+                                            <?php include "getEmpNumSearch.php" ?>
+                                            <p id="empInfo" class="selector-info"></p>
+                                        </div>
+
+                                        <div class="selector-group hidden" id="sub-info-holder">
+                                            <label class="selector-label">Submitter</label>
+                                            <?php include "getSubNumSearch.php" ?>
+                                            <p id="subInfo" class="selector-info"></p>
+                                        </div>
+
+                                        <div class='captcha-holder hidden' id='captcha-holder'>
+                                            <label class="selector-label">Verification Code</label>
+                                            <input type="text" id="captcha" name="captcha_challenge" pattern="[0-9]{4}" class="captcha-input">
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="action" value="placeOrder" />
+                                    <button class="checkout-btn hidden" id="place-order-button" type="submit" name="checkoutSubmit">
+                                        Place Order
+                                    </button>
+                                </fieldset>
+                            </form>
+
+                            <div class="edit-cart-link">
+                                <a href="viewCart.php">
+                                    <img src="assets/icons/edit.svg" alt="edit" width="16" height="16">
+                                    Edit Cart
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -389,197 +392,3 @@ if (!empty($sessData['status']['msg'])) {
 </script>
 
 </html>
-<script>
-
-
-
-
-
-
-</script>
-
-<style>
-    /* body {
-    background-color: #ffffff10;
-} */
-
-    .container {
-        /* margin-left: 5%; */
-        /* margin-right: 5%; */
-        max-width: unset !important;
-        width: 97% !important;
-    }
-
-    .checkout {
-        /* background-color: #ffffff90; */
-        padding: 20px;
-        /* color: aliceblue; */
-    }
-
-    .captcha-holder {
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-    }
-
-    #place-order-button {
-        margin-top: 20px;
-    }
-
-    img {
-        margin-bottom: 10px;
-    }
-
-    .emp-row {
-        display: grid;
-        grid-template-rows: 1fr;
-    }
-
-    .ord-row {
-        display: grid;
-        grid-template-rows: 1fr;
-
-    }
-
-    input {
-        width: fit-content
-    }
-
-
-
-    /* .dropbtn {
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-} */
-
-    /* .dropbtn:hover,
-.dropbtn:focus {
-    background-color: #3e8e41;
-} */
-
-    #myInput {
-        box-sizing: border-box;
-        background-image: url('searchicon.png');
-        background-position: 14px 12px;
-        background-repeat: no-repeat;
-        font-size: 16px;
-        padding: 14px 20px 12px 45px;
-        border: none;
-        border-bottom: 1px solid #ddd;
-    }
-
-    #myInput:focus {
-        outline: 3px solid #ddd;
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: flex;
-        display: none;
-        position: absolute;
-        background-color: #f6f6f6;
-        min-width: 230px;
-        overflow: auto;
-        border: 1px solid #ddd;
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    /* .dropdown button:hover {
-    background-color: #ddd;
-} */
-
-    .show {
-        display: block;
-    }
-
-    .invisi-button {
-        background-color: transparent;
-        color: black;
-        border: none;
-        line-height: 1.75;
-        width: 100%;
-
-    }
-
-    /* .invisi-button:nth-child(odd) {
-    background-color: #80808050;
-    color: #000000;
-}
-
-.invisi-button:nth-child(even) {
-    background-color: #ffffff;
-    color: #000000;
-} */
-
-    /* .invisi-button:hover {
-    background-color: #ddd;
-    border: none;
-    color: #000;
-} */
-
-    #logo-img {
-        width: 50px;
-        filter: drop-shadow(2px 4px 6px black);
-    }
-
-    .button-holder {
-        display: flex;
-        justify-content: center;
-        gap: 1em;
-    }
-
-    .top-line {
-        border-top: 1px dotted aliceblue !important;
-    }
-
-    @keyframes rotate {
-        100% {
-            transform: rotate(1turn);
-        }
-    }
-
-    pre {
-        background-color: dodgerblue;
-        color: white;
-
-    }
-
-
-
-    .hidden {
-        display: none;
-    }
-
-    .alert-banner {
-        background-color: #1F9CED;
-        color: #000000;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        font-size: larger;
-        gap: 25px;
-    }
-
-    .alert-text {
-        text-align: center;
-    }
-
-    .holder {
-        display: flex;
-        align-items: flex-end;
-        justify-content: flex-end;
-    }
-</style>
