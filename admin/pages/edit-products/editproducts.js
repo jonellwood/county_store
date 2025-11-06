@@ -10,8 +10,10 @@ function editProduct(id) {
 
 function renderProductOptionsForEdit(data, id) {
 	console.log('data', data);
-	// push data.allColors to allColors to make available globally
-	allColorsData.push(...data.allColors);
+	// push data.allColors to allColors to make available globally and sort alphabetically
+	allColorsData = [...data.allColors].sort((a, b) =>
+		a.color.localeCompare(b.color)
+	);
 	allSizesData.push(...data.allSizes);
 	// console.log('id', id);
 	var popover = document.getElementById('editProductPopover');
@@ -112,20 +114,30 @@ function addNewColor() {
 	const newColor = document.createElement('div');
 	newColor.className = 'color-option';
 	newColor.classList.add('new');
+
+	// Generate a unique ID for this color input
+	const uniqueId = 'color-search-' + Date.now();
+
 	newColor.innerHTML = `
         <div class="color-preview" style="background-color: #000000;"></div>
-        <select class="color-selector" onchange="updateColorPreview(this)">
-            ${allColorsData
-							.map(
-								(color) => `
-                <option value="${color.color_id}">${color.color}</option>
-            `
-							)
-							.join('')}
-        </select>
+        <div class="color-autocomplete-container">
+            <input 
+                type="text" 
+                class="color-search-input" 
+                placeholder="Search for a color..."
+                autocomplete="off"
+                data-color-id=""
+                id="${uniqueId}"
+            />
+            <div class="color-autocomplete-dropdown"></div>
+        </div>
         <button class="remove-btn" onclick="removeColor(this)">Remove</button>
     `;
 	colorsContainer.appendChild(newColor);
+
+	// Initialize autocomplete for this input
+	const input = newColor.querySelector('.color-search-input');
+	initColorAutocomplete(input);
 }
 
 function updateColorPreview(select) {
@@ -226,11 +238,20 @@ function saveProduct(id) {
 	document
 		.querySelectorAll('#colorsContainer .color-option')
 		.forEach((colorOption) => {
-			const colorSelector = colorOption.querySelector('.color-selector');
-			if (colorSelector) {
+			// Check for new autocomplete input first
+			const colorInput = colorOption.querySelector('.color-search-input');
+			if (colorInput && colorInput.dataset.colorId) {
 				colors.push({
-					color_id: colorSelector.value,
+					color_id: colorInput.dataset.colorId,
 				});
+			} else {
+				// Fall back to old select element for existing colors
+				const colorSelector = colorOption.querySelector('.color-selector');
+				if (colorSelector) {
+					colors.push({
+						color_id: colorSelector.value,
+					});
+				}
 			}
 		});
 
@@ -285,4 +306,129 @@ function saveProduct(id) {
 			console.error('Error saving product:', error);
 			alert('Error saving product data');
 		});
+}
+
+// Searchable Color Autocomplete Functions
+function initColorAutocomplete(input) {
+	const dropdown = input.nextElementSibling;
+	let selectedIndex = -1;
+
+	// Show dropdown and filter on input
+	input.addEventListener('input', function () {
+		const searchTerm = this.value.toLowerCase().trim();
+
+		if (searchTerm.length === 0) {
+			dropdown.classList.remove('active');
+			return;
+		}
+
+		// Filter colors
+		const filteredColors = allColorsData.filter((color) =>
+			color.color.toLowerCase().includes(searchTerm)
+		);
+
+		// Display results
+		displayColorResults(dropdown, filteredColors, input);
+		dropdown.classList.add('active');
+		selectedIndex = -1;
+	});
+
+	// Handle keyboard navigation
+	input.addEventListener('keydown', function (e) {
+		const items = dropdown.querySelectorAll('.color-autocomplete-item');
+
+		if (e.key === 'ArrowDown') {
+			e.preventDefault();
+			selectedIndex = Math.min(selectedIndex + 1, items.length - 1);
+			updateSelectedItem(items, selectedIndex);
+		} else if (e.key === 'ArrowUp') {
+			e.preventDefault();
+			selectedIndex = Math.max(selectedIndex - 1, -1);
+			updateSelectedItem(items, selectedIndex);
+		} else if (e.key === 'Enter') {
+			e.preventDefault();
+			if (selectedIndex >= 0 && items[selectedIndex]) {
+				items[selectedIndex].click();
+			}
+		} else if (e.key === 'Escape') {
+			dropdown.classList.remove('active');
+			selectedIndex = -1;
+		}
+	});
+
+	// Hide dropdown when clicking outside
+	document.addEventListener('click', function (e) {
+		if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+			dropdown.classList.remove('active');
+			selectedIndex = -1;
+		}
+	});
+
+	// Show all colors when focusing empty input
+	input.addEventListener('focus', function () {
+		if (this.value.trim().length === 0) {
+			displayColorResults(dropdown, allColorsData.slice(0, 30), input);
+			dropdown.classList.add('active');
+		}
+	});
+}
+
+function displayColorResults(dropdown, colors, input) {
+	if (colors.length === 0) {
+		dropdown.innerHTML =
+			'<div class="color-autocomplete-no-results">No colors found</div>';
+		return;
+	}
+
+	// Limit to first 30 results for performance
+	const displayColors = colors.slice(0, 30);
+
+	dropdown.innerHTML = displayColors
+		.map(
+			(color) => `
+		<div class="color-autocomplete-item" data-color-id="${color.color_id}" data-color-name="${color.color}" data-color-hex="${color.p_hex}">
+			<div class="color-swatch" style="background-color: ${color.p_hex};"></div>
+			<span class="color-name">${color.color}</span>
+			<span class="color-hex">${color.p_hex}</span>
+		</div>
+	`
+		)
+		.join('');
+
+	// Add click handlers to items
+	dropdown.querySelectorAll('.color-autocomplete-item').forEach((item) => {
+		item.addEventListener('click', function () {
+			selectColor(input, this);
+		});
+	});
+}
+
+function updateSelectedItem(items, index) {
+	items.forEach((item, i) => {
+		if (i === index) {
+			item.classList.add('selected');
+			item.scrollIntoView({ block: 'nearest' });
+		} else {
+			item.classList.remove('selected');
+		}
+	});
+}
+
+function selectColor(input, item) {
+	const colorId = item.dataset.colorId;
+	const colorName = item.dataset.colorName;
+	const colorHex = item.dataset.colorHex;
+
+	// Update input value and data
+	input.value = colorName;
+	input.dataset.colorId = colorId;
+
+	// Update color preview
+	const colorOption = input.closest('.color-option');
+	const preview = colorOption.querySelector('.color-preview');
+	preview.style.backgroundColor = colorHex;
+
+	// Hide dropdown
+	const dropdown = input.nextElementSibling;
+	dropdown.classList.remove('active');
 }
