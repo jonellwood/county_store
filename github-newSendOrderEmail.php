@@ -87,7 +87,7 @@ foreach ($orderIDList as $key => $value) {
     FROM order_details as ord
     JOIN orders on orders.order_id = ord.order_id
     LEFT JOIN customers as c ON c.customer_id = orders.customer_id 
-    LEFT JOIN curr_emp_ref as s on s.empNumber = orders.submitted_by 
+    LEFT JOIN emp_sync as s on s.empNumber COLLATE utf8_general_ci = orders.submitted_by  = orders.submitted_by 
     LEFT JOIN departments d on d.dep_num = s.deptNumber 
     LEFT JOIN colors on colors.color_id = ord.color_id
     JOIN sizes_new as si on si.size_id = ord.size_id 

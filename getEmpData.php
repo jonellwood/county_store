@@ -6,7 +6,7 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 
 $empNum = $_GET['empNum'];
 
-$sql = "SELECT empName, empNumber, deptName, deptNumber, email FROM uniform_orders.curr_emp_ref WHERE empNumber=$empNum";
+$sql = "SELECT empName, empNumber, deptName, deptNumber, email FROM uniform_orders.emp_sync WHERE empNumber=$empNum";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();

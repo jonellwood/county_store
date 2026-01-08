@@ -52,7 +52,7 @@ if ($res->num_rows > 0) {
 }
 // var_dump($deps);
 
-$eSql = "SELECT empNumber, empName from curr_emp_ref order by empName";
+$eSql = "SELECT empNumber, empName from emp_sync order by empName";
 $emps = array();
 $eStmt = $conn->prepare($eSql);
 $eStmt->execute();

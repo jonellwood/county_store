@@ -1,6 +1,6 @@
 <?php
 // Created: 2024/09/12 13:12:49
-// Last modified: 2024/09/24 08:42:22
+// Last modified: 2026/01/08 12:54:18
 // require_once '../data/storeConfig.php';
 require_once '../config.php';
 $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
@@ -8,8 +8,8 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 
 $emp_id = '4438';
 
-$sql = "SELECT * from curr_emp_ref where deptNumber = (
-    SELECT deptNumber from curr_emp_ref where empNumber = '$emp_id'
+$sql = "SELECT * from emp_sync where deptNumber = (
+    SELECT deptNumber from emp_sync where empNumber = '$emp_id'
 ) order by empName ASC";
 $stmt = $conn->prepare($sql);
 

@@ -49,7 +49,7 @@ $sql = "SELECT order_inst_order_details_id.order_inst_id,
             GROUP_CONCAT(comments.comment SEPARATOR ' || ') AS comments,
             GROUP_CONCAT(comments.submitted_by SEPARATOR ' || ') AS comment_submitters,
             GROUP_CONCAT(comments.submitted SEPARATOR ' || ') AS comment_submitted,
-            GROUP_CONCAT(curr_emp_ref.empName SEPARATOR ' || ') AS comment_sub_name 
+            GROUP_CONCAT(emp_sync.empName SEPARATOR ' || ') AS comment_sub_name 
         FROM
             uniform_orders.order_inst_order_details_id
         JOIN order_inst ON order_inst.order_inst_id = order_inst_order_details_id.order_inst_id
@@ -63,7 +63,7 @@ $sql = "SELECT order_inst_order_details_id.order_inst_id,
         JOIN prices ON prices.price_id = order_details.price_id
         JOIN vendors ON vendors.id = prices.vendor_id
         LEFT JOIN comments ON order_details.order_details_id = comments.order_details_id
-        LEFT JOIN curr_emp_ref on curr_emp_ref.empNumber = comments.submitted_by
+        LEFT JOIN emp_sync on emp_sync.empNumber = comments.submitted_by
     WHERE
         order_inst_order_details_id.order_inst_id = '$uid'
     GROUP BY

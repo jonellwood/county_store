@@ -129,27 +129,21 @@ if (!isset($_SESSION["role_id"]) || (int)$_SESSION["role_id"] !== 1) {
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="productCode" class="form-label">Product Code Override</label>
+                                        <label for="imageFolder" class="form-label">Image Download Folder</label>
                                         <input type="text"
                                             class="form-control"
-                                            id="productCode"
-                                            placeholder="e.g., bb18213 (optional)">
-                                        <div class="form-text">
-                                            <i class="fas fa-tag me-1"></i>
-                                            Leave blank to use SanMar's code, or enter your product code
-                                        </div>
+                                            id="imageFolder"
+                                            value="product_images"
+                                            placeholder="product_images">
+                                        <div class="form-text">Folder name where images will be saved</div>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="namingFormat" class="form-label">File Naming Format</label>
                                         <select class="form-control" id="namingFormat">
-                                            <option value="color_code">{color}_{code}.jpg (Recommended)</option>
-                                            <option value="code_color">{code}_{color}.jpg</option>
                                             <option value="code_color_view">{code}_{color}_{view}.jpg</option>
+                                            <option value="code_color">{code}_{color}.jpg</option>
+                                            <option value="color_code">{color}_{code}.jpg</option>
                                         </select>
-                                        <div class="form-text">
-                                            <i class="fas fa-folder me-1"></i>
-                                            Images will be saved to <code>/product-images/</code> directory
-                                        </div>
                                     </div>
                                 </div>
 

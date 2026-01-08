@@ -15,7 +15,7 @@ CONCAT(c.first_name, ' ', c.last_name) as submitted_for, c.email as submitted_fo
 s.email as submitted_by_email, d.dep_name, p.name, p.price, p.image
 FROM ord_ref as ord 
 LEFT JOIN customers as c ON c.customer_id = ord.customer_id 
-LEFT JOIN curr_emp_ref as s on s.empNumber = ord.submitted_by 
+LEFT JOIN emp_sync as s on s.empNumber COLLATE utf8_general_ci = ord.submitted_by 
 LEFT JOIN departments d on d.dep_num = s.deptNumber 
 JOIN products as p ON p.product_id = ord.product_id
 WHERE ord.order_id=?

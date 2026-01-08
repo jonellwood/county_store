@@ -42,9 +42,8 @@ class ProductScraper {
 		}
 
 		const url = document.getElementById('productUrl').value.trim();
-		const imageFolder =
-			document.getElementById('imageFolder').value.trim() || 'product_images';
 		const namingFormat = document.getElementById('namingFormat').value;
+		const productCode = document.getElementById('productCode').value.trim();
 
 		if (!url) {
 			this.showAlert('❌ Please enter a SanMar product URL', 'danger');
@@ -56,10 +55,10 @@ class ProductScraper {
 			return;
 		}
 
-		await this.startScraping(url, imageFolder, namingFormat);
+		await this.startScraping(url, namingFormat, productCode);
 	}
 
-	async startScraping(url, imageFolder, namingFormat) {
+	async startScraping(url, namingFormat, productCode) {
 		this.isProcessing = true;
 		this.resetResults();
 		this.showProgress();
@@ -69,8 +68,11 @@ class ProductScraper {
 			const formData = new FormData();
 			formData.append('action', 'scrape');
 			formData.append('url', url);
-			formData.append('imageFolder', imageFolder);
+			formData.append('imageFolder', 'product-images'); // Fixed folder path
 			formData.append('namingFormat', namingFormat);
+			if (productCode) {
+				formData.append('productCode', productCode);
+			}
 
 			this.updateProgress(30, 'Fetching product page...');
 

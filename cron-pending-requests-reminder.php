@@ -277,7 +277,7 @@ function generateOrdersTable($orders, $departmentName, $depHead, $depAssist, $de
 
     <body>
         <div class='container'>
-            <h2>&#128203; Pending Requests for <?php echo htmlspecialchars($departmentName); ?></h2>
+            <h2>County Store &#128203; Pending Requests for <?php echo htmlspecialchars($departmentName); ?></h2>
 
             <div class='summary'>
                 <strong>Summary:</strong> You have <?php echo $totalOrders; ?> pending request<?php echo $totalOrders !== 1 ? 's' : ''; ?>
@@ -326,7 +326,7 @@ function generateOrdersTable($orders, $departmentName, $depHead, $depAssist, $de
             </table>
 
             <center>
-                <a href='https://store.berkeleycountysc.gov/storeadmin/pages/sign-in.php' class='button'>
+                <a href='https://store.berkeleycountysc.gov/admin/signin/signin.php' class='button'>
                     Review & Approve Requests
                 </a>
             </center>

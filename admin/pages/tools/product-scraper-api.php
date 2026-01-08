@@ -40,6 +40,7 @@ function handleScrapeRequest()
     $url = $_POST['url'] ?? '';
     $imageFolder = $_POST['imageFolder'] ?? 'product_images';
     $namingFormat = $_POST['namingFormat'] ?? 'code_color_view';
+    $productCodeOverride = $_POST['productCode'] ?? '';
 
     if (empty($url)) {
         http_response_code(400);
@@ -55,7 +56,7 @@ function handleScrapeRequest()
 
     try {
         // Start the scraping process
-        $result = scrapeProduct($url, $imageFolder, $namingFormat);
+        $result = scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride);
         echo json_encode($result);
     } catch (Exception $e) {
         http_response_code(500);
@@ -63,10 +64,14 @@ function handleScrapeRequest()
     }
 }
 
-function scrapeProduct($url, $imageFolder, $namingFormat)
+function scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride = '')
 {
     $log = [];
     $log[] = "[" . date('Y-m-d H:i:s') . "] Starting SanMar product scraping for: $url";
+
+    if (!empty($productCodeOverride)) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Product code override: $productCodeOverride";
+    }
 
     // Set up curl with proper headers to mimic a real browser
     $ch = curl_init();
@@ -121,6 +126,12 @@ function scrapeProduct($url, $imageFolder, $namingFormat)
 
     // Extract product information
     $productInfo = extractProductInfo($xpath, $log);
+
+    // Use override if provided, otherwise use extracted code
+    if (!empty($productCodeOverride)) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Using product code override: {$productCodeOverride} (replacing {$productInfo['code']})";
+        $productInfo['code'] = $productCodeOverride;
+    }
 
     // Extract image URLs
     $images = extractImageUrls($xpath, $productInfo, $log);
@@ -433,23 +444,56 @@ function downloadImages($images, $folder, $namingFormat, $productInfo, &$log)
 {
     $downloadedImages = [];
 
-    // For local development, use relative path from document root
-    $baseDir = $_SERVER['DOCUMENT_ROOT'] . '/admin/pages/tools/downloads/';
+    // Save directly to product-images folder (not in downloads)
+    $baseDir = $_SERVER['DOCUMENT_ROOT'] . '/product-images/';
 
     // If document root doesn't exist (local dev), use current directory
-    if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/admin')) {
-        $baseDir = dirname(__FILE__) . '/downloads/';
+    if (!is_dir($_SERVER['DOCUMENT_ROOT'])) {
+        $baseDir = dirname(dirname(dirname(dirname(__FILE__)))) . '/product-images/';
     }
 
-    $downloadDir = $baseDir . $folder . '/';
+    $downloadDir = $baseDir;
+
+    // Enhanced debugging information
+    $log[] = "[" . date('Y-m-d H:i:s') . "] === DIRECTORY DEBUG INFO ===";
+    $log[] = "[" . date('Y-m-d H:i:s') . "] DOCUMENT_ROOT: " . $_SERVER['DOCUMENT_ROOT'];
+    $log[] = "[" . date('Y-m-d H:i:s') . "] __FILE__: " . __FILE__;
+    $log[] = "[" . date('Y-m-d H:i:s') . "] dirname(__FILE__): " . dirname(__FILE__);
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Base directory: $baseDir";
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Download directory: $downloadDir";
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Directory exists: " . (is_dir($downloadDir) ? 'YES' : 'NO');
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Directory writable: " . (is_writable($downloadDir) ? 'YES' : 'NO');
+
+    if (is_dir($downloadDir)) {
+        $perms = substr(sprintf('%o', fileperms($downloadDir)), -4);
+        $owner = function_exists('posix_getpwuid') ? posix_getpwuid(fileowner($downloadDir))['name'] : 'unknown';
+        $group = function_exists('posix_getgrgid') ? posix_getgrgid(filegroup($downloadDir))['name'] : 'unknown';
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Directory permissions: $perms";
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Directory owner: $owner";
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Directory group: $group";
+    }
+
+    $currentUser = function_exists('posix_getpwuid') ? posix_getpwuid(posix_geteuid())['name'] : 'unknown';
+    $log[] = "[" . date('Y-m-d H:i:s') . "] PHP running as: $currentUser";
+    $log[] = "[" . date('Y-m-d H:i:s') . "] === END DEBUG INFO ===";
 
     // Create download directory if it doesn't exist
     if (!is_dir($downloadDir)) {
-        mkdir($downloadDir, 0755, true);
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Attempting to create directory...";
+        if (!mkdir($downloadDir, 0775, true)) {
+            $error = error_get_last();
+            $log[] = "[" . date('Y-m-d H:i:s') . "] ERROR: Failed to create directory: $downloadDir";
+            $log[] = "[" . date('Y-m-d H:i:s') . "] mkdir error: " . ($error['message'] ?? 'Unknown error');
+            return $downloadedImages;
+        }
+        // Set ownership to www-data if possible
+        @chown($downloadDir, 'www-data');
+        @chgrp($downloadDir, 'www-data');
         $log[] = "[" . date('Y-m-d H:i:s') . "] Created download directory: $downloadDir";
     }
 
     $productCode = $productInfo['code'] ?? 'unknown';
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Processing " . count($images) . " images...";
 
     foreach ($images as $index => $image) {
         try {
@@ -460,10 +504,32 @@ function downloadImages($images, $folder, $namingFormat, $productInfo, &$log)
             $fullFilename = $filename . '.' . $extension;
             $filePath = $downloadDir . $fullFilename;
 
+            $log[] = "[" . date('Y-m-d H:i:s') . "] [" . ($index + 1) . "/" . count($images) . "] Downloading from: " . $image['url'];
+            $log[] = "[" . date('Y-m-d H:i:s') . "] [" . ($index + 1) . "/" . count($images) . "] Saving to: $filePath";
+
             // Download the image
             $imageData = downloadImageFile($image['url']);
             if ($imageData) {
-                file_put_contents($filePath, $imageData);
+                $log[] = "[" . date('Y-m-d H:i:s') . "] [" . ($index + 1) . "/" . count($images) . "] Downloaded " . formatBytes(strlen($imageData));
+
+                $bytesWritten = @file_put_contents($filePath, $imageData);
+
+                if ($bytesWritten === false) {
+                    $error = error_get_last();
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] ERROR: Failed to write file: $filePath";
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] PHP Error: " . ($error['message'] ?? 'Unknown error');
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] Parent directory writable: " . (is_writable(dirname($filePath)) ? 'YES' : 'NO');
+                    continue;
+                }
+
+                // Verify file was actually written
+                if (!file_exists($filePath)) {
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] ERROR: File does not exist after write: $filePath";
+                    continue;
+                }
+
+                // Set file permissions
+                @chmod($filePath, 0664);
 
                 $downloadedImages[] = [
                     'original_url' => $image['url'],
@@ -474,14 +540,19 @@ function downloadImages($images, $folder, $namingFormat, $productInfo, &$log)
                     'size' => strlen($imageData)
                 ];
 
-                $log[] = "[" . date('Y-m-d H:i:s') . "] Downloaded: $fullFilename (" . formatBytes(strlen($imageData)) . ")";
+                $log[] = "[" . date('Y-m-d H:i:s') . "] ✓ Successfully saved: $fullFilename (" . formatBytes($bytesWritten) . ")";
             } else {
-                $log[] = "[" . date('Y-m-d H:i:s') . "] Failed to download: " . $image['url'];
+                $log[] = "[" . date('Y-m-d H:i:s') . "] ERROR: Failed to download image from: " . $image['url'];
             }
         } catch (Exception $e) {
-            $log[] = "[" . date('Y-m-d H:i:s') . "] Error downloading image: " . $e->getMessage();
+            $log[] = "[" . date('Y-m-d H:i:s') . "] EXCEPTION: " . $e->getMessage();
+            $log[] = "[" . date('Y-m-d H:i:s') . "] Stack trace: " . $e->getTraceAsString();
         }
     }
+
+    $log[] = "[" . date('Y-m-d H:i:s') . "] === DOWNLOAD SUMMARY ===";
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Total images attempted: " . count($images);
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Total images saved: " . count($downloadedImages);
 
     return $downloadedImages;
 }
@@ -506,33 +577,48 @@ function downloadImageFile($url)
 
 function generateFilename($format, $code, $color, $view, $index, $variantCode = '')
 {
-    // Clean up the color name for filename
+    // Clean up the color name for filename - lowercase everything
     $cleanColor = preg_replace('/[^A-Za-z0-9]/', '', $color);
     $cleanColor = strtolower($cleanColor);
 
+    // Lowercase the product code too
+    $code = strtolower($code);
+
     // Use variant code if available (SanMar specific)
     if (!empty($variantCode)) {
-        $cleanVariant = preg_replace('/[^A-Za-z0-9_]/', '', $variantCode);
+        // Extract just the color part from variant code (e.g., "60374_DeepBlack" -> "deepblack")
+        $parts = explode('_', $variantCode);
+        if (count($parts) >= 2) {
+            // Get the color portion and lowercase it
+            $variantColor = strtolower($parts[1]);
+            $productCode = strtolower($parts[0]);
+        } else {
+            $variantColor = strtolower($variantCode);
+            $productCode = $code;
+        }
+
         switch ($format) {
             case 'code_color_view':
-                return $cleanVariant . '_' . $view;
+                return $productCode . '_' . $variantColor . '_' . $view;
             case 'code_color':
-                return $cleanVariant . '_' . $index;
+                // No index number for code_color format
+                return $productCode . '_' . $variantColor;
             case 'color_code':
-                return $cleanColor . '_' . $code . '_' . $index;
+                return $variantColor . '_' . $productCode;
             default:
-                return $cleanVariant . '_' . $view;
+                return $productCode . '_' . $variantColor . '_' . $view;
         }
     }
 
-    // Fallback to original logic
+    // Fallback to original logic (if no variant code)
     switch ($format) {
         case 'code_color_view':
             return $code . '_' . $cleanColor . '_' . $view;
         case 'code_color':
-            return $code . '_' . $cleanColor . '_' . $index;
+            // No index number for code_color format
+            return $code . '_' . $cleanColor;
         case 'color_code':
-            return $cleanColor . '_' . $code . '_' . $index;
+            return $cleanColor . '_' . $code;
         default:
             return $code . '_' . $cleanColor . '_' . $view;
     }

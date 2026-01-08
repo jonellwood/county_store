@@ -1,6 +1,43 @@
 let allColorsData = [];
 let allSizesData = [];
 
+// Initialize product search when page loads
+document.addEventListener('DOMContentLoaded', function () {
+	initProductSearch();
+});
+
+function initProductSearch() {
+	const searchInput = document.getElementById('productSearch');
+	if (!searchInput) return;
+
+	searchInput.addEventListener('input', function () {
+		const searchTerm = this.value.toLowerCase().trim();
+		filterProducts(searchTerm);
+	});
+}
+
+function filterProducts(searchTerm) {
+	const productRows = document.querySelectorAll('.product-row');
+
+	productRows.forEach((row) => {
+		const code = row.dataset.productCode || '';
+		const name = row.dataset.productName || '';
+		const desc = row.dataset.productDesc || '';
+
+		// Check if search term matches code, name, or description
+		const matches =
+			code.includes(searchTerm) ||
+			name.includes(searchTerm) ||
+			desc.includes(searchTerm);
+
+		if (matches || searchTerm === '') {
+			row.classList.remove('hidden');
+		} else {
+			row.classList.add('hidden');
+		}
+	});
+}
+
 function editProduct(id) {
 	console.log('editProduct', id);
 	fetch('getProductData.php?product_id=' + id)
@@ -322,10 +359,26 @@ function initColorAutocomplete(input) {
 			return;
 		}
 
-		// Filter colors
-		const filteredColors = allColorsData.filter((color) =>
-			color.color.toLowerCase().includes(searchTerm)
-		);
+		// Filter colors with smart sorting
+		const filteredColors = allColorsData
+			.filter((color) => color.color.toLowerCase().includes(searchTerm))
+			.sort((a, b) => {
+				const aLower = a.color.toLowerCase();
+				const bLower = b.color.toLowerCase();
+
+				// Exact match comes first
+				if (aLower === searchTerm) return -1;
+				if (bLower === searchTerm) return 1;
+
+				// Starts with search term comes next
+				const aStarts = aLower.startsWith(searchTerm);
+				const bStarts = bLower.startsWith(searchTerm);
+				if (aStarts && !bStarts) return -1;
+				if (!aStarts && bStarts) return 1;
+
+				// Otherwise alphabetical
+				return a.color.localeCompare(b.color);
+			});
 
 		// Display results
 		displayColorResults(dropdown, filteredColors, input);

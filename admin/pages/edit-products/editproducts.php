@@ -1,15 +1,21 @@
 <?php
 // Created: 2025/04/09 11:34:08
-// Last modified: 2025/08/28 13:55:21
+// Last modified: 2025/11/06 11:54:54
 
 echo "<div class='page-header-section'>";
 echo "<h1>Product Edit</h1>";
+echo "<div class='header-actions'>";
+echo "<div class='search-container'>";
+echo "<i class='fas fa-search search-icon'></i>";
+echo "<input type='text' id='productSearch' class='product-search-input' placeholder='Search products...' />";
+echo "</div>";
 echo "<a href='../add-product/' class='add-new-product-btn'>";
 echo "<i class='fas fa-plus'></i> Add New Product";
 echo "</a>";
 echo "</div>";
+echo "</div>";
 
-echo "<table class='table'>";
+echo "<table class='table' id='productsTable'>";
 echo "<thead>";
 echo "<tr>
         <th><i class='fas fa-image'></i></th>
@@ -39,7 +45,7 @@ foreach ($products as $product) {
     } else {
         $icon = 'fa-solid fa-location-dot';
     }
-    echo "<tr>";
+    echo "<tr class='product-row' data-product-code='" . strtolower($product['code']) . "' data-product-name='" . strtolower($product['name']) . "' data-product-desc='" . strtolower($product['description']) . "'>";
     echo "<td><i class='" . $icon . "'></i> ";
     echo "</td>";
     echo "<td>";

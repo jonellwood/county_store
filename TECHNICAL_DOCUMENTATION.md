@@ -114,7 +114,7 @@ The Berkeley County Store is an internal web application that allows county empl
 - **order_details** - Individual line items for orders
 - **customers** - Customer/employee information
 - **departments** - Department reference data
-- **emp_ref** / **curr_emp_ref** - Employee reference data
+- **emp_sync** / **emp_sync** - Employee reference data
 - **user_ref** - User authentication and roles
 - **roles** - User role definitions
 - **user_roles** - Junction table for user-role assignments

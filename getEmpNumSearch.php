@@ -2,7 +2,8 @@
 
 include_once "config.php";
 
-$sql = "SELECT empNumber, empName from uniform_orders.emp_ref WHERE seperation_date IS NULL ORDER BY empNumber ASC";
+// $sql = "SELECT empNumber, empName from uniform_orders.emp_ref WHERE seperation_date IS NULL ORDER BY empNumber ASC";
+$sql = "SELECT empNumber, empName from uniform_orders.emp_sync WHERE separation_date IS NULL ORDER BY empNumber ASC";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $result = $stmt->get_result();

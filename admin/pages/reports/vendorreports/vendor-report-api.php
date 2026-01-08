@@ -96,7 +96,7 @@ $sql = "SELECT
         
         -- Optional joins for comments
         LEFT JOIN comments ON od.order_details_id = comments.order_details_id
-        LEFT JOIN curr_emp_ref cer ON cer.empNumber = comments.submitted_by
+        LEFT JOIN emp_sync cer ON cer.empNumber = comments.submitted_by
         
     WHERE oi_od.order_inst_id = ?
     GROUP BY 
