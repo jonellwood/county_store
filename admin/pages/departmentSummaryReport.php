@@ -1,374 +1,243 @@
 <?php
 session_start();
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-
     header("location: ../signin/signin.php");
-
     exit;
 }
 if (!isset($_SESSION["role_id"]) && $_SESSION["role_id"] !== 1) {
     header("Location: 401.php");
     exit;
 }
-include "components/commonHead.php";
+
+// Include our modern header
+include "../../components/header.php";
 ?>
 
-<!-- <div class="parent"> -->
-<!-- <div class="div1">
-            </?php include('hideNav.php'); ?>
-        </div> -->
-<div class="div2">
-    <div id="department-select" class="department-select"></div>
+<!-- Page-specific CSS -->
+<link href="departmentSummaryReport.css" rel="stylesheet" />
 
-    <!-- <div class="report-data-holder">
-            <div class="table-container" id="table-container"></div>
-            <div class="other-table-container" id="other-table-container"></div>
-        </div> -->
+<!-- Modern Layout Container -->
+<div class="admin-dashboard-container">
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <i class="fas fa-chart-bar"></i>
+        <span>Department Summary Report - View spending by department and fiscal year</span>
+    </div>
 
-    <center>
-        <button class="hide-from-printer" onclick="printPage()" type="submit" value="Print" role="button" id="btn">Click
-            Here to Print Report</button>
-    </center>
-    <script>
-        function printPage() {
-            // var sideMenu = document.querySelector(".sb-sidenav").classList.add('hide-from-printer');
-            // var deptSelect = document.querySelector(".department-select").classList.add('hide-from-printer');
-            // var reportHolder = document.querySelector(".report-data-holder").classList.add('single-column');
+    <!-- Controls Section -->
+    <div class="controls-section">
+        <div class="department-selector">
+            <label>
+                <i class="fas fa-building"></i>
+                Select Department:
+            </label>
+            <select id="departmentSelect" onchange="departmentSummary(this.value)">
+                <option value="">-- Loading departments... --</option>
+            </select>
+        </div>
+        <button class="btn btn-print hide-from-printer" onclick="printPage()">
+            <i class="fas fa-print"></i>
+            Print Report
+        </button>
+    </div>
 
-            window.print();
-        }
-    </script>
+    <!-- Main Content Area -->
+    <div class="main-content" id="main">
+        <!-- Initial State -->
+        <div class="no-data-placeholder" id="placeholder">
+            <i class="fas fa-file-invoice-dollar"></i>
+            <h3>Select a Department</h3>
+            <p>Choose a department from the dropdown above to generate a summary report</p>
+        </div>
 
-    </body>
+        <!-- Report Container (hidden initially) -->
+        <div class="report-grid" id="reportGrid" style="display: none;">
+            <div class="report-card" id="currentFYCard">
+                <div class="report-card-header">
+                    <h2><i class="fas fa-calendar-alt"></i> <span id="currentFYTitle">Current Fiscal Year</span></h2>
+                </div>
+                <div class="report-card-body">
+                    <table class="report-table" id="currentFYTable">
+                        <tbody id="currentFYBody"></tbody>
+                    </table>
+                </div>
+            </div>
 
-    </html>
-    <script>
-        function currencyFormat(number) {
-            const currency = number.toLocaleString('en-US', {
-                style: 'currency',
-                currency: 'USD'
+            <div class="report-card" id="prevFYCard">
+                <div class="report-card-header">
+                    <h2><i class="fas fa-history"></i> <span id="prevFYTitle">Previous Fiscal Year</span></h2>
+                </div>
+                <div class="report-card-body">
+                    <table class="report-table" id="prevFYTable">
+                        <tbody id="prevFYBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State (hidden initially) -->
+        <div class="loading-state" id="loadingState" style="display: none;">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading report data...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Print functionality
+    function printPage() {
+        window.print();
+    }
+
+    // Currency formatter
+    function currencyFormat(number) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(number);
+    }
+
+    // Get status badge HTML
+    function getStatusBadge(status) {
+        const statusLower = status.toLowerCase();
+        const icons = {
+            'pending': 'fas fa-clock',
+            'approved': 'fas fa-check-circle',
+            'denied': 'fas fa-times-circle',
+            'ordered': 'fas fa-shopping-cart',
+            'received': 'fas fa-box-open'
+        };
+        const icon = icons[statusLower] || 'fas fa-circle';
+        return `<span class="status-badge ${statusLower}"><i class="${icon}"></i> ${status}</span>`;
+    }
+
+    // Get employee initials
+    function getInitials(name) {
+        return name.split(' ')
+            .map(n => n.charAt(0).toUpperCase())
+            .slice(0, 2)
+            .join('');
+    }
+
+    // Load departments
+    async function getDepartments() {
+        try {
+            const response = await fetch('fetch-departments.php');
+            const data = await response.json();
+            
+            const select = document.getElementById('departmentSelect');
+            let options = '<option value="">-- Select a Department --</option>';
+            
+            data.forEach(dept => {
+                options += `<option value="${dept.department}">${dept.dep_name} (${dept.department})</option>`;
             });
-            return currency;
+            
+            select.innerHTML = options;
+        } catch (error) {
+            console.error('Error loading departments:', error);
+            document.getElementById('departmentSelect').innerHTML = 
+                '<option value="">Error loading departments</option>';
+        }
+    }
+
+    // Load department summary
+    async function departmentSummary(dep) {
+        if (!dep) {
+            document.getElementById('placeholder').style.display = 'flex';
+            document.getElementById('reportGrid').style.display = 'none';
+            return;
         }
 
-        function getDepartments() {
-            fetch('fetch-departments.php')
-                .then(response => response.json())
-                .then(data => {
-                    let dhtml =
-                        '<div class="department-select"><select id="department" name="department" onchange="departmentSummary(this.value)">';
-                    for (let i = 0; i < data.length; i++) {
-                        dhtml += '<option value="' + data[i].department + '">' + data[i].dep_name + '- (' + data[i]
-                            .department + ')</option>';
-                    }
-                    dhtml += '</select></div>';
-                    dhtml += '<p>Select a Department to generate report</p>';
-                    dhtml += `<div class="report-data-holder"> 
-                            <div class="table-container"
-                                id="table-container"> 
-                            </div> 
-                            <div class="other-table-container"
-                                id="other-table-container"> 
-                                </div> 
-                            </div>`
-                    var target = document.getElementById('main')
-                    // main.classList.add('department-select');
-                    main.innerHTML = dhtml;
-                })
+        // Show loading state
+        document.getElementById('placeholder').style.display = 'none';
+        document.getElementById('reportGrid').style.display = 'none';
+        document.getElementById('loadingState').style.display = 'flex';
+
+        try {
+            const response = await fetch('fetchDepartmentSummaryReportData.php?dept=' + dep);
+            const data = await response.json();
+
+            const years = data[2];
+            const currentFYData = data[0];
+            const prevFYData = data[1];
+
+            // Update titles
+            document.getElementById('currentFYTitle').textContent = 
+                `FY ${years.current_fy_start_year} - ${years.current_fy_end_year}`;
+            document.getElementById('prevFYTitle').textContent = 
+                `FY ${years.prev_fy_start_year} - ${years.prev_fy_end_year}`;
+
+            // Render current FY data
+            document.getElementById('currentFYBody').innerHTML = buildTableContent(currentFYData);
+
+            // Render previous FY data
+            document.getElementById('prevFYBody').innerHTML = buildTableContent(prevFYData);
+
+            // Show report
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('reportGrid').style.display = 'grid';
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('placeholder').style.display = 'flex';
+            document.getElementById('placeholder').innerHTML = `
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Error Loading Report</h3>
+                <p>There was a problem loading the report data. Please try again.</p>
+            `;
         }
-        getDepartments();
+    }
 
-        async function departmentSummary(dep) {
-            try {
-                const response = await fetch('fetchDepartmentSummaryReportData.php?dept=' + dep);
-                const data = await response.json();
+    // Build table content for fiscal year data
+    function buildTableContent(fyData) {
+        let html = '';
+        
+        if (!fyData || Object.keys(fyData).length === 0) {
+            return `
+                <tr>
+                    <td colspan="2" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                        <i class="fas fa-inbox" style="font-size: 2rem; margin-bottom: 10px; display: block; opacity: 0.5;"></i>
+                        No data available for this fiscal year
+                    </td>
+                </tr>
+            `;
+        }
 
-                const years = data[2];
-                let html = '';
+        for (const empId in fyData) {
+            const employee = fyData[empId];
+            const initials = getInitials(employee.name);
+            
+            // Employee header row
+            html += `
+                <tr class="employee-header">
+                    <td>
+                        <span class="emp-avatar">${initials}</span>
+                        ${employee.name}
+                    </td>
+                    <td style="text-align: right;">#${employee.emp_id}</td>
+                </tr>
+            `;
 
-                // Build FY table header
-                html +=
-                    `<span class='table-title'>FY ${years.current_fy_start_year} - ${years.current_fy_end_year} Summary</span>`;
-                html += `<table><tr class='table-head-row'><th>Employee Name</th><th>Employee ID</th></tr>`;
-
-                // Process current fiscal year data
-                for (const empId in data[0]) {
-                    const employee = data[0][empId];
-                    const numOrders = employee.totals.length;
-
-                    // Build employee row (combined name and ID based on order count)
+            // Data rows for each status
+            if (employee.totals && employee.totals.length > 0) {
+                employee.totals.forEach(order => {
                     html += `
-                        <tr class='name-row'>
-                            <td>${employee.name}</td>
-                            <td>${employee.emp_id}</td>
+                        <tr class="data-row">
+                            <td>${getStatusBadge(order.status)}</td>
+                            <td class="amount">${currencyFormat(order.total_line_item_total)}</td>
                         </tr>
                     `;
-
-                    // Loop through employee's requests
-                    for (let i = 0; i < numOrders; i++) {
-                        const order = employee.totals[i];
-                        html += `
-                        <tr class='data=row''>
-                            <td>${order.status}</td>
-                            <td>${currencyFormat(order.total_line_item_total)}</td>
-                        </tr>
-                    `;
-                    }
-                }
-
-                html += `</table>`; // Close FY table
-
-                // Similar logic for previous fiscal year data (replace table container ID)
-                const previousFyHtml = buildPreviousFyTable(data[1], years);
-
-                document.getElementById('table-container').innerHTML = html;
-                document.getElementById('other-table-container').innerHTML = previousFyHtml;
-            } catch (error) {
-                console.error('Error fetching data:', error);
+                });
             }
         }
 
-        // Helper function to build the previous FY table 
-        function buildPreviousFyTable(previousFyData, years) {
-            let html = '';
-            html += `<span class='table-title'>FY ${years.prev_fy_start_year} - ${years.prev_fy_end_year} Summary</span>`;
-            html += `<table><tr class='table-head-row'><th>Employee Name</th><th>Employee ID</th></tr>`;
+        return html;
+    }
 
-            for (const empId in previousFyData) {
-                const employee = previousFyData[empId];
-                const numOrders = employee.totals.length;
+    // Initialize
+    getDepartments();
+</script>
 
-                html += `
-                    <tr class='name-row'>
-                        <td>${employee.name}</td>
-                        <td>${employee.emp_id}</td>
-                    </tr>
-                `;
-
-                for (let i = 0; i < numOrders; i++) {
-                    const order = employee.totals[i];
-                    html += `
-                    <tr class='data-row'>
-                        <td>${order.status}</td>
-                        <td>${currencyFormat(order.total_line_item_total)}</td>
-                    </tr>
-                `;
-                }
-            }
-
-            html += `</table>`;
-            return html;
-        }
-
-
-        // departmentSummary('41515');
-    </script>
-    <script>
-        function displayAlert() {
-            var html = '';
-            html +=
-                `<div class="info-banner">
-            <p>What have I become? My sweetest friend.</p>
-            <p>Everyone I know goes away in the end.</p>
-        </div>`
-            document.getElementById('alert-banner').innerHTML = html
-        }
-        displayAlert();
-    </script>
-    <style>
-        .report-data-holder {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px;
-            justify-content: space-evenly;
-            align-content: flex-start;
-            text-wrap: balance;
-            font-size: max(1.25vw, 14px);
-            text-align: center;
-            padding: 10px;
-            padding-top: 20px;
-            width: 100%;
-            background-color: #FFFFFF90;
-
-            table {
-                width: 100%;
-            }
-
-            table tr {
-                width: 100%;
-                background-color: #FFFFFF;
-            }
-        }
-
-        .table-head-row {
-            /* font-size: larger; */
-            width: 100%;
-            text-align: start;
-        }
-
-        .table-title {
-            display: flex;
-            justify-content: space-evenly;
-            align-content: flex-start;
-            text-wrap: balance;
-            font-size: max(1.25vw, 14px);
-            text-align: center;
-            padding-top: 20px;
-            width: auto;
-            background-color: #FFFFFF;
-            font-size: larger;
-        }
-
-        .tbody {
-            border-bottom: 5px solid hotpink;
-        }
-
-        .name-row {
-            background-color: #005700 !important;
-            color: #FFFFFF;
-            text-align: start;
-
-            td {
-                padding-left: 15px;
-            }
-        }
-
-
-
-        .data-row {
-            text-align: end;
-
-            td {
-                padding-right: 15px;
-
-            }
-        }
-
-        /* .div2 {
-        grid-area: 2/2/2/6 !important;
-    } */
-        .info-banner {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        .parent {
-            display: grid;
-            grid-template-columns: 10% 90%;
-            grid-template-rows: 75px 1fr 1fr;
-            height: 100vh;
-            /* overflow: hidden; */
-        }
-
-        .div1 {
-            display: flex;
-            grid-area: 1 / 1 / 4 / 1;
-
-        }
-
-        .div2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-area: 2 / 2 / 5 / 5;
-            scrollbar-gutter: stable;
-            background-image:
-                conic-gradient(from 127deg at 0% 100%,
-                    #00d5ff 47% 47%, #aa92ff 101% 101%);
-        }
-
-        .div3 {
-            display: none;
-            grid-area: 2 / 3 / 2 / 3;
-            height: 100vh;
-            scrollbar-gutter: stable;
-            padding-left: 20px;
-            overflow-y: auto;
-            border-top: 3px solid #80808050;
-            border-left: 3px solid #80808050;
-            border-bottom: 3px solid #80808050;
-
-        }
-
-        .div4 {
-            display: flex;
-            grid-area: 1 / 2 / 1 / 5;
-        }
-
-        .div5 {
-            display: flex;
-            /* grid-area: 2/ 4 / 2 /4; */
-            overflow-y: auto;
-            scrollbar-gutter: stable;
-        }
-
-
-        .div6 {
-            display: none;
-            flex-direction: column;
-            grid-area: 2 / 4 / 3 / 4;
-            border-top: 3px solid #80808050;
-            border-right: 3px solid #80808050;
-            border-bottom: 3px solid #80808050;
-        }
-
-        .department-select {
-            display: flex;
-            justify-content: space-evenly;
-            align-content: baseline;
-            text-wrap: balance;
-            font-size: max(1.25vw, 14px);
-            text-align: center;
-            padding-top: 20px;
-            width: auto;
-            background-color: #FFFFFF;
-            font-size: larger;
-            height: fit-content;
-            padding-bottom: 20px;
-
-            p {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-        }
-
-        .parent {
-            background-color: #00000070;
-        }
-
-        @media print {
-
-            /* hide the print button when printing */
-            .hide-from-printer {
-                display: none;
-            }
-
-            body {
-                width: 2500px;
-                font-size: 12px;
-            }
-
-            img {
-                display: block;
-                z-index: 2;
-                margin-left: 20px;
-                height: 100px;
-
-            }
-
-            .report td {
-                margin-top: 10px;
-            }
-
-            .report-data-holder {
-                grid-template-columns: 1fr;
-            }
-
-            .department-select {
-                display: none;
-            }
-
-            .sb-sidenav {
-                display: none;
-            }
-        }
-    </style>
+</body>
+</html>
