@@ -397,7 +397,7 @@
                                 <li><a class="dropdown-item" href="/admin/pages/orders/">
                                         <i class="fas fa-shopping-cart me-2"></i>Department Orders
                                     </a></li>
-                                <li><a class="dropdown-item" href="invoicestopay.php">
+                                <li><a class="dropdown-item" href="/admin/pages/invoicestopay-new.php">
                                         <i class="fas fa-receipt me-2"></i>Invoices To Pay
                                     </a></li>
                                 <li>
@@ -406,10 +406,10 @@
                                 <li><a class="dropdown-item" href="/admin/pages/reports/">
                                         <i class="fas fa-chart-bar me-2"></i>Reports
                                     </a></li>
-                                <li><a class="dropdown-item" href="/admin/pages/departmentSummaryReport.php">
+                                <li><a class="dropdown-item" href="/admin/pages/departmentSummaryReport-new.php">
                                         <i class="fas fa-building me-2"></i>Dept Summary
                                     </a></li>
-                                <li><a class="dropdown-item" href="orders-to-be-received.php">
+                                <li><a class="dropdown-item" href="/admin/pages/orders-to-be-received-new.php">
                                         <i class="fas fa-truck me-2"></i>Receiving
                                     </a></li>
                                 <li>
@@ -418,7 +418,7 @@
                                 <li><a class="dropdown-item" href="/admin/pages/edit-users/">
                                         <i class="fas fa-users me-2"></i>Edit Users
                                     </a></li>
-                                <li><a class="dropdown-item" href="dept-admin.php">
+                                <li><a class="dropdown-item" href="/admin/pages/dept-admin-new.php">
                                         <i class="fas fa-sitemap me-2"></i>Edit Dept
                                     </a></li>
                                 <li><a class="dropdown-item" href="editProductsFilters.php">

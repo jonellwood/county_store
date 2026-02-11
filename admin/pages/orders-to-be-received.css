@@ -86,7 +86,11 @@ body {
 }
 
 .main-content {
-    grid-area: main;
+    /* grid-area: main; */
+    grid-column-start: main;
+    grid-column-start: main;
+    grid-row-end: details;
+    grid-column-end: details;
     background: var(--bg-card) !important;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
