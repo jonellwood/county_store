@@ -89,7 +89,7 @@ $cartItemCount = $cart->total_items();
                             <h3 class="cat-title">Hats</h3>
                             <p class="cat-desc">Caps & Beanies</p>
                         </a>
-                        <a href="boots-view.php" class="cat-card">
+                        <a href="boots-details.php" class="cat-card">
                             <div class="cat-icon">👢</div>
                             <h3 class="cat-title">Boots</h3>
                             <p class="cat-desc">Work Boots</p>

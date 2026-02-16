@@ -51,7 +51,7 @@ body {
 }
 
 .navbar {
-  background: linear-gradient(to right, var(--nav-gradient-start), var(--nav-gradient-end));
+  /* background: linear-gradient(to right, var(--nav-gradient-start), var(--nav-gradient-end)); */
   font-size: 1.1rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -61,6 +61,7 @@ body {
   align-items: flex-end;
   padding: 5px;
   box-shadow: 0 0 5px rgba(0, 86, 119, 1);
+  background: linear-gradient(135deg, var(--color-primary, #2563eb) 0%, #7c3aed 100%);
 }
 
 .nav-item {
