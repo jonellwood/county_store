@@ -1,0 +1,202 @@
+{
+  "scraper": "company_casuals",
+  "generated_at": "2026-02-11T17:40:39.385Z",
+  "result": {
+    "original_code": "112",
+    "normalized_code": "112",
+    "source_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=112&parentId=115&prodimage=112.jpg&cart=Y&swatch=&httpsecure=Y",
+    "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=112&parentId=115&prodimage=112.jpg&cart=Y&swatch=&httpsecure=Y",
+    "scraped_at": "2026-02-11T17:40:26+00:00",
+    "product_name": "Print Charleston, NEW Richardson Trucker Cap 112",
+    "page_code": "112",
+    "price_reference_color": "Amber Gold",
+    "sizes": [
+      "OSFA",
+      "XL",
+      "SM"
+    ],
+    "prices": [
+      {
+        "size": "OSFA",
+        "price": 13.5,
+        "raw": "$13.50",
+        "currency": "USD"
+      },
+      {
+        "size": "XL",
+        "price": null,
+        "raw": "",
+        "currency": "USD"
+      },
+      {
+        "size": "SM",
+        "price": null,
+        "raw": "",
+        "currency": "USD"
+      }
+    ],
+    "colors": [
+      "Amber Gold",
+      "Biscuit/ True Blue",
+      "Black",
+      "Black/ Black/ Light Grey",
+      "Black/ Charcoal",
+      "Black/ Gold",
+      "Black/ Vegas Gold",
+      "Black/ White",
+      "Black/ White/ Heather Grey",
+      "Black/ White/ Red",
+      "Blue Teal/ Birch/ Navy",
+      "Brown/ Brown/ Khaki",
+      "Brown/ Khaki",
+      "Caramel/ Black",
+      "Cardinal/ White",
+      "Charcoal",
+      "Charcoal/ Black",
+      "Charcoal/ Columbia Blue",
+      "Charcoal/ Kelly",
+      "Charcoal/ Navy",
+      "Charcoal/ Neon Blue",
+      "Charcoal/ Neon Green",
+      "Charcoal/ Neon Orange",
+      "Charcoal/ Neon Pink",
+      "Charcoal/ Neon Yellow",
+      "Charcoal/ Orange",
+      "Charcoal/ Red",
+      "Charcoal/ Royal",
+      "Charcoal/ White",
+      "Chocolate Chip/ Birch",
+      "Coffee",
+      "Columbia Blue",
+      "Columbia Blue/ White",
+      "Columbia Blue/ White/ Navy",
+      "Cream",
+      "Cream/ Black/ Loden",
+      "Cream/ Grey Brown/ Brown",
+      "Dark Green",
+      "Dark Green/ White",
+      "Grey/ Charcoal/ Black",
+      "Grey/ Charcoal/ Navy",
+      "Heather Grey/ Birch/ Amber Gold",
+      "Heather Grey/ Birch/ Army Olive",
+      "Heather Grey/ Black",
+      "Heather Grey/ Cardinal/ Navy",
+      "Heather Grey/ Charcoal/ Dark Orange",
+      "Heather Grey/ Charcoal/ Maroon",
+      "Heather Grey/ Dark Green",
+      "Heather Grey/ Light Grey",
+      "Heather Grey/ Navy",
+      "Heather Grey/ Red/ Black",
+      "Heather Grey/ Royal",
+      "Heather Grey/ White",
+      "Hot Pink/ White",
+      "Kelly",
+      "Kelly/ White",
+      "Khaki/ Coffee",
+      "Khaki/ Khaki/ Black",
+      "Khaki/ Khaki/ Chocolate Chip",
+      "Khaki/ Khaki/ Legion Blue",
+      "Khaki/ Khaki/ Loden",
+      "Khaki/ Khaki/ Navy",
+      "Khaki/ White",
+      "Light Blue",
+      "Light Blue/ Light Blue/ Light Grey",
+      "Loden",
+      "Loden/ Black",
+      "Maroon/ White",
+      "Mink Beige/ Charcoal/ Amber Gold",
+      "Navy",
+      "Navy/ Caramel",
+      "Navy/ Charcoal",
+      "Navy/ Khaki",
+      "Navy/ Navy/ Khaki",
+      "Navy/ White",
+      "Navy/ White/ Heather Grey",
+      "Navy/ White/ Red",
+      "Orange",
+      "Orange/ Black",
+      "Orange/ White",
+      "Orange/ White/ Black",
+      "Purple/ White",
+      "Quarry",
+      "Red",
+      "Red/ Black",
+      "Red/ White",
+      "Red/ White/ Black",
+      "Red/ White/ Heather Grey",
+      "Red/ White/ Navy",
+      "Royal",
+      "Royal/ Black",
+      "Royal/ White",
+      "Royal/ White/ Heather Grey",
+      "Royal/ White/ Red",
+      "Smoke Blue",
+      "White",
+      "White/ Aluminum/ Black",
+      "White/ Aluminum/ Navy",
+      "White/ Black/ Black",
+      "White/ Columbia Blue/ Yellow",
+      "White/ Navy/ Navy",
+      "White/ White/ Black",
+      "White/ White/ Charcoal",
+      "White/ White/ Columbia Blue",
+      "White/ White/ Kelly",
+      "White/ White/ Navy",
+      "White/ White/ Red",
+      "White/ White/ Royal"
+    ],
+    "suggestedFilename": "112_price_scrape_20260211_174026.json"
+  },
+  "log": [
+    {
+      "timestamp": "2026-02-11 17:40:25",
+      "message": "Fetching product page",
+      "context": {
+        "url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=112&parentId=115&prodimage=112.jpg&cart=Y&swatch=&httpsecure=Y",
+        "raw_code": "112",
+        "normalized_code": "112"
+      }
+    },
+    {
+      "timestamp": "2026-02-11 17:40:26",
+      "message": "Fetched HTML",
+      "context": {
+        "bytes": 258237,
+        "http_code": 200,
+        "final_url": "https://www.companycasuals.com/printcharleston/b.jsp?productId=112&parentId=115&prodimage=112.jpg&cart=Y&swatch=&httpsecure=Y"
+      }
+    },
+    {
+      "timestamp": "2026-02-11 17:40:26",
+      "message": "Using raw title as product name fallback",
+      "context": []
+    },
+    {
+      "timestamp": "2026-02-11 17:40:26",
+      "message": "Extracted product code from hidden input",
+      "context": {
+        "code": "112"
+      }
+    },
+    {
+      "timestamp": "2026-02-11 17:40:26",
+      "message": "Parsed pricing row",
+      "context": {
+        "reference_color": "Amber Gold",
+        "sizes": [
+          "OSFA",
+          "XL",
+          "SM"
+        ],
+        "price_count": 3
+      }
+    },
+    {
+      "timestamp": "2026-02-11 17:40:26",
+      "message": "Extracted colors",
+      "context": {
+        "count": 108
+      }
+    }
+  ]
+}
