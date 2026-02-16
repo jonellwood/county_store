@@ -14,7 +14,7 @@
 		"release:major": "standard-version --release-as major",
 		"release:patch": "standard-version --release-as patch",
 		"changelog:html": "node changelogView.js",
-		"postrelease": "npm run changelog:html && git add changelog.html && git commit --amend --no-edit"
+		"postrelease": "npm run changelog:html && git add changelog.html && git commit --amend --no-edit && git push --follow-tags origin main"
 	},
 	"repository": {
 		"type": "git",

@@ -18,7 +18,8 @@ That's it! This single command will:
 4. ✅ Update package.json version
 5. ✅ Generate changelog.html automatically
 6. ✅ Create a git commit and tag
-7. ✅ Ready to push!
+7. ✅ Push to GitHub with tags automatically
+8. ✅ Done! Your release is live!
 
 ## Commit Message Format
 
@@ -58,13 +59,14 @@ npm run release:minor
 npm run release:major
 ```
 
-## After Release
+## What Happens During Release?
 
-Push your changes and tags:
+The release automatically:
 
-```bash
-git push --follow-tags origin main
-```
+1. Bumps the version
+2. Updates changelog.md and generates changelog.html
+3. Creates a git commit and tag
+4. **Pushes to GitHub with tags** (all done for you!)
 
 ## First Time with Existing Commits?
 
