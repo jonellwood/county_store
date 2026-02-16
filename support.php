@@ -243,6 +243,10 @@ $cart = new Cart;
         padding-bottom: 0.5rem;
     }
 
+    .form-control {
+        background-color: #f7f7f9 !important;
+    }
+
     .form-label {
         font-weight: 500;
         color: var(--text-primary);
