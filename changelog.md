@@ -1,5 +1,42 @@
 # County Store Application Changelog
 
+### 2.6.1 (2026-02-16)
+
+
+### ✨ New Features
+
+* Add searchable color autocomplete and fix Vue.js build ([1ddbefd](https://github.com/bc-jonellwood/store/commit/1ddbefd48a16b779d4e353bbef15dc330ae9614d))
+* Complete modern user management system with enhanced role architecture ([2ae7d01](https://github.com/bc-jonellwood/store/commit/2ae7d01aaebb6ad6afaa4f67848717ceb094f14d))
+* modernize changelog viewer with consistent app styling ([39debf9](https://github.com/bc-jonellwood/store/commit/39debf9fd9d97355501c6812c96a99b3e4ddd8a9))
+
+
+### 📚 Documentation
+
+* minor formatting improvements in RELEASE_GUIDE.md ([3736431](https://github.com/bc-jonellwood/store/commit/37364310fd49336de0f28252fd1699889295d57b))
+
+
+### ♻️ Code Refactoring
+
+* read app version from package.json instead of parsing changelog ([9e32625](https://github.com/bc-jonellwood/store/commit/9e32625101c1e3cf602f6ac4183387c3c5efeb23))
+
+
+### 🐛 Bug Fixes
+
+* correct boots link and update navbar styling ([f6009c8](https://github.com/bc-jonellwood/store/commit/f6009c8735b72ce1375fd18e4693d8ba9ae7fc19))
+* updated release script to include git commit ([e7b6dca](https://github.com/bc-jonellwood/store/commit/e7b6dcab405471c13ce682fb1aab0ea0fa1114c6))
+
+
+### 🔧 Maintenance
+
+* **release:** 2.5.0 ([c0cd228](https://github.com/bc-jonellwood/store/commit/c0cd22813b4fe58193362e8ae9789b9d218e7f3c))
+* **release:** 2.6.0 ([1dc5e58](https://github.com/bc-jonellwood/store/commit/1dc5e58ebdbd9089525219c6835c4552b6727129))
+* setup automated release management with standard-version ([fee99c3](https://github.com/bc-jonellwood/store/commit/fee99c3c54a8076dfa172e4c72aaadae064ba6eb))
+
+
+### 🎨 Styling
+
+* input background color on support form updated for better visibility ([26a876b](https://github.com/bc-jonellwood/store/commit/26a876b5f5b58ec1d3d4492ac205c231f0c3b35a))
+
 ## 2.6.0 (2026-02-16)
 
 
