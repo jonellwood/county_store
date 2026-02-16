@@ -1,6 +1,6 @@
 {
 	"name": "store",
-	"version": "2.0.6",
+	"version": "2.4.0",
 	"description": "Internal County Store",
 	"main": "index.php",
 	"directories": {
@@ -8,7 +8,13 @@
 	},
 	"type": "module",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"release": "standard-version",
+		"release:minor": "standard-version --release-as minor",
+		"release:major": "standard-version --release-as major",
+		"release:patch": "standard-version --release-as patch",
+		"changelog:html": "node changelogView.js",
+		"postrelease": "npm run changelog:html && git add changelog.html && git commit --amend --no-edit"
 	},
 	"repository": {
 		"type": "git",
@@ -22,5 +28,8 @@
 	"bugs": {
 		"url": "https://github.com/bc-jonellwood/store/issues"
 	},
-	"homepage": "https://github.com/bc-jonellwood/store#readme"
+	"homepage": "https://github.com/bc-jonellwood/store#readme",
+	"devDependencies": {
+		"standard-version": "^9.5.0"
+	}
 }

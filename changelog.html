@@ -1,4 +1,134 @@
 <h1>County Store Application Changelog</h1>
+<h2>Version 2.4.0 - (2026-02-16)</h2>
+<p>✨ New Features:</p>
+<ul>
+<li>
+<p><strong>Filter UI Enhancements</strong></p>
+<ul>
+<li>&quot;View Filtered Results&quot; button in filter popover for better UX</li>
+<li>Active filter indicator with count badge</li>
+<li>&quot;Clear All&quot; button for quick filter reset</li>
+<li>Shared filterIndicator.js module for consistent behavior across all views</li>
+<li>Gradient styling matching product filter button design</li>
+<li>Smooth animations and visual feedback</li>
+</ul>
+</li>
+<li>
+<p><strong>Company Casuals Image Scraper</strong></p>
+<ul>
+<li>Extract product images from Company Casuals product pages</li>
+<li>Intelligent URL parsing from color swatch onclick handlers</li>
+<li>Download individual images or batch download all colors</li>
+<li>Automatic filename formatting: {color}_{product_code}.jpg</li>
+<li>Image proxy for CORS-free downloading</li>
+<li>Modern UI with real-time scraping feedback</li>
+</ul>
+</li>
+<li>
+<p><strong>Product Image Management Tools</strong></p>
+<ul>
+<li>Image resizer tool with batch processing capabilities</li>
+<li>Product image downloader with automated organization</li>
+<li>Python script for bulk image renaming (fix_image_names_112.py)</li>
+<li>Support for multiple color variants per product</li>
+<li>Automated image optimization and validation</li>
+</ul>
+</li>
+<li>
+<p><strong>Item Request System</strong></p>
+<ul>
+<li>Complete item request submission workflow</li>
+<li>Department-level request tracking and approval</li>
+<li>Request details API endpoint (get-item-request-details.php)</li>
+<li>Management interface for processing requests (manage-item-requests.php)</li>
+<li>Database table creation scripts included</li>
+<li>Comprehensive documentation (ITEM_REQUEST_SETUP_GUIDE.md, ITEM_REQUEST_SYSTEM_README.md)</li>
+</ul>
+</li>
+<li>
+<p><strong>Modernized Admin Dashboards</strong></p>
+<ul>
+<li>Enhanced orders-to-be-received interface with modern styling</li>
+<li>Redesigned invoicestopay dashboard with improved data visualization</li>
+<li>Updated departmentSummaryReport with better layout and responsiveness</li>
+<li>Modernized dept-admin page with cleaner UI</li>
+<li>Individual CSS files for each dashboard</li>
+<li>Backup files preserved for all updated pages</li>
+<li>Updated navigation links in header.php</li>
+</ul>
+</li>
+<li>
+<p><strong>Product Management Updates</strong></p>
+<ul>
+<li>Enhanced product scraper with SanMar integration improvements</li>
+<li>Product scraper API development version for testing</li>
+<li>Color manager with comprehensive color database operations</li>
+<li>Batch product updates with validation</li>
+</ul>
+</li>
+</ul>
+<p>🔧 Technical Implementation:</p>
+<ul>
+<li>
+<p><strong>Database Migration</strong></p>
+<ul>
+<li>Converted employee data from BIC database to MyBerkeley database</li>
+<li>Updated all employee-related API endpoints for new database</li>
+<li>Enhanced getTeam.php, getEmpData.php, getEmpNumSearch.php endpoints</li>
+<li>Updated vendor report and email notification queries</li>
+</ul>
+</li>
+<li>
+<p><strong>UI/UX Enhancements</strong></p>
+<ul>
+<li>Product card layout fixes with flexbox alignment</li>
+<li>Filter popover overflow fixes with flex-wrap</li>
+<li>Responsive design improvements in mediaQueries.css</li>
+<li>Custom scrollbar styling for filter groups</li>
+<li>Modern gradient backgrounds and smooth transitions</li>
+</ul>
+</li>
+<li>
+<p><strong>Code Organization</strong></p>
+<ul>
+<li>Shared JavaScript modules for common functionality</li>
+<li>Consistent filter behavior across all product views</li>
+<li>Improved CSS architecture with dedicated files per component</li>
+<li>Better separation of concerns in admin tools</li>
+</ul>
+</li>
+</ul>
+<p>📚 Documentation:</p>
+<ul>
+<li>ITEM_REQUEST_SETUP_GUIDE.md - Complete setup instructions for item request system</li>
+<li>ITEM_REQUEST_SYSTEM_README.md - User guide and system overview</li>
+<li>Enhanced TECHNICAL_DOCUMENTATION.md with updated database references</li>
+<li>Git workflow improvements with better commit history</li>
+</ul>
+<p>🛡️ Performance &amp; Reliability:</p>
+<ul>
+<li>Optimized database queries for new MyBerkeley database</li>
+<li>Enhanced error handling in image scraping tools</li>
+<li>Improved memory management for batch operations</li>
+<li>Better timeout handling for long-running processes</li>
+<li>Graceful degradation for missing images</li>
+</ul>
+<p>🐛 Bug Fixes:</p>
+<ul>
+<li>Fixed product card alignment issues where names appeared near images</li>
+<li>Resolved filter type overflow in popover</li>
+<li>Corrected hat-details.php display issues</li>
+<li>Updated .gitignore for better file exclusions</li>
+<li>Fixed support.php layout and functionality issues</li>
+</ul>
+<p>🎨 Product Assets:</p>
+<ul>
+<li>Added product 112 images in 90+ color combinations</li>
+<li>Organized product images with consistent naming convention</li>
+<li>Included deep black, shadow grey heather, navy blazer, oatmeal heather variants</li>
+<li>Price scrape JSON data for product 112</li>
+<li>High-resolution images for all color variants</li>
+</ul>
 <h2>Version 2.3.0 - (2025-11-06)</h2>
 <p>✨ New Features:</p>
 <ul>

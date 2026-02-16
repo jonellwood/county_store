@@ -1,5 +1,107 @@
 # County Store Application Changelog
 
+## Version 2.4.0 - (2026-02-16)
+
+✨ New Features:
+
+- **Filter UI Enhancements**
+  - "View Filtered Results" button in filter popover for better UX
+  - Active filter indicator with count badge
+  - "Clear All" button for quick filter reset
+  - Shared filterIndicator.js module for consistent behavior across all views
+  - Gradient styling matching product filter button design
+  - Smooth animations and visual feedback
+
+- **Company Casuals Image Scraper**
+  - Extract product images from Company Casuals product pages
+  - Intelligent URL parsing from color swatch onclick handlers
+  - Download individual images or batch download all colors
+  - Automatic filename formatting: {color}_{product_code}.jpg
+  - Image proxy for CORS-free downloading
+  - Modern UI with real-time scraping feedback
+
+- **Product Image Management Tools**
+  - Image resizer tool with batch processing capabilities
+  - Product image downloader with automated organization
+  - Python script for bulk image renaming (fix_image_names_112.py)
+  - Support for multiple color variants per product
+  - Automated image optimization and validation
+
+- **Item Request System**
+  - Complete item request submission workflow
+  - Department-level request tracking and approval
+  - Request details API endpoint (get-item-request-details.php)
+  - Management interface for processing requests (manage-item-requests.php)
+  - Database table creation scripts included
+  - Comprehensive documentation (ITEM_REQUEST_SETUP_GUIDE.md, ITEM_REQUEST_SYSTEM_README.md)
+
+- **Modernized Admin Dashboards**
+  - Enhanced orders-to-be-received interface with modern styling
+  - Redesigned invoicestopay dashboard with improved data visualization
+  - Updated departmentSummaryReport with better layout and responsiveness
+  - Modernized dept-admin page with cleaner UI
+  - Individual CSS files for each dashboard
+  - Backup files preserved for all updated pages
+  - Updated navigation links in header.php
+
+- **Product Management Updates**
+  - Enhanced product scraper with SanMar integration improvements
+  - Product scraper API development version for testing
+  - Color manager with comprehensive color database operations
+  - Batch product updates with validation
+
+🔧 Technical Implementation:
+
+- **Database Migration**
+  - Converted employee data from BIC database to MyBerkeley database
+  - Updated all employee-related API endpoints for new database
+  - Enhanced getTeam.php, getEmpData.php, getEmpNumSearch.php endpoints
+  - Updated vendor report and email notification queries
+
+- **UI/UX Enhancements**
+  - Product card layout fixes with flexbox alignment
+  - Filter popover overflow fixes with flex-wrap
+  - Responsive design improvements in mediaQueries.css
+  - Custom scrollbar styling for filter groups
+  - Modern gradient backgrounds and smooth transitions
+
+- **Code Organization**
+  - Shared JavaScript modules for common functionality
+  - Consistent filter behavior across all product views
+  - Improved CSS architecture with dedicated files per component
+  - Better separation of concerns in admin tools
+
+📚 Documentation:
+
+- ITEM_REQUEST_SETUP_GUIDE.md - Complete setup instructions for item request system
+- ITEM_REQUEST_SYSTEM_README.md - User guide and system overview
+- Enhanced TECHNICAL_DOCUMENTATION.md with updated database references
+- Git workflow improvements with better commit history
+
+🛡️ Performance & Reliability:
+
+- Optimized database queries for new MyBerkeley database
+- Enhanced error handling in image scraping tools
+- Improved memory management for batch operations
+- Better timeout handling for long-running processes
+- Graceful degradation for missing images
+
+🐛 Bug Fixes:
+
+- Fixed product card alignment issues where names appeared near images
+- Resolved filter type overflow in popover
+- Corrected hat-details.php display issues
+- Updated .gitignore for better file exclusions
+- Fixed support.php layout and functionality issues
+
+🎨 Product Assets:
+
+- Added product 112 images in 90+ color combinations
+- Organized product images with consistent naming convention
+- Included deep black, shadow grey heather, navy blazer, oatmeal heather variants
+- Price scrape JSON data for product 112
+- High-resolution images for all color variants
+
 ## Version 2.3.0 - (2025-11-06)
 
 ✨ New Features:
