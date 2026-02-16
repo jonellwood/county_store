@@ -1,5 +1,26 @@
 # County Store Application Changelog
 
+## 2.5.0 (2026-02-16)
+
+
+### 🔧 Maintenance
+
+* setup automated release management with standard-version ([fee99c3](https://github.com/bc-jonellwood/store/commit/fee99c3c54a8076dfa172e4c72aaadae064ba6eb))
+
+
+### ✨ New Features
+
+* Add searchable color autocomplete and fix Vue.js build ([1ddbefd](https://github.com/bc-jonellwood/store/commit/1ddbefd48a16b779d4e353bbef15dc330ae9614d))
+* Complete modern user management system with enhanced role architecture ([2ae7d01](https://github.com/bc-jonellwood/store/commit/2ae7d01aaebb6ad6afaa4f67848717ceb094f14d))
+* modernize changelog viewer with consistent app styling ([39debf9](https://github.com/bc-jonellwood/store/commit/39debf9fd9d97355501c6812c96a99b3e4ddd8a9))
+
+
+### 📚 Documentation
+
+* minor formatting improvements in RELEASE_GUIDE.md ([3736431](https://github.com/bc-jonellwood/store/commit/37364310fd49336de0f28252fd1699889295d57b))
+
+# County Store Application Changelog
+
 ## Version 2.4.0 - (2026-02-16)
 
 ✨ New Features:
