@@ -441,7 +441,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="/admin/pages/tools/product-scraper.php">
+                                    <a class="dropdown-item" href="/admin/pages/tools/company-casuals-image-scraper.php">
                                         <i class="fas fa-images me-2"></i>Scrape Images
                                     </a>
                                 </li>
