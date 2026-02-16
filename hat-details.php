@@ -434,6 +434,51 @@ include "./components/viewHead.php"
                 subtree: true
             });
         });
+
+        function hexToRgb(hex) {
+            hex = hex.replace(/^#/, '');
+            if (hex.length === 3) {
+                hex = hex.split('').map(char => char + char).join('');
+            }
+            const bigint = parseInt(hex, 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `${r}, ${g}, ${b}`;
+        }
+
+        function updateColor(elementId) {
+            var colorIdInput = document.getElementById('color_id');
+            var colorElement = document.getElementById(elementId);
+            if (colorElement && colorElement.dataset.colorId) {
+                colorIdInput.value = colorElement.dataset.colorId;
+            }
+        }
+
+        function updateProductImage(val) {
+            var productImage = document.getElementById('product-image')
+            var productCode = document.getElementById('product_code').value.toLowerCase()
+            var selectedColorName = document.getElementById(val).dataset.name
+            var formattedColor = formatColorValueForUrl(selectedColorName)
+            productImage.src = `../../product-images/${formattedColor}_${productCode}.jpg`
+        }
+
+        function updateColorImage(val) {
+            var colorNameInput = document.getElementById('color_name')
+            var selectedColorName = document.getElementById(val).dataset.name
+            var selectedColorHex = document.getElementById(val).dataset.hex
+            var productImage = document.getElementById('product-image')
+            var productImageWrapper = document.querySelector('.product-image-wrapper')
+            colorNameInput.value = selectedColorName
+            updateColor(val)
+            updateProductImage(val)
+
+            // Add subtle color glow effect
+            if (selectedColorHex) {
+                const rgb = hexToRgb(selectedColorHex);
+                productImageWrapper.style.boxShadow = `0 0 30px rgba(${rgb}, 0.3)`;
+            }
+        }
     </script>
 
     <!-- Toast Notification -->

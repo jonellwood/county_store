@@ -36,7 +36,7 @@ class ProductScraper {
 		if (this.isProcessing) {
 			this.showAlert(
 				'⚠️ Scraping is already in progress. Please wait...',
-				'warning'
+				'warning',
 			);
 			return;
 		}
@@ -136,7 +136,7 @@ class ProductScraper {
                 <div class="col-md-6">
                     <h6><i class="fas fa-tag me-2"></i>Product Code</h6>
                     <p class="mb-3"><code>${this.escapeHtml(
-											summary.productCode
+											summary.productCode,
 										)}</code></p>
                     
                     <h6><i class="fas fa-box me-2"></i>Product Name</h6>
@@ -147,7 +147,7 @@ class ProductScraper {
 												? `
                         <h6><i class="fas fa-align-left me-2"></i>Description</h6>
                         <p class="mb-3">${this.escapeHtml(
-													productInfo.description
+													productInfo.description,
 												)}</p>
                     `
 												: ''
@@ -174,8 +174,8 @@ class ProductScraper {
 															.map(
 																(color) =>
 																	`<span class="badge bg-secondary">${this.escapeHtml(
-																		color
-																	)}</span>`
+																		color,
+																	)}</span>`,
 															)
 															.join('')}
                         </div>
@@ -198,10 +198,10 @@ class ProductScraper {
 			.map(
 				(image) => `
             <div class="image-card">
-                <img src="downloads/${image.path.split('/').pop()}" 
+                <img src="downloads/${this.escapeHtml(image.filename)}" 
                      alt="${this.escapeHtml(image.color)} ${this.escapeHtml(
-					image.view
-				)}" 
+												image.view,
+											)}" 
                      class="image-preview"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div style="display: none; padding: 20px; color: #999;">
@@ -210,17 +210,15 @@ class ProductScraper {
                 </div>
                 <div class="mt-2">
                     <small class="text-muted d-block">${this.escapeHtml(
-											image.filename
+											image.filename,
 										)}</small>
                     <small class="text-muted">${this.escapeHtml(
-											image.color
+											image.color,
 										)} - ${this.escapeHtml(image.view)}</small>
-                    <br><small class="text-success">${this.formatBytes(
-											image.size
-										)}</small>
+                    ${image.size ? `<br><small class="text-success">${this.formatBytes(image.size)}</small>` : ''}
                 </div>
             </div>
-        `
+        `,
 			)
 			.join('');
 
@@ -307,7 +305,7 @@ class ProductScraper {
 		if (!this.lastScrapedData) {
 			this.showAlert(
 				'❌ No data to export. Please scrape a product first.',
-				'warning'
+				'warning',
 			);
 			return;
 		}

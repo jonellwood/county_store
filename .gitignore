@@ -9,3 +9,4 @@ add-product-to-db SAVE JUST IN CASE.php
 .markdownlint.json
 .DS_Store
 node_modules
+admin/pages/tools/reference

@@ -5,10 +5,7 @@ $conn = new mysqli($host, $user, $password, $dbname, $port, $socket)
 
 include_once 'Cart.class.php';
 $cart = new Cart;
-include "components/viewHead.php"
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,15 +14,14 @@ include "components/viewHead.php"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
+    <meta name="Description" content="Berkeley County Store Support" />
 
-    <!-- <link rel="stylesheet" id='test' href="berkstrap-dark.css" defer async> -->
-
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" defer async> -->
+    <link href="./style/global-variables.css" rel="stylesheet" />
+    <link href="./style/storeLux.css" rel="stylesheet" />
+    <link href="./style/custom.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
-    <!-- <link href="style.css" rel="stylesheet" defer async> -->
 
-    <title>Contact Support</title>
+    <title>Contact Support - Berkeley County Store</title>
     <script>
         function seeSpending() {
             // alert("Hey stop that tickles!! Dont click that.")
@@ -57,128 +53,106 @@ include "components/viewHead.php"
 
 </head>
 
-<body>
-    <section class="mb-4">
-        <h2 class="h1-responsive font-weight-bold text my-4">Contact us</h2>
-        <!--Section description-->
-        <p class="text-left w-responsive mx-auto mb-5">Find a bug? Something not working as expected? Please do not
-            hesitate to contact us
-            directly. Our team will come back to you as quick as possible to assist you</p>
+<body class="body">
+    <?php include "components/viewHead.php" ?>
 
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-md-9 mb-md-0 mb-5">
-                <form id="contact-form" name="contact-form" action="supportMail.php" method="POST">
-                    <!--Grid row-->
-                    <div class="form-group row">
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-1">
-                                <input type="text" id="name" name="name" class="form-control">
-                                <label for="name" class="">Your name</label>
-                            </div>
-                        </div>
-                        <!--Grid column-->
+    <div class="container" style="margin-top: 2rem; margin-bottom: 4rem;">
+        <section class="support-section">
+            <h2 class="h1-responsive font-weight-bold mb-3">Contact Support</h2>
+            <p class="text-muted mb-5">Find a bug? Something not working as expected? Please don't hesitate to contact us directly. Our team will respond as quickly as possible to assist you.</p>
 
-                        <!--Grid column-->
-                        <div class="col-md-6">
-                            <div class="md-form mb-1">
-                                <input type="text" id="email" name="email" class="form-control">
-                                <label for="email" class="">Your email</label>
-                            </div>
-                        </div>
-                        <!--Grid column-->
+            <div class="row">
+                <!--Contact Form Column-->
+                <div class="col-md-8 mb-md-0 mb-5">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <form id="contact-form" name="contact-form" action="supportMail.php" method="POST">
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Your Name *</label>
+                                        <input type="text" id="name" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Your Email *</label>
+                                        <input type="email" id="email" name="email" class="form-control" required>
+                                    </div>
+                                </div>
 
-                    </div>
-                    <!--Grid row-->
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <input type="text" id="subject" name="subject" class="form-control" required>
+                                </div>
 
-                    <!--Grid row-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="md-form mb-1">
-                                <input type="text" id="subject" name="subject" class="form-control">
-                                <label for="subject" class="">Subject</label>
-                            </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Your Message *</label>
+                                    <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" name="sendMailBtn" class="btn btn-primary px-4">Send Message</button>
+                                </div>
+                            </form>
+                            <div class="status mt-3"></div>
                         </div>
                     </div>
-                    <!--Grid row-->
+                </div>
 
-                    <!--Grid row-->
-                    <div class="row">
 
-                        <!--Grid column-->
-                        <div class="col-md-12">
-
-                            <div class="md-form">
-                                <textarea type="text" id="message" name="message" rows="2"
-                                    class="form-control md-textarea"></textarea>
-                                <label for="message">Your message</label>
-                            </div>
-
+                <!--Quick Links Column-->
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">Quick Links</h5>
+                            <ul class="list-unstyled support-links">
+                                <li class="mb-3">
+                                    <a href="index.php" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/home-2.svg" alt="home" width="24" class="me-3">
+                                        <span>Back to Main Page</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="#" onclick="seeSpending(); return false;" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/piggy-bank.svg" alt="spending" width="24" class="me-3">
+                                        <span>See My Spending</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="request-items.php" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/add.svg" alt="request items" width="24" class="me-3">
+                                        <span>Request Items</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="changelogView.php" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/change-log.svg" alt="change log" width="24" class="me-3">
+                                        <span>Change Log</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="https://www.companycasuals.com/printcharleston/start.jsp" target="_blank" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/lcn.svg" alt="lcn" width="24" class="me-3">
+                                        <span>Print Charleston</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="https://store.berkeleycountysc.gov/admin/signin/signin.php" target="_blank" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/admin-access.svg" alt="admin" width="24" class="me-3">
+                                        <span>Admin Access</span>
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="https://store.berkeleycountysc.gov/inventory/login-ldap.php" target="_blank" class="d-flex align-items-center text-decoration-none">
+                                        <img src="assets/icons/inventory-mgmt.svg" alt="inventory" width="24" class="me-3">
+                                        <span>Inventory Management</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <!--Grid row-->
-
-
-                    <div class="text-center text-md-left">
-                        <button type="submit" name="sendMailBtn" class="btn btn-primary">Send</button>
-                    </div>
-                </form>
-                <div class="status"></div>
+                </div>
             </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-md-3 d-flex justify-content-end gap-2">
-                <ul class="list-unstyled mb-0">
-                    <li>
-                        <a href="https://store.berkeleycountysc.gov/index.php">
-                            <p><img src="assets/icons/home-2.svg" alt="home" width="30">
-                                Back to Main Page</p>
-                        </a>
-
-                    </li>
-                    <li onclick=seeSpending()>
-                        <p class='clickable'>
-                            <img src="assets/icons/piggy-bank.svg" alt="spending" width="30"> See my
-                            Spending
-                        </p>
-                    </li>
-
-
-                    <li>
-                        <a href="https://store.berkeleycountysc.gov/admin/signin/signin.php" target="_blank">
-                            <p> <img src="assets/icons/admin-access.svg" alt="admin" width="30">Admin Access</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://store.berkeleycountysc.gov/inventory/login-ldap.php" target="_blank">
-                            <p>
-                                <img src="assets/icons/inventory-mgmt.svg" alt="inventory" width="30">Inventory
-                                Management
-                            </p>
-                        </a>
-                    </li>
-                    </li>
-                    <li>
-                        <a href="./changelogView.php">
-                            <p><img src="assets/icons/change-log.svg" alt="change log" width="30">
-                                Change Log</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.companycasuals.com/printcharleston/start.jsp" target="_blank">
-
-                            <p><img src="assets/icons/lcn.svg" alt="lcn" width="30">
-                                Print Charleston </p>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!--Grid column-->
-        </div>
-
-    </section>
+        </section>
+    </div>
     <div name="spendingPopover" id="spendingPopover" class="spendingPopover" popover="manual">
         <button class="close-btn" popovertarget="spendingPopover" popovertargetaction="hide">
             <span class="btn-close ms-2 mb-1" aria-hidden=”true”>X</span>
@@ -224,28 +198,64 @@ include "components/viewHead.php"
             }
         });
     </script>
+
+    <footer>
+        <?php include "footer.php" ?>
+    </footer>
 </body>
-<footer>
-    <?php include "footer.php" ?>
-</footer>
 
 </html>
+
 <style>
-    .mb-4 {
-        margin: 20px;
+    .support-section {
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    .form-control {
-        color: black !important;
+    .support-links a {
+        color: var(--text-primary);
+        transition: all 0.2s ease;
     }
 
-    .navbar {
-        display: flex;
-        justify-content: center;
+    .support-links a:hover {
+        color: var(--color-primary);
+        transform: translateX(5px);
     }
 
-    .clickable {
-        cursor: pointer;
+    .support-links img {
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+    }
+
+    .support-links a:hover img {
+        opacity: 1;
+    }
+
+    .card {
+        border: 1px solid var(--border-light);
+        border-radius: 0.5rem;
+    }
+
+    .card-title {
+        color: var(--text-primary);
+        font-weight: 600;
+        border-bottom: 2px solid var(--color-primary);
+        padding-bottom: 0.5rem;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+
+    .btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+
+    .btn-primary:hover {
+        background-color: var(--color-primary-hover);
+        border-color: var(--color-primary-hover);
     }
 
     .spendingPopover {

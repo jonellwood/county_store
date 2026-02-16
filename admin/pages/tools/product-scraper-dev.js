@@ -167,10 +167,10 @@ function handleFinalResult(data) {
 			showResults(data.product, data.stats);
 
 			addToLog(
-				`[${new Date().toLocaleTimeString()}] Scraping completed successfully!`
+				`[${new Date().toLocaleTimeString()}] Scraping completed successfully!`,
 			);
 			addToLog(
-				`Downloaded ${data.stats.downloaded_images} images for ${data.stats.colors_found} colors`
+				`Downloaded ${data.stats.downloaded_images} images for ${data.stats.colors_found} colors`,
 			);
 		}
 	} catch (error) {
@@ -242,8 +242,8 @@ function showResults(product, stats) {
                         <div class="mt-2">
                             <strong>${image.filename}</strong><br>
                             <small class="text-muted">
-                                ${image.color} - ${image.view}<br>
-                                ${(image.size / 1024).toFixed(1)} KB
+                                ${image.color} - ${image.view}
+                                ${image.size ? `<br>${(image.size / 1024).toFixed(1)} KB` : ''}
                             </small>
                         </div>
                     </div>
@@ -284,7 +284,7 @@ function exportProductData() {
 		addToLog(
 			`[${new Date().toLocaleTimeString()}] Product data exported as ${
 				currentProductData.code
-			}_product_data.json`
+			}_product_data.json`,
 		);
 	} catch (error) {
 		console.error('Error exporting data:', error);

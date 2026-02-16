@@ -104,7 +104,7 @@ function scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride =
 
     $log[] = "[" . date('Y-m-d H:i:s') . "] Successfully fetched page content (" . strlen($html) . " bytes)";
 
-    // Parse the HTML
+    // Parse the HTML (still useful for title extraction, etc.)
     $dom = new DOMDocument();
     libxml_use_internal_errors(true); // Suppress HTML parsing warnings
     $loadResult = $dom->loadHTML($html);
@@ -119,13 +119,13 @@ function scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride =
     // Add some debugging to see what we can find
     $log[] = "[" . date('Y-m-d H:i:s') . "] Analyzing page structure...";
     try {
-        debugPageStructure($xpath, $log);
+        debugPageStructure($html, $log);
     } catch (Exception $e) {
         $log[] = "[" . date('Y-m-d H:i:s') . "] Debug error: " . $e->getMessage();
     }
 
-    // Extract product information
-    $productInfo = extractProductInfo($xpath, $log);
+    // Extract product information (pass raw HTML for JSON extraction + xpath for DOM queries)
+    $productInfo = extractProductInfo($html, $xpath, $log);
 
     // Use override if provided, otherwise use extracted code
     if (!empty($productCodeOverride)) {
@@ -134,7 +134,7 @@ function scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride =
     }
 
     // Extract image URLs
-    $images = extractImageUrls($xpath, $productInfo, $log);
+    $images = extractImageUrls($productInfo, $log);
 
     // Download images
     $downloadedImages = downloadImages($images, $imageFolder, $namingFormat, $productInfo, $log);
@@ -155,119 +155,266 @@ function scrapeProduct($url, $imageFolder, $namingFormat, $productCodeOverride =
     ];
 }
 
-function debugPageStructure($xpath, &$log)
+function debugPageStructure($html, &$log)
 {
-    // Get a sample of the HTML content to see what we're actually dealing with
-    $htmlSample = $xpath->document->saveHTML();
-    $sampleLength = min(2000, strlen($htmlSample));
-    $sample = substr($htmlSample, 0, $sampleLength);
-    $log[] = "[" . date('Y-m-d H:i:s') . "] HTML Sample (first {$sampleLength} chars): " . htmlspecialchars($sample);
+    // Check for the embedded JSON product data (new SanMar site structure)
+    $hasGalleryImages = strpos($html, 'galleryImages') !== false;
+    $hasStyleNumber = strpos($html, '"styleNumber"') !== false;
+    $hasVariantOptions = strpos($html, 'variantOptionQualifiers') !== false;
 
-    // Check for various elements we're looking for
-    $checks = [
-        'product-style-number' => "//span[@class='product-style-number']",
-        'color-swatches' => "//div[contains(@class, 'color-swatches')]",
-        'data-variant-code' => "//*[@data-variant-code]",
-        'swatch-name' => "//span[@class='swatch-name']",
-        'product-title h1' => "//h1",
-        'title tag' => "//title",
-        'any spans' => "//span",
-        'any divs' => "//div",
-        'script tags' => "//script"
-    ];
-
-    foreach ($checks as $name => $query) {
-        $elements = $xpath->query($query);
-        $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - $name: found " . $elements->length . " elements";
-
-        if ($elements->length > 0 && $elements->length <= 3) {
-            // Log first few elements' content for debugging
-            for ($i = 0; $i < min(3, $elements->length); $i++) {
-                $content = trim($elements->item($i)->textContent);
-                $content = substr($content, 0, 100); // Limit length
-                $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - $name [$i]: '$content'";
-            }
-        }
-    }
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - galleryImages JSON found: " . ($hasGalleryImages ? 'YES' : 'NO');
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - styleNumber JSON found: " . ($hasStyleNumber ? 'YES' : 'NO');
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - variantOptions JSON found: " . ($hasVariantOptions ? 'YES' : 'NO');
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Debug - Page size: " . strlen($html) . " bytes";
 }
 
-function extractProductInfo($xpath, &$log)
+function extractProductInfo($html, $xpath, &$log)
 {
     $info = [];
 
-    // Extract product code from the specific SanMar element
-    $styleElements = $xpath->query("//span[@class='product-style-number']");
-    if ($styleElements->length > 0) {
-        $styleText = trim($styleElements->item(0)->textContent);
-        // Remove any child elements like "Sale" text
-        $styleNumber = preg_replace('/\s*(Sale|New|Discontinued).*$/', '', $styleText);
-        $info['code'] = trim($styleNumber);
-        $log[] = "[" . date('Y-m-d H:i:s') . "] Found style number: " . $info['code'];
+    // The new SanMar site embeds product data as JSON in a JavaScript variable
+    // Look for the JSON object containing styleNumber, variantOptions, galleryImages, etc.
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Extracting product info from embedded JSON...";
+
+    // Extract the main product JSON data block
+    $productJson = extractEmbeddedJson($html, $log);
+
+    if ($productJson) {
+        // Extract style number
+        if (isset($productJson['styleNumber'])) {
+            $info['code'] = $productJson['styleNumber'];
+            $log[] = "[" . date('Y-m-d H:i:s') . "] Found style number: " . $info['code'];
+        }
+
+        // Extract brand name
+        if (isset($productJson['brandName'])) {
+            $info['brand'] = $productJson['brandName'];
+            $log[] = "[" . date('Y-m-d H:i:s') . "] Found brand: " . $info['brand'];
+        }
+
+        // Extract product name from title tag or page content
+        $titleElements = $xpath->query("//title");
+        if ($titleElements->length > 0) {
+            $titleText = trim($titleElements->item(0)->textContent);
+            // Clean up - remove "SanMar" suffix
+            $titleText = preg_replace('/\s*[-|]\s*SanMar.*$/', '', $titleText);
+            $info['name'] = trim($titleText);
+        }
+        // Also check h1/h3 elements with product name
+        if (empty($info['name'])) {
+            $h1Elements = $xpath->query("//h1 | //h3");
+            if ($h1Elements->length > 0) {
+                $info['name'] = trim($h1Elements->item(0)->textContent);
+            }
+        }
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Found product name: " . ($info['name'] ?? 'Unknown');
+
+        // Extract product description/message
+        if (isset($productJson['productMessage'])) {
+            $info['description'] = $productJson['productMessage'];
+        }
+
+        // Extract gallery images for the current color
+        if (isset($productJson['galleryImages'])) {
+            $info['gallery_images'] = $productJson['galleryImages'];
+            $log[] = "[" . date('Y-m-d H:i:s') . "] Found " . count($productJson['galleryImages']) . " gallery images for current color";
+        }
+
+        // Extract color variants from the "All Colors" filter option
+        $colors = [];
+        $colorData = [];
+
+        // First check variantOptions (flat list of all variants)
+        if (isset($productJson['variantOptions'])) {
+            foreach ($productJson['variantOptions'] as $variant) {
+                $colorName = '';
+                $variantCode = $variant['code'] ?? '';
+                $variantUrl = $variant['url'] ?? '';
+
+                // Get color name from variantOptionQualifiers
+                if (isset($variant['variantOptionQualifiers'])) {
+                    foreach ($variant['variantOptionQualifiers'] as $qualifier) {
+                        if ($qualifier['qualifier'] === 'colourCategoryCode') {
+                            $colorName = $qualifier['value'] ?? '';
+                            break;
+                        }
+                    }
+                }
+
+                if (!empty($colorName) && !in_array($colorName, $colors)) {
+                    $colors[] = $colorName;
+                    $colorData[] = [
+                        'name' => $colorName,
+                        'variant_code' => $variantCode,
+                        'url' => 'https://www.sanmar.com' . $variantUrl
+                    ];
+                }
+            }
+        }
+
+        // Also check filterOptions for the "All Colors" group
+        if (empty($colors) && isset($productJson['filterOptions'])) {
+            foreach ($productJson['filterOptions'] as $filterGroup) {
+                if (isset($filterGroup['name']) && $filterGroup['name'] === 'All Colors') {
+                    foreach ($filterGroup['variantOptions'] as $variant) {
+                        $colorName = '';
+                        $variantCode = $variant['code'] ?? '';
+                        $variantUrl = $variant['url'] ?? '';
+
+                        if (isset($variant['variantOptionQualifiers'])) {
+                            foreach ($variant['variantOptionQualifiers'] as $qualifier) {
+                                if ($qualifier['qualifier'] === 'colourCategoryCode') {
+                                    $colorName = $qualifier['value'] ?? '';
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (!empty($colorName) && !in_array($colorName, $colors)) {
+                            $colors[] = $colorName;
+                            $colorData[] = [
+                                'name' => $colorName,
+                                'variant_code' => $variantCode,
+                                'url' => 'https://www.sanmar.com' . $variantUrl
+                            ];
+                        }
+                    }
+                    break; // Only need "All Colors"
+                }
+            }
+        }
+
+        $info['colors'] = $colors;
+        $info['color_data'] = $colorData;
+
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Found " . count($colors) . " colors: " . implode(', ', array_slice($colors, 0, 10));
+        if (count($colors) > 10) {
+            $log[] = "[" . date('Y-m-d H:i:s') . "] ... and " . (count($colors) - 10) . " more colors";
+        }
     } else {
-        // Fallback: look for data-style-number attributes
-        $dataStyleElements = $xpath->query("//*[@data-style-number]");
-        if ($dataStyleElements->length > 0) {
-            $styleNumber = $dataStyleElements->item(0)->getAttribute('data-style-number');
-            $info['code'] = $styleNumber;
-            $log[] = "[" . date('Y-m-d H:i:s') . "] Found style number (fallback): $styleNumber";
+        $log[] = "[" . date('Y-m-d H:i:s') . "] WARNING: Could not extract embedded JSON data. Falling back to basic extraction.";
+
+        // Fallback: try to extract from URL
+        if (preg_match('/\/p\/\d+_([^\/\?#]+)/', $_POST['url'] ?? '', $matches)) {
+            $info['colors'] = [$matches[1]];
+            $info['color_data'] = [];
         }
     }
-
-    // Extract product name from title or h1
-    $nameElements = $xpath->query("//h1[@class='product-title'] | //h1[contains(@class, 'product')] | //title | //h1");
-    if ($nameElements->length > 0) {
-        $nameText = trim($nameElements->item(0)->textContent);
-        // Clean up the title
-        $nameText = preg_replace('/\s*-\s*SanMar.*$/', '', $nameText);
-        $nameText = preg_replace('/\s*\|\s*SanMar.*$/', '', $nameText); // Also handle | separator
-        $info['name'] = trim($nameText);
-        $log[] = "[" . date('Y-m-d H:i:s') . "] Found product name: " . $info['name'];
-    }
-
-    // Extract description from product details
-    $descElements = $xpath->query("//div[contains(@class, 'product-description')] | //div[contains(@class, 'description')]");
-    if ($descElements->length > 0) {
-        $info['description'] = trim($descElements->item(0)->textContent);
-    }
-
-    // Extract available colors from color swatches (SanMar specific structure)
-    $log[] = "[" . date('Y-m-d H:i:s') . "] Looking for color swatches...";
-
-    $colorElements = $xpath->query("//div[contains(@class, 'color-swatches')]//li/a[@data-variant-code]");
-    $log[] = "[" . date('Y-m-d H:i:s') . "] Found " . $colorElements->length . " color swatch elements";
-
-    $colors = [];
-    $colorData = [];
-
-    foreach ($colorElements as $element) {
-        $variantCode = $element->getAttribute('data-variant-code');
-        $href = $element->getAttribute('href');
-        $colorNameElement = $xpath->query(".//span[@class='swatch-name']", $element);
-
-        if ($colorNameElement->length > 0) {
-            $colorName = trim($colorNameElement->item(0)->textContent);
-            $colors[] = $colorName;
-
-            // Store detailed color data for image scraping
-            $colorData[] = [
-                'name' => $colorName,
-                'variant_code' => $variantCode,
-                'url' => 'https://www.sanmar.com' . $href
-            ];
-
-            $log[] = "[" . date('Y-m-d H:i:s') . "] Found color: $colorName ($variantCode)";
-        }
-    }
-
-    $info['colors'] = $colors;
-    $info['color_data'] = $colorData; // Store for image extraction
-
-    $log[] = "[" . date('Y-m-d H:i:s') . "] Found " . count($colors) . " colors: " . implode(', ', $colors);
 
     return $info;
 }
 
-function extractImageUrls($xpath, $productInfo, &$log)
+/**
+ * Extract the embedded JSON product data from the HTML page.
+ * SanMar embeds a large JSON object in a script tag containing
+ * galleryImages, styleNumber, variantOptions, etc.
+ */
+function extractEmbeddedJson($html, &$log)
+{
+    // Strategy 1: Look for JSON containing galleryImages and styleNumber
+    // The JSON is embedded in a script block, often as a JS variable assignment
+    if (preg_match('/"styleNumber"\s*:\s*"([^"]+)"/', $html, $styleMatch)) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Found styleNumber in HTML: " . $styleMatch[1];
+    }
+
+    // Find the large JSON block containing galleryImages
+    // It's typically in a pattern like: {...,"galleryImages":[...],...,"styleNumber":"C402",...}
+    // We need to find the start of the JSON object that contains these keys
+
+    // Look for the galleryImages array and extract the surrounding JSON object
+    $galleryPos = strpos($html, '"galleryImages"');
+    if ($galleryPos === false) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Could not find galleryImages in HTML";
+        return null;
+    }
+
+    // Find the beginning of the JSON object containing galleryImages
+    // Walk backwards from galleryPos to find the opening brace
+    $searchStart = max(0, $galleryPos - 50000); // The JSON object can be very large
+    $segment = substr($html, $searchStart, $galleryPos - $searchStart);
+
+    // Find the last opening brace pattern that looks like start of product data
+    // Look for a pattern like {"variantOptions" or {"code" that starts the product JSON
+    $braceDepth = 0;
+    $objectStart = $galleryPos;
+
+    // Walk backwards to find the matching opening brace
+    for ($i = strlen($segment) - 1; $i >= 0; $i--) {
+        $char = $segment[$i];
+        if ($char === '}' || $char === ']') {
+            $braceDepth++;
+        } elseif ($char === '{' || $char === '[') {
+            if ($braceDepth === 0) {
+                $objectStart = $searchStart + $i;
+                break;
+            }
+            $braceDepth--;
+        }
+    }
+
+    // Now extract from objectStart forward, finding the matching closing brace
+    $jsonCandidate = substr($html, $objectStart);
+    $braceDepth = 0;
+    $objectEnd = 0;
+    $inString = false;
+    $escape = false;
+
+    for ($i = 0; $i < strlen($jsonCandidate) && $i < 200000; $i++) {
+        $char = $jsonCandidate[$i];
+
+        if ($escape) {
+            $escape = false;
+            continue;
+        }
+
+        if ($char === '\\') {
+            $escape = true;
+            continue;
+        }
+
+        if ($char === '"') {
+            $inString = !$inString;
+            continue;
+        }
+
+        if (!$inString) {
+            if ($char === '{') {
+                $braceDepth++;
+            } elseif ($char === '}') {
+                $braceDepth--;
+                if ($braceDepth === 0) {
+                    $objectEnd = $i + 1;
+                    break;
+                }
+            }
+        }
+    }
+
+    if ($objectEnd === 0) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Could not find matching closing brace for product JSON";
+        return null;
+    }
+
+    $jsonString = substr($jsonCandidate, 0, $objectEnd);
+
+    // Unescape unicode sequences that SanMar uses (e.g., \u003d for =)
+    $jsonString = preg_replace_callback('/\\\\u([0-9a-fA-F]{4})/', function ($matches) {
+        return mb_convert_encoding(pack('H*', $matches[1]), 'UTF-8', 'UCS-2BE');
+    }, $jsonString);
+
+    $decoded = json_decode($jsonString, true);
+    if ($decoded === null) {
+        $log[] = "[" . date('Y-m-d H:i:s') . "] JSON decode failed: " . json_last_error_msg();
+        $log[] = "[" . date('Y-m-d H:i:s') . "] JSON sample (first 500 chars): " . substr($jsonString, 0, 500);
+        return null;
+    }
+
+    $log[] = "[" . date('Y-m-d H:i:s') . "] Successfully parsed product JSON (" . strlen($jsonString) . " bytes)";
+
+    return $decoded;
+}
+
+function extractImageUrls($productInfo, &$log)
 {
     $images = [];
     $colorData = $productInfo['color_data'] ?? [];
@@ -279,54 +426,95 @@ function extractImageUrls($xpath, $productInfo, &$log)
 
     $log[] = "[" . date('Y-m-d H:i:s') . "] Starting to scrape images for " . count($colorData) . " color variants";
 
-    foreach ($colorData as $color) {
+    // If the current page already has gallery images (from the initially loaded color),
+    // we can use those directly for the first color
+    $firstColorHandled = false;
+    $currentGalleryImages = $productInfo['gallery_images'] ?? [];
+
+    foreach ($colorData as $index => $color) {
         $colorName = $color['name'];
         $variantCode = $color['variant_code'];
         $variantUrl = $color['url'];
 
-        $log[] = "[" . date('Y-m-d H:i:s') . "] Scraping images for color: $colorName ($variantCode)";
+        $log[] = "[" . date('Y-m-d H:i:s') . "] Scraping images for color: $colorName ($variantCode) [" . ($index + 1) . "/" . count($colorData) . "]";
 
         try {
-            // Fetch the color variant page
-            $variantHtml = fetchPageContent($variantUrl);
-            if (!$variantHtml) {
-                $log[] = "[" . date('Y-m-d H:i:s') . "] Failed to fetch variant page: $variantUrl";
-                continue;
+            $galleryImages = [];
+
+            // For the first page load, we may already have gallery images
+            if (!$firstColorHandled && !empty($currentGalleryImages)) {
+                $galleryImages = $currentGalleryImages;
+                $firstColorHandled = true;
+                $log[] = "[" . date('Y-m-d H:i:s') . "] Using gallery images from initial page load";
+            } else {
+                // Fetch the color variant page
+                $variantHtml = fetchPageContent($variantUrl);
+                if (!$variantHtml) {
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] Failed to fetch variant page: $variantUrl";
+                    continue;
+                }
+
+                // Extract the JSON from the variant page to get gallery images
+                $variantJson = extractEmbeddedJson($variantHtml, $log);
+                if ($variantJson && isset($variantJson['galleryImages'])) {
+                    $galleryImages = $variantJson['galleryImages'];
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] Found " . count($galleryImages) . " gallery images for $colorName";
+                } else {
+                    $log[] = "[" . date('Y-m-d H:i:s') . "] No gallery images found in JSON for $colorName";
+                    continue;
+                }
+
+                // Small delay to be respectful to the server
+                usleep(500000); // 0.5 seconds
             }
 
-            // Parse the variant page
-            $variantDom = new DOMDocument();
-            @$variantDom->loadHTML($variantHtml);
-            $variantXpath = new DOMXPath($variantDom);
+            // Process gallery images - prefer zoom (1200W) format
+            foreach ($galleryImages as $galleryImage) {
+                $imageUrl = '';
+                $mediaCode = '';
 
-            // Look for the main product image link (following your manual process)
-            $imageLinks = $variantXpath->query("//div[contains(@class, 'main-image')]//a[contains(@class, 'zoom')]/@href");
+                // Prefer zoom (highest resolution, 1200W)
+                if (isset($galleryImage['zoom']['url'])) {
+                    $imageUrl = $galleryImage['zoom']['url'];
+                    $mediaCode = $galleryImage['zoom']['mediaCode'] ?? '';
+                }
+                // Fallback to mainImage (624W)
+                elseif (isset($galleryImage['mainImage']['url'])) {
+                    $imageUrl = $galleryImage['mainImage']['url'];
+                    $mediaCode = $galleryImage['mainImage']['mediaCode'] ?? '';
+                }
 
-            foreach ($imageLinks as $link) {
-                $imageUrl = $link->nodeValue;
+                if (empty($imageUrl)) continue;
 
-                // Convert relative URLs to absolute
-                if (strpos($imageUrl, 'http') !== 0) {
+                // Convert protocol-relative URLs to absolute
+                if (strpos($imageUrl, '//') === 0) {
                     $imageUrl = 'https:' . $imageUrl;
                 }
 
-                // Determine view type from filename
-                $viewType = determineViewType($imageUrl);
+                // Determine view type from mediaCode
+                $viewType = determineViewType($mediaCode ?: $imageUrl);
+
+                // Generate a clean filename
+                $extension = 'jpg';
+                if (preg_match('/\.(\w+)$/', parse_url($imageUrl, PHP_URL_PATH), $extMatch)) {
+                    $extension = $extMatch[1];
+                }
+
+                $cleanColorName = preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(['/', ' '], ['_', '_'], $colorName));
+                $styleCode = $productInfo['code'] ?? 'unknown';
+                $filename = "{$styleCode}_{$cleanColorName}_{$viewType}.{$extension}";
 
                 $images[] = [
                     'url' => $imageUrl,
                     'color' => $colorName,
                     'variant_code' => $variantCode,
                     'view' => $viewType,
-                    'filename' => basename(parse_url($imageUrl, PHP_URL_PATH))
+                    'filename' => $filename,
+                    'media_code' => $mediaCode
                 ];
 
                 $log[] = "[" . date('Y-m-d H:i:s') . "] Found image: $colorName ($viewType) - " . basename($imageUrl);
             }
-
-            // Small delay to be respectful to the server
-            usleep(500000); // 0.5 seconds
-
         } catch (Exception $e) {
             $log[] = "[" . date('Y-m-d H:i:s') . "] Error scraping color $colorName: " . $e->getMessage();
         }
@@ -366,21 +554,38 @@ function fetchPageContent($url)
     return ($httpCode === 200) ? $html : false;
 }
 
-function determineViewType($imageUrl)
+function determineViewType($mediaCodeOrUrl)
 {
-    $filename = strtolower(basename($imageUrl));
+    $text = strtolower($mediaCodeOrUrl);
 
-    // SanMar specific view patterns
-    if (str_contains($filename, 'modelfront') || str_contains($filename, 'front')) {
+    // New SanMar mediaCode patterns (e.g., "8332_WdlndCmBk-1-C112WdlndCmBkHatLeft_1200W")
+    // View types are embedded in the mediaCode
+    if (str_contains($text, 'hatleft') || str_contains($text, 'capleft')) {
+        return 'left';
+    } elseif (str_contains($text, 'hatright') || str_contains($text, 'capright')) {
+        return 'right';
+    } elseif (str_contains($text, 'hatstraight') || str_contains($text, 'capstraight') || str_contains($text, 'hatfront') || str_contains($text, 'capfront')) {
         return 'front';
-    } elseif (str_contains($filename, 'modelback') || str_contains($filename, 'back')) {
+    } elseif (str_contains($text, 'hatback') || str_contains($text, 'capback')) {
         return 'back';
-    } elseif (str_contains($filename, 'flat') || str_contains($filename, 'flt')) {
-        return 'flat';
-    } elseif (str_contains($filename, 'side')) {
-        return 'side';
-    } elseif (str_contains($filename, 'model')) {
+    } elseif (str_contains($text, 'modelfront') || str_contains($text, 'modelfront')) {
+        return 'model_front';
+    } elseif (str_contains($text, 'modelback')) {
+        return 'model_back';
+    } elseif (str_contains($text, 'modelside') || str_contains($text, 'model34')) {
+        return 'model_side';
+    } elseif (str_contains($text, 'model')) {
         return 'model';
+    } elseif (str_contains($text, 'flat') || str_contains($text, 'flt')) {
+        return 'flat';
+    } elseif (str_contains($text, 'front')) {
+        return 'front';
+    } elseif (str_contains($text, 'back')) {
+        return 'back';
+    } elseif (str_contains($text, 'side') || str_contains($text, 'left') || str_contains($text, 'right')) {
+        return 'side';
+    } elseif (str_contains($text, 'detail') || str_contains($text, 'closeup') || str_contains($text, 'close-up')) {
+        return 'detail';
     } else {
         return 'main';
     }
