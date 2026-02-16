@@ -11,6 +11,7 @@ npm run release
 ```
 
 That's it! This single command will:
+
 1. ✅ Analyze your commits since the last release
 2. ✅ Determine the version bump (patch by default)
 3. ✅ Update changelog.md with grouped changes
@@ -128,7 +129,7 @@ Creates changelog entry like:
 
 ## Troubleshooting
 
-### If you accidentally run release:
+### If you accidentally run release
 
 ```bash
 # Undo the last commit (keeps your changes)
@@ -138,7 +139,7 @@ git reset --soft HEAD~1
 git tag -d v2.5.0
 ```
 
-### If changelog looks wrong:
+### If changelog looks wrong
 
 You can still manually edit `changelog.md` and regenerate HTML:
 
@@ -157,16 +158,19 @@ npm run changelog:html
 ## Need Help?
 
 Run dry-run to see what would happen:
+
 ```bash
 npx standard-version --dry-run
 ```
 
 Check the version:
+
 ```bash
 cat package.json | grep version
 ```
 
 View recent tags:
+
 ```bash
 git tag -l | tail -5
 ```
