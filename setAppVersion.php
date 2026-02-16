@@ -1,25 +1,33 @@
 <?php
-// session_start();
+/*
+Created: 2024/07/05
+Last modified: 2026/02/16 09:20:52
+Organization: Berkeley County IT Department
+Purpose: Extract version number from package.json for display in footer
+Note: Version is now managed by standard-version via npm run release
+*/
 
-function updateAppVersion($changelogPath)
+function updateAppVersion($packageJsonPath)
 {
-    $changelogContent = file_get_contents($changelogPath);
-    // Get the version number using regex
-    // Note the format of #### (markdown for h4) with a - (dash) after version number. In my markdown file, I have the date after that dash but that is up to you. Just update the regex to reflect if you something differnt directly before and after the version number you are extracting. 
-    preg_match('/## Version ([\d.]+) -/', $changelogContent, $matches);
-    $appVersion = isset($matches[1]) ? $matches[1] : 'Unknown';
+    // Read package.json
+    $packageJson = file_get_contents($packageJsonPath);
+
+    if ($packageJson === false) {
+        return 'Unknown';
+    }
+
+    // Decode JSON
+    $packageData = json_decode($packageJson, true);
+
+    // Extract version, fallback to 'Unknown' if not found
+    $appVersion = isset($packageData['version']) ? $packageData['version'] : 'Unknown';
 
     return $appVersion;
 }
-// This is the path to the changelog file in my app. I am lazy and it is in the folder as my changelog.md file. Adjsut as needed for your app.
-$changelogPath = './changelog.md';
 
-// this calls the function to extract the version number and set the value into a variable.
-$appVersion = updateAppVersion($changelogPath);
+// Path to package.json
+$packageJsonPath = './package.json';
 
-// This can be removed. For demonstrtation and debugging only
-// echo "App Version: $appVersion";
-// set Session variable to hold the extracted version number. 
+// Extract version and set in session
+$appVersion = updateAppVersion($packageJsonPath);
 $_SESSION['appVersion'] = $appVersion;
-
-// technically I guess we could say $_SESSION['appVersion'] = updateAppVersion($changelogPath); as well.... up to you. Make it better, submit a PR. :)
