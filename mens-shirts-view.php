@@ -40,7 +40,14 @@ include "./components/viewHead.php"
                 <span>Uncheck items you don't want to see in results</span>
             </div>
             <div id="filters"></div>
-            <button class="button" onclick="resetFilters()">Reset Filters</button>
+            <div class="popover-buttons">
+                <button class="btn-view-results" popovertarget="filters-popover" popovertargetaction="hide">View Filtered Results</button>
+                <button class="btn-reset-filters" onclick="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+        <div id="filter-active-indicator" class="filter-active-indicator">
+            <span><span id="filter-count">0</span> filters active</span>
+            <button class="btn-clear-filters" onclick="resetFilters()">Clear All</button>
         </div>
     </div>
 </div>
@@ -50,6 +57,7 @@ include "./components/viewHead.php"
 <script src="functions/sendToSizesToRemoveArray.js"></script>
 <script src="functions/sendToTypesToRemoveArray.js"></script>
 <script src="functions/sendToSleevesToRemoveArray.js"></script>
+<script src="functions/filterIndicator.js"></script>
 <script>
     getFilteredProducts(2, 1);
 </script>
@@ -63,17 +71,6 @@ include "./components/viewHead.php"
 
     function resetFilters() {
         location.reload();
-
-        var filterContainer = document.getElementById('filters');
-        const checkboxes = filterContainer.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((checkbox) => {
-            checkbox.checked = true;
-        });
-
-        sizesToRemove = [];
-        typesToRemove = [];
-        sleevesToRemove = [];
-
     }
 
     function getFilterData() {

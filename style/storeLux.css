@@ -8175,6 +8175,69 @@ fieldset:disabled .btn {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+/* Product Card Styles */
+.product-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	border-radius: 8px;
+	overflow: hidden;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.product-card-link {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	text-decoration: none;
+	color: inherit;
+}
+
+.product-card-image {
+	position: relative;
+	width: 100%;
+	height: 280px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: #f8f9fa;
+}
+
+.product-card-image img {
+	max-width: 100%;
+	max-height: 100%;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+.product-card-info {
+	padding: 15px;
+	margin-top: auto;
+	background: var(--bs-card-bg, #fff);
+}
+
+.product-card-title {
+	font-size: 0.95rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 5px;
+	line-height: 1.3;
+}
+
+.product-card-code {
+	font-size: 0.85rem;
+	color: #6c757d;
+	margin-bottom: 0;
+}
+
 .d-grid-3 {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));

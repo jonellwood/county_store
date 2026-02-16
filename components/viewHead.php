@@ -1,7 +1,7 @@
 <?php
 /*
 Created: 2024/08/28 14:24:34
-Last modified: 2025/10/31 15:05:57
+Last modified: 2026/02/16 08:47:57
 Organization: Berkeley County IT Department
 Purpose: Common header for all pages in public site. Brings in the needed CSS and includes the navigation element.
 Includes:   Cart.class.php is to initialize a Cart Object for users shopping session. 
@@ -450,8 +450,9 @@ $cart = new Cart;
             border-radius: var(--radius-xl);
             padding: var(--spacing-6);
             box-shadow: var(--shadow-xl);
-            min-width: 400px;
-            max-width: 600px;
+            min-width: 320px;
+            max-width: min(700px, 90vw);
+            width: auto;
         }
 
         #filters-popover::backdrop {
@@ -480,6 +481,7 @@ $cart = new Cart;
             margin-bottom: var(--spacing-5);
             max-height: 60vh;
             overflow-y: auto;
+            overflow-x: hidden;
             padding-right: var(--spacing-2);
         }
 
@@ -507,9 +509,13 @@ $cart = new Cart;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-lg);
             padding: var(--spacing-4);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-2);
         }
 
         .filter-group>span {
+            flex-basis: 100%;
             display: block;
             font-weight: 700;
             font-size: 1rem;
@@ -520,26 +526,29 @@ $cart = new Cart;
         }
 
         .filter-group label {
-            display: grid;
-            grid-template-columns: 1fr auto;
+            display: inline-flex;
             align-items: center;
-            gap: var(--spacing-3);
+            gap: var(--spacing-2);
             padding: var(--spacing-2) var(--spacing-3);
-            margin: var(--spacing-1) 0;
             border-radius: var(--radius-md);
             cursor: pointer;
             transition: all 0.2s ease;
             color: var(--text-primary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            white-space: nowrap;
         }
 
         .filter-group label:hover {
-            background: var(--bg-elevated);
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
         }
 
         .filter-group input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             cursor: pointer;
             accent-color: var(--color-primary);
             flex-shrink: 0;
@@ -567,8 +576,15 @@ $cart = new Cart;
             box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
         }
 
+        .btn-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-3);
+            margin-top: var(--spacing-4);
+        }
+
         .btn.js-toggle-filter {
-            background: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #7c3aed 100%);
             color: white;
             border: none;
             padding: var(--spacing-3) var(--spacing-5);
@@ -580,10 +596,11 @@ $cart = new Cart;
             display: inline-flex;
             align-items: center;
             gap: var(--spacing-2);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
         }
 
         .btn.js-toggle-filter:hover {
-            background: var(--color-primary-dark);
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, #6d28d9 100%);
             transform: scale(1.05);
         }
 
@@ -592,13 +609,14 @@ $cart = new Cart;
             padding: 2px 8px;
             border-radius: var(--radius-sm);
             font-size: 0.9em;
+            color: white;
         }
 
         #filters-popover .btn-close {
             position: absolute;
             top: var(--spacing-3);
             right: var(--spacing-3);
-            background: var(--bg-surface);
+            /* background: var(--bg-surface); */
             border: 1px solid var(--border-light);
             border-radius: 50%;
             width: 32px;
@@ -619,17 +637,146 @@ $cart = new Cart;
             transform: scale(1.1);
         }
 
+        /* Popover button group */
+        .popover-buttons {
+            display: flex;
+            gap: var(--spacing-3);
+            margin-top: var(--spacing-4);
+        }
+
+        .popover-buttons .btn-view-results {
+            flex: 2;
+            padding: var(--spacing-3) var(--spacing-4);
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .popover-buttons .btn-view-results:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .popover-buttons .btn-reset-filters {
+            flex: 1;
+            padding: var(--spacing-3) var(--spacing-4);
+            background: transparent;
+            color: var(--color-danger);
+            border: 2px solid var(--color-danger);
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .popover-buttons .btn-reset-filters:hover {
+            background: var(--color-danger);
+            color: white;
+        }
+
+        /* Filter Active Indicator */
+        .filter-active-indicator {
+            display: none;
+            align-items: center;
+            gap: var(--spacing-3);
+            padding: var(--spacing-3) var(--spacing-4);
+            background: linear-gradient(135deg, var(--color-primary) 0%, #7c3aed 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        .filter-active-indicator.active {
+            display: inline-flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .filter-active-indicator .filter-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 10px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+        }
+
+        .filter-active-indicator #filter-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 10px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+        }
+
+        .filter-active-indicator .btn-clear-inline {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: var(--spacing-2);
+        }
+
+        .filter-active-indicator .btn-clear-inline:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .filter-active-indicator .btn-clear-filters {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-left: var(--spacing-2);
+        }
+
+        .filter-active-indicator .btn-clear-filters:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             #filters-popover {
                 min-width: auto;
-                max-width: 90vw;
+                max-width: 95vw;
                 padding: var(--spacing-4);
+                margin: 10px;
             }
 
             .filter-group label {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 padding: var(--spacing-2);
+            }
+
+            .filter-group input[type="checkbox"] {
+                width: 16px;
+                height: 16px;
             }
         }
 

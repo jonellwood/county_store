@@ -109,8 +109,14 @@ body {
 .filter-group {
   display: flex;
   flex-direction: row;
-  gap: 10px;
-  font-size: larger;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.filter-group>span {
+  flex-basis: 100%;
+  width: 100%;
 }
 
 .hidden {
