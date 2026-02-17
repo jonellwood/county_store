@@ -1,6 +1,6 @@
 {
 	"name": "store",
-	"version": "2.6.1",
+	"version": "2.7.0",
 	"description": "Internal County Store",
 	"main": "index.php",
 	"directories": {
