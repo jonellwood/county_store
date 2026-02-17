@@ -161,7 +161,7 @@ class VendorReportManager {
 
 		try {
 			const response = await fetch(
-				`vendor-report-api.php?uid=${encodeURIComponent(this.orderInstanceId)}`
+				`vendor-report-api.php?uid=${encodeURIComponent(this.orderInstanceId)}`,
 			);
 
 			if (!response.ok) {
@@ -204,7 +204,7 @@ class VendorReportManager {
 			const orderDate = document.getElementById('orderDate');
 			if (orderDate && this.rawData.order_info.order_date) {
 				orderDate.textContent = this.formatDate(
-					this.rawData.order_info.order_date
+					this.rawData.order_info.order_date,
 				);
 			}
 
@@ -361,7 +361,7 @@ class VendorReportManager {
 				a,
 				b,
 				this.sortConfig.primary.field,
-				this.sortConfig.primary.direction
+				this.sortConfig.primary.direction,
 			);
 			if (result !== 0) return result;
 
@@ -371,7 +371,7 @@ class VendorReportManager {
 					a,
 					b,
 					this.sortConfig.secondary.field,
-					this.sortConfig.secondary.direction
+					this.sortConfig.secondary.direction,
 				);
 				if (result !== 0) return result;
 			}
@@ -382,7 +382,7 @@ class VendorReportManager {
 					a,
 					b,
 					this.sortConfig.tertiary.field,
-					this.sortConfig.tertiary.direction
+					this.sortConfig.tertiary.direction,
 				);
 			}
 
@@ -556,16 +556,16 @@ class VendorReportManager {
 
 		// Pricing information
 		rowElement.querySelector('.unit-price').textContent = this.formatCurrency(
-			item.pre_tax_price
+			item.pre_tax_price,
 		);
 		rowElement.querySelector('.logo-fee').textContent = this.formatCurrency(
-			item.logo_fee
+			item.logo_fee,
 		);
 		rowElement.querySelector('.tax-amount').textContent = this.formatCurrency(
-			item.tax
+			item.tax,
 		);
 		rowElement.querySelector('.total-amount').textContent = this.formatCurrency(
-			item.line_item_total
+			item.line_item_total,
 		);
 
 		// Logo
@@ -585,9 +585,8 @@ class VendorReportManager {
 			item.dept_patch_place || 'No placement specified';
 
 		// Employee info
-		rowElement.querySelector(
-			'.employee-name'
-		).textContent = `${item.rf_first_name} ${item.rf_last_name}`;
+		rowElement.querySelector('.employee-name').textContent =
+			`${item.rf_first_name} ${item.rf_last_name}`;
 
 		// Comments - combine order_details.comment with aggregated comments
 		const commentsList = rowElement.querySelector('.comments-list');
@@ -657,7 +656,7 @@ class VendorReportManager {
 		document.getElementById('itemCount').textContent =
 			this.rawData.summary?.total_items || 0;
 		document.getElementById('totalValue').textContent = this.formatCurrency(
-			this.rawData.summary?.total_value || 0
+			this.rawData.summary?.total_value || 0,
 		);
 	}
 
@@ -740,7 +739,7 @@ class VendorReportManager {
 		// Show loading alert
 		this.showAlert(
 			'Preparing export with logo images... This may take a moment.',
-			'info'
+			'info',
 		);
 
 		// 📝 LOG THE EXPORT EVENT (just like order placements!)
@@ -763,7 +762,7 @@ class VendorReportManager {
 
 		this.showAlert(
 			'Static HTML report with embedded logos downloaded!',
-			'success'
+			'success',
 		);
 	}
 
@@ -1239,6 +1238,8 @@ class VendorReportManager {
         .report-container { box-shadow: none; }
         .controls-section { display: none; }
         .logo-image { max-width: 60px; max-height: 60px; }
+        .data-table th[data-field="line_item_total"],
+        .data-table td:nth-child(8) { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -1461,7 +1462,6 @@ class VendorReportManager {
                         <th class="sortable" data-field="color_name">Color</th>
                         <th class="sortable" data-field="line_item_total">Pricing</th>
                         <th class="sortable" data-field="logo">Logo</th>
-                        <th class="sortable" data-field="dept_patch_place">Dept Name Placement</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -1608,14 +1608,13 @@ class VendorReportManager {
                     </div>
                 </td>
                 <td>\${logoHtml}</td>
-                <td><span class="placement-info">\${formatPlacementInfo(item.dept_patch_place)}</span></td>
             </tr>\`;
             
             // Add comment row if order_details.comment exists
             if (item.comment && item.comment.trim()) {
                 html += \`
             <tr class="comment-row">
-                <td colspan="10" class="comment-cell">
+                <td colspan="9" class="comment-cell">
                     <div class="inline-comment">
                         <i class="comment-icon">💬</i>
                         <span class="comment-label">Note:</span>
