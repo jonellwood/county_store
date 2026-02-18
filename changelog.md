@@ -1,5 +1,22 @@
 # County Store Application Changelog
 
+## [2.8.0](https://github.com/bc-jonellwood/store/compare/v2.6.1...v2.8.0) (2026-02-18)
+
+
+### 🐛 Bug Fixes
+
+* Updated getSubNumSearch.php to use correct database table ([16abf03](https://github.com/bc-jonellwood/store/commit/16abf0354e0a5042b8d92a00318b87cf9bf8caab))
+
+
+### ✨ New Features
+
+* Remove dept patch placement column and hide pricing on print in vendor reports ([ee0e257](https://github.com/bc-jonellwood/store/commit/ee0e257fa7574eeb9b5d88a73e21e52289eabf67))
+
+
+### 🔧 Maintenance
+
+* **release:** 2.7.0 ([c1fb03a](https://github.com/bc-jonellwood/store/commit/c1fb03a9123f511da3f9158151c629c3b71e8006))
+
 ## [2.7.0](https://github.com/bc-jonellwood/store/compare/v2.6.1...v2.7.0) (2026-02-17)
 
 
