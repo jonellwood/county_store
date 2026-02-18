@@ -16,13 +16,21 @@ try {
     $colors = $product->getColors();
     $sizes = $product->getSizes();
     $productTypes = $product->getActiveProductTypes();
+    $genderFilters = $product->getGenderFilters();
+    $sizeFilters = $product->getSizeFilters();
+    $sleeveFilters = $product->getSleeveFilters();
+    $typeFilters = $product->getTypeFilters();
 
     // Return success response
     echo json_encode([
         'success' => true,
         'colors' => $colors,
         'sizes' => $sizes,
-        'productTypes' => $productTypes
+        'productTypes' => $productTypes,
+        'genderFilters' => $genderFilters,
+        'sizeFilters' => $sizeFilters,
+        'sleeveFilters' => $sleeveFilters,
+        'typeFilters' => $typeFilters
     ]);
 } catch (Exception $e) {
     Logger::logError("Error fetching options: " . $e->getMessage());

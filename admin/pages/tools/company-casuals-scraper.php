@@ -1,6 +1,10 @@
 <?php
 // Company Casuals Product Scraper UI
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include "../../../components/header.php";
+// session_start();
 
 if (!defined('COMPANY_CASUALS_REQUIRE_AUTH')) {
     define('COMPANY_CASUALS_REQUIRE_AUTH', false);
@@ -39,18 +43,18 @@ if ($connection->connect_errno === 0) {
 $encodedCodes = json_encode($codes);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Casuals Price Scraper</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         .scraper-container {
-            max-width: 1200px;
+            max-width: 90dvw;
             margin: 0 auto;
         }
 
@@ -150,7 +154,7 @@ $encodedCodes = json_encode($codes);
                             <p class="text-muted mb-0">Pull size-level pricing (and optional color list) for CompanyCasuals products.</p>
                         </div>
                         <div class="text-end">
-                            <a class="btn btn-secondary" href="../orders.php"><i class="fas fa-arrow-left me-1"></i>Back</a>
+                            <a class="btn btn-secondary" href="../admin/pages/"><i class="fas fa-arrow-left me-1"></i>Home</a>
                         </div>
                     </div>
                 </div>
@@ -314,8 +318,8 @@ $encodedCodes = json_encode($codes);
     <script>
         window.COMPANY_CASUALS_CODES = <?= $encodedCodes ?: '[]' ?>;
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="company-casuals-scraper.js"></script>
 </body>
 
-</html>
+<!-- </html> -->

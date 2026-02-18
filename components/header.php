@@ -421,18 +421,30 @@
                                 <li><a class="dropdown-item" href="/admin/pages/dept-admin-new.php">
                                         <i class="fas fa-sitemap me-2"></i>Edit Dept
                                     </a></li>
-                                <li><a class="dropdown-item" href="editProductsFilters.php">
+                                <li><a class="dropdown-item" href="/admin/pages/editProductsFilters.php">
                                         <i class="fas fa-filter me-2"></i>Edit Filters
                                     </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+
                                 <li><a class="dropdown-item" href="/admin/pages/add-product/">
                                         <i class="fas fa-plus me-2"></i>Add Product
                                     </a></li>
                                 <li>
                                     <a class="dropdown-item" href="/admin/pages/edit-products/">
                                         <i class="fas fa-pen me-2"></i>Edit Product
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/pages/add-color/">
+                                        <!-- <i class="fas fa-palette me-2"></i> -->
+                                        <i class="fas fa-plus me-2"></i>Add Color
+                                    </a></li>
+                                <li>
+                                <li>
+                                    <a class="dropdown-item" href="/admin/pages/edit-colors/">
+                                        <!-- <i class="fas fa-palette me-2"></i> -->
+                                        <i class="fas fa-pen me-2"></i>Edit Colors
                                     </a>
                                 </li>
                                 <li>

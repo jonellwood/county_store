@@ -1,0 +1,5 @@
+CREATE TABLE `filters_sleeve` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filter` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8

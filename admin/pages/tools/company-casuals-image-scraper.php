@@ -4,7 +4,10 @@
  * Company Casuals Image Scraper UI
  * Extracts product images from Company Casuals pages
  */
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+include "../../../components/header.php";
 
 // Optional auth check - disabled by default
 if (!defined('CC_IMAGE_SCRAPER_REQUIRE_AUTH')) {
@@ -18,14 +21,14 @@ if (CC_IMAGE_SCRAPER_REQUIRE_AUTH) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Company Casuals Image Scraper</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -371,7 +374,7 @@ if (CC_IMAGE_SCRAPER_REQUIRE_AUTH) {
         <i class="fas fa-check me-2"></i> <span id="copyFeedbackText">Copied to clipboard!</span>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="company-casuals-image-scraper.js"></script>
 </body>
 

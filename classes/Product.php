@@ -1,6 +1,6 @@
 <?php
 // Created: 2025/04/09 11:24:51
-// Last modified: 2025/08/28 15:30:53
+// Last modified: 2026/02/18 10:29:19
 
 include_once 'Logger.php';
 
@@ -205,6 +205,99 @@ class Product
             Logger::logError("Connection failed: " . $e->getMessage());
         }
     }
+    public function getColorUsage()
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT 
+                color_id,
+                COUNT(DISTINCT product_id) AS product_count
+                    FROM 
+                products_colors
+                    GROUP BY 
+                color_id
+                    ORDER BY 
+                product_count DESC;";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $resultArray = $result->fetch_all(MYSQLI_ASSOC);
+            return $resultArray;
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+
+    public function addColor($colorData)
+    {
+        $colorName = isset($colorData['color']) ? trim($colorData['color']) : '';
+
+        if ($colorName === '') {
+            return [
+                'success' => false,
+                'message' => 'Color name is required'
+            ];
+        }
+
+        try {
+            $primaryHex = $this->normalizeHexValue($colorData['p_hex'] ?? '', false, 'Primary hex');
+            $secondaryHex = $this->normalizeHexValue($colorData['s_hex'] ?? '', true, 'Secondary hex');
+            $tertiaryHex = $this->normalizeHexValue($colorData['t_hex'] ?? '', true, 'Tertiary hex');
+        } catch (\InvalidArgumentException $hexException) {
+            return [
+                'success' => false,
+                'message' => $hexException->getMessage()
+            ];
+        }
+
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+
+            $duplicateSql = "SELECT color_id FROM colors WHERE LOWER(color) = LOWER(?) LIMIT 1";
+            $duplicateStmt = $conn->prepare($duplicateSql);
+            $duplicateStmt->bind_param("s", $colorName);
+            $duplicateStmt->execute();
+            $duplicateResult = $duplicateStmt->get_result();
+
+            if ($duplicateResult && $duplicateResult->num_rows > 0) {
+                return [
+                    'success' => false,
+                    'message' => 'Color name already exists'
+                ];
+            }
+
+            $insertSql = "INSERT INTO colors (color, p_hex, s_hex, t_hex) VALUES (?, ?, ?, ?)";
+            $insertStmt = $conn->prepare($insertSql);
+            $insertStmt->bind_param("ssss", $colorName, $primaryHex, $secondaryHex, $tertiaryHex);
+            $insertStmt->execute();
+
+            $colorId = $conn->insert_id;
+            Logger::logError("Added color '{$colorName}' with ID: " . $colorId);
+
+            return [
+                'success' => true,
+                'colorId' => $colorId,
+                'message' => 'Color added successfully'
+            ];
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Error adding color: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
+        }
+    }
 
     public function getSizes()
     {
@@ -226,7 +319,83 @@ class Product
         }
     }
 
-    public function addProduct($productData, $colors, $sizes)
+    public function getGenderFilters()
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT id, filter FROM filters_gender ORDER BY filter";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function getSizeFilters()
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT id, filter FROM filters_size ORDER BY filter";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function getSleeveFilters()
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT id, filter FROM filters_sleeve ORDER BY filter";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function getTypeFilters()
+    {
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+            $sql = "SELECT id, filter FROM filters_type ORDER BY filter";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            return $result->fetch_all(MYSQLI_ASSOC);
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError("Connection failed: " . $e->getMessage());
+        }
+    }
+
+    public function addProduct($productData, $colors, $sizes, $filters = [])
     {
         $serverName = $this->db->serverName;
         $database = $this->db->database;
@@ -289,6 +458,19 @@ class Product
                 Logger::logError("Added " . count($sizes) . " prices for product ID: " . $productId);
             }
 
+            $genderFilter = isset($filters['gender']) && $filters['gender'] !== '' ? (int)$filters['gender'] : null;
+            $typeFilter = isset($filters['type']) && $filters['type'] !== '' ? (int)$filters['type'] : null;
+            $sizeFilter = isset($filters['size']) && $filters['size'] !== '' ? (int)$filters['size'] : null;
+            $sleeveFilter = isset($filters['sleeve']) && $filters['sleeve'] !== '' ? (int)$filters['sleeve'] : null;
+
+            if ($genderFilter !== null || $typeFilter !== null || $sizeFilter !== null || $sleeveFilter !== null) {
+                $filterSql = "INSERT INTO products_filters (product, gender_filter, type_filter, size_filter, sleeve_filter) VALUES (?, ?, ?, ?, ?)";
+                $filterStmt = $conn->prepare($filterSql);
+                $filterStmt->bind_param("iiiii", $productId, $genderFilter, $typeFilter, $sizeFilter, $sleeveFilter);
+                $filterStmt->execute();
+                Logger::logError("Added filters for product ID: " . $productId);
+            }
+
             $conn->commit(); // Commit transaction
             $conn->autocommit(TRUE);
 
@@ -303,6 +485,118 @@ class Product
                 $conn->autocommit(TRUE);
             }
             Logger::logError("Error adding product: " . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    public function updateColor($colorData)
+    {
+        if (empty($colorData['id'])) {
+            return [
+                'success' => false,
+                'message' => 'Color ID is required'
+            ];
+        }
+
+        $colorName = isset($colorData['color']) ? trim($colorData['color']) : '';
+        if ($colorName === '') {
+            return [
+                'success' => false,
+                'message' => 'Color name is required'
+            ];
+        }
+
+        try {
+            $primaryHex = $this->normalizeHexValue($colorData['p_hex'] ?? '', false, 'Primary hex');
+            $secondaryHex = $this->normalizeHexValue($colorData['s_hex'] ?? '', true, 'Secondary hex');
+            $tertiaryHex = $this->normalizeHexValue($colorData['t_hex'] ?? '', true, 'Tertiary hex');
+        } catch (\InvalidArgumentException $hexError) {
+            return [
+                'success' => false,
+                'message' => $hexError->getMessage()
+            ];
+        }
+
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+
+            $duplicateSql = "SELECT color_id FROM colors WHERE LOWER(color) = LOWER(?) AND color_id != ? LIMIT 1";
+            $duplicateStmt = $conn->prepare($duplicateSql);
+            $duplicateStmt->bind_param("si", $colorName, $colorData['id']);
+            $duplicateStmt->execute();
+            $duplicateResult = $duplicateStmt->get_result();
+
+            if ($duplicateResult && $duplicateResult->num_rows > 0) {
+                return [
+                    'success' => false,
+                    'message' => 'Another color already uses this name'
+                ];
+            }
+
+            $updateSql = "UPDATE colors SET color = ?, p_hex = ?, s_hex = ?, t_hex = ? WHERE color_id = ?";
+            $updateStmt = $conn->prepare($updateSql);
+            $updateStmt->bind_param("ssssi", $colorName, $primaryHex, $secondaryHex, $tertiaryHex, $colorData['id']);
+            $updateStmt->execute();
+
+            return [
+                'success' => true,
+                'message' => 'Color updated'
+            ];
+        } catch (mysqli_sql_exception $e) {
+            Logger::logError('Error updating color: ' . $e->getMessage());
+            return [
+                'success' => false,
+                'message' => 'Database error: ' . $e->getMessage()
+            ];
+        }
+    }
+
+    public function deleteColors(array $colorIds)
+    {
+        if (empty($colorIds)) {
+            return [
+                'success' => false,
+                'message' => 'No colors supplied'
+            ];
+        }
+
+        $serverName = $this->db->serverName;
+        $database = $this->db->database;
+        $uid = $this->db->uid;
+        $pwd = $this->db->pwd;
+
+        try {
+            $conn = new mysqli($serverName, $uid, $pwd, $database);
+
+            $placeholders = implode(',', array_fill(0, count($colorIds), '?'));
+            $types = str_repeat('i', count($colorIds));
+
+            $conn->begin_transaction();
+
+            $deleteColorsSql = "DELETE FROM colors WHERE color_id IN ($placeholders)";
+            $deleteColorsStmt = $conn->prepare($deleteColorsSql);
+            $deleteColorsStmt->bind_param($types, ...$colorIds);
+            $deleteColorsStmt->execute();
+
+            $conn->commit();
+
+            return [
+                'success' => true,
+                'deleted' => count($colorIds)
+            ];
+        } catch (mysqli_sql_exception $e) {
+            if (isset($conn)) {
+                $conn->rollback();
+            }
+            Logger::logError('Error deleting colors: ' . $e->getMessage());
             return [
                 'success' => false,
                 'message' => 'Database error: ' . $e->getMessage()
@@ -456,5 +750,40 @@ class Product
                 'message' => 'Database error: ' . $e->getMessage()
             ];
         }
+    }
+
+    private function normalizeHexValue($value, $allowEmpty = true, $label = 'Hex value')
+    {
+        if ($value === null) {
+            if ($allowEmpty) {
+                return null;
+            }
+            throw new \InvalidArgumentException($label . ' is required');
+        }
+
+        $value = trim($value);
+
+        if ($value === '') {
+            if ($allowEmpty) {
+                return null;
+            }
+            throw new \InvalidArgumentException($label . ' is required');
+        }
+
+        if ($value[0] !== '#') {
+            $value = '#' . $value;
+        }
+
+        $value = strtoupper($value);
+
+        if (!preg_match('/^#([0-9A-F]{3}|[0-9A-F]{6})$/', $value)) {
+            throw new \InvalidArgumentException($label . ' must be a valid hex code (e.g., #AABBCC)');
+        }
+
+        if (strlen($value) === 4) {
+            $value = '#' . $value[1] . $value[1] . $value[2] . $value[2] . $value[3] . $value[3];
+        }
+
+        return $value;
     }
 }

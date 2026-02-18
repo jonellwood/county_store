@@ -58,6 +58,16 @@ try {
 
     $product = new Product();
 
+    $filters = [];
+    if (isset($data['filters']) && is_array($data['filters'])) {
+        $filters = [
+            'gender' => isset($data['filters']['gender']) && $data['filters']['gender'] !== '' ? (int)$data['filters']['gender'] : null,
+            'type' => isset($data['filters']['type']) && $data['filters']['type'] !== '' ? (int)$data['filters']['type'] : null,
+            'size' => isset($data['filters']['size']) && $data['filters']['size'] !== '' ? (int)$data['filters']['size'] : null,
+            'sleeve' => isset($data['filters']['sleeve']) && $data['filters']['sleeve'] !== '' ? (int)$data['filters']['sleeve'] : null
+        ];
+    }
+
     // Check if product code already exists
     $existingProduct = $product->getProductByCode($data['product']['code']);
     if ($existingProduct) {
@@ -65,7 +75,7 @@ try {
     }
 
     // Add the product
-    $result = $product->addProduct($data['product'], $data['colors'], $data['sizes']);
+    $result = $product->addProduct($data['product'], $data['colors'], $data['sizes'], $filters);
 
     if ($result['success']) {
         Logger::logError("Successfully added product: " . $data['product']['name'] . " (ID: " . $result['productId'] . ")");
